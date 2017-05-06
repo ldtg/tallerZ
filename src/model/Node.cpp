@@ -21,6 +21,8 @@ std::vector<Movement> Node::makePath() {
   std::vector<Movement> path;
   if (parent != nullptr) {
     std::vector<Movement> parentPath = parent->makePath();
+    Movement move = parent->position.getMovement(this->position);
+    path.push_back(move);
     path.insert(path.end(), parentPath.begin(), parentPath.end());
   }
   return path;

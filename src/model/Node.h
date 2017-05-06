@@ -4,7 +4,6 @@
 #include <vector>
 #include <queue>
 #include "Position.h"
-#include "Movement.h"
 class Node {
  private:
   const Position &position;

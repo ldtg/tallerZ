@@ -7,7 +7,6 @@ unsigned long Position::chebyshevDistance(const Position &other) const {
       distanceX = std::max(this->x, other.x) - std::min(this->x, other.x);
   unsigned long
       distanceY = std::max(this->y, other.y) - std::min(this->y, other.y);
-  // Chebyshev distance
   return std::max(distanceX, distanceY);
 }
 unsigned short Position::getWeight() const {
@@ -16,3 +15,7 @@ unsigned short Position::getWeight() const {
 bool Position::operator==(const Position &node) const {
   return this->x == node.x && this->y == node.y;
 }
+Movement Position::getMovement(const Position &other) const{
+  return DLEFT;
+}
+

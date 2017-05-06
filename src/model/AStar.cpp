@@ -20,7 +20,8 @@ std::queue<Movement> AStar::find() {
   }
   return makeQueue(open.begin()->second->makePath());
 }
-unsigned long AStar::heuristic(const Position &position, const Position &epos) const{
+unsigned long AStar::heuristic(const Position &position,
+                               const Position &epos) const {
   return position.chebyshevDistance(epos);
 }
 std::queue<Movement> AStar::makeQueue(std::vector<Movement> pathVector) {
@@ -32,8 +33,8 @@ std::queue<Movement> AStar::makeQueue(std::vector<Movement> pathVector) {
 
 std::vector<Node *> AStar::getNeighbors(Node *current) {
   std::vector<Node *> vector;
-  for (Position &position : map.getNeighbors(current->getPosition())){
-    Node* auxNode = new Node(position, current, heuristic(position, epos));
+  for (Position &position : map.getNeighbors(current->getPosition())) {
+    Node *auxNode = new Node(position, current, heuristic(position, epos));
     vector.push_back(auxNode);
     createdNodes.push_back(auxNode);
   }
