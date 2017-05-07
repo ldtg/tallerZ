@@ -16,6 +16,26 @@ bool Position::operator==(const Position &node) const {
   return this->x == node.x && this->y == node.y;
 }
 Movement Position::getMovement(const Position &other) const{
-  return DLEFT;
+  if(this->x == other.x){
+    if(this->y == other.y)
+      return STAY;
+    if((this->y - other.y) < 0)
+      return DOWN;
+    else
+      return UP;
+  } else  if((this->x - other.x) < 0){
+    if(this->y == other.y)
+      return LEFT;
+    if((this->y - other.y) < 0)
+      return DLEFT;
+    else
+      return ULEFT;
+  } else {
+    if(this->y == other.y)
+      return RIGHT;
+    if((this->y - other.y) < 0)
+      return DRIGHT;
+    else
+      return URIGHT;
+  }
 }
-

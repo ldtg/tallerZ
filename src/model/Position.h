@@ -1,6 +1,6 @@
 #ifndef TALLERZ_POSITION_H
 #define TALLERZ_POSITION_H
-enum Movement {UP, DOWN, LEFT, RIGHT, URIGHT, ULEFT, DRIGHT, DLEFT};
+enum Movement {UP, DOWN, LEFT, RIGHT, URIGHT, ULEFT, DRIGHT, DLEFT, STAY};
 class Position {
  private:
   unsigned long x;
