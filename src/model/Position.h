@@ -1,18 +1,19 @@
 #ifndef TALLERZ_POSITION_H
 #define TALLERZ_POSITION_H
-enum Movement {UP, DOWN, LEFT, RIGHT, URIGHT, ULEFT, DRIGHT, DLEFT, STAY};
+#include <vector>
+#include "Movement.h"
 class Position {
  private:
-  unsigned long x;
-  unsigned long y;
-  unsigned short weight;
+  long x;
+  long y;
  public:
-  Position(unsigned long x, unsigned long y, unsigned short weight);
-  unsigned long chebyshevDistance(const Position &other) const;
-  unsigned short getWeight() const;
-  Position move(Movement movement);
-  Movement getMovement(const Position& other) const;
-  bool operator==(const Position &node) const;
+  Position(long x, long y);
+  long chebyshevDistance(const Position &other) const;
+  Position move(Movement movement) const;
+  Movement getMovement(const Position &other) const;
+  std::vector<Position> getNeighbors() const;
+  bool operator==(const Position &other) const;
+  bool operator<(const Position &other) const;
 };
 
 #endif //TALLERZ_POSITION_H

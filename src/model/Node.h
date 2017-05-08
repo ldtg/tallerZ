@@ -4,25 +4,25 @@
 #include <vector>
 #include <queue>
 #include "Position.h"
+#include "Tile.h"
 class Node {
  private:
-  const Position &position;
-  unsigned long distance;
-  unsigned long heuristic;
-  unsigned long totalCost;
+  const Tile &tile;
+  float distance;
+  float heuristic;
+  float totalCost;
   Node *parent;
  public:
-  Node(const Position &pos, unsigned long heuristic);
-  Node(const Position &pos,
-       Node *parent,
-       unsigned long heuristic);
-
-  const Position &getPosition() const;
-  std::vector<Movement> makePath();
+  Node(const Tile &tile, float heuristic);
+  Node(const Tile &tile,
+       Node *parent, float distance,
+       float heuristic);
+  std::vector<Movement> makePath() const;
+  const Tile &getTile() const;
   bool operator==(const Node &node) const;
-  unsigned long getTotalCost() const;
+  float getTotalCost() const;
   bool isBetter(const Node &node) const;
-  bool hasPosition(const Position &position) const;
+  bool hasTile(const Tile &tile) const;
 };
 
 #endif //TALLERZ_NODE_H

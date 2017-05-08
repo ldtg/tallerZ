@@ -5,16 +5,26 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES
         src/model/main.cpp
-#        src/model/Map.cpp
-#        src/model/Map.h
-#        src/model/Position.cpp
-#        src/model/Position.h
-#        src/model/AStar.cpp
-#        src/model/AStar.h
-#        src/model/Node.cpp
-#        src/model/Node.h
+        src/model/Map.cpp
+        src/model/Map.h
+        src/model/Position.cpp
+        src/model/Position.h
+        src/model/AStar.cpp
+        src/model/AStar.h
+        src/model/Node.cpp
+        src/model/Node.h
         src/model/Sound_event.cpp
-        src/model/Sound_event.h)
+        src/model/Sound_event.h
+        src/model/Unit.cpp
+        src/model/Unit.h
+        src/model/Tile.cpp
+        src/model/Tile.h
+        src/model/TerrainType.h
+        src/model/Movement.h
+        src/model/GameCotroller.cpp
+        src/model/GameCotroller.h
+        src/model/IdUnit.cpp
+        src/model/IdUnit.h)
 
 #nota a futuro: la mayoria de esos flags del SDL2 vienen de ejecutar `sdl2-config --cflags --libs --static-libs` en la terminal (estan copipasteados). Habrá que ver como hacerlo bien a esto.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2 -lpthread -Wl,--no-undefined -lm -ldl -lasound -lm -ldl -lpthread -lpulse-simple -lpulse -lX11 -lXext -lXcursor -lXinerama -lXi -lXrandr -lXss -lXxf86vm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -lts -lpthread -lrt")
