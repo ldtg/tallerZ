@@ -3,7 +3,7 @@
 
 #include <map>
 #include <tuple>
-#include "json.hpp"
+#include "../../json/src/json.hpp"
 #include "../model/Position.h"
 #include "../model/Tile.h"
 
@@ -17,7 +17,7 @@ private:
 
 public:
     /*
-     * { position : {int x, int y} , terrain_type : "lava", empty : true }
+     * { position : {int x, int y} , terrain_type : LAVA , empty : true }
      */
     Store_map(std::string file_name, std::map<Position,Tile>& map) :
             file_name(file_name) , map(map) {}
@@ -30,6 +30,7 @@ public:
             j["terrain_type"] = a.second.getTerrainType();
             j["empty"] = a.second.isEmpty();
         }
+        std::cout << j << std::endl;
     }
 };
 

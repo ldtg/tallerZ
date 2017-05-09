@@ -15,14 +15,10 @@ Sound_event::Sound_event(char *sound_file_path, unsigned int replays) {
 }
 
 void Sound_event::play() {
-    char c = '\0';
-    while (c != 'q'){
-        if (Mix_PlayChannel(-1,sound,replays) == ERROR){
-            //throw exception
-            std::cout << "Error en play de Sound_event.h\n";
-        };
-        std::cin.get(c);
-    }
+    if (Mix_PlayChannel(-1,sound,replays) == ERROR){
+        //throw exception
+        std::cout << "Error en play de Sound_event.h\n";
+    };
 }
 
 Sound_event::~Sound_event() {
