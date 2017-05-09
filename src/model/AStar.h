@@ -6,20 +6,23 @@
 #include "Position.h"
 #include "Map.h"
 #include "Node.h"
+#include "Unit.h"
+#include "Tile.h"
 class AStar {
  private:
   const Map &map;
-  std::map<unsigned long, Node*> open;
+  const Unit* unit;
+  std::map<float, Node*> open;
   std::vector<Node*> close;
   std::vector<Node*> createdNodes;
-  const Position &ipos;
-  const Position &epos;
+  const Tile &itile;
+  const Tile &etile;
   std::queue<Movement> makeQueue(std::vector<Movement> pathVector);
   std::vector<Node*> getNeighbors(Node *current);
   bool existBetter(Node *pNode) const;
-  unsigned long heuristic(const Position &position, const Position &epos) const;
+  float heuristic(const Tile &itile, const Tile &etile) const;
  public:
-  AStar(const Map &map, const Position &ipos, const Position &epos);
+  AStar(const Map &map, const Unit *unit, const Tile &etile);
   std::queue<Movement> find();
 
   ~AStar();

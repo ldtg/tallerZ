@@ -1,45 +1,47 @@
 #include "Node.h"
-Node::Node(const Position &pos,
-           unsigned long heuristic)
-    : position(pos),
+Node::Node(const Tile &tile,
+           float heuristic)
+    : tile(tile),
       heuristic(heuristic),
       distance(0),
       totalCost(heuristic) {
 }
-Node::Node(const Position &pos, Node *parent,
-           unsigned long heuristic)
-    : position(pos),
+Node::Node(const Tile &tile, Node *parent, float distance,
+           float heuristic)
+    : tile(tile),
       heuristic(heuristic),
       parent(parent),
-      distance(parent->distance + pos.getWeight()),
+      distance(parent->distance + distance),
       totalCost(distance + heuristic) {
 }
-const Position &Node::getPosition() const {
-  return position;
+const Tile &Node::getTile() const {
+  return this->tile;
 }
-std::vector<Movement> Node::makePath() {
+std::vector<Movement> Node::makePath() const {
   std::vector<Movement> path;
   if (parent != nullptr) {
     std::vector<Movement> parentPath = parent->makePath();
     path.insert(path.end(), parentPath.begin(), parentPath.end());
 
-    Movement move = parent->position.getMovement(this->position);
+    Movement
+        move = parent->tile.getPosition().getMovement(this->tile.getPosition());
     path.push_back(move);
   }
   return path;
 }
 
 bool Node::operator==(const Node &node) const {
-  return this->position == node.position;
+  return this->tile == node.tile;
 }
 
 bool Node::isBetter(const Node &node) const {
   return this->totalCost < node.totalCost;
 }
-unsigned long Node::getTotalCost() const {
+float Node::getTotalCost() const {
   return this->totalCost;
 }
-bool Node::hasPosition(const Position &position) const {
-  return this->position == position;
+
+bool Node::hasTile(const Tile &tile) const {
+  return this->tile == tile;
 }
 
