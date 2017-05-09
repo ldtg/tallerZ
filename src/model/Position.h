@@ -1,7 +1,11 @@
 #ifndef TALLERZ_POSITION_H
 #define TALLERZ_POSITION_H
 #include <vector>
+#include <tuple>
 #include "Movement.h"
+
+typedef std::tuple<long, long> coordinates_t;
+
 class Position {
  private:
   long x;
@@ -12,6 +16,7 @@ class Position {
   Position move(Movement movement) const;
   Movement getMovement(const Position &other) const;
   std::vector<Position> getNeighbors() const;
+    coordinates_t getCoordinates() const;
   bool operator==(const Position &other) const;
   bool operator<(const Position &other) const;
 };

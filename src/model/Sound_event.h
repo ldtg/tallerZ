@@ -28,7 +28,6 @@ class Sound_event {
 protected:
     Mix_Chunk * sound;
     int replays;
-
 public:
     Sound_event(char * sound_file_path, unsigned int replays);
 

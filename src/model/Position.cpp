@@ -62,3 +62,7 @@ bool Position::operator<(const Position &other) const {
   return this->x < other.x;
 }
 
+coordinates_t Position::getCoordinates() const {
+  return std::make_tuple(this->x, this->y);
+}
+
