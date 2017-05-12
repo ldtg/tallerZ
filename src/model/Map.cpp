@@ -10,3 +10,13 @@ std::vector<Tile> Map::getNeighbors(const Tile &tile) const {
 Tile Map::getTile(const Position &position) const {
   return map.at(position);
 }
+bool Map::canAttack(const Position &positionFrom, const Position &positionTo) {
+  return false;
+}
+void Map::move(Unit *unit) {
+  map.at(unit->getCurrentPosition()).remove(unit->getId());
+  map.at(unit->nextPosition()).add(unit->getId());
+}
+void Map::remove(Unit *unit) {
+  map.at(unit->getCurrentPosition()).remove(unit->getId());
+}

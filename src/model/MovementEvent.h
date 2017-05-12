@@ -1,0 +1,7 @@
+#ifndef TALLERZ_MOVEMENTEVENT_H
+#define TALLERZ_MOVEMENTEVENT_H
+
+class MovementEvent {
+};
+
+#endif //TALLERZ_MOVEMENTEVENT_H

@@ -23,8 +23,8 @@ set(SOURCE_FILES
         src/model/Movement.h
         src/model/GameCotroller.cpp
         src/model/GameCotroller.h
-        src/model/IdUnit.cpp
-        src/model/IdUnit.h src/storage/Store_settings.cpp src/storage/Store_settings.h src/storage/Store_map.cpp src/storage/Store_map.h z_tests/tests_sounds/basic_test.cpp z_tests/tests_storage/store_map_tests.cpp)
+        src/model/UnitID.cpp
+        src/model/UnitID.h src/storage/Store_settings.cpp src/storage/Store_settings.h src/storage/Store_map.cpp src/storage/Store_map.h z_tests/tests_sounds/basic_test.cpp z_tests/tests_storage/store_map_tests.cpp src/model/UnitState.cpp src/model/UnitState.h src/model/MovementState.h src/model/Weapon.cpp src/model/Weapon.h src/model/Attackable.cpp src/model/Attackable.h src/model/MovementEvent.cpp src/model/MovementEvent.h src/model/AttackEvent.cpp src/model/AttackEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)

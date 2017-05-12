@@ -1,0 +1,7 @@
+#ifndef TALLERZ_ATTACKEVENT_H
+#define TALLERZ_ATTACKEVENT_H
+
+class AttackEvent {
+};
+
+#endif //TALLERZ_ATTACKEVENT_H

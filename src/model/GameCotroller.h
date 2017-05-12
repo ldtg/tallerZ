@@ -3,13 +3,16 @@
 
 #include "Map.h"
 #include "Unit.h"
-#include "IdUnit.h"
+#include "UnitID.h"
 class GameCotroller {
- /*private:
+ private:
   Map map;
-  std::map<IdUnit, Unit*> units;
+  std::map<UnitID, Unit*> units;
  public:
-  void move(IdUnit unit, Position position);*/
+  void move(UnitID unit, Position position);
+  void attack(UnitID attacker, UnitID attacked);
+  void capture(UnitID unit, Position position);
+  void tick();
 };
 
 #endif //TALLERZ_GAMECOTROLLER_H

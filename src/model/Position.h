@@ -13,6 +13,8 @@ class Position {
  public:
   Position(long x, long y);
   long chebyshevDistance(const Position &other) const;
+  long euclideanDistance(const Position &other) const;
+
   Position move(Movement movement) const;
   Movement getMovement(const Position &other) const;
   std::vector<Position> getNeighbors() const;

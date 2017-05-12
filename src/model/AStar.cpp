@@ -3,7 +3,7 @@
 AStar::AStar(const Map &map, const Unit *unit, const Tile &etile)
     : map(map),
       unit(unit),
-      itile(map.getTile(unit->getcurrentPosition())),
+      itile(map.getTile(unit->getCurrentPosition())),
       etile(etile) {
   Node *node = new Node(itile, heuristic(itile, etile));
   open.emplace(node->getTotalCost(), node);
