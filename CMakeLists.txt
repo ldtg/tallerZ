@@ -24,7 +24,34 @@ set(SOURCE_FILES
         src/model/GameCotroller.cpp
         src/model/GameCotroller.h
         src/model/UnitID.cpp
-        src/model/UnitID.h src/storage/Store_settings.cpp src/storage/Store_settings.h src/storage/Store_map.cpp src/storage/Store_map.h z_tests/tests_sounds/basic_test.cpp z_tests/tests_storage/store_map_tests.cpp src/model/UnitState.cpp src/model/UnitState.h src/model/MovementState.h src/model/Weapon.cpp src/model/Weapon.h src/model/Attackable.cpp src/model/Attackable.h src/model/MovementEvent.cpp src/model/MovementEvent.h src/model/AttackEvent.cpp src/model/AttackEvent.h)
+        src/model/UnitID.h
+        src/storage/Store_settings.cpp
+        src/storage/Store_settings.h
+        src/storage/Store_map.cpp
+        src/storage/Store_map.h
+        z_tests/tests_sounds/basic_test.cpp
+        z_tests/tests_storage/store_map_tests.cpp
+        src/model/UnitState.cpp src/model/UnitState.h
+        src/model/MovementState.h src/model/Weapon.cpp
+        src/model/Weapon.h src/model/Attackable.cpp
+        src/model/Attackable.h src/model/MovementEvent.cpp
+        src/model/MovementEvent.h
+        src/model/AttackEvent.cpp
+        src/model/AttackEvent.h
+        src/storage/Store_settings.cpp
+        src/storage/Store_settings.h
+        src/storage/Store_map.cpp
+        src/storage/Store_map.h
+        z_tests/tests_sounds/basic_test.cpp
+        z_tests/tests_storage/store_map_tests.cpp
+        src/vista/Image.cpp
+        src/vista/Image.h
+        src/vista/main.cpp
+        src/vista/Makefile
+        src/vista/Sprite.cpp
+        src/vista/Sprite.h
+        src/vista/Window.cpp
+        src/vista/Window.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)
