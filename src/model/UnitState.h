@@ -2,7 +2,7 @@
 #define TALLERZ_UNITSTATE_H
 
 #include "MovementState.h"
-#include "Unit.h"
+#include "Attackable.h"
 class UnitState {
  private:
   unsigned long health;
