@@ -11,7 +11,7 @@ void UnitState::receiveDamage(unsigned short damage) {
   else
     this->health = 0;
 }
-bool UnitState::isAlive() {
+bool UnitState::isAlive() const{
   return this->health != 0;
 }
 void UnitState::hunting(Attackable *hunted) {
@@ -21,7 +21,7 @@ void UnitState::hunting(Attackable *hunted) {
 bool UnitState::isHunting() const{
   return this->movementState == HUNTING;
 }
-Attackable* UnitState::getHunted() {
+Attackable* UnitState::getHunted() const{
   return hunted;
 }
 bool UnitState::isMoving() const{
@@ -35,4 +35,8 @@ bool UnitState::isStill() const {
 }
 bool UnitState::isCapturing() const{
   return this->movementState == CAPTURING;
+}
+UnitState::UnitState(UnitType type) : health(60), movementState(STILL), hunted(nullptr){}
+unsigned long UnitState::getHealth() const{
+  return health;
 }

@@ -1,7 +1,7 @@
 #include "Tile.h"
 
 Tile::Tile(Position position, TerrainType terrainType)
-    : position(position), terrainType(terrainType) {}
+    : position(position), terrainType(terrainType), empty(true) {}
 
 Tile::Tile(Position &position, ObjectMap *objectMap)
     : position(position), objectMap(objectMap) {
@@ -13,7 +13,8 @@ Position Tile::getPosition() const {
 }
 
 bool Tile::operator==(const Tile &other) const {
-  return this->position == other.position;
+  return this->position == other.position
+      && this->terrainType == other.terrainType;
 }
 
 TerrainType Tile::getTerrainType() const {
@@ -35,3 +36,10 @@ void Tile::clear() {
 void Tile::fill() {
   this->empty = true;
 }
+void Tile::add(const UnitID &unitID, const UnitState &unitState) {
+  units.emplace(unitID, unitState);
+}
+void Tile::remove(const UnitID &unitID) {
+  units.erase(unitID);
+}
+Tile::Tile() :position(0,0), terrainType(TerrainType::LAND){}

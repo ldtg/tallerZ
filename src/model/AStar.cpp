@@ -1,13 +1,15 @@
 #include <algorithm>
 #include "AStar.h"
-AStar::AStar(const Map &map, const Unit *unit, const Tile &etile)
+
+AStar::AStar(const Map &map, const Unit *unit, const Position &target)
     : map(map),
       unit(unit),
       itile(map.getTile(unit->getCurrentPosition())),
-      etile(etile) {
+      etile(map.getTile(target)) {
   Node *node = new Node(itile, heuristic(itile, etile));
   open.emplace(node->getTotalCost(), node);
   createdNodes.push_back(node);
+
 }
 //Basado en http://web.mit.edu/eranki/www/tutorials/search/
 //          http://theory.stanford.edu/~amitp/GameProgramming/
@@ -62,3 +64,5 @@ AStar::~AStar() {
   for (Node *node: createdNodes)
     delete node;
 }
+
+

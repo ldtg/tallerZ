@@ -1,4 +1,5 @@
 #include "Node.h"
+
 Node::Node(const Tile &tile,
            float heuristic)
     : tile(tile),
@@ -6,6 +7,7 @@ Node::Node(const Tile &tile,
       heuristic(heuristic),
       totalCost(heuristic) {
 }
+
 Node::Node(const Tile &tile, Node *parent, float distance,
            float heuristic)
     : tile(tile),

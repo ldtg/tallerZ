@@ -1,9 +1,8 @@
 #include "Unit.h"
 
-Unit::Unit(Position &pos, Weapon &weapon)
-    : currentPosition(pos), weapon(weapon) {}
-
-Unit::~Unit() {}
+Unit::Unit(Position current, UnitType type, WeaponType wtype) : currentPosition(
+    current), state(type), weapon(wtype), id(type) {
+}
 
 Position Unit::getCurrentPosition() const {
   return this->currentPosition;
@@ -20,11 +19,12 @@ void Unit::attack(Attackable *other) {
   } else {
     this->state.still();
     //clear moves
-    while(!movements.empty()) movements.pop();
+    while (!movements.empty()) movements.pop();
   }
 }
 bool Unit::isInRange(Attackable *other) {
-  return this->currentPosition.euclideanDistance(other->getCurrentPosition()) < range;
+  return this->currentPosition.euclideanDistance(other->getCurrentPosition())
+      < range;
 }
 void Unit::receiveAttack(unsigned short damage) {
   this->damagesReceives.push_back(damage);
@@ -34,7 +34,7 @@ void Unit::hunt(std::queue<Movement> moves, Attackable *other) {
   this->state.hunting(other);
 }
 Movement Unit::nextMove() const {
-  if(!movements.empty())
+  if (!movements.empty())
     return movements.back();
   else
     return Movement::STAY;
@@ -45,13 +45,15 @@ void Unit::receiveDamages() {
   }
 }
 void Unit::doMove() {
-  currentPosition = currentPosition.move(movements.back());
+  currentPosition = currentPosition.move(movements.front());
   movements.pop();
   if (movements.empty())
     this->state.still();
 }
 bool Unit::attackedInRange() {
-  return this->currentPosition.euclideanDistance(state.getHunted()->getCurrentPosition()) < range;
+  return
+      this->currentPosition.euclideanDistance(state.getHunted()->getCurrentPosition())
+          < range;
 }
 bool Unit::isHunting() {
   return this->state.isHunting();
@@ -62,7 +64,7 @@ void Unit::doAttack() {
   } else {
     this->state.still();
     //clear moves
-    while(!movements.empty()) movements.pop();
+    while (!movements.empty()) movements.pop();
   }
 }
 Attackable *Unit::getHunted() {
@@ -84,27 +86,22 @@ bool Unit::isCapturing() const {
 bool Unit::isStill() const {
   return this->state.isStill();
 }
-UnitID Unit::getId() const{
+UnitID Unit::getId() const {
   return this->id;
 }
-Position Unit::nextPosition() const{
+Position Unit::nextPosition() const {
   return this->currentPosition.move(this->nextMove());
 }
 
-bool Unit::isAlive() const {
-    //TODO: hacer bien. Es para compilar.
-    return true;
-}
-
-bool Unit::isMoving() const {
-    //TODO: hacer bien. Es para compilar.
-    return true;
-}
-
 UnitState Unit::getState() const {
-    //TODO: hacer bien. Es para compilar.
-    return this->state;
+  return state;
 }
-
-//TODO: hacer bien. Es para compilar.
-void Unit::addMoves(const Unit &other) {}
+bool Unit::isAlive() const {
+  return state.isAlive();
+}
+bool Unit::isMoving() const {
+  return state.isMoving();
+}
+unsigned long Unit::getHealth() const{
+  return state.getHealth();
+}

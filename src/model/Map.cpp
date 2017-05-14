@@ -7,11 +7,17 @@ Map::Map() {
     Tile tile(pos, land);
 }
 
+Map::Map(std::map<Position, Tile> map,
+         unsigned short width,
+         unsigned short height)
+        : map(map), width(width), height(height) {}
+
 std::vector<Tile> Map::getNeighbors(const Tile &tile) const {
   std::vector<Tile> neighborsTiles;
   std::vector<Position> neighborsPos = tile.getPosition().getNeighbors();
-  for(Position& pos : neighborsPos){
-    neighborsTiles.push_back(map.at(pos));
+  for (Position &pos : neighborsPos) {
+    if (pos.isIn(width, height))
+      neighborsTiles.push_back(map.at(pos));
   }
   return neighborsTiles;
 }

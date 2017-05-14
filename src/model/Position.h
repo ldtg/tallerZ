@@ -20,8 +20,10 @@ class Position {
   Movement getMovement(const Position &other) const;
   std::vector<Position> getNeighbors() const;
   coordinates_t getCoordinates() const;
+  bool isValid() const;
   bool operator==(const Position &other) const;
   bool operator<(const Position &other) const;
+  bool isIn(unsigned long width, unsigned long height);
 };
 
 #endif //TALLERZ_POSITION_H

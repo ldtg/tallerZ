@@ -11,27 +11,27 @@
 #include "Attackable.h"
 
 class Unit : public Attackable {
- private:
-  Position &currentPosition;
+ protected:
+  Position currentPosition;
   std::queue<Movement> movements;
   std::vector<unsigned short> damagesReceives;
-  Weapon &weapon;
+  Weapon weapon;
   unsigned short range;
   UnitID id;
   UnitState state;
+  Unit(Position current, UnitType type, WeaponType wtype);
  public:
-  Unit(Position &pos, Weapon &weapon);
   ~Unit();
   virtual Position getCurrentPosition() const override;
   virtual Movement nextMove() const override;
   virtual Position nextPosition() const;
   virtual UnitState getState() const;
+  virtual unsigned long getHealth() const;
   virtual void receiveDamages();
   virtual bool isInRange(Attackable *other);
   virtual bool attackedInRange();
   virtual void move(std::queue<Movement> moves);
   virtual void capture(std::queue<Movement> moves);
-  virtual void addMoves(const Unit &other);
   virtual void doMove();
   virtual void hunt(std::queue<Movement> moves, Attackable *other);
   virtual void attack(Attackable *other);

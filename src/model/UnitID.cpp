@@ -1,6 +1,11 @@
 #include "UnitID.h"
 
+unsigned long UnitID::nextid = 0;
+
+UnitID::UnitID(UnitType type) : type(type) {
+  this->id = nextid;
+  nextid++;
+}
 bool UnitID::operator<(const UnitID &other) const {
-    //TODO: implementar bien. Esta asi para que compile.
-    return true;
+  return this->id < other.id;
 }

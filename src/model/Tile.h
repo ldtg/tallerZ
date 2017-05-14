@@ -18,6 +18,7 @@ class Tile {
   //agregar build
   bool empty;
  public:
+  Tile();
   Tile(Position position, TerrainType terrainType);
   Tile(Position &position, ObjectMap *objectMap);
   void add(const UnitID &unitID, const UnitState &unitState);
