@@ -3,23 +3,27 @@
 
 #include "MovementState.h"
 #include "Attackable.h"
+#include "UnitType.h"
 class UnitState {
  private:
   unsigned long health;
   MovementState movementState;
   Attackable *hunted;
  public:
+  UnitState(UnitType type);
   void moving();
   void still();
   void receiveDamage(unsigned short damage);
-  bool isAlive();
   void hunting(Attackable *hunted);
+  void capturing();
+  bool isAlive() const;
   bool isHunting() const;
   bool isCapturing() const;
-  Attackable* getHunted();
   bool isMoving() const;
   bool isStill() const;
-  void capturing();
+  Attackable* getHunted() const;
+
+  unsigned long getHealth() const;
 };
 
 #endif //TALLERZ_UNITSTATE_H

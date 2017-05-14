@@ -16,21 +16,21 @@ Movement Position::getMovement(const Position &other) const {
   if (this->x == other.x) {
     if (this->y == other.y)
       return STAY;
-    if ((this->y - other.y) < 0)
+    if ((this->y - other.y) > 0)
       return DOWN;
     else
       return UP;
-  } else if ((this->x - other.x) < 0) {
+  } else if ((this->x - other.x) > 0) {
     if (this->y == other.y)
       return LEFT;
-    if ((this->y - other.y) < 0)
+    if ((this->y - other.y) > 0)
       return DLEFT;
     else
       return ULEFT;
   } else {
     if (this->y == other.y)
       return RIGHT;
-    if ((this->y - other.y) < 0)
+    if ((this->y - other.y) > 0)
       return DRIGHT;
     else
       return URIGHT;
@@ -52,7 +52,9 @@ Position Position::move(Movement movement) const {
 std::vector<Position> Position::getNeighbors() const {
   std::vector<Position> neighbors;
   for (int move = UP; move != STAY; move++) {
-    neighbors.push_back(this->move(Movement(move)));
+    Position aux = this->move(Movement(move));
+    if (aux.isValid())
+      neighbors.push_back(aux);
   }
   return neighbors;
 }
@@ -64,5 +66,15 @@ bool Position::operator<(const Position &other) const {
 
 coordinates_t Position::getCoordinates() const {
   return std::make_tuple(this->x, this->y);
+}
+long Position::euclideanDistance(const Position &other) const {
+  return std::lround(std::sqrt(
+      std::pow(this->x - other.x, 2) + std::pow(this->y - other.y, 2)));
+}
+bool Position::isValid() const {
+  return x >= 0 && y >= 0;
+}
+bool Position::isIn(unsigned long width, unsigned long height) {
+  return x < width && y < height;
 }
 

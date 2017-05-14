@@ -3,6 +3,7 @@ Node::Node(const Tile &tile,
            float heuristic)
     : tile(tile),
       heuristic(heuristic),
+      parent(nullptr),
       distance(0),
       totalCost(heuristic) {
 }

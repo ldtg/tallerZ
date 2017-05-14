@@ -5,6 +5,19 @@ void GameCotroller::move(UnitID idunit, Position position) {
   AStar astar(map, unit, map.getTile(position));
   unit->move(astar.find());
 }
+void GameCotroller::attack(UnitID attackerId, BuildID attackedId) {
+  Unit *attacker = units.at(attackerId);
+  Attackable *attacked = builds.at(attackedId);
+  if (attacker->isInRange(attacked)
+      && map.canAttack(attacker->getCurrentPosition(),
+                       attacked->getCurrentPosition())) {
+    attacker->attack(attacked);
+  } else {
+    AStar astar(map, attacker, map.getTile(attacked->getCurrentPosition()));
+    attacker->hunt(astar.find(), attacked);
+  }
+}
+
 void GameCotroller::attack(UnitID attackerId, UnitID attackedId) {
   Unit *attacker = units.at(attackerId);
   Attackable *attacked = units.at(attackedId);
@@ -65,5 +78,6 @@ void GameCotroller::tick() {
       it_units = units.erase(it_units);
     }
   }
+
 }
 

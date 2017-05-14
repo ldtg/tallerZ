@@ -8,12 +8,13 @@
 
 class Tile {
  private:
-  const Position position;
-  const TerrainType terrainType;
+  Position position;
+  TerrainType terrainType;
   std::map<UnitID, UnitState> units;
   //agregar build
   bool empty;
  public:
+  Tile();
   Tile(Position position, TerrainType terrainType);
   void add(const UnitID &unitID, const UnitState &unitState);
   void remove(const UnitID &unitID);

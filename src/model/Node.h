@@ -7,7 +7,7 @@
 #include "Tile.h"
 class Node {
  private:
-  const Tile &tile;
+  const Tile tile;
   float distance;
   float heuristic;
   float totalCost;
