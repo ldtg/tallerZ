@@ -1,7 +1,8 @@
 #include "Unit.h"
 
-Unit::Unit(Position current, UnitType type, WeaponType wtype) : currentPosition(
-    current), state(type), weapon(wtype), id(type) {
+Unit::Unit(Position current, UnitType type, WeaponType wtype)
+        : currentPosition(current), weapon(wtype),
+          id(type), state(type) {
 }
 
 Position Unit::getCurrentPosition() const {

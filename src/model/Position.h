@@ -23,7 +23,7 @@ class Position {
   bool isValid() const;
   bool operator==(const Position &other) const;
   bool operator<(const Position &other) const;
-  bool isIn(unsigned long width, unsigned long height);
+  bool isIn(long width, long height);
 };
 
 #endif //TALLERZ_POSITION_H

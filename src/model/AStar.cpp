@@ -11,6 +11,7 @@ AStar::AStar(const Map &map, const Unit *unit, const Position &target)
   createdNodes.push_back(node);
 
 }
+
 //Basado en http://web.mit.edu/eranki/www/tutorials/search/
 //          http://theory.stanford.edu/~amitp/GameProgramming/
 std::queue<Movement> AStar::find() {

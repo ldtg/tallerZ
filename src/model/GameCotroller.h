@@ -13,7 +13,7 @@ class GameCotroller {
   std::map<UnitID, Unit*> units;
   std::map<BuildID, Build*> builds;
  public:
-  void move(UnitID unit, Position position);
+  void move(UnitID &unit, Position &position);
   void attack(UnitID attacker, UnitID attacked);
   void attack(UnitID attacker, BuildID attacked);
   void capture(UnitID unit, Position position);

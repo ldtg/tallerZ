@@ -14,9 +14,8 @@ long Position::chebyshevDistance(const Position &other) const {
 }
 
 long Position::euclideanDistance(const Position &other) const {
-    long d = pow(this->x - other.x, 2) + pow(this->y - other.y, 2);
-    d = pow(d, 0.5);
-    return d;
+    return std::lround(std::sqrt(
+            std::pow(this->x - other.x, 2) + std::pow(this->y - other.y, 2)));
 }
 
 bool Position::operator==(const Position &other) const {
@@ -81,14 +80,12 @@ bool Position::operator<(const Position &other) const {
 coordinates_t Position::getCoordinates() const {
   return std::make_tuple(this->x, this->y);
 }
-long Position::euclideanDistance(const Position &other) const {
-  return std::lround(std::sqrt(
-      std::pow(this->x - other.x, 2) + std::pow(this->y - other.y, 2)));
-}
+
 bool Position::isValid() const {
-  return x >= 0 && y >= 0;
+  return (x >= 0) && (y >= 0);
 }
-bool Position::isIn(unsigned long width, unsigned long height) {
-  return x < width && y < height;
+
+bool Position::isIn(long width, long height) {
+  return (x < width) && (y < height);
 }
 
