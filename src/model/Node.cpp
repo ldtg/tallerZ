@@ -2,17 +2,17 @@
 Node::Node(const Tile &tile,
            float heuristic)
     : tile(tile),
-      heuristic(heuristic),
       distance(0),
+      heuristic(heuristic),
       totalCost(heuristic) {
 }
 Node::Node(const Tile &tile, Node *parent, float distance,
            float heuristic)
     : tile(tile),
-      heuristic(heuristic),
-      parent(parent),
       distance(parent->distance + distance),
-      totalCost(distance + heuristic) {
+      heuristic(heuristic),
+      totalCost(distance + heuristic),
+      parent(parent) {
 }
 const Tile &Node::getTile() const {
   return this->tile;

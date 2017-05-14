@@ -54,7 +54,11 @@ set(SOURCE_FILES
  src/vista/Sprite.cpp
  src/vista/Sprite.h
  src/vista/Window.cpp
- src/vista/Window.h)
+ src/vista/Window.h
+        src/model/ObjectMap.cpp
+        src/model/ObjectMap.h
+ src/model/Land.cpp
+ src/model/Land.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)

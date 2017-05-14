@@ -1,5 +1,6 @@
 #ifndef TALLERZ_UNIT_H
 #define TALLERZ_UNIT_H
+
 #include <queue>
 #include <stack>
 #include "Position.h"
@@ -8,6 +9,7 @@
 #include "UnitID.h"
 #include "Weapon.h"
 #include "Attackable.h"
+
 class Unit : public Attackable {
  private:
   Position &currentPosition;
@@ -18,10 +20,12 @@ class Unit : public Attackable {
   UnitID id;
   UnitState state;
  public:
+  Unit(Position &pos, Weapon &weapon);
+  ~Unit();
   virtual Position getCurrentPosition() const override;
   virtual Movement nextMove() const override;
   virtual Position nextPosition() const;
-  virtual UnitState &getState() const;
+  virtual UnitState getState() const;
   virtual void receiveDamages();
   virtual bool isInRange(Attackable *other);
   virtual bool attackedInRange();

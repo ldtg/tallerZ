@@ -9,10 +9,12 @@
 #include "AttackEvent.h"
 #include <vector>
 #include <map>
+
 class Map {
  private:
   std::map<Position, Tile> map;
  public:
+  Map();
   std::vector<Tile> getNeighbors(const Tile &tile) const;
   Tile getTile(const Position& position) const;
   bool canAttack(const Position &positionFrom, const Position &positionTo);

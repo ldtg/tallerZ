@@ -1,10 +1,12 @@
 #include "GameCotroller.h"
 #include "AStar.h"
+
 void GameCotroller::move(UnitID idunit, Position position) {
   Unit *unit = units[idunit];
   AStar astar(map, unit, map.getTile(position));
   unit->move(astar.find());
 }
+
 void GameCotroller::attack(UnitID attackerId, UnitID attackedId) {
   Unit *attacker = units.at(attackerId);
   Attackable *attacked = units.at(attackedId);
@@ -17,11 +19,13 @@ void GameCotroller::attack(UnitID attackerId, UnitID attackedId) {
     attacker->hunt(astar.find(), attacked);
   }
 }
+
 void GameCotroller::capture(UnitID idunit, Position position) {
   Unit *unit = units[idunit];
   AStar astar(map, unit, map.getTile(position));
   unit->capture(astar.find());
 }
+
 void GameCotroller::tick() {
   for (auto it_units = units.begin(); it_units != units.end();
        ++it_units) {
@@ -61,7 +65,8 @@ void GameCotroller::tick() {
     } else {
       //TODO: crear evento muerte
       //map.procces(event)
-      delete current;
+      //TODO: No se puede borrar clase abstracta
+//      delete current;
       it_units = units.erase(it_units);
     }
   }

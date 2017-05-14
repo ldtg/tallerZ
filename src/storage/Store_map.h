@@ -3,6 +3,7 @@
 
 #include <map>
 #include <tuple>
+#include <iostream>
 #include "../../json/src/json.hpp"
 #include "../model/Position.h"
 #include "../model/Tile.h"

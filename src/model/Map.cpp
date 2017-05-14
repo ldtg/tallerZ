@@ -1,4 +1,12 @@
 #include "Map.h"
+#include "Land.h"
+
+Map::Map() {
+    Position pos(0, 0);
+    ObjectMap *land = new Land("land");
+    Tile tile(pos, land);
+}
+
 std::vector<Tile> Map::getNeighbors(const Tile &tile) const {
   std::vector<Tile> neighborsTiles;
   std::vector<Position> neighborsPos = tile.getPosition().getNeighbors();

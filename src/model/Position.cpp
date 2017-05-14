@@ -1,7 +1,10 @@
 #include <algorithm>
+#include <cmath>
 #include "Position.h"
-Position::Position(long x, long y) : x(
-    x), y(y) {}
+
+Position::Position(long x, long y)
+    : x(x), y(y) {}
+
 long Position::chebyshevDistance(const Position &other) const {
   long
       distanceX = std::max(this->x, other.x) - std::min(this->x, other.x);
@@ -9,9 +12,17 @@ long Position::chebyshevDistance(const Position &other) const {
       distanceY = std::max(this->y, other.y) - std::min(this->y, other.y);
   return std::max(distanceX, distanceY);
 }
+
+long Position::euclideanDistance(const Position &other) const {
+    long d = pow(this->x - other.x, 2) + pow(this->y - other.y, 2);
+    d = pow(d, 0.5);
+    return d;
+}
+
 bool Position::operator==(const Position &other) const {
   return this->x == other.x && this->y == other.y;
 }
+
 Movement Position::getMovement(const Position &other) const {
   if (this->x == other.x) {
     if (this->y == other.y)
@@ -47,8 +58,10 @@ Position Position::move(Movement movement) const {
     case DRIGHT:return Position(x + 1, y - 1);
     case ULEFT:return Position(x - 1, y + 1);
     case URIGHT: return Position(x + 1, y + 1);
+    default: return Position(0, 0);
   }
 }
+
 std::vector<Position> Position::getNeighbors() const {
   std::vector<Position> neighbors;
   for (int move = UP; move != STAY; move++) {
@@ -56,6 +69,7 @@ std::vector<Position> Position::getNeighbors() const {
   }
   return neighbors;
 }
+
 bool Position::operator<(const Position &other) const {
   if (this->x == other.x)
     return this->y < other.y;

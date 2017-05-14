@@ -5,6 +5,7 @@
 #include <queue>
 #include "Position.h"
 #include "Tile.h"
+
 class Node {
  private:
   const Tile &tile;

@@ -1,4 +1,10 @@
 #include "Unit.h"
+
+Unit::Unit(Position &pos, Weapon &weapon)
+    : currentPosition(pos), weapon(weapon) {}
+
+Unit::~Unit() {}
+
 Position Unit::getCurrentPosition() const {
   return this->currentPosition;
 }
@@ -84,3 +90,21 @@ UnitID Unit::getId() const{
 Position Unit::nextPosition() const{
   return this->currentPosition.move(this->nextMove());
 }
+
+bool Unit::isAlive() const {
+    //TODO: hacer bien. Es para compilar.
+    return true;
+}
+
+bool Unit::isMoving() const {
+    //TODO: hacer bien. Es para compilar.
+    return true;
+}
+
+UnitState Unit::getState() const {
+    //TODO: hacer bien. Es para compilar.
+    return this->state;
+}
+
+//TODO: hacer bien. Es para compilar.
+void Unit::addMoves(const Unit &other) {}
