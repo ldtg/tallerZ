@@ -38,7 +38,6 @@ set(SOURCE_FILES
         z_tests/tests_model/Robot_test.cpp
         z_tests/tests_model/AStar_test.cpp
         #[[
-        src/model/main.cpp
         src/model/GameCotroller.cpp
         src/model/GameCotroller.h
         src/model/MovementEvent.cpp
@@ -67,7 +66,6 @@ set(SOURCE_FILES
         z_tests/tests_storage/store_map_tests.cpp
         src/vista/Image.cpp
         src/vista/Image.h
-        src/vista/main.cpp
         src/vista/Sprite.cpp
         src/vista/Sprite.h
         src/vista/Window.cpp
@@ -75,7 +73,12 @@ set(SOURCE_FILES
         src/model/ObjectMap.cpp
         src/model/ObjectMap.h
         src/model/Land.cpp
-        src/model/Land.h)
+        src/model/Land.h
+        src/vista/Vista.cpp
+        src/vista/Vista.h
+        src/vista/Panel.cpp
+        src/vista/Panel.h
+        src/main.cpp src/vista/ObjectMapaVista.cpp src/vista/ObjectMapaVista.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)

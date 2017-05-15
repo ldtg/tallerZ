@@ -9,6 +9,9 @@ Window::Window() {
     width = WIDTH;
     height = HEIGHT;
 
+    SDL_Init(SDL_INIT_VIDEO);
+    IMG_Init(IMG_INIT_PNG);
+
     SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" );
     window = SDL_CreateWindow("SDL Tutorial", 0, 0,
                               width,
@@ -20,19 +23,13 @@ Window::Window() {
 }
 
 Window::~Window() {
-    SDL_DestroyRenderer(window_render);
+//    SDL_DestroyRenderer(window_render);
     SDL_DestroyWindow(window);
+
+    IMG_Quit();
+    SDL_Quit();
 }
 
-void Window::load(Sprite *sprite) {
-    this->sprite = sprite;
-}
-
-void Window::draw() {
-    SDL_SetRenderDrawColor(window_render, 0xFF, 0xFF, 0xFF, 0xFF );
-    SDL_RenderClear(window_render);
-
-    sprite->draw(window_render, WIDTH, HEIGHT);
-
-    SDL_RenderPresent(window_render);
+SDL_Renderer* Window::getRender() const {
+    return window_render;
 }

@@ -2,15 +2,15 @@
 #define SPRITE_H
 
 #include "SDL2/SDL.h"
-#include "Image.h"
 #include <string>
+#include "ObjectMapaVista.h"
 
-class Sprite {
+class Sprite : public ObjectMapaVista {
     protected:
         int num_frames;
         int cur_frame;
-        int x;
-        int y;
+//        int x;
+//        int y;
         std::string filename;
     public:
         Sprite();
@@ -19,8 +19,7 @@ class Sprite {
         Sprite& operator=(Sprite &&other);
         virtual ~Sprite();
         void set_texture(SDL_Renderer *render);
-        virtual void draw(SDL_Renderer *render, int window_w, int window_h);
-        void move(int x, int y);
+        void draw(SDL_Renderer *render);
 };
 
 #endif //SPRITE_H

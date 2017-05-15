@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include "Sprite.h"
+#include "Image.h"
 
 Sprite::Sprite() {}
 
@@ -40,7 +41,9 @@ Sprite& Sprite::operator=(Sprite &&other) {
 
 Sprite::~Sprite() {}
 
-void Sprite::draw(SDL_Renderer *render, int window_w, int window_h) {
+void Sprite::set_texture(SDL_Renderer *render) {}
+
+void Sprite::draw(SDL_Renderer *render) {
     int cur_frame_aux = cur_frame/(1*num_frames);
 
     std::string file_image = filename + std::to_string(cur_frame_aux)
@@ -48,16 +51,11 @@ void Sprite::draw(SDL_Renderer *render, int window_w, int window_h) {
 
     Image image(file_image.c_str());
     image.set_texture(render);
-    image.draw(render, window_w, window_h);
+    image.draw(render);
 
     ++cur_frame;
     //Cycle animation
     if (cur_frame/(1*num_frames) >= num_frames) {
         cur_frame = 0;
     }
-}
-
-void Sprite::move(int x, int y) {
-    this->x += x;
-    this->y += y;
 }

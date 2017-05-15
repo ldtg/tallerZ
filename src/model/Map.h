@@ -9,6 +9,7 @@
 #include "UnitAttackEvent.h"
 #include <vector>
 #include <map>
+#include <string>
 
 class Map {
  private:
@@ -21,6 +22,7 @@ class Map {
   std::vector<Tile> getNeighbors(const Tile &tile) const;
   Tile getTile(const Position& position) const;
   bool canAttack(const Position &positionFrom, const Position &positionTo);
+  std::string getTypePos(int x, int y) const;
   //procesar evento para mantener mapa actualizado
   /*void process(const MovementEvent &event);
   void process(const UnitAttackEvent &event);

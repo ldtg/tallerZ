@@ -5,6 +5,8 @@ Map::Map() {
     Position pos(0, 0);
     ObjectMap *land = new Land("land");
     Tile tile(pos, land);
+
+    map.insert(std::pair<Position,Tile>(pos, tile));
 }
 
 Map::Map(std::map<Position, Tile> map,
@@ -29,6 +31,12 @@ Tile Map::getTile(const Position &position) const {
 bool Map::canAttack(const Position &positionFrom, const Position &positionTo) {
   return false;
 }
+
+std::string Map::getTypePos(int x, int y) const {
+    Position posAux(x, y);
+    return map.at(posAux).getType();
+}
+
 
 /*void Map::move(Unit *unit) {
   map.at(unit->getCurrentPosition()).remove(unit->getId());
