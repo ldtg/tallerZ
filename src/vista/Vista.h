@@ -4,6 +4,7 @@
 #include "../model/Map.h"
 #include "Window.h"
 #include "Panel.h"
+#include <string>
 
 class Vista {
     private:
@@ -13,6 +14,7 @@ class Vista {
     public:
         Vista(Map &map);
         ~Vista();
+        ObjectMapaVista *getObjectVista(std::string type);
         void update();
 };
 

@@ -7,20 +7,23 @@
 #include "UnitID.h"
 #include "UnitState.h"
 #include "ObjectMap.h"
+#include <vector>
 
 class Tile {
  private:
   const Position position;
 //  const TerrainType terrainType;
   TerrainType terrainType;
+  const ObjectMap *background;
   const ObjectMap *objectMap;
   std::map<UnitID, UnitState> units;
   //agregar build
   bool empty;
  public:
-  Tile();
+//  Tile();
   Tile(Position position, TerrainType terrainType);
-  Tile(Position &position, ObjectMap *objectMap);
+  Tile(Position &position, ObjectMap *background, ObjectMap *objectMap);
+  ~Tile();
   void add(const UnitID &unitID, const UnitState &unitState);
   void remove(const UnitID &unitID);
   bool isEmpty() const;
@@ -28,7 +31,7 @@ class Tile {
   void clear();
   void fill();
   TerrainType getTerrainType() const;
-  std::string getType() const;
+  std::vector<std::string> getType() const;
   bool operator==(const Tile &other) const;
 };
 

@@ -31,7 +31,7 @@ bool Map::canAttack(const Position &positionFrom, const Position &positionTo) {
   return false;
 }
 
-std::string Map::getTypePos(int x, int y) const {
+std::vector<std::string> Map::getTypePos(int x, int y) const {
     Position posAux(x, y);
     return map.at(posAux).getType();
 }

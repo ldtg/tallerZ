@@ -78,7 +78,7 @@ set(SOURCE_FILES
         src/vista/Vista.h
         src/vista/Panel.cpp
         src/vista/Panel.h
-        src/main.cpp src/vista/ObjectMapaVista.cpp src/vista/ObjectMapaVista.h src/model/MapBuilder.cpp src/model/MapBuilder.h)
+        src/main.cpp src/vista/ObjectMapaVista.cpp src/vista/ObjectMapaVista.h src/model/MapBuilder.cpp src/model/MapBuilder.h src/model/Grunt.cpp src/model/Grunt.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)

@@ -4,9 +4,9 @@
 Panel::Panel(SDL_Renderer *render) : window_render(render) {}
 
 Panel::~Panel() {
-    for (ObjectMapaVista *objectMapaVista : objectsMapaVista) {
-        delete (objectMapaVista);
-    }
+//    for (ObjectMapaVista *objectMapaVista : objectsMapaVista) {
+//        delete (objectMapaVista);
+//    }
 
     SDL_DestroyRenderer(window_render);
 }
