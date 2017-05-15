@@ -19,7 +19,6 @@ class Image : public ObjectMapaVista {
         Image(Image &&other);
         Image& operator=(Image &&other);
         ~Image();
-        void setPos(int x, int y);
         void set_texture(SDL_Renderer *render);
         void draw(SDL_Renderer *render);
 //        void draw(SDL_Renderer *render, int window_w, int window_h,

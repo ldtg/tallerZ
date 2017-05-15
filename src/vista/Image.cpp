@@ -56,11 +56,6 @@ Image::~Image() {
     }
 }
 
-void Image::setPos(int x, int y) {
-    this->x = x;
-    this->y = y;
-}
-
 void Image::set_texture(SDL_Renderer *render) {
     //Color key image
 //    SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, 0, 0xFF, 0xFF));

@@ -14,8 +14,8 @@
 class Map {
  private:
   std::map<Position, Tile> map;
-  unsigned long width;
-  unsigned long height;
+  int width;
+  int height;
  public:
   Map();
   Map(std::map<Position, Tile> map, unsigned short width, unsigned short height);
@@ -23,7 +23,9 @@ class Map {
   Tile getTile(const Position& position) const;
   bool canAttack(const Position &positionFrom, const Position &positionTo);
   std::string getTypePos(int x, int y) const;
-  //procesar evento para mantener mapa actualizado
+  int getWidht() const;
+  int getHeight() const;
+    //procesar evento para mantener mapa actualizado
   /*void process(const MovementEvent &event);
   void process(const UnitAttackEvent &event);
   */

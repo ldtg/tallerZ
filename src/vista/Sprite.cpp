@@ -50,6 +50,8 @@ void Sprite::draw(SDL_Renderer *render) {
                              + std::string(".png");
 
     Image image(file_image.c_str());
+    width = image.getWidth();
+    height = image.getHeight();
     image.set_texture(render);
     image.draw(render);
 

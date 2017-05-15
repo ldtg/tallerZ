@@ -11,8 +11,11 @@ class ObjectMapaVista {
         int y;
     public:
         virtual ~ObjectMapaVista();
-    virtual void set_texture(SDL_Renderer *render);
-    virtual void draw(SDL_Renderer *render) = 0;
+        int getWidth() const;
+        int getHeight() const;
+        void setPos(int x, int y);
+        virtual void set_texture(SDL_Renderer *render);
+        virtual void draw(SDL_Renderer *render) = 0;
 };
 
 #endif //TALLERZ_OBJECTMAPAVISTA_H

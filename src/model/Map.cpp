@@ -1,12 +1,11 @@
 #include "Map.h"
-#include "Land.h"
+#include "MapBuilder.h"
 
 Map::Map() {
-    Position pos(0, 0);
-    ObjectMap *land = new Land("land");
-    Tile tile(pos, land);
-
-    map.insert(std::pair<Position,Tile>(pos, tile));
+    MapBuilder builder;
+    map = builder.build();
+    width = builder.getWidht();
+    height = builder.getHeight();
 }
 
 Map::Map(std::map<Position, Tile> map,
@@ -35,6 +34,14 @@ bool Map::canAttack(const Position &positionFrom, const Position &positionTo) {
 std::string Map::getTypePos(int x, int y) const {
     Position posAux(x, y);
     return map.at(posAux).getType();
+}
+
+int Map::getWidht() const {
+    return width;
+}
+
+int Map::getHeight() const {
+    return height;
 }
 
 
