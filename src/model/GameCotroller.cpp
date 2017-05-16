@@ -4,7 +4,6 @@
 void GameCotroller::move(UnitID &idunit, Position &position) {
   Unit *unit = units[idunit];
 //TODO: ver con Luis
-//  AStar astar(map, unit, map.getTile(position));
     AStar astar(map, unit, position);
   unit->move(astar.find());
 }
@@ -18,7 +17,6 @@ void GameCotroller::attack(UnitID attackerId, BuildID attackedId) {
     attacker->attack(attacked);
   } else {
 //TODO: ver con Luis
-//    AStar astar(map, attacker, map.getTile(attacked->getCurrentPosition()));
       AStar astar(map, attacker, attacked->getCurrentPosition());
     attacker->hunt(astar.find(), attacked);
   }
@@ -33,7 +31,6 @@ void GameCotroller::attack(UnitID attackerId, UnitID attackedId) {
     attacker->attack(attacked);
   } else {
 //TODO: ver con Luis
-//    AStar astar(map, attacker, map.getTile(attacked->getCurrentPosition()));
       AStar astar(map, attacker, attacked->getCurrentPosition());
     attacker->hunt(astar.find(), attacked);
   }
@@ -42,7 +39,6 @@ void GameCotroller::attack(UnitID attackerId, UnitID attackedId) {
 void GameCotroller::capture(UnitID idunit, Position position) {
   Unit *unit = units[idunit];
 //TODO: ver con Luis
-//  AStar astar(map, unit, map.getTile(position));
     AStar astar(map, unit, position);
   unit->capture(astar.find());
 }
