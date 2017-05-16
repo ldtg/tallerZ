@@ -106,3 +106,4 @@ bool Unit::isMoving() const {
 unsigned long Unit::getHealth() const{
   return state.getHealth();
 }
+Unit::~Unit() {}

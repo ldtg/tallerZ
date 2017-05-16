@@ -7,6 +7,7 @@ class Robot : public Unit {
   Robot(Position current, UnitType type);
   virtual bool canGoThrough(TerrainType terrainType) const;
   virtual float getMovementCost(TerrainType terrainType) const;
+  ~Robot();
 };
 
 #endif //TALLERZ_ROBOT_H

@@ -8,3 +8,5 @@ bool Robot::canGoThrough(TerrainType terrainType) const {
 float Robot::getMovementCost(TerrainType terrainType) const {
   return 10;
 }
+Robot::~Robot() {
+}

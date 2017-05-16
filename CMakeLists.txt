@@ -25,7 +25,6 @@ set(SOURCE_FILES
         src/model/MovementState.h
         src/model/Weapon.cpp
         src/model/Weapon.h
-        src/model/Attackable.cpp
         src/model/Attackable.h
         src/model/UnitType.h
         src/model/WeaponType.h

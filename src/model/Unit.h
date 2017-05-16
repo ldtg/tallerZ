@@ -21,7 +21,7 @@ class Unit : public Attackable {
   UnitState state;
   Unit(Position current, UnitType type, WeaponType wtype);
  public:
-  ~Unit();
+  virtual ~Unit();
   virtual Position getCurrentPosition() const override;
   virtual Movement nextMove() const override;
   virtual Position nextPosition() const;

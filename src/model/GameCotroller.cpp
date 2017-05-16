@@ -55,6 +55,7 @@ void GameCotroller::tick() {
     if (current->isAlive()) {
       if (current->isMoving()) {
         //TODO: crear evento move
+        // preguntarle al mapa si se puede mover
         //map.procces(event)
         current->doMove();
       }
@@ -68,6 +69,7 @@ void GameCotroller::tick() {
           //map.procces(event)
         } else {
           //TODO: crear evento move
+          // preguntarle al mapa si se puede mover
           //map.procces(event)
           current->doMove();
         }
@@ -76,6 +78,7 @@ void GameCotroller::tick() {
       }
       if (current->isCapturing()) {
         //TODO: crear evento move
+        // preguntarle al mapa si se puede mover
         //map.procces(event)
         current->doMove();
         if (current->isStill()) { //llego
