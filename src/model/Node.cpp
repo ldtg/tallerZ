@@ -9,10 +9,10 @@ Node::Node(const Tile &tile,
       parent(nullptr){
 }
 
-Node::Node(const Tile &tile, Node *parent, float distance,
+Node::Node(const Tile &tile, Node *parent,
            float heuristic)
     : tile(tile),
-      distance(parent->distance + distance),
+      distance(parent->distance + 1/tile.getTerrainData().terrainFactor), //1/factor para priorizar el mas bajo
       heuristic(heuristic),
       totalCost(distance + heuristic),
       parent(parent) {
@@ -20,16 +20,14 @@ Node::Node(const Tile &tile, Node *parent, float distance,
 const Tile &Node::getTile() const {
   return this->tile;
 }
-std::vector<Movement> Node::makePath() const {
-  std::vector<Movement> path;
+std::vector<Position> Node::makePath() const {
+  std::vector<Position> path;
   if (parent != nullptr) {
-    std::vector<Movement> parentPath = parent->makePath();
+    std::vector<Position> parentPath = parent->makePath();
     path.insert(path.end(), parentPath.begin(), parentPath.end());
-
-    Movement
-        move = parent->tile.getPosition().getMovement(this->tile.getPosition());
-    path.push_back(move);
+    path.push_back(this->tile.getCenterPosition());
   }
+
   return path;
 }
 

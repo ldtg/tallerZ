@@ -9,24 +9,20 @@ typedef std::tuple<long, long> coordinates_t;
 
 class Position {
  private:
-  long x;
-  long y;
+  unsigned long x;
+  unsigned long y;
  public:
 //    Position();
-  Position(long x, long y);
-//    Position(const Position &other);
-//    Position &operator=(const Position &other);
-//    Position(Position &&other);
-//    Position& operator=(Position &&other);
-  long chebyshevDistance(const Position &other) const;
-  long euclideanDistance(const Position &other) const;
+  Position(unsigned long x, unsigned long y);
+  unsigned long chebyshevDistance(const Position &other) const;
+  unsigned long euclideanDistance(const Position &other) const;
 
-  Position move(Movement movement) const;
-  Movement getMovement(const Position &other) const;
+  void mod(unsigned short modx, unsigned short mody);
+  void move(Position target);
   std::vector<Position> getNeighbors() const;
   coordinates_t getCoordinates() const;
-  bool isValid() const;
   bool operator==(const Position &other) const;
+  bool operator!=(const Position &other) const;
   bool operator<(const Position &other) const;
   bool isIn(long width, long height);
 };

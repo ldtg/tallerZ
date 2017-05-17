@@ -16,9 +16,9 @@ class Node {
  public:
   Node(const Tile &tile, float heuristic);
   Node(const Tile &tile,
-       Node *parent, float distance,
+       Node *parent,
        float heuristic);
-  std::vector<Movement> makePath() const;
+  std::vector<Position> makePath() const;
   const Tile &getTile() const;
   bool operator==(const Node &node) const;
   float getTotalCost() const;

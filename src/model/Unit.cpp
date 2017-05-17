@@ -1,109 +1,124 @@
 #include "Unit.h"
-
-Unit::Unit(Position current, UnitType type, WeaponType wtype)
-        : currentPosition(current), weapon(wtype),
-          id(type), state(type) {
-}
+#include <algorithm>
 
 Position Unit::getCurrentPosition() const {
   return this->currentPosition;
 }
-void Unit::move(std::queue<Movement> moves) {
-  this->movements = moves;
-  this->state.moving();
+void Unit::move(std::queue<Position> movementsPositions) {
+  this->movementsPositions = movementsPositions;
+  this->movState.moving();
 }
 
 void Unit::attack(Attackable *other) {
-  this->state.hunting(other);
+  this->movState.hunting();
+  this->hunted = other;
   if (other->isAlive()) {
-    other->receiveAttack(this->weapon.getDamage());
+    other->receiveAttack(this->weapon);
   } else {
-    this->state.still();
+    this->movState.still();
     //clear moves
-    while (!movements.empty()) movements.pop();
+    while (!movementsPositions.empty()) movementsPositions.pop();
   }
 }
 bool Unit::isInRange(Attackable *other) {
   return this->currentPosition.euclideanDistance(other->getCurrentPosition())
       < range;
 }
-void Unit::receiveAttack(unsigned short damage) {
-  this->damagesReceives.push_back(damage);
+void Unit::receiveAttack(Weapon weapon) {
+  this->damagesReceives.push_back(weapon.damage);
 }
-void Unit::hunt(std::queue<Movement> moves, Attackable *other) {
-  this->movements = moves;
-  this->state.hunting(other);
+void Unit::hunt(std::queue<Position> movementsPositions, Attackable *other) {
+  this->movementsPositions = movementsPositions;
+  this->movState.hunting();
+  this->hunted = other;
 }
-Movement Unit::nextMove() const {
-  if (!movements.empty())
-    return movements.back();
+Position Unit::nextMovePosition() const {
+  if (!movementsPositions.empty())
+    return movementsPositions.back();
   else
-    return Movement::STAY;
+    return currentPosition;
 }
 void Unit::receiveDamages() {
   for (unsigned short damage: damagesReceives) {
-    this->state.receiveDamage(damage);
+    if (health >= damage)
+      this->health -= damage;
+    else
+      this->health = 0;
   }
 }
-void Unit::doMove() {
-  currentPosition = currentPosition.move(movements.front());
-  movements.pop();
-  if (movements.empty())
-    this->state.still();
+void Unit::doOneMove() {
+  currentPosition.move(movementsPositions.front());
+  if (currentPosition == movementsPositions.front()) {
+    movementsPositions.pop();
+
+  }
+  if (movementsPositions.empty())
+    this->movState.still();
 }
 bool Unit::attackedInRange() {
-  return
-      this->currentPosition.euclideanDistance(state.getHunted()->getCurrentPosition())
-          < range;
+  return currentPosition.euclideanDistance(hunted->getCurrentPosition())
+      < range;
 }
 bool Unit::isHunting() {
-  return this->state.isHunting();
+  return this->movState.isHunting();
 }
 void Unit::doAttack() {
-  if (state.getHunted()->isAlive()) {
-    state.getHunted()->receiveAttack(this->weapon.getDamage());
+  if (hunted->isAlive()) {
+    hunted->receiveAttack(this->weapon);
   } else {
-    this->state.still();
+    this->movState.still();
     //clear moves
-    while (!movements.empty()) movements.pop();
+    while (!movementsPositions.empty()) movementsPositions.pop();
   }
 }
 Attackable *Unit::getHunted() {
-  return this->state.getHunted();
+  return hunted;
 }
-void Unit::addMove(Movement movement) {
-  this->movements.push(movement);
-}
+
 Weapon Unit::getWeapon() {
   return this->weapon;
 }
-void Unit::capture(std::queue<Movement> moves) {
-  this->movements = moves;
-  this->state.capturing();
+void Unit::capture(std::queue<Position> movementsPositions) {
+  this->movementsPositions = movementsPositions;
+  this->movState.capturing();
 }
 bool Unit::isCapturing() const {
-  return this->state.isCapturing();
+  return this->movState.isCapturing();
 }
 bool Unit::isStill() const {
-  return this->state.isStill();
+  return this->movState.isStill();
 }
 UnitID Unit::getId() const {
   return this->id;
 }
-Position Unit::nextPosition() const {
-  return this->currentPosition.move(this->nextMove());
-}
 
-UnitState Unit::getState() const {
-  return state;
-}
 bool Unit::isAlive() const {
-  return state.isAlive();
+  return health > 0;
 }
 bool Unit::isMoving() const {
-  return state.isMoving();
+  return movState.isMoving();
 }
-unsigned long Unit::getHealth() const{
-  return state.getHealth();
+unsigned long Unit::getHealth() const {
+  return health;
 }
 Unit::~Unit() {}
+void Unit::doMoveWithSpeed(float terrainFactor) {
+  for (int i = 0; i < this->getMovementSpeed(terrainFactor); ++i) {
+    doOneMove();
+  }
+}
+Unit::Unit(Position current, UnitData data)
+    : currentPosition(current),
+      weapon(data.weapon),
+      baseSpeed(data.speed),
+      range(data.range),
+      health(data.health),
+      id(data.type),
+      movState(),
+      hunted(nullptr) {
+
+}
+UnitState Unit::getUnitState() {
+  return UnitState(health, weapon);
+}
+

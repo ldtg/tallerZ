@@ -7,10 +7,12 @@ set(SOURCE_FILES
         src/main.cpp
         src/model/Map.cpp
         src/model/Map.h
+        z_tests/tests_model/Map_test.cpp
         src/model/Position.cpp
         src/model/Position.h
         src/model/Tile.cpp
         src/model/Tile.h
+        z_tests/tests_model/Tile_test.cpp
         src/model/TerrainType.h
         src/model/Movement.h
         src/model/UnitID.cpp
@@ -19,6 +21,7 @@ set(SOURCE_FILES
         src/model/UnitState.h
         src/model/AStar.cpp
         src/model/AStar.h
+        z_tests/tests_model/AStar_test.cpp
         src/model/Node.cpp
         src/model/Node.h
         src/model/Unit.cpp
@@ -31,51 +34,48 @@ set(SOURCE_FILES
         src/model/WeaponType.h
         src/model/Data.cpp
         src/model/Data.h
-        z_tests/tests_model/Tile_test.cpp
-        z_tests/tests_model/Map_test.cpp
         src/model/Robot.cpp
         src/model/Robot.h
         z_tests/tests_model/Robot_test.cpp
-        z_tests/tests_model/AStar_test.cpp
         #[[
-        src/model/GameCotroller.cpp
-        src/model/GameCotroller.h
-        src/model/MovementEvent.cpp
-        src/model/MovementEvent.h
-        src/model/UnitAttackEvent.cpp
-        src/model/UnitAttackEvent.h
-        src/model/Build.cpp
-        src/model/Build.h
-        src/model/BuildID.cpp
-        src/model/BuildID.h
-        src/model/BuildAttackEvent.cpp
-        src/model/BuildAttackEvent.h
-        z_sounds/Sound_event.cpp
-        z_sounds/Sound_event.h
-        src/storage/Store_settings.cpp
-        src/storage/Store_settings.h
-        src/storage/Store_map.cpp
-        src/storage/Store_map.h
-        z_tests/tests_sounds/basic_test.cpp
-        z_tests/tests_storage/store_map_tests.cpp
-        src/storage/Store_settings.cpp
-        src/storage/Store_settings.h
-        src/storage/Store_map.cpp
-        src/storage/Store_map.h
-        z_tests/tests_sounds/basic_test.cpp
-        z_tests/tests_storage/store_map_tests.cpp
-        src/vista/Sprite.cpp
-        src/vista/Sprite.h
-        src/model/ObjectMap.cpp
-        src/model/ObjectMap.h
-        src/model/Land.cpp
-        src/model/Land.h
-        src/vista/Vista.cpp
-        src/vista/Vista.h
-        src/model/MapBuilder.cpp
-        src/model/MapBuilder.h
-        src/model/Grunt.cpp
-        src/model/Grunt.h]]
+                    src/model/GameCotroller.cpp
+                    src/model/GameCotroller.h
+                    src/model/MovementEvent.cpp
+                    src/model/MovementEvent.h
+                    src/model/UnitAttackEvent.cpp
+                    src/model/UnitAttackEvent.h
+                    src/model/Build.cpp
+                    src/model/Build.h
+                    src/model/BuildID.cpp
+                    src/model/BuildID.h
+                    src/model/BuildAttackEvent.cpp
+                    src/model/BuildAttackEvent.h
+                    z_sounds/Sound_event.cpp
+                    z_sounds/Sound_event.h
+                    src/storage/Store_settings.cpp
+                    src/storage/Store_settings.h
+                    src/storage/Store_map.cpp
+                    src/storage/Store_map.h
+                    z_tests/tests_sounds/basic_test.cpp
+                    z_tests/tests_storage/store_map_tests.cpp
+                    src/storage/Store_settings.cpp
+                    src/storage/Store_settings.h
+                    src/storage/Store_map.cpp
+                    src/storage/Store_map.h
+                    z_tests/tests_sounds/basic_test.cpp
+                    z_tests/tests_storage/store_map_tests.cpp
+                    src/vista/Sprite.cpp
+                    src/vista/Sprite.h
+                    src/model/ObjectMap.cpp
+                    src/model/ObjectMap.h
+                    src/model/Land.cpp
+                    src/model/Land.h
+                    src/vista/Vista.cpp
+                    src/vista/Vista.h
+                    src/model/MapBuilder.cpp
+                    src/model/MapBuilder.h
+                    src/model/Grunt.cpp
+                    src/model/Grunt.h]]
 
         src/vista/Window.cpp
         src/vista/Window.h
@@ -86,7 +86,7 @@ set(SOURCE_FILES
         src/vista/ObjectMapaVista.cpp
         src/vista/ObjectMapaVista.h
 
-        z_tests/tests_model/Vista_test.cpp)
+        z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)

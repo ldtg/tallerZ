@@ -1,23 +1,20 @@
 #include "Map.h"
 #include "MapBuilder.h"
 
-Map::Map() {
-//    MapBuilder builder;
-//    builder.build(map);
- //   width = builder.getWidht();
-  //  height = builder.getHeight();
-}
+Map::Map() {}
 
 Map::Map(std::map<Position, Tile> map,
          unsigned short width,
          unsigned short height)
-        : map(map), width(width), height(height) {}
+    : map(map), width(width), height(height) {}
 
 Map::~Map() {}
 
 std::vector<Tile> Map::getNeighbors(const Tile &tile) const {
+  Position tilePosition = tile.getCenterPosition();
+  tilePosition.mod(TILEWIDHT, TILEHEIGHT);
   std::vector<Tile> neighborsTiles;
-  std::vector<Position> neighborsPos = tile.getPosition().getNeighbors();
+  std::vector<Position> neighborsPos = tilePosition.getNeighbors();
   for (Position &pos : neighborsPos) {
     if (pos.isIn(width, height))
       neighborsTiles.push_back(map.at(pos));
@@ -26,24 +23,21 @@ std::vector<Tile> Map::getNeighbors(const Tile &tile) const {
 }
 
 Tile Map::getTile(const Position &position) const {
-  return map.at(position);
+  Position pos = position;
+  pos.mod(TILEWIDHT, TILEHEIGHT);
+  return map.at(pos);
 }
 
 bool Map::canAttack(const Position &positionFrom, const Position &positionTo) {
   return false;
 }
 
-/*std::vector<std::string> Map::getTypePos(int x, int y) const {
-    Position posAux(x, y);
-    return map.at(posAux).getType();
-}*/
-
 int Map::getWidht() const {
-    return width;
+  return width;
 }
 
 int Map::getHeight() const {
-    return height;
+  return height;
 }
 
 

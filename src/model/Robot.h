@@ -4,9 +4,9 @@
 #include "Unit.h"
 class Robot : public Unit {
  public:
-  Robot(Position current, UnitType type);
-  virtual bool canGoThrough(TerrainType terrainType) const;
-  virtual float getMovementCost(TerrainType terrainType) const;
+  Robot(Position current, UnitData data);
+  virtual bool canGoThrough(TerrainData terrainData) const override;
+  virtual unsigned short getMovementSpeed(float terrainFactor) const override;
   ~Robot();
 };
 

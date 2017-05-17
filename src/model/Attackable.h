@@ -2,13 +2,14 @@
 #define TALLERZ_ATTACKABLE_H
 
 #include "Position.h"
+#include "Weapon.h"
 class Attackable {
  public:
   virtual Position getCurrentPosition() const = 0;
   virtual bool isAlive() const = 0;
   virtual bool isMoving() const = 0;
-  virtual Movement nextMove() const = 0;
-  virtual void receiveAttack(unsigned short damage) = 0;
+  virtual Position nextMovePosition() const = 0;
+  virtual void receiveAttack(Weapon weapon) = 0;
 
 };
 

@@ -13,7 +13,7 @@
 
 class Map {
  private:
-  std::map<Position, Tile> map;
+  std::map<Position, Tile> map;//guarda los nros de tiles ej: tile 0,0 va de 0<x<100
   int width;
   int height;
  public:
@@ -23,7 +23,6 @@ class Map {
   std::vector<Tile> getNeighbors(const Tile &tile) const;
   Tile getTile(const Position& position) const;
   bool canAttack(const Position &positionFrom, const Position &positionTo);
-    // getTypePos(int x, int y) const;
   int getWidht() const;
   int getHeight() const;
     //procesar evento para mantener mapa actualizado

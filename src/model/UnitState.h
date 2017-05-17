@@ -4,26 +4,13 @@
 #include "MovementState.h"
 #include "Attackable.h"
 #include "UnitType.h"
-class UnitState {
- private:
-  unsigned long health;
-  MovementState movementState;
-  Attackable *hunted;
+#include "UnitData.h"
+struct UnitState {
  public:
-  UnitState(UnitType type);
-  void moving();
-  void still();
-  void receiveDamage(unsigned short damage);
-  void hunting(Attackable *hunted);
-  void capturing();
-  bool isAlive() const;
-  bool isHunting() const;
-  bool isCapturing() const;
-  bool isMoving() const;
-  bool isStill() const;
-  Attackable* getHunted() const;
-
-  unsigned long getHealth() const;
+  unsigned long health;
+  Weapon weapon;
+  UnitState(unsigned long health, Weapon weapon)
+      : health(health), weapon(weapon) {}
 };
 
 #endif //TALLERZ_UNITSTATE_H

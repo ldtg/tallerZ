@@ -2,13 +2,10 @@
 #define TALLERZ_WEAPON_H
 
 #include "WeaponType.h"
-class Weapon {
- private:
+struct Weapon {
   WeaponType type;
   unsigned short damage;
- public:
-  Weapon(WeaponType type);
-  unsigned short getDamage();
+  bool isExplosive;
 };
 
 #endif //TALLERZ_WEAPON_H

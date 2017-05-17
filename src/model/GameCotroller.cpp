@@ -3,7 +3,7 @@
 
 void GameCotroller::move(UnitID &idunit, Position &position) {
   Unit *unit = units[idunit];
-    AStar astar(map, unit, position);
+  AStar astar(map, unit, position);
   unit->move(astar.find());
 }
 
@@ -15,7 +15,7 @@ void GameCotroller::attack(UnitID attackerId, BuildID attackedId) {
                        attacked->getCurrentPosition())) {
     attacker->attack(attacked);
   } else {
-      AStar astar(map, attacker, attacked->getCurrentPosition());
+    AStar astar(map, attacker, attacked->getCurrentPosition());
     attacker->hunt(astar.find(), attacked);
   }
 }
@@ -28,14 +28,14 @@ void GameCotroller::attack(UnitID attackerId, UnitID attackedId) {
                        attacked->getCurrentPosition())) {
     attacker->attack(attacked);
   } else {
-      AStar astar(map, attacker, attacked->getCurrentPosition());
+    AStar astar(map, attacker, attacked->getCurrentPosition());
     attacker->hunt(astar.find(), attacked);
   }
 }
 
 void GameCotroller::capture(UnitID idunit, Position position) {
   Unit *unit = units[idunit];
-    AStar astar(map, unit, position);
+  AStar astar(map, unit, position);
   unit->capture(astar.find());
 }
 
@@ -49,7 +49,9 @@ void GameCotroller::tick() {
         //TODO: crear evento move
         // preguntarle al mapa si se puede mover
         //map.procces(event)
-        current->doMove();
+        float terrainFactor =
+            map.getTile(current->getCurrentPosition()).getTerrainFactor();
+        current->doMoveWithSpeed(terrainFactor);
       }
       if (current->isHunting()) {
         Attackable *hunted = current->getHunted();
@@ -63,7 +65,9 @@ void GameCotroller::tick() {
           //TODO: crear evento move
           // preguntarle al mapa si se puede mover
           //map.procces(event)
-          current->doMove();
+          float terrainFactor =
+              map.getTile(current->getCurrentPosition()).getTerrainFactor();
+          current->doMoveWithSpeed(terrainFactor);
         }
         if (hunted->isMoving())
           current->addMove(hunted->nextMove()); //en vez de recalcular el path uso los movs del atacado
@@ -72,7 +76,9 @@ void GameCotroller::tick() {
         //TODO: crear evento move
         // preguntarle al mapa si se puede mover
         //map.procces(event)
-        current->doMove();
+        float terrainFactor =
+            map.getTile(current->getCurrentPosition()).getTerrainFactor();
+        current->doMoveWithSpeed(terrainFactor);
         if (current->isStill()) { //llego
           //TODO: crear evento captura
           //this->newCapture(current);
