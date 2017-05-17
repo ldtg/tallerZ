@@ -5,7 +5,8 @@ Node::Node(const Tile &tile,
     : tile(tile),
       distance(0),
       heuristic(heuristic),
-      totalCost(heuristic) {
+      totalCost(heuristic),
+      parent(nullptr){
 }
 
 Node::Node(const Tile &tile, Node *parent, float distance,

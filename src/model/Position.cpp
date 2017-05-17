@@ -2,8 +2,42 @@
 #include <cmath>
 #include "Position.h"
 
+//Position::Position() {}
+
 Position::Position(long x, long y)
     : x(x), y(y) {}
+
+/*
+Position::Position(const Position &other) {
+  this->x = other.x;
+  this->y = other.y;
+}
+
+Position& Position::operator=(const Position &other) {
+  this->x = other.x;
+  this->y = other.y;
+
+  return *this;
+}
+
+Position::Position(Position &&other) {
+  this->x = other.x;
+  this->y = other.y;
+
+  other.x = -1;
+  other.y = -1;
+}
+
+Position& Position::operator=(Position &&other) {
+  this->x = other.x;
+  this->y = other.y;
+
+  other.x = -1;
+  other.y = -1;
+
+  return *this;
+}
+*/
 
 long Position::chebyshevDistance(const Position &other) const {
   long
@@ -27,36 +61,36 @@ Movement Position::getMovement(const Position &other) const {
     if (this->y == other.y)
       return STAY;
     if ((this->y - other.y) > 0)
-      return DOWN;
-    else
       return UP;
+    else
+      return DOWN;
   } else if ((this->x - other.x) > 0) {
     if (this->y == other.y)
       return LEFT;
     if ((this->y - other.y) > 0)
-      return DLEFT;
-    else
       return ULEFT;
+    else
+      return DLEFT;
   } else {
     if (this->y == other.y)
       return RIGHT;
     if ((this->y - other.y) > 0)
-      return DRIGHT;
-    else
       return URIGHT;
+    else
+      return DRIGHT;
   }
 }
 Position Position::move(Movement movement) const {
   switch (movement) {
     case STAY:return *this;
-    case UP:return Position(x, y + 1);
-    case DOWN:return Position(x, y - 1);
+    case UP:return Position(x, y - 1);
+    case DOWN:return Position(x, y + 1);
     case LEFT:return Position(x - 1, y);
     case RIGHT:return Position(x + 1, y);
-    case DLEFT:return Position(x - 1, y - 1);
-    case DRIGHT:return Position(x + 1, y - 1);
-    case ULEFT:return Position(x - 1, y + 1);
-    case URIGHT: return Position(x + 1, y + 1);
+    case DLEFT:return Position(x - 1, y + 1);
+    case DRIGHT:return Position(x + 1, y + 1);
+    case ULEFT:return Position(x - 1, y - 1);
+    case URIGHT: return Position(x + 1, y - 1);
     default: return Position(0, 0);
   }
 }

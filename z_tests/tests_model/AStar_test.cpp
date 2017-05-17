@@ -2,6 +2,7 @@
 #include <Robot.h>
 #include <AStar.h>
 #include "gtest/gtest.h"
+
 class AStar_test : public ::testing::Test {
  public:
   Map map;
@@ -9,15 +10,16 @@ class AStar_test : public ::testing::Test {
     // initialization code here
     std::map<Position, Tile> stdmap;
     stdmap.emplace(Position(0, 0), Tile(Position(0, 0), TerrainType::LAND));
-    stdmap.emplace(Position(1, 0), Tile(Position(1, 0), TerrainType::LAND));
-    stdmap.emplace(Position(2, 0), Tile(Position(2, 0), TerrainType::LAND));
-    stdmap.emplace(Position(2, 1), Tile(Position(2, 1), TerrainType::LAND));
-    stdmap.emplace(Position(2, 2), Tile(Position(2, 2), TerrainType::LAND));
+    stdmap.emplace(Position(1, 0), Tile(Position(1, 0), TerrainType::LAVA));
+    stdmap.emplace(Position(2, 0), Tile(Position(2, 0), TerrainType::LAVA));
 
-    stdmap.emplace(Position(0, 1), Tile(Position(0, 1), TerrainType::LAVA));
+    stdmap.emplace(Position(0, 1), Tile(Position(0, 1), TerrainType::LAND));
     stdmap.emplace(Position(1, 1), Tile(Position(1, 1), TerrainType::LAVA));
-    stdmap.emplace(Position(0, 2), Tile(Position(0, 2), TerrainType::LAVA));
-    stdmap.emplace(Position(1, 2), Tile(Position(1, 2), TerrainType::LAVA));
+    stdmap.emplace(Position(2, 1), Tile(Position(2, 1), TerrainType::LAVA));
+
+    stdmap.emplace(Position(0, 2), Tile(Position(0, 2), TerrainType::LAND));
+    stdmap.emplace(Position(1, 2), Tile(Position(1, 2), TerrainType::LAND));
+    stdmap.emplace(Position(2, 2), Tile(Position(2, 2), TerrainType::LAND));
 
     map = Map(stdmap, 3, 3);
   }

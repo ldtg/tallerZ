@@ -11,6 +11,7 @@ class Vista {
         Map &map;
         Window window;
         Panel panel;
+        void add(ObjectMapaVista *objectVista, int x, int y);
     public:
         Vista(Map &map);
         ~Vista();

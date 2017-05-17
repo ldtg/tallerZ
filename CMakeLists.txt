@@ -4,6 +4,7 @@ project(tallerZ)
 set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES
+        src/main.cpp
         src/model/Map.cpp
         src/model/Map.h
         src/model/Position.cpp
@@ -48,7 +49,7 @@ set(SOURCE_FILES
         src/model/BuildID.cpp
         src/model/BuildID.h
         src/model/BuildAttackEvent.cpp
-        src/model/BuildAttackEvent.h]]
+        src/model/BuildAttackEvent.h
         z_sounds/Sound_event.cpp
         z_sounds/Sound_event.h
         src/storage/Store_settings.cpp
@@ -63,21 +64,29 @@ set(SOURCE_FILES
         src/storage/Store_map.h
         z_tests/tests_sounds/basic_test.cpp
         z_tests/tests_storage/store_map_tests.cpp
-        src/vista/Image.cpp
-        src/vista/Image.h
         src/vista/Sprite.cpp
         src/vista/Sprite.h
-        src/vista/Window.cpp
-        src/vista/Window.h
         src/model/ObjectMap.cpp
         src/model/ObjectMap.h
         src/model/Land.cpp
         src/model/Land.h
         src/vista/Vista.cpp
         src/vista/Vista.h
+        src/model/MapBuilder.cpp
+        src/model/MapBuilder.h
+        src/model/Grunt.cpp
+        src/model/Grunt.h]]
+
+        src/vista/Window.cpp
+        src/vista/Window.h
         src/vista/Panel.cpp
         src/vista/Panel.h
-        src/main.cpp src/vista/ObjectMapaVista.cpp src/vista/ObjectMapaVista.h src/model/MapBuilder.cpp src/model/MapBuilder.h src/model/Grunt.cpp src/model/Grunt.h)
+        src/vista/Image.cpp
+        src/vista/Image.h
+        src/vista/ObjectMapaVista.cpp
+        src/vista/ObjectMapaVista.h
+
+        z_tests/tests_model/Vista_test.cpp)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)

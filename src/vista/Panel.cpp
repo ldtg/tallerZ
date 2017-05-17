@@ -37,5 +37,5 @@ void Panel::draw() {
     }
 
     SDL_RenderPresent(window_render);
-    Panel::clean();
+//    Panel::clean();
 }

@@ -4,14 +4,49 @@
 Tile::Tile(Position position, TerrainType terrainType)
     : position(position), terrainType(terrainType), empty(true) {}
 
+/*
 Tile::Tile(Position &position, ObjectMap *background, ObjectMap *objectMap)
     : position(position), background(background), objectMap(objectMap) {
     terrainType = LAND;
 }
 
+Tile::Tile(const Tile &other) {
+    this->position = std::move(other.position);
+    this->background = other.background;
+    this->objectMap = other.objectMap;
+    this->units = other.units;
+    this->empty = other.empty;
+}
+
+Tile& Tile::operator=(const Tile &other) {
+    this->position = std::move(other.position);
+    this->background = other.background;
+    this->objectMap = other.objectMap;
+    this->units = other.units;
+    this->empty = other.empty;
+
+    return *this;
+}
+
+Tile::Tile(Tile &&other) {
+    this->position = std::move(other.position);
+    this->background = other.background;
+    this->objectMap = other.objectMap;
+    this->units = other.units;
+    this->empty = other.empty;
+
+    other.background = NULL;
+    other.objectMap = NULL;
+}
+*/
+
 Tile::~Tile() {
-//    delete background;
-//    delete objectMap;
+/*
+    if (background != NULL)
+        delete background;
+    if (objectMap != NULL)
+        delete objectMap;
+*/
 }
 
 Position Tile::getPosition() const {
@@ -26,27 +61,20 @@ bool Tile::operator==(const Tile &other) const {
 TerrainType Tile::getTerrainType() const {
   return this->terrainType;
 }
-
+/*
 std::vector<std::string> Tile::getType() const {
     std::vector<std::string> type(2);
-
-//    std::cout << "A" << std::endl;
-//    bool n = this->background == NULL;
-//    std::cout << n << std::endl;
-//    std::cout << "type: " << this->background->getType() << std::endl;
-
     // Todos los Tile deben tener un fondo.
     type[0] = this->background->getType();
 
-//    std::cout << "B" << std::endl;
     if (this->objectMap == NULL)
         type[1] = "";
     else
         type[1] = this->objectMap->getType();
-//    std::cout << "D" << std::endl;
 
     return std::move(type);
 }
+*/
 
 bool Tile::isEmpty() const {
   return empty;
@@ -66,4 +94,4 @@ void Tile::remove(const UnitID &unitID) {
   units.erase(unitID);
 }
 
-//Tile::Tile() :position(0,0), terrainType(TerrainType::LAND){}
+Tile::Tile() :position(0,0), terrainType(TerrainType::LAND){}

@@ -33,6 +33,7 @@ float AStar::heuristic(const Tile &itile,
                        const Tile &etile) const {
   return itile.getPosition().chebyshevDistance(etile.getPosition());
 }
+
 std::queue<Movement> AStar::makeQueue(std::vector<Movement> pathVector) {
   std::queue<Movement> path;
   for (Movement &mov : pathVector)

@@ -12,7 +12,12 @@ class Position {
   long x;
   long y;
  public:
+//    Position();
   Position(long x, long y);
+//    Position(const Position &other);
+//    Position &operator=(const Position &other);
+//    Position(Position &&other);
+//    Position& operator=(Position &&other);
   long chebyshevDistance(const Position &other) const;
   long euclideanDistance(const Position &other) const;
 

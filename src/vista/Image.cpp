@@ -7,7 +7,8 @@ Image::Image() {}
 Image::Image(const char *file) {
     surface = IMG_Load(file);
     if (surface == NULL)
-        std::cout << "NULL" << std::endl;
+        std::cout << file << std::endl;
+
     width = surface->w;
     height = surface->h;
 

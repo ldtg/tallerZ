@@ -11,19 +11,24 @@
 
 class Tile {
  private:
-  const Position position;
+  Position position;
 //  const TerrainType terrainType;
   TerrainType terrainType;
-  const ObjectMap *background;
-  const ObjectMap *objectMap;
+//  const ObjectMap *background;
+//  const ObjectMap *objectMap;
+// cambiar por vida
   std::map<UnitID, UnitState> units;
   //agregar build
   bool empty;
  public:
-//  Tile();
+  Tile();
   Tile(Position position, TerrainType terrainType);
-  Tile(Position &position, ObjectMap *background, ObjectMap *objectMap);
-  ~Tile();
+//  Tile(Position &position, ObjectMap *background, ObjectMap *objectMap);
+//  Tile(const Tile &other);
+//  Tile& operator=(const Tile&);
+//  Tile(Tile&& other);
+//  Tile& operator=(Tile&& other);
+    ~Tile();
   void add(const UnitID &unitID, const UnitState &unitState);
   void remove(const UnitID &unitID);
   bool isEmpty() const;
@@ -31,7 +36,7 @@ class Tile {
   void clear();
   void fill();
   TerrainType getTerrainType() const;
-  std::vector<std::string> getType() const;
+//  std::vector<std::string> getType() const;
   bool operator==(const Tile &other) const;
 };
 

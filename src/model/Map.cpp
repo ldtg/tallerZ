@@ -2,16 +2,18 @@
 #include "MapBuilder.h"
 
 Map::Map() {
-    MapBuilder builder;
-    map = builder.build();
-    width = builder.getWidht();
-    height = builder.getHeight();
+//    MapBuilder builder;
+//    builder.build(map);
+ //   width = builder.getWidht();
+  //  height = builder.getHeight();
 }
 
 Map::Map(std::map<Position, Tile> map,
          unsigned short width,
          unsigned short height)
         : map(map), width(width), height(height) {}
+
+Map::~Map() {}
 
 std::vector<Tile> Map::getNeighbors(const Tile &tile) const {
   std::vector<Tile> neighborsTiles;
@@ -31,10 +33,10 @@ bool Map::canAttack(const Position &positionFrom, const Position &positionTo) {
   return false;
 }
 
-std::vector<std::string> Map::getTypePos(int x, int y) const {
+/*std::vector<std::string> Map::getTypePos(int x, int y) const {
     Position posAux(x, y);
     return map.at(posAux).getType();
-}
+}*/
 
 int Map::getWidht() const {
     return width;

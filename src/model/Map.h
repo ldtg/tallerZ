@@ -19,10 +19,11 @@ class Map {
  public:
   Map();
   Map(std::map<Position, Tile> map, unsigned short width, unsigned short height);
+  ~Map();
   std::vector<Tile> getNeighbors(const Tile &tile) const;
   Tile getTile(const Position& position) const;
   bool canAttack(const Position &positionFrom, const Position &positionTo);
-    std::vector<std::string> getTypePos(int x, int y) const;
+    // getTypePos(int x, int y) const;
   int getWidht() const;
   int getHeight() const;
     //procesar evento para mantener mapa actualizado

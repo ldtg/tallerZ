@@ -1,6 +1,7 @@
 #include "Vista.h"
 #include <string>
 #include "Image.h"
+#include "Sprite.h"
 #include <iostream>
 #include <vector>
 
@@ -19,39 +20,39 @@ void Vista::update() {
 
     for (int xModel=0; xModel <= mapWidht; xModel++) {
         for (int yModel=0; yModel < mapHeight; yModel++) {
-
-//            std::cout << "x: " << xModel << " y: " << yModel << std::endl;
-//            std::cout << "xV: " << xVista << " yV: " << yVista << std::endl;
             xVista = objectVistaWidht[yModel];
 
             std::vector<std::string> type = map.getTypePos(xModel, yModel);
             background = getObjectVista(type[0]);
             objectVista = getObjectVista(type[1]);
 
-            background->setPos(xVista, yVista);
-            panel.add(background);
-            if (objectVista != NULL) {
-                //TODO: POENER (X,Y) DEL OBJ EN MAPA.
-                objectVista->setPos(xModel, yModel);
-                panel.add(objectVista);
-            }
+            add(background, xVista, yVista);
+            //TODO: PONER (X,Y) DEL OBJ EN MAPA.
+            add(objectVista, xModel, yModel);
 
             objectVistaWidht[yModel] += background->getWidth();
             yVista += background->getHeight();
         }
         yVista = 0;
     }
-
     panel.draw();
+}
+
+void Vista::add(ObjectMapaVista *objectVista, int x, int y) {
+    if (objectVista == NULL)
+        return;
+
+    objectVista->setPos(x, y);
+    panel.add(objectVista);
 }
 
 ObjectMapaVista* Vista::getObjectVista(std::string type) {
     if (type == "land") {
         return new Image("vista/images/terrain/rocks_jungle.png");
     } else if (type == "grunt") {
-        return new Image("vista/images/terrain/fire_blue_r000_n00.png");
+        return new Sprite("vista/images/terrain/fire_blue_r000_n", 2);
     }
     else {
-        return NULL;
+        return nullptr;
     }
 }
