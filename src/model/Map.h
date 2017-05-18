@@ -5,32 +5,39 @@
 #include "Tile.h"
 #include "Weapon.h"
 #include "Unit.h"
-#include "MovementEvent.h"
-#include "UnitAttackEvent.h"
 #include <vector>
 #include <map>
 #include <string>
-
+#define DELTASEARCH 10
 class Map {
  private:
-  std::map<Position, Tile> map;//guarda los nros de tiles ej: tile 0,0 va de 0<x<100
+  std::map<Position, Tile>
+      map;//guarda los nros de tiles ej: tile 0,0 va de 0<x<100
+  std::map<UnitID, UnitState> units;//el mapa ahora tiene las unidades con el estado para poder dibujarlas
   int width;
   int height;
  public:
   Map();
-  Map(std::map<Position, Tile> map, unsigned short width, unsigned short height);
+  Map(std::map<Position, Tile> map,
+      unsigned short width,
+      unsigned short height);
   ~Map();
   std::vector<Tile> getNeighbors(const Tile &tile) const;
-  Tile getTile(const Position& position) const;
-  bool canAttack(const Position &positionFrom, const Position &positionTo);
+  void addUnit(const UnitID &unitID, const UnitState &unitState);
+  void removeUnit(const UnitID &unitID);
+  Tile getTile(const Position &position) const;
+  // para saber si se puede mover o atacar desde esa posicion hasta la otra (no hay nada en el medio onda estructuras o algo)
+  bool canPass(const Position &positionFrom,
+                 const Position &positionTo) const;
+  //Metodos para dibujar mapa
+  const std::map<UnitID, UnitState> &getUnits() const;
+  UnitID getUnitIDFromPosition(const Position &pos) const; //usa DELTASEARCH
+  UnitState getUnitState(const UnitID &unitID) const;
+  //Para crear el mapa
+  void setUnits(const std::map<UnitID, UnitState> &units);
   int getWidht() const;
   int getHeight() const;
-    //procesar evento para mantener mapa actualizado
-  /*void process(const MovementEvent &event);
-  void process(const UnitAttackEvent &event);
-  */
-  /*void move(Unit *unit);
-  void remove(Unit *unit);*/
+
 };
 
 #endif //TALLERZ_MAP_H

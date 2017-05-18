@@ -27,9 +27,3 @@ bool Tile::isPassable()const {
   return passable;
 }
 
-void Tile::add(const UnitID &unitID, const UnitState &unitState) {
-  units.emplace(unitID, unitState);
-}
-void Tile::remove(const UnitID &unitID) {
-  units.erase(unitID);
-}

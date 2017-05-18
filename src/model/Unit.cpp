@@ -119,6 +119,9 @@ Unit::Unit(Position current, UnitData data)
 
 }
 UnitState Unit::getUnitState() {
-  return UnitState(health, weapon);
+  return UnitState(health, weapon, currentPosition);
+}
+void Unit::addMove(const Position &position) {
+  movementsPositions.push(position);
 }
 

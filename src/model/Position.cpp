@@ -2,8 +2,6 @@
 #include <cmath>
 #include "Position.h"
 
-//Position::Position() {}
-
 Position::Position(unsigned long x, unsigned long y)
     : x(x), y(y) {}
 
@@ -71,5 +69,9 @@ void Position::move(Position target) {
 }
 bool Position::operator!=(const Position &other) const {
   return !(this->operator==(other));
+}
+bool Position::equalDelta(const Position &other, unsigned short delta) const {
+  return std::abs(this->x - other.x) < delta
+      && std::abs(this->y - other.y) < delta;
 }
 

@@ -9,8 +9,9 @@ struct UnitState {
  public:
   unsigned long health;
   Weapon weapon;
-  UnitState(unsigned long health, Weapon weapon)
-      : health(health), weapon(weapon) {}
+  Position currentPosition;
+  UnitState(unsigned long health, Weapon weapon, Position current)
+      : health(health), weapon(weapon), currentPosition(current) {}
 };
 
 #endif //TALLERZ_UNITSTATE_H

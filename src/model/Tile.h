@@ -15,16 +15,11 @@ class Tile {
  private:
   Position centerPosition;
   TerrainData terrainData;
- private:
-  std::map<UnitID, UnitState> units;
-  //agregar build
   bool passable;
  public:
   Tile(Position tileCenterPosition, TerrainData terrainData);
   TerrainData getTerrainData() const;
   ~Tile();
-  void add(const UnitID &unitID, const UnitState &unitState);
-  void remove(const UnitID &unitID);
   bool isPassable() const;
   Position getCenterPosition() const;
   bool operator==(const Tile &other) const;

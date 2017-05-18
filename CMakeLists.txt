@@ -14,7 +14,6 @@ set(SOURCE_FILES
         src/model/Tile.h
         z_tests/tests_model/Tile_test.cpp
         src/model/TerrainType.h
-        src/model/Movement.h
         src/model/UnitID.cpp
         src/model/UnitID.h
         src/model/UnitState.cpp
@@ -37,10 +36,9 @@ set(SOURCE_FILES
         src/model/Robot.cpp
         src/model/Robot.h
         z_tests/tests_model/Robot_test.cpp
-        #[[
-                    src/model/GameCotroller.cpp
-                    src/model/GameCotroller.h
-                    src/model/MovementEvent.cpp
+        src/model/GameCotroller.cpp
+        src/model/GameCotroller.h
+        #[[            src/model/MovementEvent.cpp
                     src/model/MovementEvent.h
                     src/model/UnitAttackEvent.cpp
                     src/model/UnitAttackEvent.h
@@ -86,7 +84,7 @@ set(SOURCE_FILES
         src/vista/ObjectMapaVista.cpp
         src/vista/ObjectMapaVista.h
 
-        z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h)
+        z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h src/model/UnitMoveEvent.cpp src/model/UnitMoveEvent.h src/model/Event.cpp src/model/Event.h src/model/UnitAttackEvent.cpp src/model/UnitAttackEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)

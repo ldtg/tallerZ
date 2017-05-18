@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <tuple>
-#include "Movement.h"
 
 typedef std::tuple<long, long> coordinates_t;
 
@@ -24,6 +23,7 @@ class Position {
   bool operator==(const Position &other) const;
   bool operator!=(const Position &other) const;
   bool operator<(const Position &other) const;
+  bool equalDelta(const Position &other, unsigned short delta) const;
   bool isIn(long width, long height);
 };
 

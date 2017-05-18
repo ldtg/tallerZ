@@ -8,7 +8,7 @@ TEST(RobotTest, create) {
   ASSERT_TRUE(grunt.isAlive());
 }
 TEST(RobotTest, move) {
-  
+
 }
 TEST(RobotTest, attack) {
 

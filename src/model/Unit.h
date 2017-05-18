@@ -53,6 +53,7 @@ class Unit : public Attackable {
   Attackable *getHunted();
   Weapon getWeapon();
   UnitID getId() const;
+  void addMove(const Position &position);
 };
 
 #endif //TALLERZ_UNIT_H

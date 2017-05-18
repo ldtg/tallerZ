@@ -28,8 +28,15 @@ Tile Map::getTile(const Position &position) const {
   return map.at(pos);
 }
 
-bool Map::canAttack(const Position &positionFrom, const Position &positionTo) {
-  return false;
+bool Map::canPass(const Position &positionFrom,
+                    const Position &positionTo) const {
+  Position actual = positionFrom;
+  while (actual != positionTo) {
+    actual.move(positionTo);
+    if (!this->getTile(actual).isPassable())
+      return false;
+  }
+  return true;
 }
 
 int Map::getWidht() const {
@@ -39,12 +46,25 @@ int Map::getWidht() const {
 int Map::getHeight() const {
   return height;
 }
-
-
-/*void Map::move(Unit *unit) {
-  map.at(unit->getCurrentPosition()).remove(unit->getId());
-  map.at(unit->nextPosition()).add(unit->getId());
+const std::map<UnitID, UnitState> &Map::getUnits() const {
+  return units;
 }
-void Map::remove(Unit *unit) {
-  map.at(unit->getCurrentPosition()).remove(unit->getId());
-}*/
+void Map::setUnits(const std::map<UnitID, UnitState> &units) {
+  Map::units = units;
+}
+void Map::addUnit(const UnitID &unitID, const UnitState &unitState) {
+  units.emplace(unitID, unitState);
+}
+void Map::removeUnit(const UnitID &unitID) {
+  units.erase(unitID);
+}
+UnitState Map::getUnitState(const UnitID &unitID) const {
+  return units.at(unitID);
+}
+UnitID Map::getUnitIDFromPosition(const Position &pos) const {
+  for (auto &par : units) {
+    if(pos.equalDelta(par.second.currentPosition, DELTASEARCH))
+      return par.first;
+  }
+}
+

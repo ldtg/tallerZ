@@ -1,12 +1,15 @@
-#ifndef TALLERZ_ATTACKEVENT_H
-#define TALLERZ_ATTACKEVENT_H
+#ifndef TALLERZ_UNITATTACKEVENT_H
+#define TALLERZ_UNITATTACKEVENT_H
 
-#include "UnitID.h"
-#include "Weapon.h"
-struct UnitAttackEvent {
+#include "Event.h"
+class UnitAttackEvent : public Event{
+ private:
   UnitID attacker;
-  UnitID attacked;
-  Weapon weapon;
+  Position attackPosition;
+ public:
+  UnitAttackEvent(const UnitID &attacker,const Position &attackPos);
+  virtual void process(Map &map) const override;
+
 };
 
-#endif //TALLERZ_ATTACKEVENT_H
+#endif //TALLERZ_UNITATTACKEVENT_H
