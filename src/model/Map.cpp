@@ -3,7 +3,7 @@
 
 Map::Map() {}
 
-Map::Map(std::map<Position, Tile> map,
+Map::Map(const std::map<Position, Tile> &map,
          unsigned short width,
          unsigned short height)
     : map(map), width(width), height(height) {}

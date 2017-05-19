@@ -4,7 +4,7 @@
 Position Unit::getCurrentPosition() const {
   return this->currentPosition;
 }
-void Unit::move(std::vector<Position> movementsPositions) {
+void Unit::move(const std::vector<Position> &movementsPositions) {
   this->movementsPositions = movementsPositions;
   this->movState.moving();
 }
@@ -24,10 +24,11 @@ bool Unit::isInRange(Attackable *other) {
   return this->currentPosition.euclideanDistance(other->getCurrentPosition())
       < range;
 }
-void Unit::receiveAttack(Weapon weapon) {
+void Unit::receiveAttack(const Weapon &weapon) {
   this->damagesToReceive.push_back(weapon.damage);
 }
-void Unit::hunt(std::vector<Position> movementsPositions, Attackable *other) {
+void Unit::hunt(const std::vector<Position> &movementsPositions,
+                Attackable *other) {
   this->movementsPositions = movementsPositions;
   this->movState.hunting();
   this->hunted = other;
@@ -79,7 +80,7 @@ Attackable *Unit::getHunted() {
 Weapon Unit::getWeapon() {
   return this->weapon;
 }
-void Unit::capture(std::vector<Position> movementsPositions) {
+void Unit::capture(const std::vector<Position> &movementsPositions) {
   this->movementsPositions = movementsPositions;
   this->movState.capturing();
 }
@@ -108,9 +109,10 @@ void Unit::doMoveWithSpeed(float terrainFactor) {
     doOneMove();
   }
 }
-Unit::Unit(Position current, UnitData data)
+Unit::Unit(const Position &current, const UnitData &data)
     : currentPosition(current),
       weapon(data.weapon),
+      fireRatePerSec(data.fireRatePerSec),
       baseSpeed(data.speed),
       range(data.range),
       health(data.health),

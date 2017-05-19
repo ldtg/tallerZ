@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
 #include <Data.h>
-#include <map>
 #include <Tile.h>
 #include <Map.h>
 #include <RobotFactory.h>
+#include <chrono>
 #include "GameController.h"
 extern Data data;
 class GameController_test : public ::testing::Test {
@@ -83,10 +83,27 @@ TEST_F(GameController_test, hunt) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
   gameController.attack(robotA->getId(), robotB->getId());
-  gameController.move(robotB->getId(), Position(0,250));
+  gameController.move(robotB->getId(), Position(0, 250));
   while (robotA->isHunting()) {
     aux = gameController.tick();
     events.insert(events.end(), aux.begin(), aux.end());
   }
   ASSERT_TRUE(!robotB->isAlive());
+}
+TEST_F(GameController_test, time) {
+  std::vector<Event *> aux;
+  GameController gameController(map, units);
+  gameController.move(robotA->getId(), Position(250, 250));
+  std::chrono::duration<double> diff;
+  unsigned short count = 0;
+  auto begin = std::chrono::high_resolution_clock::now();
+  while (diff.count() < 1) {
+    aux = gameController.tick();
+    events.insert(events.end(), aux.begin(), aux.end());
+    auto end = std::chrono::high_resolution_clock::now();
+    diff =
+        std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
+    count++;
+  }
+  ASSERT_TRUE(std::abs(count - data.ticksPerSec) < 5);
 }

@@ -20,12 +20,13 @@ class Unit : public Attackable {
   const Weapon weapon;
   const unsigned short range;
   const unsigned short baseSpeed;
+  const unsigned short fireRatePerSec;
   unsigned short health;
 
   Attackable *hunted;
   std::vector<Position> movementsPositions;
   std::vector<unsigned short> damagesToReceive;
-  Unit(Position current, UnitData data);
+  Unit(const Position &current,const UnitData &data);
  public:
   virtual ~Unit();
   virtual UnitState getUnitState();
@@ -36,15 +37,15 @@ class Unit : public Attackable {
   virtual void receiveDamages();
   virtual bool isInRange(Attackable *other);
   virtual bool attackedInRange();
-  virtual void move(std::vector<Position> movementsPositions);
-  virtual void capture(std::vector<Position> movementsPositions);
+  virtual void move(const std::vector<Position> &movementsPositions);
+  virtual void capture(const std::vector<Position> &movementsPositions);
   virtual void doMoveWithSpeed(float terrainFactor);
   virtual void doOneMove();
-  virtual void hunt(std::vector<Position> movementsPositions, Attackable *other);
+  virtual void hunt(const std::vector<Position> &movementsPositions, Attackable *other);
   virtual void attack(Attackable *other);
   virtual void doAttack();
-  virtual void receiveAttack(Weapon weapon) override;
-  virtual bool canGoThrough(TerrainData terrainType) const = 0;
+  virtual void receiveAttack(const Weapon &weapon) override;
+  virtual bool canGoThrough(const TerrainData &terrainType) const = 0;
   virtual bool isAlive() const override;
   virtual bool isMoving() const override;
   virtual bool isCapturing() const;

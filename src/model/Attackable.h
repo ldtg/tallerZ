@@ -9,7 +9,7 @@ class Attackable {
   virtual bool isAlive() const = 0;
   virtual bool isMoving() const = 0;
   virtual Position nextMovePosition() const = 0;
-  virtual void receiveAttack(Weapon weapon) = 0;
+  virtual void receiveAttack(const Weapon &weapon) = 0;
 };
 
 #endif //TALLERZ_ATTACKABLE_H

@@ -5,8 +5,11 @@
 struct TerrainData {
   TerrainType type;
   float terrainFactor;
-  bool operator==(const TerrainData &other) const{
+  bool operator==(const TerrainData &other) const {
     return type == other.type && terrainFactor == other.terrainFactor;
+  }
+  bool operator!=(const TerrainData &other) const {
+    return !this->operator==(other);
   }
 };
 

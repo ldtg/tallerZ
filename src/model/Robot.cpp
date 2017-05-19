@@ -1,9 +1,10 @@
 #include <cmath>
 #include "Robot.h"
-Robot::Robot(Position current, UnitData data) : Unit(current,
-                                                     data) {}
-bool Robot::canGoThrough(TerrainData terrainData) const {
-  return terrainData.type != TerrainType::LAVA;
+#include "Data.h"
+Robot::Robot(const Position &current, const UnitData &data) : Unit(current,
+                                                                   data) {}
+bool Robot::canGoThrough(const TerrainData &terrainData) const {
+  return terrainData != data.lava;
 }
 
 unsigned short Robot::getMovementSpeed(float terrainFactor) const {

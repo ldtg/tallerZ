@@ -1,13 +1,13 @@
-#ifndef TALLERZ_ROBOT_H
-#define TALLERZ_ROBOT_H
+#ifndef TALLERZ_VEHICLE_H
+#define TALLERZ_VEHICLE_H
 
 #include "Unit.h"
-class Robot : public Unit {
+class Vehicle : public Unit{
  public:
-  Robot(const Position &current,const UnitData &data);
+  Vehicle(const Position &current, const UnitData &data);
   virtual bool canGoThrough(const TerrainData &terrainData) const override;
   virtual unsigned short getMovementSpeed(float terrainFactor) const override;
-  ~Robot();
+  ~Vehicle();
 };
 
-#endif //TALLERZ_ROBOT_H
+#endif //TALLERZ_VEHICLE_H

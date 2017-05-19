@@ -1,9 +1,13 @@
+#include <iostream>
+#include <chrono>
+#include <thread>
 #include "GameController.h"
 #include "AStar.h"
 #include "UnitMoveEvent.h"
 #include "UnitDamageReceiveEvent.h"
 #include "UnitAttackEvent.h"
 #include "UnitDeathEvent.h"
+#include "Data.h"
 
 void GameController::move(const UnitID &idunit, const Position &position) {
   Unit *unit = units.at(idunit);
@@ -44,31 +48,37 @@ void GameController::capture(UnitID idunit, Position position) {
 }*/
 
 std::vector<Event *> GameController::tick() {
+  auto begin = std::chrono::high_resolution_clock::now();
   std::vector<Event *> events;
-  std::vector<Unit *> deaths;
+  this->doTick(events);
+  auto end = std::chrono::high_resolution_clock::now();
+  auto diff =
+      std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
+  std::this_thread::sleep_for(
+      std::chrono::milliseconds((long)data.miliSecsPerTick) - diff);
+  return events;
+}
+void GameController::doTick(std::vector<Event *> &events) {
   for (auto it_units = units.begin(); it_units != units.end();
        ++it_units) {
     Unit *current = it_units->second;
     if (current->hasDamagesToReceive()) {
-      this->unitReceiveDamage(current, events);
+      unitReceiveDamage(current, events);
     }
     if (current->isAlive()) {
       if (current->isMoving()) {
-        this->move(current, events);
+        move(current, events);
       }
       if (current->isHunting())
-        this->hunt(current, events);
+        hunt(current, events);
       if (current->isCapturing())
-        this->capture(current, events);
+        capture(current, events);
     } else {
-      deaths.push_back(current);
       events.push_back(new UnitDeathEvent(current->getId()));
       it_units = units.erase(it_units);
     }
   }
-  this->updateMap(events);
- // this->removeDeaths(deaths); Los borra el o el que los creo con el new?
-  return events;
+  updateMap(events);
 }
 void GameController::unitReceiveDamage(Unit *current,
                                        std::vector<Event *> &events) const {

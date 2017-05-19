@@ -18,7 +18,7 @@ class Map {
   int height;
  public:
   Map();
-  Map(std::map<Position, Tile> map,
+  Map(const std::map<Position, Tile> &map,
       unsigned short width,
       unsigned short height);
   ~Map();
