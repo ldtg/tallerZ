@@ -4,7 +4,7 @@
 Position Unit::getCurrentPosition() const {
   return this->currentPosition;
 }
-void Unit::move(std::queue<Position> movementsPositions) {
+void Unit::move(std::vector<Position> movementsPositions) {
   this->movementsPositions = movementsPositions;
   this->movState.moving();
 }
@@ -17,7 +17,7 @@ void Unit::attack(Attackable *other) {
   } else {
     this->movState.still();
     //clear moves
-    while (!movementsPositions.empty()) movementsPositions.pop();
+    movementsPositions.clear();
   }
 }
 bool Unit::isInRange(Attackable *other) {
@@ -25,32 +25,33 @@ bool Unit::isInRange(Attackable *other) {
       < range;
 }
 void Unit::receiveAttack(Weapon weapon) {
-  this->damagesReceives.push_back(weapon.damage);
+  this->damagesToReceive.push_back(weapon.damage);
 }
-void Unit::hunt(std::queue<Position> movementsPositions, Attackable *other) {
+void Unit::hunt(std::vector<Position> movementsPositions, Attackable *other) {
   this->movementsPositions = movementsPositions;
   this->movState.hunting();
   this->hunted = other;
 }
 Position Unit::nextMovePosition() const {
   if (!movementsPositions.empty())
-    return movementsPositions.back();
+    return movementsPositions.front();
   else
     return currentPosition;
 }
 void Unit::receiveDamages() {
-  for (unsigned short damage: damagesReceives) {
+  for (unsigned short damage: damagesToReceive) {
     if (health >= damage)
       this->health -= damage;
     else
       this->health = 0;
   }
+  damagesToReceive.clear();
 }
 void Unit::doOneMove() {
+  auto aux = movementsPositions.front();
   currentPosition.move(movementsPositions.front());
   if (currentPosition == movementsPositions.front()) {
-    movementsPositions.pop();
-
+    movementsPositions.erase(movementsPositions.begin());
   }
   if (movementsPositions.empty())
     this->movState.still();
@@ -67,8 +68,8 @@ void Unit::doAttack() {
     hunted->receiveAttack(this->weapon);
   } else {
     this->movState.still();
-    //clear moves
-    while (!movementsPositions.empty()) movementsPositions.pop();
+    hunted = nullptr;
+    movementsPositions.clear();
   }
 }
 Attackable *Unit::getHunted() {
@@ -78,7 +79,7 @@ Attackable *Unit::getHunted() {
 Weapon Unit::getWeapon() {
   return this->weapon;
 }
-void Unit::capture(std::queue<Position> movementsPositions) {
+void Unit::capture(std::vector<Position> movementsPositions) {
   this->movementsPositions = movementsPositions;
   this->movState.capturing();
 }
@@ -122,6 +123,11 @@ UnitState Unit::getUnitState() {
   return UnitState(health, weapon, currentPosition);
 }
 void Unit::addMove(const Position &position) {
-  movementsPositions.push(position);
+  if (std::find(movementsPositions.begin(), movementsPositions.end(), position)
+      == movementsPositions.end())
+    movementsPositions.push_back(position);
+}
+bool Unit::hasDamagesToReceive() const {
+  return !damagesToReceive.empty();
 }
 

@@ -7,7 +7,7 @@ bool Robot::canGoThrough(TerrainData terrainData) const {
 }
 
 unsigned short Robot::getMovementSpeed(float terrainFactor) const {
-  return std::max((unsigned short) std::round(this->baseSpeed * terrainFactor),
+  return std::max((unsigned short) std::truncl(this->baseSpeed * terrainFactor),
                   (unsigned short)
                       1);
 }

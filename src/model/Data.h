@@ -32,8 +32,8 @@ struct Data {
     land.terrainFactor = 1;
     water.type = TerrainType::WATER;
     water.terrainFactor = 0.7;
-    water.type = TerrainType::ROAD;
-    water.terrainFactor = 1.5;
+    road.type = TerrainType::ROAD;
+    road.terrainFactor = 1.5;
     lava.type = TerrainType::LAVA;
     lava.terrainFactor = 0.1; //no importa el valor
   }

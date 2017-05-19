@@ -23,8 +23,8 @@ class Unit : public Attackable {
   unsigned short health;
 
   Attackable *hunted;
-  std::queue<Position> movementsPositions;
-  std::vector<unsigned short> damagesReceives;
+  std::vector<Position> movementsPositions;
+  std::vector<unsigned short> damagesToReceive;
   Unit(Position current, UnitData data);
  public:
   virtual ~Unit();
@@ -32,14 +32,15 @@ class Unit : public Attackable {
   virtual Position getCurrentPosition() const override;
   virtual Position nextMovePosition() const override;
   virtual unsigned long getHealth() const;
+  virtual bool hasDamagesToReceive() const;
   virtual void receiveDamages();
   virtual bool isInRange(Attackable *other);
   virtual bool attackedInRange();
-  virtual void move(std::queue<Position> movementsPositions);
-  virtual void capture(std::queue<Position> movementsPositions);
+  virtual void move(std::vector<Position> movementsPositions);
+  virtual void capture(std::vector<Position> movementsPositions);
   virtual void doMoveWithSpeed(float terrainFactor);
   virtual void doOneMove();
-  virtual void hunt(std::queue<Position> movementsPositions, Attackable *other);
+  virtual void hunt(std::vector<Position> movementsPositions, Attackable *other);
   virtual void attack(Attackable *other);
   virtual void doAttack();
   virtual void receiveAttack(Weapon weapon) override;

@@ -36,8 +36,8 @@ set(SOURCE_FILES
         src/model/Robot.cpp
         src/model/Robot.h
         z_tests/tests_model/Robot_test.cpp
-        src/model/GameCotroller.cpp
-        src/model/GameCotroller.h
+        src/model/GameController.cpp
+        src/model/GameController.h
         #[[            src/model/MovementEvent.cpp
                     src/model/MovementEvent.h
                     src/model/UnitAttackEvent.cpp
@@ -84,7 +84,7 @@ set(SOURCE_FILES
         src/vista/ObjectMapaVista.cpp
         src/vista/ObjectMapaVista.h
 
-        z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h src/model/UnitMoveEvent.cpp src/model/UnitMoveEvent.h src/model/Event.cpp src/model/Event.h src/model/UnitAttackEvent.cpp src/model/UnitAttackEvent.h)
+        z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h src/model/UnitMoveEvent.cpp src/model/UnitMoveEvent.h src/model/Event.cpp src/model/Event.h src/model/UnitAttackEvent.cpp src/model/UnitAttackEvent.h src/model/UnitDamageReceiveEvent.cpp src/model/UnitDamageReceiveEvent.h z_tests/tests_model/GameController_test.cpp src/model/UnitDeathEvent.cpp src/model/UnitDeathEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)

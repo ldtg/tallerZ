@@ -24,10 +24,9 @@ std::vector<Position> Node::makePath() const {
   std::vector<Position> path;
   if (parent != nullptr) {
     std::vector<Position> parentPath = parent->makePath();
-    path.insert(path.end(), parentPath.begin(), parentPath.end());
+    path.insert(path.begin(), parentPath.begin(), parentPath.end());
     path.push_back(this->tile.getCenterPosition());
   }
-
   return path;
 }
 

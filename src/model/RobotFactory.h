@@ -6,6 +6,7 @@ extern Data data;
 class RobotFactory {
  public:
   static Robot createGrunt(const Position &pos);
+  static Unit* createGruntDynamic(const Position &pos);
 };
 
 #endif //TALLERZ_ROBOTFACTORY_H

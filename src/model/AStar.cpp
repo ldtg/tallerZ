@@ -14,8 +14,9 @@ AStar::AStar(const Map &map, const Unit *unit, const Position &target)
 
 //Basado en http://web.mit.edu/eranki/www/tutorials/search/
 //          http://theory.stanford.edu/~amitp/GameProgramming/
-std::queue<Position> AStar::find() {
-  while (!open.begin()->second->hasTile(etile)) {
+std::vector<Position> AStar::find() {
+  std::vector<Position> aux;
+  while (!open.begin()->second->hasTile(etile)) { //suponemos que siempre hay un camino
     Node *current = open.begin()->second;
     open.erase(open.begin());
     for (Node *neighbor : getNeighbors(current)) {
@@ -25,7 +26,10 @@ std::queue<Position> AStar::find() {
     }
     close.push_back(current);
   }
-  return makeQueue(open.begin()->second->makePath());
+  aux = open.begin()->second->makePath();
+  if (etile.getCenterPosition() != target)
+    aux.push_back(target);
+  return aux;
 }
 float AStar::heuristic(const Tile &itile,
                        const Tile &etile) const {

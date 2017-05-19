@@ -24,7 +24,7 @@ class AStar {
   float heuristic(const Tile &itile, const Tile &etile) const;
  public:
   AStar(const Map &map, const Unit *unit,const Position &target);
-  std::queue<Position> find();
+  std::vector<Position> find();
 
   ~AStar();
   bool isInClose(Node *neighbor);
