@@ -18,6 +18,7 @@ gboolean Upper_Right_Border::displace_view(GdkEventCrossing * event) {
   std::cout << "Desplazamiento hacia arriba a la derecha\n";
   return FALSE;
 }
+
 void Upper_Right_Border::load_border_event() {
   upper_right_corner_border_1->signal_enter_notify_event().
       connect(sigc::mem_fun(*this, &Upper_Right_Border::displace_view));
@@ -26,6 +27,7 @@ void Upper_Right_Border::load_border_event() {
   upper_right_corner_border_3->signal_enter_notify_event().
       connect(sigc::mem_fun(*this, &Upper_Right_Border::displace_view));
 }
+
 void Upper_Right_Border::load_border_masks() {
   upper_right_corner_border_1->set_events(Gdk::POINTER_MOTION_MASK | Gdk::ENTER_NOTIFY_MASK );
   upper_right_corner_border_2->set_events(Gdk::POINTER_MOTION_MASK | Gdk::ENTER_NOTIFY_MASK );

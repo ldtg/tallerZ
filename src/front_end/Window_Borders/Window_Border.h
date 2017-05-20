@@ -18,10 +18,19 @@
 
 class Window_Border {
  private:
-  Border * left;
+  /*Border * left;
   Border * right;
   Border * upper;
   Border * lower;
+  Border * upper_left;
+  Border * upper_right;
+  Border * lower_left;
+  Border * lower_right;*/
+
+  Left_Border * left;
+  Right_Border * right;
+  Upper_Border * upper;
+  Lower_Border * lower;
   Border * upper_left;
   Border * upper_right;
   Border * lower_left;

@@ -141,7 +141,7 @@ set(SOURCE_FILES
         src/model/UnitDeathEvent.cpp
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
-        src/model/Vehicle.h)
+        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h)
 
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

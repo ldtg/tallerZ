@@ -3,24 +3,21 @@
 
 #include <string>
 #include <iostream>
-#include "front_end/Main_Window.h"
 
-int main( int argc, char **argv )
-{
-    Glib::RefPtr<Gtk::Application> app = Gtk::Application::create(argc, argv);
+//Variables globales para los tests de front end
+//(hace falta para usar Gtk::Application). DU not tuch
+int my_argc;
+char** my_argv;
 
-    Main_Window interface(argc,argv);
-
-    app->run(*interface.get_main_window());
-}
-
-/*
 int main( int argc, char* argv[] ) {
 
     testing::InitGoogleTest(&argc, argv);
+    my_argc = argc;
+    my_argv = argv;
+
     RUN_ALL_TESTS();
 
     return 0;
 }
-*/
+
 

@@ -14,10 +14,10 @@ class Left_Border : public Border {
  public:
   Left_Border(const Glib::RefPtr<Gtk::Builder>& builder);
 
-  virtual gboolean displace_view(GdkEventCrossing * event) override;
+  gboolean displace_view(GdkEventCrossing * event) override;
 
  private:
-  virtual void load_border_event() override;
+  void load_border_event() override;
 
   void load_border_masks();
 

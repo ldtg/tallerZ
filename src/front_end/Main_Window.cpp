@@ -7,6 +7,7 @@
  * EN PLENO DESARROLLO
  */
 
+
 Main_Window::Main_Window(int argc, char **argv) {
   std::string glade_file = "../src/front_end/Interface.glade";
   builder = Gtk::Builder::create_from_file(glade_file);
@@ -15,7 +16,6 @@ Main_Window::Main_Window(int argc, char **argv) {
   this->border = new Window_Border(builder);
   this->robot_face = new Robot_Face(builder);
   this->grunt = new Grunt(builder, *this->robot_face);
-
 
   //this->load_masks();
   //robot_button->signal_clicked().connect(sigc::mem_fun(this->robot_face, &Robot_Face::on_robot_clicked));
