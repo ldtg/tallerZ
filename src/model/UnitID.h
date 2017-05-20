@@ -18,6 +18,7 @@ class UnitID {
   bool operator<(const UnitID &other) const;
   bool operator==(const UnitID &other) const;
   bool operator!=(const UnitID &other) const;
+  UnitType getType() const;
 };
 
 #endif //TALLERZ_IDUNIT_H

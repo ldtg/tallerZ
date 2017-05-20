@@ -7,16 +7,21 @@
 #include <string>
 
 class Vista {
-    private:
-        Map &map;
-        Window window;
-        Panel panel;
-        void add(ObjectMapaVista *objectVista, int x, int y);
-    public:
-        Vista(Map &map);
-        ~Vista();
-        ObjectMapaVista *getObjectVista(std::string type);
-        void update();
+ private:
+  Window window;
+  Panel panel;
+  std::map<Position, ObjectMapaVista*> terrainsVista;
+  std::map<Position, ObjectMapaVista*> unitsVista;
+
+  void createInitialTerrainVista(const std::map<Position, Tile> &map);
+  void createInitialUnitVista(const std::map<UnitID, UnitState> &units);
+  void add(ObjectMapaVista *objectVista, long x, long y);
+  ObjectMapaVista *getTerrainVista(int type);
+  ObjectMapaVista *getUnitVista(int type);
+ public:
+  Vista(const Map &map);
+  ~Vista();
+  void update();
 };
 
 

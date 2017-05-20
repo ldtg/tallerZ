@@ -6,11 +6,11 @@
 #include "TerrainType.h"
 #include "UnitID.h"
 #include "UnitState.h"
-#include "ObjectMap.h"
 #include "TerrainData.h"
 #include <vector>
 #define TILEWIDHT 100
 #define TILEHEIGHT 100
+
 class Tile {
  private:
   Position centerPosition;
@@ -22,6 +22,7 @@ class Tile {
   ~Tile();
   bool isPassable() const;
   Position getCenterPosition() const;
+  TerrainType getTerrainType() const;
   bool operator==(const Tile &other) const;
 };
 

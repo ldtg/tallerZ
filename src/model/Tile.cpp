@@ -7,8 +7,7 @@ Tile::Tile(Position centerPosition,
       terrainData(terrainData),
       passable(true){}
 
-Tile::~Tile() {
-}
+Tile::~Tile() {}
 
 Position Tile::getCenterPosition() const {
   return this->centerPosition;
@@ -27,3 +26,6 @@ bool Tile::isPassable()const {
   return passable;
 }
 
+TerrainType Tile::getTerrainType() const {
+  return terrainData.type;
+}

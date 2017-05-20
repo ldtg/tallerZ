@@ -2,8 +2,8 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH 400
+#define HEIGHT 400
 
 Window::Window() {
     width = WIDTH;

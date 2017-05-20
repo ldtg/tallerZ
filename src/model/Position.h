@@ -20,6 +20,9 @@ class Position {
   void move(Position target);
   std::vector<Position> getNeighbors() const;
   coordinates_t getCoordinates() const;
+  long getX() const;
+  long getY() const;
+//  bool isValid() const;
   bool operator==(const Position &other) const;
   bool operator!=(const Position &other) const;
   bool operator<(const Position &other) const;

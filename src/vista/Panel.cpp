@@ -4,9 +4,9 @@
 Panel::Panel(SDL_Renderer *render) : window_render(render) {}
 
 Panel::~Panel() {
-//    for (ObjectMapaVista *objectMapaVista : objectsMapaVista) {
-//        delete (objectMapaVista);
-//    }
+    for (ObjectMapaVista *objectMapaVista : objectsMapaVista) {
+        delete (objectMapaVista);
+    }
 
     SDL_DestroyRenderer(window_render);
 }
@@ -22,9 +22,9 @@ void Panel::add(ObjectMapaVista *objectMapaVista) {
 }
 
 void Panel::clean() {
-    for (ObjectMapaVista *objectMapaVista : objectsMapaVista) {
-        delete (objectMapaVista);
-    }
+//    for (ObjectMapaVista *objectMapaVista : objectsMapaVista) {
+//        delete (objectMapaVista);
+//    }
     objectsMapaVista.clear();
 }
 
@@ -37,5 +37,5 @@ void Panel::draw() {
     }
 
     SDL_RenderPresent(window_render);
-//    Panel::clean();
+    Panel::clean();
 }
