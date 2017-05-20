@@ -7,8 +7,8 @@
 #include "TerrainData.h"
 struct Data {
  public:
-  double ticksPerSec;
-  long miliSecsPerTick;
+  unsigned short ticksPerSec;
+  unsigned long miliSecsPerTick;
   Weapon bullet;
   Weapon flamethrower;
   Weapon sniperBullet;
@@ -22,7 +22,7 @@ struct Data {
   TerrainData road;
   Data() {
     ticksPerSec = 120;
-    miliSecsPerTick = (long) ((1 / ticksPerSec) * 1000);
+    miliSecsPerTick = (unsigned long) ((1 / (double) ticksPerSec) * 1000);
 
     bullet.type = BULLET;
     bullet.damage = 2;
@@ -30,7 +30,8 @@ struct Data {
 
     grunt.type = UnitType::R_GRUNT;
     grunt.weapon = bullet;
-    grunt.fireRatePerSec = 2;
+    grunt.ticksUntilFire =
+        (unsigned short) std::lround((double) ticksPerSec / 2);
     grunt.health = 60;
     grunt.range = 7;
     grunt.speed = 4;
@@ -40,7 +41,8 @@ struct Data {
 
     jeep.type = UnitType::V_JEEP;
     jeep.weapon = bullet;
-    jeep.fireRatePerSec = 6;
+    jeep.ticksUntilFire =
+        (unsigned short) std::lround((double) ticksPerSec / 6);
     jeep.health = 60;
     jeep.range = 6;
     jeep.speed = 8;

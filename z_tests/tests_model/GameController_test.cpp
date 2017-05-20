@@ -106,4 +106,22 @@ TEST_F(GameController_test, time) {
     count++;
   }
   ASSERT_TRUE(std::abs(count - data.ticksPerSec) < 5);
-}
+}/*
+TEST_F(GameController_test, timed_attack) {
+  std::vector<Event *> aux;
+  GameController gameController(map, units);
+  gameController.move(robotA->getId(), Position(250, 250));
+  std::chrono::duration<double> diff;
+  unsigned short count = 0;
+  auto begin = std::chrono::high_resolution_clock::now();
+  while (robotB->isAlive()) {
+    aux = gameController.tick();
+    events.insert(events.end(), aux.begin(), aux.end());
+
+    count++;
+  }
+  auto end = std::chrono::high_resolution_clock::now();
+  diff =
+      std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
+  ASSERT_TRUE(std::abs(count - data.ticksPerSec) < 5);
+}*/

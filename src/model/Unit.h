@@ -20,8 +20,9 @@ class Unit : public Attackable {
   const Weapon weapon;
   const unsigned short range;
   const unsigned short baseSpeed;
-  const unsigned short fireRatePerSec;
+  const unsigned short attackCounterBase;
   unsigned short health;
+  unsigned short attackCounterActual;
 
   Attackable *hunted;
   std::vector<Position> movementsPositions;
@@ -43,7 +44,7 @@ class Unit : public Attackable {
   virtual void doOneMove();
   virtual void hunt(const std::vector<Position> &movementsPositions, Attackable *other);
   virtual void attack(Attackable *other);
-  virtual void doAttack();
+  virtual bool doAttack();
   virtual void receiveAttack(const Weapon &weapon) override;
   virtual bool canGoThrough(const TerrainData &terrainType) const = 0;
   virtual bool isAlive() const override;

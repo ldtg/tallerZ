@@ -64,14 +64,21 @@ bool Unit::attackedInRange() {
 bool Unit::isHunting() {
   return this->movState.isHunting();
 }
-void Unit::doAttack() {
-  if (hunted->isAlive()) {
-    hunted->receiveAttack(this->weapon);
+bool Unit::doAttack() {
+  if (attackCounterActual == 0) {
+    if (hunted->isAlive()) {
+      hunted->receiveAttack(this->weapon);
+    } else {
+      this->movState.still();
+      hunted = nullptr;
+      movementsPositions.clear();
+    }
+    attackCounterActual = attackCounterBase;
+    return true;
   } else {
-    this->movState.still();
-    hunted = nullptr;
-    movementsPositions.clear();
+    attackCounterActual--;
   }
+  return false;
 }
 Attackable *Unit::getHunted() {
   return hunted;
@@ -112,7 +119,8 @@ void Unit::doMoveWithSpeed(float terrainFactor) {
 Unit::Unit(const Position &current, const UnitData &data)
     : currentPosition(current),
       weapon(data.weapon),
-      fireRatePerSec(data.fireRatePerSec),
+      attackCounterBase(data.ticksUntilFire),
+      attackCounterActual(attackCounterBase),
       baseSpeed(data.speed),
       range(data.range),
       health(data.health),

@@ -6,7 +6,7 @@
 struct UnitData {
   UnitType type;
   Weapon weapon;
-  unsigned short fireRatePerSec;
+  unsigned short ticksUntilFire;
   unsigned short range;
   unsigned short health;
   unsigned short speed;

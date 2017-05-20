@@ -50,12 +50,16 @@ void GameController::capture(UnitID idunit, Position position) {
 std::vector<Event *> GameController::tick() {
   auto begin = std::chrono::high_resolution_clock::now();
   std::vector<Event *> events;
+
   this->doTick(events);
+
   auto end = std::chrono::high_resolution_clock::now();
   auto diff =
       std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
+
   std::this_thread::sleep_for(
-      std::chrono::milliseconds((long)data.miliSecsPerTick) - diff);
+      std::chrono::milliseconds(data.miliSecsPerTick) - diff);
+
   return events;
 }
 void GameController::doTick(std::vector<Event *> &events) {
@@ -101,10 +105,9 @@ void GameController::hunt(Unit *unit, std::vector<Event *> &events) const {
   if (unit->attackedInRange()
       && map.canPass(unit->getCurrentPosition(),
                      hunted->getCurrentPosition())) {
-    unit->doAttack();
-    //TODO: crear evento attack
-    events.push_back(new UnitAttackEvent(unit->getId(),
-                                         hunted->getCurrentPosition()));
+    if (unit->doAttack())//mejorar
+      events.push_back(new UnitAttackEvent(unit->getId(),
+                                           hunted->getCurrentPosition()));
   } else {
     this->move(unit, events);
   }
