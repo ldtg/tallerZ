@@ -28,6 +28,7 @@ class GameController {
   void updateMap(std::vector<Event *> vector);
   void removeDeaths(const std::vector<Unit *> &vector);
   void doTick(std::vector<Event *> &events);
+  void autoAttack(Unit *current);
 };
 
 #endif //TALLERZ_GAMECOTROLLER_H

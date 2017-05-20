@@ -9,6 +9,7 @@ AStar::AStar(const Map &map, const Unit *unit, const Position &target)
   Node *node = new Node(itile, heuristic(itile, etile));
   open.emplace(node->getTotalCost(), node);
   createdNodes.push_back(node);
+  //tirar excepcion si etile no es transpasable, unico caso de camino invalido creo
 
 }
 

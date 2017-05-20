@@ -1,10 +1,10 @@
 #include <Robot.h>
-#include <RobotFactory.h>
+#include <UnitFactory.h>
 
 #include "gtest/gtest.h"
 
 TEST(RobotTest, create) {
-  Robot grunt = RobotFactory::createGrunt(Position(0, 0));
+  Robot grunt = UnitFactory::createGrunt(Position(0, 0));
   ASSERT_TRUE(grunt.isAlive());
 }
 TEST(RobotTest, move) {

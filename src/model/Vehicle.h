@@ -3,8 +3,9 @@
 
 #include "Unit.h"
 class Vehicle : public Unit{
+ private:
  public:
-  Vehicle(const Position &current, const UnitData &data);
+  Vehicle(const Position &current, const UnitData &data, const UnitType& conductorType);
   virtual bool canGoThrough(const TerrainData &terrainData) const override;
   virtual unsigned short getMovementSpeed(float terrainFactor) const override;
   ~Vehicle();

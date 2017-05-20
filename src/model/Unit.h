@@ -14,6 +14,9 @@
 
 class Unit : public Attackable {
  protected:
+  Unit(const Position &position,
+         const UnitData &data,
+         const UnitType &type);
   const UnitID id;
   Position currentPosition;
   MovementState movState;
@@ -55,6 +58,7 @@ class Unit : public Attackable {
   bool isHunting();
   Attackable *getHunted();
   Weapon getWeapon();
+  unsigned short getRange() const;
   UnitID getId() const;
   void addMove(const Position &position);
 };

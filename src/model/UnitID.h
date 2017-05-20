@@ -6,11 +6,18 @@
 class UnitID {
   static unsigned long nextid;
  private:
-  UnitType type;
-  unsigned long id;
+  const UnitType type;
+  const unsigned long id;
+  UnitType secondType;
  public:
-  UnitID(UnitType type);
+  explicit UnitID(const UnitType &type);
+  explicit UnitID(const UnitType &type, const UnitType &second);
+  UnitType getUnitType() const;
+  UnitType getSecondUnitType() const;
+  void setSecondUnitType(const UnitType &type);
   bool operator<(const UnitID &other) const;
+  bool operator==(const UnitID &other) const;
+  bool operator!=(const UnitID &other) const;
 };
 
 #endif //TALLERZ_IDUNIT_H

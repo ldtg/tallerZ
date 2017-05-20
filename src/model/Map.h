@@ -8,7 +8,6 @@
 #include <vector>
 #include <map>
 #include <string>
-#define DELTASEARCH 10
 class Map {
  private:
   std::map<Position, Tile>
@@ -31,7 +30,7 @@ class Map {
                  const Position &positionTo) const;
   //Metodos para dibujar mapa
   const std::map<UnitID, UnitState> &getUnits() const;
-  UnitID getUnitIDFromPosition(const Position &pos) const; //usa DELTASEARCH
+  UnitID getUnitIDFromPosition(const Position &pos, unsigned short range) const;
   UnitState getUnitState(const UnitID &unitID) const;
   //Para crear el mapa
   void setUnits(const std::map<UnitID, UnitState> &units);

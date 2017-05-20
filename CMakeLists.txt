@@ -38,14 +38,28 @@ set(SOURCE_FILES
         z_tests/tests_model/Robot_test.cpp
         src/model/GameController.cpp
         src/model/GameController.h
-        #[[            src/model/MovementEvent.cpp
-                    src/model/MovementEvent.h
-                    src/model/UnitAttackEvent.cpp
-                    src/model/UnitAttackEvent.h
-                    src/model/Build.cpp
-                    src/model/Build.h
-                    src/model/BuildID.cpp
-                    src/model/BuildID.h
+        src/model/Build.cpp
+        src/model/Build.h
+        src/model/BuildID.cpp
+        src/model/BuildID.h
+        src/model/UnitData.h
+        src/model/UnitFactory.cpp
+        src/model/UnitFactory.h
+        src/model/TerrainData.h
+        src/model/UnitMoveEvent.cpp
+        src/model/UnitMoveEvent.h
+        src/model/Event.cpp
+        src/model/Event.h
+        src/model/UnitAttackEvent.cpp
+        src/model/UnitAttackEvent.h
+        src/model/UnitDamageReceiveEvent.cpp
+        src/model/UnitDamageReceiveEvent.h
+        z_tests/tests_model/GameController_test.cpp
+        src/model/UnitDeathEvent.cpp
+        src/model/UnitDeathEvent.h
+        src/model/Vehicle.cpp
+        src/model/Vehicle.h
+        #[[
                     src/model/BuildAttackEvent.cpp
                     src/model/BuildAttackEvent.h
                     z_sounds/Sound_event.cpp
@@ -83,8 +97,8 @@ set(SOURCE_FILES
         src/vista/Image.h
         src/vista/ObjectMapaVista.cpp
         src/vista/ObjectMapaVista.h
-
-        z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h src/model/UnitMoveEvent.cpp src/model/UnitMoveEvent.h src/model/Event.cpp src/model/Event.h src/model/UnitAttackEvent.cpp src/model/UnitAttackEvent.h src/model/UnitDamageReceiveEvent.cpp src/model/UnitDamageReceiveEvent.h z_tests/tests_model/GameController_test.cpp src/model/UnitDeathEvent.cpp src/model/UnitDeathEvent.h src/model/Vehicle.cpp src/model/Vehicle.h)
+        z_tests/tests_model/Vista_test.cpp
+        src/model/BuildType.h src/model/UnitNotFoundException.cpp src/model/UnitNotFoundException.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)

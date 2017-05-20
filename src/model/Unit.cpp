@@ -1,5 +1,6 @@
 #include "Unit.h"
 #include <algorithm>
+#include <iostream>
 
 Position Unit::getCurrentPosition() const {
   return this->currentPosition;
@@ -12,13 +13,6 @@ void Unit::move(const std::vector<Position> &movementsPositions) {
 void Unit::attack(Attackable *other) {
   this->movState.hunting();
   this->hunted = other;
-  if (other->isAlive()) {
-    other->receiveAttack(this->weapon);
-  } else {
-    this->movState.still();
-    //clear moves
-    movementsPositions.clear();
-  }
 }
 bool Unit::isInRange(Attackable *other) {
   return this->currentPosition.euclideanDistance(other->getCurrentPosition())
@@ -116,6 +110,18 @@ void Unit::doMoveWithSpeed(float terrainFactor) {
     doOneMove();
   }
 }
+
+UnitState Unit::getUnitState() {
+  return UnitState(health, weapon, currentPosition);
+}
+void Unit::addMove(const Position &position) {
+  if (std::find(movementsPositions.begin(), movementsPositions.end(), position)
+      == movementsPositions.end())
+    movementsPositions.push_back(position);
+}
+bool Unit::hasDamagesToReceive() const {
+  return !damagesToReceive.empty();
+}
 Unit::Unit(const Position &current, const UnitData &data)
     : currentPosition(current),
       weapon(data.weapon),
@@ -129,15 +135,20 @@ Unit::Unit(const Position &current, const UnitData &data)
       hunted(nullptr) {
 
 }
-UnitState Unit::getUnitState() {
-  return UnitState(health, weapon, currentPosition);
-}
-void Unit::addMove(const Position &position) {
-  if (std::find(movementsPositions.begin(), movementsPositions.end(), position)
-      == movementsPositions.end())
-    movementsPositions.push_back(position);
-}
-bool Unit::hasDamagesToReceive() const {
-  return !damagesToReceive.empty();
-}
+Unit::Unit(const Position &position,
+           const UnitData &data,
+           const UnitType &type) : currentPosition(position),
+                                   weapon(data.weapon),
+                                   attackCounterBase(data.ticksUntilFire),
+                                   attackCounterActual(attackCounterBase),
+                                   baseSpeed(data.speed),
+                                   range(data.range),
+                                   health(data.health),
+                                   id(data.type, type),
+                                   movState(),
+                                   hunted(nullptr) {
 
+}
+unsigned short Unit::getRange() const {
+  return range;
+}
