@@ -5,6 +5,7 @@
 #include "Weapon.h"
 #include "UnitData.h"
 #include "TerrainData.h"
+
 struct Data {
  public:
   unsigned short ticksPerSec;
@@ -20,6 +21,7 @@ struct Data {
   TerrainData water;
   TerrainData lava;
   TerrainData road;
+
   Data() {
     ticksPerSec = 120;
     miliSecsPerTick = (unsigned long) ((1 / (double) ticksPerSec) * 1000);

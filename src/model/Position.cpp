@@ -84,3 +84,10 @@ std::string Position::toString() const {
   return aux.str();
 }
 
+long Position::getX() const {
+  return x;
+}
+
+long Position::getY() const {
+  return y;
+}

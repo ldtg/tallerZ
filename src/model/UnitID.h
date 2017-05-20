@@ -11,6 +11,7 @@ class UnitID {
  public:
   UnitID(UnitType type);
   bool operator<(const UnitID &other) const;
+  UnitType getType() const;
 };
 
 #endif //TALLERZ_IDUNIT_H

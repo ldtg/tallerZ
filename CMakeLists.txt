@@ -36,44 +36,41 @@ set(SOURCE_FILES
         src/model/Robot.cpp
         src/model/Robot.h
         z_tests/tests_model/Robot_test.cpp
+        z_tests/tests_model/AStar_test.cpp
         src/model/GameController.cpp
         src/model/GameController.h
-        #[[            src/model/MovementEvent.cpp
-                    src/model/MovementEvent.h
-                    src/model/UnitAttackEvent.cpp
-                    src/model/UnitAttackEvent.h
-                    src/model/Build.cpp
-                    src/model/Build.h
-                    src/model/BuildID.cpp
-                    src/model/BuildID.h
-                    src/model/BuildAttackEvent.cpp
-                    src/model/BuildAttackEvent.h
-                    z_sounds/Sound_event.cpp
-                    z_sounds/Sound_event.h
-                    src/storage/Store_settings.cpp
-                    src/storage/Store_settings.h
-                    src/storage/Store_map.cpp
-                    src/storage/Store_map.h
-                    z_tests/tests_sounds/basic_test.cpp
-                    z_tests/tests_storage/store_map_tests.cpp
-                    src/storage/Store_settings.cpp
-                    src/storage/Store_settings.h
-                    src/storage/Store_map.cpp
-                    src/storage/Store_map.h
-                    z_tests/tests_sounds/basic_test.cpp
-                    z_tests/tests_storage/store_map_tests.cpp
-                    src/vista/Sprite.cpp
-                    src/vista/Sprite.h
-                    src/model/ObjectMap.cpp
-                    src/model/ObjectMap.h
-                    src/model/Land.cpp
-                    src/model/Land.h
-                    src/vista/Vista.cpp
-                    src/vista/Vista.h
-                    src/model/MapBuilder.cpp
-                    src/model/MapBuilder.h
-                    src/model/Grunt.cpp
-                    src/model/Grunt.h]]
+        #[[src/model/MovementEvent.cpp
+        src/model/MovementEvent.h
+        src/model/UnitAttackEvent.cpp
+        src/model/UnitAttackEvent.h
+        src/model/Build.cpp
+        src/model/Build.h
+        src/model/BuildID.cpp
+        src/model/BuildID.h
+        src/model/BuildAttackEvent.cpp
+        src/model/BuildAttackEvent.h
+        z_sounds/Sound_event.cpp
+        z_sounds/Sound_event.h
+        src/storage/Store_settings.cpp
+        src/storage/Store_settings.h
+        src/storage/Store_map.cpp
+        src/storage/Store_map.h
+        z_tests/tests_sounds/basic_test.cpp
+        z_tests/tests_storage/store_map_tests.cpp
+        src/storage/Store_settings.cpp
+        src/storage/Store_settings.h
+        src/storage/Store_map.cpp
+        src/storage/Store_map.h
+        z_tests/tests_sounds/basic_test.cpp
+        z_tests/tests_storage/store_map_tests.cpp
+        src/model/ObjectMap.cpp
+        src/model/ObjectMap.h
+        src/model/Land.cpp
+        src/model/Land.h
+        src/model/MapBuilder.cpp
+        src/model/MapBuilder.h
+        src/model/Grunt.cpp
+        src/model/Grunt.h]]
 
         src/vista/Window.cpp
         src/vista/Window.h
@@ -83,6 +80,10 @@ set(SOURCE_FILES
         src/vista/Image.h
         src/vista/ObjectMapaVista.cpp
         src/vista/ObjectMapaVista.h
+        src/vista/Vista.cpp
+        src/vista/Vista.h
+        src/vista/Sprite.cpp
+        src/vista/Sprite.h
 
         z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h src/model/UnitMoveEvent.cpp src/model/UnitMoveEvent.h src/model/Event.cpp src/model/Event.h src/model/UnitAttackEvent.cpp src/model/UnitAttackEvent.h src/model/UnitDamageReceiveEvent.cpp src/model/UnitDamageReceiveEvent.h z_tests/tests_model/GameController_test.cpp src/model/UnitDeathEvent.cpp src/model/UnitDeathEvent.h src/model/Vehicle.cpp src/model/Vehicle.h)
 

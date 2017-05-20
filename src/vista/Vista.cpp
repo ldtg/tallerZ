@@ -5,11 +5,38 @@
 #include <iostream>
 #include <vector>
 
-Vista::Vista(Map &map) : map(map), window(), panel(window.getRender()) {}
+Vista::Vista(const Map &map) : window(), panel(window.getRender()) {
+  createInitialTerrainVista(map.getMap());
+  createInitialUnitVista(map.getUnits());
+}
 
 Vista::~Vista() {}
 
+void Vista::createInitialTerrainVista(const std::map<Position, Tile> &map) {
+  for (auto const &posMap : map) {
+    Position pos = posMap.first;
+    Tile tile = posMap.second;
+    TerrainType terrainType = tile.getTerrainType();
+    ObjectMapaVista *terrain = getTerrainVista(terrainType);
+    add(terrain, pos.getX(), pos.getY());
+
+    terrainsVista.emplace(pos, terrain);
+  }
+}
+
+void Vista::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
+  for (auto const &unit : units) {
+    UnitType type = unit.first.getType();
+    Position pos = unit.second.currentPosition;
+    ObjectMapaVista *unitVista = getUnitVista(type);
+    add(unitVista, pos.getX(), pos.getY());
+
+    unitsVista.emplace(pos, unitVista);
+  }
+}
+
 void Vista::update() {
+/*
     int mapWidht = map.getWidht();
     int mapHeight = map.getHeight();
     int xVista = 0;
@@ -35,10 +62,19 @@ void Vista::update() {
         }
         yVista = 0;
     }
-    panel.draw();
+*/
+  for (auto const &posTerrain : terrainsVista) {
+      panel.add(posTerrain.second);
+  }
+
+  for (auto const &posUnit : unitsVista) {
+    panel.add(posUnit.second);
+  }
+
+  panel.draw();
 }
 
-void Vista::add(ObjectMapaVista *objectVista, int x, int y) {
+void Vista::add(ObjectMapaVista *objectVista, long x, long y) {
     if (objectVista == NULL)
         return;
 
@@ -46,13 +82,20 @@ void Vista::add(ObjectMapaVista *objectVista, int x, int y) {
     panel.add(objectVista);
 }
 
-ObjectMapaVista* Vista::getObjectVista(std::string type) {
-    if (type == "land") {
-        return new Image("vista/images/terrain/rocks_jungle.png");
-    } else if (type == "grunt") {
-        return new Sprite("vista/images/terrain/fire_blue_r000_n", 2);
+ObjectMapaVista* Vista::getTerrainVista(int type) {
+    if (type == LAND) {
+        return new Image("../src/vista/images/terrain/land.png");
     }
     else {
         return nullptr;
     }
+}
+
+ObjectMapaVista* Vista::getUnitVista(int type) {
+  if (type == R_GRUNT) {
+    return new Sprite("../src/vista/images/terrain/fire_blue_r000_n", 5);
+  }
+  else {
+    return nullptr;
+  }
 }

@@ -6,6 +6,11 @@ UnitID::UnitID(UnitType type) : type(type) {
   this->id = nextid;
   nextid++;
 }
+
 bool UnitID::operator<(const UnitID &other) const {
   return this->id < other.id;
+}
+
+UnitType UnitID::getType() const {
+  return type;
 }
