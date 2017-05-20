@@ -1,5 +1,5 @@
 #include "Map.h"
-#include "MapBuilder.h"
+#include "UnitNotFoundException.h"
 
 Map::Map() {}
 
@@ -71,10 +71,11 @@ UnitState Map::getUnitState(const UnitID &unitID) const {
   return units.at(unitID);
 }
 
-UnitID Map::getUnitIDFromPosition(const Position &pos) const {
+UnitID Map::getUnitIDFromPosition(const Position &pos, unsigned short range) const {
   for (auto &par : units) {
-    if(pos.equalDelta(par.second.currentPosition, DELTASEARCH))
+    if(pos.equalDelta(par.second.currentPosition, range))
       return par.first;
   }
+  throw UnitNotFoundException();
 }
 

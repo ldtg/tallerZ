@@ -1,6 +1,9 @@
 #include "BuildID.h"
+unsigned long BuildID::nextid = 0;
 
+BuildID::BuildID(const BuildType &buildType) : type(type), id(nextid) {
+  nextid++;
+}
 bool BuildID::operator<(const BuildID &other) const {
-    //TODO: hacer bien. Es para compilar.
-    return true;
+  return id < other.id;
 }

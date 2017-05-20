@@ -2,7 +2,7 @@
 #include <Data.h>
 #include <Tile.h>
 #include <Map.h>
-#include <RobotFactory.h>
+#include <UnitFactory.h>
 #include <chrono>
 #include "GameController.h"
 extern Data data;
@@ -13,15 +13,13 @@ class GameController_test : public ::testing::Test {
   std::map<UnitID, Unit *> units;
   Unit *robotA;
   Unit *robotB;
+  Unit *robotC;
+  Unit *jeepA;
   std::vector<Event *> events;
   GameController_test() {
-    // initialization code here
-
   }
 
   void SetUp() {
-    // code here will execute just before the test ensues
-
     std::map<Position, Tile> stdmap;
     stdmap.emplace(Position(0, 0), Tile(Position(50, 50), data.land));
     stdmap.emplace(Position(1, 0), Tile(Position(150, 50), data.land));
@@ -31,20 +29,22 @@ class GameController_test : public ::testing::Test {
     stdmap.emplace(Position(1, 1), Tile(Position(150, 150), data.lava));
     stdmap.emplace(Position(2, 1), Tile(Position(250, 150), data.land));
 
-    stdmap.emplace(Position(0, 2), Tile(Position(50, 250), data.water));
-    stdmap.emplace(Position(1, 2), Tile(Position(150, 250), data.water));
-    stdmap.emplace(Position(2, 2), Tile(Position(250, 250), data.water));
+    stdmap.emplace(Position(0, 2), Tile(Position(50, 250), data.land));
+    stdmap.emplace(Position(1, 2), Tile(Position(150, 250), data.land));
+    stdmap.emplace(Position(2, 2), Tile(Position(250, 250), data.land));
 
     map = Map(stdmap, 3, 3);
-    robotA = RobotFactory::createGruntDynamic(Position(250, 50));
+    robotA = UnitFactory::createGruntDynamic(Position(50, 50));
     units.emplace(robotA->getId(), robotA);
-    robotB = RobotFactory::createGruntDynamic(Position(250, 250));
+    robotB = UnitFactory::createGruntDynamic(Position(250, 245));
     units.emplace(robotB->getId(), robotB);
+    robotC = UnitFactory::createGruntDynamic(Position(250, 250));
+    units.emplace(robotC->getId(), robotC);
+    jeepA = UnitFactory::createJeepDynamic(Position(150, 255));
+    units.emplace(jeepA->getId(), jeepA);
   }
 
   void TearDown() {
-    // code here will be called just after the test completes
-    // ok to through exceptions from here if need be
     for (auto &par : units) {
       delete (par.second);
     }
@@ -56,20 +56,18 @@ class GameController_test : public ::testing::Test {
   ~GameController_test() {
 
   }
-
-  // put in any custom data members that you need
 };
 TEST_F(GameController_test, move) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
-  gameController.move(robotA->getId(), Position(250, 250));
+  gameController.move(robotA->getId(), Position(150, 50));
   while (robotA->isMoving()) {
     aux = gameController.tick();
     events.insert(events.end(), aux.begin(), aux.end());
   }
   ASSERT_TRUE(robotA->isStill());
 }
-TEST_F(GameController_test, attack) {
+TEST_F(GameController_test, robotAttack) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
   gameController.attack(robotA->getId(), robotB->getId());
@@ -78,6 +76,26 @@ TEST_F(GameController_test, attack) {
     events.insert(events.end(), aux.begin(), aux.end());
   }
   ASSERT_TRUE(!robotB->isAlive());
+}
+/*TEST_F(GameController_test, unitAutoAttack) {
+  std::vector<Event *> aux;
+  GameController gameController(map, units);
+  while (robotC->isAlive()) {
+    aux = gameController.tick();
+    events.insert(events.end(), aux.begin(), aux.end());
+  }
+  ASSERT_TRUE(!robotC->isAlive() && jeepA->isAlive() && robotA->isAlive()
+                  && robotB->isAlive());
+}*/
+TEST_F(GameController_test, jeepAttack) {
+  std::vector<Event *> aux;
+  GameController gameController(map, units);
+  gameController.attack(jeepA->getId(), robotC->getId());
+  while (jeepA->isHunting()) {
+    aux = gameController.tick();
+    events.insert(events.end(), aux.begin(), aux.end());
+  }
+  ASSERT_TRUE(!robotC->isAlive());
 }
 TEST_F(GameController_test, hunt) {
   std::vector<Event *> aux;
@@ -106,22 +124,20 @@ TEST_F(GameController_test, time) {
     count++;
   }
   ASSERT_TRUE(std::abs(count - data.ticksPerSec) < 5);
-}/*
-TEST_F(GameController_test, timed_attack) {
+}
+TEST_F(GameController_test, timed_robot_attack) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
-  gameController.move(robotA->getId(), Position(250, 250));
+  gameController.attack(robotB->getId(), robotC->getId());
   std::chrono::duration<double> diff;
-  unsigned short count = 0;
   auto begin = std::chrono::high_resolution_clock::now();
-  while (robotB->isAlive()) {
+  while (robotC->isAlive()) {
     aux = gameController.tick();
     events.insert(events.end(), aux.begin(), aux.end());
-
-    count++;
   }
   auto end = std::chrono::high_resolution_clock::now();
   diff =
       std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
-  ASSERT_TRUE(std::abs(count - data.ticksPerSec) < 5);
-}*/
+  double diffScs = diff.count();
+  ASSERT_TRUE(std::abs(diffScs - 15) < 1);
+}

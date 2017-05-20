@@ -39,14 +39,31 @@ set(SOURCE_FILES
         z_tests/tests_model/AStar_test.cpp
         src/model/GameController.cpp
         src/model/GameController.h
-        #[[src/model/MovementEvent.cpp
-        src/model/MovementEvent.h
         src/model/UnitAttackEvent.cpp
         src/model/UnitAttackEvent.h
         src/model/Build.cpp
         src/model/Build.h
         src/model/BuildID.cpp
         src/model/BuildID.h
+        src/model/BuildType.h
+        src/model/UnitNotFoundException.cpp
+        src/model/UnitNotFoundException.h
+        src/model/UnitData.h
+        src/model/UnitFactory.cpp
+        src/model/UnitFactory.h
+        src/model/TerrainData.h
+        src/model/UnitMoveEvent.cpp
+        src/model/UnitMoveEvent.h
+        src/model/Event.cpp
+        src/model/Event.h
+        src/model/UnitDamageReceiveEvent.cpp
+        src/model/UnitDamageReceiveEvent.h
+        z_tests/tests_model/GameController_test.cpp
+        src/model/UnitDeathEvent.cpp
+        src/model/UnitDeathEvent.h
+        src/model/Vehicle.cpp
+        src/model/Vehicle.h
+        #[[
         src/model/BuildAttackEvent.cpp
         src/model/BuildAttackEvent.h
         z_sounds/Sound_event.cpp
@@ -63,15 +80,7 @@ set(SOURCE_FILES
         src/storage/Store_map.h
         z_tests/tests_sounds/basic_test.cpp
         z_tests/tests_storage/store_map_tests.cpp
-        src/model/ObjectMap.cpp
-        src/model/ObjectMap.h
-        src/model/Land.cpp
-        src/model/Land.h
-        src/model/MapBuilder.cpp
-        src/model/MapBuilder.h
-        src/model/Grunt.cpp
-        src/model/Grunt.h]]
-
+        ]]
         src/vista/Window.cpp
         src/vista/Window.h
         src/vista/Panel.cpp
@@ -80,6 +89,7 @@ set(SOURCE_FILES
         src/vista/Image.h
         src/vista/ObjectMapaVista.cpp
         src/vista/ObjectMapaVista.h
+        z_tests/tests_model/Vista_test.cpp
         src/vista/Vista.cpp
         src/vista/Vista.h
         src/vista/Sprite.cpp
@@ -114,7 +124,25 @@ set(SOURCE_FILES
         src/front_end/Timer.h
         src/front_end/Timer.cpp
 
-        z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h src/model/UnitMoveEvent.cpp src/model/UnitMoveEvent.h src/model/Event.cpp src/model/Event.h src/model/UnitAttackEvent.cpp src/model/UnitAttackEvent.h src/model/UnitDamageReceiveEvent.cpp src/model/UnitDamageReceiveEvent.h z_tests/tests_model/GameController_test.cpp src/model/UnitDeathEvent.cpp src/model/UnitDeathEvent.h src/model/Vehicle.cpp src/model/Vehicle.h)
+        z_tests/tests_model/Vista_test.cpp
+        z_tests/tests_model/GameController_test.cpp
+        src/model/UnitData.h
+        #src/model/RobotFactory.cpp
+        #src/model/RobotFactory.h
+        src/model/TerrainData.h
+        src/model/UnitMoveEvent.cpp
+        src/model/UnitMoveEvent.h
+        src/model/Event.cpp
+        src/model/Event.h
+        src/model/UnitAttackEvent.cpp
+        src/model/UnitAttackEvent.h
+        src/model/UnitDamageReceiveEvent.cpp
+        src/model/UnitDamageReceiveEvent.h
+        src/model/UnitDeathEvent.cpp
+        src/model/UnitDeathEvent.h
+        src/model/Vehicle.cpp
+        src/model/Vehicle.h)
+
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)
@@ -180,5 +208,4 @@ endif ()
 include_directories(cmake-build-debug/googletest-src/googlemock/include)
 include_directories(cmake-build-debug/googletest-src/googletest/include)
 target_link_libraries(${PROJECT_NAME} gtest gtest_main)
-
 target_link_libraries(${PROJECT_NAME} ${GTK3_LIBRARIES} ${GTKMM_LIBRARIES})
