@@ -63,16 +63,16 @@ set(SOURCE_FILES
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
         src/model/Vehicle.h
+        
+      #[[
         src/model/Player.cpp
         src/model/Player.h
-        src/model/Team.cpp
+      src/model/Team.cpp
         src/model/Team.h
         src/model/PlayerID.cpp
         src/model/PlayerID.h
         src/model/Territory.cpp
         src/model/Territory.h
-        #[[
-
         src/model/BuildAttackEvent.cpp
         src/model/BuildAttackEvent.h
         z_sounds/Sound_event.cpp
@@ -103,40 +103,35 @@ set(SOURCE_FILES
         src/view/Vista.h
         src/view/Sprite.cpp
         src/view/Sprite.h
-        src/front_end/Figures/Figure.h
-        src/front_end/Figures/Grunt.h
-        src/front_end/Figures/Grunt.cpp
-        src/front_end/Robot_Faces/Robot_Face.h
-        src/front_end/Robot_Faces/Robot_Face.cpp
-        src/front_end/Window_Borders/Border.h
-        src/front_end/Window_Borders/Left_Border.h
-        src/front_end/Window_Borders/Left_Border.cpp
-        src/front_end/Window_Borders/Lower_Border.h
-        src/front_end/Window_Borders/Lower_Border.cpp
-        src/front_end/Window_Borders/Lower_Left_Border.h
-        src/front_end/Window_Borders/Lower_Left_Border.cpp
-        src/front_end/Window_Borders/Lower_Right_Border.h
-        src/front_end/Window_Borders/Lower_Right_Border.cpp
-        src/front_end/Window_Borders/Right_Border.h
-        src/front_end/Window_Borders/Right_Border.cpp
-        src/front_end/Window_Borders/Upper_Border.h
-        src/front_end/Window_Borders/Upper_Border.cpp
-        src/front_end/Window_Borders/Upper_Left_Border.h
-        src/front_end/Window_Borders/Upper_Left_Border.cpp
-        src/front_end/Window_Borders/Upper_Right_Border.cpp
-        src/front_end/Window_Borders/Upper_Right_Border.h
-        src/front_end/Window_Borders/Window_Border.h
-        src/front_end/Window_Borders/Window_Border.cpp
-        src/front_end/Main_Window.h
-        src/front_end/Main_Window.cpp
         src/front_end/Timer.h
         src/front_end/Timer.cpp
-        z_tests/tests_front_end/FEnd_test.cpp
-        src/header_for_tests.h
-        )
+        ############
+        src/Exceptions/Front_end_exceptions/Front_end_exception.h
+        src/Exceptions/Front_end_exceptions/Front_end_exception.cpp
+        ############
+        z_tests/tests_model/Vista_test.cpp
+        z_tests/tests_model/GameController_test.cpp
+        src/model/UnitData.h
+        src/model/TerrainData.h
+        src/model/UnitMoveEvent.cpp
+        src/model/UnitMoveEvent.h
+        src/model/Event.cpp
+        src/model/Event.h
+        src/model/UnitAttackEvent.cpp
+        src/model/UnitAttackEvent.h
+        src/model/UnitDamageReceiveEvent.cpp
+        src/model/UnitDamageReceiveEvent.h
+        src/model/UnitDeathEvent.cpp
+        src/model/UnitDeathEvent.h
+        src/model/Vehicle.cpp
+        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Weapon_Img.cpp src/front_end/SDL_Interface/Weapon_Img.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/SDL_START.cpp src/SDL_START.h src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp src/Exceptions/Sdl_Exceptions/Sdl_Exception.h src/front_end/SDL_Interface/Side_Board.cpp src/front_end/SDL_Interface/Side_Board.h src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h)
 
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Exceptions)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Utils)
+
 
 #nota a futuro: la mayoria de esos flags del SDL2 vienen de ejecutar `sdl2-config --cflags --libs --static-libs` en la terminal (estan copipasteados). Habrá que ver como hacerlo bien a esto.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2 -lpthread -Wl,--no-undefined -lm -ldl -lasound -lm -ldl -lpthread -lpulse-simple -lpulse -lX11 -lXext -lXcursor -lXinerama -lXi -lXrandr -lXss -lXxf86vm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -lpthread -lrt")

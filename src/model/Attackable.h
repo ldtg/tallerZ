@@ -7,7 +7,7 @@
 class Attackable {
  public:
   virtual Position getCurrentPosition() const = 0;
-  virtual PlayerID getOwner() const = 0;
+  //virtual PlayerID getOwner() const = 0;
   virtual bool isAlive() const = 0;
   virtual bool isMoving() const = 0;
   virtual Position nextMovePosition() const = 0;

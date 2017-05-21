@@ -16,13 +16,9 @@
 
 class Unit : public Attackable {
  protected:
-  Unit(const Position &position,
-       const UnitData &data,
-       const UnitType &type, const PlayerID ownerID,
-       Team &team);
   const UnitID id;
-  PlayerID owner;
-  Team &team;
+ // PlayerID owner;
+ // Team &team;
   Position currentPosition;
   MovementState movState;
   const Weapon weapon;
@@ -35,15 +31,23 @@ class Unit : public Attackable {
   Attackable *hunted;
   std::vector<Position> movementsPositions;
   std::vector<unsigned short> damagesToReceive;
+  /*Unit(const Position &position,
+       const UnitData &data,
+       const UnitType &type, const PlayerID ownerID,
+       Team &team);
   Unit(const Position &current,
        const UnitData &data,
        const PlayerID ownerID,
-       Team &team);
+       Team &team);*/
+  Unit(const Position &position,
+       const UnitData &data,
+       const UnitType &type);
+  Unit(const Position &current,
+       const UnitData &data);
  public:
   virtual ~Unit();
   virtual UnitState getUnitState();
   virtual Position getCurrentPosition() const override;
-  virtual PlayerID getOwner() const;
   virtual Position nextMovePosition() const override;
   virtual unsigned long getHealth() const;
   virtual bool hasDamagesToReceive() const;
@@ -72,6 +76,7 @@ class Unit : public Attackable {
   UnitID getId() const;
   void addMove(const Position &position);
   bool canAttack(Attackable *attackable);
+  //virtual PlayerID getOwner() const;
 };
 
 #endif //TALLERZ_UNIT_H
