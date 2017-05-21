@@ -123,7 +123,12 @@ set(SOURCE_FILES
         src/front_end/Main_Window.cpp
         src/front_end/Timer.h
         src/front_end/Timer.cpp
-
+        ############
+        src/front_end/Front_end_exceptions/Front_end_exception.h
+        src/front_end/Front_end_exceptions/Front_end_exception.cpp
+        src/front_end/SDL_Interface/Main_Window.h
+        src/front_end/SDL_Interface/Main_Window.cpp
+        ############
         z_tests/tests_model/Vista_test.cpp
         z_tests/tests_model/GameController_test.cpp
         src/model/UnitData.h
@@ -141,7 +146,7 @@ set(SOURCE_FILES
         src/model/UnitDeathEvent.cpp
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
-        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h)
+        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/front_end/SDL_Interface/Player_Interface.cpp src/front_end/SDL_Interface/Player_Interface.h)
 
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
