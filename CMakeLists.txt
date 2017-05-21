@@ -64,6 +64,14 @@ set(SOURCE_FILES
         src/model/Vehicle.cpp
         src/model/Vehicle.h
         #[[
+        src/model/Player.cpp
+        src/model/Player.h
+        src/model/Team.cpp
+        src/model/Team.h
+        src/model/PlayerID.cpp
+        src/model/PlayerID.h
+        src/model/Territory.cpp
+        src/model/Territory.h
         src/model/BuildAttackEvent.cpp
         src/model/BuildAttackEvent.h
         z_sounds/Sound_event.cpp
@@ -94,7 +102,6 @@ set(SOURCE_FILES
         src/vista/Vista.h
         src/vista/Sprite.cpp
         src/vista/Sprite.h
-
         src/front_end/Figures/Figure.h
         src/front_end/Figures/Grunt.h
         src/front_end/Figures/Grunt.cpp
@@ -123,25 +130,9 @@ set(SOURCE_FILES
         src/front_end/Main_Window.cpp
         src/front_end/Timer.h
         src/front_end/Timer.cpp
-
-        z_tests/tests_model/Vista_test.cpp
-        z_tests/tests_model/GameController_test.cpp
-        src/model/UnitData.h
-        #src/model/RobotFactory.cpp
-        #src/model/RobotFactory.h
-        src/model/TerrainData.h
-        src/model/UnitMoveEvent.cpp
-        src/model/UnitMoveEvent.h
-        src/model/Event.cpp
-        src/model/Event.h
-        src/model/UnitAttackEvent.cpp
-        src/model/UnitAttackEvent.h
-        src/model/UnitDamageReceiveEvent.cpp
-        src/model/UnitDamageReceiveEvent.h
-        src/model/UnitDeathEvent.cpp
-        src/model/UnitDeathEvent.h
-        src/model/Vehicle.cpp
-        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h)
+        z_tests/tests_front_end/FEnd_test.cpp
+        src/header_for_tests.h
+        )
 
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

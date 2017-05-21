@@ -3,9 +3,13 @@
 
 #include "Attackable.h"
 #include "BuildID.h"
+#include "Player.h"
 class Build : public Attackable{
  private:
   const BuildID id;
+  const unsigned short techLevel;
+  const unsigned short health;
+  Player &owner;
 
 };
 
