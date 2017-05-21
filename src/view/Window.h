@@ -17,7 +17,6 @@ class Window {
   SDL_Renderer *getRender() const;
   SDL_Window *getWindow() const;
   void update();
-
 };
 
 #endif //WINDOW_H

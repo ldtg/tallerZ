@@ -12,5 +12,6 @@
 
 SDL_Surface * load_image(const std::string& path);
 
+SDL_Texture * load_texture(const std::string& path, SDL_Window * window);
 
 #endif //TALLERZ_SDL_UTILS_H

@@ -21,9 +21,7 @@ class Main_Window {
   ~Main_Window();
 
   Window * get_window() const;
-
-  void load_base_surface();
-
+  
   SDL_Surface * get_base_surface() const;
 
 };

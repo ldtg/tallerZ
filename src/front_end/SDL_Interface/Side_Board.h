@@ -13,13 +13,13 @@
 
 class Side_Board {
  private:
-  SDL_Surface * side_board = NULL;
+  SDL_Texture * side_board = NULL;
  public:
-  Side_Board();
+  Side_Board(Window * window);
 
-  void load_side_board(SDL_Surface * surface);
+  void load_side_board(Window * window);
 
-  SDL_Surface *get_side_board();
+  SDL_Texture *get_side_board();
 };
 
 #endif //TALLERZ_SIDE_BOARD_H
