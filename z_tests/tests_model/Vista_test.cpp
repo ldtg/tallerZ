@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
-#include "../../src/vista/Vista.h"
+#include "../../src/view/Vista.h"
+#include "../../src/controller/Controller.h"
 #include <SDL2/SDL_image.h>
 #include <thread>
 
@@ -8,10 +9,6 @@
 #include <ratio>
 
 TEST(VistaTest, Window) {
-  //Main loop flag
-  bool quit = false;
-  //Event handler
-  SDL_Event e;
 
   /* ---------- TERRENOS ---------- */
 
@@ -72,18 +69,33 @@ TEST(VistaTest, Window) {
   Map myMap(stdmap, 640, 480);
   myMap.setUnits(units);
 
-
   Vista vista(myMap);
 
+
+  //Main loop flag
+//  bool quit = false;
+  //Event handler
+  SDL_Event e;
+
+  Controller controller(vista);
+
   //While application is running
-  while( !quit ) {
+  while(!vista.quit()) {
 
     //Handle events on queue
     while( SDL_PollEvent( &e ) != 0 ) {
+      controller.handle(&e);
+/*
       //User requests quit
-      if( e.type == SDL_QUIT ) {
+      if (e.type == SDL_QUIT) {
         quit = true;
       }
+      if (e.type == SDL_MOUSEBUTTONUP) {
+        int x, y;
+        SDL_GetMouseState(&x, &y);
+        std::cout << "(" << x << "," << y << ")" << std::endl;
+      }
+*/
     }
     vista.update();
   }

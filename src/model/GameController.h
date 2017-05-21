@@ -11,19 +11,19 @@
 class GameController {
  private:
   Map map;
-  std::map<UnitID, Unit*> units;
- // std::map<BuildID, Build*> builds;
-  void move(Unit *unit, std::vector<Event*> &events) const;
-  void hunt(Unit *unit, std::vector<Event*> &events) const;
-  void capture(Unit *unit, std::vector<Event*> &events) const;
+  std::map<UnitID, Unit *> units;
+  // std::map<BuildID, Build*> builds;
+  void move(Unit *unit, std::vector<Event *> &events) const;
+  void hunt(Unit *unit, std::vector<Event *> &events) const;
+  void capture(Unit *unit, std::vector<Event *> &events) const;
   void unitReceiveDamage(Unit *current, std::vector<Event *> &events) const;
  public:
-  GameController(const Map &map, const std::map<UnitID, Unit*> &units);
+  GameController(const Map &map, const std::map<UnitID, Unit *> &units);
   void move(const UnitID &unit, const Position &position);
-  void attack(const UnitID &attacker,const UnitID &attacked);
- // void attack(UnitID attacker, BuildID attacked);
+  void attack(const UnitID &attacker, const UnitID &attacked);
+  //void attack(UnitID attacker, BuildID attacked);
   //void capture(UnitID unit, Position position);
-  std::vector<Event*> tick();
+  std::vector<Event *> tick();
 
   void updateMap(std::vector<Event *> vector);
   void removeDeaths(const std::vector<Unit *> &vector);

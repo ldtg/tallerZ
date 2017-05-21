@@ -6,6 +6,7 @@
 #include <vector>
 
 Vista::Vista(const Map &map) : window(), panel(window.getRender()) {
+  _quit = false;
   createInitialTerrainVista(map.getMap());
   createInitialUnitVista(map.getUnits());
 }
@@ -36,33 +37,6 @@ void Vista::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
 }
 
 void Vista::update() {
-/*
-    int mapWidht = map.getWidht();
-    int mapHeight = map.getHeight();
-    int xVista = 0;
-    int yVista = 0;
-    ObjectMapaVista *background = NULL;
-    ObjectMapaVista *objectVista = NULL;
-    std::vector<int> objectVistaWidht(mapWidht, 0);
-
-    for (int xModel=0; xModel <= mapWidht; xModel++) {
-        for (int yModel=0; yModel < mapHeight; yModel++) {
-            xVista = objectVistaWidht[yModel];
-
-            std::vector<std::string> type = map.getTypePos(xModel, yModel);
-            background = getObjectVista(type[0]);
-            objectVista = getObjectVista(type[1]);
-
-            add(background, xVista, yVista);
-            //TODO: PONER (X,Y) DEL OBJ EN MAPA.
-            add(objectVista, xModel, yModel);
-
-            objectVistaWidht[yModel] += background->getWidth();
-            yVista += background->getHeight();
-        }
-        yVista = 0;
-    }
-*/
   for (auto const &posTerrain : terrainsVista) {
       panel.add(posTerrain.second);
   }
@@ -84,7 +58,7 @@ void Vista::add(ObjectMapaVista *objectVista, long x, long y) {
 
 ObjectMapaVista* Vista::getTerrainVista(int type) {
     if (type == LAND) {
-        return new Image("../src/vista/images/terrain/land.png");
+        return new Image("../src/view/images/terrain/land.png");
     }
     else {
         return nullptr;
@@ -93,9 +67,17 @@ ObjectMapaVista* Vista::getTerrainVista(int type) {
 
 ObjectMapaVista* Vista::getUnitVista(int type) {
   if (type == R_GRUNT) {
-    return new Sprite("../src/vista/images/terrain/fire_blue_r000_n", 5);
+    return new Sprite("../src/view/images/terrain/fire_blue_r000_n", 3);
   }
   else {
     return nullptr;
   }
+}
+
+void Vista::setQuit() {
+  _quit = true;
+}
+
+bool Vista::quit() {
+  return _quit;
 }

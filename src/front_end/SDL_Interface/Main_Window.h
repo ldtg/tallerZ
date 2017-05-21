@@ -5,7 +5,7 @@
 #ifndef TALLERZ_MAIN_WINDOW2_H
 #define TALLERZ_MAIN_WINDOW2_H
 
-#include "../../vista/Window.h"
+#include "../../view/Window.h"
 #include "front_end/SDL_Interface/Side_Board.h"
 #include "Front_end_exceptions/Front_end_exception.h"
 

@@ -8,7 +8,7 @@
 #include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_image.h>
 #include <string>
-#include <vista/Window.h>
+#include <view/Window.h>
 #include "Sdl_Utils.h"
 
 class Side_Board {

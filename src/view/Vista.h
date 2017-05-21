@@ -12,6 +12,7 @@ class Vista {
   Panel panel;
   std::map<Position, ObjectMapaVista*> terrainsVista;
   std::map<Position, ObjectMapaVista*> unitsVista;
+  bool _quit;
 
   void createInitialTerrainVista(const std::map<Position, Tile> &map);
   void createInitialUnitVista(const std::map<UnitID, UnitState> &units);
@@ -21,7 +22,10 @@ class Vista {
  public:
   Vista(const Map &map);
   ~Vista();
+  void setQuit();
+  bool quit();
   void update();
+
 };
 
 

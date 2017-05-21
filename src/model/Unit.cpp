@@ -35,10 +35,12 @@ Position Unit::nextMovePosition() const {
 }
 void Unit::receiveDamages() {
   for (unsigned short damage: damagesToReceive) {
-    if (health >= damage)
+    if (health >= damage) {
       this->health -= damage;
-    else
+    } else {
       this->health = 0;
+      owner.subUnit();
+    }
   }
   damagesToReceive.clear();
 }
@@ -151,4 +153,10 @@ Unit::Unit(const Position &position,
 }
 unsigned short Unit::getRange() const {
   return range;
+}
+PlayerID Unit::getOwner() const {
+  return owner.getID();
+}
+bool Unit::canAttack(Attackable *attackable) {
+  this->team.isEnemy(attackable->getOwner());
 }

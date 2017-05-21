@@ -20,6 +20,8 @@ void GameController::attack(const UnitID &attackerId,
                             const UnitID &attackedId) {
   Unit *attacker = units.at(attackerId);
   Attackable *attacked = units.at(attackedId);
+  if(!attacker->canAttack(attacked))
+    return;
   if (attacker->isInRange(attacked)
       && map.canPass(attacker->getCurrentPosition(),
                      attacked->getCurrentPosition())) {
