@@ -72,20 +72,20 @@ set(SOURCE_FILES
         src/model/Grunt.cpp
         src/model/Grunt.h]]
 
-        src/vista/Window.cpp
-        src/vista/Window.h
-        src/vista/Panel.cpp
-        src/vista/Panel.h
-        src/vista/Image.cpp
-        src/vista/Image.h
-        src/vista/ObjectMapaVista.cpp
-        src/vista/ObjectMapaVista.h
-        src/vista/Vista.cpp
-        src/vista/Vista.h
-        src/vista/Sprite.cpp
-        src/vista/Sprite.h
+        src/view/Window.cpp
+        src/view/Window.h
+        src/view/Panel.cpp
+        src/view/Panel.h
+        src/view/Image.cpp
+        src/view/Image.h
+        src/view/ObjectMapaVista.cpp
+        src/view/ObjectMapaVista.h
+        src/view/Vista.cpp
+        src/view/Vista.h
+        src/view/Sprite.cpp
+        src/view/Sprite.h
 
-        z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h src/model/UnitMoveEvent.cpp src/model/UnitMoveEvent.h src/model/Event.cpp src/model/Event.h src/model/UnitAttackEvent.cpp src/model/UnitAttackEvent.h src/model/UnitDamageReceiveEvent.cpp src/model/UnitDamageReceiveEvent.h z_tests/tests_model/GameController_test.cpp src/model/UnitDeathEvent.cpp src/model/UnitDeathEvent.h src/model/Vehicle.cpp src/model/Vehicle.h)
+        z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h src/model/UnitMoveEvent.cpp src/model/UnitMoveEvent.h src/model/Event.cpp src/model/Event.h src/model/UnitAttackEvent.cpp src/model/UnitAttackEvent.h src/model/UnitDamageReceiveEvent.cpp src/model/UnitDamageReceiveEvent.h z_tests/tests_model/GameController_test.cpp src/model/UnitDeathEvent.cpp src/model/UnitDeathEvent.h src/model/Vehicle.cpp src/model/Vehicle.h src/controller/Controller.cpp src/controller/Controller.h src/controller/Handler.cpp src/controller/Handler.h src/controller/Quit.cpp src/controller/Quit.h src/controller/Mouse.cpp src/controller/Mouse.h src/controller/HandlerFactory.cpp src/controller/HandlerFactory.h src/controller/QuitEvent.cpp src/controller/QuitEvent.h src/controller/NullHandler.cpp src/controller/NullHandler.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)
