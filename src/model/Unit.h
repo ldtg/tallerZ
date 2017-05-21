@@ -17,13 +17,14 @@
 class Unit : public Attackable {
  protected:
   Unit(const Position &position,
-         const UnitData &data,
-         const UnitType &type);
+       const UnitData &data,
+       const UnitType &type, const PlayerID ownerID,
+       Team &team);
   const UnitID id;
+  PlayerID owner;
+  Team &team;
   Position currentPosition;
   MovementState movState;
-  Player &owner;
-  Team &team;
   const Weapon weapon;
   const unsigned short range;
   const unsigned short baseSpeed;
@@ -34,7 +35,10 @@ class Unit : public Attackable {
   Attackable *hunted;
   std::vector<Position> movementsPositions;
   std::vector<unsigned short> damagesToReceive;
-  Unit(const Position &current,const UnitData &data);
+  Unit(const Position &current,
+       const UnitData &data,
+       const PlayerID ownerID,
+       Team &team);
  public:
   virtual ~Unit();
   virtual UnitState getUnitState();
@@ -50,7 +54,8 @@ class Unit : public Attackable {
   virtual void capture(const std::vector<Position> &movementsPositions);
   virtual void doMoveWithSpeed(float terrainFactor);
   virtual void doOneMove();
-  virtual void hunt(const std::vector<Position> &movementsPositions, Attackable *other);
+  virtual void hunt(const std::vector<Position> &movementsPositions,
+                    Attackable *other);
   virtual void attack(Attackable *other);
   virtual bool doAttack();
   virtual void receiveAttack(const Weapon &weapon) override;

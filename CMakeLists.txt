@@ -63,7 +63,6 @@ set(SOURCE_FILES
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
         src/model/Vehicle.h
-        #[[
         src/model/Player.cpp
         src/model/Player.h
         src/model/Team.cpp
@@ -72,6 +71,8 @@ set(SOURCE_FILES
         src/model/PlayerID.h
         src/model/Territory.cpp
         src/model/Territory.h
+        #[[
+
         src/model/BuildAttackEvent.cpp
         src/model/BuildAttackEvent.h
         z_sounds/Sound_event.cpp
@@ -89,19 +90,19 @@ set(SOURCE_FILES
         z_tests/tests_sounds/basic_test.cpp
         z_tests/tests_storage/store_map_tests.cpp
         ]]
-        src/vista/Window.cpp
-        src/vista/Window.h
-        src/vista/Panel.cpp
-        src/vista/Panel.h
-        src/vista/Image.cpp
-        src/vista/Image.h
-        src/vista/ObjectMapaVista.cpp
-        src/vista/ObjectMapaVista.h
+        src/view/Window.cpp
+        src/view/Window.h
+        src/view/Panel.cpp
+        src/view/Panel.h
+        src/view/Image.cpp
+        src/view/Image.h
+        src/view/ObjectMapaVista.cpp
+        src/view/ObjectMapaVista.h
         z_tests/tests_model/Vista_test.cpp
-        src/vista/Vista.cpp
-        src/vista/Vista.h
-        src/vista/Sprite.cpp
-        src/vista/Sprite.h
+        src/view/Vista.cpp
+        src/view/Vista.h
+        src/view/Sprite.cpp
+        src/view/Sprite.h
         src/front_end/Figures/Figure.h
         src/front_end/Figures/Grunt.h
         src/front_end/Figures/Grunt.cpp

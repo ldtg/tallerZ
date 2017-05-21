@@ -39,7 +39,7 @@ void Unit::receiveDamages() {
       this->health -= damage;
     } else {
       this->health = 0;
-      owner.subUnit();
+      team.subUnit(owner);
     }
   }
   damagesToReceive.clear();
@@ -124,8 +124,12 @@ void Unit::addMove(const Position &position) {
 bool Unit::hasDamagesToReceive() const {
   return !damagesToReceive.empty();
 }
-Unit::Unit(const Position &current, const UnitData &data)
-    : currentPosition(current),
+Unit::Unit(const Position &current,
+           const UnitData &data,
+           const PlayerID ownerID,
+           Team &team)
+    : owner(ownerID), team(team),
+      currentPosition(current),
       weapon(data.weapon),
       attackCounterBase(data.ticksUntilFire),
       attackCounterActual(attackCounterBase),
@@ -139,23 +143,26 @@ Unit::Unit(const Position &current, const UnitData &data)
 }
 Unit::Unit(const Position &position,
            const UnitData &data,
-           const UnitType &type) : currentPosition(position),
-                                   weapon(data.weapon),
-                                   attackCounterBase(data.ticksUntilFire),
-                                   attackCounterActual(attackCounterBase),
-                                   baseSpeed(data.speed),
-                                   range(data.range),
-                                   health(data.health),
-                                   id(data.type, type),
-                                   movState(),
-                                   hunted(nullptr) {
+           const UnitType &type,
+           const PlayerID ownerID,
+           Team &team) : owner(ownerID), team(team),
+                         currentPosition(position),
+                         weapon(data.weapon),
+                         attackCounterBase(data.ticksUntilFire),
+                         attackCounterActual(attackCounterBase),
+                         baseSpeed(data.speed),
+                         range(data.range),
+                         health(data.health),
+                         id(data.type, type),
+                         movState(),
+                         hunted(nullptr) {
 
 }
 unsigned short Unit::getRange() const {
   return range;
 }
 PlayerID Unit::getOwner() const {
-  return owner.getID();
+  return owner;
 }
 bool Unit::canAttack(Attackable *attackable) {
   this->team.isEnemy(attackable->getOwner());
