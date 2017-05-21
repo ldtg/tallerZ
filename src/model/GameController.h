@@ -6,7 +6,7 @@
 #include "UnitID.h"
 #include "BuildID.h"
 #include "Build.h"
-#include "Event.h"
+#include "model/Events/Event.h"
 
 class GameController {
  private:

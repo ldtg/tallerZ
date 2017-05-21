@@ -1,7 +1,7 @@
 #ifndef TALLERZ_UNITATTACKEVENT_H
 #define TALLERZ_UNITATTACKEVENT_H
 
-#include "Event.h"
+#include "model/Events/Event.h"
 class UnitAttackEvent : public Event{
  private:
   UnitID attacker;

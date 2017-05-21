@@ -1,7 +1,7 @@
 #ifndef TALLERZ_DAMAGERECEIVEEVENT_H
 #define TALLERZ_DAMAGERECEIVEEVENT_H
 
-#include "Event.h"
+#include "model/Events/Event.h"
 class UnitDamageReceiveEvent : public Event {
  private:
   UnitID id;

@@ -54,8 +54,8 @@ set(SOURCE_FILES
         src/model/TerrainData.h
         src/model/UnitMoveEvent.cpp
         src/model/UnitMoveEvent.h
-        src/model/Event.cpp
-        src/model/Event.h
+        src/model/Events/Event.cpp
+        src/model/Events/Event.h
         src/model/UnitDamageReceiveEvent.cpp
         src/model/UnitDamageReceiveEvent.h
         z_tests/tests_model/GameController_test.cpp
@@ -115,8 +115,8 @@ set(SOURCE_FILES
         src/model/TerrainData.h
         src/model/UnitMoveEvent.cpp
         src/model/UnitMoveEvent.h
-        src/model/Event.cpp
-        src/model/Event.h
+        src/model/Events/Event.cpp
+        src/model/Events/Event.h
         src/model/UnitAttackEvent.cpp
         src/model/UnitAttackEvent.h
         src/model/UnitDamageReceiveEvent.cpp
@@ -124,7 +124,7 @@ set(SOURCE_FILES
         src/model/UnitDeathEvent.cpp
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
-        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Weapon_Img.cpp src/front_end/SDL_Interface/Weapon_Img.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/SDL_START.cpp src/SDL_START.h src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp src/Exceptions/Sdl_Exceptions/Sdl_Exception.h src/front_end/SDL_Interface/Side_Board.cpp src/front_end/SDL_Interface/Side_Board.h src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h)
+        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Weapon_Img.cpp src/front_end/SDL_Interface/Weapon_Img.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/SDL_START.cpp src/SDL_START.h src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp src/Exceptions/Sdl_Exceptions/Sdl_Exception.h src/front_end/SDL_Interface/Side_Board.cpp src/front_end/SDL_Interface/Side_Board.h src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h src/front_end/SDL_Interface/Robot_Face.cpp src/front_end/SDL_Interface/Robot_Face.h src/model/Events/Pointer/Click.cpp src/model/Events/Pointer/Click.h src/model/Events/EventHandler.cpp src/model/Events/EventHandler.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
