@@ -95,39 +95,12 @@ set(SOURCE_FILES
         src/vista/Sprite.cpp
         src/vista/Sprite.h
 
-        src/front_end/Figures/Figure.h
-        src/front_end/Figures/Grunt.h
-        src/front_end/Figures/Grunt.cpp
-        src/front_end/Robot_Faces/Robot_Face.h
-        src/front_end/Robot_Faces/Robot_Face.cpp
-        src/front_end/Window_Borders/Border.h
-        src/front_end/Window_Borders/Left_Border.h
-        src/front_end/Window_Borders/Left_Border.cpp
-        src/front_end/Window_Borders/Lower_Border.h
-        src/front_end/Window_Borders/Lower_Border.cpp
-        src/front_end/Window_Borders/Lower_Left_Border.h
-        src/front_end/Window_Borders/Lower_Left_Border.cpp
-        src/front_end/Window_Borders/Lower_Right_Border.h
-        src/front_end/Window_Borders/Lower_Right_Border.cpp
-        src/front_end/Window_Borders/Right_Border.h
-        src/front_end/Window_Borders/Right_Border.cpp
-        src/front_end/Window_Borders/Upper_Border.h
-        src/front_end/Window_Borders/Upper_Border.cpp
-        src/front_end/Window_Borders/Upper_Left_Border.h
-        src/front_end/Window_Borders/Upper_Left_Border.cpp
-        src/front_end/Window_Borders/Upper_Right_Border.cpp
-        src/front_end/Window_Borders/Upper_Right_Border.h
-        src/front_end/Window_Borders/Window_Border.h
-        src/front_end/Window_Borders/Window_Border.cpp
-        src/front_end/Main_Window.h
-        src/front_end/Main_Window.cpp
+
         src/front_end/Timer.h
         src/front_end/Timer.cpp
         ############
-        src/front_end/Front_end_exceptions/Front_end_exception.h
-        src/front_end/Front_end_exceptions/Front_end_exception.cpp
-        src/front_end/SDL_Interface/Main_Window.h
-        src/front_end/SDL_Interface/Main_Window.cpp
+        src/Exceptions/Front_end_exceptions/Front_end_exception.h
+        src/Exceptions/Front_end_exceptions/Front_end_exception.cpp
         ############
         z_tests/tests_model/Vista_test.cpp
         z_tests/tests_model/GameController_test.cpp
@@ -146,11 +119,14 @@ set(SOURCE_FILES
         src/model/UnitDeathEvent.cpp
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
-        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/front_end/SDL_Interface/Player_Interface.cpp src/front_end/SDL_Interface/Player_Interface.h)
+        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Weapon_Img.cpp src/front_end/SDL_Interface/Weapon_Img.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/SDL_START.cpp src/SDL_START.h src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp src/Exceptions/Sdl_Exceptions/Sdl_Exception.h src/front_end/SDL_Interface/Side_Board.cpp src/front_end/SDL_Interface/Side_Board.h src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h)
 
-
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Exceptions)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Utils)
+
 
 #nota a futuro: la mayoria de esos flags del SDL2 vienen de ejecutar `sdl2-config --cflags --libs --static-libs` en la terminal (estan copipasteados). Habrá que ver como hacerlo bien a esto.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2 -lpthread -Wl,--no-undefined -lm -ldl -lasound -lm -ldl -lpthread -lpulse-simple -lpulse -lX11 -lXext -lXcursor -lXinerama -lXi -lXrandr -lXss -lXxf86vm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -lpthread -lrt")

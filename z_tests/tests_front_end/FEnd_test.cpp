@@ -3,8 +3,8 @@
 //
 
 #include <gtest/gtest.h>
-#include "../../src/front_end/SDL_Interface/Main_Window.h"
-
+#include "front_end/SDL_Interface/Main_Window.h"
+#include "SDL_START.h"
 /*
 TEST(FrontEndTest,Main_Window){
   Glib::RefPtr<Gtk::Application> app = Gtk::Application::create(my_argc, my_argv);
@@ -16,6 +16,7 @@ TEST(FrontEndTest,Main_Window){
 */
 
 TEST(FrontEndTestWithSQL,Main_Window){
+  SDL_START();
   Main_Window main_window;
   SDL_Delay(3000);
 }
