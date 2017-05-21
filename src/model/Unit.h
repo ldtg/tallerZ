@@ -11,12 +11,19 @@
 #include "Attackable.h"
 #include "UnitData.h"
 #include "TerrainData.h"
+#include "Player.h"
+#include "Team.h"
 
 class Unit : public Attackable {
  protected:
+  Unit(const Position &position,
+         const UnitData &data,
+         const UnitType &type);
   const UnitID id;
   Position currentPosition;
   MovementState movState;
+  Player &owner;
+  Team &team;
   const Weapon weapon;
   const unsigned short range;
   const unsigned short baseSpeed;
@@ -32,6 +39,7 @@ class Unit : public Attackable {
   virtual ~Unit();
   virtual UnitState getUnitState();
   virtual Position getCurrentPosition() const override;
+  virtual PlayerID getOwner() const;
   virtual Position nextMovePosition() const override;
   virtual unsigned long getHealth() const;
   virtual bool hasDamagesToReceive() const;
@@ -55,8 +63,10 @@ class Unit : public Attackable {
   bool isHunting();
   Attackable *getHunted();
   Weapon getWeapon();
+  unsigned short getRange() const;
   UnitID getId() const;
   void addMove(const Position &position);
+  bool canAttack(Attackable *attackable);
 };
 
 #endif //TALLERZ_UNIT_H

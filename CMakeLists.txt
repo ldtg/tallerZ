@@ -39,14 +39,39 @@ set(SOURCE_FILES
         z_tests/tests_model/AStar_test.cpp
         src/model/GameController.cpp
         src/model/GameController.h
-        #[[src/model/MovementEvent.cpp
-        src/model/MovementEvent.h
         src/model/UnitAttackEvent.cpp
         src/model/UnitAttackEvent.h
         src/model/Build.cpp
         src/model/Build.h
         src/model/BuildID.cpp
         src/model/BuildID.h
+        src/model/BuildType.h
+        src/model/UnitNotFoundException.cpp
+        src/model/UnitNotFoundException.h
+        src/model/UnitData.h
+        src/model/UnitFactory.cpp
+        src/model/UnitFactory.h
+        src/model/TerrainData.h
+        src/model/UnitMoveEvent.cpp
+        src/model/UnitMoveEvent.h
+        src/model/Event.cpp
+        src/model/Event.h
+        src/model/UnitDamageReceiveEvent.cpp
+        src/model/UnitDamageReceiveEvent.h
+        z_tests/tests_model/GameController_test.cpp
+        src/model/UnitDeathEvent.cpp
+        src/model/UnitDeathEvent.h
+        src/model/Vehicle.cpp
+        src/model/Vehicle.h
+        #[[
+        src/model/Player.cpp
+        src/model/Player.h
+        src/model/Team.cpp
+        src/model/Team.h
+        src/model/PlayerID.cpp
+        src/model/PlayerID.h
+        src/model/Territory.cpp
+        src/model/Territory.h
         src/model/BuildAttackEvent.cpp
         src/model/BuildAttackEvent.h
         z_sounds/Sound_event.cpp
@@ -63,35 +88,72 @@ set(SOURCE_FILES
         src/storage/Store_map.h
         z_tests/tests_sounds/basic_test.cpp
         z_tests/tests_storage/store_map_tests.cpp
-        src/model/ObjectMap.cpp
-        src/model/ObjectMap.h
-        src/model/Land.cpp
-        src/model/Land.h
-        src/model/MapBuilder.cpp
-        src/model/MapBuilder.h
-        src/model/Grunt.cpp
-        src/model/Grunt.h]]
-
-        src/view/Window.cpp
-        src/view/Window.h
-        src/view/Panel.cpp
-        src/view/Panel.h
-        src/view/Image.cpp
-        src/view/Image.h
-        src/view/ObjectMapaVista.cpp
-        src/view/ObjectMapaVista.h
-        src/view/Vista.cpp
-        src/view/Vista.h
-        src/view/Sprite.cpp
-        src/view/Sprite.h
-
-        z_tests/tests_model/Vista_test.cpp src/model/UnitData.h src/model/RobotFactory.cpp src/model/RobotFactory.h src/model/TerrainData.h src/model/UnitMoveEvent.cpp src/model/UnitMoveEvent.h src/model/Event.cpp src/model/Event.h src/model/UnitAttackEvent.cpp src/model/UnitAttackEvent.h src/model/UnitDamageReceiveEvent.cpp src/model/UnitDamageReceiveEvent.h z_tests/tests_model/GameController_test.cpp src/model/UnitDeathEvent.cpp src/model/UnitDeathEvent.h src/model/Vehicle.cpp src/model/Vehicle.h src/controller/Controller.cpp src/controller/Controller.h src/controller/Handler.cpp src/controller/Handler.h src/controller/Quit.cpp src/controller/Quit.h src/controller/Mouse.cpp src/controller/Mouse.h src/controller/HandlerFactory.cpp src/controller/HandlerFactory.h src/controller/QuitEvent.cpp src/controller/QuitEvent.h src/controller/NullHandler.cpp src/controller/NullHandler.h)
+        ]]
+        src/vista/Window.cpp
+        src/vista/Window.h
+        src/vista/Panel.cpp
+        src/vista/Panel.h
+        src/vista/Image.cpp
+        src/vista/Image.h
+        src/vista/ObjectMapaVista.cpp
+        src/vista/ObjectMapaVista.h
+        z_tests/tests_model/Vista_test.cpp
+        src/vista/Vista.cpp
+        src/vista/Vista.h
+        src/vista/Sprite.cpp
+        src/vista/Sprite.h
+        src/front_end/Figures/Figure.h
+        src/front_end/Figures/Grunt.h
+        src/front_end/Figures/Grunt.cpp
+        src/front_end/Robot_Faces/Robot_Face.h
+        src/front_end/Robot_Faces/Robot_Face.cpp
+        src/front_end/Window_Borders/Border.h
+        src/front_end/Window_Borders/Left_Border.h
+        src/front_end/Window_Borders/Left_Border.cpp
+        src/front_end/Window_Borders/Lower_Border.h
+        src/front_end/Window_Borders/Lower_Border.cpp
+        src/front_end/Window_Borders/Lower_Left_Border.h
+        src/front_end/Window_Borders/Lower_Left_Border.cpp
+        src/front_end/Window_Borders/Lower_Right_Border.h
+        src/front_end/Window_Borders/Lower_Right_Border.cpp
+        src/front_end/Window_Borders/Right_Border.h
+        src/front_end/Window_Borders/Right_Border.cpp
+        src/front_end/Window_Borders/Upper_Border.h
+        src/front_end/Window_Borders/Upper_Border.cpp
+        src/front_end/Window_Borders/Upper_Left_Border.h
+        src/front_end/Window_Borders/Upper_Left_Border.cpp
+        src/front_end/Window_Borders/Upper_Right_Border.cpp
+        src/front_end/Window_Borders/Upper_Right_Border.h
+        src/front_end/Window_Borders/Window_Border.h
+        src/front_end/Window_Borders/Window_Border.cpp
+        src/front_end/Main_Window.h
+        src/front_end/Main_Window.cpp
+        src/front_end/Timer.h
+        src/front_end/Timer.cpp
+        z_tests/tests_front_end/FEnd_test.cpp
+        src/header_for_tests.h
+        )
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)
 
 #nota a futuro: la mayoria de esos flags del SDL2 vienen de ejecutar `sdl2-config --cflags --libs --static-libs` en la terminal (estan copipasteados). Habrá que ver como hacerlo bien a esto.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2 -lpthread -Wl,--no-undefined -lm -ldl -lasound -lm -ldl -lpthread -lpulse-simple -lpulse -lX11 -lXext -lXcursor -lXinerama -lXi -lXrandr -lXss -lXxf86vm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -lpthread -lrt")
+
+#gtkmm-3.0
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -I/usr/include/gtkmm-3.0 -I/usr/lib/x86_64-linux-gnu/gtkmm-3.0/include -I/usr/include/atkmm-1.6 -I/usr/include/giomm-2.4 -I/usr/lib/x86_64-linux-gnu/giomm-2.4/include -I/usr/include/pangomm-1.4 -I/usr/lib/x86_64-linux-gnu/pangomm-1.4/include -I/usr/include/gtk-3.0 -I/usr/include/cairomm-1.0 -I/usr/lib/x86_64-linux-gnu/cairomm-1.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gtk-3.0/unix-print -I/usr/include/gdkmm-3.0 -I/usr/lib/x86_64-linux-gnu/gdkmm-3.0/include -I/usr/include/atk-1.0 -I/usr/include/glibmm-2.4 -I/usr/lib/x86_64-linux-gnu/glibmm-2.4/include -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sigc++-2.0 -I/usr/lib/x86_64-linux-gnu/sigc++-2.0/include -I/usr/include/pango-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/harfbuzz -lgtkmm-3.0 -latkmm-1.6 -lgdkmm-3.0 -lgiomm-2.4 -lpangomm-1.4 -lgtk-3 -lglibmm-2.4 -lcairomm-1.0 -lgdk-3 -latk-1.0 -lgio-2.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo-gobject -lpango-1.0 -lcairo -lsigc-2.0 -lgobject-2.0 -lglib-2.0")
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
+pkg_check_modules(GTKMM gtkmm-3.0)
+
+include_directories(${GTK3_INCLUDE_DIRS}
+        ${GTKMM_INCLUDE_DIRS})
+
+link_directories(${GTK3_LIBRARY_DIRS}
+        ${GTKMM_LIBRARY_DIRS})
+
+add_definitions(${GTK3_CFLAGS_OTHER})
 
 add_executable(tallerZ ${SOURCE_FILES})
 
@@ -136,3 +198,4 @@ endif ()
 include_directories(cmake-build-debug/googletest-src/googlemock/include)
 include_directories(cmake-build-debug/googletest-src/googletest/include)
 target_link_libraries(${PROJECT_NAME} gtest gtest_main)
+target_link_libraries(${PROJECT_NAME} ${GTK3_LIBRARIES} ${GTKMM_LIBRARIES})

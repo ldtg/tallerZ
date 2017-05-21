@@ -10,6 +10,7 @@ struct Data {
  public:
   unsigned short ticksPerSec;
   unsigned long miliSecsPerTick;
+  UnitType defaultDriver;
   Weapon bullet;
   Weapon flamethrower;
   Weapon sniperBullet;
@@ -23,9 +24,9 @@ struct Data {
   TerrainData road;
 
   Data() {
-    ticksPerSec = 120;
+    ticksPerSec = 60;
     miliSecsPerTick = (unsigned long) ((1 / (double) ticksPerSec) * 1000);
-
+    defaultDriver = R_GRUNT;
     bullet.type = BULLET;
     bullet.damage = 2;
     bullet.isExplosive = false;

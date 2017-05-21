@@ -6,7 +6,6 @@
 #include "TerrainType.h"
 #include "UnitID.h"
 #include "UnitState.h"
-#include "ObjectMap.h"
 #include "TerrainData.h"
 #include <vector>
 #define TILEWIDHT 100

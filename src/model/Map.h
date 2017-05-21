@@ -9,8 +9,6 @@
 #include <map>
 #include <string>
 
-#define DELTASEARCH 10
-
 class Map {
  private:
   //guarda los nros de tiles ej: tile 0,0 va de 0<x<100.
@@ -37,7 +35,7 @@ class Map {
   //Metodos para dibujar mapa
   const std::map<Position, Tile> getMap() const;
   const std::map<UnitID, UnitState> &getUnits() const;
-  UnitID getUnitIDFromPosition(const Position &pos) const; //usa DELTASEARCH
+  UnitID getUnitIDFromPosition(const Position &pos, unsigned short range) const;
   UnitState getUnitState(const UnitID &unitID) const;
   //Para crear el mapa
   void setUnits(const std::map<UnitID, UnitState> &units);

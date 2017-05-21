@@ -8,6 +8,7 @@
 #include "UnitAttackEvent.h"
 #include "UnitDeathEvent.h"
 #include "Data.h"
+#include "UnitNotFoundException.h"
 
 void GameController::move(const UnitID &idunit, const Position &position) {
   Unit *unit = units.at(idunit);
@@ -19,6 +20,8 @@ void GameController::attack(const UnitID &attackerId,
                             const UnitID &attackedId) {
   Unit *attacker = units.at(attackerId);
   Attackable *attacked = units.at(attackedId);
+  if(!attacker->canAttack(attacked))
+    return;
   if (attacker->isInRange(attacked)
       && map.canPass(attacker->getCurrentPosition(),
                      attacked->getCurrentPosition())) {
@@ -77,6 +80,8 @@ void GameController::doTick(std::vector<Event *> &events) {
         hunt(current, events);
       if (current->isCapturing())
         capture(current, events);
+      //para que ataquen auto a las que tienen cerca
+      this->autoAttack(current);
     } else {
       events.push_back(new UnitDeathEvent(current->getId()));
       it_units = units.erase(it_units);
@@ -135,5 +140,12 @@ void GameController::updateMap(std::vector<Event *> events) {
 void GameController::removeDeaths(const std::vector<Unit *> &vector) {
   for (auto &unit : vector) {
     delete unit;
+  }
+}
+void GameController::autoAttack(Unit *current) {
+  for (auto &par:units) {
+    if (current->isInRange(par.second) && current->getId() != par.first) {
+      this->attack(current->getId(), par.second->getId());
+    }
   }
 }
