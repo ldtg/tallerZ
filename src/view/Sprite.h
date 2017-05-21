@@ -6,20 +6,20 @@
 #include "ObjectMapaVista.h"
 
 class Sprite : public ObjectMapaVista {
-    protected:
-        int num_frames;
-        int cur_frame;
+ protected:
+  int num_frames;
+  int cur_frame;
 //        int x;
 //        int y;
-        std::string filename;
-    public:
-        Sprite();
-        Sprite(const char *file, int num_frames);
-        Sprite(Sprite &&other);
-        Sprite& operator=(Sprite &&other);
-        virtual ~Sprite();
-        void set_texture(SDL_Renderer *render);
-        void draw(SDL_Renderer *render);
+  std::string filename;
+ public:
+  Sprite();
+  Sprite(const char *file, int num_frames);
+  Sprite(Sprite &&other);
+  Sprite &operator=(Sprite &&other);
+  virtual ~Sprite();
+  void set_texture(SDL_Renderer *render);
+  void draw(SDL_Renderer *render);
 };
 
 #endif //SPRITE_H

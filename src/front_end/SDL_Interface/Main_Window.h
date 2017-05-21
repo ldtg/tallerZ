@@ -9,12 +9,14 @@
 #include <view/Sprite.h>
 #include "../../view/Window.h"
 #include "front_end/SDL_Interface/Side_Board.h"
+#include "front_end/SDL_Interface/Cursor.h"
 #include "Front_end_exceptions/Front_end_exception.h"
 
 class Main_Window {
  private:
   SDL_Event * event;
   Window * main_window;
+  Cursor * cursor;
   Sprite * robot_face;
   Image * weapon_img;
   Side_Board * side_board;
@@ -31,6 +33,9 @@ class Main_Window {
 
   SDL_Surface * get_base_surface() const;
 
+  void Maximize();
+
+  void trap_cursor();
 };
 
 #endif //TALLERZ_MAIN_WINDOW2_H
