@@ -17,14 +17,6 @@
 class Main_Window {
  private:
   Window * main_window;
-
-  Controller * controller;
-  EventHandler * eventHandler;
-  View * view;
-  Model * model;
-
-  Map * map;
-
   Cursor * cursor;
   //Sprite * robot_face;
   //Image * weapon_img;
@@ -37,8 +29,6 @@ class Main_Window {
   ~Main_Window();
 
   Window * get_window() const;
-
-  void run();
 
   SDL_Surface * get_base_surface() const;
 

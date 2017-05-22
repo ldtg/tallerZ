@@ -3,6 +3,8 @@
 
 #include "Handler.h"
 class HandlerFactory {
+ private:
+
  public:
   static Handler* get(unsigned int type);
 };

@@ -19,7 +19,6 @@ class Menu_Button : public Button {
  public:
   Menu_Button(Window * window);
 
-
  protected:
   void button_launch();
 };

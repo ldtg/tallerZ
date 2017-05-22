@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "front_end/SDL_Interface/Main_Window.h"
+#include "Z_RUNNER.h"
 #include "SDL_START.h"
 
 /*
@@ -12,8 +13,8 @@ TEST(FrontEndTest,Main_Window){
 }
 */
 
-TEST(FrontEndTestWithSQL,Main_Window){
+TEST(FrontEndTestWithSQL,Z_RUNNER){
   SDL_START();
-  Main_Window main_window;
-
+  Z_RUNNER z_runner;
+  z_runner.run();
 }

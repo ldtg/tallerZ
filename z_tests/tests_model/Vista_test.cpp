@@ -1,3 +1,4 @@
+/*
 #include "gtest/gtest.h"
 #include "../../src/view/View.h"
 #include "../../src/controller/Controller.h"
@@ -12,7 +13,9 @@
 
 TEST(VistaTest, Window) {
 
-/* ---------- TERRENOS ---------- */
+*/
+/* ---------- TERRENOS ---------- *//*
+
 
 
   TerrainData td = {TerrainType::LAND, 1.0};
@@ -58,7 +61,9 @@ TEST(VistaTest, Window) {
   stdmap.emplace(Position(300, 200), tile_17);
   stdmap.emplace(Position(300, 300), tile_18);
 
-/* ---------- UNIDADES ---------- */
+*/
+/* ---------- UNIDADES ---------- *//*
+
 
 
   UnitID id(UnitType::R_GRUNT);
@@ -68,7 +73,9 @@ TEST(VistaTest, Window) {
   std::map<UnitID, UnitState> units;
   units.emplace(id, us);
 
-/* ---------- CREACION MAPA ---------- */
+*/
+/* ---------- CREACION MAPA ---------- *//*
+
 
 
   Map myMap(stdmap, 640, 480);
@@ -95,6 +102,7 @@ TEST(VistaTest, Window) {
     //Handle events on queue
     while( SDL_PollEvent( &e ) != 0 ) {
       controller.handle(&e);
+*/
 /*
       //User requests quit
       if (e.type == SDL_QUIT) {
@@ -105,8 +113,10 @@ TEST(VistaTest, Window) {
         SDL_GetMouseState(&x, &y);
         std::cout << "(" << x << "," << y << ")" << std::endl;
       }
-*/
+*//*
+
     }
     view.update();
   }
 }
+*/
