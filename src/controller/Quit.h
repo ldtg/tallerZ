@@ -5,8 +5,9 @@
 
 class Quit : public Handler {
  public:
-  Quit(Vista &vista);
-  void handle(SDL_Event *e);
+  Quit();
+  void handle(SDL_Event *e, EventHandler &eventHandler,
+              Model &model, View &view);
 };
 
 #endif //TALLERZ_QUIT_H

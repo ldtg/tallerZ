@@ -2,13 +2,13 @@
 #define TALLERZ_DAMAGERECEIVEEVENT_H
 
 #include "model/Events/Event.h"
-class UnitDamageReceiveEvent : public Event {
+class UnitDamageReceiveEvent {//: public Event {
  private:
   UnitID id;
   UnitState newState;
  public:
   UnitDamageReceiveEvent(UnitID id, UnitState newState);
-  virtual void process(Map &map) const override;
+  void process();
 };
 
 #endif //TALLERZ_DAMAGERECEIVEEVENT_H

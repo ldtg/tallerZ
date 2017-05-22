@@ -1,19 +1,20 @@
-#include "Vista.h"
+#include "View.h"
 #include <string>
 #include "Image.h"
 #include "Sprite.h"
 #include <iostream>
 #include <vector>
 
-Vista::Vista(const Map &map) : window(), panel(window.getRender()) {
+View::View(const Map &map, EventHandler &eventHandler)
+    : window(), panel(window.getRender()), eventHandler(eventHandler) {
   _quit = false;
   createInitialTerrainVista(map.getMap());
   createInitialUnitVista(map.getUnits());
 }
 
-Vista::~Vista() {}
+View::~View() {}
 
-void Vista::createInitialTerrainVista(const std::map<Position, Tile> &map) {
+void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
   for (auto const &posMap : map) {
     Position pos = posMap.first;
     Tile tile = posMap.second;
@@ -25,7 +26,7 @@ void Vista::createInitialTerrainVista(const std::map<Position, Tile> &map) {
   }
 }
 
-void Vista::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
+void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
   for (auto const &unit : units) {
     UnitType type = unit.first.getType();
     Position pos = unit.second.currentPosition;
@@ -36,7 +37,16 @@ void Vista::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
   }
 }
 
-void Vista::update() {
+//void View::setEventHandler(EventHandler &eventHandler) {
+//  this->eventHandler = eventHandler;
+//}
+
+void View::update() {
+  if (!eventHandler.empty()) {
+    Event *event = eventHandler.get();
+    event->process();
+  }
+
   for (auto const &posTerrain : terrainsVista) {
       panel.add(posTerrain.second);
   }
@@ -48,7 +58,7 @@ void Vista::update() {
   panel.draw();
 }
 
-void Vista::add(ObjectMapaVista *objectVista, long x, long y) {
+void View::add(ObjectMapaVista *objectVista, long x, long y) {
     if (objectVista == NULL)
         return;
 
@@ -56,7 +66,7 @@ void Vista::add(ObjectMapaVista *objectVista, long x, long y) {
     panel.add(objectVista);
 }
 
-ObjectMapaVista* Vista::getTerrainVista(int type) {
+ObjectMapaVista* View::getTerrainVista(int type) {
     if (type == LAND) {
         return new Image("../src/view/images/terrain/land.png");
     }
@@ -65,7 +75,7 @@ ObjectMapaVista* Vista::getTerrainVista(int type) {
     }
 }
 
-ObjectMapaVista* Vista::getUnitVista(int type) {
+ObjectMapaVista* View::getUnitVista(int type) {
   if (type == R_GRUNT) {
     return new Sprite("../src/view/images/terrain/fire_blue_r000_n", 3);
   }
@@ -74,10 +84,10 @@ ObjectMapaVista* Vista::getUnitVista(int type) {
   }
 }
 
-void Vista::setQuit() {
+void View::setQuit() {
   _quit = true;
 }
 
-bool Vista::quit() {
+bool View::quit() {
   return _quit;
 }

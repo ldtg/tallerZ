@@ -5,13 +5,13 @@
 #include "UnitID.h"
 #include "model/Events/Event.h"
 
-class UnitMoveEvent : public Event{
+class UnitMoveEvent {//: public Event {
  private:
   UnitID id;
   UnitState newState;
  public:
   UnitMoveEvent(UnitID id, UnitState newState);
-  virtual void process(Map &map) const override;
+  void process();
 };
 
 #endif //TALLERZ_UNITEVENT_H

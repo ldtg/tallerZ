@@ -5,7 +5,10 @@
 #include <UnitFactory.h>
 #include <chrono>
 #include "GameController.h"
+
+/*
 extern Data data;
+
 class GameController_test : public ::testing::Test {
 
  public:
@@ -77,7 +80,10 @@ TEST_F(GameController_test, robotAttack) {
   }
   ASSERT_TRUE(!robotB->isAlive());
 }
-/*TEST_F(GameController_test, unitAutoAttack) {
+*/
+
+
+ /*TEST_F(GameController_test, unitAutoAttack) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
   while (robotC->isAlive()) {
@@ -87,6 +93,9 @@ TEST_F(GameController_test, robotAttack) {
   ASSERT_TRUE(!robotC->isAlive() && jeepA->isAlive() && robotA->isAlive()
                   && robotB->isAlive());
 }*/
+
+
+/*
 TEST_F(GameController_test, jeepAttack) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
@@ -141,3 +150,4 @@ TEST_F(GameController_test, timed_robot_attack) {
   double diffScs = diff.count();
   ASSERT_TRUE(std::abs(diffScs - 15) < 1);
 }
+*/

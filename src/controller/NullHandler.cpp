@@ -1,6 +1,7 @@
 #include "NullHandler.h"
 
-NullHandler::NullHandler(Vista &vista) : Handler(vista) {}
+NullHandler::NullHandler() {}
 
-void NullHandler::handle(SDL_Event *e) {}
+void NullHandler::handle(SDL_Event *e, EventHandler &eventHandler,
+                         Model &model, View &view) {}
 

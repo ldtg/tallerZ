@@ -3,12 +3,13 @@
 
 #include "UnitID.h"
 #include "model/Events/Event.h"
-class UnitDeathEvent : public Event{
+
+class UnitDeathEvent {//: public Event{
  private:
   UnitID id;
  public:
   UnitDeathEvent(UnitID id);
-  virtual void process(Map &map) const override;
+  void process();
 };
 
 #endif //TALLERZ_UNITDEATHEVENT_H

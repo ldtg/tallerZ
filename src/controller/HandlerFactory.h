@@ -4,7 +4,7 @@
 #include "Handler.h"
 class HandlerFactory {
  public:
-  static Handler* get(unsigned int type, Vista &vista);
+  static Handler* get(unsigned int type);
 };
 
 #endif //TALLERZ_HANDLERFACTORY_H

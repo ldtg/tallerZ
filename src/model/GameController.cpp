@@ -134,7 +134,7 @@ GameController::GameController(const Map &map,
 }
 void GameController::updateMap(std::vector<Event *> events) {
   for (auto &event : events) {
-    event->process(this->map);
+//    event->process(this->map);
   }
 }
 void GameController::removeDeaths(const std::vector<Unit *> &vector) {

@@ -37,8 +37,6 @@ set(SOURCE_FILES
         src/model/Robot.h
         z_tests/tests_model/Robot_test.cpp
         z_tests/tests_model/AStar_test.cpp
-        src/model/GameController.cpp
-        src/model/GameController.h
         src/model/UnitAttackEvent.cpp
         src/model/UnitAttackEvent.h
         src/model/Build.cpp
@@ -58,13 +56,16 @@ set(SOURCE_FILES
         src/model/Events/Event.h
         src/model/UnitDamageReceiveEvent.cpp
         src/model/UnitDamageReceiveEvent.h
-        z_tests/tests_model/GameController_test.cpp
         src/model/UnitDeathEvent.cpp
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
         src/model/Vehicle.h
         
       #[[
+        src/model/GameController.cpp
+        src/model/GameController.h
+        z_tests/tests_model/GameController_test.cpp
+
         src/model/Player.cpp
         src/model/Player.h
       src/model/Team.cpp
@@ -99,8 +100,8 @@ set(SOURCE_FILES
         src/view/ObjectMapaVista.cpp
         src/view/ObjectMapaVista.h
         z_tests/tests_model/Vista_test.cpp
-        src/view/Vista.cpp
-        src/view/Vista.h
+        src/view/View.cpp
+        src/view/View.h
         src/view/Sprite.cpp
         src/view/Sprite.h
         src/front_end/Timer.h
@@ -124,7 +125,23 @@ set(SOURCE_FILES
         src/model/UnitDeathEvent.cpp
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
+<<<<<<< Updated upstream
         src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Weapon_Img.cpp src/front_end/SDL_Interface/Weapon_Img.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/SDL_START.cpp src/SDL_START.h src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp src/Exceptions/Sdl_Exceptions/Sdl_Exception.h src/front_end/SDL_Interface/Side_Board.cpp src/front_end/SDL_Interface/Side_Board.h src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h src/front_end/SDL_Interface/Robot_Face.cpp src/front_end/SDL_Interface/Robot_Face.h src/model/Events/Pointer/Click.cpp src/model/Events/Pointer/Click.h src/model/Events/EventHandler.cpp src/model/Events/EventHandler.h src/front_end/SDL_Interface/Buttons/Button.cpp src/front_end/SDL_Interface/Buttons/Button.h src/front_end/SDL_Interface/Cursor.cpp src/front_end/SDL_Interface/Cursor.h src/view/Texture.cpp src/view/Texture.h src/front_end/SDL_Interface/Buttons/Menu_Button.cpp src/front_end/SDL_Interface/Buttons/Menu_Button.h)
+=======
+        src/controller/Controller.cpp
+        src/controller/Controller.h
+        src/controller/Handler.h
+        src/controller/Handler.cpp
+        src/controller/HandlerFactory.cpp
+        src/controller/HandlerFactory.h
+        src/controller/Mouse.cpp
+        src/controller/Mouse.h
+        src/controller/NullHandler.cpp
+        src/controller/NullHandler.h
+        src/controller/Quit.cpp
+        src/controller/Quit.h
+        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Weapon_Img.cpp src/front_end/SDL_Interface/Weapon_Img.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/SDL_START.cpp src/SDL_START.h src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp src/Exceptions/Sdl_Exceptions/Sdl_Exception.h src/front_end/SDL_Interface/Side_Board.cpp src/front_end/SDL_Interface/Side_Board.h src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h src/front_end/SDL_Interface/Robot_Face.cpp src/front_end/SDL_Interface/Robot_Face.h src/model/Events/Pointer/Click.cpp src/model/Events/Pointer/Click.h src/model/Events/EventHandler.cpp src/model/Events/EventHandler.h src/model/Events/QuitEvent.cpp src/model/Events/QuitEvent.h src/model/Model.cpp src/model/Model.h)
+>>>>>>> Stashed changes
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

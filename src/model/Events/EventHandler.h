@@ -1,12 +1,23 @@
-//
-// Created by darius on 21/05/17.
-//
-
 #ifndef TALLERZ_EVENTHANDLER_H
 #define TALLERZ_EVENTHANDLER_H
 
-class EventHandler {
+class Event;
 
+#include "../Model.h"
+#include "../../view/View.h"
+#include "Event.h"
+
+class EventHandler {
+ private:
+//  Model &model;
+//  View &view;
+  std::queue<Event*> eventQueue;
+
+ public:
+  EventHandler();
+  void add(Event *event);
+  Event *get();
+  bool empty();
 };
 
 #endif //TALLERZ_EVENTHANDLER_H
