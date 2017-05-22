@@ -15,30 +15,27 @@
  */
 
 /**
- * Button
- * De button heredan los objetos clickeables que disparan un evento.
+ * @class Button
+ * De button heredan los botones que disparan un evento.
+ * Las clases hijas deben implementar button_launch (virtual puro)
+ * que es el metodo asociado al evento de clickear sobre el boton.
  */
 class Button {
  protected:
   Window * window;
-
-  SDL_Point * position;
-  SDL_Event * event;
-
+  SDL_Point * position = NULL;
+  SDL_Event * event = NULL;
   Texture * button_up = NULL;
   Texture * button_down = NULL;
-
-  int width;
-  int length;
-
+  SDL_Rect renderQuad;
  public:
   Button(){}
 
-  Button(int x, int y, int width, int length, Window * window);
+  Button(Window * window);
 
   ~Button();
 
-  void set_position(int x, int y);
+  void set_rectangle(int x, int y, int width, int length);
 
   void load_texture_up(const std::string &path);
 

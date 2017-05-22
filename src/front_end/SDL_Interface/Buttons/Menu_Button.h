@@ -7,16 +7,20 @@
 
 #include "Button.h"
 class Menu_Button : public Button {
+ private:
+  const int width = 56;
+  const int length = 20;
+  const int coordY = 458;
+  const int coordX = 481;
+  const std::string path_up =
+      "../src/front_end/Images/Interface/menu_button_active.bmp";
+  const std::string path_down =
+      "../src/front_end/Images/Interface/menu_button_pressed.bmp";
  public:
-  Menu_Button(Window * window){
-    this->window = window;
-    this->load_texture_up(
-        "../src/front_end/Images/Interface/menu_button_active.bmp");
-    this->load_texture_down(
-        "../src/front_end/Images/Interface/menu_button_pressed.bmp");
-    this->set_position(80,80);
-  }
+  Menu_Button(Window * window);
 
+ protected:
+  void button_launch();
 };
 
 #endif //TALLERZ_MENU_BUTTON_H

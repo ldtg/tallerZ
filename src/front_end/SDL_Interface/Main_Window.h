@@ -40,7 +40,7 @@ class Main_Window {
 
  private:
   void load_buttons(){
-    //this->menu_button = new Menu_Button(main_window);
+    this->menu_button = new Menu_Button(main_window);
   }
 };
 

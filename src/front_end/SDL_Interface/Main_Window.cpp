@@ -14,6 +14,7 @@ Main_Window::Main_Window() {
 }
 
 Main_Window::~Main_Window() {
+  delete this->menu_button;//TODO refactorizar como se guardan los botones y se liberan
   delete this->event;
   delete this->cursor;
   delete this->side_board;
@@ -30,7 +31,7 @@ SDL_Surface *Main_Window::get_base_surface() const {
 
 void Main_Window::run() {
   this->trap_cursor();
-
+  this->load_buttons();
   bool quit = false;
   while (!quit){
     while (SDL_PollEvent(this->event)){

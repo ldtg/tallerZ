@@ -4,7 +4,11 @@
 
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
 #include "Texture.h"
-
+/**
+ * Constructor
+ * @param path : ruta a la imagen sobre la que se construye la textura
+ * @param window : ventana sobre la que se renderiza
+ */
 Texture::Texture(const std::string &path, const Window *window) {
   this->load_texture(path, window->getWindow());
 }
@@ -54,8 +58,8 @@ SDL_Texture *Texture::get_texture() const {
  * @param renderQuad : cuadrado sobre el que se renderiza
  */
 void Texture::renderize(const Window * window, const SDL_Rect* renderQuad) {
-  SDL_RenderClear(window->getRender());
-  SDL_RenderCopy(window->getRender(), this->texture, NULL, NULL);
+  //SDL_RenderClear(window->getRender());
+  SDL_RenderCopy(window->getRender(), this->texture, NULL, renderQuad);
   SDL_RenderPresent( window->getRender());
 }
 
