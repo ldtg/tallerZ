@@ -18,4 +18,5 @@ TEST(FrontEndTest,Main_Window){
 TEST(FrontEndTestWithSQL,Main_Window){
   SDL_START();
   Main_Window main_window;
+
 }

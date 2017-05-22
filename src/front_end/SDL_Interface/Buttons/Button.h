@@ -19,7 +19,7 @@
  * De button heredan los objetos clickeables que disparan un evento.
  */
 class Button {
- private:
+ protected:
   Window * window;
 
   SDL_Point * position;
@@ -32,6 +32,8 @@ class Button {
   int length;
 
  public:
+  Button(){}
+
   Button(int x, int y, int width, int length, Window * window);
 
   ~Button();

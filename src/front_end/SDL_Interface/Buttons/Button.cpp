@@ -46,6 +46,8 @@ void Button::set_position(int x, int y) {
  */
 void Button::load_texture_up(const std::string &path) {
   this->button_up = new Texture(path, window);
+  SDL_Rect renderQuad = { position->x, position->y, width, length };
+  this->button_up->renderize(window, &renderQuad);
 }
 
 /**

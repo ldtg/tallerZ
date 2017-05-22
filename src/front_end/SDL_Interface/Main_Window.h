@@ -7,6 +7,7 @@
 
 #include <view/Image.h>
 #include <view/Sprite.h>
+#include <front_end/SDL_Interface/Buttons/Menu_Button.h>
 #include "../../view/Window.h"
 #include "front_end/SDL_Interface/Side_Board.h"
 #include "front_end/SDL_Interface/Cursor.h"
@@ -21,7 +22,7 @@ class Main_Window {
   Image * weapon_img;
   Side_Board * side_board;
   SDL_Surface * base_surface = NULL;
-
+  Menu_Button *menu_button = NULL;
  public:
   Main_Window();
 
@@ -36,6 +37,11 @@ class Main_Window {
   void Maximize();
 
   void trap_cursor();
+
+ private:
+  void load_buttons(){
+    //this->menu_button = new Menu_Button(main_window);
+  }
 };
 
 #endif //TALLERZ_MAIN_WINDOW2_H

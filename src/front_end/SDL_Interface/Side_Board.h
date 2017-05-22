@@ -9,17 +9,19 @@
 #include <SDL2/SDL_image.h>
 #include <string>
 #include <view/Window.h>
-#include "Sdl_Utils.h"
+#include <view/Texture.h>
 
 class Side_Board {
  private:
-  SDL_Texture * side_board = NULL;
+  Texture * side_board_texture;
  public:
   Side_Board(Window * window);
 
+  ~Side_Board();
+
   void load_side_board(Window * window);
 
-  SDL_Texture *get_side_board();
+  Texture *get_side_board();
 };
 
 #endif //TALLERZ_SIDE_BOARD_H
