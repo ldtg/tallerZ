@@ -5,7 +5,7 @@ class Event;
 
 #include "../Model.h"
 #include "../../view/View.h"
-#include "Event.h"
+#include "../Events/Event.h"
 
 class EventHandler {
  private:

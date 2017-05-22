@@ -9,6 +9,7 @@
 #include <view/Sprite.h>
 #include <model/Events/Pointer/Click.h>
 #include <view/Texture.h>
+#include "Front_end_exceptions/Front_end_exception.h"
 
 /*
  * TODO: barajar la posibilidad de armar una clase clickable de la que herede button y demas objetos clickeables. Por ahora lo dejo así.
@@ -27,7 +28,7 @@ class Button {
   SDL_Event * event = NULL;
   Texture * button_up = NULL;
   Texture * button_down = NULL;
-  SDL_Rect renderQuad;
+  SDL_Rect sdl_rect;
  public:
   Button(){}
 
@@ -36,6 +37,8 @@ class Button {
   ~Button();
 
   void set_rectangle(int x, int y, int width, int length);
+
+  bool inRectangle(int x, int y);
 
   void load_texture_up(const std::string &path);
 

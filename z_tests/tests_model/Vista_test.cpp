@@ -78,7 +78,8 @@ TEST(VistaTest, Window) {
   EventHandler eventHandler;
 
   Model model;
-  View view(myMap, eventHandler);
+  Window window;
+  View view(myMap, eventHandler, window);
 
 
   //Main loop flag

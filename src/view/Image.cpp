@@ -79,7 +79,7 @@ void Image::draw(SDL_Renderer *render, int window_w, int window_h,
 //    int x_aux = x + (window_w - clip->w)/2;
 //    int y_aux = y + (window_h - clip->h)/2;
 
-    SDL_Rect renderQuad = {x, y, width, height};
-    SDL_RenderCopy(render, side_board_texture, NULL, &renderQuad);
+    SDL_Rect sdl_rect = {x, y, width, height};
+    SDL_RenderCopy(render, side_board_texture, NULL, &sdl_rect);
 }
 */

@@ -5,8 +5,8 @@
 #include <iostream>
 #include <vector>
 
-View::View(const Map &map, EventHandler &eventHandler)
-    : window(), panel(window.getRender()), eventHandler(eventHandler) {
+View::View(const Map &map, EventHandler &eventHandler, Window& window)
+    : window(window), panel(window.getRender()), eventHandler(eventHandler) {
   _quit = false;
   createInitialTerrainVista(map.getMap());
   createInitialUnitVista(map.getUnits());

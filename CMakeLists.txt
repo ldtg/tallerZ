@@ -125,9 +125,8 @@ set(SOURCE_FILES
         src/model/UnitDeathEvent.cpp
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
-<<<<<<< Updated upstream
-        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Weapon_Img.cpp src/front_end/SDL_Interface/Weapon_Img.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/SDL_START.cpp src/SDL_START.h src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp src/Exceptions/Sdl_Exceptions/Sdl_Exception.h src/front_end/SDL_Interface/Side_Board.cpp src/front_end/SDL_Interface/Side_Board.h src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h src/front_end/SDL_Interface/Robot_Face.cpp src/front_end/SDL_Interface/Robot_Face.h src/model/Events/Pointer/Click.cpp src/model/Events/Pointer/Click.h src/model/Events/EventHandler.cpp src/model/Events/EventHandler.h src/front_end/SDL_Interface/Buttons/Button.cpp src/front_end/SDL_Interface/Buttons/Button.h src/front_end/SDL_Interface/Cursor.cpp src/front_end/SDL_Interface/Cursor.h src/view/Texture.cpp src/view/Texture.h src/front_end/SDL_Interface/Buttons/Menu_Button.cpp src/front_end/SDL_Interface/Buttons/Menu_Button.h)
-=======
+        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Weapon_Img.cpp src/front_end/SDL_Interface/Weapon_Img.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/SDL_START.cpp src/SDL_START.h src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp src/Exceptions/Sdl_Exceptions/Sdl_Exception.h src/front_end/SDL_Interface/Side_Board.cpp src/front_end/SDL_Interface/Side_Board.h src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h src/front_end/SDL_Interface/Robot_Face.cpp src/front_end/SDL_Interface/Robot_Face.h src/model/Events/Pointer/Click.cpp src/model/Events/Pointer/Click.h src/model/Events/EventHandler.cpp src/model/Events/EventHandler.h src/front_end/SDL_Interface/Buttons/Button.cpp src/front_end/SDL_Interface/Buttons/Button.h src/front_end/SDL_Interface/Cursor.cpp src/front_end/SDL_Interface/Cursor.h src/view/Texture.cpp src/view/Texture.h src/front_end/SDL_Interface/Buttons/Menu_Button.cpp src/front_end/SDL_Interface/Buttons/Menu_Button.h
+
         src/controller/Controller.cpp
         src/controller/Controller.h
         src/controller/Handler.h
@@ -140,8 +139,8 @@ set(SOURCE_FILES
         src/controller/NullHandler.h
         src/controller/Quit.cpp
         src/controller/Quit.h
-        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Weapon_Img.cpp src/front_end/SDL_Interface/Weapon_Img.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/SDL_START.cpp src/SDL_START.h src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp src/Exceptions/Sdl_Exceptions/Sdl_Exception.h src/front_end/SDL_Interface/Side_Board.cpp src/front_end/SDL_Interface/Side_Board.h src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h src/front_end/SDL_Interface/Robot_Face.cpp src/front_end/SDL_Interface/Robot_Face.h src/model/Events/Pointer/Click.cpp src/model/Events/Pointer/Click.h src/model/Events/EventHandler.cpp src/model/Events/EventHandler.h src/model/Events/QuitEvent.cpp src/model/Events/QuitEvent.h src/model/Model.cpp src/model/Model.h)
->>>>>>> Stashed changes
+        src/model/Vehicle.h z_tests/tests_front_end/FEnd_test.cpp src/header_for_tests.h src/front_end/SDL_Interface/Weapon_Img.cpp src/front_end/SDL_Interface/Weapon_Img.h src/front_end/SDL_Interface/Main_Window.cpp src/front_end/SDL_Interface/Main_Window.h src/SDL_START.cpp src/SDL_START.h src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp src/Exceptions/Sdl_Exceptions/Sdl_Exception.h src/front_end/SDL_Interface/Side_Board.cpp src/front_end/SDL_Interface/Side_Board.h src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h src/front_end/SDL_Interface/Robot_Face.cpp src/front_end/SDL_Interface/Robot_Face.h src/model/Events/Pointer/Click.cpp src/model/Events/Pointer/Click.h src/model/Events/EventHandler.cpp src/model/Events/EventHandler.h src/model/Events/QuitEvent.cpp src/model/Events/QuitEvent.h src/model/Model.cpp src/model/Model.h src/front_end/SDL_Interface/Map_View.cpp src/front_end/SDL_Interface/Map_View.h)
+
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

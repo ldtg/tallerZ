@@ -9,17 +9,25 @@
 #include <view/Sprite.h>
 #include <front_end/SDL_Interface/Buttons/Menu_Button.h>
 #include "../../view/Window.h"
+#include "controller/Controller.h"
 #include "front_end/SDL_Interface/Side_Board.h"
 #include "front_end/SDL_Interface/Cursor.h"
 #include "Front_end_exceptions/Front_end_exception.h"
 
 class Main_Window {
  private:
-  SDL_Event * event;
   Window * main_window;
+
+  Controller * controller;
+  EventHandler * eventHandler;
+  View * view;
+  Model * model;
+
+  Map * map;
+
   Cursor * cursor;
-  Sprite * robot_face;
-  Image * weapon_img;
+  //Sprite * robot_face;
+  //Image * weapon_img;
   Side_Board * side_board;
   SDL_Surface * base_surface = NULL;
   Menu_Button *menu_button = NULL;

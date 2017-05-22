@@ -11,7 +11,7 @@ class EventHandler;
 
 class View {
  private:
-  Window window;
+  Window &window;
   Panel panel;
   std::map<Position, ObjectMapaVista*> terrainsVista;
   std::map<Position, ObjectMapaVista*> unitsVista;
@@ -24,7 +24,7 @@ class View {
   ObjectMapaVista *getTerrainVista(int type);
   ObjectMapaVista *getUnitVista(int type);
  public:
-  View(const Map &map, EventHandler &eventHandler);
+  View(const Map &map, EventHandler &eventHandler, Window& window);
   ~View();
 //  void setEventHandler(EventHandler &eventHandler);
   void setQuit();
