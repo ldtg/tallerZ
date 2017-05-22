@@ -1,10 +1,7 @@
-//
-// Created by darius on 20/05/17.
-//
-
 #include <gtest/gtest.h>
 #include "front_end/SDL_Interface/Main_Window.h"
 #include "SDL_START.h"
+
 /*
 TEST(FrontEndTest,Main_Window){
   Glib::RefPtr<Gtk::Application> app = Gtk::Application::create(my_argc, my_argv);

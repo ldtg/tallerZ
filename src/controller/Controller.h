@@ -5,15 +5,17 @@
 #include "Handler.h"
 #include "Quit.h"
 #include "HandlerFactory.h"
-#include "../view/Vista.h"
+#include "../view/View.h"
 
 class Controller {
  private:
-  Vista &vista;
+  EventHandler &eventHandler;
+  View &view;
+  Model &model;
 //  Quit _quit;
 //  std::vector<Handler*> handlers;
  public:
-  Controller(Vista &vista);
+  Controller(EventHandler &eventHandler, Model &model, View &view);
   void handle(SDL_Event *e);
 };
 

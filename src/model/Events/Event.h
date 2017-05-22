@@ -1,10 +1,21 @@
 #ifndef TALLERZ_EVENT_H
 #define TALLERZ_EVENT_H
 
-#include "Map.h"
+class View;
+class Model;
+
+#include <view/View.h>
+#include <model/Model.h>
+
 class Event {
+ protected:
+  Model &model;
+  View &view;
  public:
-  virtual void process(Map &map) const = 0;
+  Event(Model &model,View &view);
+  void setModel(Model &model);
+  void setView(View &view);
+  virtual void process() = 0;
 };
 
 #endif //TALLERZ_EVENT_H

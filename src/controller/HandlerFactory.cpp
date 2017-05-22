@@ -3,13 +3,13 @@
 #include "Mouse.h"
 #include "NullHandler.h"
 
-Handler* HandlerFactory::get(unsigned int type, Vista &vista) {
+Handler* HandlerFactory::get(unsigned int type) {
   switch (type) {
     case SDL_QUIT:
-      return new Quit(vista);
+      return new Quit();
     case SDL_MOUSEBUTTONUP:
-      return new Mouse(vista);
+      return new Mouse();
     default:
-      return new NullHandler(vista);
+      return new NullHandler();
   }
 }

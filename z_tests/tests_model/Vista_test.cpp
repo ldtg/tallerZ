@@ -1,7 +1,8 @@
-/*
 #include "gtest/gtest.h"
-#include "../../src/view/Vista.h"
+#include "../../src/view/View.h"
 #include "../../src/controller/Controller.h"
+#include "../../src/model/Events/EventHandler.h"
+
 #include <SDL2/SDL_image.h>
 #include <thread>
 
@@ -11,8 +12,7 @@
 
 TEST(VistaTest, Window) {
 
-  */
-/* ---------- TERRENOS ---------- *//*
+/* ---------- TERRENOS ---------- */
 
 
   TerrainData td = {TerrainType::LAND, 1.0};
@@ -58,8 +58,7 @@ TEST(VistaTest, Window) {
   stdmap.emplace(Position(300, 200), tile_17);
   stdmap.emplace(Position(300, 300), tile_18);
 
-  */
-/* ---------- UNIDADES ---------- *//*
+/* ---------- UNIDADES ---------- */
 
 
   UnitID id(UnitType::R_GRUNT);
@@ -69,14 +68,17 @@ TEST(VistaTest, Window) {
   std::map<UnitID, UnitState> units;
   units.emplace(id, us);
 
-  */
-/* ---------- CREACION MAPA ---------- *//*
+/* ---------- CREACION MAPA ---------- */
 
 
   Map myMap(stdmap, 640, 480);
   myMap.setUnits(units);
 
-  Vista vista(myMap);
+
+  EventHandler eventHandler;
+
+  Model model;
+  View view(myMap, eventHandler);
 
 
   //Main loop flag
@@ -84,15 +86,14 @@ TEST(VistaTest, Window) {
   //Event handler
   SDL_Event e;
 
-  Controller controller(vista);
+  Controller controller(eventHandler, model, view);
 
   //While application is running
-  while(!vista.quit()) {
+  while(!view.quit()) {
 
     //Handle events on queue
     while( SDL_PollEvent( &e ) != 0 ) {
       controller.handle(&e);
-*/
 /*
       //User requests quit
       if (e.type == SDL_QUIT) {
@@ -103,10 +104,8 @@ TEST(VistaTest, Window) {
         SDL_GetMouseState(&x, &y);
         std::cout << "(" << x << "," << y << ")" << std::endl;
       }
-*//*
-
+*/
     }
-    vista.update();
+    view.update();
   }
 }
-*/
