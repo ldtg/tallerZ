@@ -55,7 +55,11 @@ set(SOURCE_FILES
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
         src/model/Vehicle.h
-        
+       
+        src/model/GameController.cpp
+        src/model/GameController.h
+        z_tests/tests_model/GameController_test.cpp
+
       #[[
         src/model/Build.cpp
         src/model/Build.h
@@ -63,9 +67,6 @@ set(SOURCE_FILES
         src/model/BuildID.h
         src/model/BuildType.h
 	    src/model/BuildData.h
-        src/model/GameController.cpp
-        src/model/GameController.h
-        z_tests/tests_model/GameController_test.cpp
 
         src/model/Player.cpp
         src/model/Player.h
