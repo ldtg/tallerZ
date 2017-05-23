@@ -7,3 +7,6 @@ BuildID::BuildID(const BuildType &buildType) : type(type), id(nextid) {
 bool BuildID::operator<(const BuildID &other) const {
   return id < other.id;
 }
+BuildType BuildID::getType() const {
+  return type;
+}

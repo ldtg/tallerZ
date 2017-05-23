@@ -39,11 +39,6 @@ set(SOURCE_FILES
         z_tests/tests_model/AStar_test.cpp
         src/model/UnitAttackEvent.cpp
         src/model/UnitAttackEvent.h
-        src/model/Build.cpp
-        src/model/Build.h
-        src/model/BuildID.cpp
-        src/model/BuildID.h
-        src/model/BuildType.h
         src/model/UnitNotFoundException.cpp
         src/model/UnitNotFoundException.h
         src/model/UnitData.h
@@ -62,6 +57,12 @@ set(SOURCE_FILES
         src/model/Vehicle.h
         
       #[[
+        src/model/Build.cpp
+        src/model/Build.h
+        src/model/BuildID.cpp
+        src/model/BuildID.h
+        src/model/BuildType.h
+	    src/model/BuildData.h
         src/model/GameController.cpp
         src/model/GameController.h
         z_tests/tests_model/GameController_test.cpp

@@ -32,3 +32,7 @@ bool Player::isAlive() const {
 PlayerID Player::getID() const {
   return id;
 }
+void Player::buildDestroyed(const BuildType &type) {
+  if(type == BuildType::FORT)
+    alive = false;
+}

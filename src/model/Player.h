@@ -3,7 +3,7 @@
 
 #include "PlayerID.h"
 #include "Position.h"
-//#include "Build.h"
+#include "BuildType.h"
 class Player {
  private:
   const PlayerID id;
@@ -18,6 +18,7 @@ class Player {
   void addUnit();
   void subUnit();
   bool isAlive() const;
+  void buildDestroyed(const BuildType &type);
   PlayerID getID() const;
 
 };

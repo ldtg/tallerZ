@@ -8,7 +8,7 @@ class Team {
  private:
   std::map<PlayerID, Player *> players;
  public:
-  explicit Team(const std::vector<Player *> players);
+  explicit Team(const std::map<PlayerID, Player *> &players);
   void addPlayer(Player *player);
   void removePlayer(Player *player);
   bool isEnemy(const PlayerID &playerID) const;
@@ -19,6 +19,7 @@ class Team {
   void subUnit(const PlayerID &playerID);
   bool isPlayerAlive(const PlayerID &playerID) const;
   bool isTeamAlive() const;
+  bool isaPlayerOfTheTeam(const PlayerID &id) const;
 };
 
 #endif //TALLERZ_TEAM_H

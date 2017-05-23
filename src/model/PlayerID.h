@@ -10,6 +10,7 @@ class PlayerID {
   PlayerID(const std::string &name);
   std::string getName() const;
   bool operator<(const PlayerID &other) const;
+  bool operator==(const PlayerID &other) const;
 };
 
 #endif //TALLERZ_PLAYERID_H
