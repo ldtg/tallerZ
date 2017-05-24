@@ -11,8 +11,10 @@ TEST(ProductionMenu,production_menu_1){
   SDL_Delay(3000);
 }
 
+/*
 TEST(FrontEndTestWithSQL,Z_RUNNER){
   SDL_START();
   Z_RUNNER z_runner;
   z_runner.run();
 }
+ */

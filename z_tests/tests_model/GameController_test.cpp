@@ -92,10 +92,9 @@ TEST_F(GameController_test, robotAttack) {
   }
   ASSERT_TRUE(!robotC->isAlive() && jeepA->isAlive() && robotA->isAlive()
                   && robotB->isAlive());
-}*/
+}
 
 
-/*
 TEST_F(GameController_test, jeepAttack) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
@@ -149,5 +148,5 @@ TEST_F(GameController_test, timed_robot_attack) {
       std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
   double diffScs = diff.count();
   ASSERT_TRUE(std::abs(diffScs - 15) < 1);
-}
-*/
+}*/
+

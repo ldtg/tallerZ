@@ -2,7 +2,7 @@
 #define TALLERZ_DAMAGERECEIVEEVENT_H
 
 #include "model/Events/Event.h"
-class UnitDamageReceiveEvent {//: public Event {
+class UnitDamageReceiveEvent : public Event {
  private:
   UnitID id;
   UnitState newState;

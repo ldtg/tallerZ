@@ -1,10 +1,19 @@
 #include "EventHandler.h"
 
-EventHandler::EventHandler() {}
+//EventHandler::EventHandler(Model *model, View *view)
+//    : model(model), view(view) {}
+
+void EventHandler::setModel(Model *model)  {
+  this->model = model;
+}
+
+void EventHandler::setView(View *view) {
+  this->view = view;
+}
 
 void EventHandler::add(Event *event) {
-//  event->setModel(model);
-//  event->setView(view);
+  event->setModel(model);
+  event->setView(view);
   eventQueue.push(event);
 }
 

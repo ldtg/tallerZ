@@ -5,6 +5,10 @@
 #include "Attackable.h"
 #include "UnitType.h"
 #include "UnitData.h"
+
+#define UNITWIDHT 16
+#define UNITHEIGHT 16
+
 struct UnitState {
  public:
   unsigned long health;

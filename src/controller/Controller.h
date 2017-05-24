@@ -10,12 +10,12 @@
 class Controller {
  private:
   EventHandler &eventHandler;
-  View &view;
-  Model &model;
+//  View &view;
+//  Model &model;
 //  Quit _quit;
 //  std::vector<Handler*> handlers;
  public:
-  Controller(EventHandler &eventHandler, Model &model, View &view);
+  Controller(EventHandler &eventHandler);
   void handle(SDL_Event *e);
 };
 

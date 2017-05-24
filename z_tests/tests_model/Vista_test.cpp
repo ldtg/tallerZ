@@ -1,4 +1,3 @@
-/*
 #include "gtest/gtest.h"
 #include "../../src/view/View.h"
 #include "../../src/controller/Controller.h"
@@ -10,113 +9,81 @@
 #include <ctime>
 #include <chrono>
 #include <ratio>
+#include <model/Data.h>
+#include <model/UnitFactory.h>
+#include <model/GameController.h>
 
 TEST(VistaTest, Window) {
 
-*/
-/* ---------- TERRENOS ---------- *//*
+  try {
+/* ---------- TERRENOS ---------- */
+    std::map<Position, Tile> stdmap;
+    stdmap.emplace(Position(0, 0), Tile(Position(50, 50), data.land));
+    stdmap.emplace(Position(1, 0), Tile(Position(150, 50), data.land));
+    stdmap.emplace(Position(2, 0), Tile(Position(250, 50), data.land));
+
+    stdmap.emplace(Position(0, 1), Tile(Position(50, 150), data.land));
+    stdmap.emplace(Position(1, 1), Tile(Position(150, 150), data.land));
+    stdmap.emplace(Position(2, 1), Tile(Position(250, 150), data.land));
+
+    stdmap.emplace(Position(0, 2), Tile(Position(50, 250), data.land));
+    stdmap.emplace(Position(1, 2), Tile(Position(150, 250), data.land));
+    stdmap.emplace(Position(2, 2), Tile(Position(250, 250), data.land));
 
 
 
-  TerrainData td = {TerrainType::LAND, 1.0};
-  Tile tile_1(Position(0, 0), td);
-  Tile tile_2(Position(0, 100), td);
-  Tile tile_3(Position(0, 200), td);
-  Tile tile_4(Position(0, 300), td);
+/* ---------- UNIDADES ---------- */
+    std::map<UnitID, Unit *> units;
+    Unit *robotA;
+    robotA = UnitFactory::createGruntDynamic(Position(50, 50));
+    units.emplace(robotA->getId(), robotA);
 
-  Tile tile_7(Position(100, 0), td);
-  Tile tile_8(Position(100, 100), td);
-  Tile tile_9(Position(100, 200), td);
-  Tile tile_10(Position(100, 300), td);
+/* ---------- CREACION MAPA ---------- */
+    Map map(stdmap, 3, 3);
+    map.addUnit(robotA->getId(), robotA->getUnitState());
+    GameController gameController(map, units);
 
-  Tile tile_11(Position(200, 0), td);
-  Tile tile_12(Position(200, 100), td);
-  Tile tile_13(Position(200, 200), td);
-  Tile tile_14(Position(200, 300), td);
+    EventHandler eventHandler;
 
-  Tile tile_15(Position(300, 0), td);
-  Tile tile_16(Position(300, 100), td);
-  Tile tile_17(Position(300, 200), td);
-  Tile tile_18(Position(300, 300), td);
+    Model model(map, gameController);
+    Window window;
+    View view(map, eventHandler, window);
 
-  std::map<Position, Tile> stdmap;
+    eventHandler.setView(&view);
+    eventHandler.setModel(&model);
 
-  stdmap.emplace(Position(0, 0), tile_1);
-  stdmap.emplace(Position(0, 100), tile_2);
-  stdmap.emplace(Position(0, 200), tile_3);
-  stdmap.emplace(Position(0, 300), tile_4);
-
-  stdmap.emplace(Position(100, 0), tile_7);
-  stdmap.emplace(Position(100, 100), tile_8);
-  stdmap.emplace(Position(100, 200), tile_9);
-  stdmap.emplace(Position(100, 300), tile_10);
-
-  stdmap.emplace(Position(200, 0), tile_11);
-  stdmap.emplace(Position(200, 100), tile_12);
-  stdmap.emplace(Position(200, 200), tile_13);
-  stdmap.emplace(Position(200, 300), tile_14);
-
-  stdmap.emplace(Position(300, 0), tile_15);
-  stdmap.emplace(Position(300, 100), tile_16);
-  stdmap.emplace(Position(300, 200), tile_17);
-  stdmap.emplace(Position(300, 300), tile_18);
-
-*/
-/* ---------- UNIDADES ---------- *//*
-
-
-
-  UnitID id(UnitType::R_GRUNT);
-  Weapon w = {WeaponType::BULLET, 1, false};
-  UnitState us = {100, w, Position(50, 50)};
-
-  std::map<UnitID, UnitState> units;
-  units.emplace(id, us);
-
-*/
-/* ---------- CREACION MAPA ---------- *//*
-
-
-
-  Map myMap(stdmap, 640, 480);
-  myMap.setUnits(units);
-
-
-  EventHandler eventHandler;
-
-  Model model;
-  Window window;
-  View view(myMap, eventHandler, window);
-
-
-  //Main loop flag
+    //Main loop flag
 //  bool quit = false;
-  //Event handler
-  SDL_Event e;
+    //Event handler
+    SDL_Event e;
 
-  Controller controller(eventHandler, model, view);
+    Controller controller(eventHandler);
 
-  //While application is running
-  while(!view.quit()) {
+    //While application is running
+    while (!view.quit()) {
+      auto begin = std::chrono::high_resolution_clock::now();
 
-    //Handle events on queue
-    while( SDL_PollEvent( &e ) != 0 ) {
-      controller.handle(&e);
-*/
-/*
-      //User requests quit
-      if (e.type == SDL_QUIT) {
-        quit = true;
+      //Handle events on queue
+      std::vector<Event *> vec = gameController.tick();
+      if (SDL_PollEvent(&e) != 0) {
+        controller.handle(&e);
       }
-      if (e.type == SDL_MOUSEBUTTONUP) {
-        int x, y;
-        SDL_GetMouseState(&x, &y);
-        std::cout << "(" << x << "," << y << ")" << std::endl;
+      if (!vec.empty()) {
+        for (auto item : vec) {
+          eventHandler.add(item);
+        }
       }
-*//*
+      view.update();
 
+      auto end = std::chrono::high_resolution_clock::now();
+      auto diff =
+          std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
+      std::this_thread::sleep_for(
+          std::chrono::milliseconds(25) - diff);
     }
-    view.update();
+
+    delete (robotA);
+  } catch (const std::exception& e){
+    std::cout << e.what() << std::endl;
   }
 }
-*/

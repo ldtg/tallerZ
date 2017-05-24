@@ -3,6 +3,7 @@
 
 #include "Weapon.h"
 #include "UnitType.h"
+
 struct UnitData {
   UnitType type;
   Weapon weapon;

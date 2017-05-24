@@ -24,7 +24,7 @@ struct Data {
   TerrainData road;
 
   Data() {
-    ticksPerSec = 60;
+    ticksPerSec = 35;
     miliSecsPerTick = (unsigned long) ((1 / (double) ticksPerSec) * 1000);
     defaultDriver = R_GRUNT;
     bullet.type = BULLET;

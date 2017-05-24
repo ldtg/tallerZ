@@ -8,8 +8,7 @@ class Mouse : public Handler {
   int y;
  public:
   Mouse();
-  void handle(SDL_Event *e, EventHandler &eventHandler,
-              Model &model, View &view);
+  void handle(SDL_Event *e, EventHandler &eventHandler);
 };
 
 #endif //TALLERZ_MOUSE_H

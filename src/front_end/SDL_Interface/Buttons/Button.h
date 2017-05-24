@@ -7,7 +7,7 @@
 
 #include <SDL2/SDL_rect.h>
 #include <view/Sprite.h>
-#include <model/Events/Pointer/Click.h>
+#include <model/Events/Pointer/ClickEvent.h>
 #include <view/Texture.h>
 #include "Front_end_exceptions/Front_end_exception.h"
 
@@ -44,7 +44,7 @@ class Button {
 
   void load_texture_down(const std::string &path);
 
-  void handle_event(Click* click);
+  void handle_event(ClickEvent* click);
 
  protected:
   void on_button_pressed();

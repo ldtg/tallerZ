@@ -6,10 +6,11 @@
 Z_RUNNER::Z_RUNNER() {
   main_window = new Main_Window();
   eventHandler = new EventHandler();
-  this->model = new Model();
   this->map = new Map();
+//  this->gameController = new GameController(map, );
+//  this->model = new Model(map, );
   this->view = new View(*map, *eventHandler, *main_window->get_window());
-  this->controller = new Controller(*eventHandler, *model, *view);
+  this->controller = new Controller(*eventHandler);
 }
 
 void Z_RUNNER::run() {

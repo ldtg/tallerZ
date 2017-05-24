@@ -5,7 +5,7 @@
 
 class QuitEvent : public Event {
  public:
-  QuitEvent(Model &model, View &view);
+//  QuitEvent();
   void process();
 };
 

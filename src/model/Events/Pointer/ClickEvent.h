@@ -36,15 +36,22 @@ typedef struct SDL_MouseButtonEvent
   Sint32 y;           *//**< Y coordinate, relative to window *//*
 } SDL_MouseButtonEvent;*/
 
-class Click {
+class ClickEvent : public Event {
+/*
  private:
   SDL_MouseButtonEvent event;
  public:
   Click(SDL_MouseButtonEvent& event) : event(event) {}
+  ~Click(){}
 
   SDL_MouseButtonEvent get_click_data();
-
-  ~Click(){}
-};
+*/
+ private:
+  int x;
+  int y;
+ public:
+  ClickEvent(int x, int y);
+  void process();
+ };
 
 #endif //TALLERZ_CLICK_H

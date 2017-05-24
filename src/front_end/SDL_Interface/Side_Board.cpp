@@ -3,6 +3,7 @@
 //
 
 #include "Side_Board.h"
+
 Side_Board::Side_Board(Window * window) {
   std::string path = "../src/front_end/Images/Interface/interface.png";
   this->side_board_texture = new Texture(path, window);

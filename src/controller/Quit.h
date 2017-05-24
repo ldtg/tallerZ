@@ -6,8 +6,7 @@
 class Quit : public Handler {
  public:
   Quit();
-  void handle(SDL_Event *e, EventHandler &eventHandler,
-              Model &model, View &view);
+  void handle(SDL_Event *e, EventHandler &eventHandler);
 };
 
 #endif //TALLERZ_QUIT_H

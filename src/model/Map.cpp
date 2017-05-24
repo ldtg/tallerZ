@@ -28,6 +28,25 @@ Tile Map::getTile(const Position &position) const {
   return map.at(pos);
 }
 
+bool Map::isUnitIn(const Position &position) const {
+  for (auto const &unit : units) {
+    Position curPos = unit.second.currentPosition;
+    bool in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
+    if (in)
+      return true;
+  }
+  return false;
+}
+
+std::pair<UnitID, UnitState> Map::getUnit(const Position &position) {
+  for (auto const &unit : units) {
+    Position curPos = unit.second.currentPosition;
+    bool in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
+    if (in)
+      return unit;
+  }
+}
+
 bool Map::canPass(const Position &positionFrom,
                     const Position &positionTo) const {
   Position actual = positionFrom;
