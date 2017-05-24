@@ -2,16 +2,14 @@
 #include "front_end/SDL_Interface/Main_Window.h"
 #include "Z_RUNNER.h"
 #include "SDL_START.h"
+#include "front_end/SDL_Interface/Menus/Production/production_menu_1.h"
 
-/*
-TEST(FrontEndTest,Main_Window){
-  Glib::RefPtr<Gtk::Application> app = Gtk::Application::create(my_argc, my_argv);
-
-  Main_Window interface(my_argc,my_argv);
-
-  app->run(*interface.get_main_window());
+TEST(ProductionMenu,production_menu_1){
+  SDL_START();
+  Window window;
+  production_menu_1 menu(window);
+  SDL_Delay(3000);
 }
-*/
 
 TEST(FrontEndTestWithSQL,Z_RUNNER){
   SDL_START();

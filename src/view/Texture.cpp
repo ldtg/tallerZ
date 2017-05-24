@@ -1,7 +1,3 @@
-//
-// Created by darius on 21/05/17.
-//
-
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
 #include "Texture.h"
 /**
@@ -12,7 +8,27 @@
 Texture::Texture(const std::string &path, const Window *window) {
   this->load_texture(path, window->getWindow());
 }
-
+/**
+ * Constructor
+ * @param surface : Surface a partir de la cual se genera la textura
+ * @param window : Ventana sobre la que se renderizará
+ */
+Texture::Texture(SDL_Surface *surface, const Window *window) {
+  this->generate_texture(surface, window->getWindow());
+}
+/**
+ * generate_texture
+ * @param surface : Surface a partir de la cual se genera la textura
+ * @param window : Ventana sobre la que se renderizará
+ */
+void Texture::generate_texture(SDL_Surface *surface, SDL_Window * window) {
+  this->texture = SDL_CreateTextureFromSurface(SDL_GetRenderer(window),surface);
+  if (this->texture == NULL){
+    throw Sdl_Exception(
+        "Error en el metodo generate_texture de la clase Texture: No se pudo cargar "
+            "la textura: %s", SDL_GetError());
+  }
+}
 /**
  * load_texture
  * Devuelve una textura a partir de una imagen.
@@ -20,15 +36,8 @@ Texture::Texture(const std::string &path, const Window *window) {
 void Texture::load_texture(const std::string &path, SDL_Window *window) {
   SDL_Surface * temporal_surface;
   temporal_surface = load_image(path);
-  this->texture = SDL_CreateTextureFromSurface(
-      SDL_GetRenderer(window), temporal_surface);
-  if (this->texture == NULL){
-    throw Sdl_Exception(
-        "Error en el metodo load_texture de la clase Texture: No se pudo cargar "
-            "la textura: %s", SDL_GetError());
-  }
+  this->generate_texture(temporal_surface,window);
 }
-
 /**
  * load_image
  * @param path: Path to image
@@ -43,7 +52,6 @@ SDL_Surface *Texture::load_image(const std::string &path) {
   }
   return _image;
 }
-
 /**
  * getTexture
  * @return : SDL_Texture*
@@ -51,7 +59,6 @@ SDL_Surface *Texture::load_image(const std::string &path) {
 SDL_Texture *Texture::get_texture() const {
   return this->texture;
 }
-
 /**
  * renderize: renderiza la textura de modo que se carga en la window
  * @param window : ventana sobre la que se renderiza
@@ -62,7 +69,6 @@ void Texture::renderize(const Window * window, const SDL_Rect* renderQuad) {
   SDL_RenderCopy(window->getRender(), this->texture, NULL, renderQuad);
   SDL_RenderPresent( window->getRender());
 }
-
 /**
  * renderize: renderiza la textura de modo que se carga en la window
  * pero sobre toda la ventana
@@ -71,4 +77,5 @@ void Texture::renderize(const Window * window, const SDL_Rect* renderQuad) {
 void Texture::renderize(const Window *window) {
   this->renderize(window, NULL);
 }
+
 
