@@ -5,6 +5,7 @@
 Position Unit::getCurrentPosition() const {
   return this->currentPosition;
 }
+
 void Unit::move(const std::vector<Position> &movementsPositions) {
   this->movementsPositions = movementsPositions;
   this->movState.moving();
@@ -14,13 +15,16 @@ void Unit::attack(Attackable *other) {
   this->movState.hunting();
   this->hunted = other;
 }
+
 bool Unit::isInRange(Attackable *other) {
   return this->currentPosition.euclideanDistance(other->getCurrentPosition())
       < range;
 }
+
 void Unit::receiveAttack(const Weapon &weapon) {
   this->damagesToReceive.push_back(weapon.damage);
 }
+
 void Unit::hunt(const std::vector<Position> &movementsPositions,
                 Attackable *other) {
   this->movementsPositions = movementsPositions;

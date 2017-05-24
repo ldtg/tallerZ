@@ -28,15 +28,20 @@ class Map {
   void addUnit(const UnitID &unitID, const UnitState &unitState);
   void removeUnit(const UnitID &unitID);
   Tile getTile(const Position &position) const;
+  std::pair<UnitID, UnitState> getUnit(const Position &position);
+  bool isUnitIn(const Position &position) const;
+
   // para saber si se puede mover o atacar desde esa posicion
   // hasta la otra (no hay nada en el medio onda estructuras o algo)
   bool canPass(const Position &positionFrom,
                const Position &positionTo) const;
+
   //Metodos para dibujar mapa
   const std::map<Position, Tile> getMap() const;
   const std::map<UnitID, UnitState> &getUnits() const;
   UnitID getUnitIDFromPosition(const Position &pos, unsigned short range) const;
   UnitState getUnitState(const UnitID &unitID) const;
+
   //Para crear el mapa
   void setUnits(const std::map<UnitID, UnitState> &units);
   int getWidht() const;

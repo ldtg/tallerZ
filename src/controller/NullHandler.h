@@ -6,8 +6,7 @@
 class NullHandler : public Handler {
  public:
   NullHandler();
-  void handle(SDL_Event *e, EventHandler &eventHandler,
-              Model &model, View &view);
+  void handle(SDL_Event *e, EventHandler &eventHandler);
 };
 
 #endif //TALLERZ_NULLHANDLER_H

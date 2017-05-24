@@ -59,6 +59,7 @@ std::vector<Node *> AStar::getNeighbors(Node *current) {
   }
   return vector;
 }
+
 bool AStar::existBetter(Node *pNode) const {
   for (auto &par:open) {
     if (*par.second == *pNode && par.second->isBetter(*pNode))
@@ -66,10 +67,12 @@ bool AStar::existBetter(Node *pNode) const {
   }
   return false;
 }
+
 AStar::~AStar() {
   for (Node *node: createdNodes)
     delete node;
 }
+
 bool AStar::isInClose(Node *neighbor) {
   for (Node *node : close) {
     if (*node == *neighbor)

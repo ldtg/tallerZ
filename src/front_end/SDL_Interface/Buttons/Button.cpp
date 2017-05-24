@@ -55,16 +55,17 @@ void Button::load_texture_down(const std::string &path) {
     throw Front_end_exception("Button::load_texture_down: %s\n",e.what());
   }
 }
+
 /**
  * handle_event
  * @param click: Click ameo.
  */
-void Button::handle_event(Click *click) {
-  if (click->get_click_data().state == SDL_PRESSED){
-    this->on_button_pressed();
-  } else {
-    this->on_button_released();
-  }
+void Button::handle_event(ClickEvent *click) {
+//  if (click->get_click_data().state == SDL_PRESSED){
+//    this->on_button_pressed();
+//  } else {
+//    this->on_button_released();
+//  }
 }
 /**
  * on_button_pressed

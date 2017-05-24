@@ -12,6 +12,8 @@
 #include "controller/Controller.h"
 #include "front_end/SDL_Interface/Side_Board.h"
 #include "front_end/SDL_Interface/Cursor.h"
+#include "Side_Board.h"
+#include "Cursor.h"
 #include "Front_end_exceptions/Front_end_exception.h"
 
 class Main_Window {

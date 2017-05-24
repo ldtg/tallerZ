@@ -5,12 +5,14 @@
 #include "UnitID.h"
 #include "model/Events/Event.h"
 
-class UnitMoveEvent {//: public Event {
+class UnitMoveEvent : public Event {
  private:
+//  Position posFrom;
+  Position posTo;
   UnitID id;
-  UnitState newState;
+//  UnitState newState;
  public:
-  UnitMoveEvent(UnitID id, UnitState newState);
+  UnitMoveEvent(UnitID id, Position posTo);
   void process();
 };
 

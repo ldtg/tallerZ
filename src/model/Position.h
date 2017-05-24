@@ -28,7 +28,9 @@ class Position {
   bool operator<(const Position &other) const;
   bool equalDelta(const Position &other, unsigned short delta) const;
   bool isIn(long width, long height);
+  bool isIn(long width, long height, int otherX, int otherY) const;
   std::string toString() const;
+  Position sub(unsigned long x, unsigned long y) const;
 };
 
 #endif //TALLERZ_POSITION_H

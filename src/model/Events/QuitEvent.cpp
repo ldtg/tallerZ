@@ -1,7 +1,7 @@
 #include "QuitEvent.h"
 
-QuitEvent::QuitEvent(Model &model, View &view) : Event(model, view) {}
+//QuitEvent::QuitEvent() {}
 
 void QuitEvent::process() {
-  view.setQuit();
+  view->setQuit();
 }

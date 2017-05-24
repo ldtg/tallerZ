@@ -12,6 +12,8 @@ Image::Image(const char *file) {
     width = surface->w;
     height = surface->h;
 
+  texture = nullptr;
+
 //    std::cout << "width: " << width
 //              << " height: " << height << std::endl;
 }
@@ -58,14 +60,13 @@ Image::~Image() {
 }
 
 void Image::set_texture(SDL_Renderer *render) {
-    //Color key image
-//    SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, 0, 0xFF, 0xFF));
+    if (texture != nullptr) {
+      SDL_DestroyTexture(texture);
+    }
     texture = SDL_CreateTextureFromSurface(render, surface);
 }
 
 void Image::draw(SDL_Renderer *render) {
-//    int x = (window_w - width)/2;
-//    int y = (window_h - height)/2;
 
     SDL_Rect renderQuad = { x, y, width, height };
 

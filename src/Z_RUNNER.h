@@ -10,7 +10,7 @@
 
 /**
  * @class Z_RUNNER
- * Clase ejecutora del juego que conecta los distintos componentes
+ * ejecutora del juego que conecta los distintos componentes
  * realizados hasta ahora
  */
 class Z_RUNNER {
@@ -21,6 +21,7 @@ class Z_RUNNER {
   EventHandler * eventHandler;
   Model * model;
   Map * map;
+  GameController * gameController;
 
  public:
   Z_RUNNER();

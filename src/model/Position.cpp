@@ -57,10 +57,16 @@ coordinates_t Position::getCoordinates() const {
 bool Position::isIn(long width, long height) {
   return (x < width) && (y < height);
 }
+
+bool Position::isIn(long width, long height, int otherX, int otherY) const {
+  return (otherX <= x <= otherX + width) && (otherY <= y <= otherY + height);
+}
+
 void Position::mod(unsigned short modx, unsigned short mody) {
   this->x = this->x / modx;
   this->y = this->y / mody;
 }
+
 void Position::move(Position target) {
   if (this->x < target.x)
     this->x++;
@@ -90,4 +96,7 @@ long Position::getX() const {
 
 long Position::getY() const {
   return y;
+}
+Position Position::sub(unsigned long x, unsigned long y) const{
+  return Position(this->x-x, this->y-y);
 }

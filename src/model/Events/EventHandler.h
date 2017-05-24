@@ -9,12 +9,14 @@ class Event;
 
 class EventHandler {
  private:
-//  Model &model;
-//  View &view;
+  Model *model;
+  View *view;
   std::queue<Event*> eventQueue;
 
  public:
-  EventHandler();
+//  EventHandler();
+  void setModel(Model *model);
+  void setView(View *view);
   void add(Event *event);
   Event *get();
   bool empty();

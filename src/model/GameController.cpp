@@ -30,7 +30,9 @@ void GameController::attack(const UnitID &attackerId,
     AStar astar(map, attacker, attacked->getCurrentPosition());
     attacker->hunt(astar.find(), attacked);
   }
-}/*
+}
+
+/*
 void GameController::attack(UnitID attackerId, BuildID attackedId) {
   Unit *attacker = units.at(attackerId);
   Attackable *attacked = builds.at(attackedId);
@@ -52,19 +54,18 @@ void GameController::capture(UnitID idunit, Position position) {
 
 std::vector<Event *> GameController::tick() {
   auto begin = std::chrono::high_resolution_clock::now();
-  std::vector<Event *> events;
 
+  std::vector<Event *> events;
   this->doTick(events);
 
   auto end = std::chrono::high_resolution_clock::now();
   auto diff =
       std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
-
   std::this_thread::sleep_for(
       std::chrono::milliseconds(data.miliSecsPerTick) - diff);
-
   return events;
 }
+
 void GameController::doTick(std::vector<Event *> &events) {
   for (auto it_units = units.begin(); it_units != units.end();
        ++it_units) {
@@ -87,24 +88,26 @@ void GameController::doTick(std::vector<Event *> &events) {
       it_units = units.erase(it_units);
     }
   }
-  updateMap(events);
+ // updateMap(events);
 }
+
 void GameController::unitReceiveDamage(Unit *current,
                                        std::vector<Event *> &events) const {
   current->receiveDamages();
   events.push_back(new UnitDamageReceiveEvent(current->getId(),
                                               current->getUnitState()));
 }
+
 void GameController::move(Unit *unit, std::vector<Event *> &events) const {
   if (map.canPass(unit->getCurrentPosition(),
                   unit->nextMovePosition())) {
-    //TODO: crear evento move
     float terrainFactor =
         map.getTile(unit->getCurrentPosition()).getTerrainData().terrainFactor;
     unit->doMoveWithSpeed(terrainFactor);
-    events.push_back(new UnitMoveEvent(unit->getId(), unit->getUnitState()));
+    events.push_back(new UnitMoveEvent(unit->getId(), unit->getCurrentPosition()));
   }
 }
+
 void GameController::hunt(Unit *unit, std::vector<Event *> &events) const {
   Attackable *hunted = unit->getHunted();
   if (unit->attackedInRange()
@@ -119,6 +122,7 @@ void GameController::hunt(Unit *unit, std::vector<Event *> &events) const {
   if (hunted->isMoving())
     unit->addMove(hunted->nextMovePosition()); //en vez de recalcular el path uso los movs del atacado
 }
+
 void GameController::capture(Unit *unit, std::vector<Event *> &events) const {
   if (unit->isStill()) { //llego
     //TODO: crear evento captura
@@ -127,21 +131,23 @@ void GameController::capture(Unit *unit, std::vector<Event *> &events) const {
     this->move(unit, events);
   }
 }
-GameController::GameController(const Map &map,
-                               const std::map<UnitID, Unit *> &units) {
-  this->map = map;
-  this->units = units;
-}
+
+GameController::GameController(Map &map,
+                               const std::map<UnitID, Unit*> &units)
+    : map(map), units(units) {}
+
 void GameController::updateMap(std::vector<Event *> events) {
   for (auto &event : events) {
 //    event->process(this->map);
   }
 }
+
 void GameController::removeDeaths(const std::vector<Unit *> &vector) {
   for (auto &unit : vector) {
     delete unit;
   }
 }
+
 void GameController::autoAttack(Unit *current) {
   for (auto &par:units) {
     if (current->isInRange(par.second) && current->getId() != par.first) {

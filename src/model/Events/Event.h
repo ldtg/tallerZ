@@ -9,12 +9,12 @@ class Model;
 
 class Event {
  protected:
-  Model &model;
-  View &view;
+  Model *model;
+  View *view;
  public:
-  Event(Model &model,View &view);
-  void setModel(Model &model);
-  void setView(View &view);
+//  Event();
+  void setModel(Model *model);
+  void setView(View *view);
   virtual void process() = 0;
 };
 

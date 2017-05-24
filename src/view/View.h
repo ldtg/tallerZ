@@ -14,19 +14,20 @@ class View {
   Window &window;
   Panel panel;
   std::map<Position, ObjectMapaVista*> terrainsVista;
-  std::map<Position, ObjectMapaVista*> unitsVista;
+  std::map<UnitID, ObjectMapaVista*> unitsVista;
   EventHandler &eventHandler;
   bool _quit;
 
   void createInitialTerrainVista(const std::map<Position, Tile> &map);
   void createInitialUnitVista(const std::map<UnitID, UnitState> &units);
-  void add(ObjectMapaVista *objectVista, long x, long y);
+  void add(ObjectMapaVista *objectVista, Position pos);
   ObjectMapaVista *getTerrainVista(int type);
-  ObjectMapaVista *getUnitVista(int type);
+  ObjectMapaVista *getUnitVista(UnitType type);
  public:
   View(const Map &map, EventHandler &eventHandler, Window& window);
   ~View();
 //  void setEventHandler(EventHandler &eventHandler);
+  std::map<UnitID, ObjectMapaVista*> &getUnitsVista();
   void setQuit();
   bool quit();
   void update();

@@ -2,7 +2,7 @@
 #define TALLERZ_UNITATTACKEVENT_H
 
 #include "model/Events/Event.h"
-class UnitAttackEvent {//: public Event {
+class UnitAttackEvent : public Event {
  private:
   UnitID attacker;
   Position attackPosition;

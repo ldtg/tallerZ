@@ -9,6 +9,10 @@ Tile::Tile(Position centerPosition,
 
 Tile::~Tile() {}
 
+Position Tile::getCornerPosition() const {
+  return centerPosition.sub(TILEWIDHT/2, TILEHEIGHT/2);
+}
+
 Position Tile::getCenterPosition() const {
   return this->centerPosition;
 }

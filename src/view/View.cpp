@@ -20,7 +20,7 @@ void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
     Tile tile = posMap.second;
     TerrainType terrainType = tile.getTerrainType();
     ObjectMapaVista *terrain = getTerrainVista(terrainType);
-    add(terrain, pos.getX(), pos.getY());
+    add(terrain, tile.getCornerPosition());
 
     terrainsVista.emplace(pos, terrain);
   }
@@ -31,9 +31,9 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
     UnitType type = unit.first.getType();
     Position pos = unit.second.currentPosition;
     ObjectMapaVista *unitVista = getUnitVista(type);
-    add(unitVista, pos.getX(), pos.getY());
+    add(unitVista, pos);
 
-    unitsVista.emplace(pos, unitVista);
+    unitsVista.emplace(unit.first, unitVista);
   }
 }
 
@@ -42,9 +42,10 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
 //}
 
 void View::update() {
-  if (!eventHandler.empty()) {
+  while (!eventHandler.empty()) {
     Event *event = eventHandler.get();
     event->process();
+    delete(event);
   }
 
   for (auto const &posTerrain : terrainsVista) {
@@ -58,11 +59,11 @@ void View::update() {
   panel.draw();
 }
 
-void View::add(ObjectMapaVista *objectVista, long x, long y) {
+void View::add(ObjectMapaVista *objectVista, Position pos) {
     if (objectVista == NULL)
         return;
 
-    objectVista->setPos(x, y);
+    objectVista->setPos(pos);
     panel.add(objectVista);
 }
 
@@ -75,7 +76,7 @@ ObjectMapaVista* View::getTerrainVista(int type) {
     }
 }
 
-ObjectMapaVista* View::getUnitVista(int type) {
+ObjectMapaVista* View::getUnitVista(UnitType type) {
   if (type == R_GRUNT) {
     return new Sprite("../src/view/images/terrain/fire_blue_r000_n", 3);
   }
@@ -90,4 +91,8 @@ void View::setQuit() {
 
 bool View::quit() {
   return _quit;
+}
+
+std::map<UnitID, ObjectMapaVista*>& View::getUnitsVista() {
+  return unitsVista;
 }

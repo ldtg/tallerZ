@@ -13,8 +13,10 @@ TEST(FrontEndTest,Main_Window){
 }
 */
 
+/*
 TEST(FrontEndTestWithSQL,Z_RUNNER){
   SDL_START();
   Z_RUNNER z_runner;
   z_runner.run();
 }
+ */

@@ -22,9 +22,6 @@ void Panel::add(ObjectMapaVista *objectMapaVista) {
 }
 
 void Panel::clean() {
-//    for (ObjectMapaVista *objectMapaVista : objectsMapaVista) {
-//        delete (objectMapaVista);
-//    }
     objectsMapaVista.clear();
 }
 

@@ -1,6 +1,7 @@
 #ifndef TALLERZ_OBJECTMAPAVISTA_H
 #define TALLERZ_OBJECTMAPAVISTA_H
 
+#include <model/Position.h>
 #include "SDL2/SDL.h"
 
 class ObjectMapaVista {
@@ -13,7 +14,8 @@ class ObjectMapaVista {
         virtual ~ObjectMapaVista();
         int getWidth() const;
         int getHeight() const;
-        void setPos(int x, int y);
+        void setPos(Position pos);
+        Position getPos() const;
         virtual void set_texture(SDL_Renderer *render);
         virtual void draw(SDL_Renderer *render) = 0;
 };
