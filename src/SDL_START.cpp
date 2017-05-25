@@ -6,12 +6,14 @@
 
 SDL_START::SDL_START() {
   this->initialize_SDL();
+  TTF_Init();
   this->initialize_SDL_image();
 }
 
 SDL_START::~SDL_START() {
   IMG_Quit();
   SDL_Quit();
+  TTF_Quit();
 }
 
 /**

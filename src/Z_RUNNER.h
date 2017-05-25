@@ -22,13 +22,13 @@ class Z_RUNNER {
   Model * model;
   Map * map;
   GameController * gameController;
-
  public:
   Z_RUNNER();
 
   void run();
 
   ~Z_RUNNER();
+
 };
 
 #endif //TALLERZ_RUN_H

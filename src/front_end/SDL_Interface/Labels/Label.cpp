@@ -10,12 +10,13 @@
  * @param rect : Posicion y area del label
  */
 Label::Label(Window &window, const std::string &text, const SDL_Rect &rect) : window(window){
+  //TODO: this->font = font Para que cada label no cargue el archivo, se tiene que cargar
   this->load_font();
-  this->sdl_rect = rect;
+  this->renderQuad = rect;
   this->text = text;
-  this->surface = TTF_RenderText_Solid(this->font, text.c_str(), this->color1);
+  this->surface = TTF_RenderText_Solid(this->font, text.c_str(), this->color);
   this->texture = new Texture(surface, &window);
-  this->texture->renderize(&window, &this->sdl_rect);
+  this->texture->renderize(&window, &this->renderQuad);
 }
 /**
  * Destructor
@@ -28,7 +29,7 @@ Label::~Label() {
  */
 void Label::load_font() {
   try {
-    this->font = TTF_OpenFont(font_path.c_str(), 10);
+    this->font = TTF_OpenFont(font_path.c_str(), 60);
     if (font == NULL){
       throw -1;
     }
@@ -39,13 +40,33 @@ void Label::load_font() {
   }
 }
 
+/**
+ * Displace_toXY
+ * @param coordX
+ * @param coordY
+ */
 void Label::displace_toXY(int coordX, int coordY) {
-  this->sdl_rect.x = coordX;
-  this->sdl_rect.y = coordY;
-  this->texture->renderize(&window, &this->sdl_rect);
+  //TODO BUG aca
+  this->renderQuad.x += coordX;
+  this->renderQuad.y += coordY;
+  this->reload();
 }
-void Label::modify_text(const std::string &newText, Color color) {
-  this->text = newText;
-  *this->texture = Texture(TTF_RenderText_Solid(this->font, text.c_str(), color1), &window);
-  this->texture->renderize(&window, &this->sdl_rect);
+
+void Label::modify_text(const std::string &text) {
+  Texture texture(&window);
+  texture.renderize(&window, &this->renderQuad);
+  this->text = text;
+  *this->texture = Texture(TTF_RenderText_Solid(this->font, text.c_str(), this->color), &window);
+  this->reload();
+}
+
+SDL_Rect Label::get_rectangle() {
+  return this->renderQuad;
+}
+
+void Label::set_rectangle(const SDL_Rect& rect) {
+  this->renderQuad = rect;
+}
+void Label::reload() {
+  this->texture->renderize(&window, &renderQuad);
 }

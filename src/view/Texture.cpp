@@ -1,5 +1,18 @@
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
 #include "Texture.h"
+
+/**
+ * Constructor
+ * @param window : ventana sobre la que se renderiza
+ * Este constructor genera una textura default negra.
+ */
+Texture::Texture(const Window *window) {
+  //TODO cuando definamos el tamaño de la ventana, modificar los valores 500, 500 que están harcodeados y poner el tamaño de la ventana definido.
+  SDL_Surface * surface = SDL_CreateRGBSurface(0, 500, 500, 32, 0, 0, 0, 0);
+  SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0, 0, 0));
+  this->generate_texture(surface, window->getWindow());
+  SDL_FreeSurface(surface);
+}
 /**
  * Constructor
  * @param path : ruta a la imagen sobre la que se construye la textura
@@ -37,6 +50,7 @@ void Texture::load_texture(const std::string &path, SDL_Window *window) {
   SDL_Surface * temporal_surface;
   temporal_surface = load_image(path);
   this->generate_texture(temporal_surface,window);
+  SDL_FreeSurface(temporal_surface);
 }
 /**
  * load_image
@@ -65,7 +79,6 @@ SDL_Texture *Texture::get_texture() const {
  * @param renderQuad : cuadrado sobre el que se renderiza
  */
 void Texture::renderize(const Window * window, const SDL_Rect* renderQuad) {
-  //SDL_RenderClear(window->getRender());
   SDL_RenderCopy(window->getRender(), this->texture, NULL, renderQuad);
   SDL_RenderPresent( window->getRender());
 }
@@ -77,5 +90,6 @@ void Texture::renderize(const Window * window, const SDL_Rect* renderQuad) {
 void Texture::renderize(const Window *window) {
   this->renderize(window, NULL);
 }
+
 
 

@@ -28,7 +28,7 @@ class Button {
   SDL_Event * event = NULL;
   Texture * button_up = NULL;
   Texture * button_down = NULL;
-  SDL_Rect sdl_rect;
+  SDL_Rect renderQuad;
  public:
   Button(){}
 
@@ -36,7 +36,9 @@ class Button {
 
   ~Button();
 
-  void set_rectangle(int x, int y, int width, int length);
+  void set_rectangle(const SDL_Rect& renderQuad);
+
+  void displace_toXY(int coordX, int coordY);
 
   bool inRectangle(int x, int y);
 
@@ -47,11 +49,13 @@ class Button {
   void handle_event(ClickEvent* click);
 
  protected:
+  void reload();
+
   void on_button_pressed();
 
   void on_button_released();
 
-  virtual void button_launch() = 0;//virtual puro
+  virtual void button_launch() = 0; //virtual puro
 };
 
 #endif //TALLERZ_BUTTON_H
