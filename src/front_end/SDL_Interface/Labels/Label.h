@@ -45,8 +45,8 @@ class Label {
 
   void modify_text(const std::string& text);
 
- private:
   void reload();
+ private:
 
   void load_font();
 };

@@ -23,15 +23,6 @@ Production_Menu_1::Production_Menu_1(Window &window, int x, int y) : window(wind
  */
 void Production_Menu_1::load_items() {
   /******Labels*****/
-  SDL_Rect _time_rect = {87,33,18,10};
-  SDL_Rect _unit_rect = {7, 61, 41, 9};
-  SDL_Rect _health_rect = {73, 5, 20, 10};
-  SDL_Rect _status_rect = {68, 20, 35, 10};
-  SDL_Rect _building_name_rect = {5, 5, 65, 11};
-  SDL_Rect _expand_b_rect = {96, 5, 10, 10};
-  SDL_Rect _cancel_b_rect = {66, 46, 41, 14};
-  SDL_Rect _ok_b_rect = {66, 60, 41, 14};
-
   set_absolute_position(_time_rect, this->time_rect);
   this->time = new Label(window, "01:00", this->time_rect);
 
@@ -58,33 +49,50 @@ void Production_Menu_1::load_items() {
   this->ok = new Ok_Button(&window, ok_b_rect);
 }
 /**
- * displace_toXY
- * @param coorX
- * @param y
+ * displace_toXY : mueve el menu a las coordenadas x,y
+ * @param x : coordenada x
+ * @param y : coordenada y
  */
 void Production_Menu_1::displace_toXY(int x, int y) {
-  /*
-   *   Texture * background = NULL;
-  Label * time = NULL;
-  Label *status = NULL;
-  Label *health = NULL;
-  Label *unit = NULL;
-  Label *building_name = NULL;
-  Button * ok = NULL;
-  Button * expand = NULL;
-  Button * cancel = NULL;
-   */
   this->renderQuad.x = x;
   this->renderQuad.y = y;
   this->background->renderize(&window, &this->renderQuad);
-  this->time->displace_toXY(x,y);
-  this->status->displace_toXY(x,y);
-  this->health->displace_toXY(x,y);
-  this->unit->displace_toXY(x,y);
-  this->building_name->displace_toXY(x,y);
-  this->ok->displace_toXY(x,y);
-  this->expand->displace_toXY(x,y);
-  this->cancel->displace_toXY(x,y);
+
+  if(this->joint_menu != NULL){
+    joint_menu->displace_toXY(renderQuad.x + renderQuad.w, renderQuad.y);
+  }
+
+  this->set_absolute_position(_time_rect, time_rect);
+  this->time->set_rectangle(time_rect);
+  this->time->reload();
+
+  this->set_absolute_position(_status_rect, status_rect);
+  this->status->set_rectangle(status_rect);
+  this->status->reload();
+
+  this->set_absolute_position(_health_rect, health_rect);
+  this->health->set_rectangle(health_rect);
+  this->health->reload();
+
+  this->set_absolute_position(_unit_rect, unit_rect);
+  this->unit->set_rectangle(unit_rect);
+  this->unit->reload();
+
+  this->set_absolute_position(_building_name_rect, building_name_rect);
+  this->building_name->set_rectangle(building_name_rect);
+  this->building_name->reload();
+
+  this->set_absolute_position(_ok_b_rect, ok_b_rect);
+  this->ok->set_rectangle(ok_b_rect);
+  this->ok->reload();
+
+  this->set_absolute_position(_expand_b_rect, expand_b_rect);
+  this->expand->set_rectangle(expand_b_rect);
+  this->expand->reload();
+
+  this->set_absolute_position(_cancel_b_rect, cancel_b_rect);
+  this->cancel->set_rectangle(cancel_b_rect);
+  this->cancel->reload();
 }
 /**
  * show_select_status: En lugar de Building pone Select
@@ -106,24 +114,10 @@ void Production_Menu_1::show_health_level(int health) {
   this->health->modify_text(std::to_string(health)+"%");
 }
 /**
- * set_full_position
- * @param rect : rectangulo relativo a la esquina superior izquierda del menu
- * Modifica el parametro ingresado SDL_Rect rect de tal modo que la posicion
- * X e Y es la posición relativa a la ventana.
- * @param rect_abs: rectangulo relativo a la esquina superior izquierda de la
- * pantalla.
- */
-void Production_Menu_1::set_absolute_position(SDL_Rect &rect, SDL_Rect& rect_abs) {
-  Position _pos = this->get_relative_pos(rect);
-  rect_abs.x = _pos.getX();
-  rect_abs.y = _pos.getY();
-  rect_abs.w = rect.w;
-  rect_abs.h = rect.h;
-}
-/**
  * destructor
  */
 Production_Menu_1::~Production_Menu_1() {
+  if(this->joint_menu != NULL) delete this->joint_menu;
   if(this->time != NULL) delete this->time;
   if(this->status != NULL) delete this->status;
   if(this->health != NULL) delete this->health;
@@ -133,4 +127,12 @@ Production_Menu_1::~Production_Menu_1() {
   if(this->cancel != NULL) delete this->cancel;
   if(this->ok != NULL) delete this->ok;
   if(this->background != NULL) delete this->background;
+}
+void Production_Menu_1::expand_menu() {
+  this->joint_menu = new Production_Menu_2(
+      window, renderQuad.x + renderQuad.w, renderQuad.y);
+}
+void Production_Menu_1::retract_menu() {
+  delete this->joint_menu;
+  this->joint_menu = NULL;
 }

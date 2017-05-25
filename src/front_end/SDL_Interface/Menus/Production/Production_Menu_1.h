@@ -11,13 +11,15 @@
 #include <front_end/SDL_Interface/Menus/Menu.h>
 #include <front_end/SDL_Interface/Labels/Label.h>
 #include "model/Position.h"
+#include "Production_Menu_2.h"
 
 class Production_Menu_1 : public Menu {
  private:
   const int width = 111;
   const int length = 79;
   Window &window;
-  Texture * background = NULL;
+  Production_Menu_2 * joint_menu = NULL;
+
   Label * time = NULL;
   Label *status = NULL;
   Label *health = NULL;
@@ -36,6 +38,15 @@ class Production_Menu_1 : public Menu {
   SDL_Rect cancel_b_rect;
   SDL_Rect ok_b_rect;
 
+  SDL_Rect _time_rect = {87,33,18,10};
+  SDL_Rect _unit_rect = {7, 61, 41, 9};
+  SDL_Rect _health_rect = {73, 5, 20, 10};
+  SDL_Rect _status_rect = {68, 20, 35, 10};
+  SDL_Rect _building_name_rect = {5, 5, 65, 11};
+  SDL_Rect _expand_b_rect = {96, 5, 10, 10};
+  SDL_Rect _cancel_b_rect = {66, 46, 41, 14};
+  SDL_Rect _ok_b_rect = {66, 60, 41, 14};
+
   const std::string background_path
       = "../src/front_end/Images/Interface/production_gui/base_image.png";
 
@@ -51,12 +62,14 @@ class Production_Menu_1 : public Menu {
 
   void show_building_status();
 
+  void expand_menu();
+
+  void retract_menu();
+
   ~Production_Menu_1();
 
  private:
   void load_items();
-
-  void set_absolute_position(SDL_Rect& rect, SDL_Rect& rect_abs);
 
 };
 

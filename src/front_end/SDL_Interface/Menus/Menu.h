@@ -8,6 +8,7 @@
 #include <SDL2/SDL_pixels.h>
 #include <SDL_ttf.h>
 #include <string>
+#include <view/Texture.h>
 #include "Exceptions/Sdl_Exceptions/Sdl_Exception.h"
 /** TODO ¿SIRVE O NO SIRVE?
  * @class Menu
@@ -16,6 +17,7 @@
 class Menu {
  protected:
   SDL_Rect renderQuad;
+  Texture * background;
  public:
   virtual void displace_toXY(int coorX, int coordY) = 0;
 

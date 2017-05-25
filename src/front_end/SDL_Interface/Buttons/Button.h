@@ -48,8 +48,8 @@ class Button {
 
   void handle_event(ClickEvent* click);
 
- protected:
   void reload();
+ protected:
 
   void on_button_pressed();
 
