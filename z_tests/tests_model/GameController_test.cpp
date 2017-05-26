@@ -6,7 +6,7 @@
 #include <chrono>
 #include "GameController.h"
 
-/*
+
 extern Data data;
 
 class GameController_test : public ::testing::Test {
@@ -63,7 +63,7 @@ class GameController_test : public ::testing::Test {
 TEST_F(GameController_test, move) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
-  gameController.move(robotA->getId(), Position(150, 50));
+  gameController.move(robotA->getId(), Position(90, 50));
   while (robotA->isMoving()) {
     aux = gameController.tick();
     events.insert(events.end(), aux.begin(), aux.end());
@@ -80,10 +80,9 @@ TEST_F(GameController_test, robotAttack) {
   }
   ASSERT_TRUE(!robotB->isAlive());
 }
-*/
 
 
- /*TEST_F(GameController_test, unitAutoAttack) {
+ TEST_F(GameController_test, unitAutoAttack) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
   while (robotC->isAlive()) {
@@ -91,31 +90,9 @@ TEST_F(GameController_test, robotAttack) {
     events.insert(events.end(), aux.begin(), aux.end());
   }
   ASSERT_TRUE(!robotC->isAlive() && jeepA->isAlive() && robotA->isAlive()
-                  && robotB->isAlive());
+                  && !robotB->isAlive());
 }
 
-
-TEST_F(GameController_test, jeepAttack) {
-  std::vector<Event *> aux;
-  GameController gameController(map, units);
-  gameController.attack(jeepA->getId(), robotC->getId());
-  while (jeepA->isHunting()) {
-    aux = gameController.tick();
-    events.insert(events.end(), aux.begin(), aux.end());
-  }
-  ASSERT_TRUE(!robotC->isAlive());
-}
-TEST_F(GameController_test, hunt) {
-  std::vector<Event *> aux;
-  GameController gameController(map, units);
-  gameController.attack(robotA->getId(), robotB->getId());
-  gameController.move(robotB->getId(), Position(0, 250));
-  while (robotA->isHunting()) {
-    aux = gameController.tick();
-    events.insert(events.end(), aux.begin(), aux.end());
-  }
-  ASSERT_TRUE(!robotB->isAlive());
-}
 TEST_F(GameController_test, time) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
@@ -147,6 +124,6 @@ TEST_F(GameController_test, timed_robot_attack) {
   diff =
       std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
   double diffScs = diff.count();
-  ASSERT_TRUE(std::abs(diffScs - 15) < 1);
-}*/
+  ASSERT_TRUE(std::abs(diffScs - 15) < 2);
+}
 

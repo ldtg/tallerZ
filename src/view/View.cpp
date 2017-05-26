@@ -29,7 +29,7 @@ void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
 void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
   for (auto const &unit : units) {
     UnitType type = unit.first.getType();
-    Position pos = unit.second.currentPosition;
+    Position pos = unit.second.position;
     ObjectMapaVista *unitVista = getUnitVista(type);
     add(unitVista, pos);
 

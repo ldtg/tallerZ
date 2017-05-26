@@ -43,7 +43,7 @@ void Unit::receiveDamages() {
       this->health -= damage;
     } else {
       this->health = 0;
-     // team.subUnit(owner);
+      // team.subUnit(owner);
     }
   }
   damagesToReceive.clear();
@@ -64,17 +64,18 @@ bool Unit::attackedInRange() {
 bool Unit::isHunting() {
   return this->movState.isHunting();
 }
-bool Unit::doAttack() {
+bool Unit::timeToAttack() {
   if (attackCounterActual == 0) {
     if (hunted->isAlive()) {
-      hunted->receiveAttack(this->weapon);
+      attackCounterActual = attackCounterBase;
+      return true;
     } else {
       this->movState.still();
       hunted = nullptr;
       movementsPositions.clear();
+      attackCounterActual = attackCounterBase;
+      return false;
     }
-    attackCounterActual = attackCounterBase;
-    return true;
   } else {
     attackCounterActual--;
   }
@@ -179,15 +180,15 @@ Unit::Unit(const Position &current,
 Unit::Unit(const Position &position,
            const UnitData &data,
            const UnitType &type) : currentPosition(position),
-                         weapon(data.weapon),
-                         attackCounterBase(data.ticksUntilFire),
-                         attackCounterActual(attackCounterBase),
-                         baseSpeed(data.speed),
-                         range(data.range),
-                         health(data.health),
-                         id(data.type, type),
-                         movState(),
-                         hunted(nullptr) {
+                                   weapon(data.weapon),
+                                   attackCounterBase(data.ticksUntilFire),
+                                   attackCounterActual(attackCounterBase),
+                                   baseSpeed(data.speed),
+                                   range(data.range),
+                                   health(data.health),
+                                   id(data.type, type),
+                                   movState(),
+                                   hunted(nullptr) {
 
 }
 unsigned short Unit::getRange() const {
@@ -197,6 +198,9 @@ unsigned short Unit::getRange() const {
   return owner;
 }*/
 bool Unit::canAttack(Attackable *attackable) {
- // this->team.isEnemy(attackable->getOwner());
+  // this->team.isEnemy(attackable->getOwner());
   return true;
+}
+Bullet Unit::createBullet() {
+  return Bullet(weapon, this->currentPosition, hunted);
 }

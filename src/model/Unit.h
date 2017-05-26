@@ -13,6 +13,7 @@
 #include "TerrainData.h"
 #include "Player.h"
 #include "Team.h"
+#include "Bullet.h"
 
 class Unit : public Attackable {
  protected:
@@ -61,7 +62,7 @@ class Unit : public Attackable {
   virtual void hunt(const std::vector<Position> &movementsPositions,
                     Attackable *other);
   virtual void attack(Attackable *other);
-  virtual bool doAttack();
+  virtual bool timeToAttack();
   virtual void receiveAttack(const Weapon &weapon) override;
   virtual bool canGoThrough(const TerrainData &terrainType) const = 0;
   virtual bool isAlive() const override;
@@ -77,6 +78,7 @@ class Unit : public Attackable {
   void addMove(const Position &position);
   bool canAttack(Attackable *attackable);
   //virtual PlayerID getOwner() const;
+  Bullet createBullet();
 };
 
 #endif //TALLERZ_UNIT_H

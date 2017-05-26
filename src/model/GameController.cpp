@@ -9,6 +9,7 @@
 #include "UnitDeathEvent.h"
 #include "Data.h"
 #include "UnitNotFoundException.h"
+#include "BulletNewEvent.h"
 
 void GameController::move(const UnitID &idunit, const Position &position) {
   Unit *unit = units.at(idunit);
@@ -20,7 +21,7 @@ void GameController::attack(const UnitID &attackerId,
                             const UnitID &attackedId) {
   Unit *attacker = units.at(attackerId);
   Attackable *attacked = units.at(attackedId);
-  if(!attacker->canAttack(attacked))
+  if (!attacker->canAttack(attacked))
     return;
   if (attacker->isInRange(attacked)
       && map.canPass(attacker->getCurrentPosition(),
@@ -67,8 +68,12 @@ std::vector<Event *> GameController::tick() {
 }
 
 void GameController::doTick(std::vector<Event *> &events) {
+  bulletsTick(events);
+  unitsTick(events);
+}
+void GameController::unitsTick(std::vector<Event *> &events) {
   for (auto it_units = units.begin(); it_units != units.end();
-       ++it_units) {
+       ) {
     Unit *current = it_units->second;
     if (current->hasDamagesToReceive()) {
       unitReceiveDamage(current, events);
@@ -82,13 +87,15 @@ void GameController::doTick(std::vector<Event *> &events) {
       if (current->isCapturing())
         capture(current, events);
       //para que ataquen auto a las que tienen cerca
-      this->autoAttack(current);
+      autoAttack(current);
+      map.updateUnit(current->getId(), current->getUnitState());
+      ++it_units;
     } else {
       events.push_back(new UnitDeathEvent(current->getId()));
+      map.removeUnit(current->getId());
       it_units = units.erase(it_units);
     }
   }
- // updateMap(events);
 }
 
 void GameController::unitReceiveDamage(Unit *current,
@@ -104,18 +111,20 @@ void GameController::move(Unit *unit, std::vector<Event *> &events) const {
     float terrainFactor =
         map.getTile(unit->getCurrentPosition()).getTerrainData().terrainFactor;
     unit->doMoveWithSpeed(terrainFactor);
-    events.push_back(new UnitMoveEvent(unit->getId(), unit->getCurrentPosition()));
+    events.push_back(new UnitMoveEvent(unit->getId(),
+                                       unit->getCurrentPosition()));
   }
 }
 
-void GameController::hunt(Unit *unit, std::vector<Event *> &events) const {
+void GameController::hunt(Unit *unit, std::vector<Event *> &events) {
   Attackable *hunted = unit->getHunted();
   if (unit->attackedInRange()
       && map.canPass(unit->getCurrentPosition(),
                      hunted->getCurrentPosition())) {
-    if (unit->doAttack())//mejorar
-      events.push_back(new UnitAttackEvent(unit->getId(),
-                                           hunted->getCurrentPosition()));
+    if (unit->timeToAttack()) {
+      this->bullets.push_back(unit->createBullet());
+      events.push_back(new BulletNewEvent(this->bullets.front()));
+    }
   } else {
     this->move(unit, events);
   }
@@ -133,14 +142,8 @@ void GameController::capture(Unit *unit, std::vector<Event *> &events) const {
 }
 
 GameController::GameController(Map &map,
-                               const std::map<UnitID, Unit*> &units)
+                               const std::map<UnitID, Unit *> &units)
     : map(map), units(units) {}
-
-void GameController::updateMap(std::vector<Event *> events) {
-  for (auto &event : events) {
-//    event->process(this->map);
-  }
-}
 
 void GameController::removeDeaths(const std::vector<Unit *> &vector) {
   for (auto &unit : vector) {
@@ -152,6 +155,21 @@ void GameController::autoAttack(Unit *current) {
   for (auto &par:units) {
     if (current->isInRange(par.second) && current->getId() != par.first) {
       this->attack(current->getId(), par.second->getId());
+    }
+  }
+}
+void GameController::bulletsTick(std::vector<Event *> &vector) {
+  for (std::vector<Bullet>::iterator iterator = bullets.begin();
+       iterator != bullets.end();) {
+    Bullet &current = *iterator;
+    current.move();
+    if (current.didHit()) {
+      current.doHit();
+      map.removeBullet(current.getId());
+      iterator = bullets.erase(iterator);
+    } else {
+      map.updateBullet(current.getId(), current.getState());
+      ++iterator;
     }
   }
 }
