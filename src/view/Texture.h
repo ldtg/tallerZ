@@ -12,7 +12,8 @@
 
 /**
  * @class Texture:
- * esta pensado para cargar texturas a partir de imagenes
+ * esta pensado para cargar texturas a partir de imagenes o directamente
+ * a partir de superficies (util para texto)
  * y encapsular la cuestión de renderizado. Pasándole los parámetros
  * adecuados al constructor y ejecutando una de las dos funciones
  * renderize de manera adecuada debería mostrarse la textura en pantalla.
@@ -26,6 +27,10 @@ class Texture {
  public:
   Texture(const std::string& path, const Window * window);
 
+  Texture(SDL_Surface* surface, const Window * window);
+
+  Texture(const Window * window);
+
   void load_texture(const std::string& path, SDL_Window * window);
 
   void renderize(const Window * window);
@@ -36,6 +41,8 @@ class Texture {
 
  private:
   SDL_Surface * load_image(const std::string& path);
+
+  void generate_texture(SDL_Surface * surface, SDL_Window * window);
 };
 
 #endif //TALLERZ_TEXTURE_H

@@ -9,7 +9,7 @@ Main_Window::Main_Window() {
   this->cursor = new Cursor();
   this->side_board = new Side_Board(this->main_window);
   //this->robot_face = new Sprite();
-  this->trap_cursor();
+  //this->trap_cursor();
   this->load_buttons();
 }
 

@@ -10,7 +10,6 @@
  */
 Menu_Button::Menu_Button(Window *window) {
   this->window = window;
-  this->set_rectangle(coordX, coordY, width, length);
   this->load_texture_up(path_up);
   this->load_texture_down(path_down);
 }
@@ -19,4 +18,7 @@ Menu_Button::Menu_Button(Window *window) {
  */
 void Menu_Button::button_launch() {
   std::cout << "boton apretado\n";
+}
+SDL_Rect Menu_Button::get_rect() {
+  return this->renderQuad;
 }

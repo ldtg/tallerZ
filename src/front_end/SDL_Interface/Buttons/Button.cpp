@@ -28,8 +28,8 @@ Button::~Button() {
  * @param width : Ancho de la superficie clickeable
  * @param length : Largo de la superficie clickeable
  */
-void Button::set_rectangle(int x, int y, int width, int length) {
-  this->sdl_rect = {x , y, width, length};
+void Button::set_rectangle(const SDL_Rect& rect) {
+  this->renderQuad = rect;
 }
 
 /**
@@ -39,7 +39,7 @@ void Button::set_rectangle(int x, int y, int width, int length) {
 void Button::load_texture_up(const std::string &path) {
   try{
     this->button_up = new Texture(path, window);
-    this->button_up->renderize(window, &sdl_rect);
+    this->button_up->renderize(window, &renderQuad);
   } catch (const std::exception& e){
     throw Front_end_exception("Button::load_texture_up: %s\n",e.what());
   }
@@ -57,15 +57,18 @@ void Button::load_texture_down(const std::string &path) {
 }
 
 /**
- * handle_event
+ * handle_event:
+ * invoca al método que cambia el estado gráfico del boton que
+ * a su vez, si el evento es un mouse_button_up llama a
+ * button_launch que dispara la lógica asociada al botón
  * @param click: Click ameo.
  */
 void Button::handle_event(ClickEvent *click) {
-//  if (click->get_click_data().state == SDL_PRESSED){
-//    this->on_button_pressed();
-//  } else {
-//    this->on_button_released();
-//  }
+/*  if (click->get_click_data().state == SDL_PRESSED){
+    this->on_button_pressed();
+  } else {
+    this->on_button_released();
+  }*/
 }
 /**
  * on_button_pressed
@@ -95,8 +98,19 @@ void Button::on_button_released() {
  * @return : Si las coordenadas indicadas se ubican sobre el botón.
  */
 bool Button::inRectangle(int x, int y) {
-  return ( x > sdl_rect.x
-      && x < (sdl_rect.x + sdl_rect.w)
-      && y > sdl_rect.y
-      && y < (sdl_rect.y + sdl_rect.h));
+  return ( x > renderQuad.x
+      && x < (renderQuad.x + renderQuad.w)
+      && y > renderQuad.y
+      && y < (renderQuad.y + renderQuad.h));
+}
+/**
+ * Reload: Renderiza de nuevo con la imagen del botón sin levantar.
+ */
+void Button::reload() {
+  this->button_up->renderize(this->window, &this->renderQuad);
+}
+void Button::displace_toXY(int coordX, int coordY) {
+  this->renderQuad.x += coordX;
+  this->renderQuad.y += coordY;
+  this->reload();
 }

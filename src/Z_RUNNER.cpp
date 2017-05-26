@@ -2,6 +2,8 @@
 // Created by darius on 22/05/17.
 //
 
+#include <SDL_ttf.h>
+#include <front_end/SDL_Interface/Labels/Label.h>
 #include "Z_RUNNER.h"
 Z_RUNNER::Z_RUNNER() {
   main_window = new Main_Window();
@@ -34,3 +36,4 @@ Z_RUNNER::~Z_RUNNER() {
   delete eventHandler;
   delete main_window;
 }
+

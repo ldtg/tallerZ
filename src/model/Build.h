@@ -9,7 +9,7 @@ class Build : public Attackable {
  private:
   const BuildID id;
   const Position centerPosition;
-  const unsigned short size
+  const unsigned short size;
       //verificar con tech level
       const
   std::vector<UnitType> fabricableUnits;
@@ -22,8 +22,8 @@ class Build : public Attackable {
   Player &owner;
  public:
   virtual Position getCurrentPosition() const override;
-  virtual Position getAttackPosition(const Position &attackerPosition) const override;
-  virtual PlayerID getOwner() const override;
+  virtual Position getAttackPosition(const Position &attackerPosition) const;
+  virtual PlayerID getOwner() const ;
   virtual bool hasDamagesToReceive() const;
   virtual void receiveDamages();
   virtual bool isAlive() const override;
