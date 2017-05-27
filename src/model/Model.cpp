@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Model.h"
-#include "UnitNotFoundException.h"
+#include "Exceptions/model_exceptions/UnitNotFoundException.h"
 
 Model::Model(Map &map, GameController &gc) : map(map) ,gameController(gc){}
 

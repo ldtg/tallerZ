@@ -6,20 +6,23 @@
 #include <chrono>
 #include "GameController.h"
 
-
-extern Data data;
-
 class GameController_test : public ::testing::Test {
 
  public:
   Map map;
+  Player playerA;
+  Player playerB;
+  Player playerC;
+  Team teamA;
+  Team teamB;
+  Team teamC;
   std::map<UnitID, Unit *> units;
   Unit *robotA;
   Unit *robotB;
   Unit *robotC;
   Unit *jeepA;
   std::vector<Event *> events;
-  GameController_test() {
+  GameController_test() : playerA("A"), playerB("B"), playerC("C") {
   }
 
   void SetUp() {
@@ -36,23 +39,36 @@ class GameController_test : public ::testing::Test {
     stdmap.emplace(Position(1, 2), Tile(Position(150, 250), data.land));
     stdmap.emplace(Position(2, 2), Tile(Position(250, 250), data.land));
 
+    teamA.addPlayer(&playerA);
+    teamB.addPlayer(&playerB);
+    teamC.addPlayer(&playerC);
     map = Map(stdmap, 3, 3);
-    robotA = UnitFactory::createGruntDynamic(Position(50, 50));
+    robotA = UnitFactory::createGruntDynamic(Position(50, 50), playerA, teamA);
+    playerA.addUnit();
+
     units.emplace(robotA->getId(), robotA);
-    robotB = UnitFactory::createGruntDynamic(Position(250, 245));
+    map.addUnit(robotA->getId(), robotA->getUnitState());
+    robotB =
+        UnitFactory::createGruntDynamic(Position(250, 245), playerB, teamB);
+    playerB.addUnit();
+
     units.emplace(robotB->getId(), robotB);
-    robotC = UnitFactory::createGruntDynamic(Position(250, 250));
+    map.addUnit(robotB->getId(), robotB->getUnitState());
+    robotC =
+        UnitFactory::createGruntDynamic(Position(250, 250), playerA, teamA);
+    playerC.addUnit();
+
     units.emplace(robotC->getId(), robotC);
-    jeepA = UnitFactory::createJeepDynamic(Position(150, 255));
+    map.addUnit(robotC->getId(), robotC->getUnitState());
+    jeepA = UnitFactory::createJeepDynamic(Position(150, 255), playerA, teamA);
+    playerA.addUnit();
     units.emplace(jeepA->getId(), jeepA);
+    map.addUnit(jeepA->getId(), jeepA->getUnitState());
   }
 
   void TearDown() {
-    for (auto &par : units) {
-      delete (par.second);
-    }
-    for (auto &event : events) {
-      delete event;
+    for(Event * event:events){
+      delete(event);
     }
   }
 
@@ -81,8 +97,7 @@ TEST_F(GameController_test, robotAttack) {
   ASSERT_TRUE(!robotB->isAlive());
 }
 
-
- TEST_F(GameController_test, unitAutoAttack) {
+TEST_F(GameController_test, unitAutoAttack) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
   while (robotC->isAlive()) {
@@ -124,6 +139,6 @@ TEST_F(GameController_test, timed_robot_attack) {
   diff =
       std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
   double diffScs = diff.count();
-  ASSERT_TRUE(std::abs(diffScs - 15) < 2);
+  ASSERT_TRUE(diffScs > 15);
 }
 

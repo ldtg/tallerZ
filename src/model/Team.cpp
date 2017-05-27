@@ -17,7 +17,7 @@ bool Team::isaPlayerOfTheTeam(const PlayerID &id) const {
       return true;
   }
   return false;
-}
+}/*
 unsigned short Team::getAmountOfTerritories(const PlayerID &playerID) {
   return players.at(playerID)->getAmountOfTerritories();
 }
@@ -35,11 +35,13 @@ void Team::subUnit(const PlayerID &playerID) {
 }
 bool Team::isPlayerAlive(const PlayerID &playerID) const {
   return players.at(playerID)->isAlive();
-}
+}*/
 bool Team::isTeamAlive() const {
   for (auto &par : players) {
     if (par.second->isAlive())
       return true;
   }
   return false;
+}
+Team::Team() {
 }

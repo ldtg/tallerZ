@@ -29,13 +29,15 @@ TEST(VistaTest, Window) {
     stdmap.emplace(Position(0, 2), Tile(Position(50, 250), data.land));
     stdmap.emplace(Position(1, 2), Tile(Position(150, 250), data.land));
     stdmap.emplace(Position(2, 2), Tile(Position(250, 250), data.land));
-
-
+/* ---------- EQUIPOS ---------- */
+    Player player("jugador1");
+    Team team;
+    team.addPlayer(&player);
 
 /* ---------- UNIDADES ---------- */
     std::map<UnitID, Unit *> units;
     Unit *robotA;
-    robotA = UnitFactory::createGruntDynamic(Position(50, 50));
+    robotA = UnitFactory::createGruntDynamic(Position(50, 50), player, team);
     units.emplace(robotA->getId(), robotA);
 
 /* ---------- CREACION MAPA ---------- */
@@ -77,13 +79,14 @@ TEST(VistaTest, Window) {
 
       auto end = std::chrono::high_resolution_clock::now();
       auto diff =
-          std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
+          std::chrono::duration_cast<std::chrono::duration<double>>(
+              end - begin);
       std::this_thread::sleep_for(
           std::chrono::milliseconds(25) - diff);
     }
 
     delete (robotA);
-  } catch (const std::exception& e){
+  } catch (const std::exception &e) {
     std::cout << e.what() << std::endl;
   }
 }

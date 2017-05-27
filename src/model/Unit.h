@@ -18,8 +18,8 @@
 class Unit : public Attackable {
  protected:
   const UnitID id;
- // PlayerID owner;
- // Team &team;
+  Player &owner;
+  Team &team;
   Position currentPosition;
   MovementState movState;
   const Weapon weapon;
@@ -32,23 +32,21 @@ class Unit : public Attackable {
   Attackable *hunted;
   std::vector<Position> movementsPositions;
   std::vector<unsigned short> damagesToReceive;
-  /*Unit(const Position &position,
-       const UnitData &data,
-       const UnitType &type, const PlayerID ownerID,
-       Team &team);
-  Unit(const Position &current,
-       const UnitData &data,
-       const PlayerID ownerID,
-       Team &team);*/
+  //para los vehiculos con conductor
   Unit(const Position &position,
        const UnitData &data,
-       const UnitType &type);
+       const UnitType &type, Player &owner,
+       Team &team);
+
   Unit(const Position &current,
-       const UnitData &data);
+       const UnitData &data,
+       Player& owner,
+       Team &team);
  public:
   virtual ~Unit();
   virtual UnitState getUnitState();
-  virtual Position getCurrentPosition() const override;
+  virtual Position getCurrentPosition() const;
+  virtual Position getAttackPosition(const Position &attacker) const override ;
   virtual Position nextMovePosition() const override;
   virtual unsigned long getHealth() const;
   virtual bool hasDamagesToReceive() const;
@@ -77,8 +75,9 @@ class Unit : public Attackable {
   UnitID getId() const;
   void addMove(const Position &position);
   bool canAttack(Attackable *attackable);
-  //virtual PlayerID getOwner() const;
+  virtual PlayerID getOwner() const;
   Bullet createBullet();
+  void still();
 };
 
 #endif //TALLERZ_UNIT_H

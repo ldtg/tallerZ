@@ -2,8 +2,9 @@
 #define TALLERZ_PLAYERID_H
 #include <string>
 class PlayerID {
-  static unsigned long nextid;
+  static unsigned short nextid;
  private:
+  //Agregarle un color??
   unsigned short id;
   std::string name;
  public:

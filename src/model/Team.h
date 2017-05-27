@@ -9,15 +9,10 @@ class Team {
   std::map<PlayerID, Player *> players;
  public:
   explicit Team(const std::map<PlayerID, Player *> &players);
+  Team();
   void addPlayer(Player *player);
   void removePlayer(Player *player);
   bool isEnemy(const PlayerID &playerID) const;
-  unsigned short getAmountOfTerritories(const PlayerID &playerID);
-  void addTerritory(const PlayerID &playerID);
-  void subTerritory(const PlayerID &playerID);
-  void addUnit(const PlayerID &playerID);
-  void subUnit(const PlayerID &playerID);
-  bool isPlayerAlive(const PlayerID &playerID) const;
   bool isTeamAlive() const;
   bool isaPlayerOfTheTeam(const PlayerID &id) const;
 };

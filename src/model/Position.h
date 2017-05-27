@@ -20,8 +20,8 @@ class Position {
   void move(Position target);
   std::vector<Position> getNeighbors() const;
   coordinates_t getCoordinates() const;
-  long getX() const;
-  long getY() const;
+  unsigned long getX() const;
+  unsigned long getY() const;
 //  bool isValid() const;
   bool operator==(const Position &other) const;
   bool operator!=(const Position &other) const;
@@ -31,6 +31,7 @@ class Position {
   bool isIn(long width, long height, int otherX, int otherY) const;
   std::string toString() const;
   Position sub(unsigned long x, unsigned long y) const;
+  Position getAttackPosition(const Position &position, const unsigned short size) const;
 };
 
 #endif //TALLERZ_POSITION_H

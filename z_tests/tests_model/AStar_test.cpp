@@ -49,5 +49,5 @@ TEST_F(AStar_test, find) {
   while(robot.isMoving()) {
     robot.doOneMove();
   }
-  ASSERT_EQ(epos, robot.getCurrentPosition());
+  ASSERT_EQ(epos, robot.getCenterPosition());
 }*/

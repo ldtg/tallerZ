@@ -17,7 +17,8 @@ void Unit::attack(Attackable *other) {
 }
 
 bool Unit::isInRange(Attackable *other) {
-  return this->currentPosition.euclideanDistance(other->getCurrentPosition())
+  return this->currentPosition.euclideanDistance(other->getAttackPosition(
+      currentPosition))
       < range;
 }
 
@@ -43,7 +44,7 @@ void Unit::receiveDamages() {
       this->health -= damage;
     } else {
       this->health = 0;
-      // team.subUnit(owner);
+      owner.subUnit();
     }
   }
   damagesToReceive.clear();
@@ -58,7 +59,7 @@ void Unit::doOneMove() {
     this->movState.still();
 }
 bool Unit::attackedInRange() {
-  return currentPosition.euclideanDistance(hunted->getCurrentPosition())
+  return currentPosition.euclideanDistance(hunted->getAttackPosition(currentPosition))
       < range;
 }
 bool Unit::isHunting() {
@@ -70,10 +71,7 @@ bool Unit::timeToAttack() {
       attackCounterActual = attackCounterBase;
       return true;
     } else {
-      this->movState.still();
-      hunted = nullptr;
-      movementsPositions.clear();
-      attackCounterActual = attackCounterBase;
+      this->still();
       return false;
     }
   } else {
@@ -119,7 +117,7 @@ void Unit::doMoveWithSpeed(float terrainFactor) {
 }
 
 UnitState Unit::getUnitState() {
-  return UnitState(health, weapon, currentPosition);
+  return UnitState(owner.getID(), health, weapon, currentPosition);
 }
 void Unit::addMove(const Position &position) {
   if (std::find(movementsPositions.begin(), movementsPositions.end(), position)
@@ -129,11 +127,11 @@ void Unit::addMove(const Position &position) {
 bool Unit::hasDamagesToReceive() const {
   return !damagesToReceive.empty();
 }
-/*Unit::Unit(const Position &current,
+Unit::Unit(const Position &current,
            const UnitData &data,
-           const PlayerID ownerID,
+           Player &owner,
            Team &team)
-    : owner(ownerID), team(team),
+    : owner(owner), team(team),
       currentPosition(current),
       weapon(data.weapon),
       attackCounterBase(data.ticksUntilFire),
@@ -149,8 +147,8 @@ bool Unit::hasDamagesToReceive() const {
 Unit::Unit(const Position &position,
            const UnitData &data,
            const UnitType &type,
-           const PlayerID ownerID,
-           Team &team) : owner(ownerID), team(team),
+           Player &owner,
+           Team &team) : owner(owner), team(team),
                          currentPosition(position),
                          weapon(data.weapon),
                          attackCounterBase(data.ticksUntilFire),
@@ -162,45 +160,25 @@ Unit::Unit(const Position &position,
                          movState(),
                          hunted(nullptr) {
 
-}*/
-Unit::Unit(const Position &current,
-           const UnitData &data)
-    : currentPosition(current),
-      weapon(data.weapon),
-      attackCounterBase(data.ticksUntilFire),
-      attackCounterActual(attackCounterBase),
-      baseSpeed(data.speed),
-      range(data.range),
-      health(data.health),
-      id(data.type),
-      movState(),
-      hunted(nullptr) {
-
-}
-Unit::Unit(const Position &position,
-           const UnitData &data,
-           const UnitType &type) : currentPosition(position),
-                                   weapon(data.weapon),
-                                   attackCounterBase(data.ticksUntilFire),
-                                   attackCounterActual(attackCounterBase),
-                                   baseSpeed(data.speed),
-                                   range(data.range),
-                                   health(data.health),
-                                   id(data.type, type),
-                                   movState(),
-                                   hunted(nullptr) {
-
 }
 unsigned short Unit::getRange() const {
   return range;
 }
-/*PlayerID Unit::getOwner() const {
-  return owner;
-}*/
+PlayerID Unit::getOwner() const {
+  return owner.getID();
+}
 bool Unit::canAttack(Attackable *attackable) {
-  // this->team.isEnemy(attackable->getOwner());
-  return true;
+  return this->team.isEnemy(attackable->getOwner());
 }
 Bullet Unit::createBullet() {
   return Bullet(weapon, this->currentPosition, hunted);
+}
+void Unit::still() {
+  this->movState.still();
+  hunted = nullptr;
+  movementsPositions.clear();
+  attackCounterActual = attackCounterBase;
+}
+Position Unit::getAttackPosition(const Position &attacker) const {
+  return currentPosition;
 }

@@ -90,13 +90,21 @@ std::string Position::toString() const {
   return aux.str();
 }
 
-long Position::getX() const {
+unsigned long Position::getX() const {
   return x;
 }
 
-long Position::getY() const {
+unsigned long Position::getY() const {
   return y;
 }
-Position Position::sub(unsigned long x, unsigned long y) const{
-  return Position(this->x-x, this->y-y);
+Position Position::sub(unsigned long x, unsigned long y) const {
+  return Position(this->x - x, this->y - y);
+}
+Position Position::getAttackPosition(const Position &position,
+                                     const unsigned short size) const {
+  Position aux = position;
+  while(aux.euclideanDistance(*this) > size){
+    aux.move(*this);
+  }
+  return aux;
 }

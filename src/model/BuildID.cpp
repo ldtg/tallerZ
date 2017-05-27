@@ -1,7 +1,7 @@
 #include "BuildID.h"
 unsigned long BuildID::nextid = 0;
 
-BuildID::BuildID(const BuildType &buildType) : type(type), id(nextid) {
+BuildID::BuildID(const BuildType &buildType) : type(buildType), id(nextid) {
   nextid++;
 }
 bool BuildID::operator<(const BuildID &other) const {

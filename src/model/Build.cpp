@@ -1,6 +1,9 @@
+#include <algorithm>
+#include <Exceptions/model_exceptions/UnableToBuildThatUnitException.h>
 #include "Build.h"
 #include "Data.h"
-Position Build::getCurrentPosition() const {
+#include "UnitFactory.h"
+Position Build::getCenterPosition() const {
   return centerPosition;
 }
 PlayerID Build::getOwner() const {
@@ -31,18 +34,15 @@ void Build::tick() {
   }
 }
 bool Build::hasToBuild() {
-  if (timeToBuild) {
-    timeToBuild = false;
-    return true;
-  }
-  return false;
+  return timeToBuild;
 }
 unsigned short Build::getSpeedRate() const {
   unsigned long timeInSecs;
-  double baseTaken = data.getData(actualUnitFab).factoryBaseTimeInSec
-      / owner.getAmountOfTerritories();
-  double rel = this->health / data.getData(this->id.getType()).health;
-  double relsqrt = std::sqrt(1 - rel);
+  float baseTaken = (float)data.getData(actualUnitFab).factoryBaseTimeInSec
+      / (float)owner.getAmountOfTerritories();
+  float rel = (float) (this->health - data.getData(this->id.getType()).health)
+      / (float) data.getData(this->id.getType()).health;
+  float relsqrt = std::sqrt(1 - rel);
   timeInSecs = std::lround(baseTaken / relsqrt);
 
   return data.getTickAmount(timeInSecs);
@@ -57,7 +57,71 @@ void Build::receiveDamages() {
     } else {
       this->health = 0;
       owner.buildDestroyed(this->id.getType());
+      damagesToReceive.clear();
       return;
     }
   }
+  damagesToReceive.clear();
 }
+Build::Build(const BuildData &buildData,
+             const Position &centerPosition,
+             Player &owner, Team &team,
+             const unsigned short techLevel)
+    : id(buildData.type),
+      owner(owner), team(team),
+      centerPosition(centerPosition),
+      size(buildData.size),
+      techLevel(techLevel),
+      fabricableUnits(data.getFabUnits(buildData.type, techLevel)),
+    ticksBeforeCreate(this->getSpeedRate()),
+      health(buildData.health),
+      timeToBuild(false),
+      actualUnitFab(UnitType::R_GRUNT) {
+
+}
+UnitType Build::getActualUnitFab() const {
+  return actualUnitFab;
+}
+std::vector<UnitType> Build::getFabricableUnits() const {
+  return fabricableUnits;
+}
+void Build::changeFabUnit(const UnitType &type) {
+  if (std::find(fabricableUnits.begin(), fabricableUnits.end(), type)
+      == fabricableUnits.end()) {
+    throw UnableToBuildThatUnitException(
+        "El tipo de unidad no esta en el vector de tipos permitidos");
+  } else {
+    this->actualUnitFab = type;
+    this->ticksBeforeCreate = this->getSpeedRate();
+    this->timeToBuild = false;
+  }
+}
+BuildID Build::getId() const {
+  return this->id;
+}
+BuildState Build::getBuildState() const {
+  return BuildState(owner.getID(), centerPosition,
+                    health,
+                    data.ticksToSec(ticksBeforeCreate),
+                    actualUnitFab);
+}
+std::vector<Unit *> Build::fabricateUnits() {
+  std::vector<Unit *> aux;
+  for (int i = 0; i < data.getData(actualUnitFab).factoryRate; ++i) {
+    //mejorar
+    Position buildPosition(this->centerPosition.getX() + this->size + i * 3,
+                           this->centerPosition.getY() + this->size);
+    aux.push_back(UnitFactory::createUnitDynamic(buildPosition,
+                                                 actualUnitFab,
+                                                 owner,
+                                                 team));
+    owner.addUnit();
+  }
+  this->timeToBuild = false;
+  return aux;
+}
+void Build::changePlayer(Player &player, Team &team) {
+  this->owner = player;
+  this->team = team;
+}
+

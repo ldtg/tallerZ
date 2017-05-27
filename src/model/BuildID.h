@@ -5,10 +5,10 @@
 class BuildID {
  private:
   static unsigned long nextid;
-  const BuildType type;
-  const unsigned long id;
+  BuildType type;
+  unsigned long id;
  public:
-  explicit BuildID(const BuildType& buildType);
+  explicit BuildID(const BuildType &buildType);
   bool operator<(const BuildID &other) const;
   BuildType getType() const;
 };

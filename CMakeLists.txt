@@ -32,22 +32,22 @@ set(SOURCE_FILES
         src/model/Data.h
         src/model/Robot.cpp
         src/model/Robot.h
-        src/model/UnitAttackEvent.cpp
-        src/model/UnitAttackEvent.h
-        src/model/UnitNotFoundException.cpp
-        src/model/UnitNotFoundException.h
+        src/model/Events/model/UnitAttackEvent.cpp
+        src/model/Events/model/UnitAttackEvent.h
+        src/Exceptions/model_exceptions/UnitNotFoundException.cpp
+        src/Exceptions/model_exceptions/UnitNotFoundException.h
         src/model/UnitData.h
         src/model/UnitFactory.cpp
         src/model/UnitFactory.h
         src/model/TerrainData.h
-        src/model/UnitMoveEvent.cpp
-        src/model/UnitMoveEvent.h
+        src/model/Events/model/UnitMoveEvent.cpp
+        src/model/Events/model/UnitMoveEvent.h
         src/model/Events/Event.cpp
         src/model/Events/Event.h
-        src/model/UnitDamageReceiveEvent.cpp
-        src/model/UnitDamageReceiveEvent.h
-        src/model/UnitDeathEvent.cpp
-        src/model/UnitDeathEvent.h
+        src/model/Events/model/UnitDamageReceiveEvent.cpp
+        src/model/Events/model/UnitDamageReceiveEvent.h
+        src/model/Events/model/UnitDeathEvent.cpp
+        src/model/Events/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
         src/model/Vehicle.h
         src/model/Events/Pointer/ClickEvent.cpp
@@ -62,15 +62,37 @@ set(SOURCE_FILES
         src/model/GameController.cpp
         src/model/Bullet.cpp
         src/model/Bullet.h
-        src/model/BulletNewEvent.cpp
-        src/model/BulletNewEvent.h
+        src/model/Events/model/BulletNewEvent.cpp
+        src/model/Events/model/BulletNewEvent.h
         src/model/BulletID.cpp
         src/model/BulletID.h
-        src/model/BulletHitEvent.cpp
-        src/model/BulletHitEvent.h
+        src/model/Events/model/BulletHitEvent.cpp
+        src/model/Events/model/BulletHitEvent.h
         src/model/BulletState.cpp
         src/model/BulletState.h
-
+        src/model/Player.cpp
+        src/model/Player.h
+        src/model/Team.cpp
+        src/model/Team.h
+        src/model/PlayerID.cpp
+        src/model/PlayerID.h
+        src/model/Territory.cpp
+        src/model/Territory.h
+        src/model/Build.cpp
+        src/model/Build.h
+        src/model/BuildData.h
+        src/model/BuildType.h
+        src/model/BuildID.cpp
+        src/model/BuildID.h
+        src/model/BuildType.h
+        src/model/BuildState.cpp src/model/BuildState.h
+        src/model/Events/model/BuildDamageEvent.cpp
+        src/model/Events/model/BuildDamageEvent.h
+        src/model/Events/model/BuildDestroyedEvent.cpp
+        src/model/Events/model/BuildDestroyedEvent.h
+        src/model/Events/model/UnitCreateEvent.cpp
+        src/model/Events/model/UnitCreateEvent.h
+        z_tests/tests_model/GameController_build_test.cpp
         src/view/Texture.cpp
         src/view/Texture.h
         src/view/Window.cpp
@@ -189,7 +211,11 @@ set(SOURCE_FILES
         src/model/Model.cpp
         src/model/Model.h
         src/front_end/SDL_Interface/Map_View.cpp
-        src/front_end/SDL_Interface/Map_View.h)
+        src/front_end/SDL_Interface/Map_View.h
+        src/Exceptions/model_exceptions/UnableToFindAPathException.cpp
+        src/Exceptions/model_exceptions/UnableToFindAPathException.h
+        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
+        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h)
 
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)

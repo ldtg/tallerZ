@@ -9,7 +9,7 @@ class UnitDeathEvent : public Event{
   UnitID id;
  public:
   UnitDeathEvent(UnitID id);
-  void process();
+  virtual void process();
 };
 
 #endif //TALLERZ_UNITDEATHEVENT_H

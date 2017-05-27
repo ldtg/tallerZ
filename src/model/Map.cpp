@@ -1,5 +1,5 @@
 #include "Map.h"
-#include "UnitNotFoundException.h"
+#include "Exceptions/model_exceptions/UnitNotFoundException.h"
 
 Map::Map() {}
 
@@ -23,9 +23,7 @@ std::vector<Tile> Map::getNeighbors(const Tile &tile) const {
 }
 
 Tile Map::getTile(const Position &position) const {
-  Position pos = position;
-  pos.mod(TILEWIDHT, TILEHEIGHT);
-  return map.at(pos);
+  return map.at(this->getTilePositionFromRealPosition(position));
 }
 
 bool Map::isUnitIn(const Position &position) const {
@@ -98,7 +96,7 @@ UnitID Map::getUnitIDFromPosition(const Position &pos,
     if (pos.equalDelta(par.second.position, range))
       return par.first;
   }
-  throw UnitNotFoundException();
+  throw UnitNotFoundException("unidad no encontrada");
 }
 void Map::updateUnit(const UnitID &unitID, const UnitState &unitState) {
   this->removeUnit(unitID);
@@ -115,4 +113,25 @@ void Map::updateBullet(const BulletID &bulletID,
   this->removeBullet(bulletID);
   this->addBullet(bulletID, bulletState);
 }
+Map::Map(const std::map<Position, Tile> &map,
+         const std::map<BuildID, BuildState> &builds,
+         unsigned short width,
+         unsigned short height)
+    : map(map), builds(builds), width(width), height(height) {
+
+}
+void Map::updateBuild(const BuildID &buildID, const BuildState &buildState) {
+  this->builds.erase(buildID);
+  this->builds.emplace(buildID, buildState);
+  if (buildState.health == 0) {
+    Tile &tile =
+        this->map.at(getTilePositionFromRealPosition(buildState.position));
+    tile.makeNotPassable();
+  }
+}
+Position Map::getTilePositionFromRealPosition(Position position) const {
+  position.mod(TILEWIDHT, TILEHEIGHT);
+  return position;
+}
+
 

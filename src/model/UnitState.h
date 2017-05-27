@@ -11,11 +11,15 @@
 
 struct UnitState {
  public:
-  unsigned long health;
+  PlayerID owner;
+  unsigned short health;
   Weapon weapon;
   Position position;
-  UnitState(unsigned long health, Weapon weapon, Position current)
-      : health(health), weapon(weapon), position(current) {}
+  UnitState(const PlayerID &owner,
+            unsigned short health,
+            const Weapon &weapon,
+            const Position &current)
+      : owner(owner), health(health), weapon(weapon), position(current) {}
 };
 
 #endif //TALLERZ_UNITSTATE_H
