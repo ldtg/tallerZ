@@ -22,7 +22,6 @@ class View {
   void createInitialUnitVista(const std::map<UnitID, UnitState> &units);
   void add(ObjectMapaVista *objectVista, Position pos);
   ObjectMapaVista *getTerrainVista(TerrainType type);
-  ObjectMapaVista *getUnitVista(UnitType type);
   void draw();
 
  public:
@@ -34,7 +33,10 @@ class View {
   void setQuit();
   bool quit();
 
+  ObjectMapaVista *getUnitVista(UnitType type, std::string &rotation);
   void move(UnitID id, Position posTo);
+  void removeUnitVista(UnitID &id);
+  void addUnitVista(UnitID &id, ObjectMapaVista *unitVista);
 
   void update();
 };

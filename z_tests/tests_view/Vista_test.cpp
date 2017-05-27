@@ -41,14 +41,14 @@ TEST(VistaTest, Window) {
     robotA = UnitFactory::createGruntDynamic(Position(50, 50), player, team);
     units.emplace(robotA->getId(), robotA);
 
-    Unit *robotB;
-    robotB = UnitFactory::createGruntDynamic(Position(150, 150), player, team);
-    units.emplace(robotB->getId(), robotB);
+//    Unit *robotB;
+//    robotB = UnitFactory::createGruntDynamic(Position(150, 150));
+//    units.emplace(robotB->getId(), robotB);
 
 /* ---------- CREACION MAPA ---------- */
     Map map(stdmap, 3, 3);
     map.addUnit(robotA->getId(), robotA->getUnitState());
-    map.addUnit(robotB->getId(), robotB->getUnitState());
+//    map.addUnit(robotB->getId(), robotB->getUnitState());
     GameController gameController(map, units);
 
     EventHandler eventHandler;
@@ -89,10 +89,10 @@ TEST(VistaTest, Window) {
 //      std::this_thread::sleep_for(
 //          std::chrono::milliseconds(25) - diff);
     }
-    /* Lo hace el gc ahora
-    delete (robotB);
-    delete (robotA);*/
-  } catch (const std::exception &e) {
+
+//    delete (robotB);
+    delete (robotA);
+  } catch (const std::exception& e){
     std::cout << e.what() << std::endl;
   }
 }

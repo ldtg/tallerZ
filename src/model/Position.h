@@ -17,7 +17,7 @@ class Position {
   unsigned long euclideanDistance(const Position &other) const;
 
   void mod(unsigned short modx, unsigned short mody);
-  void move(Position target);
+  int move(Position target);
   std::vector<Position> getNeighbors() const;
   coordinates_t getCoordinates() const;
   unsigned long getX() const;

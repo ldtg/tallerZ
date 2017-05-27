@@ -67,15 +67,52 @@ void Position::mod(unsigned short modx, unsigned short mody) {
   this->y = this->y / mody;
 }
 
-void Position::move(Position target) {
-  if (this->x < target.x)
+int Position::move(Position target) {
+  int rotation = 0;
+
+  if (this->x < target.x) {
     this->x++;
-  else if (this->x > target.x)
+
+    if (this->y < target.y) {
+      this->y++;
+      rotation = 315;
+    }
+    else if (this->y > target.y) {
+      this->y--;
+      rotation = 45;
+    }
+    else {
+      rotation = 0;
+    }
+  }
+
+  else if (this->x > target.x) {
     this->x--;
-  if (this->y < target.y)
-    this->y++;
-  else if (this->y > target.y)
-    this->y--;
+
+    if (this->y < target.y) {
+      this->y++;
+      rotation = 225;
+    }
+    else if (this->y > target.y) {
+      this->y--;
+      rotation = 135;
+    }
+    else {
+      rotation = 180;
+    }
+  }
+
+  else {
+    if (this->y < target.y) {
+      this->y++;
+      rotation = 270;
+    }
+    else if (this->y > target.y) {
+      this->y--;
+      rotation = 90;
+    }
+  }
+  return rotation;
 }
 bool Position::operator!=(const Position &other) const {
   return !(this->operator==(other));

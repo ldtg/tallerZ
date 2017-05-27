@@ -17,6 +17,14 @@ Position ObjectMapaVista::getPos() const {
     return Position(x, y);
 }
 
+void ObjectMapaVista::setRotation(int rotation) {
+  this->rotation = rotation;
+}
+
+int ObjectMapaVista::getRotation() {
+  return rotation;
+}
+
 //void ObjectMapaVista::setPosTo(Position &pos) {
 //  this->posTo = pos;
 //}

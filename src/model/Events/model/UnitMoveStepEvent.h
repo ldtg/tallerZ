@@ -8,9 +8,10 @@ class UnitMoveStepEvent  : public Event {
 //  Position posFrom;
   Position posToo;
   UnitID id;
+  int rotation;
 //  UnitState newState;
  public:
-  UnitMoveStepEvent(UnitID id, Position &posTo);
+  UnitMoveStepEvent(UnitID id, Position &posTo, int rotation);
   void process();
 };
 

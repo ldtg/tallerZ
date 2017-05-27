@@ -31,7 +31,8 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
   for (auto const &unit : units) {
     UnitType type = unit.first.getType();
     Position pos = unit.second.position;
-    ObjectMapaVista *unitVista = getUnitVista(type);
+    std::string rotation("0");
+    ObjectMapaVista *unitVista = getUnitVista(type, rotation);
     add(unitVista, pos);
 
     unitsVista.emplace(unit.first, unitVista);
@@ -46,7 +47,7 @@ void View::update() {
   while (!eventHandler.empty()) {
     Event *event = eventHandler.get();
     event->process();
-    //TODO: VER QUIEN HAVE DELETE EN ESTOS EVENT
+    //TODO: VER QUIEN HACE DELETE EN ESTOS EVENT
 //    delete (event);
     draw();
   }
@@ -82,9 +83,10 @@ ObjectMapaVista* View::getTerrainVista(TerrainType type) {
     }
 }
 
-ObjectMapaVista* View::getUnitVista(UnitType type) {
+ObjectMapaVista* View::getUnitVista(UnitType type, std::string &rotation) {
   if (type == R_GRUNT) {
-    return new Sprite("../src/view/images/units/walk_blue_r000_n", 4);
+    std::string path = "../src/view/images/units/walk_blue_r" + rotation + "_n";
+    return new Sprite(path.c_str(), 4);
   }
   else {
     return nullptr;
@@ -93,9 +95,10 @@ ObjectMapaVista* View::getUnitVista(UnitType type) {
 
 void View::move(UnitID id, Position posTo) {
   Position pos_aux = unitsVista.at(id)->getPos();
+  int rotation = 0;
   while (pos_aux != posTo) {
-    pos_aux.move(posTo);
-    eventHandler.add(new UnitMoveStepEvent(id, pos_aux));
+    rotation = pos_aux.move(posTo);
+    eventHandler.add(new UnitMoveStepEvent(id, pos_aux, rotation));
 //    unitsVista.at(id)->setPos(posTo);
 //    panel.draw();
 //    update();
@@ -112,4 +115,12 @@ bool View::quit() {
 
 std::map<UnitID, ObjectMapaVista*>& View::getUnitsVista() {
   return unitsVista;
+}
+
+void View::removeUnitVista(UnitID &id) {
+  unitsVista.erase(id);
+}
+
+void View::addUnitVista(UnitID &id, ObjectMapaVista *unitVista) {
+  unitsVista.emplace(id, unitVista);
 }

@@ -10,6 +10,7 @@ class ObjectMapaVista {
   int height;
   int x;
   int y;
+  int rotation;
 //  Position posTo;
 
  public:
@@ -18,6 +19,8 @@ class ObjectMapaVista {
 
   void setPos(Position pos);
   Position getPos() const;
+  void setRotation(int rotation);
+  int getRotation();
 //  void setPosTo(Position &pos);
 //  bool isMoving();
 
