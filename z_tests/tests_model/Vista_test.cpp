@@ -30,8 +30,6 @@ TEST(VistaTest, Window) {
     stdmap.emplace(Position(1, 2), Tile(Position(150, 250), data.land));
     stdmap.emplace(Position(2, 2), Tile(Position(250, 250), data.land));
 
-
-
 /* ---------- UNIDADES ---------- */
     std::map<UnitID, Unit *> units;
     Unit *robotA;

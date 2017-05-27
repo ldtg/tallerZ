@@ -9,7 +9,7 @@
 #include <view/Sprite.h>
 #include <model/Events/Pointer/ClickEvent.h>
 #include <view/Texture.h>
-#include "Front_end_exceptions/Front_end_exception.h"
+#include "Front_end_exceptions/Generator_Exception.h"
 
 /*
  * TODO: barajar la posibilidad de armar una clase clickable de la que herede button y demas objetos clickeables. Por ahora lo dejo así.

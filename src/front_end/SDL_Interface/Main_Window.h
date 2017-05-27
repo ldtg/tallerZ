@@ -14,7 +14,7 @@
 #include "front_end/SDL_Interface/Cursor.h"
 #include "Side_Board.h"
 #include "Cursor.h"
-#include "Front_end_exceptions/Front_end_exception.h"
+#include "Front_end_exceptions/Generator_Exception.h"
 
 class Main_Window {
  private:

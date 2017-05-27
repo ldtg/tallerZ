@@ -120,8 +120,10 @@ set(SOURCE_FILES
 
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.h
-        src/Exceptions/Front_end_exceptions/Front_end_exception.h
+        src/Exceptions/Front_end_exceptions/Generator_Exception.h
         src/Exceptions/Front_end_exceptions/Front_end_exception.cpp
+        src/Exceptions/Map_Generator_Exceptions/Generator_Exception.h
+        src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp
 
         src/header_for_tests.h
         z_tests/tests_front_end/FEnd_test.cpp
@@ -151,7 +153,10 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h
         src/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp
         src/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp
-        src/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h )
+        src/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h
+
+        src/map_generation/Generator.cpp
+        src/map_generation/Generator.h z_tests/tests_generator/Generator_test.cpp)
 
 #src/model/GameController.cpp
 #src/model/GameController.h
