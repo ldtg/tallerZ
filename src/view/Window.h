@@ -11,6 +11,7 @@ class Window {
 
   int width;
   int height;
+
  public:
   Window();
   ~Window();

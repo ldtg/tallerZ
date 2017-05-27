@@ -3,7 +3,7 @@
 #include <thread>
 #include "GameController.h"
 #include "AStar.h"
-#include "UnitMoveEvent.h"
+#include "model/Events/UnitMoveEvent.h"
 #include "UnitDamageReceiveEvent.h"
 #include "UnitAttackEvent.h"
 #include "UnitDeathEvent.h"

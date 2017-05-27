@@ -40,8 +40,8 @@ set(SOURCE_FILES
         src/model/UnitFactory.cpp
         src/model/UnitFactory.h
         src/model/TerrainData.h
-        src/model/UnitMoveEvent.cpp
-        src/model/UnitMoveEvent.h
+        src/model/Events/UnitMoveEvent.cpp
+        src/model/Events/UnitMoveEvent.h
         src/model/Events/Event.cpp
         src/model/Events/Event.h
         src/model/UnitDamageReceiveEvent.cpp
@@ -108,7 +108,7 @@ set(SOURCE_FILES
         z_tests/tests_front_end/FEnd_test.cpp
         z_tests/tests_model/GameController_test.cpp
         z_tests/tests_model/Map_test.cpp
-        z_tests/tests_model/Vista_test.cpp
+        z_tests/tests_view/Vista_test.cpp
         z_tests/tests_model/Tile_test.cpp
         z_tests/tests_model/Robot_test.cpp
         z_tests/tests_model/AStar_test.cpp
@@ -189,7 +189,7 @@ set(SOURCE_FILES
         src/model/Model.cpp
         src/model/Model.h
         src/front_end/SDL_Interface/Map_View.cpp
-        src/front_end/SDL_Interface/Map_View.h)
+        src/front_end/SDL_Interface/Map_View.h z_tests/tests_view/Window_test.cpp src/model/Events/UnitMoveStepEvent.cpp src/model/Events/UnitMoveStepEvent.h)
 
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
