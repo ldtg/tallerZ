@@ -50,12 +50,14 @@ set(SOURCE_FILES
         src/model/Events/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
         src/model/Vehicle.h
-        src/model/Events/Pointer/ClickEvent.cpp
-        src/model/Events/Pointer/ClickEvent.h
+        src/model/Events/Pointer/LeftClickEvent.cpp
+        src/model/Events/Pointer/LeftClickEvent.h
         src/model/Events/EventHandler.cpp
         src/model/Events/EventHandler.h
         src/model/Events/QuitEvent.cpp
         src/model/Events/QuitEvent.h
+        src/model/Events/Pointer/RightClickEvent.cpp
+        src/model/Events/Pointer/RightClickEvent.h
         src/model/Model.cpp
         src/model/Model.h
         src/model/GameController.h
@@ -93,6 +95,9 @@ set(SOURCE_FILES
         src/model/Events/model/UnitCreateEvent.cpp
         src/model/Events/model/UnitCreateEvent.h
         z_tests/tests_model/GameController_build_test.cpp
+        src/model/Events/model/UnitMoveStepEvent.cpp
+        src/model/Events/model/UnitMoveStepEvent.h
+
         src/view/Texture.cpp
         src/view/Texture.h
         src/view/Window.cpp
@@ -114,26 +119,38 @@ set(SOURCE_FILES
         src/controller/Handler.cpp
         src/controller/HandlerFactory.cpp
         src/controller/HandlerFactory.h
-        src/controller/Mouse.cpp
-        src/controller/Mouse.h
+        src/controller/MouseButtonLeft.cpp
+        src/controller/MouseButtonLeft.h
         src/controller/NullHandler.cpp
         src/controller/NullHandler.h
         src/controller/Quit.cpp
         src/controller/Quit.h
+        src/controller/MouseButtonRight.cpp
+        src/controller/MouseButtonRight.h
 
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.h
-        src/Exceptions/Front_end_exceptions/Front_end_exception.h
+        src/Exceptions/Front_end_exceptions/Generator_Exception.h
         src/Exceptions/Front_end_exceptions/Front_end_exception.cpp
-
+        src/Exceptions/Map_Generator_Exceptions/Generator_Exception.h
+        src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp
+        src/Exceptions/model_exceptions/UnableToFindAPathException.cpp
+        src/Exceptions/model_exceptions/UnableToFindAPathException.h
+        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
+        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h
+        
         src/header_for_tests.h
         z_tests/tests_front_end/FEnd_test.cpp
         z_tests/tests_model/GameController_test.cpp
         z_tests/tests_model/Map_test.cpp
-        z_tests/tests_model/Vista_test.cpp
+        z_tests/tests_view/Vista_test.cpp
         z_tests/tests_model/Tile_test.cpp
         z_tests/tests_model/Robot_test.cpp
         z_tests/tests_model/AStar_test.cpp
+        z_tests/tests_view/Window_test.cpp
+        z_tests/tests_generator/Generator_test.cpp
+        z_tests/tests_view/Window_test.cpp
+
 
         src/SDL_START.cpp
         src/SDL_START.h
@@ -155,7 +172,6 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp
         src/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp
         src/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h
-
 
         src/front_end/SDL_Interface/Map_View.cpp
         src/front_end/SDL_Interface/Map_View.h
@@ -185,38 +201,10 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Buttons/Button.h
         src/front_end/SDL_Interface/Buttons/Menu_Button.cpp
         src/front_end/SDL_Interface/Buttons/Menu_Button.h
-        src/view/Texture.cpp
-        src/view/Texture.h
-        src/model/Vehicle.h
-        z_tests/tests_front_end/FEnd_test.cpp
-        src/header_for_tests.h
-        src/front_end/SDL_Interface/Weapon_Img.cpp
-        src/front_end/SDL_Interface/Weapon_Img.h
-        src/front_end/SDL_Interface/Main_Window.cpp
-        src/front_end/SDL_Interface/Main_Window.h
-        src/SDL_START.cpp src/SDL_START.h
-        src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
-        src/Exceptions/Sdl_Exceptions/Sdl_Exception.h
-        src/front_end/SDL_Interface/Side_Board.cpp
-        src/front_end/SDL_Interface/Side_Board.h
-        src/Utils/Sdl_Utils.cpp src/Utils/Sdl_Utils.h
-        src/front_end/SDL_Interface/Robot_Face.cpp
-        src/front_end/SDL_Interface/Robot_Face.h
-        src/model/Events/Pointer/ClickEvent.cpp
-        src/model/Events/Pointer/ClickEvent.h
-        src/model/Events/EventHandler.cpp
-        src/model/Events/EventHandler.h
-        src/model/Events/QuitEvent.cpp
-        src/model/Events/QuitEvent.h
-        src/model/Model.cpp
-        src/model/Model.h
-        src/front_end/SDL_Interface/Map_View.cpp
-        src/front_end/SDL_Interface/Map_View.h
-        src/Exceptions/model_exceptions/UnableToFindAPathException.cpp
-        src/Exceptions/model_exceptions/UnableToFindAPathException.h
-        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
-        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h)
 
+        src/map_generation/Generator.cpp
+        src/map_generation/Generator.h
+        )
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
@@ -255,7 +243,7 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} $
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/json/src)
 
 # Download and unpack googletest at configure time
-configure_file(CMakeLists.txt.in
+configure_file (CMakeLists.txt.in
         googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download)

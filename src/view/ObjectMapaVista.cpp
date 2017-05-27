@@ -1,7 +1,5 @@
 #include "ObjectMapaVista.h"
 
-ObjectMapaVista::~ObjectMapaVista() {}
-
 int ObjectMapaVista::getWidth() const {
     return width;
 }
@@ -18,5 +16,9 @@ void ObjectMapaVista::setPos(Position pos) {
 Position ObjectMapaVista::getPos() const {
     return Position(x, y);
 }
+
+//void ObjectMapaVista::setPosTo(Position &pos) {
+//  this->posTo = pos;
+//}
 
 void ObjectMapaVista::set_texture(SDL_Renderer *render) {}

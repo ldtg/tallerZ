@@ -2,12 +2,13 @@
 #define TALLERZ_MOUSE_H
 
 #include "Handler.h"
-class Mouse : public Handler {
+
+class MouseButtonLeft : public Handler {
  private:
   int x;
   int y;
  public:
-  Mouse();
+  MouseButtonLeft();
   void handle(SDL_Event *e, EventHandler &eventHandler);
 };
 

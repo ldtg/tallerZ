@@ -7,9 +7,9 @@
 
 #include <SDL2/SDL_rect.h>
 #include <view/Sprite.h>
-#include <model/Events/Pointer/ClickEvent.h>
+#include <model/Events/Pointer/LeftClickEvent.h>
 #include <view/Texture.h>
-#include "Front_end_exceptions/Front_end_exception.h"
+#include "Front_end_exceptions/Generator_Exception.h"
 
 /*
  * TODO: barajar la posibilidad de armar una clase clickable de la que herede button y demas objetos clickeables. Por ahora lo dejo así.
@@ -46,7 +46,7 @@ class Button {
 
   void load_texture_down(const std::string &path);
 
-  void handle_event(ClickEvent* click);
+  void handle_event(LeftClickEvent* click);
 
   void reload();
  protected:

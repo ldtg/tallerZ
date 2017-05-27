@@ -2,7 +2,7 @@
 #define TALLERZ_CURSOR_H
 
 #include "SDL2/SDL.h"
-#include "Front_end_exceptions/Front_end_exception.h"
+#include "Front_end_exceptions/Generator_Exception.h"
 
 class Cursor {
  private:

@@ -7,18 +7,15 @@ Panel::~Panel() {
     for (ObjectMapaVista *objectMapaVista : objectsMapaVista) {
         delete (objectMapaVista);
     }
-
-    SDL_DestroyRenderer(window_render);
+//    SDL_DestroyRenderer(window_render);
 }
 
 void Panel::add(ObjectMapaVista *objectMapaVista) {
-    if (window_render==NULL)
-        std::cout << "NULL" << std::endl;
-    if (objectMapaVista==NULL)
-        std::cout << "NULL NULL" << std::endl;
+  if (objectMapaVista==NULL)
+    throw std::invalid_argument("Panel::add() objectMapaVista es NULL");
 
-    objectMapaVista->set_texture(window_render);
-    objectsMapaVista.push_back(objectMapaVista);
+  objectMapaVista->set_texture(window_render);
+  objectsMapaVista.push_back(objectMapaVista);
 }
 
 void Panel::clean() {

@@ -36,7 +36,7 @@ typedef struct SDL_MouseButtonEvent
   Sint32 y;           *//**< Y coordinate, relative to window *//*
 } SDL_MouseButtonEvent;*/
 
-class ClickEvent : public Event {
+class LeftClickEvent : public Event {
 /*
  private:
   SDL_MouseButtonEvent event;
@@ -50,7 +50,7 @@ class ClickEvent : public Event {
   int x;
   int y;
  public:
-  ClickEvent(int x, int y);
+  LeftClickEvent(int x, int y);
   void process();
  };
 

@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
-#include "../../src/view/View.h"
-#include "../../src/controller/Controller.h"
-#include "../../src/model/Events/EventHandler.h"
+#include "view/View.h"
+#include "controller/Controller.h"
+#include "model/Events/EventHandler.h"
 
 #include <SDL2/SDL_image.h>
 #include <thread>
@@ -36,13 +36,19 @@ TEST(VistaTest, Window) {
 
 /* ---------- UNIDADES ---------- */
     std::map<UnitID, Unit *> units;
+
     Unit *robotA;
     robotA = UnitFactory::createGruntDynamic(Position(50, 50), player, team);
     units.emplace(robotA->getId(), robotA);
 
+    Unit *robotB;
+    robotB = UnitFactory::createGruntDynamic(Position(150, 150), player, team);
+    units.emplace(robotB->getId(), robotB);
+
 /* ---------- CREACION MAPA ---------- */
     Map map(stdmap, 3, 3);
     map.addUnit(robotA->getId(), robotA->getUnitState());
+    map.addUnit(robotB->getId(), robotB->getUnitState());
     GameController gameController(map, units);
 
     EventHandler eventHandler;
@@ -63,29 +69,29 @@ TEST(VistaTest, Window) {
 
     //While application is running
     while (!view.quit()) {
-      auto begin = std::chrono::high_resolution_clock::now();
+//      auto begin = std::chrono::high_resolution_clock::now();
 
       //Handle events on queue
-      std::vector<Event *> vec = gameController.tick();
+      std::vector<Event *> events = gameController.tick();
       if (SDL_PollEvent(&e) != 0) {
         controller.handle(&e);
       }
-      if (!vec.empty()) {
-        for (auto item : vec) {
-          eventHandler.add(item);
+      if (!events.empty()) {
+        for (auto event : events) {
+          eventHandler.add(event);
         }
       }
       view.update();
 
-      auto end = std::chrono::high_resolution_clock::now();
-      auto diff =
-          std::chrono::duration_cast<std::chrono::duration<double>>(
-              end - begin);
-      std::this_thread::sleep_for(
-          std::chrono::milliseconds(25) - diff);
+//      auto end = std::chrono::high_resolution_clock::now();
+//      auto diff =
+//          std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
+//      std::this_thread::sleep_for(
+//          std::chrono::milliseconds(25) - diff);
     }
-
-    delete (robotA);
+    /* Lo hace el gc ahora
+    delete (robotB);
+    delete (robotA);*/
   } catch (const std::exception &e) {
     std::cout << e.what() << std::endl;
   }
