@@ -21,15 +21,21 @@ class View {
   void createInitialTerrainVista(const std::map<Position, Tile> &map);
   void createInitialUnitVista(const std::map<UnitID, UnitState> &units);
   void add(ObjectMapaVista *objectVista, Position pos);
-  ObjectMapaVista *getTerrainVista(int type);
+  ObjectMapaVista *getTerrainVista(TerrainType type);
   ObjectMapaVista *getUnitVista(UnitType type);
+  void draw();
+
  public:
   View(const Map &map, EventHandler &eventHandler, Window& window);
   ~View();
 //  void setEventHandler(EventHandler &eventHandler);
   std::map<UnitID, ObjectMapaVista*> &getUnitsVista();
+
   void setQuit();
   bool quit();
+
+  void move(UnitID id, Position posTo);
+
   void update();
 };
 

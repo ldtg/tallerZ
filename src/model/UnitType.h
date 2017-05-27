@@ -1,6 +1,6 @@
 #ifndef TALLERZ_UNITTYPE_H
 #define TALLERZ_UNITTYPE_H
 
-enum UnitType { R_GRUNT, V_JEEP };
+enum UnitType { R_GRUNT, V_JEEP, R_TOUGH };
 
 #endif //TALLERZ_UNITTYPE_H

@@ -17,6 +17,7 @@ struct Data {
   Weapon laser;
   Weapon rocket;
   UnitData grunt;
+  UnitData tough;
   UnitData jeep;
   TerrainData land;
   TerrainData water;
@@ -27,9 +28,14 @@ struct Data {
     ticksPerSec = 35;
     miliSecsPerTick = (unsigned long) ((1 / (double) ticksPerSec) * 1000);
     defaultDriver = R_GRUNT;
-    bullet.type = BULLET;
+    bullet.type = WeaponType::BULLET;
     bullet.damage = 2;
     bullet.isExplosive = false;
+    bullet.speed = 0; //llega instantaneamente
+    rocket.type = WeaponType::ROCKET;
+    rocket.damage = 25;
+    rocket.isExplosive = true;
+    rocket.speed = 13; // 12 es la veloc max del vehiculo mas rapido creo
 
     grunt.type = UnitType::R_GRUNT;
     grunt.weapon = bullet;
@@ -41,6 +47,17 @@ struct Data {
     grunt.factoryRate = 3;
     grunt.factoryBaseTimeInSec = 575;
     grunt.factoryMinimunTechLevel = 1;
+
+    tough.type = UnitType::R_TOUGH;
+    tough.weapon = rocket;
+    tough.ticksUntilFire =
+        (unsigned short) std::lround((double) ticksPerSec / 2);
+    tough.health = 300;
+    tough.range = 5;
+    tough.speed = 4;
+    tough.factoryRate = 2;
+    tough.factoryBaseTimeInSec = 742;
+    tough.factoryMinimunTechLevel = 2;
 
     jeep.type = UnitType::V_JEEP;
     jeep.weapon = bullet;

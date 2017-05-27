@@ -6,6 +6,7 @@ struct Weapon {
   WeaponType type;
   unsigned short damage;
   bool isExplosive;
+  unsigned short speed;
 };
 
 #endif //TALLERZ_WEAPON_H

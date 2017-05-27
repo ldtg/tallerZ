@@ -5,6 +5,7 @@
 #include "Tile.h"
 #include "Weapon.h"
 #include "Unit.h"
+#include "BulletState.h"
 #include <vector>
 #include <map>
 #include <string>
@@ -15,6 +16,7 @@ class Map {
   std::map<Position, Tile> map;
   //el mapa ahora tiene las unidades con el estado para poder dibujarlas.
   std::map<UnitID, UnitState> units;
+  std::map<BulletID, BulletState> bullets;
   int width;
   int height;
 
@@ -27,6 +29,10 @@ class Map {
   std::vector<Tile> getNeighbors(const Tile &tile) const;
   void addUnit(const UnitID &unitID, const UnitState &unitState);
   void removeUnit(const UnitID &unitID);
+  void updateUnit(const UnitID &unitID, const UnitState &unitState);
+  void addBullet(const BulletID &bulletID, const BulletState &bulletState);
+  void removeBullet(const BulletID &bulletID);
+  void updateBullet(const BulletID &bulletID, const BulletState &bulletState);
   Tile getTile(const Position &position) const;
   std::pair<UnitID, UnitState> getUnit(const Position &position);
   bool isUnitIn(const Position &position) const;

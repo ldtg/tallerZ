@@ -8,6 +8,8 @@ class UnitFactory {
  public:
   static Robot createGrunt(const Position &pos);
   static Robot* createGruntDynamic(const Position &pos);
+  static Robot createTough(const Position &pos);
+  static Robot* createToughDynamic(const Position &pos);
   static Vehicle createJeep(const Position &pos);
   static Vehicle* createJeepDynamic(const Position &pos);
 };

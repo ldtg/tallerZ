@@ -30,8 +30,9 @@ Tile Map::getTile(const Position &position) const {
 
 bool Map::isUnitIn(const Position &position) const {
   for (auto const &unit : units) {
-    Position curPos = unit.second.currentPosition;
-    bool in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
+    Position curPos = unit.second.position;
+    bool
+        in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
     if (in)
       return true;
   }
@@ -40,15 +41,16 @@ bool Map::isUnitIn(const Position &position) const {
 
 std::pair<UnitID, UnitState> Map::getUnit(const Position &position) {
   for (auto const &unit : units) {
-    Position curPos = unit.second.currentPosition;
-    bool in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
+    Position curPos = unit.second.position;
+    bool
+        in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
     if (in)
       return unit;
   }
 }
 
 bool Map::canPass(const Position &positionFrom,
-                    const Position &positionTo) const {
+                  const Position &positionTo) const {
   Position actual = positionFrom;
   while (actual != positionTo) {
     actual.move(positionTo);
@@ -90,11 +92,27 @@ UnitState Map::getUnitState(const UnitID &unitID) const {
   return units.at(unitID);
 }
 
-UnitID Map::getUnitIDFromPosition(const Position &pos, unsigned short range) const {
+UnitID Map::getUnitIDFromPosition(const Position &pos,
+                                  unsigned short range) const {
   for (auto &par : units) {
-    if(pos.equalDelta(par.second.currentPosition, range))
+    if (pos.equalDelta(par.second.position, range))
       return par.first;
   }
   throw UnitNotFoundException();
+}
+void Map::updateUnit(const UnitID &unitID, const UnitState &unitState) {
+  this->removeUnit(unitID);
+  this->addUnit(unitID, unitState);
+}
+void Map::addBullet(const BulletID &bulletID, const BulletState &bulletState) {
+  bullets.emplace(bulletID, bulletState);
+}
+void Map::removeBullet(const BulletID &bulletID) {
+  bullets.erase(bulletID);
+}
+void Map::updateBullet(const BulletID &bulletID,
+                       const BulletState &bulletState) {
+  this->removeBullet(bulletID);
+  this->addBullet(bulletID, bulletState);
 }
 

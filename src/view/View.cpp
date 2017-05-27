@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include <iostream>
 #include <vector>
+#include <model/Events/UnitMoveStepEvent.h>
 
 View::View(const Map &map, EventHandler &eventHandler, Window& window)
     : window(window), panel(window.getRender()), eventHandler(eventHandler) {
@@ -29,7 +30,7 @@ void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
 void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
   for (auto const &unit : units) {
     UnitType type = unit.first.getType();
-    Position pos = unit.second.currentPosition;
+    Position pos = unit.second.position;
     ObjectMapaVista *unitVista = getUnitVista(type);
     add(unitVista, pos);
 
@@ -45,11 +46,16 @@ void View::update() {
   while (!eventHandler.empty()) {
     Event *event = eventHandler.get();
     event->process();
-    delete(event);
+    //TODO: VER QUIEN HAVE DELETE EN ESTOS EVENT
+//    delete (event);
+    draw();
   }
+  draw();
+}
 
+void View::draw() {
   for (auto const &posTerrain : terrainsVista) {
-      panel.add(posTerrain.second);
+    panel.add(posTerrain.second);
   }
 
   for (auto const &posUnit : unitsVista) {
@@ -61,13 +67,13 @@ void View::update() {
 
 void View::add(ObjectMapaVista *objectVista, Position pos) {
     if (objectVista == NULL)
-        return;
+      throw std::invalid_argument("View::add() objectMapaVista es NULL");
 
     objectVista->setPos(pos);
     panel.add(objectVista);
 }
 
-ObjectMapaVista* View::getTerrainVista(int type) {
+ObjectMapaVista* View::getTerrainVista(TerrainType type) {
     if (type == LAND) {
         return new Image("../src/view/images/terrain/land.png");
     }
@@ -78,10 +84,21 @@ ObjectMapaVista* View::getTerrainVista(int type) {
 
 ObjectMapaVista* View::getUnitVista(UnitType type) {
   if (type == R_GRUNT) {
-    return new Sprite("../src/view/images/terrain/fire_blue_r000_n", 3);
+    return new Sprite("../src/view/images/units/walk_blue_r000_n", 4);
   }
   else {
     return nullptr;
+  }
+}
+
+void View::move(UnitID id, Position posTo) {
+  Position pos_aux = unitsVista.at(id)->getPos();
+  while (pos_aux != posTo) {
+    pos_aux.move(posTo);
+    eventHandler.add(new UnitMoveStepEvent(id, pos_aux));
+//    unitsVista.at(id)->setPos(posTo);
+//    panel.draw();
+//    update();
   }
 }
 
