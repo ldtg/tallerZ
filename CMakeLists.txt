@@ -50,12 +50,16 @@ set(SOURCE_FILES
         src/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
         src/model/Vehicle.h
-        src/model/Events/Pointer/ClickEvent.cpp
-        src/model/Events/Pointer/ClickEvent.h
+        src/model/Events/Pointer/LeftClickEvent.cpp
+        src/model/Events/Pointer/LeftClickEvent.h
         src/model/Events/EventHandler.cpp
         src/model/Events/EventHandler.h
         src/model/Events/QuitEvent.cpp
         src/model/Events/QuitEvent.h
+        src/model/Events/UnitMoveStepEvent.cpp
+        src/model/Events/UnitMoveStepEvent.h
+        src/model/Events/Pointer/RightClickEvent.cpp
+        src/model/Events/Pointer/RightClickEvent.h
         src/model/Model.cpp
         src/model/Model.h
         src/model/GameController.h
@@ -94,12 +98,14 @@ set(SOURCE_FILES
         src/controller/Handler.cpp
         src/controller/HandlerFactory.cpp
         src/controller/HandlerFactory.h
-        src/controller/Mouse.cpp
-        src/controller/Mouse.h
+        src/controller/MouseButtonLeft.cpp
+        src/controller/MouseButtonLeft.h
         src/controller/NullHandler.cpp
         src/controller/NullHandler.h
         src/controller/Quit.cpp
         src/controller/Quit.h
+        src/controller/MouseButtonRight.cpp
+        src/controller/MouseButtonRight.h
 
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.h
@@ -118,6 +124,8 @@ set(SOURCE_FILES
         z_tests/tests_model/AStar_test.cpp
         z_tests/tests_view/Window_test.cpp
         z_tests/tests_generator/Generator_test.cpp
+        z_tests/tests_view/Window_test.cpp
+
 
         src/SDL_START.cpp
         src/SDL_START.h

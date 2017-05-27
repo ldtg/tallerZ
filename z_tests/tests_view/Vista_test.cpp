@@ -32,13 +32,19 @@ TEST(VistaTest, Window) {
 
 /* ---------- UNIDADES ---------- */
     std::map<UnitID, Unit *> units;
+
     Unit *robotA;
     robotA = UnitFactory::createGruntDynamic(Position(50, 50));
     units.emplace(robotA->getId(), robotA);
 
+    Unit *robotB;
+    robotB = UnitFactory::createGruntDynamic(Position(150, 150));
+    units.emplace(robotB->getId(), robotB);
+
 /* ---------- CREACION MAPA ---------- */
     Map map(stdmap, 3, 3);
     map.addUnit(robotA->getId(), robotA->getUnitState());
+    map.addUnit(robotB->getId(), robotB->getUnitState());
     GameController gameController(map, units);
 
     EventHandler eventHandler;
@@ -80,6 +86,7 @@ TEST(VistaTest, Window) {
 //          std::chrono::milliseconds(25) - diff);
     }
 
+    delete (robotB);
     delete (robotA);
   } catch (const std::exception& e){
     std::cout << e.what() << std::endl;

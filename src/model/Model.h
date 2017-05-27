@@ -13,8 +13,8 @@ class Model {
   GameController &gameController;
  public:
   Model(Map &map, GameController& gameController);
-  void click(int x, int y);
-
+  void leftClick(int x, int y);
+  void rightClick(int x, int y);
 };
 
 #endif //TALLERZ_MODEL_H
