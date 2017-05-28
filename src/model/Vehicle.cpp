@@ -2,9 +2,9 @@
 #include <cmath>
 #include "Data.h"
 Vehicle::Vehicle(const Position &current, const UnitData &data,
-                 const UnitType &conductorType, Player &player, Team &team) : Unit(current,
-                                                       data,
-                                                       conductorType, player, team) {
+                 const UnitType &conductorType, Player &player, Team &team)
+    : Unit(current,
+           data, player, team) {
 }
 bool Vehicle::canGoThrough(const TerrainData &terrainData) const {
   return terrainData != data.lava && terrainData != data.water;
@@ -20,3 +20,11 @@ unsigned short Vehicle::getMovementSpeed(float terrainFactor) const {
                       1);
 }
 Vehicle::~Vehicle() {}
+UnitState Vehicle::getUnitState() const {
+  return UnitState(conductor, owner.getID(), health, weapon, currentPosition);
+}
+void Vehicle::capture(Player &player, Team &team, UnitType conductor) {
+  this->owner = player;
+  this->team = team;
+  this->conductor = conductor;
+}

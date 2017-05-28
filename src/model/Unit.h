@@ -32,11 +32,6 @@ class Unit : public Attackable {
   Attackable *hunted;
   std::vector<Position> movementsPositions;
   std::vector<unsigned short> damagesToReceive;
-  //para los vehiculos con conductor
-  Unit(const Position &position,
-       const UnitData &data,
-       const UnitType &type, Player &owner,
-       Team &team);
 
   Unit(const Position &current,
        const UnitData &data,
@@ -44,12 +39,13 @@ class Unit : public Attackable {
        Team &team);
  public:
   virtual ~Unit();
-  virtual UnitState getUnitState();
+  virtual UnitState getUnitState() const = 0;
   virtual Position getCurrentPosition() const;
   virtual Position getAttackPosition(const Position &attacker) const override ;
   virtual Position nextMovePosition() const override;
   virtual unsigned long getHealth() const;
   virtual bool hasDamagesToReceive() const;
+  virtual bool hasMovesToDo() const;
   virtual void receiveDamages();
   virtual bool isInRange(Attackable *other);
   virtual bool attackedInRange();
@@ -68,6 +64,7 @@ class Unit : public Attackable {
   virtual bool isCapturing() const;
   virtual bool isStill() const;
   virtual unsigned short getMovementSpeed(float terrainFactor) const = 0;
+  void kill();
   bool isHunting();
   Attackable *getHunted();
   Weapon getWeapon();
@@ -75,7 +72,8 @@ class Unit : public Attackable {
   UnitID getId() const;
   void addMove(const Position &position);
   bool canAttack(Attackable *attackable);
-  virtual PlayerID getOwner() const;
+  virtual Player& getOwner();
+  virtual Team& getOwnerTeam();
   Bullet createBullet();
   void still();
 };

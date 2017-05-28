@@ -5,6 +5,7 @@
 #include <model/Events/model/BuildDestroyedEvent.h>
 #include <model/Events/model/UnitCreateEvent.h>
 #include <model/Events/model/BulletHitEvent.h>
+#include <model/Events/model/CaptureEvent.h>
 #include "GameController.h"
 #include "AStar.h"
 #include "model/Events/model/UnitMoveEvent.h"
@@ -70,12 +71,13 @@ void GameController::changeUnitFab(const BuildID &buildId,
 
 }
 
-/*
 void GameController::capture(UnitID idunit, Position position) {
-  Unit *unit = units[idunit];
-  AStar astar(map, unit, position);
-  unit->capture(astar.find());
-}*/
+  if (capturables.at(position)->canBeCapturedBy(idunit)) {
+    Unit *unit = units.at(idunit);
+    AStar astar(map, unit, position);
+    unit->capture(astar.find());
+  }
+}
 
 std::vector<Event *> GameController::tick() {
   auto begin = std::chrono::high_resolution_clock::now();
@@ -105,17 +107,16 @@ void GameController::unitsTick(std::vector<Event *> &events) {
       unitReceiveDamage(current, events);
     }
     if (current->isAlive()) {
-      if (current->isMoving()) {
-        move(current, events);
-      }
-      if (current->isHunting())
-        hunt(current, events);
-      if (current->isCapturing())
-        capture(current, events);
-      //para que ataquen auto a las que tienen cerca
-      autoAttack(current);
-      map.updateUnit(current->getId(), current->getUnitState());
-      ++it_units;
+      if (current->isMoving())
+        move(current, events, it_units);
+      else if (current->isHunting())
+        hunt(current, events, it_units);
+      else if (current->isCapturing())
+        capture(current, events, it_units);
+      else if (current->isStill())
+        autoAttack(current, it_units);
+      //El ++it_units esta adentro de los metodos porque el capture lo puede
+      // modificar si tiene que hacer desaparecer a la unidad
     } else {
       events.push_back(new UnitDeathEvent(current->getId()));
       map.removeUnit(current->getId());
@@ -130,9 +131,12 @@ void GameController::unitReceiveDamage(Unit *current,
   current->receiveDamages();
   events.push_back(new UnitDamageReceiveEvent(current->getId(),
                                               current->getUnitState()));
+  map.updateUnit(current->getId(), current->getUnitState());
 }
 
-void GameController::move(Unit *unit, std::vector<Event *> &events) const {
+void GameController::move(Unit *unit,
+                          std::vector<Event *> &events,
+                          std::map<UnitID, Unit *>::iterator &it) {
   if (map.canPass(unit->getCurrentPosition(),
                   unit->nextMovePosition())) {
     float terrainFactor =
@@ -140,12 +144,16 @@ void GameController::move(Unit *unit, std::vector<Event *> &events) const {
     unit->doMoveWithSpeed(terrainFactor);
     events.push_back(new UnitMoveEvent(unit->getId(),
                                        unit->getCurrentPosition()));
+    map.updateUnit(unit->getId(), unit->getUnitState());
   } else {
     unit->still();
   }
+  ++it;
 }
 
-void GameController::hunt(Unit *unit, std::vector<Event *> &events) {
+void GameController::hunt(Unit *unit,
+                          std::vector<Event *> &events,
+                          std::map<UnitID, Unit *>::iterator &it) {
   Attackable *hunted = unit->getHunted();
   if (unit->attackedInRange()
       && map.canPass(unit->getCurrentPosition(),
@@ -154,29 +162,67 @@ void GameController::hunt(Unit *unit, std::vector<Event *> &events) {
       this->bullets.push_back(unit->createBullet());
       events.push_back(new BulletNewEvent(this->bullets.front()));
     }
+    ++it;
   } else {
-    this->move(unit, events);
+    this->move(unit, events, it);
   }
   if (hunted->isMoving())
     unit->addMove(hunted->nextMovePosition()); //en vez de recalcular el path uso los movs del atacado
 }
 
-void GameController::capture(Unit *unit, std::vector<Event *> &events) const {
-  if (unit->isStill()) { //llego
-    //TODO: crear evento captura
-    //this->newCapture(unit);
+void GameController::capture(Unit *unit,
+                             std::vector<Event *> &events,
+                             std::map<UnitID, Unit *>::iterator &it) {
+  if (!unit->hasMovesToDo()) { //llego
+    unit->still();
+    Capturable *capturable = this->capturables.at(unit->getCurrentPosition());
+    capturable->capture(unit->getId(), unit->getOwner(), unit->getOwnerTeam());
+    std::map<BuildID, BuildState>
+        capturedBuilds = capturable->getCapturedBuilds();
+    std::map<UnitID, UnitState> capturedUnits = capturable->getCapturedUnits();
+    bool dissapear = capturable->capturerDissapear();
+    //update map
+    for (auto par: capturedBuilds) {
+      map.updateBuild(par.first, par.second);
+    }
+    for (auto par: capturedUnits) {
+      map.updateUnit(par.first, par.second);
+    }
+    //create event
+    events.push_back(new CaptureEvent(unit->getId(),
+                                      capturedBuilds,
+                                      capturedUnits,
+                                      dissapear));
+    if (dissapear) {
+      // si alguien la estaba persiguiendo la tiene que ver muerta,
+      // pero no se tiene que disparar el evento muerte
+      unit->kill();
+      map.removeUnit(unit->getId());
+      deathUnits.push_back(unit);
+      it = units.erase(it);
+    } else {
+      ++it;
+    }
+    if (!capturable->isRecapturable()) {
+      this->capturables.erase(capturable->getCapturePosition());
+      delete capturable;
+    }
+
   } else {
-    this->move(unit, events);
+    this->move(unit, events, it);
+    ++it;
   }
 }
 
-void GameController::autoAttack(Unit *current) {
-  for (auto &par:units) {
-    if (current->isStill() && current->isInRange(par.second)
+void GameController::autoAttack(Unit *current,
+                                std::map<UnitID, Unit *>::iterator &it) {
+  for (auto &par: units) {
+    if (current->isInRange(par.second)
         && current->getId() != par.first) {
       this->attack(current->getId(), par.second->getId());
     }
   }
+  ++it;
 }
 
 void GameController::bulletsTick(std::vector<Event *> &vector) {
@@ -253,4 +299,12 @@ GameController::GameController(Map &map,
 GameController::GameController(Map &map,
                                const std::map<UnitID, Unit *> &units)
     : map(map), units(units) {}
+GameController::GameController(Map &map,
+                               const std::map<UnitID, Unit *> &units,
+                               const std::map<BuildID, Build *> &builds,
+                               const std::map<Position,
+                                              Capturable *> &capturables) : map(
+    map), units(units), builds(builds), capturables(capturables) {
+
+}
 

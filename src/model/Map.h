@@ -16,10 +16,10 @@ class Map {
  private:
   //guarda los nros de tiles ej: tile 0,0 va de 0<x<100.
   std::map<Position, Tile> map;
-  //el mapa ahora tiene las unidades con el estado para poder dibujarlas.
   std::map<UnitID, UnitState> units;
   std::map<BulletID, BulletState> bullets;
   std::map<BuildID, BuildState> builds;
+  //std::vector<Position> flags; no se si va a ir asi
   int width;
   int height;
   Position getTilePositionFromRealPosition(Position position) const;

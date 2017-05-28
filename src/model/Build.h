@@ -31,7 +31,7 @@ class Build : public Attackable {
         Player &owner,Team &team,
         const unsigned short techLevel);
   virtual Position getCenterPosition() const;
-  virtual PlayerID getOwner() const;
+  virtual Player& getOwner() ;
   virtual bool hasDamagesToReceive() const;
   virtual void receiveDamages();
   virtual bool isAlive() const override;

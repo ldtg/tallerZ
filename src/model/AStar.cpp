@@ -10,8 +10,8 @@ AStar::AStar(const Map &map, const Unit *unit, const Position &target)
   Node *node = new Node(itile, heuristic(itile, etile));
   open.emplace(node->getTotalCost(), node);
   createdNodes.push_back(node);
-  if (!etile.isPassable())
-    throw UnableToFindAPathException("El destino no es transpasable");
+  if (!unit->canGoThrough(etile.getTerrainData()))
+    throw UnableToFindAPathException("El destino no es transpasable por la unidad");
 }
 
 std::vector<Position> AStar::find() {

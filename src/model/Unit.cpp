@@ -57,12 +57,13 @@ void Unit::doOneMove() {
   if (currentPosition == movementsPositions.front()) {
     movementsPositions.erase(movementsPositions.begin());
   }
-  if (movementsPositions.empty())
+  if (movementsPositions.empty() && this->isMoving())
     this->movState.still();
 }
 
 bool Unit::attackedInRange() {
-  return currentPosition.euclideanDistance(hunted->getAttackPosition(currentPosition))
+  return currentPosition.euclideanDistance(hunted->getAttackPosition(
+      currentPosition))
       < range;
 }
 
@@ -123,10 +124,6 @@ void Unit::doMoveWithSpeed(float terrainFactor) {
   }
 }
 
-UnitState Unit::getUnitState() {
-  return UnitState(owner.getID(), health, weapon, currentPosition);
-}
-
 void Unit::addMove(const Position &position) {
   if (std::find(movementsPositions.begin(), movementsPositions.end(), position)
       == movementsPositions.end())
@@ -154,31 +151,13 @@ Unit::Unit(const Position &current,
       hunted(nullptr) {
 
 }
-Unit::Unit(const Position &position,
-           const UnitData &data,
-           const UnitType &type,
-           Player &owner,
-           Team &team) : owner(owner), team(team),
-                         currentPosition(position),
-                         weapon(data.weapon),
-                         attackCounterBase(data.ticksUntilFire),
-                         attackCounterActual(attackCounterBase),
-                         baseSpeed(data.speed),
-                         range(data.range),
-                         health(data.health),
-                         id(data.type, type),
-                         movState(),
-                         hunted(nullptr) {
 
-}
 unsigned short Unit::getRange() const {
   return range;
 }
-PlayerID Unit::getOwner() const {
-  return owner.getID();
-}
+
 bool Unit::canAttack(Attackable *attackable) {
-  return this->team.isEnemy(attackable->getOwner());
+  return this->team.isEnemy(attackable->getOwner().getID());
 }
 Bullet Unit::createBullet() {
   return Bullet(weapon, this->currentPosition, hunted);
@@ -191,4 +170,16 @@ void Unit::still() {
 }
 Position Unit::getAttackPosition(const Position &attacker) const {
   return currentPosition;
+}
+Player &Unit::getOwner() {
+  return owner;
+}
+Team &Unit::getOwnerTeam() {
+  return team;
+}
+bool Unit::hasMovesToDo() const {
+  return !movementsPositions.empty();
+}
+void Unit::kill() {
+  this->health = 0;
 }

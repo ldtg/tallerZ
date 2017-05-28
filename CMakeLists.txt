@@ -97,6 +97,12 @@ set(SOURCE_FILES
         z_tests/tests_model/GameController_build_test.cpp
         src/model/Events/model/UnitMoveStepEvent.cpp
         src/model/Events/model/UnitMoveStepEvent.h
+        src/model/Capturable.h
+        src/model/Events/model/CaptureEvent.cpp
+        src/model/Events/model/CaptureEvent.h
+        src/model/CapturableVehicle.cpp
+        src/model/CapturableVehicle.h
+        z_tests/tests_model/GameControllerCapturables_test.cpp
 
         src/view/Texture.cpp
         src/view/Texture.h
@@ -203,8 +209,7 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Buttons/Menu_Button.h
 
         src/map_generation/Generator.cpp
-        src/map_generation/Generator.h
-        )
+        src/map_generation/Generator.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

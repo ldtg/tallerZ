@@ -12,3 +12,6 @@ bool PlayerID::operator<(const PlayerID &other) const {
 bool PlayerID::operator==(const PlayerID &other) const {
   return this->id == other.id;
 }
+bool PlayerID::operator!=(const PlayerID &other) const {
+  return !this->operator==(other);
+}

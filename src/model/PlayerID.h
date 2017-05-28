@@ -12,6 +12,7 @@ class PlayerID {
   std::string getName() const;
   bool operator<(const PlayerID &other) const;
   bool operator==(const PlayerID &other) const;
+  bool operator!=(const PlayerID &other) const;
 };
 
 #endif //TALLERZ_PLAYERID_H

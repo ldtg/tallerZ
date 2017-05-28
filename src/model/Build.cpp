@@ -6,8 +6,8 @@
 Position Build::getCenterPosition() const {
   return centerPosition;
 }
-PlayerID Build::getOwner() const {
-  return owner.getID();
+Player &Build::getOwner() {
+  return owner;
 }
 bool Build::isAlive() const {
   return health > 0;
@@ -28,7 +28,7 @@ Position Build::getAttackPosition(const Position &attackerPosition) const {
 void Build::tick() {
   if (ticksBeforeCreate > 0) {
     ticksBeforeCreate--;
-  } else {
+  } else if (owner.getAmountOfTerritories() > 0) {//para que gaia no cree unidades
     ticksBeforeCreate = this->getSpeedRate();
     timeToBuild = true;
   }
@@ -38,8 +38,8 @@ bool Build::hasToBuild() {
 }
 unsigned short Build::getSpeedRate() const {
   unsigned long timeInSecs;
-  float baseTaken = (float)data.getData(actualUnitFab).factoryBaseTimeInSec
-      / (float)owner.getAmountOfTerritories();
+  float baseTaken = (float) data.getData(actualUnitFab).factoryBaseTimeInSec
+      / (float) owner.getAmountOfTerritories();
   float rel = (float) (this->health - data.getData(this->id.getType()).health)
       / (float) data.getData(this->id.getType()).health;
   float relsqrt = std::sqrt(1 - rel);
@@ -73,7 +73,7 @@ Build::Build(const BuildData &buildData,
       size(buildData.size),
       techLevel(techLevel),
       fabricableUnits(data.getFabUnits(buildData.type, techLevel)),
-    ticksBeforeCreate(this->getSpeedRate()),
+      ticksBeforeCreate(this->getSpeedRate()),
       health(buildData.health),
       timeToBuild(false),
       actualUnitFab(UnitType::R_GRUNT) {
@@ -123,5 +123,8 @@ std::vector<Unit *> Build::fabricateUnits() {
 void Build::changePlayer(Player &player, Team &team) {
   this->owner = player;
   this->team = team;
+  this->actualUnitFab = UnitType::R_GRUNT;
+  this->ticksBeforeCreate = this->getSpeedRate();
+  this->timeToBuild = false;
 }
 
