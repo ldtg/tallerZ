@@ -96,6 +96,7 @@ void GameController::doTick(std::vector<Event *> &events) {
   unitsTick(events);
   buildsTick(events);
 }
+
 void GameController::unitsTick(std::vector<Event *> &events) {
   for (auto it_units = units.begin(); it_units != units.end();
       ) {
@@ -177,6 +178,7 @@ void GameController::autoAttack(Unit *current) {
     }
   }
 }
+
 void GameController::bulletsTick(std::vector<Event *> &vector) {
   for (std::vector<Bullet>::iterator iterator = bullets.begin();
        iterator != bullets.end();) {
@@ -193,6 +195,7 @@ void GameController::bulletsTick(std::vector<Event *> &vector) {
     }
   }
 }
+
 void GameController::buildsTick(std::vector<Event *> &events) {
   for (auto b_iter = builds.begin(); b_iter != builds.end();) {
     Build *current = b_iter->second;
@@ -213,12 +216,14 @@ void GameController::buildsTick(std::vector<Event *> &events) {
   }
 
 }
+
 void GameController::buildReceiveDamage(Build *current,
                                         std::vector<Event *> &events) {
   current->receiveDamages();
   events.push_back(new BuildDamageEvent(current->getId(),
                                         current->getBuildState()));
 }
+
 GameController::~GameController() {
   for (auto &par : units) {
     delete par.second;
@@ -230,6 +235,7 @@ GameController::~GameController() {
     delete (par.second);
   }
 }
+
 void GameController::addUnits(std::vector<Unit *> vector,
                               std::vector<Event *> &events) {
   for (Unit *unit : vector) {
@@ -241,10 +247,8 @@ void GameController::addUnits(std::vector<Unit *> vector,
 
 GameController::GameController(Map &map,
                                const std::map<UnitID, Unit *> &units,
-                               const std::map<BuildID, Build *> &builds) : map(
-    map), units(units), builds(builds) {
-
-}
+                               const std::map<BuildID, Build *> &builds)
+    : map(map), units(units), builds(builds) {}
 
 GameController::GameController(Map &map,
                                const std::map<UnitID, Unit *> &units)

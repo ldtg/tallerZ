@@ -11,7 +11,7 @@
 
 class GameController {
  private:
-  Map map;
+  Map &map;
   std::map<UnitID, Unit *> units;
   std::vector<Bullet> bullets;
   std::vector<Unit *> deathUnits;

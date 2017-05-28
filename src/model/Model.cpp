@@ -8,7 +8,7 @@ void Model::leftClick(int x, int y) {
   Position pos(x, y);
   try{
     unitsSelected.push_back(map.getUnitIDFromPosition(pos, 30));
-  }catch(const UnitNotFoundException &e){
+  } catch(const UnitNotFoundException &e){
     // No se hace nada si donde se hizo click no hay unidad.
   }
 }

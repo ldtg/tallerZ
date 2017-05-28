@@ -98,21 +98,26 @@ UnitID Map::getUnitIDFromPosition(const Position &pos,
   }
   throw UnitNotFoundException("unidad no encontrada");
 }
+
 void Map::updateUnit(const UnitID &unitID, const UnitState &unitState) {
   this->removeUnit(unitID);
   this->addUnit(unitID, unitState);
 }
+
 void Map::addBullet(const BulletID &bulletID, const BulletState &bulletState) {
   bullets.emplace(bulletID, bulletState);
 }
+
 void Map::removeBullet(const BulletID &bulletID) {
   bullets.erase(bulletID);
 }
+
 void Map::updateBullet(const BulletID &bulletID,
                        const BulletState &bulletState) {
   this->removeBullet(bulletID);
   this->addBullet(bulletID, bulletState);
 }
+
 Map::Map(const std::map<Position, Tile> &map,
          const std::map<BuildID, BuildState> &builds,
          unsigned short width,
@@ -120,6 +125,7 @@ Map::Map(const std::map<Position, Tile> &map,
     : map(map), builds(builds), width(width), height(height) {
 
 }
+
 void Map::updateBuild(const BuildID &buildID, const BuildState &buildState) {
   this->builds.erase(buildID);
   this->builds.emplace(buildID, buildState);
@@ -129,6 +135,7 @@ void Map::updateBuild(const BuildID &buildID, const BuildState &buildState) {
     tile.makeNotPassable();
   }
 }
+
 Position Map::getTilePositionFromRealPosition(Position position) const {
   position.mod(TILEWIDHT, TILEHEIGHT);
   return position;

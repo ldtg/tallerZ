@@ -29,6 +29,7 @@ TEST(VistaTest, Window) {
     stdmap.emplace(Position(0, 2), Tile(Position(50, 250), data.land));
     stdmap.emplace(Position(1, 2), Tile(Position(150, 250), data.land));
     stdmap.emplace(Position(2, 2), Tile(Position(250, 250), data.land));
+
 /* ---------- EQUIPOS ---------- */
     Player player("jugador1");
     Team team;
@@ -91,7 +92,7 @@ TEST(VistaTest, Window) {
     }
 
 //    delete (robotB);
-    delete (robotA);
+//    delete (robotA);
   } catch (const std::exception& e){
     std::cout << e.what() << std::endl;
   }

@@ -38,6 +38,7 @@ Position Unit::nextMovePosition() const {
   else
     return currentPosition;
 }
+
 void Unit::receiveDamages() {
   for (unsigned short damage: damagesToReceive) {
     if (health >= damage) {
@@ -49,6 +50,7 @@ void Unit::receiveDamages() {
   }
   damagesToReceive.clear();
 }
+
 void Unit::doOneMove() {
   auto aux = movementsPositions.front();
   currentPosition.move(movementsPositions.front());
@@ -58,13 +60,16 @@ void Unit::doOneMove() {
   if (movementsPositions.empty())
     this->movState.still();
 }
+
 bool Unit::attackedInRange() {
   return currentPosition.euclideanDistance(hunted->getAttackPosition(currentPosition))
       < range;
 }
+
 bool Unit::isHunting() {
   return this->movState.isHunting();
 }
+
 bool Unit::timeToAttack() {
   if (attackCounterActual == 0) {
     if (hunted->isAlive()) {
@@ -109,7 +114,9 @@ bool Unit::isMoving() const {
 unsigned long Unit::getHealth() const {
   return health;
 }
+
 Unit::~Unit() {}
+
 void Unit::doMoveWithSpeed(float terrainFactor) {
   for (int i = 0; i < this->getMovementSpeed(terrainFactor); ++i) {
     doOneMove();
@@ -119,14 +126,17 @@ void Unit::doMoveWithSpeed(float terrainFactor) {
 UnitState Unit::getUnitState() {
   return UnitState(owner.getID(), health, weapon, currentPosition);
 }
+
 void Unit::addMove(const Position &position) {
   if (std::find(movementsPositions.begin(), movementsPositions.end(), position)
       == movementsPositions.end())
     movementsPositions.push_back(position);
 }
+
 bool Unit::hasDamagesToReceive() const {
   return !damagesToReceive.empty();
 }
+
 Unit::Unit(const Position &current,
            const UnitData &data,
            Player &owner,

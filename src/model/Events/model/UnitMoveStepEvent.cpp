@@ -9,6 +9,7 @@ void UnitMoveStepEvent::process() {
 
   std::map<UnitID, ObjectMapaVista*> &unitsVista = view->getUnitsVista();
   int oldRotation = unitsVista.at(id)->getRotation();
+
   if (oldRotation != rotation) {
 //  unitsVista.erase(id);
     view->removeUnitVista(id);
