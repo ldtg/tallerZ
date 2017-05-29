@@ -88,6 +88,7 @@ set(SOURCE_FILES
         src/model/BuildID.h
         src/model/BuildType.h
         src/model/BuildState.cpp src/model/BuildState.h
+
         src/model/Events/model/BuildDamageEvent.cpp
         src/model/Events/model/BuildDamageEvent.h
         src/model/Events/model/BuildDestroyedEvent.cpp
@@ -97,6 +98,13 @@ set(SOURCE_FILES
         z_tests/tests_model/GameController_build_test.cpp
         src/model/Events/model/UnitMoveStepEvent.cpp
         src/model/Events/model/UnitMoveStepEvent.h
+        src/model/Events/model/BulletMoveEvent.cpp
+        src/model/Events/model/BulletMoveEvent.h
+        src/model/Events/model/BulletMoveStepEvent.cpp
+        src/model/Events/model/BulletMoveStepEvent.h
+        src/model/Events/model/UnitStillEvent.cpp
+        src/model/Events/model/UnitStillEvent.h
+
         src/model/Capturable.h
         src/model/Events/model/CaptureEvent.cpp
         src/model/Events/model/CaptureEvent.h
@@ -209,7 +217,8 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Buttons/Menu_Button.h
 
         src/map_generation/Generator.cpp
-        src/map_generation/Generator.h)
+        src/map_generation/Generator.h
+        )
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

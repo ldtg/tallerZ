@@ -37,6 +37,7 @@ class Unit : public Attackable {
        const UnitData &data,
        Player& owner,
        Team &team);
+
  public:
   virtual ~Unit();
   virtual UnitState getUnitState() const = 0;
@@ -51,7 +52,7 @@ class Unit : public Attackable {
   virtual bool attackedInRange();
   virtual void move(const std::vector<Position> &movementsPositions);
   virtual void capture(const std::vector<Position> &movementsPositions);
-  virtual void doMoveWithSpeed(float terrainFactor);
+  virtual bool doMoveWithSpeed(float terrainFactor);
   virtual void doOneMove();
   virtual void hunt(const std::vector<Position> &movementsPositions,
                     Attackable *other);

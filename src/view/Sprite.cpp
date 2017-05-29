@@ -11,6 +11,7 @@ Sprite::Sprite(const char *file, int num_frames)
     cur_frame = 0;
     x = 0;
     y = 0;
+    _doCycle = false;
 }
 
 Sprite::Sprite(Sprite &&other) {
@@ -60,5 +61,6 @@ void Sprite::draw(SDL_Renderer *render) {
     //Cycle animation
     if (cur_frame/(2*num_frames) >= num_frames) {
         cur_frame = 0;
+        _doCycle = true;
     }
 }

@@ -35,6 +35,10 @@ TEST(VistaTest, Window) {
     Team team;
     team.addPlayer(&player);
 
+    Player player2("jugador2");
+    Team team2;
+    team2.addPlayer(&player2);
+
 /* ---------- UNIDADES ---------- */
     std::map<UnitID, Unit *> units;
 
@@ -42,14 +46,14 @@ TEST(VistaTest, Window) {
     robotA = UnitFactory::createGruntDynamic(Position(50, 50), player, team);
     units.emplace(robotA->getId(), robotA);
 
-//    Unit *robotB;
-//    robotB = UnitFactory::createGruntDynamic(Position(150, 150));
-//    units.emplace(robotB->getId(), robotB);
+    Unit *robotB;
+    robotB = UnitFactory::createGruntDynamic(Position(150, 150), player2, team2);
+    units.emplace(robotB->getId(), robotB);
 
 /* ---------- CREACION MAPA ---------- */
     Map map(stdmap, 3, 3);
     map.addUnit(robotA->getId(), robotA->getUnitState());
-//    map.addUnit(robotB->getId(), robotB->getUnitState());
+    map.addUnit(robotB->getId(), robotB->getUnitState());
     GameController gameController(map, units);
 
     EventHandler eventHandler;

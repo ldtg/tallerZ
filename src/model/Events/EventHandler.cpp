@@ -18,7 +18,7 @@ void EventHandler::add(Event *event) {
 }
 
 Event* EventHandler::get() {
-  Event *event_aux = eventQueue.back();
+  Event *event_aux = eventQueue.front();
   eventQueue.pop();
   return event_aux;
 }

@@ -5,10 +5,13 @@
 #include "BulletID.h"
 #include "Position.h"
 #include "Bullet.h"
+
 class BulletHitEvent : public Event{
  private:
-  const BulletID id;
-  const Position position;
+  BulletID id;
+  const Position pos;
+  Weapon weapon;
+
  public:
   BulletHitEvent(const Bullet &bullet);
   virtual void process();

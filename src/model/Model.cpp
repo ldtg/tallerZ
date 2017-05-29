@@ -7,9 +7,18 @@ Model::Model(Map &map, GameController &gc) : map(map) ,gameController(gc){}
 void Model::leftClick(int x, int y) {
   Position pos(x, y);
   try{
-    unitsSelected.push_back(map.getUnitIDFromPosition(pos, 30));
+    if (unitsSelected.empty()) {
+      unitsSelected.push_back(map.getUnitIDFromPosition(pos, 30));
+    } else {
+      UnitID attacked = map.getUnitIDFromPosition(pos, 30);
+      for (UnitID attacker : unitsSelected) {
+        gameController.attack(attacker, attacked);
+      }
+      unitsSelected.clear();
+    }
   } catch(const UnitNotFoundException &e){
-    // No se hace nada si donde se hizo click no hay unidad.
+    // Donde se hizo click no hay unidad.
+    unitsSelected.clear();
   }
 }
 

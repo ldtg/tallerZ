@@ -6,6 +6,8 @@
 #include <model/Events/model/UnitCreateEvent.h>
 #include <model/Events/model/BulletHitEvent.h>
 #include <model/Events/model/CaptureEvent.h>
+#include <model/Events/model/BulletMoveEvent.h>
+#include <model/Events/model/UnitStillEvent.h>
 #include "GameController.h"
 #include "AStar.h"
 #include "model/Events/model/UnitMoveEvent.h"
@@ -26,15 +28,16 @@ void GameController::move(const UnitID &idunit, const Position &position) {
   } catch (const UnableToFindAPathException &e) {
     return;
   }
-
 }
 
 void GameController::attack(const UnitID &attackerId,
                             const UnitID &attackedId) {
   Unit *attacker = units.at(attackerId);
   Attackable *attacked = units.at(attackedId);
+
   if (!attacker->canAttack(attacked))
     return;
+
   if (attacker->isInRange(attacked)
       && map.canPass(attacker->getCurrentPosition(),
                      attacked->getAttackPosition(attacker->getCurrentPosition()))) {
@@ -100,12 +103,14 @@ void GameController::doTick(std::vector<Event *> &events) {
 }
 
 void GameController::unitsTick(std::vector<Event *> &events) {
-  for (auto it_units = units.begin(); it_units != units.end();
-      ) {
+  for (auto it_units = units.begin(); it_units != units.end();) {
+
     Unit *current = it_units->second;
-    if (current->hasDamagesToReceive()) {
-      unitReceiveDamage(current, events);
-    }
+
+//    if (current->hasDamagesToReceive()) {
+//      unitReceiveDamage(current, events);
+//    }
+
     if (current->isAlive()) {
       if (current->isMoving())
         move(current, events, it_units);
@@ -113,8 +118,10 @@ void GameController::unitsTick(std::vector<Event *> &events) {
         hunt(current, events, it_units);
       else if (current->isCapturing())
         capture(current, events, it_units);
-      else if (current->isStill())
+      else if (current->isStill()) {
         autoAttack(current, it_units);
+      }
+
       //El ++it_units esta adentro de los metodos porque el capture lo puede
       // modificar si tiene que hacer desaparecer a la unidad
     } else {
@@ -123,6 +130,11 @@ void GameController::unitsTick(std::vector<Event *> &events) {
       deathUnits.push_back(current);
       it_units = units.erase(it_units);
     }
+
+    if (current->hasDamagesToReceive()) {
+      unitReceiveDamage(current, events);
+    }
+
   }
 }
 
@@ -141,24 +153,42 @@ void GameController::move(Unit *unit,
                   unit->nextMovePosition())) {
     float terrainFactor =
         map.getTile(unit->getCurrentPosition()).getTerrainData().terrainFactor;
-    unit->doMoveWithSpeed(terrainFactor);
+    bool still = unit->doMoveWithSpeed(terrainFactor);
     events.push_back(new UnitMoveEvent(unit->getId(),
                                        unit->getCurrentPosition()));
     map.updateUnit(unit->getId(), unit->getUnitState());
+
+    if (still) {
+      events.push_back(new UnitStopAttackEvent(unit->getId()));
+    }
+
   } else {
     unit->still();
   }
   ++it;
 }
 
+bool noEntro=true;
+
 void GameController::hunt(Unit *unit,
                           std::vector<Event *> &events,
                           std::map<UnitID, Unit *>::iterator &it) {
   Attackable *hunted = unit->getHunted();
+
+  if (!hunted->isAlive()) {
+    events.push_back(new UnitStopAttackEvent(unit->getId()));
+    unit->still();
+    return;
+  }
+
   if (unit->attackedInRange()
       && map.canPass(unit->getCurrentPosition(),
                      hunted->getAttackPosition(unit->getCurrentPosition()))) {
     if (unit->timeToAttack()) {
+      if (noEntro) {
+        noEntro =false;
+        events.push_back(new UnitAttackEvent(unit->getId()));
+      }
       this->bullets.push_back(unit->createBullet());
       events.push_back(new BulletNewEvent(this->bullets.front()));
     }
@@ -166,8 +196,10 @@ void GameController::hunt(Unit *unit,
   } else {
     this->move(unit, events, it);
   }
+
   if (hunted->isMoving())
-    unit->addMove(hunted->nextMovePosition()); //en vez de recalcular el path uso los movs del atacado
+    //en vez de recalcular el path uso los movs del atacado
+    unit->addMove(hunted->nextMovePosition());
 }
 
 void GameController::capture(Unit *unit,
@@ -216,12 +248,14 @@ void GameController::capture(Unit *unit,
 
 void GameController::autoAttack(Unit *current,
                                 std::map<UnitID, Unit *>::iterator &it) {
+/*
   for (auto &par: units) {
     if (current->isInRange(par.second)
         && current->getId() != par.first) {
       this->attack(current->getId(), par.second->getId());
     }
   }
+*/
   ++it;
 }
 
@@ -237,6 +271,7 @@ void GameController::bulletsTick(std::vector<Event *> &vector) {
       iterator = bullets.erase(iterator);
     } else {
       map.updateBullet(current.getId(), current.getState());
+      vector.push_back(new BulletMoveEvent(current));
       ++iterator;
     }
   }

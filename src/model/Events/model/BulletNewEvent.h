@@ -2,12 +2,14 @@
 #define TALLERZ_BULLETNEWEVENT_H
 
 #include <model/Events/Event.h>
-class BulletNewEvent : public Event{
+
+class BulletNewEvent : public Event {
  private:
-  const BulletID id;
+  BulletID id;
   const Weapon weapon;
   const Position from;
-  const Position to;
+//  const Position to;
+
  public:
   BulletNewEvent(const Bullet &bullet);
   virtual void process();

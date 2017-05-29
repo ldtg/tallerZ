@@ -7,15 +7,16 @@ void UnitMoveStepEvent::process() {
 //  std::map<UnitID, ObjectMapaVista*> &unitsVista = view->getUnitsVista();
 //  unitsVista.at(id)->setPos(posToo);
 
-  std::map<UnitID, ObjectMapaVista*> &unitsVista = view->getUnitsVista();
-  int oldRotation = unitsVista.at(id)->getRotation();
+  ObjectMapaVista* unitVista = view->getUnitVista(id);
+  int oldRotation = unitVista->getRotation();
 
   if (oldRotation != rotation) {
 //  unitsVista.erase(id);
     view->removeUnitVista(id);
 
     std::string rotation_s = std::to_string(rotation);
-    ObjectMapaVista *unitVista = view->getUnitVista(id.getType(), rotation_s);
+    std::string action("walk");
+    ObjectMapaVista *unitVista = view->getUnitVista(id.getType(), action,rotation_s, 4);
     unitVista->setPos(posToo);
     unitVista->setRotation(rotation);
 
@@ -23,7 +24,7 @@ void UnitMoveStepEvent::process() {
 //  unitsVista.emplace(id, unitVista);
   }
   else {
-    unitsVista.at(id)->setPos(posToo);
+    unitVista->setPos(posToo);
   }
 
 }

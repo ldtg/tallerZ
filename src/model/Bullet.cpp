@@ -1,6 +1,6 @@
 #include "Bullet.h"
-Bullet::Bullet(const Weapon &weapon,
-               const Position &current,
+
+Bullet::Bullet(const Weapon &weapon, const Position &current,
                Attackable *target)
     : id(), weapon(weapon), currentPosition(current), target(target) {
   if (weapon.speed == 0)

@@ -118,10 +118,11 @@ unsigned long Unit::getHealth() const {
 
 Unit::~Unit() {}
 
-void Unit::doMoveWithSpeed(float terrainFactor) {
+bool Unit::doMoveWithSpeed(float terrainFactor) {
   for (int i = 0; i < this->getMovementSpeed(terrainFactor); ++i) {
     doOneMove();
   }
+  return this->movState.isStill();
 }
 
 void Unit::addMove(const Position &position) {
@@ -159,15 +160,18 @@ unsigned short Unit::getRange() const {
 bool Unit::canAttack(Attackable *attackable) {
   return this->team.isEnemy(attackable->getOwner().getID());
 }
+
 Bullet Unit::createBullet() {
   return Bullet(weapon, this->currentPosition, hunted);
 }
+
 void Unit::still() {
   this->movState.still();
   hunted = nullptr;
   movementsPositions.clear();
   attackCounterActual = attackCounterBase;
 }
+
 Position Unit::getAttackPosition(const Position &attacker) const {
   return currentPosition;
 }

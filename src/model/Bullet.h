@@ -12,7 +12,8 @@ class Bullet {
   Attackable *target;
   Position currentPosition;
  public:
-  Bullet(const Weapon &weapon, const Position &current, Attackable *target);
+  Bullet(const Weapon &weapon, const Position &current,
+         Attackable *target);
   bool didHit() const;
   BulletID getId() const;
   Weapon getWeapon() const;

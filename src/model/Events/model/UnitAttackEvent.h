@@ -5,9 +5,8 @@
 class UnitAttackEvent : public Event {
  private:
   UnitID attacker;
-  Position attackPosition;
  public:
-  UnitAttackEvent(const UnitID &attacker,const Position &attackPos);
+  UnitAttackEvent(const UnitID &attacker);
   void process();
 };
 

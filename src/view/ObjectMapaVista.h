@@ -11,6 +11,7 @@ class ObjectMapaVista {
   int x;
   int y;
   int rotation;
+  bool _doCycle;
 //  Position posTo;
 
  public:
@@ -21,6 +22,7 @@ class ObjectMapaVista {
   Position getPos() const;
   void setRotation(int rotation);
   int getRotation();
+  bool doCycle() const;
 //  void setPosTo(Position &pos);
 //  bool isMoving();
 

@@ -50,8 +50,8 @@ struct Data {
     grunt.type = UnitType::R_GRUNT;
     grunt.weapon = bullet;
     grunt.ticksUntilFire = getTickAmount(0.5);
-    grunt.health = 60;
-    grunt.range = 7;
+    grunt.health = 10;
+    grunt.range = 21;
     grunt.speed = 4;
     grunt.factoryRate = 3;
     grunt.factoryBaseTimeInSec = 575;

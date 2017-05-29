@@ -3,8 +3,9 @@
 
 class BulletID {
   static unsigned long nextid;
- public:
+ private:
   unsigned long id;
+ public:
   BulletID();
   bool operator<(const BulletID &other) const;
 };
