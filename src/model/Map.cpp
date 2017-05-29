@@ -66,12 +66,16 @@ int Map::getHeight() const {
   return height;
 }
 
-const std::map<Position, Tile> Map::getMap() const {
+const std::map<Position, Tile> &Map::getMap() const {
   return map;
 }
 
 const std::map<UnitID, UnitState> &Map::getUnits() const {
   return units;
+}
+
+const std::map<BuildID, BuildState>& Map::getBuilds() const {
+  return builds;
 }
 
 void Map::setUnits(const std::map<UnitID, UnitState> &units) {
@@ -97,6 +101,15 @@ UnitID Map::getUnitIDFromPosition(const Position &pos,
       return par.first;
   }
   throw UnitNotFoundException("unidad no encontrada");
+}
+
+BuildID Map::getBuildIDFromPosition(const Position &pos,
+                                    unsigned short range) const {
+  for (auto &par : builds) {
+    if (pos.equalDelta(par.second.position, range))
+      return par.first;
+  }
+  throw UnitNotFoundException("edificio no encontrado");
 }
 
 void Map::updateUnit(const UnitID &unitID, const UnitState &unitState) {

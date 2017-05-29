@@ -6,19 +6,28 @@ Model::Model(Map &map, GameController &gc) : map(map) ,gameController(gc){}
 
 void Model::leftClick(int x, int y) {
   Position pos(x, y);
-  try{
-    if (unitsSelected.empty()) {
-      unitsSelected.push_back(map.getUnitIDFromPosition(pos, 30));
-    } else {
-      UnitID attacked = map.getUnitIDFromPosition(pos, 30);
-      for (UnitID attacker : unitsSelected) {
-        gameController.attack(attacker, attacked);
+  if (unitsSelected.empty()) {
+    unitsSelected.push_back(map.getUnitIDFromPosition(pos, 30));
+  } else {
+      try {
+        UnitID attacked = map.getUnitIDFromPosition(pos, 30);
+        for (UnitID attacker : unitsSelected) {
+          gameController.attack(attacker, attacked);
+        }
+        return;
+      } catch(const UnitNotFoundException &e){
+        // Donde se hizo click no hay unidad.
       }
-      unitsSelected.clear();
-    }
-  } catch(const UnitNotFoundException &e){
-    // Donde se hizo click no hay unidad.
-    unitsSelected.clear();
+      try {
+        BuildID buildAttacked = map.getBuildIDFromPosition(pos, 100);
+        for (UnitID attacker : unitsSelected) {
+          gameController.attack(attacker, buildAttacked);
+        }
+      } catch(const UnitNotFoundException &e) {
+        // Donde se hizo click no hay edificio ni undida.
+        unitsSelected.clear();
+      }
+//    unitsSelected.clear();
   }
 }
 

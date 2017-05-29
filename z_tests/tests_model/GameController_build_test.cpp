@@ -31,17 +31,20 @@ class GameController_build_test : public ::testing::Test {
     stdmap.emplace(Position(0, 2), Tile(Position(50, 250), data.land));
     stdmap.emplace(Position(1, 2), Tile(Position(150, 250), data.land));
     stdmap.emplace(Position(2, 2), Tile(Position(250, 250), data.land));
+
     playerA.addTerritory();
     playerB.addTerritory();
     teamA.addPlayer(&playerA);
     teamB.addPlayer(&playerB);
+
     build = new Build(data.fort, Position(50, 50), playerA, teamA, 3);
     builds.emplace(build->getId(), build);
-
     std::map<BuildID, BuildState> buildmap;
     buildmap.emplace(build->getId(), build->getBuildState());
+
     unit = UnitFactory::createToughDynamic(Position(50, 104), playerB, teamB);
     units.emplace(unit->getId(), unit);
+
     map = Map(stdmap, buildmap, 3, 3);
     map.addUnit(unit->getId(), unit->getUnitState());
 

@@ -114,13 +114,16 @@ int Position::move(Position target) {
   }
   return rotation;
 }
+
 bool Position::operator!=(const Position &other) const {
   return !(this->operator==(other));
 }
+
 bool Position::equalDelta(const Position &other, unsigned short delta) const {
   return std::abs(this->x - other.x) < delta
       && std::abs(this->y - other.y) < delta;
 }
+
 std::string Position::toString() const {
   std::stringstream aux;
   aux << x << ", " << y;
@@ -134,9 +137,15 @@ unsigned long Position::getX() const {
 unsigned long Position::getY() const {
   return y;
 }
+
 Position Position::sub(unsigned long x, unsigned long y) const {
   return Position(this->x - x, this->y - y);
 }
+
+Position Position::add(unsigned long x, unsigned long y) const {
+  return Position(this->x + x, this->y + y);
+}
+
 Position Position::getAttackPosition(const Position &position,
                                      const unsigned short size) const {
   Position aux = position;

@@ -50,6 +50,7 @@ struct Data {
     grunt.type = UnitType::R_GRUNT;
     grunt.weapon = bullet;
     grunt.ticksUntilFire = getTickAmount(0.5);
+//    grunt.health = 60;
     grunt.health = 10;
     grunt.range = 21;
     grunt.speed = 4;
@@ -78,7 +79,8 @@ struct Data {
     jeep.factoryMinimunTechLevel = 1;
 
     fort.type = BuildType::FORT;
-    fort.health = 1000;
+//    fort.health = 1000;
+    fort.health = 10;
     fort.size = 50;
 
     robotFactory.type = BuildType::ROBOTF;

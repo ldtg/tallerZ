@@ -54,8 +54,10 @@ void GameController::attack(const UnitID &attackerId,
                             const BuildID &attackedId) {
   Unit *attacker = units.at(attackerId);
   Build *attacked = builds.at(attackedId);
+
   if (!attacker->canAttack(attacked))
     return;
+
   if (attacker->isInRange(attacked)
       && map.canPass(attacker->getCurrentPosition(),
                      attacked->getCenterPosition())) {
@@ -186,7 +188,7 @@ void GameController::hunt(Unit *unit,
                      hunted->getAttackPosition(unit->getCurrentPosition()))) {
     if (unit->timeToAttack()) {
       if (noEntro) {
-        noEntro =false;
+        noEntro = false;
         events.push_back(new UnitAttackEvent(unit->getId()));
       }
       this->bullets.push_back(unit->createBullet());
@@ -280,8 +282,10 @@ void GameController::bulletsTick(std::vector<Event *> &vector) {
 void GameController::buildsTick(std::vector<Event *> &events) {
   for (auto b_iter = builds.begin(); b_iter != builds.end();) {
     Build *current = b_iter->second;
+
     if (current->hasDamagesToReceive())
       buildReceiveDamage(current, events);
+
     if (current->isAlive()) {
       if (current->hasToBuild()) {
         this->addUnits(current->fabricateUnits(), events);
@@ -295,7 +299,6 @@ void GameController::buildsTick(std::vector<Event *> &events) {
       b_iter = builds.erase(b_iter);
     }
   }
-
 }
 
 void GameController::buildReceiveDamage(Build *current,

@@ -7,7 +7,7 @@ BulletHitEvent::BulletHitEvent(const Bullet &bullet)
 void BulletHitEvent::process() {
   if (weapon.type != BULLET) {
     view->removeBulletVista(id);
-    ObjectMapaVista *bulletExplosion = new Sprite("../src/view/images/bullet/side_explosion_n", 7);
+    ObjectMapaVista *bulletExplosion = new Sprite("../src/view/images/bullet/side_explosion_n", 7, 1);
     view->addExplosionVista(bulletExplosion, pos);
   }
 }

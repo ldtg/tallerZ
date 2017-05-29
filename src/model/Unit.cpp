@@ -32,6 +32,7 @@ void Unit::hunt(const std::vector<Position> &movementsPositions,
   this->movState.hunting();
   this->hunted = other;
 }
+
 Position Unit::nextMovePosition() const {
   if (!movementsPositions.empty())
     return movementsPositions.front();

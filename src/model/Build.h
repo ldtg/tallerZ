@@ -8,6 +8,10 @@
 #include "BuildData.h"
 #include "BuildState.h"
 #include "Unit.h"
+
+#define BUILDWIDHT 100
+#define BUILDHEIGHT 100
+
 class Build : public Attackable {
  private:
   const BuildID id;
@@ -25,6 +29,7 @@ class Build : public Attackable {
   bool timeToBuild;
 
   unsigned short getSpeedRate() const;
+
  public:
   Build(const BuildData &data,
         const Position &centerPosition,
@@ -39,7 +44,7 @@ class Build : public Attackable {
   virtual Position nextMovePosition() const override;
   virtual void receiveAttack(const Weapon &weapon) override;
 
-  //Para que cuando lo ataquen ataquen la posicion mas cercana al atacante (solo las esquinas)
+  //Para que cuando lo ataquen, ataquen la posicion mas cercana al atacante (solo las esquinas)
   virtual Position getAttackPosition(const Position &attackerPosition) const override;
   BuildID getId() const;
   BuildState getBuildState() const;

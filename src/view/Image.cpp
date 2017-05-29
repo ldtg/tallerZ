@@ -13,9 +13,6 @@ Image::Image(const char *file) {
     height = surface->h;
 
   texture = nullptr;
-
-//    std::cout << "width: " << width
-//              << " height: " << height << std::endl;
 }
 
 Image::Image(const char *file, int w, int h) {

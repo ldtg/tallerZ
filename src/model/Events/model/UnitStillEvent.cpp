@@ -12,7 +12,7 @@ void UnitStopAttackEvent::process() {
 
   std::string rotation_s = std::to_string(rotation);
   std::string action("look_around");
-  unitVista = view->getUnitVista(id.getType(), action, rotation_s, 3);
+  unitVista = view->getUnitVista(id.getType(), action, rotation_s, 3, 7);
   unitVista->setPos(pos);
   unitVista->setRotation(rotation);
 

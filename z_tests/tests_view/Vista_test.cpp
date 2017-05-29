@@ -43,18 +43,30 @@ TEST(VistaTest, Window) {
     std::map<UnitID, Unit *> units;
 
     Unit *robotA;
-    robotA = UnitFactory::createGruntDynamic(Position(50, 50), player, team);
+    robotA = UnitFactory::createGruntDynamic(Position(100, 100), player, team);
     units.emplace(robotA->getId(), robotA);
 
     Unit *robotB;
-    robotB = UnitFactory::createGruntDynamic(Position(150, 150), player2, team2);
+    robotB = UnitFactory::createGruntDynamic(Position(200, 200), player2, team2);
     units.emplace(robotB->getId(), robotB);
 
+/* ---------- EDIFICIOS ---------- */
+
+    Build *build = new Build(data.fort, Position(50, 50), player, team, 3);
+
+    std::map<BuildID, BuildState> buildmap;
+    buildmap.emplace(build->getId(), build->getBuildState());
+
+    std::map<BuildID, Build *> builds;
+    builds.emplace(build->getId(), build);
+
 /* ---------- CREACION MAPA ---------- */
-    Map map(stdmap, 3, 3);
+    Map map(stdmap, buildmap, 3, 3);
+
     map.addUnit(robotA->getId(), robotA->getUnitState());
     map.addUnit(robotB->getId(), robotB->getUnitState());
-    GameController gameController(map, units);
+
+    GameController gameController(map, units, builds);
 
     EventHandler eventHandler;
 

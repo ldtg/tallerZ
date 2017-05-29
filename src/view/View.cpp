@@ -11,6 +11,7 @@ View::View(const Map &map, EventHandler &eventHandler, Window& window)
     : window(window), panel(window.getRender()), eventHandler(eventHandler) {
   _quit = false;
   createInitialTerrainVista(map.getMap());
+  createInitialBuildVista(map.getBuilds());
   createInitialUnitVista(map.getUnits());
 }
 
@@ -34,10 +35,22 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
     Position pos = unit.second.position;
     std::string rotation("0");
     std::string action("look_around");
-    ObjectMapaVista *unitVista = getUnitVista(type, action, rotation, 3);
+    ObjectMapaVista *unitVista = getUnitVista(type, action, rotation, 3, 3);
     add(unitVista, pos);
 
     unitsVista.emplace(unit.first, unitVista);
+  }
+}
+
+void View::createInitialBuildVista(const std::map<BuildID, BuildState> &builds) {
+  for (auto const &build : builds) {
+    BuildType type = build.first.getType();
+    Position pos = build.second.position;
+    std::string state("");
+    ObjectMapaVista *buildVista = getBuildVista(type, state);
+    add(buildVista, pos);
+
+    buildsVista.emplace(build.first, buildVista);
   }
 }
 
@@ -76,12 +89,16 @@ void View::draw() {
     panel.add(posTerrain.second);
   }
 
-  for (auto const &posUnit : unitsVista) {
-    panel.add(posUnit.second);
+  for (auto const &build : buildsVista) {
+    panel.add(build.second);
   }
 
-  for (auto const &posBullet : unitsVista) {
-    panel.add(posBullet.second);
+  for (auto const &unit : unitsVista) {
+    panel.add(unit.second);
+  }
+
+  for (auto const &bullet : bulletsVista) {
+    panel.add(bullet.second);
   }
 
   for (ObjectMapaVista *explosion : explosionsVista) {
@@ -108,14 +125,25 @@ ObjectMapaVista* View::getTerrainVista(TerrainType type) {
     }
 }
 
+ObjectMapaVista* View::getBuildVista(BuildType type, std::string &state) {
+  if (type == FORT) {
+    std::string path = "../src/view/images/buildings/fort/fort_jungle_front"
+        + state + ".png";
+    return new Image(path.c_str());
+  }
+  else {
+    return nullptr;
+  }
+}
+
 ObjectMapaVista* View::getUnitVista(UnitType type,
                                     std::string &action,
                                     std::string &rotation,
-                                    int num_frames) {
+                                    int num_frames, int speed) {
   if (type == R_GRUNT) {
     std::string path = "../src/view/images/units/grunt/" + action
                       + "/" + action + "_blue_r" + rotation + "_n";
-    return new Sprite(path.c_str(), num_frames);
+    return new Sprite(path.c_str(), num_frames, speed);
   }
   else {
     return nullptr;
@@ -185,6 +213,21 @@ void View::removeBulletVista(BulletID &id) {
 void View::addBulletVista(BulletID &id, ObjectMapaVista *bulletVista) {
   bulletsVista.emplace(id, bulletVista);
 }
+
+
+ObjectMapaVista* View::getBuildVista(BuildID id) {
+  return buildsVista.at(id);
+}
+
+void View::removeBuildVista(BuildID &id) {
+  //  delete unitsVista.at(id);
+  buildsVista.erase(id);
+}
+
+void View::addBuildVista(BuildID &id, ObjectMapaVista *buildVista) {
+  buildsVista.emplace(id, buildVista);
+}
+
 
 void View::addExplosionVista(ObjectMapaVista *objectVista, Position pos) {
   if (objectVista == NULL)

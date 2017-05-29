@@ -3,28 +3,36 @@
 #include "Build.h"
 #include "Data.h"
 #include "UnitFactory.h"
+
 Position Build::getCenterPosition() const {
   return centerPosition;
 }
+
 Player &Build::getOwner() {
   return owner;
 }
+
 bool Build::isAlive() const {
   return health > 0;
 }
+
 bool Build::isMoving() const {
   return false;
 }
+
 Position Build::nextMovePosition() const {
   return centerPosition;
 }
+
 void Build::receiveAttack(const Weapon &weapon) {
-  if (weapon.isExplosive)
+//  if (weapon.isExplosive)
     this->damagesToReceive.push_back(weapon.damage);
 }
+
 Position Build::getAttackPosition(const Position &attackerPosition) const {
   return centerPosition.getAttackPosition(attackerPosition, size);
 }
+
 void Build::tick() {
   if (ticksBeforeCreate > 0) {
     ticksBeforeCreate--;
@@ -33,9 +41,11 @@ void Build::tick() {
     timeToBuild = true;
   }
 }
+
 bool Build::hasToBuild() {
   return timeToBuild;
 }
+
 unsigned short Build::getSpeedRate() const {
   unsigned long timeInSecs;
   float baseTaken = (float) data.getData(actualUnitFab).factoryBaseTimeInSec
@@ -47,9 +57,11 @@ unsigned short Build::getSpeedRate() const {
 
   return data.getTickAmount(timeInSecs);
 }
+
 bool Build::hasDamagesToReceive() const {
   return !damagesToReceive.empty();
 }
+
 void Build::receiveDamages() {
   for (auto damage: damagesToReceive) {
     if (this->health > damage) {
@@ -63,6 +75,7 @@ void Build::receiveDamages() {
   }
   damagesToReceive.clear();
 }
+
 Build::Build(const BuildData &buildData,
              const Position &centerPosition,
              Player &owner, Team &team,
@@ -79,12 +92,15 @@ Build::Build(const BuildData &buildData,
       actualUnitFab(UnitType::R_GRUNT) {
 
 }
+
 UnitType Build::getActualUnitFab() const {
   return actualUnitFab;
 }
+
 std::vector<UnitType> Build::getFabricableUnits() const {
   return fabricableUnits;
 }
+
 void Build::changeFabUnit(const UnitType &type) {
   if (std::find(fabricableUnits.begin(), fabricableUnits.end(), type)
       == fabricableUnits.end()) {
@@ -96,15 +112,18 @@ void Build::changeFabUnit(const UnitType &type) {
     this->timeToBuild = false;
   }
 }
+
 BuildID Build::getId() const {
   return this->id;
 }
+
 BuildState Build::getBuildState() const {
-  return BuildState(owner.getID(), centerPosition,
+  return BuildState(owner.getID(), centerPosition.sub(BUILDWIDHT/2, BUILDHEIGHT/2),
                     health,
                     data.ticksToSec(ticksBeforeCreate),
                     actualUnitFab);
 }
+
 std::vector<Unit *> Build::fabricateUnits() {
   std::vector<Unit *> aux;
   for (int i = 0; i < data.getData(actualUnitFab).factoryRate; ++i) {
@@ -120,6 +139,7 @@ std::vector<Unit *> Build::fabricateUnits() {
   this->timeToBuild = false;
   return aux;
 }
+
 void Build::changePlayer(Player &player, Team &team) {
   this->owner = player;
   this->team = team;

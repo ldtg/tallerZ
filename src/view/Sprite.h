@@ -9,14 +9,13 @@ class Sprite : public ObjectMapaVista {
  protected:
   int num_frames;
   int cur_frame;
+  int speed;
 //        int x;
 //        int y;
   std::string filename;
  public:
   Sprite();
-  Sprite(const char *file, int num_frames);
-  Sprite(Sprite &&other);
-  Sprite &operator=(Sprite &&other);
+  Sprite(const char *file, int num_frames, int speed);
   virtual ~Sprite();
   void set_texture(SDL_Renderer *render);
   void draw(SDL_Renderer *render);

@@ -12,7 +12,7 @@ void UnitAttackEvent::process() {
 
   std::string rotation_s = std::to_string(rotation);
   std::string action("fire");
-  unitVista = view->getUnitVista(attacker.getType(), action, rotation_s, 5);
+  unitVista = view->getUnitVista(attacker.getType(), action, rotation_s, 5, 2);
   unitVista->setPos(pos);
   unitVista->setRotation(rotation);
 

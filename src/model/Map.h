@@ -23,6 +23,7 @@ class Map {
   int width;
   int height;
   Position getTilePositionFromRealPosition(Position position) const;
+
  public:
   Map();
   //Para mapas de prueba sin edificios
@@ -35,6 +36,7 @@ class Map {
       unsigned short width,
       unsigned short height);
   ~Map();
+
   std::vector<Tile> getNeighbors(const Tile &tile) const;
 
   void addUnit(const UnitID &unitID, const UnitState &unitState);
@@ -57,9 +59,12 @@ class Map {
                const Position &positionTo) const;
 
   //Metodos para dibujar mapa
-  const std::map<Position, Tile> getMap() const;
+  const std::map<Position, Tile> &getMap() const;
   const std::map<UnitID, UnitState> &getUnits() const;
+  const std::map<BuildID, BuildState> &getBuilds() const;
+
   UnitID getUnitIDFromPosition(const Position &pos, unsigned short range) const;
+  BuildID getBuildIDFromPosition(const Position &pos, unsigned short range) const;
   UnitState getUnitState(const UnitID &unitID) const;
 
   //Para crear el mapa
