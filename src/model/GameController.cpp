@@ -337,6 +337,7 @@ GameController::GameController(Map &map,
 GameController::GameController(Map &map,
                                const std::map<UnitID, Unit *> &units)
     : map(map), units(units) {}
+
 GameController::GameController(Map &map,
                                const std::map<UnitID, Unit *> &units,
                                const std::map<BuildID, Build *> &builds,

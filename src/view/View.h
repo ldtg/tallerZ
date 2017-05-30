@@ -41,7 +41,7 @@ class View {
 
   ObjectMapaVista* getUnitVista(UnitID id);
   ObjectMapaVista *getUnitVista(UnitType type, std::string &action,
-                                std::string &rotation, int num_frames, int speed);
+                                std::string &rotation);
   void move(UnitID id, Position posTo);
   void removeUnitVista(UnitID &id);
   void addUnitVista(UnitID &id, ObjectMapaVista *unitVista);

@@ -43,12 +43,16 @@ TEST(VistaTest, Window) {
     std::map<UnitID, Unit *> units;
 
     Unit *robotA;
-    robotA = UnitFactory::createGruntDynamic(Position(100, 100), player, team);
+    robotA = UnitFactory::createGruntDynamic(Position(200, 100), player, team);
     units.emplace(robotA->getId(), robotA);
 
     Unit *robotB;
     robotB = UnitFactory::createGruntDynamic(Position(200, 200), player2, team2);
     units.emplace(robotB->getId(), robotB);
+
+    Unit *vehicle;
+    vehicle = UnitFactory::createJeepDynamic(Position(100, 200), player, team);
+    units.emplace(vehicle->getId(), vehicle);
 
 /* ---------- EDIFICIOS ---------- */
 
@@ -65,6 +69,7 @@ TEST(VistaTest, Window) {
 
     map.addUnit(robotA->getId(), robotA->getUnitState());
     map.addUnit(robotB->getId(), robotB->getUnitState());
+    map.addUnit(vehicle->getId(), vehicle->getUnitState());
 
     GameController gameController(map, units, builds);
 

@@ -35,7 +35,16 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
     Position pos = unit.second.position;
     std::string rotation("0");
     std::string action("look_around");
-    ObjectMapaVista *unitVista = getUnitVista(type, action, rotation, 3, 3);
+    ObjectMapaVista *unitVista = getUnitVista(type, action, rotation);
+
+//    int width = unitVista->getWidth();
+//    int height = unitVista->getHeight();
+//    int x = pos.getX();
+//    int y = pos.getY();
+//    Position aux = pos.add(20/2, 20/2);
+//    add(unitVista, aux);
+//    std::cout << aux.toString() << std::endl;
+
     add(unitVista, pos);
 
     unitsVista.emplace(unit.first, unitVista);
@@ -138,16 +147,57 @@ ObjectMapaVista* View::getBuildVista(BuildType type, std::string &state) {
 
 ObjectMapaVista* View::getUnitVista(UnitType type,
                                     std::string &action,
-                                    std::string &rotation,
-                                    int num_frames, int speed) {
+                                    std::string &rotation) {
+  std::string type_s;
+  int num_frames=0, speed=0;
+
   if (type == R_GRUNT) {
-    std::string path = "../src/view/images/units/grunt/" + action
-                      + "/" + action + "_blue_r" + rotation + "_n";
-    return new Sprite(path.c_str(), num_frames, speed);
+    type_s = "grunt";
+    if (action == "walk") {
+      num_frames = 4;
+      speed = 2;
+    }
+    else if (action == "look_around") {
+      num_frames = 3;
+      speed = 7;
+    }
+    else if (action == "fire") {
+      num_frames = 5;
+      speed = 2;
+    }
+    else if (action == "die") {
+      num_frames = 10;
+      speed = 1;
+    }
   }
-  else {
-    return nullptr;
+  else if (type == V_JEEP) {
+    type_s = "jeep";
+    if (action == "walk") {
+      num_frames = 2;
+      speed = 3;
+    }
+    else if (action == "look_around") {
+      num_frames = 2;
+      speed = 2;
+    }
+    else if (action == "fire") {
+      num_frames = 2;
+      speed = 2;
+    }
+    else if (action == "die") {
+      num_frames = 6;
+      speed = 2;
+    }
   }
+
+  std::string path = "../src/view/images/units/" + type_s + "/" + action
+      + "/" + action + "_blue_r" + rotation + "_n";
+
+  return new Sprite(path.c_str(), num_frames, speed);
+
+//  else {
+//    return nullptr;
+//  }
 }
 
 ObjectMapaVista* View::getBulletVista(WeaponType type) {

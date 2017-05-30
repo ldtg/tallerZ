@@ -11,8 +11,15 @@ void UnitDeathEvent::process() {
 
   std::string rotation_s = std::to_string(rotation);
   std::string action("die");
-  ObjectMapaVista *explosionVista = view->getUnitVista(id.getType(), action, rotation_s, 5, 2);
+  ObjectMapaVista *explosionVista = view->getUnitVista(id.getType(), action, rotation_s);
   explosionVista->setRotation(rotation);
 
-  view->addExplosionVista(explosionVista, pos);
+  if (id.getType() == V_JEEP) {
+    explosionVista->setPos(pos.sub(0,10));
+//    explosionVista->setPos(pos);
+    view->addUnitVista(id, explosionVista);
+  }
+  else
+    view->addExplosionVista(explosionVista, pos);
+
 }
