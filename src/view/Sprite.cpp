@@ -18,7 +18,8 @@ Sprite::~Sprite() {}
 void Sprite::set_texture(SDL_Renderer *render) {}
 
 void Sprite::draw(SDL_Renderer *render) {
-    int cur_frame_aux = cur_frame/(speed*num_frames);
+//  int cur_frame_aux = cur_frame/(speed*num_frames);
+  int cur_frame_aux = cur_frame/speed;
 
     std::string file_image = filename + std::to_string(cur_frame_aux)
                              + std::string(".png");
@@ -32,7 +33,8 @@ void Sprite::draw(SDL_Renderer *render) {
 
     ++cur_frame;
     //Cycle animation
-    if (cur_frame/(speed*num_frames) >= num_frames) {
+//  if (cur_frame/(speed*num_frames) >= num_frames) {
+  if (cur_frame/speed >= num_frames) {
         cur_frame = 0;
         _doCycle = true;
     }

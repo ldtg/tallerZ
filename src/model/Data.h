@@ -34,7 +34,7 @@ struct Data {
   TerrainData road;
 
   Data() {
-    ticksPerSec = 40;
+    ticksPerSec = 60;
     miliSecsPerTick =
         (unsigned long) std::lround((1 / (float) ticksPerSec) * 1000);
     defaultDriver = R_GRUNT;

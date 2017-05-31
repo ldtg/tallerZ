@@ -2,10 +2,12 @@
 #include <string>
 #include "Image.h"
 #include "Sprite.h"
+#include "UnitAttackVista.h"
 #include <iostream>
 #include <vector>
 #include <model/Events/model/UnitMoveStepEvent.h>
 #include <model/Events/model/BulletMoveStepEvent.h>
+#include <random>
 
 View::View(const Map &map, EventHandler &eventHandler, Window& window)
     : window(window), panel(window.getRender()), eventHandler(eventHandler) {
@@ -150,6 +152,13 @@ Position View::translatePos(UnitType type, std::string &action, Position pos) {
   }
 }
 
+int getRandomNumInRange(const int range_from, const int range_to) {
+  std::random_device rand_dev;
+  std::mt19937 generator(rand_dev());
+  std::uniform_int_distribution<int> distr(range_from, range_to);
+  return distr(generator);
+}
+
 ObjectMapaVista* View::getUnitVista(UnitType type,
                                     std::string &action,
                                     std::string &rotation) {
@@ -160,38 +169,53 @@ ObjectMapaVista* View::getUnitVista(UnitType type,
     type_s = "grunt";
     if (action == "walk") {
       num_frames = 4;
-      speed = 2;
+      speed = 3 *num_frames;
     }
     else if (action == "look_around") {
       num_frames = 3;
-      speed = 6;
+      speed = 6*num_frames;
     }
     else if (action == "fire") {
       num_frames = 5;
-      speed = 2;
+      speed = 2*num_frames;
+
+      std::string path = "../src/view/images/units/" + type_s + "/" + action
+          + "/" + action + "_blue_r" + rotation + "_n";
+
+      return new UnitAttackVista(path.c_str(), num_frames, speed);
+
     }
     else if (action == "die") {
-      num_frames = 10;
-      speed = 1;
+      int num_die = getRandomNumInRange(1,2);
+      action = action + std::to_string(num_die);
+
+      if (num_die == 1) {
+        num_frames = 10;
+        speed = 12;
+      }
+      else if (num_die == 2) {
+        num_frames = 34;
+        speed = 6;
+      }
     }
   }
   else if (type == V_JEEP) {
     type_s = "jeep";
     if (action == "walk") {
       num_frames = 2;
-      speed = 3;
+      speed = 3 * num_frames;
     }
     else if (action == "look_around") {
       num_frames = 2;
-      speed = 2;
+      speed = 3 * num_frames;
     }
     else if (action == "fire") {
       num_frames = 2;
-      speed = 2;
+      speed = 2 * num_frames;
     }
     else if (action == "die") {
       num_frames = 6;
-      speed = 2;
+      speed = 2 * num_frames;
     }
   }
 

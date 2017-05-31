@@ -5,7 +5,7 @@
 
 Position::Position() {}
 
-Position::Position(unsigned long x, unsigned long y)
+Position::Position(long x, long y)
     : x(x), y(y) {}
 
 unsigned long Position::chebyshevDistance(const Position &other) const {

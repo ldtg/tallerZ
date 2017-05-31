@@ -5,24 +5,19 @@
 #include "ObjectMapaVista.h"
 
 class Image : public ObjectMapaVista {
-    private:
-        SDL_Surface *surface;
-        SDL_Texture *texture;
-//        int width;
-//        int height;
-//        int x;
-//        int y;
-    public:
-        Image();
-        Image(const char *file);
-        Image(const char *file, int width, int height);
-        Image(Image &&other);
-        Image& operator=(Image &&other);
-        ~Image();
-        void set_texture(SDL_Renderer *render);
-        void draw(SDL_Renderer *render);
-//        void draw(SDL_Renderer *render, int window_w, int window_h,
-//                  int x, int y);
+ private:
+  SDL_Surface *surface;
+  SDL_Texture *texture;
+
+ public:
+  Image();
+  Image(const char *file);
+  Image(const char *file, int width, int height);
+  Image(Image &&other);
+  Image& operator=(Image &&other);
+  ~Image();
+  void set_texture(SDL_Renderer *render);
+  void draw(SDL_Renderer *render);
 };
 
 #endif //IMAGE_H
