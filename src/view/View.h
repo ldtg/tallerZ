@@ -36,6 +36,8 @@ class View {
 //  void setEventHandler(EventHandler &eventHandler);
   void add(ObjectMapaVista *objectVista, Position pos);
 
+  Position translatePos(UnitType type, std::string &action, Position pos);
+
   void setQuit();
   bool quit();
 

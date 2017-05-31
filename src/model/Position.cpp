@@ -3,6 +3,8 @@
 #include <sstream>
 #include "Position.h"
 
+Position::Position() {}
+
 Position::Position(unsigned long x, unsigned long y)
     : x(x), y(y) {}
 
@@ -120,8 +122,15 @@ bool Position::operator!=(const Position &other) const {
 }
 
 bool Position::equalDelta(const Position &other, unsigned short delta) const {
-  return std::abs(this->x - other.x) < delta
-      && std::abs(this->y - other.y) < delta;
+  double xdelta = std::abs(this->x - other.x);
+  bool xb = xdelta < delta;
+  double ydelta = std::abs(this->y - other.y);
+  bool yb = ydelta < delta;
+
+  return xb && yb;
+
+//  return std::abs(this->x - other.x) < delta
+//      && std::abs(this->y - other.y) < delta;
 }
 
 std::string Position::toString() const {
@@ -130,11 +139,11 @@ std::string Position::toString() const {
   return aux.str();
 }
 
-unsigned long Position::getX() const {
+long Position::getX() const {
   return x;
 }
 
-unsigned long Position::getY() const {
+long Position::getY() const {
   return y;
 }
 

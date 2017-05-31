@@ -16,7 +16,7 @@ void UnitMoveStepEvent::process() {
 
     std::string rotation_s = std::to_string(rotation);
     std::string action("walk");
-    ObjectMapaVista *unitVista = view->getUnitVista(id.getType(), action,rotation_s);
+    unitVista = view->getUnitVista(id.getType(), action,rotation_s);
     unitVista->setPos(posToo);
     unitVista->setRotation(rotation);
 
@@ -24,6 +24,11 @@ void UnitMoveStepEvent::process() {
 //  unitsVista.emplace(id, unitVista);
   }
   else {
+//    if (id.getType() == V_JEEP) {
+//      unitVista->setPos(posToo.sub(25, 25));
+//    } else {
+//      unitVista->setPos(posToo.sub(8, 8));
+//    }
     unitVista->setPos(posToo);
   }
 

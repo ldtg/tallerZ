@@ -97,7 +97,8 @@ UnitState Map::getUnitState(const UnitID &unitID) const {
 UnitID Map::getUnitIDFromPosition(const Position &pos,
                                   unsigned short range) const {
   for (auto &par : units) {
-    if (pos.equalDelta(par.second.position, range))
+    bool inRange = pos.equalDelta(par.second.position, range);
+    if (inRange)
       return par.first;
   }
   throw UnitNotFoundException("unidad no encontrada");

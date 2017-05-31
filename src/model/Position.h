@@ -8,10 +8,12 @@ typedef std::tuple<long, long> coordinates_t;
 
 class Position {
  private:
-  unsigned long x;
-  unsigned long y;
+//  unsigned long x;
+//  unsigned long y;
+  long x;
+  long y;
  public:
-//    Position();
+  Position();
   Position(unsigned long x, unsigned long y);
   unsigned long chebyshevDistance(const Position &other) const;
   unsigned long euclideanDistance(const Position &other) const;
@@ -20,8 +22,8 @@ class Position {
   int move(Position target);
   std::vector<Position> getNeighbors() const;
   coordinates_t getCoordinates() const;
-  unsigned long getX() const;
-  unsigned long getY() const;
+  long getX() const;
+  long getY() const;
 //  bool isValid() const;
   bool operator==(const Position &other) const;
   bool operator!=(const Position &other) const;

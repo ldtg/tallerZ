@@ -32,18 +32,10 @@ void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
 void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
   for (auto const &unit : units) {
     UnitType type = unit.first.getType();
-    Position pos = unit.second.position;
     std::string rotation("0");
     std::string action("look_around");
+    Position pos = translatePos(type, action, unit.second.position);
     ObjectMapaVista *unitVista = getUnitVista(type, action, rotation);
-
-//    int width = unitVista->getWidth();
-//    int height = unitVista->getHeight();
-//    int x = pos.getX();
-//    int y = pos.getY();
-//    Position aux = pos.add(20/2, 20/2);
-//    add(unitVista, aux);
-//    std::cout << aux.toString() << std::endl;
 
     add(unitVista, pos);
 
@@ -144,6 +136,20 @@ ObjectMapaVista* View::getBuildVista(BuildType type, std::string &state) {
   }
 }
 
+Position View::translatePos(UnitType type, std::string &action, Position pos) {
+  if (type == R_GRUNT) {
+    // size of grunt image is 16x16
+    return pos.sub(8,8);
+  }
+  else if (type == V_JEEP) {
+    if (action == "die")
+      return pos.sub(0,10);
+    else
+      // size of jeep image is 40x40
+      return pos.sub(25,25);
+  }
+}
+
 ObjectMapaVista* View::getUnitVista(UnitType type,
                                     std::string &action,
                                     std::string &rotation) {
@@ -158,7 +164,7 @@ ObjectMapaVista* View::getUnitVista(UnitType type,
     }
     else if (action == "look_around") {
       num_frames = 3;
-      speed = 7;
+      speed = 6;
     }
     else if (action == "fire") {
       num_frames = 5;
@@ -193,10 +199,6 @@ ObjectMapaVista* View::getUnitVista(UnitType type,
       + "/" + action + "_blue_r" + rotation + "_n";
 
   return new Sprite(path.c_str(), num_frames, speed);
-
-//  else {
-//    return nullptr;
-//  }
 }
 
 ObjectMapaVista* View::getBulletVista(WeaponType type) {
@@ -222,13 +224,13 @@ ObjectMapaVista* View::getUnitVista(UnitID id) {
 
 void View::move(UnitID id, Position posTo) {
   Position pos_aux = unitsVista.at(id)->getPos();
+  std::string action("walk");
+  posTo = translatePos(id.getType(), action, posTo);
+
   int rotation = 0;
   while (pos_aux != posTo) {
     rotation = pos_aux.move(posTo);
     eventHandler.add(new UnitMoveStepEvent(id, pos_aux, rotation));
-//    unitsVista.at(id)->setPos(posTo);
-//    panel.draw();
-//    update();
   }
 }
 

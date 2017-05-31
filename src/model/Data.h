@@ -51,8 +51,8 @@ struct Data {
     grunt.weapon = bullet;
     grunt.ticksUntilFire = getTickAmount(0.5);
 //    grunt.health = 60;
-    grunt.health = 60;
-    grunt.range = 35;
+    grunt.health = 20;
+    grunt.range = 35;//7x5
     grunt.speed = 4;
     grunt.factoryRate = 3;
     grunt.factoryBaseTimeInSec = 575;
@@ -72,7 +72,7 @@ struct Data {
     jeep.weapon = bullet;
     jeep.ticksUntilFire = getTickAmount(0.17);//1/6
     jeep.health = 10;
-    jeep.range = 18;
+    jeep.range = 30;//6x5
     jeep.speed = 8;
     jeep.factoryRate = 1;
     jeep.factoryBaseTimeInSec = 660;
