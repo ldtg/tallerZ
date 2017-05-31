@@ -15,7 +15,7 @@ class Position {
   Position(unsigned long x, unsigned long y);
   unsigned long chebyshevDistance(const Position &other) const;
   unsigned long euclideanDistance(const Position &other) const;
-
+  unsigned long manhattanDistance(const Position &other) const;
   void mod(unsigned short modx, unsigned short mody);
   void move(Position target);
   std::vector<Position> getNeighbors() const;

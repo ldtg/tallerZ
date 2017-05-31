@@ -171,7 +171,7 @@ set(SOURCE_FILES
 
         src/map_generation/Generator.cpp
         src/map_generation/Generator.h
-        )
+        src/map_generation/Path.cpp src/map_generation/Path.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

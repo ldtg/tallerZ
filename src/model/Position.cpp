@@ -14,6 +14,14 @@ unsigned long Position::chebyshevDistance(const Position &other) const {
   return std::max(distanceX, distanceY);
 }
 
+unsigned long Position::manhattanDistance(const Position &other) const {
+  long
+    distanceX = std::max(this->x, other.x) - std::min(this->x, other.x);
+  long
+    distanceY = std::max(this->y, other.y) - std::min(this->x, other.x);
+  return (distanceX + distanceY);
+}
+
 unsigned long Position::euclideanDistance(const Position &other) const {
   unsigned long aux =
       std::max(std::labs(this->x - other.x), std::labs(this->y - other.y));
@@ -66,7 +74,6 @@ void Position::mod(unsigned short modx, unsigned short mody) {
   this->x = this->x / modx;
   this->y = this->y / mody;
 }
-
 void Position::move(Position target) {
   if (this->x < target.x)
     this->x++;
@@ -84,6 +91,7 @@ bool Position::equalDelta(const Position &other, unsigned short delta) const {
   return std::abs(this->x - other.x) < delta
       && std::abs(this->y - other.y) < delta;
 }
+
 std::string Position::toString() const {
   std::stringstream aux;
   aux << x << ", " << y;
@@ -93,7 +101,6 @@ std::string Position::toString() const {
 long Position::getX() const {
   return x;
 }
-
 long Position::getY() const {
   return y;
 }
