@@ -1,17 +1,17 @@
 #include "Bullet.h"
-Bullet::Bullet(const Weapon &weapon,
-               const Position &current,
+
+Bullet::Bullet(const Weapon &weapon, const Position &current,
                Attackable *target)
     : id(), weapon(weapon), currentPosition(current), target(target) {
   if (weapon.speed == 0)
-    currentPosition = target->getCurrentPosition();
+    currentPosition = target->getAttackPosition(currentPosition);
 }
 bool Bullet::didHit() const {
-  return currentPosition == target->getCurrentPosition();
+  return currentPosition == target->getAttackPosition(currentPosition);
 }
 void Bullet::move() {
   for (unsigned short i = 0; i < this->weapon.speed; ++i) {
-    currentPosition.move(target->getCurrentPosition());
+    currentPosition.move(target->getAttackPosition(currentPosition));
   }
 }
 void Bullet::doHit() {
@@ -27,7 +27,7 @@ Position Bullet::getFrom() const {
   return currentPosition;
 }
 Position Bullet::getTo() const {
-  return target->getCurrentPosition();
+  return target->getAttackPosition(currentPosition);
 }
 BulletState Bullet::getState() const {
   return BulletState(weapon, currentPosition);

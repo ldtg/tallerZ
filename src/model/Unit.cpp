@@ -17,7 +17,8 @@ void Unit::attack(Attackable *other) {
 }
 
 bool Unit::isInRange(Attackable *other) {
-  return this->currentPosition.euclideanDistance(other->getCurrentPosition())
+  return this->currentPosition.euclideanDistance(other->getAttackPosition(
+      currentPosition))
       < range;
 }
 
@@ -31,49 +32,53 @@ void Unit::hunt(const std::vector<Position> &movementsPositions,
   this->movState.hunting();
   this->hunted = other;
 }
+
 Position Unit::nextMovePosition() const {
   if (!movementsPositions.empty())
     return movementsPositions.front();
   else
     return currentPosition;
 }
+
 void Unit::receiveDamages() {
   for (unsigned short damage: damagesToReceive) {
     if (health >= damage) {
       this->health -= damage;
     } else {
       this->health = 0;
-      // team.subUnit(owner);
+      owner.subUnit();
     }
   }
   damagesToReceive.clear();
 }
+
 void Unit::doOneMove() {
   auto aux = movementsPositions.front();
   currentPosition.move(movementsPositions.front());
   if (currentPosition == movementsPositions.front()) {
     movementsPositions.erase(movementsPositions.begin());
   }
-  if (movementsPositions.empty())
+  if (movementsPositions.empty() && this->isMoving())
     this->movState.still();
 }
+
 bool Unit::attackedInRange() {
-  return currentPosition.euclideanDistance(hunted->getCurrentPosition())
+  return currentPosition.euclideanDistance(hunted->getAttackPosition(
+      currentPosition))
       < range;
 }
+
 bool Unit::isHunting() {
   return this->movState.isHunting();
 }
+
 bool Unit::timeToAttack() {
   if (attackCounterActual == 0) {
     if (hunted->isAlive()) {
       attackCounterActual = attackCounterBase;
       return true;
     } else {
-      this->movState.still();
-      hunted = nullptr;
-      movementsPositions.clear();
-      attackCounterActual = attackCounterBase;
+      this->still();
       return false;
     }
   } else {
@@ -111,29 +116,31 @@ bool Unit::isMoving() const {
 unsigned long Unit::getHealth() const {
   return health;
 }
+
 Unit::~Unit() {}
-void Unit::doMoveWithSpeed(float terrainFactor) {
+
+bool Unit::doMoveWithSpeed(float terrainFactor) {
   for (int i = 0; i < this->getMovementSpeed(terrainFactor); ++i) {
     doOneMove();
   }
+  return this->movState.isStill();
 }
 
-UnitState Unit::getUnitState() {
-  return UnitState(health, weapon, currentPosition);
-}
 void Unit::addMove(const Position &position) {
   if (std::find(movementsPositions.begin(), movementsPositions.end(), position)
       == movementsPositions.end())
     movementsPositions.push_back(position);
 }
+
 bool Unit::hasDamagesToReceive() const {
   return !damagesToReceive.empty();
 }
-/*Unit::Unit(const Position &current,
+
+Unit::Unit(const Position &current,
            const UnitData &data,
-           const PlayerID ownerID,
+           Player &owner,
            Team &team)
-    : owner(ownerID), team(team),
+    : owner(owner), team(team),
       currentPosition(current),
       weapon(data.weapon),
       attackCounterBase(data.ticksUntilFire),
@@ -146,61 +153,38 @@ bool Unit::hasDamagesToReceive() const {
       hunted(nullptr) {
 
 }
-Unit::Unit(const Position &position,
-           const UnitData &data,
-           const UnitType &type,
-           const PlayerID ownerID,
-           Team &team) : owner(ownerID), team(team),
-                         currentPosition(position),
-                         weapon(data.weapon),
-                         attackCounterBase(data.ticksUntilFire),
-                         attackCounterActual(attackCounterBase),
-                         baseSpeed(data.speed),
-                         range(data.range),
-                         health(data.health),
-                         id(data.type, type),
-                         movState(),
-                         hunted(nullptr) {
 
-}*/
-Unit::Unit(const Position &current,
-           const UnitData &data)
-    : currentPosition(current),
-      weapon(data.weapon),
-      attackCounterBase(data.ticksUntilFire),
-      attackCounterActual(attackCounterBase),
-      baseSpeed(data.speed),
-      range(data.range),
-      health(data.health),
-      id(data.type),
-      movState(),
-      hunted(nullptr) {
-
-}
-Unit::Unit(const Position &position,
-           const UnitData &data,
-           const UnitType &type) : currentPosition(position),
-                                   weapon(data.weapon),
-                                   attackCounterBase(data.ticksUntilFire),
-                                   attackCounterActual(attackCounterBase),
-                                   baseSpeed(data.speed),
-                                   range(data.range),
-                                   health(data.health),
-                                   id(data.type, type),
-                                   movState(),
-                                   hunted(nullptr) {
-
-}
 unsigned short Unit::getRange() const {
   return range;
 }
-/*PlayerID Unit::getOwner() const {
-  return owner;
-}*/
+
 bool Unit::canAttack(Attackable *attackable) {
-  // this->team.isEnemy(attackable->getOwner());
-  return true;
+  return this->team.isEnemy(attackable->getOwner().getID());
 }
+
 Bullet Unit::createBullet() {
   return Bullet(weapon, this->currentPosition, hunted);
+}
+
+void Unit::still() {
+  this->movState.still();
+  hunted = nullptr;
+  movementsPositions.clear();
+  attackCounterActual = attackCounterBase;
+}
+
+Position Unit::getAttackPosition(const Position &attacker) const {
+  return currentPosition;
+}
+Player &Unit::getOwner() {
+  return owner;
+}
+Team &Unit::getOwnerTeam() {
+  return team;
+}
+bool Unit::hasMovesToDo() const {
+  return !movementsPositions.empty();
+}
+void Unit::kill() {
+  this->health = 0;
 }

@@ -12,15 +12,6 @@ bool UnitID::operator<(const UnitID &other) const {
 UnitType UnitID::getUnitType() const {
   return this->type;
 }
-UnitID::UnitID(const UnitType &type, const UnitType &second)
-    : type(type), id(nextid), secondType(second) {
-}
-UnitType UnitID::getSecondUnitType() const {
-  return this->secondType;
-}
-void UnitID::setSecondUnitType(const UnitType &type) {
-  this->secondType = type;
-}
 bool UnitID::operator==(const UnitID &other) const {
   return this->id == other.id;
 }

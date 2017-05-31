@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <Exceptions/model_exceptions/UnableToFindAPathException.h>
 #include "AStar.h"
 
 AStar::AStar(const Map &map, const Unit *unit, const Position &target)
@@ -9,12 +10,10 @@ AStar::AStar(const Map &map, const Unit *unit, const Position &target)
   Node *node = new Node(itile, heuristic(itile, etile));
   open.emplace(node->getTotalCost(), node);
   createdNodes.push_back(node);
-  //tirar excepcion si etile no es transpasable, unico caso de camino invalido creo
-
+  if (!unit->canGoThrough(etile.getTerrainData())||!etile.isPassable())
+    throw UnableToFindAPathException("El destino no es transpasable por la unidad");
 }
 
-//Basado en http://web.mit.edu/eranki/www/tutorials/search/
-//          http://theory.stanford.edu/~amitp/GameProgramming/
 std::vector<Position> AStar::find() {
   std::vector<Position> aux;
   while (!open.begin()->second->hasTile(etile)) { //suponemos que siempre hay un camino

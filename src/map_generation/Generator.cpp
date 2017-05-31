@@ -2,11 +2,12 @@
 #include <algorithm>
 #include "Generator.h"
 
-Generator::Generator(const unsigned &width, const unsigned &length, unsigned territories, const unsigned& teams, MAP_TYPE map_type) :
+Generator::Generator(const unsigned &width, const unsigned &length, unsigned territories, const unsigned& teams, MAP_TYPE map_type, int vehicles, int factories_level) :
     map_width(width),
     map_length(length),
     tile_amount(width*length),
-    territories(territories), teams(teams), map_type(map_type){
+    territories(territories), teams(teams), map_type(map_type),
+    abandoned_vehicles_amount(vehicles), factories_level(factories_level){
 
   calculate_tiles_per_territory();
   calculate_frame();
@@ -418,7 +419,7 @@ void Generator::set_rocks_percentages(int total_percentage, int partial_percenta
   this->total_rock_percentage = total_percentage;
   this->partial_rock_percentage = partial_percentage;
 }
-bool Generator::can_put_rock_on_position(const territory_coords &position) {
+bool Generator::can_put_rock_or_vehicle_on_position(const territory_coords &position) {
   return (!position.flag && !position.factory && !position.fort
       && !position.rock && (position.terrain == SNOW
       || position.terrain == LAND || position.terrain == PRAIRIE));
@@ -430,10 +431,23 @@ void Generator::put_rocks() {
   unsigned int rand_pos;
   while(!map_filled){
     rand_pos = get_position(rand() % map_width, rand() % map_length);
-    if (can_put_rock_on_position(map_positions[rand_pos])){
+    if (can_put_rock_or_vehicle_on_position(map_positions[rand_pos])){
       map_positions[rand_pos].rock = true;
       rocks++;
     }
     map_filled = (rocks >= tile_amount);
+  }
+}
+void Generator::put_vehicles() {
+  int position;
+  int vehicles = 0;
+  bool vehicles_filled = false;
+  while (!vehicles_filled){
+    position = get_position(rand() % map_width, rand() % map_length);
+    if (can_put_rock_or_vehicle_on_position(map_positions[position])){
+      map_positions[position].vehicle = true;
+      vehicles++;
+    }
+    vehicles_filled = (vehicles >= abandoned_vehicles_amount);
   }
 }

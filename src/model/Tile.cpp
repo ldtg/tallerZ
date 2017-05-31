@@ -2,15 +2,15 @@
 #include "Tile.h"
 
 Tile::Tile(Position centerPosition,
-            TerrainData terrainData)
+           TerrainData terrainData)
     : centerPosition(centerPosition),
       terrainData(terrainData),
-      passable(true){}
+      passable(true) {}
 
 Tile::~Tile() {}
 
 Position Tile::getCornerPosition() const {
-  return centerPosition.sub(TILEWIDHT/2, TILEHEIGHT/2);
+  return centerPosition.sub(TILEWIDHT / 2, TILEHEIGHT / 2);
 }
 
 Position Tile::getCenterPosition() const {
@@ -26,10 +26,13 @@ TerrainData Tile::getTerrainData() const {
   return this->terrainData;
 }
 
-bool Tile::isPassable()const {
+bool Tile::isPassable() const {
   return passable;
 }
 
 TerrainType Tile::getTerrainType() const {
   return terrainData.type;
+}
+void Tile::makeNotPassable() {
+  passable = false;
 }

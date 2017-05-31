@@ -4,8 +4,7 @@
 #include "gtest/gtest.h"
 
 TEST(RobotTest, create) {
-  Robot grunt = UnitFactory::createGrunt(Position(0, 0));
-  ASSERT_TRUE(grunt.isAlive());
+
 }
 TEST(RobotTest, move) {
 

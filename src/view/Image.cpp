@@ -13,9 +13,6 @@ Image::Image(const char *file) {
     height = surface->h;
 
   texture = nullptr;
-
-//    std::cout << "width: " << width
-//              << " height: " << height << std::endl;
 }
 
 Image::Image(const char *file, int w, int h) {
@@ -67,20 +64,7 @@ void Image::set_texture(SDL_Renderer *render) {
 }
 
 void Image::draw(SDL_Renderer *render) {
+  SDL_Rect renderQuad = { x, y, width, height };
 
-    SDL_Rect renderQuad = { x, y, width, height };
-
-    SDL_RenderCopy(render, texture, NULL, &renderQuad);
+  SDL_RenderCopy(render, texture, NULL, &renderQuad);
 }
-
-/*
-void Image::draw(SDL_Renderer *render, int window_w, int window_h,
-                 int x, int y) {
-
-//    int x_aux = x + (window_w - clip->w)/2;
-//    int y_aux = y + (window_h - clip->h)/2;
-
-    SDL_Rect renderQuad = {x, y, width, height};
-    SDL_RenderCopy(render, side_board_texture, NULL, &renderQuad);
-}
-*/

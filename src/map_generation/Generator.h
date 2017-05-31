@@ -61,8 +61,10 @@ struct territory_coords{
   bool flag;
   bool factory;
   bool rock;
+  bool vehicle;
   TERRAIN_TYPE terrain;
 };
+
 class Generator {
  public: //Para el test
   const unsigned tile_amount;
@@ -83,15 +85,27 @@ class Generator {
   int partial_rock_percentage = 80;
   int total_rock_percentage = 10;
 
+  int abandoned_vehicles_amount;
+  int max_units = 150;
+  int factories_level;
+
  public:
   Generator(const unsigned& width
       , const unsigned& length
       , unsigned territories
       , const unsigned& teams
-      , MAP_TYPE map_type);
+      , MAP_TYPE map_type, int vehicles, int factories_level);
 
   ~Generator();
 
+  /**
+   * set_max_units: modifica el parametro que indica la cantidad
+   * de unidades maximas posibles en el mapa.
+   * @param max_units
+   */
+  void set_max_units(int max_units){
+    this->max_units = max_units;
+  }
   /**
    * set_geography
    * En funcion del tipo de mapa setea el tipo de terreno y el tipo de rio
@@ -183,7 +197,7 @@ class Generator {
    * @param position :posicion candidata
    * @return : true si se puede colocar una roca ahi o false en caso contrario
    */
-  bool can_put_rock_on_position(const territory_coords& position);
+  bool can_put_rock_or_vehicle_on_position(const territory_coords &position);
 
   /**
    * put_rocks: coloca rocas (o hielo) por el mapa hasta alcanzar una cierta
@@ -191,6 +205,12 @@ class Generator {
    * como atributos.
    */
   void put_rocks();
+
+  /**
+   * put_vehicles
+   * distribuye aleatoriamente los vehiculos por el mapa en donde se pueda.
+   */
+  void put_vehicles();
   /**
    * put_building_random_in_territory
    * Posiciona fabricas y fuertes en una posicion aleatoria adentro del

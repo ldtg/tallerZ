@@ -8,9 +8,9 @@ class ObjectMapaVista {
  protected:
   int width;
   int height;
-  int x;
-  int y;
-//  Position posTo;
+  long x;
+  long y;
+  int rotation;
 
  public:
   int getWidth() const;
@@ -18,10 +18,10 @@ class ObjectMapaVista {
 
   void setPos(Position pos);
   Position getPos() const;
-//  void setPosTo(Position &pos);
-//  bool isMoving();
+  void setRotation(int rotation);
+  int getRotation();
 
-  virtual void set_texture(SDL_Renderer *render);
+  virtual void set_texture(SDL_Renderer *render) = 0;
   virtual void draw(SDL_Renderer *render) = 0;
 };
 

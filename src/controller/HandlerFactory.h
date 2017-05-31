@@ -6,7 +6,7 @@ class HandlerFactory {
  private:
 
  public:
-  static Handler* get(unsigned int type);
+  static Handler* get(SDL_Event *e);
 };
 
 #endif //TALLERZ_HANDLERFACTORY_H

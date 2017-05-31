@@ -3,7 +3,9 @@
 #include <sstream>
 #include "Position.h"
 
-Position::Position(unsigned long x, unsigned long y)
+Position::Position() {}
+
+Position::Position(long x, long y)
     : x(x), y(y) {}
 
 unsigned long Position::chebyshevDistance(const Position &other) const {
@@ -74,22 +76,69 @@ void Position::mod(unsigned short modx, unsigned short mody) {
   this->x = this->x / modx;
   this->y = this->y / mody;
 }
-void Position::move(Position target) {
-  if (this->x < target.x)
+
+int Position::move(Position target) {
+  int rotation = 0;
+
+  if (this->x < target.x) {
     this->x++;
-  else if (this->x > target.x)
+
+    if (this->y < target.y) {
+      this->y++;
+      rotation = 315;
+    }
+    else if (this->y > target.y) {
+      this->y--;
+      rotation = 45;
+    }
+    else {
+      rotation = 0;
+    }
+  }
+
+  else if (this->x > target.x) {
     this->x--;
-  if (this->y < target.y)
-    this->y++;
-  else if (this->y > target.y)
-    this->y--;
+
+    if (this->y < target.y) {
+      this->y++;
+      rotation = 225;
+    }
+    else if (this->y > target.y) {
+      this->y--;
+      rotation = 135;
+    }
+    else {
+      rotation = 180;
+    }
+  }
+
+  else {
+    if (this->y < target.y) {
+      this->y++;
+      rotation = 270;
+    }
+    else if (this->y > target.y) {
+      this->y--;
+      rotation = 90;
+    }
+  }
+  return rotation;
 }
+
 bool Position::operator!=(const Position &other) const {
   return !(this->operator==(other));
 }
+
 bool Position::equalDelta(const Position &other, unsigned short delta) const {
-  return std::abs(this->x - other.x) < delta
-      && std::abs(this->y - other.y) < delta;
+  double xdelta = std::abs(this->x - other.x);
+  bool xb = xdelta < delta;
+  double ydelta = std::abs(this->y - other.y);
+  bool yb = ydelta < delta;
+
+  return xb && yb;
+
+//  return std::abs(this->x - other.x) < delta
+//      && std::abs(this->y - other.y) < delta;
 }
 
 std::string Position::toString() const {
@@ -104,6 +153,20 @@ long Position::getX() const {
 long Position::getY() const {
   return y;
 }
-Position Position::sub(unsigned long x, unsigned long y) const{
-  return Position(this->x-x, this->y-y);
+
+Position Position::sub(unsigned long x, unsigned long y) const {
+  return Position(this->x - x, this->y - y);
+}
+
+Position Position::add(unsigned long x, unsigned long y) const {
+  return Position(this->x + x, this->y + y);
+}
+
+Position Position::getAttackPosition(const Position &position,
+                                     const unsigned short size) const {
+  Position aux = position;
+  while(aux.euclideanDistance(*this) > size){
+    aux.move(*this);
+  }
+  return aux;
 }

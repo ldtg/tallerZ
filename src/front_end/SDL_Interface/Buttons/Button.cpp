@@ -63,7 +63,7 @@ void Button::load_texture_down(const std::string &path) {
  * button_launch que dispara la lógica asociada al botón
  * @param click: Click ameo.
  */
-void Button::handle_event(ClickEvent *click) {
+void Button::handle_event(LeftClickEvent *click) {
 /*  if (click->get_click_data().state == SDL_PRESSED){
     this->on_button_pressed();
   } else {

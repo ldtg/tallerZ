@@ -22,6 +22,7 @@ class Tile {
   TerrainData getTerrainData() const;
   ~Tile();
   bool isPassable() const;
+  void makeNotPassable();
   Position getCenterPosition() const;
   Position getCornerPosition() const;
   TerrainType getTerrainType() const;

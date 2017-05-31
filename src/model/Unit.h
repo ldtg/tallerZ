@@ -18,8 +18,8 @@
 class Unit : public Attackable {
  protected:
   const UnitID id;
- // PlayerID owner;
- // Team &team;
+  Player &owner;
+  Team &team;
   Position currentPosition;
   MovementState movState;
   const Weapon weapon;
@@ -32,32 +32,27 @@ class Unit : public Attackable {
   Attackable *hunted;
   std::vector<Position> movementsPositions;
   std::vector<unsigned short> damagesToReceive;
-  /*Unit(const Position &position,
+
+  Unit(const Position &current,
        const UnitData &data,
-       const UnitType &type, const PlayerID ownerID,
+       Player& owner,
        Team &team);
-  Unit(const Position &current,
-       const UnitData &data,
-       const PlayerID ownerID,
-       Team &team);*/
-  Unit(const Position &position,
-       const UnitData &data,
-       const UnitType &type);
-  Unit(const Position &current,
-       const UnitData &data);
+
  public:
   virtual ~Unit();
-  virtual UnitState getUnitState();
-  virtual Position getCurrentPosition() const override;
+  virtual UnitState getUnitState() const = 0;
+  virtual Position getCurrentPosition() const;
+  virtual Position getAttackPosition(const Position &attacker) const override ;
   virtual Position nextMovePosition() const override;
   virtual unsigned long getHealth() const;
   virtual bool hasDamagesToReceive() const;
+  virtual bool hasMovesToDo() const;
   virtual void receiveDamages();
   virtual bool isInRange(Attackable *other);
   virtual bool attackedInRange();
   virtual void move(const std::vector<Position> &movementsPositions);
   virtual void capture(const std::vector<Position> &movementsPositions);
-  virtual void doMoveWithSpeed(float terrainFactor);
+  virtual bool doMoveWithSpeed(float terrainFactor);
   virtual void doOneMove();
   virtual void hunt(const std::vector<Position> &movementsPositions,
                     Attackable *other);
@@ -70,6 +65,7 @@ class Unit : public Attackable {
   virtual bool isCapturing() const;
   virtual bool isStill() const;
   virtual unsigned short getMovementSpeed(float terrainFactor) const = 0;
+  void kill();
   bool isHunting();
   Attackable *getHunted();
   Weapon getWeapon();
@@ -77,8 +73,10 @@ class Unit : public Attackable {
   UnitID getId() const;
   void addMove(const Position &position);
   bool canAttack(Attackable *attackable);
-  //virtual PlayerID getOwner() const;
+  virtual Player& getOwner();
+  virtual Team& getOwnerTeam();
   Bullet createBullet();
+  void still();
 };
 
 #endif //TALLERZ_UNIT_H

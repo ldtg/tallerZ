@@ -6,7 +6,7 @@
 #include "BuildType.h"
 class Player {
  private:
-  const PlayerID id;
+  PlayerID id;
   unsigned short capturedTerritories;
   unsigned short unitsAlives;
   bool alive;
@@ -20,7 +20,6 @@ class Player {
   bool isAlive() const;
   void buildDestroyed(const BuildType &type);
   PlayerID getID() const;
-
 };
 
 #endif //TALLERZ_PLAYER_H

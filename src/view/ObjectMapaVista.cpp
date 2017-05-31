@@ -17,8 +17,12 @@ Position ObjectMapaVista::getPos() const {
     return Position(x, y);
 }
 
-//void ObjectMapaVista::setPosTo(Position &pos) {
-//  this->posTo = pos;
-//}
+void ObjectMapaVista::setRotation(int rotation) {
+  this->rotation = rotation;
+}
 
-void ObjectMapaVista::set_texture(SDL_Renderer *render) {}
+int ObjectMapaVista::getRotation() {
+  return rotation;
+}
+
+//void ObjectMapaVista::set_texture(SDL_Renderer *render) {}

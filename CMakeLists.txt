@@ -32,46 +32,85 @@ set(SOURCE_FILES
         src/model/Data.h
         src/model/Robot.cpp
         src/model/Robot.h
-        src/model/UnitAttackEvent.cpp
-        src/model/UnitAttackEvent.h
-        src/model/UnitNotFoundException.cpp
-        src/model/UnitNotFoundException.h
+        src/model/Events/model/UnitAttackEvent.cpp
+        src/model/Events/model/UnitAttackEvent.h
+        src/Exceptions/model_exceptions/UnitNotFoundException.cpp
+        src/Exceptions/model_exceptions/UnitNotFoundException.h
         src/model/UnitData.h
         src/model/UnitFactory.cpp
         src/model/UnitFactory.h
         src/model/TerrainData.h
-        src/model/Events/UnitMoveEvent.cpp
-        src/model/Events/UnitMoveEvent.h
+        src/model/Events/model/UnitMoveEvent.cpp
+        src/model/Events/model/UnitMoveEvent.h
         src/model/Events/Event.cpp
         src/model/Events/Event.h
-        src/model/UnitDamageReceiveEvent.cpp
-        src/model/UnitDamageReceiveEvent.h
-        src/model/UnitDeathEvent.cpp
-        src/model/UnitDeathEvent.h
+        src/model/Events/model/UnitDamageReceiveEvent.cpp
+        src/model/Events/model/UnitDamageReceiveEvent.h
+        src/model/Events/model/UnitDeathEvent.cpp
+        src/model/Events/model/UnitDeathEvent.h
         src/model/Vehicle.cpp
         src/model/Vehicle.h
-        src/model/Events/Pointer/ClickEvent.cpp
-        src/model/Events/Pointer/ClickEvent.h
+        src/model/Events/Pointer/LeftClickEvent.cpp
+        src/model/Events/Pointer/LeftClickEvent.h
         src/model/Events/EventHandler.cpp
         src/model/Events/EventHandler.h
         src/model/Events/QuitEvent.cpp
         src/model/Events/QuitEvent.h
+        src/model/Events/Pointer/RightClickEvent.cpp
+        src/model/Events/Pointer/RightClickEvent.h
         src/model/Model.cpp
         src/model/Model.h
         src/model/GameController.h
         src/model/GameController.cpp
         src/model/Bullet.cpp
         src/model/Bullet.h
-        src/model/BulletNewEvent.cpp
-        src/model/BulletNewEvent.h
+        src/model/Events/model/BulletNewEvent.cpp
+        src/model/Events/model/BulletNewEvent.h
         src/model/BulletID.cpp
         src/model/BulletID.h
-        src/model/BulletHitEvent.cpp
-        src/model/BulletHitEvent.h
+        src/model/Events/model/BulletHitEvent.cpp
+        src/model/Events/model/BulletHitEvent.h
         src/model/BulletState.cpp
         src/model/BulletState.h
-        src/model/Events/UnitMoveStepEvent.cpp
-        src/model/Events/UnitMoveStepEvent.h
+        src/model/Player.cpp
+        src/model/Player.h
+        src/model/Team.cpp
+        src/model/Team.h
+        src/model/PlayerID.cpp
+        src/model/PlayerID.h
+        src/model/Territory.cpp
+        src/model/Territory.h
+        src/model/Build.cpp
+        src/model/Build.h
+        src/model/BuildData.h
+        src/model/BuildType.h
+        src/model/BuildID.cpp
+        src/model/BuildID.h
+        src/model/BuildType.h
+        src/model/BuildState.cpp src/model/BuildState.h
+
+        src/model/Events/model/BuildDamageEvent.cpp
+        src/model/Events/model/BuildDamageEvent.h
+        src/model/Events/model/BuildDestroyedEvent.cpp
+        src/model/Events/model/BuildDestroyedEvent.h
+        src/model/Events/model/UnitCreateEvent.cpp
+        src/model/Events/model/UnitCreateEvent.h
+        z_tests/tests_model/GameController_build_test.cpp
+        src/model/Events/model/UnitMoveStepEvent.cpp
+        src/model/Events/model/UnitMoveStepEvent.h
+        src/model/Events/model/BulletMoveEvent.cpp
+        src/model/Events/model/BulletMoveEvent.h
+        src/model/Events/model/BulletMoveStepEvent.cpp
+        src/model/Events/model/BulletMoveStepEvent.h
+        src/model/Events/model/UnitStillEvent.cpp
+        src/model/Events/model/UnitStillEvent.h
+
+        src/model/Capturable.h
+        src/model/Events/model/CaptureEvent.cpp
+        src/model/Events/model/CaptureEvent.h
+        src/model/CapturableVehicle.cpp
+        src/model/CapturableVehicle.h
+        z_tests/tests_model/GameControllerCapturables_test.cpp
 
         src/view/Texture.cpp
         src/view/Texture.h
@@ -94,12 +133,14 @@ set(SOURCE_FILES
         src/controller/Handler.cpp
         src/controller/HandlerFactory.cpp
         src/controller/HandlerFactory.h
-        src/controller/Mouse.cpp
-        src/controller/Mouse.h
+        src/controller/MouseButtonLeft.cpp
+        src/controller/MouseButtonLeft.h
         src/controller/NullHandler.cpp
         src/controller/NullHandler.h
         src/controller/Quit.cpp
         src/controller/Quit.h
+        src/controller/MouseButtonRight.cpp
+        src/controller/MouseButtonRight.h
 
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.h
@@ -107,7 +148,11 @@ set(SOURCE_FILES
         src/Exceptions/Front_end_exceptions/Front_end_exception.cpp
         src/Exceptions/Map_Generator_Exceptions/Generator_Exception.h
         src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp
-
+        src/Exceptions/model_exceptions/UnableToFindAPathException.cpp
+        src/Exceptions/model_exceptions/UnableToFindAPathException.h
+        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
+        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h
+        
         src/header_for_tests.h
         z_tests/tests_front_end/FEnd_test.cpp
         z_tests/tests_model/GameController_test.cpp
@@ -118,6 +163,8 @@ set(SOURCE_FILES
         z_tests/tests_model/AStar_test.cpp
         z_tests/tests_view/Window_test.cpp
         z_tests/tests_generator/Generator_test.cpp
+        z_tests/tests_view/Window_test.cpp
+
 
         src/SDL_START.cpp
         src/SDL_START.h
@@ -171,7 +218,14 @@ set(SOURCE_FILES
 
         src/map_generation/Generator.cpp
         src/map_generation/Generator.h
-        src/map_generation/Path.cpp src/map_generation/Path.h)
+
+        src/view/UnitAttackVista.cpp
+        src/view/UnitAttackVista.h
+        src/view/ExplosionVista.cpp
+        src/view/ExplosionVista.h
+        src/view/UnitCreateVista.cpp
+        src/view/UnitCreateVista.h)
+
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
