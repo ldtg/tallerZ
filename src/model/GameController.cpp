@@ -304,18 +304,6 @@ void GameController::buildReceiveDamage(Build *current,
                                         current->getBuildState()));
 }
 
-GameController::~GameController() {
-  for (auto &par : units) {
-    delete par.second;
-  }
-  for (Unit *unit : deathUnits) {
-    delete unit;
-  }
-  for (auto &par : builds) {
-    delete (par.second);
-  }
-}
-
 void GameController::addUnits(std::vector<Unit *> vector,
                               std::vector<Event *> &events) {
   for (Unit *unit : vector) {
@@ -343,3 +331,14 @@ GameController::GameController(Map &map,
 
 }
 
+GameController::~GameController() {
+  for (auto &par : units) {
+    delete par.second;
+  }
+  for (Unit *unit : deathUnits) {
+    delete unit;
+  }
+  for (auto &par : builds) {
+    delete (par.second);
+  }
+}

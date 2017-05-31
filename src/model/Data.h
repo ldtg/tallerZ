@@ -55,7 +55,8 @@ struct Data {
     grunt.range = 35;//7x5
     grunt.speed = 4;
     grunt.factoryRate = 3;
-    grunt.factoryBaseTimeInSec = 575;
+//    grunt.factoryBaseTimeInSec = 575;
+    grunt.factoryBaseTimeInSec = 10;
     grunt.factoryMinimunTechLevel = 1;
 
     tough.type = UnitType::R_TOUGH;

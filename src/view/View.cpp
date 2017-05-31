@@ -62,9 +62,9 @@ void View::createInitialBuildVista(const std::map<BuildID, BuildState> &builds) 
 //}
 
 void View::updateExplosion() {
-  std::vector<ObjectMapaVista *>::iterator iter;
+  std::vector<Sprite*>::iterator iter;
   for (iter = explosionsVista.begin(); iter != explosionsVista.end();) {
-    ObjectMapaVista *explosionVista = *iter;
+    Sprite *explosionVista = *iter;
     if (explosionVista->doCycle()) {
       iter = explosionsVista.erase(iter);
       delete explosionVista;
@@ -159,17 +159,17 @@ int getRandomNumInRange(const int range_from, const int range_to) {
   return distr(generator);
 }
 
-ObjectMapaVista* View::getUnitVista(UnitType type,
+Sprite* View::getUnitVista(UnitType type,
                                     std::string &action,
                                     std::string &rotation) {
   std::string type_s;
-  int num_frames=0, speed=0;
+  int num_frames=0, speed=0, num_frame_return_cycle=0;
 
   if (type == R_GRUNT) {
     type_s = "grunt";
     if (action == "walk") {
       num_frames = 4;
-      speed = 3 *num_frames;
+      speed = 5 * num_frames;
     }
     else if (action == "look_around") {
       num_frames = 3;
@@ -177,13 +177,18 @@ ObjectMapaVista* View::getUnitVista(UnitType type,
     }
     else if (action == "fire") {
       num_frames = 5;
-      speed = 2*num_frames;
+      speed = 1*num_frames;
+      num_frame_return_cycle = 3;
 
-      std::string path = "../src/view/images/units/" + type_s + "/" + action
-          + "/" + action + "_blue_r" + rotation + "_n";
+//      std::string path = "../src/view/images/units/" + type_s + "/" + action
+//          + "/" + action + "_blue_r" + rotation + "_n";
 
-      return new UnitAttackVista(path.c_str(), num_frames, speed);
+//      return new UnitAttackVista(path.c_str(), num_frames, speed);
 
+    } else if (action == "create") {
+      num_frames = 12;
+      speed = 6;
+      num_frame_return_cycle = 10;
     }
     else if (action == "die") {
       int num_die = getRandomNumInRange(1,2);
@@ -222,7 +227,7 @@ ObjectMapaVista* View::getUnitVista(UnitType type,
   std::string path = "../src/view/images/units/" + type_s + "/" + action
       + "/" + action + "_blue_r" + rotation + "_n";
 
-  return new Sprite(path.c_str(), num_frames, speed);
+  return new Sprite(path.c_str(), num_frames, speed, num_frame_return_cycle);
 }
 
 ObjectMapaVista* View::getBulletVista(WeaponType type) {
@@ -304,11 +309,11 @@ void View::addBuildVista(BuildID &id, ObjectMapaVista *buildVista) {
 }
 
 
-void View::addExplosionVista(ObjectMapaVista *objectVista, Position pos) {
+void View::addExplosionVista(Sprite *objectVista, Position pos) {
   if (objectVista == NULL)
     throw std::invalid_argument("View::addExplosionVista() objectMapaVista es NULL");
 
   objectVista->setPos(pos);
   explosionsVista.push_back(objectVista);
-  panel.add(objectVista);
+//  panel.add(objectVista);
 }

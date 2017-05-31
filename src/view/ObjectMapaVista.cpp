@@ -25,8 +25,4 @@ int ObjectMapaVista::getRotation() {
   return rotation;
 }
 
-bool ObjectMapaVista::doCycle() const {
-  return _doCycle;
-}
-
 //void ObjectMapaVista::set_texture(SDL_Renderer *render) {}

@@ -11,7 +11,6 @@ class ObjectMapaVista {
   long x;
   long y;
   int rotation;
-  bool _doCycle;
 
  public:
   int getWidth() const;
@@ -21,7 +20,6 @@ class ObjectMapaVista {
   Position getPos() const;
   void setRotation(int rotation);
   int getRotation();
-  bool doCycle() const;
 
   virtual void set_texture(SDL_Renderer *render) = 0;
   virtual void draw(SDL_Renderer *render) = 0;

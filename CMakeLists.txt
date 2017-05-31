@@ -218,7 +218,7 @@ set(SOURCE_FILES
 
         src/map_generation/Generator.cpp
         src/map_generation/Generator.h
-        src/view/UnitAttackVista.cpp src/view/UnitAttackVista.h)
+        src/view/UnitAttackVista.cpp src/view/UnitAttackVista.h src/view/ExplosionVista.cpp src/view/ExplosionVista.h src/view/UnitCreateVista.cpp src/view/UnitCreateVista.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
