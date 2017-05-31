@@ -22,7 +22,7 @@ class GameController_test : public ::testing::Test {
   Unit *robotC;
   Unit *jeepA;
   std::vector<Event *> events;
-  GameController_test() : playerA("A"), playerB("B"), playerC("C") {
+  GameController_test() : playerA(PlayerColor::RED), playerB(PlayerColor::GREEN), playerC(PlayerColor::BLUE) {
   }
 
   void SetUp() {

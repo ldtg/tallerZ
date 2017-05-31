@@ -9,9 +9,6 @@ UnitID::UnitID(const UnitType &type) : type(type), id(nextid) {
 bool UnitID::operator<(const UnitID &other) const {
   return this->id < other.id;
 }
-UnitType UnitID::getUnitType() const {
-  return this->type;
-}
 bool UnitID::operator==(const UnitID &other) const {
   return this->id == other.id;
 }

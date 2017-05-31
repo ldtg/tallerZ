@@ -10,7 +10,6 @@ class UnitID {
   const unsigned long id;
  public:
   explicit UnitID(const UnitType &type);
-  UnitType getUnitType() const;
   bool operator<(const UnitID &other) const;
   bool operator==(const UnitID &other) const;
   bool operator!=(const UnitID &other) const;

@@ -88,6 +88,24 @@ set(SOURCE_FILES
         src/model/BuildID.h
         src/model/BuildType.h
         src/model/BuildState.cpp src/model/BuildState.h
+        src/model/Events/model/PlayerDefeatedEvent.cpp
+        src/model/Events/model/PlayerDefeatedEvent.h
+        src/model/TeamID.cpp src/model/TeamID.h
+        src/model/Events/model/EndGameEvent.cpp
+        src/model/Events/model/EndGameEvent.h
+        src/model/TerrainObject.cpp
+        src/model/TerrainObject.h
+        src/model/TerrainObjectType.h
+        src/model/TerrainObjectID.cpp
+        src/model/TerrainObjectID.h
+        src/model/Events/model/TerrainObjectDestroyedEvent.cpp
+        src/model/Events/model/TerrainObjectDestroyedEvent.h
+        src/model/TerrainObjectState.cpp
+        src/model/TerrainObjectState.h
+        src/model/TerrainObjectData.h
+        src/model/PlayerColor.h
+        src/model/GaiaPlayer.cpp
+        src/model/GaiaPlayer.h
 
         src/model/Events/model/BuildDamageEvent.cpp
         src/model/Events/model/BuildDamageEvent.h
@@ -217,8 +235,7 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Buttons/Menu_Button.h
 
         src/map_generation/Generator.cpp
-        src/map_generation/Generator.h
-        )
+        src/map_generation/Generator.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

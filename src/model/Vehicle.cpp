@@ -15,8 +15,8 @@ bool Vehicle::canGoThrough(const TerrainData &terrainData) const {
 unsigned short Vehicle::getMovementSpeed(float terrainFactor) const {
   //Revusar
   float relativeDmg =
-      1 - ((float) (this->health - data.getData(this->id.getUnitType()).health)
-          / (float) data.getData(this->id.getUnitType()).health);
+      1 - ((float) (this->health - data.getData(this->id.getType()).health)
+          / (float) data.getData(this->id.getType()).health);
   return std::max((unsigned short) std::truncl(
       this->baseSpeed * terrainFactor * relativeDmg),
                   (unsigned short)

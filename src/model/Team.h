@@ -4,8 +4,10 @@
 #include <vector>
 #include <map>
 #include "Player.h"
+#include "TeamID.h"
 class Team {
  private:
+  TeamID id;
   std::map<PlayerID, Player *> players;
  public:
   explicit Team(const std::map<PlayerID, Player *> &players);

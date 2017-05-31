@@ -8,6 +8,9 @@
 #include <model/Events/model/CaptureEvent.h>
 #include <model/Events/model/BulletMoveEvent.h>
 #include <model/Events/model/UnitStillEvent.h>
+#include <model/Events/model/PlayerDefeatedEvent.h>
+#include <model/Events/model/EndGameEvent.h>
+#include <model/Events/model/TerrainObjectDestroyedEvent.h>
 #include "GameController.h"
 #include "AStar.h"
 #include "model/Events/model/UnitMoveEvent.h"
@@ -102,6 +105,9 @@ void GameController::doTick(std::vector<Event *> &events) {
   bulletsTick(events);
   unitsTick(events);
   buildsTick(events);
+  objectsTick(events);
+  PlayersTick(events);
+  TeamsTick(events);
 }
 
 void GameController::unitsTick(std::vector<Event *> &events) {
@@ -109,9 +115,9 @@ void GameController::unitsTick(std::vector<Event *> &events) {
 
     Unit *current = it_units->second;
 
-   if (current->hasDamagesToReceive()) {
-     unitReceiveDamage(current, events);
-   }
+    if (current->hasDamagesToReceive()) {
+      unitReceiveDamage(current, events);
+    }
 
     if (current->isAlive()) {
       if (current->isMoving())
@@ -165,7 +171,7 @@ void GameController::move(Unit *unit,
   ++it;
 }
 
-bool noEntro=true;
+bool noEntro = true;
 
 void GameController::hunt(Unit *unit,
                           std::vector<Event *> &events,
@@ -191,7 +197,7 @@ void GameController::hunt(Unit *unit,
     }
     ++it;
   } else {
-    noEntro=true;
+    noEntro = true;
     this->move(unit, events, it);
   }
 
@@ -304,6 +310,28 @@ void GameController::buildReceiveDamage(Build *current,
                                         current->getBuildState()));
 }
 
+void GameController::PlayersTick(std::vector<Event *> &events) {
+  for (auto &player : players) {
+    if (!player.second->isAlive())
+      events.push_back(new PlayerDefeatedEvent(player.first));
+  }
+}
+
+void GameController::TeamsTick(std::vector<Event *> &events) {
+  unsigned short count = 0;
+  TeamID winnerId;
+  for (auto &team : teams) {
+    if (team.second.isTeamAlive()) {
+      count++;
+      winnerId = team.first;
+    }
+  }
+  if (count == 1) {
+    events.push_back(new EndGameEvent(winnerId));
+  }
+
+}
+
 GameController::~GameController() {
   for (auto &par : units) {
     delete par.second;
@@ -342,4 +370,19 @@ GameController::GameController(Map &map,
     map), units(units), builds(builds), capturables(capturables) {
 
 }
-
+void GameController::objectsTick(std::vector<Event *> &events) {
+  for (auto t_it = terrainObjects.begin();
+       t_it != terrainObjects.end();) {
+    TerrainObject &current = t_it->second;
+    if (current.hasDamagesToReceive()) {
+      current.receiveDamages();
+      map.updateTerrainObject(current.getID(), current.getState());
+    }
+    if (!current.isAlive()) {
+      events.push_back(new TerrainObjectDestroyedEvent(current.getID()));
+      t_it = terrainObjects.erase(t_it);
+    } else {
+      ++t_it;
+    }
+  }
+}

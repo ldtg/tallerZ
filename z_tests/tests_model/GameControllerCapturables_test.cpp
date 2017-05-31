@@ -23,7 +23,7 @@ class GameControllerCapturables_test : public ::testing::Test {
   Robot *robotA;
   Vehicle *jeepA;
   std::vector<Event *> events;
-  GameControllerCapturables_test() : playerA("A"), gaia("gaia") {
+  GameControllerCapturables_test() : playerA(PlayerColor::RED), gaia(PlayerColor::BLUE) {
   }
 
   void SetUp() {

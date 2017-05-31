@@ -11,15 +11,15 @@ class Player {
   unsigned short unitsAlives;
   bool alive;
  public:
-  explicit Player(const std::string &name);
-  unsigned short getAmountOfTerritories();
-  void addTerritory();
-  void subTerritory();
-  void addUnit();
-  void subUnit();
-  bool isAlive() const;
-  void buildDestroyed(const BuildType &type);
-  PlayerID getID() const;
+  explicit Player(const PlayerColor &color);
+  virtual unsigned short getAmountOfTerritories();
+  virtual void addTerritory();
+  virtual void subTerritory();
+  virtual void addUnit();
+  virtual void subUnit();
+  virtual bool isAlive() const;
+  virtual void buildDestroyed(const BuildType &type);
+  virtual PlayerID getID() const;
 };
 
 #endif //TALLERZ_PLAYER_H

@@ -1,6 +1,7 @@
 #include "Player.h"
-Player::Player(const std::string &name)
-    : id(name), capturedTerritories(0), unitsAlives(0), alive(
+#include "Data.h"
+Player::Player(const PlayerColor &color)
+    : id(color), capturedTerritories(data.playerInitialTerritories), unitsAlives(data.playerInitialUnits), alive(
     true) {}
 unsigned short Player::getAmountOfTerritories() {
   return capturedTerritories;

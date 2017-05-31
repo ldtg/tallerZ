@@ -8,6 +8,8 @@
 #include "BulletState.h"
 #include "BuildState.h"
 #include "BuildID.h"
+#include "TerrainObjectID.h"
+#include "TerrainObjectState.h"
 #include <vector>
 #include <map>
 #include <string>
@@ -19,6 +21,7 @@ class Map {
   std::map<UnitID, UnitState> units;
   std::map<BulletID, BulletState> bullets;
   std::map<BuildID, BuildState> builds;
+  std::map<TerrainObjectID, TerrainObjectState> terrainObject;
   //std::map<Position> flags; no se si va a ir asi
   int width;
   int height;
@@ -35,6 +38,11 @@ class Map {
       const std::map<BuildID, BuildState> &builds,
       unsigned short width,
       unsigned short height);
+
+  Map(const std::map<Position, Tile> &map,
+      const std::map<BuildID, BuildState> &builds,const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
+      unsigned short width,
+      unsigned short height);
   ~Map();
 
   std::vector<Tile> getNeighbors(const Tile &tile) const;
@@ -48,6 +56,8 @@ class Map {
   void updateBullet(const BulletID &bulletID, const BulletState &bulletState);
 
   void updateBuild(const BuildID &buildID, const BuildState &buildState);
+
+  void updateTerrainObject(const TerrainObjectID &id, const TerrainObjectState &newState);
 
   Tile getTile(const Position &position) const;
   std::pair<UnitID, UnitState> getUnit(const Position &position);

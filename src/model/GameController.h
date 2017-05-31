@@ -9,6 +9,7 @@
 #include "Bullet.h"
 #include "Build.h"
 #include "Capturable.h"
+#include "TerrainObject.h"
 
 class GameController {
  private:
@@ -18,6 +19,9 @@ class GameController {
   std::vector<Unit *> deathUnits;
   std::map<BuildID, Build *> builds;
   std::map<Position, Capturable *> capturables;
+  std::map<PlayerID, Player *> players;
+  std::map<TeamID, Team> teams;
+  std::map<TerrainObjectID, TerrainObject> terrainObjects;
   void move(Unit *unit,
             std::vector<Event *> &events,
             std::map<UnitID, Unit *>::iterator &it);
@@ -30,6 +34,14 @@ class GameController {
   void autoAttack(Unit *current, std::map<UnitID, Unit *>::iterator &it);
   void unitReceiveDamage(Unit *current, std::vector<Event *> &events) const;
 
+  void doTick(std::vector<Event *> &events);
+  void unitsTick(std::vector<Event *> &events);
+  void bulletsTick(std::vector<Event *> &vector);
+  void buildsTick(std::vector<Event *> &events);
+  void buildReceiveDamage(Build *pBuild, std::vector<Event *> &vector);
+  void addUnits(std::vector<Unit *> vector, std::vector<Event *> &vector1);
+  void PlayersTick(std::vector<Event *> &vector);
+  void TeamsTick(std::vector<Event *> &events);
  public:
   GameController(Map &map, const std::map<UnitID, Unit *> &units);
 
@@ -49,13 +61,8 @@ class GameController {
   void capture(UnitID unit, Position position);
   std::vector<Event *> tick();
 
-  void doTick(std::vector<Event *> &events);
-  void unitsTick(std::vector<Event *> &events);
-  void bulletsTick(std::vector<Event *> &vector);
-  void buildsTick(std::vector<Event *> &events);
-  void buildReceiveDamage(Build *pBuild, std::vector<Event *> &vector);
   ~GameController();
-  void addUnits(std::vector<Unit *> vector, std::vector<Event *> &vector1);
+  void objectsTick(std::vector<Event *> &events);
 };
 
 #endif //TALLERZ_GAMECOTROLLER_H

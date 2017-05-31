@@ -31,11 +31,11 @@ TEST(VistaTest, Window) {
     stdmap.emplace(Position(2, 2), Tile(Position(250, 250), data.land));
 
 /* ---------- EQUIPOS ---------- */
-    Player player("jugador1");
+    Player player(PlayerColor::RED);
     Team team;
     team.addPlayer(&player);
 
-    Player player2("jugador2");
+    Player player2(PlayerColor::BLUE);
     Team team2;
     team2.addPlayer(&player2);
 
@@ -47,7 +47,8 @@ TEST(VistaTest, Window) {
     units.emplace(robotA->getId(), robotA);
 
     Unit *robotB;
-    robotB = UnitFactory::createGruntDynamic(Position(200, 200), player2, team2);
+    robotB =
+        UnitFactory::createGruntDynamic(Position(200, 200), player2, team2);
     units.emplace(robotB->getId(), robotB);
 
     Unit *vehicle;
@@ -101,7 +102,7 @@ TEST(VistaTest, Window) {
       }
       view.update();
     }
-  } catch (const std::exception& e){
+  } catch (const std::exception &e) {
     std::cout << e.what() << std::endl;
   }
 }

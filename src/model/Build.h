@@ -14,14 +14,14 @@
 
 class Build : public Attackable {
  private:
-  const BuildID id;
+  BuildID id;
   Player &owner;
   Team &team;
-  const Position centerPosition;
+  Position centerPosition;
   //distancia desde el centro a los bordes
-  const unsigned short size;
-  const unsigned short techLevel;
-  const std::vector<UnitType> fabricableUnits;
+  unsigned short size;
+  unsigned short techLevel;
+  std::vector<UnitType> fabricableUnits;
   std::vector<unsigned short> damagesToReceive;
   unsigned short health;
   UnitType actualUnitFab;

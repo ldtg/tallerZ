@@ -12,6 +12,8 @@ struct Data {
  public:
   unsigned short ticksPerSec;
   unsigned long miliSecsPerTick;
+  unsigned short playerInitialTerritories;
+  unsigned short playerInitialUnits;
   UnitType defaultDriver;
 
   Weapon bullet;
@@ -37,6 +39,10 @@ struct Data {
     ticksPerSec = 40;
     miliSecsPerTick =
         (unsigned long) std::lround((1 / (float) ticksPerSec) * 1000);
+
+    playerInitialTerritories = 1;
+    playerInitialUnits = 3;
+
     defaultDriver = R_GRUNT;
     bullet.type = WeaponType::BULLET;
     bullet.damage = 2;
