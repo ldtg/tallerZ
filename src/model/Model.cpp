@@ -18,6 +18,7 @@ void Model::leftClick(int x, int y) {
         for (UnitID attacker : unitsSelected) {
           gameController.attack(attacker, attacked);
         }
+        unitsSelected.clear();
         return;
       } catch(const UnitNotFoundException &e){
         // Donde se hizo click no hay unidad.
@@ -27,6 +28,7 @@ void Model::leftClick(int x, int y) {
         for (UnitID attacker : unitsSelected) {
           gameController.attack(attacker, buildAttacked);
         }
+        unitsSelected.clear();
       } catch(const UnitNotFoundException &e) {
         // Donde se hizo click no hay edificio ni undida.
         unitsSelected.clear();

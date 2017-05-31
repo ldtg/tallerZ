@@ -109,9 +109,9 @@ void GameController::unitsTick(std::vector<Event *> &events) {
 
     Unit *current = it_units->second;
 
-//    if (current->hasDamagesToReceive()) {
-//      unitReceiveDamage(current, events);
-//    }
+   if (current->hasDamagesToReceive()) {
+     unitReceiveDamage(current, events);
+   }
 
     if (current->isAlive()) {
       if (current->isMoving())
@@ -132,11 +132,6 @@ void GameController::unitsTick(std::vector<Event *> &events) {
       deathUnits.push_back(current);
       it_units = units.erase(it_units);
     }
-
-    if (current->hasDamagesToReceive()) {
-      unitReceiveDamage(current, events);
-    }
-
   }
 }
 
@@ -196,6 +191,7 @@ void GameController::hunt(Unit *unit,
     }
     ++it;
   } else {
+    noEntro=true;
     this->move(unit, events, it);
   }
 

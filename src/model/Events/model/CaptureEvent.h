@@ -9,7 +9,10 @@ class CaptureEvent : public Event {
   std::map<UnitID, UnitState> capturedUnits;
   bool capturerDissapear;
  public:
-  CaptureEvent(const UnitID &capturer, const std::map<BuildID, BuildState> &capturedBuilds,const std::map<UnitID, UnitState> &capturedUnits, bool dissapear);
+  CaptureEvent(const UnitID &capturer,
+               const std::map<BuildID, BuildState> &capturedBuilds,
+               const std::map<UnitID, UnitState> &capturedUnits,
+               bool dissapear);
   virtual void process() override;
 };
 

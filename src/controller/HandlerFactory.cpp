@@ -15,6 +15,7 @@ Handler* HandlerFactory::get(SDL_Event *e) {
         return new MouseButtonRight();
     }
     else {
-      return new NullHandler();
+//      return new NullHandler();
+      return nullptr;
     }
 }

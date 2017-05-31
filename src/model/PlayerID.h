@@ -6,7 +6,7 @@ class PlayerID {
  private:
   //Agregarle un color??
   unsigned short id;
-  std::string name;
+  std::string name;//cambiar por color
  public:
   PlayerID(const std::string &name);
   std::string getName() const;

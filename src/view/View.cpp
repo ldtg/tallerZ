@@ -73,7 +73,7 @@ void View::updateExplosion() {
     ObjectMapaVista *explosionVista = *iter;
     if (explosionVista->doCycle()) {
       iter = explosionsVista.erase(iter);
-//      delete explosionVista;
+      delete explosionVista;
     }
     else {
       ++iter;
@@ -86,8 +86,7 @@ void View::update() {
   while (!eventHandler.empty()) {
     Event *event = eventHandler.get();
     event->process();
-    //TODO: VER QUIEN HACE DELETE EN ESTOS EVENT
-//    delete (event);
+    delete (event);
     draw();
   }
   draw();
@@ -234,7 +233,7 @@ void View::move(UnitID id, Position posTo) {
 }
 
 void View::removeUnitVista(UnitID &id) {
-//  delete unitsVista.at(id);
+  delete unitsVista.at(id);
   unitsVista.erase(id);
 }
 
@@ -256,7 +255,7 @@ void View::move(BulletID id, Position posTo) {
 }
 
 void View::removeBulletVista(BulletID &id) {
-//  delete bulletsVista.at(id);
+  delete bulletsVista.at(id);
   bulletsVista.erase(id);
 }
 
@@ -270,7 +269,7 @@ ObjectMapaVista* View::getBuildVista(BuildID id) {
 }
 
 void View::removeBuildVista(BuildID &id) {
-  //  delete unitsVista.at(id);
+  delete buildsVista.at(id);
   buildsVista.erase(id);
 }
 

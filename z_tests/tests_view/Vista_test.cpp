@@ -82,38 +82,25 @@ TEST(VistaTest, Window) {
     eventHandler.setView(&view);
     eventHandler.setModel(&model);
 
-    //Main loop flag
-//  bool quit = false;
-    //Event handler
     SDL_Event e;
 
     Controller controller(eventHandler);
 
     //While application is running
     while (!view.quit()) {
-//      auto begin = std::chrono::high_resolution_clock::now();
 
-      //Handle events on queue
       std::vector<Event *> events = gameController.tick();
-      if (SDL_PollEvent(&e) != 0) {
+      while (SDL_PollEvent(&e) != 0) {
         controller.handle(&e);
       }
+
       if (!events.empty()) {
         for (auto event : events) {
           eventHandler.add(event);
         }
       }
       view.update();
-
-//      auto end = std::chrono::high_resolution_clock::now();
-//      auto diff =
-//          std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
-//      std::this_thread::sleep_for(
-//          std::chrono::milliseconds(25) - diff);
     }
-
-//    delete (robotB);
-//    delete (robotA);
   } catch (const std::exception& e){
     std::cout << e.what() << std::endl;
   }

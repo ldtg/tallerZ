@@ -136,6 +136,10 @@ Map::Map(const std::map<Position, Tile> &map,
          unsigned short width,
          unsigned short height)
     : map(map), builds(builds), width(width), height(height) {
+    for (auto & build : builds) {
+      Position pos = this->getTilePositionFromRealPosition(build.second.position);
+      this->map.at(pos).makeNotPassable();
+    }
 
 }
 

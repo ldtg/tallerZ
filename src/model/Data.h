@@ -51,7 +51,7 @@ struct Data {
     grunt.weapon = bullet;
     grunt.ticksUntilFire = getTickAmount(0.5);
 //    grunt.health = 60;
-    grunt.health = 10;
+    grunt.health = 60;
     grunt.range = 35;
     grunt.speed = 4;
     grunt.factoryRate = 3;

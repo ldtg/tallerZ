@@ -4,6 +4,7 @@
 #include "UnitType.h"
 #include "Position.h"
 #include "PlayerID.h"
+
 struct BuildState {
  public:
   PlayerID owner;

@@ -19,7 +19,7 @@ class Map {
   std::map<UnitID, UnitState> units;
   std::map<BulletID, BulletState> bullets;
   std::map<BuildID, BuildState> builds;
-  //std::vector<Position> flags; no se si va a ir asi
+  //std::map<Position> flags; no se si va a ir asi
   int width;
   int height;
   Position getTilePositionFromRealPosition(Position position) const;

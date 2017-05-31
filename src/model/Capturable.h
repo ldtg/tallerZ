@@ -6,6 +6,7 @@
 #include "BuildID.h"
 #include "BuildState.h"
 #include "UnitState.h"
+
 class Capturable {
  public:
   virtual void capture(const UnitID &unitID,
