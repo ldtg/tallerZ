@@ -2,12 +2,10 @@
 #include <string>
 #include "Image.h"
 #include "Sprite.h"
-#include "UnitAttackVista.h"
 #include <iostream>
 #include <vector>
-#include <model/Events/model/UnitMoveStepEvent.h>
-#include <model/Events/model/BulletMoveStepEvent.h>
-#include <random>
+#include <model/Events/model/unit/UnitMoveStepEvent.h>
+#include <model/Events/model/bullet/BulletMoveStepEvent.h>
 
 View::View(const Map &map, EventHandler &eventHandler, Window& window)
     : window(window), panel(window.getRender()), eventHandler(eventHandler) {
@@ -56,10 +54,6 @@ void View::createInitialBuildVista(const std::map<BuildID, BuildState> &builds) 
     buildsVista.emplace(build.first, buildVista);
   }
 }
-
-//void View::setEventHandler(EventHandler &eventHandler) {
-//  this->eventHandler = eventHandler;
-//}
 
 void View::updateExplosion() {
   std::vector<Sprite*>::iterator iter;
@@ -119,23 +113,30 @@ void View::add(ObjectMapaVista *objectVista, Position pos) {
 }
 
 ObjectMapaVista* View::getTerrainVista(TerrainType type) {
-    if (type == LAND) {
-        return new Image("../src/view/images/terrain/land.png");
-    }
-    else {
-        return nullptr;
-    }
+  return vistasFactory.getTerrainVista(type);
 }
 
 ObjectMapaVista* View::getBuildVista(BuildType type, std::string &state) {
-  if (type == FORT) {
-    std::string path = "../src/view/images/buildings/fort/fort_jungle_front"
-        + state + ".png";
-    return new Image(path.c_str());
-  }
-  else {
-    return nullptr;
-  }
+  vistasFactory.getBuildVista(type, state);
+}
+
+Sprite* View::getUnitVista(UnitType type,
+                                    std::string &action,
+                                    std::string &rotation) {
+
+  return vistasFactory.getUnitVista(type, action, rotation);
+}
+
+ObjectMapaVista* View::getBulletVista(WeaponType type) {
+  return vistasFactory.getBulletVista(type);
+}
+
+void View::setQuit() {
+  _quit = true;
+}
+
+bool View::quit() {
+  return _quit;
 }
 
 Position View::translatePos(UnitType type, std::string &action, Position pos) {
@@ -150,101 +151,6 @@ Position View::translatePos(UnitType type, std::string &action, Position pos) {
       // size of jeep image is 40x40
       return pos.sub(25,25);
   }
-}
-
-int getRandomNumInRange(const int range_from, const int range_to) {
-  std::random_device rand_dev;
-  std::mt19937 generator(rand_dev());
-  std::uniform_int_distribution<int> distr(range_from, range_to);
-  return distr(generator);
-}
-
-Sprite* View::getUnitVista(UnitType type,
-                                    std::string &action,
-                                    std::string &rotation) {
-  std::string type_s;
-  int num_frames=0, speed=0, num_frame_return_cycle=0;
-
-  if (type == R_GRUNT) {
-    type_s = "grunt";
-    if (action == "walk") {
-      num_frames = 4;
-      speed = 5 * num_frames;
-    }
-    else if (action == "look_around") {
-      num_frames = 3;
-      speed = 6*num_frames;
-    }
-    else if (action == "fire") {
-      num_frames = 5;
-      speed = 1*num_frames;
-      num_frame_return_cycle = 3;
-
-//      std::string path = "../src/view/images/units/" + type_s + "/" + action
-//          + "/" + action + "_blue_r" + rotation + "_n";
-
-//      return new UnitAttackVista(path.c_str(), num_frames, speed);
-
-    } else if (action == "create") {
-      num_frames = 12;
-      speed = 6;
-      num_frame_return_cycle = 10;
-    }
-    else if (action == "die") {
-      int num_die = getRandomNumInRange(1,2);
-      action = action + std::to_string(num_die);
-
-      if (num_die == 1) {
-        num_frames = 10;
-        speed = 12;
-      }
-      else if (num_die == 2) {
-        num_frames = 34;
-        speed = 6;
-      }
-    }
-  }
-  else if (type == V_JEEP) {
-    type_s = "jeep";
-    if (action == "walk") {
-      num_frames = 2;
-      speed = 3 * num_frames;
-    }
-    else if (action == "look_around") {
-      num_frames = 2;
-      speed = 3 * num_frames;
-    }
-    else if (action == "fire") {
-      num_frames = 2;
-      speed = 2 * num_frames;
-    }
-    else if (action == "die") {
-      num_frames = 6;
-      speed = 2 * num_frames;
-    }
-  }
-
-  std::string path = "../src/view/images/units/" + type_s + "/" + action
-      + "/" + action + "_blue_r" + rotation + "_n";
-
-  return new Sprite(path.c_str(), num_frames, speed, num_frame_return_cycle);
-}
-
-ObjectMapaVista* View::getBulletVista(WeaponType type) {
-  if (type == ROCKET) {
-    return new Image("../src/view/images/bullet/bullet.png");
-  }
-  else {
-    return nullptr;
-  }
-}
-
-void View::setQuit() {
-  _quit = true;
-}
-
-bool View::quit() {
-  return _quit;
 }
 
 ObjectMapaVista* View::getUnitVista(UnitID id) {

@@ -11,11 +11,11 @@ Window::Window() {
     height = HEIGHT;
 
     //Las siguientes dos linas las pongo en SDL_START
-    //SDL_Init(SDL_INIT_VIDEO);
-    //IMG_Init(IMG_INIT_PNG);
+    SDL_Init(SDL_INIT_VIDEO);
+    IMG_Init(IMG_INIT_PNG);
 
     SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" );
-    window = SDL_CreateWindow("tallerZ",
+    window = SDL_CreateWindow("TALLERZ",
                               SDL_WINDOWPOS_UNDEFINED,
                               SDL_WINDOWPOS_UNDEFINED,
                               width,
@@ -38,13 +38,12 @@ Window::Window() {
 }
 
 Window::~Window() {
-    SDL_DestroyRenderer(window_render);
-    SDL_DestroyWindow(window);
+  SDL_DestroyRenderer(window_render);
+  SDL_DestroyWindow(window);
 
   //Lo mimsmo, las siguientes lineas las pongo en el destructor del SDL_START
-    //IMG_Quit();
-    //SDL_Quit();
-  SDL_DestroyRenderer(window_render);
+  IMG_Quit();
+  SDL_Quit();
 }
 
 SDL_Renderer* Window::getRender() const {

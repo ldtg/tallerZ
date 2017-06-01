@@ -35,7 +35,7 @@ TEST(VistaTest, Window) {
     Team team;
     team.addPlayer(&player);
 
-    player.addTerritory();
+//    player.addTerritory();
 
     Player player2("jugador2");
     Team team2;

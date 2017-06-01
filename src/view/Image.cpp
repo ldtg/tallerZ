@@ -5,12 +5,12 @@
 Image::Image() {}
 
 Image::Image(const char *file) {
-    surface = IMG_Load(file);
-    if (surface == NULL)
-        std::cout << file << std::endl;
+  surface = IMG_Load(file);
+  if (surface == NULL)
+    std::cerr << file << std::endl;
 
-    width = surface->w;
-    height = surface->h;
+  width = surface->w;
+  height = surface->h;
 
   texture = nullptr;
 }
@@ -21,6 +21,7 @@ Image::Image(const char *file, int w, int h) {
     this->height = h;
 }
 
+/*
 Image::Image(Image &&other) {
     this->surface = other.surface;
     this->texture = other.texture;
@@ -46,12 +47,13 @@ Image& Image::operator=(Image &&other) {
 
     return *this;
 }
+*/
 
 Image::~Image() {
-    if (!surface) {
+    if (surface != nullptr) {
         SDL_FreeSurface(surface);
     }
-    if (!texture) {
+    if (texture != nullptr) {
         SDL_DestroyTexture(texture);
     }
 }
