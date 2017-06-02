@@ -17,6 +17,7 @@ class Team {
   bool isEnemy(const PlayerID &playerID) const;
   bool isTeamAlive() const;
   bool isaPlayerOfTheTeam(const PlayerID &id) const;
+  TeamID getID() const;
 };
 
 #endif //TALLERZ_TEAM_H

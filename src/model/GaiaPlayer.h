@@ -2,8 +2,9 @@
 #define TALLERZ_GAIAPLAYER_H
 
 #include "Player.h"
-class GaiaPlayer : public Player{
-  explicit GaiaPlayer();
+class GaiaPlayer : public Player {
+ public:
+  GaiaPlayer();
   virtual unsigned short getAmountOfTerritories();
   virtual void addTerritory();
   virtual void subTerritory();

@@ -25,12 +25,4 @@ int ObjectMapaVista::getRotation() {
   return rotation;
 }
 
-bool ObjectMapaVista::doCycle() const {
-  return _doCycle;
-}
-
-//void ObjectMapaVista::setPosTo(Position &pos) {
-//  this->posTo = pos;
-//}
-
-void ObjectMapaVista::set_texture(SDL_Renderer *render) {}
+//void ObjectMapaVista::set_texture(SDL_Renderer *render) {}

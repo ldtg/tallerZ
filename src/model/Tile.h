@@ -23,6 +23,7 @@ class Tile {
   ~Tile();
   bool isPassable() const;
   void makeNotPassable();
+  void makePassable();
   Position getCenterPosition() const;
   Position getCornerPosition() const;
   TerrainType getTerrainType() const;

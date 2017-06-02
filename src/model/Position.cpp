@@ -5,7 +5,7 @@
 
 Position::Position() {}
 
-Position::Position(unsigned long x, unsigned long y)
+Position::Position(long x, long y)
     : x(x), y(y) {}
 
 unsigned long Position::chebyshevDistance(const Position &other) const {
@@ -78,38 +78,29 @@ int Position::move(Position target) {
     if (this->y < target.y) {
       this->y++;
       rotation = 315;
-    }
-    else if (this->y > target.y) {
+    } else if (this->y > target.y) {
       this->y--;
       rotation = 45;
-    }
-    else {
+    } else {
       rotation = 0;
     }
-  }
-
-  else if (this->x > target.x) {
+  } else if (this->x > target.x) {
     this->x--;
 
     if (this->y < target.y) {
       this->y++;
       rotation = 225;
-    }
-    else if (this->y > target.y) {
+    } else if (this->y > target.y) {
       this->y--;
       rotation = 135;
-    }
-    else {
+    } else {
       rotation = 180;
     }
-  }
-
-  else {
+  } else {
     if (this->y < target.y) {
       this->y++;
       rotation = 270;
-    }
-    else if (this->y > target.y) {
+    } else if (this->y > target.y) {
       this->y--;
       rotation = 90;
     }
@@ -158,7 +149,7 @@ Position Position::add(unsigned long x, unsigned long y) const {
 Position Position::getAttackPosition(const Position &position,
                                      const unsigned short size) const {
   Position aux = position;
-  while(aux.euclideanDistance(*this) > size){
+  while (aux.euclideanDistance(*this) > size ) {
     aux.move(*this);
   }
   return aux;

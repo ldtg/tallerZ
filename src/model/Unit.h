@@ -14,12 +14,14 @@
 #include "Player.h"
 #include "Team.h"
 #include "Bullet.h"
+#include "Capturable.h"
+#include "CapturableID.h"
 
 class Unit : public Attackable {
  protected:
   const UnitID id;
-  Player &owner;
-  Team &team;
+  Player *owner;
+  Team *team;
   Position currentPosition;
   MovementState movState;
   const Weapon weapon;
@@ -30,6 +32,7 @@ class Unit : public Attackable {
   unsigned short attackCounterActual;
 
   Attackable *hunted;
+  Capturable *capturable;
   std::vector<Position> movementsPositions;
   std::vector<unsigned short> damagesToReceive;
 
@@ -41,7 +44,7 @@ class Unit : public Attackable {
  public:
   virtual ~Unit();
   virtual UnitState getUnitState() const = 0;
-  virtual Position getCurrentPosition() const;
+  virtual Position getCenterPosition() const;
   virtual Position getAttackPosition(const Position &attacker) const override ;
   virtual Position nextMovePosition() const override;
   virtual unsigned long getHealth() const;
@@ -51,7 +54,7 @@ class Unit : public Attackable {
   virtual bool isInRange(Attackable *other);
   virtual bool attackedInRange();
   virtual void move(const std::vector<Position> &movementsPositions);
-  virtual void capture(const std::vector<Position> &movementsPositions);
+  virtual void capture(const std::vector<Position> &movementsPositions, Capturable *capturable);
   virtual bool doMoveWithSpeed(float terrainFactor);
   virtual void doOneMove();
   virtual void hunt(const std::vector<Position> &movementsPositions,
@@ -68,6 +71,7 @@ class Unit : public Attackable {
   void kill();
   bool isHunting();
   Attackable *getHunted();
+  Capturable *getCapturable();
   Weapon getWeapon();
   unsigned short getRange() const;
   UnitID getId() const;

@@ -13,7 +13,7 @@ void BuildDestroyedEvent::process() {
 //  ObjectMapaVista *buildVista = view->getBuildVista(id.getType(), state);
   std::string path = "../src/view/images/buildings/fort/fort_jungle_front"
       + state;
-  ObjectMapaVista *buildVista = new Sprite(path.c_str(), 5, 2);
+  ObjectMapaVista *buildVista = new Sprite(path.c_str(), 4, 20, 0);
 
 
 
@@ -21,7 +21,7 @@ void BuildDestroyedEvent::process() {
 
 //  ObjectMapaVista *deathBuildVista = new Sprite("../src/view/images/buildings/fort/"
 //                                                "destroyed_effect/destroyed_effect_n", 12, 1);
-  ObjectMapaVista *deathBuildVista = new Sprite("../src/view/images/explosion/"
-                                                    "tank_missile_explosion1_n", 12, 1);
+  Sprite *deathBuildVista = new Sprite("../src/view/images/explosion/"
+                                                    "tank_missile_explosion1_n", 12, 10, 0);
   view->addExplosionVista(deathBuildVista, pos.add(BUILDWIDHT/3, 0));
 }

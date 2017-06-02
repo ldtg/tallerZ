@@ -1,6 +1,6 @@
 #ifndef TALLERZ_TERRAINOBJECTTYPE_H
 #define TALLERZ_TERRAINOBJECTTYPE_H
 
-enum TerrainObjectType { BRIDGE, ROCK };
+enum TerrainObjectType { BRIDGE, ROCK, ICEROCK };
 
 #endif //TALLERZ_TERRAINOBJECTTYPE_H

@@ -10,6 +10,8 @@
 #include "BuildID.h"
 #include "TerrainObjectID.h"
 #include "TerrainObjectState.h"
+#include "CapturableState.h"
+#include "CapturableID.h"
 #include <vector>
 #include <map>
 #include <string>
@@ -22,7 +24,7 @@ class Map {
   std::map<BulletID, BulletState> bullets;
   std::map<BuildID, BuildState> builds;
   std::map<TerrainObjectID, TerrainObjectState> terrainObject;
-  //std::map<Position> flags; no se si va a ir asi
+  std::map<CapturableID, CapturableState> capturables;
   int width;
   int height;
   Position getTilePositionFromRealPosition(Position position) const;
@@ -38,9 +40,15 @@ class Map {
       const std::map<BuildID, BuildState> &builds,
       unsigned short width,
       unsigned short height);
+  Map(const std::map<Position, Tile> &map,
+      const std::map<BuildID, BuildState> &builds,
+      std::map<CapturableID, CapturableState> capturables,
+      unsigned short width,
+      unsigned short height);
 
   Map(const std::map<Position, Tile> &map,
-      const std::map<BuildID, BuildState> &builds,const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
+      const std::map<BuildID, BuildState> &builds,
+      const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
       unsigned short width,
       unsigned short height);
   ~Map();
@@ -57,7 +65,11 @@ class Map {
 
   void updateBuild(const BuildID &buildID, const BuildState &buildState);
 
-  void updateTerrainObject(const TerrainObjectID &id, const TerrainObjectState &newState);
+  void updateTerrainObject(const TerrainObjectID &id,
+                           const TerrainObjectState &newState);
+
+  void updateCapturable(const CapturableID &id, const CapturableState &state);
+  void removeCapturable(const CapturableID &id);
 
   Tile getTile(const Position &position) const;
   std::pair<UnitID, UnitState> getUnit(const Position &position);
@@ -74,7 +86,8 @@ class Map {
   const std::map<BuildID, BuildState> &getBuilds() const;
 
   UnitID getUnitIDFromPosition(const Position &pos, unsigned short range) const;
-  BuildID getBuildIDFromPosition(const Position &pos, unsigned short range) const;
+  BuildID getBuildIDFromPosition(const Position &pos,
+                                 unsigned short range) const;
   UnitState getUnitState(const UnitID &unitID) const;
 
   //Para crear el mapa

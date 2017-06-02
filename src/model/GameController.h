@@ -18,7 +18,7 @@ class GameController {
   std::vector<Bullet> bullets;
   std::vector<Unit *> deathUnits;
   std::map<BuildID, Build *> builds;
-  std::map<Position, Capturable *> capturables;
+  std::map<CapturableID, Capturable *> capturables;
   std::map<PlayerID, Player *> players;
   std::map<TeamID, Team> teams;
   std::map<TerrainObjectID, TerrainObject> terrainObjects;
@@ -42,6 +42,7 @@ class GameController {
   void addUnits(std::vector<Unit *> vector, std::vector<Event *> &vector1);
   void PlayersTick(std::vector<Event *> &vector);
   void TeamsTick(std::vector<Event *> &events);
+  void objectsTick(std::vector<Event *> &events);
  public:
   GameController(Map &map, const std::map<UnitID, Unit *> &units);
 
@@ -52,17 +53,34 @@ class GameController {
       Map &map,
       const std::map<UnitID, Unit *> &units,
       const std::map<BuildID, Build *> &builds,
-      const std::map<Position, Capturable *> &capturables
+      const std::map<CapturableID, Capturable *> &capturables
+  );
+
+  GameController(
+      Map &map,
+      const std::map<UnitID, Unit *> &units,
+      const std::map<BuildID, Build *> &builds,
+      const std::map<CapturableID, Capturable *> &capturables,
+      const std::map<TerrainObjectID, TerrainObject> &terrainObjects
+  );
+  GameController(
+      Map &map,
+      const std::map<UnitID, Unit *> &units,
+      const std::map<BuildID, Build *> &builds,
+      const std::map<CapturableID, Capturable *> &capturables,
+      const std::map<TerrainObjectID, TerrainObject> &terrainObjects,
+      const std::map<PlayerID, Player *> &players,
+      const std::map<TeamID, Team> &teams
   );
   void move(const UnitID &unit, const Position &position);
   void attack(const UnitID &attacker, const UnitID &attacked);
   void attack(const UnitID &attacker, const BuildID &attacked);
+  void attack(const UnitID &attacker, const TerrainObjectID &attacked);
   void changeUnitFab(const BuildID &buildId, const UnitType &type);
-  void capture(UnitID unit, Position position);
+  void capture(const UnitID &unit, const CapturableID &capturable);
   std::vector<Event *> tick();
 
   ~GameController();
-  void objectsTick(std::vector<Event *> &events);
 };
 
 #endif //TALLERZ_GAMECOTROLLER_H

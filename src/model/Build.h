@@ -15,8 +15,8 @@
 class Build : public Attackable {
  private:
   BuildID id;
-  Player &owner;
-  Team &team;
+  Player *owner;
+  Team *team;
   Position centerPosition;
   //distancia desde el centro a los bordes
   unsigned short size;
@@ -35,7 +35,7 @@ class Build : public Attackable {
         const Position &centerPosition,
         Player &owner,Team &team,
         const unsigned short techLevel);
-  virtual Position getCenterPosition() const;
+  virtual Position getCenterPosition() const override;
   virtual Player& getOwner() ;
   virtual bool hasDamagesToReceive() const;
   virtual void receiveDamages();

@@ -36,6 +36,8 @@ TEST(VistaTest, Window) {
     team.addPlayer(&player);
 
     Player player2(PlayerColor::BLUE);
+    player.addTerritory();
+
     Team team2;
     team2.addPlayer(&player2);
 

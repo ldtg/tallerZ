@@ -6,7 +6,7 @@
 #include "TerrainObjectID.h"
 #include "TerrainObjectState.h"
 #include "TerrainObjectData.h"
-class TerrainObject : public Attackable{
+class TerrainObject : public Attackable {
  private:
   TerrainObjectID id;
   Position centerPosition;
@@ -16,9 +16,11 @@ class TerrainObject : public Attackable{
   bool passable;
   Player &owner;
  public:
-  virtual Player& getOwner() ;
-  explicit TerrainObject(const TerrainObjectData &data, const Position &centerPos, Player &owner);
-  virtual Position getAttackPosition(const Position &attacker) const;
+  virtual Player &getOwner();
+  explicit TerrainObject(const TerrainObjectData &data,
+                         const Position &centerPos,
+                         Player &owner);
+  virtual Position getAttackPosition(const Position &attacker) const override;
   virtual bool isAlive() const;
   virtual bool isMoving() const;
   virtual Position nextMovePosition() const;
@@ -27,6 +29,7 @@ class TerrainObject : public Attackable{
   virtual void receiveDamages();
   TerrainObjectID getID() const;
   TerrainObjectState getState() const;
+  virtual Position getCenterPosition() const override;
 };
 
 #endif //TALLERZ_TERRAINOBJECT_H

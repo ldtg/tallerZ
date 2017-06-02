@@ -6,8 +6,13 @@
 #include "BuildID.h"
 #include "BuildState.h"
 #include "UnitState.h"
+#include "CapturableState.h"
+#include "CapturableID.h"
 
 class Capturable {
+ protected:
+  CapturableID id;
+  Capturable(const CapturableType &type);
  public:
   virtual void capture(const UnitID &unitID,
                        Player &newOwner,
@@ -18,6 +23,8 @@ class Capturable {
   virtual bool capturerDissapear() const = 0;
   virtual bool isRecapturable() const = 0;
   virtual bool canBeCapturedBy(const UnitID &id) const = 0;
+  virtual CapturableState getCapturableState() const = 0;
+  virtual CapturableID getID() const;
 };
 
 #endif //TALLERZ_CAPTURABLE_H

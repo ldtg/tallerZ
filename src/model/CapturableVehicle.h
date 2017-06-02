@@ -20,8 +20,7 @@ class CapturableVehicle : public Capturable {
   virtual bool capturerDissapear() const;
   virtual bool isRecapturable() const;
   virtual bool canBeCapturedBy(const UnitID &id) const;
-
-
+  virtual CapturableState getCapturableState() const;
 };
 
 #endif //TALLERZ_CAPTURABLEVEHICLE_H

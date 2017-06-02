@@ -31,6 +31,22 @@ Map::Map(const std::map<Position, Tile> &map,
 
 }
 
+Map::Map(const std::map<Position, Tile> &map,
+         const std::map<BuildID, BuildState> &builds,
+         std::map<CapturableID, CapturableState> capturables,
+         unsigned short width,
+         unsigned short height) : map(map),
+                                  builds(builds),
+                                  capturables(capturables),
+                                  width(width),
+                                  height(height) {
+  for (auto &build : builds) {
+    Position pos = this->getTilePositionFromRealPosition(build.second.position);
+    this->map.at(pos).makeNotPassable();
+  }
+
+}
+
 Map::~Map() {}
 
 std::vector<Tile> Map::getNeighbors(const Tile &tile) const {
@@ -72,13 +88,7 @@ std::pair<UnitID, UnitState> Map::getUnit(const Position &position) {
 
 bool Map::canPass(const Position &positionFrom,
                   const Position &positionTo) const {
-  Position actual = positionFrom;
-  while (actual != positionTo) {
-    actual.move(positionTo);
-    if (!this->getTile(actual).isPassable())
-      return false;
-  }
-  return true;
+  return this->getTile(positionTo).isPassable();
 }
 
 int Map::getWidht() const {
@@ -187,5 +197,16 @@ void Map::updateTerrainObject(const TerrainObjectID &id,
   terrainObject.emplace(id, newState);
   if (!newState.passable)
     map.at(this->getTilePositionFromRealPosition(newState.centerPosition)).makeNotPassable();
+  else
+    map.at(this->getTilePositionFromRealPosition(newState.centerPosition)).makePassable();
+}
+void Map::updateCapturable(const CapturableID &id,
+                           const CapturableState &state) {
+  capturables.erase(id);
+  capturables.emplace(id, state);
+
+}
+void Map::removeCapturable(const CapturableID &id) {
+  capturables.erase(id);
 }
 

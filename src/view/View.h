@@ -8,6 +8,7 @@ class EventHandler;
 #include "Panel.h"
 #include <string>
 #include "../model/Events/EventHandler.h"
+#include "Sprite.h"
 
 class View {
  private:
@@ -17,7 +18,7 @@ class View {
   std::map<BuildID, ObjectMapaVista*> buildsVista;
   std::map<UnitID, ObjectMapaVista*> unitsVista;
   std::map<BulletID, ObjectMapaVista*> bulletsVista;
-  std::vector<ObjectMapaVista*> explosionsVista;
+  std::vector<Sprite*> explosionsVista;
   EventHandler &eventHandler;
   bool _quit;
 
@@ -42,7 +43,7 @@ class View {
   bool quit();
 
   ObjectMapaVista* getUnitVista(UnitID id);
-  ObjectMapaVista *getUnitVista(UnitType type, std::string &action,
+  Sprite *getUnitVista(UnitType type, std::string &action,
                                 std::string &rotation);
   void move(UnitID id, Position posTo);
   void removeUnitVista(UnitID &id);
@@ -59,7 +60,7 @@ class View {
   void removeBuildVista(BuildID &id);
   void addBuildVista(BuildID &id, ObjectMapaVista *buildVista);
 
-  void addExplosionVista(ObjectMapaVista *objectVista, Position pos);
+  void addExplosionVista(Sprite *objectVista, Position pos);
 
   void update();
 };

@@ -122,7 +122,13 @@ set(SOURCE_FILES
         src/model/Events/model/BulletMoveStepEvent.h
         src/model/Events/model/UnitStillEvent.cpp
         src/model/Events/model/UnitStillEvent.h
-
+        z_tests/tests_model/GameController_objects_test.cpp
+        z_tests/tests_model/GameController_win_test.cpp
+        src/model/CapturableID.cpp
+        src/model/CapturableID.h
+        src/model/CapturableState.h
+        src/model/CapturableType.h
+        src/model/Capturable.cpp
         src/model/Capturable.h
         src/model/Events/model/CaptureEvent.cpp
         src/model/Events/model/CaptureEvent.h
@@ -235,7 +241,13 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Buttons/Menu_Button.h
 
         src/map_generation/Generator.cpp
-        src/map_generation/Generator.h)
+        src/map_generation/Generator.h
+        src/view/UnitAttackVista.cpp
+        src/view/UnitAttackVista.h
+        src/view/ExplosionVista.cpp
+        src/view/ExplosionVista.h
+        src/view/UnitCreateVista.cpp
+        src/view/UnitCreateVista.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

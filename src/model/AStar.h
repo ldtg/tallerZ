@@ -18,7 +18,6 @@ class AStar {
   const Tile itile;
   const Tile etile;
   const Position target;
-  std::queue<Position> makeQueue(std::vector<Position> pathVector);
   std::vector<Node*> getNeighbors(Node *current);
   bool existBetter(Node *pNode) const;
   float heuristic(const Tile &itile, const Tile &etile) const;

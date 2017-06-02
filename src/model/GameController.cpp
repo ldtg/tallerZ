@@ -22,15 +22,65 @@
 #include "model/Events/model/BulletNewEvent.h"
 #include "model/Events/model/BuildDamageEvent.h"
 #include "UnitFactory.h"
+GameController::GameController(Map &map,
+                               const std::map<UnitID, Unit *> &units,
+                               const std::map<BuildID, Build *> &builds)
+    : map(map), units(units), builds(builds) {}
+
+GameController::GameController(Map &map,
+                               const std::map<UnitID, Unit *> &units)
+    : map(map), units(units) {}
+
+GameController::GameController(Map &map,
+                               const std::map<UnitID, Unit *> &units,
+                               const std::map<BuildID, Build *> &builds,
+                               const std::map<CapturableID,
+                                              Capturable *> &capturables) : map(
+    map), units(units), builds(builds), capturables(capturables) {
+
+}
+
+GameController::GameController(Map &map,
+                               const std::map<UnitID, Unit *> &units,
+                               const std::map<BuildID, Build *> &builds,
+                               const std::map<CapturableID,
+                                              Capturable *> &capturables,
+                               const std::map<TerrainObjectID,
+                                              TerrainObject> &terrainObjects)
+    : map(map),
+      units(units),
+      builds(builds),
+      capturables(capturables),
+      terrainObjects(terrainObjects) {
+
+}
+
+GameController::GameController(Map &map,
+                               const std::map<UnitID, Unit *> &units,
+                               const std::map<BuildID, Build *> &builds,
+                               const std::map<CapturableID,
+                                              Capturable *> &capturables,
+                               const std::map<TerrainObjectID,
+                                              TerrainObject> &terrainObjects,
+                               const std::map<PlayerID, Player *> &players,
+                               const std::map<TeamID, Team> &teams) :
+    map(map),
+    units(units),
+    builds(builds),
+    capturables(capturables),
+    terrainObjects(terrainObjects),
+    players(players), teams(teams) {
+
+}
 
 void GameController::move(const UnitID &idunit, const Position &position) {
   Unit *unit = units.at(idunit);
-  try {
-    AStar astar(map, unit, position);
-    unit->move(astar.find());
-  } catch (const UnableToFindAPathException &e) {
+  Tile etile = map.getTile(position);
+  if (!unit->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
     return;
-  }
+  AStar astar(map, unit, position);
+  unit->move(astar.find());
+
 }
 
 void GameController::attack(const UnitID &attackerId,
@@ -42,13 +92,13 @@ void GameController::attack(const UnitID &attackerId,
     return;
 
   if (attacker->isInRange(attacked)
-      && map.canPass(attacker->getCurrentPosition(),
-                     attacked->getAttackPosition(attacker->getCurrentPosition()))) {
+      && map.canPass(attacker->getCenterPosition(),
+                     attacked->getCenterPosition())) {
     attacker->attack(attacked);
   } else {
     AStar astar(map,
                 attacker,
-                attacked->getAttackPosition(attacker->getCurrentPosition()));
+                attacked->getCenterPosition());
     attacker->hunt(astar.find(), attacked);
   }
 }
@@ -62,14 +112,34 @@ void GameController::attack(const UnitID &attackerId,
     return;
 
   if (attacker->isInRange(attacked)
-      && map.canPass(attacker->getCurrentPosition(),
+      && map.canPass(attacker->getCenterPosition(),
                      attacked->getCenterPosition())) {
     attacker->attack(attacked);
   } else {
     AStar astar(map,
                 attacker,
-                attacked->getAttackPosition(attacker->getCurrentPosition()));
+                attacked->getCenterPosition());
     attacker->hunt(astar.find(), attacked);
+  }
+}
+
+void GameController::attack(const UnitID &attackerID,
+                            const TerrainObjectID &attackedID) {
+  Unit *attacker = units.at(attackerID);
+  TerrainObject &attacked = terrainObjects.at(attackedID);
+
+  if (!attacker->canAttack(&attacked))
+    return;
+
+  if (attacker->isInRange(&attacked)
+      && map.canPass(attacker->getCenterPosition(),
+                     attacked.getCenterPosition())) {
+    attacker->attack(&attacked);
+  } else {
+    AStar astar(map,
+                attacker,
+                attacked.getCenterPosition());
+    attacker->hunt(astar.find(), &attacked);
   }
 }
 
@@ -79,11 +149,13 @@ void GameController::changeUnitFab(const BuildID &buildId,
 
 }
 
-void GameController::capture(UnitID idunit, Position position) {
-  if (capturables.at(position)->canBeCapturedBy(idunit)) {
+void GameController::capture(const UnitID &idunit,
+                             const CapturableID &capturableID) {
+  Capturable *capturable = capturables.at(capturableID);
+  if (capturable->canBeCapturedBy(idunit)) {
     Unit *unit = units.at(idunit);
-    AStar astar(map, unit, position);
-    unit->capture(astar.find());
+    AStar astar(map, unit, capturable->getCapturePosition());
+    unit->capture(astar.find(), capturable);
   }
 }
 
@@ -152,13 +224,13 @@ void GameController::unitReceiveDamage(Unit *current,
 void GameController::move(Unit *unit,
                           std::vector<Event *> &events,
                           std::map<UnitID, Unit *>::iterator &it) {
-  if (map.canPass(unit->getCurrentPosition(),
+  if (map.canPass(unit->getCenterPosition(),
                   unit->nextMovePosition())) {
     float terrainFactor =
-        map.getTile(unit->getCurrentPosition()).getTerrainData().terrainFactor;
+        map.getTile(unit->getCenterPosition()).getTerrainData().terrainFactor;
     bool still = unit->doMoveWithSpeed(terrainFactor);
     events.push_back(new UnitMoveEvent(unit->getId(),
-                                       unit->getCurrentPosition()));
+                                       unit->getCenterPosition()));
     map.updateUnit(unit->getId(), unit->getUnitState());
 
     if (still) {
@@ -185,8 +257,8 @@ void GameController::hunt(Unit *unit,
   }
 
   if (unit->attackedInRange()
-      && map.canPass(unit->getCurrentPosition(),
-                     hunted->getAttackPosition(unit->getCurrentPosition()))) {
+      && map.canPass(unit->getCenterPosition(),
+                     hunted->getAttackPosition(unit->getCenterPosition()))) {
     if (unit->timeToAttack()) {
       if (noEntro) {
         noEntro = false;
@@ -209,9 +281,9 @@ void GameController::hunt(Unit *unit,
 void GameController::capture(Unit *unit,
                              std::vector<Event *> &events,
                              std::map<UnitID, Unit *>::iterator &it) {
-  if (!unit->hasMovesToDo()) { //llego
+ if (!unit->hasMovesToDo()) { //llego
     unit->still();
-    Capturable *capturable = this->capturables.at(unit->getCurrentPosition());
+    Capturable *capturable = unit->getCapturable();
     capturable->capture(unit->getId(), unit->getOwner(), unit->getOwnerTeam());
     std::map<BuildID, BuildState>
         capturedBuilds = capturable->getCapturedBuilds();
@@ -240,8 +312,11 @@ void GameController::capture(Unit *unit,
       ++it;
     }
     if (!capturable->isRecapturable()) {
-      this->capturables.erase(capturable->getCapturePosition());
+      this->capturables.erase(capturable->getID());
+      map.removeCapturable(capturable->getID());
       delete capturable;
+    } else {
+      map.updateCapturable(capturable->getID(), capturable->getCapturableState());
     }
 
   } else {
@@ -332,18 +407,6 @@ void GameController::TeamsTick(std::vector<Event *> &events) {
 
 }
 
-GameController::~GameController() {
-  for (auto &par : units) {
-    delete par.second;
-  }
-  for (Unit *unit : deathUnits) {
-    delete unit;
-  }
-  for (auto &par : builds) {
-    delete (par.second);
-  }
-}
-
 void GameController::addUnits(std::vector<Unit *> vector,
                               std::vector<Event *> &events) {
   for (Unit *unit : vector) {
@@ -353,23 +416,6 @@ void GameController::addUnits(std::vector<Unit *> vector,
   }
 }
 
-GameController::GameController(Map &map,
-                               const std::map<UnitID, Unit *> &units,
-                               const std::map<BuildID, Build *> &builds)
-    : map(map), units(units), builds(builds) {}
-
-GameController::GameController(Map &map,
-                               const std::map<UnitID, Unit *> &units)
-    : map(map), units(units) {}
-
-GameController::GameController(Map &map,
-                               const std::map<UnitID, Unit *> &units,
-                               const std::map<BuildID, Build *> &builds,
-                               const std::map<Position,
-                                              Capturable *> &capturables) : map(
-    map), units(units), builds(builds), capturables(capturables) {
-
-}
 void GameController::objectsTick(std::vector<Event *> &events) {
   for (auto t_it = terrainObjects.begin();
        t_it != terrainObjects.end();) {
@@ -384,5 +430,17 @@ void GameController::objectsTick(std::vector<Event *> &events) {
     } else {
       ++t_it;
     }
+  }
+}
+
+GameController::~GameController() {
+  for (auto &par : units) {
+    delete par.second;
+  }
+  for (Unit *unit : deathUnits) {
+    delete unit;
+  }
+  for (auto &par : builds) {
+    delete (par.second);
   }
 }

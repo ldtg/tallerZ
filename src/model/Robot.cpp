@@ -19,7 +19,7 @@ Robot::~Robot() {
 }
 UnitState Robot::getUnitState() const {
   return UnitState(this->getId().getType(),
-                   owner.getID(),
+                   owner->getID(),
                    health,
                    weapon,
                    currentPosition);

@@ -3,7 +3,11 @@ Territory::Territory(const Position &flagPosition,
                      const std::vector<Build *> &builds,
                      Player &owner,
                      Team &team)
-    : flagPosition(flagPosition), builds(builds), owner(owner), team(team) {
+    : Capturable(CapturableType::FLAG),
+      flagPosition(flagPosition),
+      builds(builds),
+      owner(owner),
+      team(team) {
 
 }
 void Territory::capture(const UnitID &unitID,
@@ -39,4 +43,7 @@ bool Territory::isRecapturable() const {
 }
 bool Territory::canBeCapturedBy(const UnitID &id) const {
   return true;
+}
+CapturableState Territory::getCapturableState() const {
+  return CapturableState(owner.getID());
 }

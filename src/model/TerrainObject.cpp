@@ -51,3 +51,6 @@ TerrainObject::TerrainObject(const TerrainObjectData &data,
 Player &TerrainObject::getOwner() {
   return owner;
 }
+Position TerrainObject::getCenterPosition() const {
+  return centerPosition;
+}

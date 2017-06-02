@@ -12,9 +12,10 @@ class Position {
 //  unsigned long y;
   long x;
   long y;
+
  public:
   Position();
-  Position(unsigned long x, unsigned long y);
+  Position(long x, long y);
   unsigned long chebyshevDistance(const Position &other) const;
   unsigned long euclideanDistance(const Position &other) const;
 

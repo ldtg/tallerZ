@@ -7,6 +7,7 @@
 #include "TerrainData.h"
 #include "BuildType.h"
 #include "BuildData.h"
+#include "TerrainObjectData.h"
 
 struct Data {
  public:
@@ -34,14 +35,18 @@ struct Data {
   TerrainData water;
   TerrainData lava;
   TerrainData road;
+  TerrainData asphaltedBridgeTerrain;
+
+  TerrainObjectData asphaltedBridgeObject;
+  TerrainObjectData rockObject;
 
   Data() {
-    ticksPerSec = 40;
+    ticksPerSec = 60;
     miliSecsPerTick =
         (unsigned long) std::lround((1 / (float) ticksPerSec) * 1000);
 
-    playerInitialTerritories = 1;
-    playerInitialUnits = 3;
+    playerInitialTerritories = 0;
+    playerInitialUnits = 0;
 
     defaultDriver = R_GRUNT;
     bullet.type = WeaponType::BULLET;
@@ -57,11 +62,12 @@ struct Data {
     grunt.weapon = bullet;
     grunt.ticksUntilFire = getTickAmount(0.5);
 //    grunt.health = 60;
-    grunt.health = 20;
+    grunt.health = 10;
     grunt.range = 35;//7x5
     grunt.speed = 4;
     grunt.factoryRate = 3;
-    grunt.factoryBaseTimeInSec = 575;
+//    grunt.factoryBaseTimeInSec = 575;
+    grunt.factoryBaseTimeInSec = 10;
     grunt.factoryMinimunTechLevel = 1;
 
     tough.type = UnitType::R_TOUGH;
@@ -105,6 +111,18 @@ struct Data {
     road.terrainFactor = 1.5;
     lava.type = TerrainType::LAVA;
     lava.terrainFactor = 0.1; //no importa el valor
+
+    asphaltedBridgeTerrain.type = TerrainType::ASPHALTEDBRIDGE;
+    asphaltedBridgeTerrain.terrainFactor = 1;
+
+    asphaltedBridgeObject.type = TerrainObjectType::BRIDGE;
+    asphaltedBridgeObject.passable = true;
+    asphaltedBridgeObject.health = 10;//1000
+    asphaltedBridgeObject.size = 50;
+    rockObject.type = TerrainObjectType::ROCK;
+    rockObject.passable = false;
+    rockObject.health = 10;//1000
+    rockObject.size = 50;
   }
   UnitData getData(UnitType type) {
     switch (type) {

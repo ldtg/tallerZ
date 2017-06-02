@@ -37,7 +37,7 @@ class GameController_build_test : public ::testing::Test {
     teamA.addPlayer(&playerA);
     teamB.addPlayer(&playerB);
 
-    build = new Build(data.fort, Position(50, 50), playerA, teamA, 3);
+    build = new Build(data.fort, Position(50, 250), playerA, teamA, 3);
     builds.emplace(build->getId(), build);
     std::map<BuildID, BuildState> buildmap;
     buildmap.emplace(build->getId(), build->getBuildState());

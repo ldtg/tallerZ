@@ -36,3 +36,6 @@ TerrainType Tile::getTerrainType() const {
 void Tile::makeNotPassable() {
   passable = false;
 }
+void Tile::makePassable() {
+  passable = true;
+}

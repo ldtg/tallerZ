@@ -28,3 +28,6 @@ bool Team::isTeamAlive() const {
 }
 Team::Team() {
 }
+TeamID Team::getID() const {
+  return id;
+}

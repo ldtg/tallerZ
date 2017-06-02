@@ -5,13 +5,11 @@
 AStar::AStar(const Map &map, const Unit *unit, const Position &target)
     : map(map),
       unit(unit),
-      itile(map.getTile(unit->getCurrentPosition())),
+      itile(map.getTile(unit->getCenterPosition())),
       etile(map.getTile(target)), target(target) {
   Node *node = new Node(itile, heuristic(itile, etile));
   open.emplace(node->getTotalCost(), node);
   createdNodes.push_back(node);
-  if (!unit->canGoThrough(etile.getTerrainData())||!etile.isPassable())
-    throw UnableToFindAPathException("El destino no es transpasable por la unidad");
 }
 
 std::vector<Position> AStar::find() {
@@ -36,19 +34,11 @@ float AStar::heuristic(const Tile &itile,
   return itile.getCenterPosition().chebyshevDistance(etile.getCenterPosition());
 }
 
-std::queue<Position> AStar::makeQueue(std::vector<Position> pathVector) {
-  std::queue<Position> path;
-  for (Position &pos : pathVector)
-    path.push(pos);
-  if (etile.getCenterPosition() != target)
-    path.push(target);
-  return path;
-}
-
 std::vector<Node *> AStar::getNeighbors(Node *current) {
   std::vector<Node *> vector;
   for (Tile &tile : map.getNeighbors(current->getTile())) {
-    if (unit->canGoThrough(tile.getTerrainData()) && tile.isPassable()) {
+    if (unit->canGoThrough(tile.getTerrainData())
+        && (tile.isPassable() || tile == etile)) {
       Node *auxNode = new Node(tile,
                                current,
                                heuristic(tile, etile));
