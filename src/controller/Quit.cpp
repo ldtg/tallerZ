@@ -1,4 +1,4 @@
-#include <model/Events/QuitEvent.h>
+#include <model/Events/view/QuitEvent.h>
 #include "Quit.h"
 
 Quit::Quit() : Handler() {}

@@ -32,30 +32,30 @@ set(SOURCE_FILES
         src/model/Data.h
         src/model/Robot.cpp
         src/model/Robot.h
-        src/model/Events/model/UnitAttackEvent.cpp
-        src/model/Events/model/UnitAttackEvent.h
+        src/model/Events/model/unit/UnitAttackEvent.cpp
+        src/model/Events/model/unit/UnitAttackEvent.h
         src/Exceptions/model_exceptions/UnitNotFoundException.cpp
         src/Exceptions/model_exceptions/UnitNotFoundException.h
         src/model/UnitData.h
         src/model/UnitFactory.cpp
         src/model/UnitFactory.h
         src/model/TerrainData.h
-        src/model/Events/model/UnitMoveEvent.cpp
-        src/model/Events/model/UnitMoveEvent.h
+        src/model/Events/model/unit/UnitMoveEvent.cpp
+        src/model/Events/model/unit/UnitMoveEvent.h
         src/model/Events/Event.cpp
         src/model/Events/Event.h
-        src/model/Events/model/UnitDamageReceiveEvent.cpp
-        src/model/Events/model/UnitDamageReceiveEvent.h
-        src/model/Events/model/UnitDeathEvent.cpp
-        src/model/Events/model/UnitDeathEvent.h
+        src/model/Events/model/unit/UnitDamageReceiveEvent.cpp
+        src/model/Events/model/unit/UnitDamageReceiveEvent.h
+        src/model/Events/model/unit/UnitDeathEvent.cpp
+        src/model/Events/model/unit/UnitDeathEvent.h
         src/model/Vehicle.cpp
         src/model/Vehicle.h
         src/model/Events/Pointer/LeftClickEvent.cpp
         src/model/Events/Pointer/LeftClickEvent.h
         src/model/Events/EventHandler.cpp
         src/model/Events/EventHandler.h
-        src/model/Events/QuitEvent.cpp
-        src/model/Events/QuitEvent.h
+        src/model/Events/view/QuitEvent.cpp
+        src/model/Events/view/QuitEvent.h
         src/model/Events/Pointer/RightClickEvent.cpp
         src/model/Events/Pointer/RightClickEvent.h
         src/model/Model.cpp
@@ -64,12 +64,12 @@ set(SOURCE_FILES
         src/model/GameController.cpp
         src/model/Bullet.cpp
         src/model/Bullet.h
-        src/model/Events/model/BulletNewEvent.cpp
-        src/model/Events/model/BulletNewEvent.h
+        src/model/Events/model/bullet/BulletNewEvent.cpp
+        src/model/Events/model/bullet/BulletNewEvent.h
         src/model/BulletID.cpp
         src/model/BulletID.h
-        src/model/Events/model/BulletHitEvent.cpp
-        src/model/Events/model/BulletHitEvent.h
+        src/model/Events/model/bullet/BulletHitEvent.cpp
+        src/model/Events/model/bullet/BulletHitEvent.h
         src/model/BulletState.cpp
         src/model/BulletState.h
         src/model/Player.cpp
@@ -107,21 +107,21 @@ set(SOURCE_FILES
         src/model/GaiaPlayer.cpp
         src/model/GaiaPlayer.h
 
-        src/model/Events/model/BuildDamageEvent.cpp
-        src/model/Events/model/BuildDamageEvent.h
-        src/model/Events/model/BuildDestroyedEvent.cpp
-        src/model/Events/model/BuildDestroyedEvent.h
-        src/model/Events/model/UnitCreateEvent.cpp
-        src/model/Events/model/UnitCreateEvent.h
+        src/model/Events/model/build/BuildDamageEvent.cpp
+        src/model/Events/model/build/BuildDamageEvent.h
+        src/model/Events/model/build/BuildDestroyedEvent.cpp
+        src/model/Events/model/build/BuildDestroyedEvent.h
+        src/model/Events/model/unit/UnitCreateEvent.cpp
+        src/model/Events/model/unit/UnitCreateEvent.h
         z_tests/tests_model/GameController_build_test.cpp
-        src/model/Events/model/UnitMoveStepEvent.cpp
-        src/model/Events/model/UnitMoveStepEvent.h
-        src/model/Events/model/BulletMoveEvent.cpp
-        src/model/Events/model/BulletMoveEvent.h
-        src/model/Events/model/BulletMoveStepEvent.cpp
-        src/model/Events/model/BulletMoveStepEvent.h
-        src/model/Events/model/UnitStillEvent.cpp
-        src/model/Events/model/UnitStillEvent.h
+        src/model/Events/model/unit/UnitMoveStepEvent.cpp
+        src/model/Events/model/unit/UnitMoveStepEvent.h
+        src/model/Events/model/bullet/BulletMoveEvent.cpp
+        src/model/Events/model/bullet/BulletMoveEvent.h
+        src/model/Events/model/bullet/BulletMoveStepEvent.cpp
+        src/model/Events/model/bullet/BulletMoveStepEvent.h
+        src/model/Events/model/unit/UnitStillEvent.cpp
+        src/model/Events/model/unit/UnitStillEvent.h
         z_tests/tests_model/GameController_objects_test.cpp
         z_tests/tests_model/GameController_win_test.cpp
         src/model/CapturableID.cpp
@@ -150,6 +150,8 @@ set(SOURCE_FILES
         src/view/View.h
         src/view/Sprite.cpp
         src/view/Sprite.h
+        src/view/VistasFactory.cpp
+        src/view/VistasFactory.h
 
         src/controller/Controller.cpp
         src/controller/Controller.h
@@ -241,13 +243,7 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Buttons/Menu_Button.h
 
         src/map_generation/Generator.cpp
-        src/map_generation/Generator.h
-        src/view/UnitAttackVista.cpp
-        src/view/UnitAttackVista.h
-        src/view/ExplosionVista.cpp
-        src/view/ExplosionVista.h
-        src/view/UnitCreateVista.cpp
-        src/view/UnitCreateVista.h)
+        src/map_generation/Generator.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

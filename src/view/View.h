@@ -9,17 +9,22 @@ class EventHandler;
 #include <string>
 #include "../model/Events/EventHandler.h"
 #include "Sprite.h"
+#include "VistasFactory.h"
 
 class View {
  private:
   Window &window;
   Panel panel;
+  VistasFactory vistasFactory;
+
   std::map<Position, ObjectMapaVista*> terrainsVista;
   std::map<BuildID, ObjectMapaVista*> buildsVista;
   std::map<UnitID, ObjectMapaVista*> unitsVista;
   std::map<BulletID, ObjectMapaVista*> bulletsVista;
   std::vector<Sprite*> explosionsVista;
+
   EventHandler &eventHandler;
+
   bool _quit;
 
   void createInitialTerrainVista(const std::map<Position, Tile> &map);

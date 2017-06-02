@@ -16,6 +16,14 @@ unsigned long Position::chebyshevDistance(const Position &other) const {
   return std::max(distanceX, distanceY);
 }
 
+unsigned long Position::manhattanDistance(const Position &other) const {
+  long
+    distanceX = std::max(this->x, other.x) - std::min(this->x, other.x);
+  long
+    distanceY = std::max(this->y, other.y) - std::min(this->x, other.x);
+  return (distanceX + distanceY);
+}
+
 unsigned long Position::euclideanDistance(const Position &other) const {
   unsigned long aux =
       std::max(std::labs(this->x - other.x), std::labs(this->y - other.y));
@@ -133,7 +141,6 @@ std::string Position::toString() const {
 long Position::getX() const {
   return x;
 }
-
 long Position::getY() const {
   return y;
 }
