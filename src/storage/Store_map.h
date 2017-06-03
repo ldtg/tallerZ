@@ -2,41 +2,41 @@
 #define TALLERZ_MAP_STORAGE_H
 
 #include <map>
-#include <tuple>
 #include <iostream>
+#include <fstream>
+#include <Exceptions/Storage_Exceptions/Storage_Exception.h>
+#include "map_generation/Generator.h"
 #include "../../json/src/json.hpp"
-#include "../model/Position.h"
-#include "../model/Tile.h"
 
 using json = nlohmann::json;
 
 /**
  * @class Store_map
- *
+ * Guarda un mapa generado por el Generator en un archivo
+ * de formato .json
  */
 class Store_map {
  private:
   std::string file_name;
-  std::map<Position, Tile> &map;
+  std::ofstream json_file;
+  Generator& generated_map;
   json j;
 
  public:
-  /*
-   * { position : {int x, int y} , Tile terrain_type : LAVA , empty : true }
-   */
-  Store_map(std::string file_name, std::map<Position, Tile> &map) :
-      file_name(file_name), map(map) {}
+  Store_map(std::string file_name, Generator& generator);
 
-  void operator()() {
-    coordinates_t coord;
-    for (auto a : this->map) {
-      coord = a.first.getCoordinates();
-      j["position"] = {std::get<0>(coord), std::get<1>(coord)};
-      j["terrain_type"] = a.second.getTerrainType();
-      j["empty"] = a.second.isEmpty();
-    }
-    std::cout << j << std::endl;
-  }
+  ~Store_map();
+
+  void operator()();
+
+  json get_json();
+
+ private:
+  void open_file();
+
+  void close_file();
+
+  void load_json();
 };
 
 #endif //TALLERZ_MAP_STORAGE_H

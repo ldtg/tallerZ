@@ -113,7 +113,7 @@ TEST(Generator_put_fort_randomly_in_territory,Generator){
       if(generator.map_positions[pos].fort){
         std::cout << "\033[1;31mF\033[0m" << " ";
       } else {
-        if (generator.map_positions[pos].factory){
+        if (generator.map_positions[pos].robot_factory){
           std::cout << "\033[1;32mf\033[0m" << " ";
         } else {
           if (generator.map_positions[pos].flag){
@@ -146,13 +146,13 @@ TEST(trace_path_test_Generator_Test,Generator){
       if(generator.map_positions[pos].fort){
         std::cout << "\033[1;31mF\033[0m" << " ";
       } else {
-        if (generator.map_positions[pos].factory){
+        if (generator.map_positions[pos].robot_factory){
           std::cout << "\033[1;32mf\033[0m" << " ";
         } else {
           if (generator.map_positions[pos].flag){
             std::cout << "\033[1;33mX\033[0m" << " ";
           } else {
-            if (generator.map_positions[pos].terrain == TERRAIN_TYPE::ROAD){
+            if (generator.map_positions[pos].terrain_type == TerrainType ::ROAD){
               std::cout << "\033[1;31mc\033[0m" << " ";
             } else {
               std::cout << generator.map_positions[generator.get_position(i,j)].territory << " ";
@@ -181,22 +181,22 @@ TEST(draw_rivers_test,Generator){
       if(generator.map_positions[pos].fort){
         std::cout << "\033[1;31mF\033[0m" << " ";
       } else {
-        if (generator.map_positions[pos].factory){
+        if (generator.map_positions[pos].robot_factory){
           std::cout << "\033[1;32mf\033[0m" << " ";
         } else {
           if (generator.map_positions[pos].flag){
             std::cout << "\033[1;33mX\033[0m" << " ";
           } else {
-            if (generator.map_positions[pos].terrain == TERRAIN_TYPE::ROAD){
+            if (generator.map_positions[pos].terrain_type == TerrainType ::ROAD){
               std::cout << "\033[1;31mc\033[0m" << " ";
             } else {
-              if (generator.map_positions[pos].terrain == TERRAIN_TYPE::WATER){
+              if (generator.map_positions[pos].terrain_type == TerrainType ::WATER){
                 std::cout << "\033[1;34mw\033[0m" << " ";
               } else {
-                if (generator.map_positions[pos].terrain == TERRAIN_TYPE::BRIDGE){
+                if (generator.map_positions[pos].bridge){
                   std::cout << "\033[1;36mB\033[0m" << " ";
                 } else {
-                  std::cout << generator.map_positions[pos].terrain << " ";
+                  std::cout << generator.map_positions[pos].terrain_type << " ";
                 }
               }
             }
@@ -224,25 +224,25 @@ TEST(put_rocks_test,Generator){
       if(generator.map_positions[pos].fort){
         std::cout << "\033[1;31mF\033[0m" << " ";
       } else {
-        if (generator.map_positions[pos].factory){
+        if (generator.map_positions[pos].robot_factory){
           std::cout << "\033[1;32mf\033[0m" << " ";
         } else {
           if (generator.map_positions[pos].flag){
             std::cout << "\033[1;33mX\033[0m" << " ";
           } else {
-            if (generator.map_positions[pos].terrain == TERRAIN_TYPE::ROAD){
+            if (generator.map_positions[pos].terrain_type == TerrainType ::ROAD){
               std::cout << "\033[1;31mc\033[0m" << " ";
             } else {
-              if (generator.map_positions[pos].terrain == TERRAIN_TYPE::WATER){
+              if (generator.map_positions[pos].terrain_type == TerrainType ::WATER){
                 std::cout << "\033[1;34mw\033[0m" << " ";
               } else {
-                if (generator.map_positions[pos].terrain == TERRAIN_TYPE::BRIDGE){
+                if (generator.map_positions[pos].bridge){
                   std::cout << "\033[1;36mB\033[0m" << " ";
                 } else {
                   if (generator.map_positions[pos].rock){
                     std::cout << "\033[1;40mR\033[0m" << " ";
                   } else {
-                    std::cout << generator.map_positions[pos].terrain << " ";
+                    std::cout << generator.map_positions[pos].terrain_type << " ";
                   }
                 }
               }
@@ -272,28 +272,32 @@ TEST(put_vehicles_test,Generator){
       if(generator.map_positions[pos].fort){
         std::cout << "\033[1;31mF\033[0m" << " ";
       } else {
-        if (generator.map_positions[pos].factory){
+        if (generator.map_positions[pos].robot_factory){
           std::cout << "\033[1;32mf\033[0m" << " ";
         } else {
-          if (generator.map_positions[pos].flag){
-            std::cout << "\033[1;33mX\033[0m" << " ";
+          if (generator.map_positions[pos].vehicle_factory){
+            std::cout << "\033[1;32mq\033[0m" << " ";
           } else {
-            if (generator.map_positions[pos].terrain == TERRAIN_TYPE::ROAD){
-              std::cout << "\033[1;31mc\033[0m" << " ";
+            if (generator.map_positions[pos].flag){
+              std::cout << "\033[1;33mX\033[0m" << " ";
             } else {
-              if (generator.map_positions[pos].terrain == TERRAIN_TYPE::LAVA){
-                std::cout << "\033[1;34mw\033[0m" << " ";
+              if (generator.map_positions[pos].bridge){
+                std::cout << "\033[1;36mB\033[0m" << " ";
               } else {
-                if (generator.map_positions[pos].terrain == TERRAIN_TYPE::BRIDGE){
-                  std::cout << "\033[1;36mB\033[0m" << " ";
+                if (generator.map_positions[pos].terrain_type == TerrainType ::LAVA){
+                  std::cout << "\033[1;34mw\033[0m" << " ";
                 } else {
-                  if (generator.map_positions[pos].rock){
-                    std::cout << "\033[1;40mR\033[0m" << " ";
+                  if (generator.map_positions[pos].terrain_type == TerrainType ::ROAD){
+                    std::cout << "\033[1;31mc\033[0m" << " ";
                   } else {
-                    if (generator.map_positions[pos].vehicle){
-                      std::cout << "\033[1;41mV\033[0m" << " ";
+                    if (generator.map_positions[pos].rock){
+                      std::cout << "\033[1;40mR\033[0m" << " ";
                     } else {
-                      std::cout << generator.map_positions[pos].terrain << " ";
+                      if (generator.map_positions[pos].vehicle){
+                        std::cout << "\033[1;41mV\033[0m" << " ";
+                      } else {
+                        std::cout << generator.map_positions[pos].terrain_type << " ";
+                      }
                     }
                   }
                 }

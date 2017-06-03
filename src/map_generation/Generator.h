@@ -33,9 +33,10 @@ puede estar en una isla, aislado del resto del mapa.
 #include <vector>
 #include <random>
 #include <model/Position.h>
-#include <map>
-
-
+#include <model/MapType.h>
+#include <model/TerrainType.h>
+#include <model/BuildType.h>
+#include <model/TerrainObjectType.h>
 
 /**@struct Delegation: utilizado unicamente en el algoritmo de distribucion de
  * territorios. */
@@ -45,41 +46,44 @@ struct Delegation{
   int tiles_left;
 };
 
-enum BUILDING { FORT, FACTORY };
-
-enum MAP_TYPE { WINTER, SPRING, HUMID, DUSTY, HELL};
-
-enum TERRAIN_TYPE { LAND, PRAIRIE, SNOW, WATER, SWAMP, LAVA, ROAD, BRIDGE};
-
-enum ROCK_TYPE { ROCK, ICE };
-
-struct territory_coords{
+/**
+ * @struct Position_Data: guarda toda la informacion de lo que tiene
+ * el mapa en las coordenadas X e Y
+ */
+struct Position_Data{
+  bool flag;
+  bool fort;
+  bool robot_factory;
+  bool rock;
+  bool bridge;
+  TerrainType terrain_type;
+  int territory;
+  bool vehicle;
+  bool vehicle_factory;
   int x;
   int y;
-  int territory;
-  bool fort;
-  bool flag;
-  bool factory;
-  bool rock;
-  bool vehicle;
-  TERRAIN_TYPE terrain;
 };
 
+class Store_map;
+
 class Generator {
+  friend class Store_map;
  public: //Para el test
+  MAP_TYPE map_type;
+  TerrainType base_terrain;
+  TerrainType river_type;
+  TerrainObjectType rock_type;
+
   const unsigned tile_amount;
   const unsigned territories;
   const unsigned map_length;
   const unsigned map_width;
+  const unsigned teams;
   unsigned tiles_per_territory;
   unsigned frame; //encuadrado
-  territory_coords * map_positions;
-  const unsigned teams;
-  std::vector<territory_coords> vertices;
-  MAP_TYPE map_type;
-  TERRAIN_TYPE base_terrain;
-  TERRAIN_TYPE river_type;
-  ROCK_TYPE rock_type;
+  Position_Data * map_positions;
+  std::vector<Position_Data> vertices;
+
   int partial_lava_water_percentage = 80;
   int total_lava_water_percentage = 10;
   int partial_rock_percentage = 80;
@@ -103,9 +107,7 @@ class Generator {
    * de unidades maximas posibles en el mapa.
    * @param max_units
    */
-  void set_max_units(int max_units){
-    this->max_units = max_units;
-  }
+  void set_max_units(int max_units);
   /**
    * set_geography
    * En funcion del tipo de mapa setea el tipo de terreno y el tipo de rio
@@ -120,7 +122,7 @@ class Generator {
    * @return : distancia entre los vértices
    */
   unsigned int
-  calc_distance(const territory_coords& v1, const territory_coords& v2) const;
+  calc_distance(const Position_Data& v1, const Position_Data& v2) const;
 
   /**
    * Dibuja una ruta entre dos vertices (fuertes o fabricas)
@@ -129,8 +131,8 @@ class Generator {
    * @param terrain_type : tipo de terreno (ruta, agua, lava...)
    * @return cantidad de tiles marcadas de determinado terreno.
    */
-  int draw_line(const territory_coords &start, const territory_coords &end,
-                TERRAIN_TYPE terrain_type);
+  int draw_line(const Position_Data &start, const Position_Data &end,
+                TerrainType terrain_type);
   /**
    * trace_paths: determina y dibuja rutas en el mapa
    */
@@ -180,7 +182,7 @@ class Generator {
    * @return : true si las coordenadas de start y end se ubican sobre la misma
    * fila o columna de alguno de los vertices (edificios).
    */
-  bool may_overlap_road(const territory_coords& start, const territory_coords& end) const;
+  bool may_overlap_road(const Position_Data& start, const Position_Data& end) const;
   /**
    * set_terrain: indica el tipo de terreno de la posicion x y.
    * Si se tiene que colocar agua o lava sobre un terreno que
@@ -189,7 +191,7 @@ class Generator {
    * @param y : coordenada Y
    * @param terrain_type
    */
-  void set_terrain(int x, int y, TERRAIN_TYPE terrain_type);
+  void set_terrain(int x, int y, TerrainType terrain_type);
 
   /**
    * can_put_rock_on_position: verifica si no hay nada que obstaculice la
@@ -197,7 +199,7 @@ class Generator {
    * @param position :posicion candidata
    * @return : true si se puede colocar una roca ahi o false en caso contrario
    */
-  bool can_put_rock_or_vehicle_on_position(const territory_coords &position);
+  bool can_put_rock_or_vehicle_on_position(const Position_Data &position);
 
   /**
    * put_rocks: coloca rocas (o hielo) por el mapa hasta alcanzar una cierta
@@ -219,7 +221,7 @@ class Generator {
    * @param territory : territorio sobre el que posicionar el edificio
    * @param building : fuerte o fabrica
    */
-  void put_building_random_in_territory(const unsigned& territory, BUILDING building);
+  void put_building_random_in_territory(const unsigned& territory, BuildType building);
 
   /**
    * belongs_to_territory
@@ -252,7 +254,7 @@ class Generator {
    * @param position : posicion de la fabrica
    * @param territory : numero de territorio.
    */
-  void put_flag_around_factory(territory_coords& position, const unsigned& territory);
+  void put_flag_around_factory(Position_Data& position, const unsigned& territory);
 
   /**
    * building_distribution_algorithm

@@ -11,8 +11,8 @@ Generator::Generator(const unsigned &width, const unsigned &length, unsigned ter
 
   calculate_tiles_per_territory();
   calculate_frame();
-  this->map_positions = new territory_coords[tile_amount];
-  memset(this->map_positions,0,sizeof(territory_coords)*tile_amount);
+  this->map_positions = new Position_Data[tile_amount];
+  memset(this->map_positions,0,sizeof(Position_Data)*tile_amount);
   set_geography();
 }
 
@@ -37,7 +37,7 @@ Delegation Generator::fill_territory(int territory, int tile_amount, int x, int 
       map_positions[pos].x = x;
       map_positions[pos].y = y;
       map_positions[pos].territory = territory;
-      map_positions[pos].terrain = base_terrain;
+      map_positions[pos].terrain_type = base_terrain;
       _tile_amount--;
       if (_tile_amount == 0) {
         fin_tiles = true;
@@ -76,7 +76,7 @@ Delegation Generator::fill_territory_backwards(int territory, int tile_amount, i
       map_positions[pos].x = x;
       map_positions[pos].y = y;
       map_positions[pos].territory = territory;
-      map_positions[pos].terrain = base_terrain;
+      map_positions[pos].terrain_type = base_terrain;
       _tile_amount--;
       if (_tile_amount == 0) {
         fin_tiles = true;
@@ -183,7 +183,7 @@ void Generator::calculate_frame() {
 Generator::~Generator() {
   delete this->map_positions;
 }
-void Generator::put_flag_around_factory(territory_coords &position,
+void Generator::put_flag_around_factory(Position_Data &position,
                                         const unsigned &territory) {
   unsigned long int i;
   Position pos(position.x, position.y);
@@ -215,9 +215,9 @@ bool Generator::belongs_to_territory(const Position &pos, const unsigned &territ
 void Generator::trace_paths() {
   bool empty_vector;
   unsigned int min_distance, distance;
-  std::vector<territory_coords> _vertices = this->vertices;
-  std::vector<territory_coords>::iterator it, jt;
-  territory_coords closest_vertex;
+  std::vector<Position_Data> _vertices = this->vertices;
+  std::vector<Position_Data>::iterator it, jt;
+  Position_Data closest_vertex;
 
   empty_vector = false;
   it = _vertices.begin();
@@ -230,37 +230,36 @@ void Generator::trace_paths() {
         closest_vertex = *jt;
       }
     }
-    draw_line(*it, closest_vertex, TERRAIN_TYPE::ROAD);
+    draw_line(*it, closest_vertex, TerrainType ::ROAD);
     it = _vertices.erase(it);
     if (it == _vertices.end()){
       empty_vector = true;
     }
   }
 }
-void Generator::set_terrain(int x, int y, TERRAIN_TYPE terrain_type) {
+void Generator::set_terrain(int x, int y, TerrainType terrain_type) {
   unsigned int pos = get_position(x,y);
-  if ((this->map_positions[pos].terrain == ROAD) && (terrain_type == SWAMP
+  if ((this->map_positions[pos].terrain_type == ROAD) && (terrain_type == SWAMP
       || terrain_type == WATER || terrain_type == LAVA)){
-    this->map_positions[pos].terrain = BRIDGE;
-  } else {
-    this->map_positions[pos].terrain = terrain_type;
+    this->map_positions[pos].bridge = true;
   }
+  this->map_positions[pos].terrain_type = terrain_type;
 }
-int Generator::draw_line(const territory_coords &start, const territory_coords &end, TERRAIN_TYPE terrain_type) {
+int Generator::draw_line(const Position_Data &start, const Position_Data &end, TerrainType terrain_type) {
   int xdiff;
   int ydiff;
   int marked_tiles = 0;
   xdiff = end.x - start.x;
   if (xdiff > 0){
     for (int i = 0; i < xdiff; i++){
-      //this->map_positions[get_position(start.x+i,start.y)].terrain = terrain_type;
+      //this->map_positions[get_position(start.x+i,start.y)].terrain_type = terrain_type;
       set_terrain((start.x + i), start.y, terrain_type);
       marked_tiles++;
     }
   }
   if (xdiff < 0){
     for (int i = 0; i < abs(xdiff); i++){
-      //this->map_positions[get_position(start.x-i,start.y)].terrain = terrain_type;
+      //this->map_positions[get_position(start.x-i,start.y)].terrain_type = terrain_type;
       set_terrain((start.x-i), start.y, terrain_type);
       marked_tiles++;
     }
@@ -269,23 +268,22 @@ int Generator::draw_line(const territory_coords &start, const territory_coords &
   ydiff = end.y - start.y;
   if ( ydiff > 0){
     for (int i = 0; i < ydiff; i++){
-      //this->map_positions[get_position(end.x,start.y+i)].terrain = terrain_type;
+      //this->map_positions[get_position(end.x,start.y+i)].terrain_type = terrain_type;
       set_terrain(end.x, start.y + i, terrain_type);
       marked_tiles++;
     }
   }
   if (ydiff < 0){
     for (int i = 0; i < abs(ydiff); i++){
-      //this->map_positions[get_position(end.x,start.y-i)].terrain = terrain_type;
+      //this->map_positions[get_position(end.x,start.y-i)].terrain_type = terrain_type;
       set_terrain(end.x, start.y - i, terrain_type);
       marked_tiles++;
     }
   }
   return marked_tiles;
 }
-void Generator::put_building_random_in_territory(const unsigned &territory, BUILDING building) {
+void Generator::put_building_random_in_territory(const unsigned &territory, BuildType building) {
   bool tile_found;
-  srand(time(NULL));
   int random_tile = rand() % tiles_per_territory;
   int i = -1;
   int j = -1;
@@ -301,13 +299,17 @@ void Generator::put_building_random_in_territory(const unsigned &territory, BUIL
   }
   this->vertices.push_back(map_positions[i]);
   switch (building){
-    case FORT:
+    case BuildType::FORT:
       map_positions[i].fort = true;
       break;
-    case FACTORY:
-      map_positions[i].factory = true;
+    case BuildType::ROBOTF:
+      map_positions[i].robot_factory = true;
       put_flag_around_factory(map_positions[i],
                               territory);
+      break;
+    case BuildType::VEHICLEF:
+      if (!map_positions[i].robot_factory)
+        map_positions[i].vehicle_factory = true;
       break;
   }
 }
@@ -332,10 +334,11 @@ void Generator::building_distribution_algorithm() {
     put_building_random_in_territory(i,FORT);
   }
   for (const auto& i : territories_with_flags_and_factories){
-    put_building_random_in_territory(i,FACTORY);
+    put_building_random_in_territory(i,ROBOTF);
+    put_building_random_in_territory(i,VEHICLEF);
   }
 }
-unsigned int Generator::calc_distance(const territory_coords &v1, const territory_coords &v2) const {
+unsigned int Generator::calc_distance(const Position_Data &v1, const Position_Data &v2) const {
   Position p1(v1.x, v1.y);
   Position p2(v2.x, v2.y);
   return p1.manhattanDistance(p2);
@@ -350,7 +353,7 @@ int Generator::calc_tile_amount(int total_percentage, int partial_percentage) {
 
 void Generator::trace_rivers() {
   int tiles_marked;
-  territory_coords start, end;
+  Position_Data start, end;
   bool filled;
 
   int lava_water_tile_amount = calc_tile_amount(
@@ -378,7 +381,7 @@ void Generator::set_geography() {
     case WINTER:
       this->base_terrain = SNOW;
       this->river_type = WATER;
-      this->rock_type = ICE;
+      this->rock_type = ICEROCK;
       break;
     case DUSTY:
       this->base_terrain = LAND;
@@ -402,7 +405,7 @@ void Generator::set_geography() {
       break;
   }
 }
-bool Generator::may_overlap_road(const territory_coords &start, const territory_coords &end) const {
+bool Generator::may_overlap_road(const Position_Data &start, const Position_Data &end) const {
   bool may_overlap = false;
   for (const auto& i: this->vertices){
     if (i.x == start.x || i.x == end.x || i.y == start.y || i.y == end.y ){
@@ -419,10 +422,10 @@ void Generator::set_rocks_percentages(int total_percentage, int partial_percenta
   this->total_rock_percentage = total_percentage;
   this->partial_rock_percentage = partial_percentage;
 }
-bool Generator::can_put_rock_or_vehicle_on_position(const territory_coords &position) {
-  return (!position.flag && !position.factory && !position.fort
-      && !position.rock && (position.terrain == SNOW
-      || position.terrain == LAND || position.terrain == PRAIRIE));
+bool Generator::can_put_rock_or_vehicle_on_position(const Position_Data &position) {
+  return (!position.flag && !position.robot_factory && !position.fort
+      && !position.rock && !position.vehicle_factory && (position.terrain_type == SNOW
+      || position.terrain_type == LAND || position.terrain_type == PRAIRIE));
 }
 void Generator::put_rocks() {
   int rocks = 0;
@@ -450,4 +453,7 @@ void Generator::put_vehicles() {
     }
     vehicles_filled = (vehicles >= abandoned_vehicles_amount);
   }
+}
+void Generator::set_max_units(int max_units) {
+  this->max_units = max_units;
 }

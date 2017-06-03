@@ -134,6 +134,7 @@ set(SOURCE_FILES
         src/model/Events/model/CaptureEvent.h
         src/model/CapturableVehicle.cpp
         src/model/CapturableVehicle.h
+        src/model/MapType.h
         z_tests/tests_model/GameControllerCapturables_test.cpp
 
         src/view/Texture.cpp
@@ -178,7 +179,11 @@ set(SOURCE_FILES
         src/Exceptions/model_exceptions/UnableToFindAPathException.h
         src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
         src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h
-        
+        src/Exceptions/Map_Generator_Exceptions/Generator_Exception.h
+        src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp
+        src/Exceptions/Storage_Exceptions/Storage_Exception.h
+        src/Exceptions/Storage_Exceptions/Storage_Exception.cpp
+
         src/header_for_tests.h
         z_tests/tests_front_end/FEnd_test.cpp
         z_tests/tests_model/GameController_test.cpp
@@ -189,8 +194,7 @@ set(SOURCE_FILES
         z_tests/tests_model/AStar_test.cpp
         z_tests/tests_view/Window_test.cpp
         z_tests/tests_generator/Generator_test.cpp
-        z_tests/tests_view/Window_test.cpp
-
+        z_tests/tests_storage/store_map_tests.cpp
 
         src/SDL_START.cpp
         src/SDL_START.h
@@ -243,7 +247,13 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Buttons/Menu_Button.h
 
         src/map_generation/Generator.cpp
-        src/map_generation/Generator.h)
+        src/map_generation/Generator.h
+
+        src/storage/Map_Loader.h
+        src/storage/Map_Loader.cpp
+        src/storage/Store_map.cpp
+        src/storage/Store_map.h
+        )
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

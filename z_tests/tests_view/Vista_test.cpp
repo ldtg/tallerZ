@@ -12,6 +12,7 @@
 #include <model/Data.h>
 #include <model/UnitFactory.h>
 #include <model/GameController.h>
+#include <storage/Map_Loader.h>
 
 TEST(VistaTest, Window) {
 
@@ -104,5 +105,47 @@ TEST(VistaTest, Window) {
     }
   } catch (const std::exception &e) {
     std::cout << e.what() << std::endl;
+  }
+}
+
+TEST(VistaTest_Usando_Map_Loader, Window){
+  Map_Loader map_loader("mapa.json");
+  map_loader.load_file();
+  map_loader.load_configuration();
+  map_loader.set_players();
+  map_loader.set_teams();
+  map_loader.build_map();
+  Map map(map_loader.get_loaded_map(), map_loader.get_buildmap(), 4, 4);
+
+  std::map<UnitID, Unit *> units;
+  GameController gameController(map, units, map_loader.get_builds());
+
+  EventHandler eventHandler;
+
+  Model model(map, gameController);
+  Window window;
+  View view(map, eventHandler, window);
+
+  eventHandler.setView(&view);
+  eventHandler.setModel(&model);
+
+  SDL_Event e;
+
+  Controller controller(eventHandler);
+
+  //While application is running
+  while (!view.quit()) {
+
+    std::vector<Event *> events = gameController.tick();
+    while (SDL_PollEvent(&e) != 0) {
+      controller.handle(&e);
+    }
+
+    if (!events.empty()) {
+      for (auto event : events) {
+        eventHandler.add(event);
+      }
+    }
+    view.update();
   }
 }
