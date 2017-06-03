@@ -2,7 +2,6 @@
 // Created by darius on 23/05/17.
 //
 
-#include <front_end/SDL_Interface/Menus/Production/Buttons/Expand_Button.h>
 #include <front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h>
 #include <front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h>
 #include "Production_Menu_1.h"

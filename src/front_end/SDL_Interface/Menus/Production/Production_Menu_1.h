@@ -17,7 +17,6 @@ class Production_Menu_1 : public Menu {
   const int width = 111;
   const int length = 79;
   Window &window;
-  Production_Menu_2 * joint_menu = NULL;
 
   Label * time = NULL;
   Label *status = NULL;
