@@ -3,7 +3,6 @@
 #include "Z_RUNNER.h"
 #include "SDL_START.h"
 #include "front_end/SDL_Interface/Menus/Production/Production_Menu_1.h"
-#include "front_end/SDL_Interface/Menus/Production/Production_Menu_2.h"
 
 TEST(ProductionMenu,production_menu_1){
   SDL_START start;
@@ -32,10 +31,8 @@ TEST(ProductionMenuExpansionWithDisplacement, production_menu_1){
   Window window;
   Production_Menu_1 menu(window, 100, 100);
   SDL_Delay(3000);
-  menu.expand_menu();
-  SDL_Delay(3000);
-  menu.displace_toXY(400,400);
-  SDL_Delay(3000);
+  menu.displace_toXY(300,300);
+  SDL_Delay(6000);
 }
 /*
 TEST(FrontEndTestWithSQL,Z_RUNNER){
