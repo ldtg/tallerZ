@@ -1,4 +1,5 @@
 #include "Unit.h"
+#include "Data.h"
 #include <algorithm>
 #include <iostream>
 
@@ -143,18 +144,18 @@ bool Unit::hasDamagesToReceive() const {
 }
 
 Unit::Unit(const Position &current,
-           const UnitData &data,
+           const UnitData &unitData,
            Player &owner,
            Team &team)
     : owner(&owner), team(&team),
       currentPosition(current),
-      weapon(data.weapon),
-      attackCounterBase(data.ticksUntilFire),
+      weapon(unitData.weapon),
+      attackCounterBase(data.getTickAmount(unitData.secsUntilFire)),
       attackCounterActual(attackCounterBase),
-      baseSpeed(data.speed),
-      range(data.range),
-      health(data.health),
-      id(data.type),
+      baseSpeed(unitData.speed),
+      range(unitData.range * data.rangeMultipliquer),
+      health(unitData.health),
+      id(unitData.type),
       movState(), firstAttack(true),
       hunted(nullptr), capturable(nullptr) {
 
