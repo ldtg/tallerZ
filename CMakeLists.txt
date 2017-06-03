@@ -200,16 +200,12 @@ set(SOURCE_FILES
         src/SDL_START.h
         src/Z_RUNNER.cpp
         src/Z_RUNNER.h
-        src/front_end/SDL_Interface/Menus/Production/Buttons/Expand_Button.cpp
-        src/front_end/SDL_Interface/Menus/Production/Buttons/Expand_Button.h
         src/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp
         src/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.h
         src/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp
         src/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h
         src/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp
         src/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h
-        src/front_end/SDL_Interface/Menus/Production/Production_Menu_2.cpp
-        src/front_end/SDL_Interface/Menus/Production/Production_Menu_2.h
         src/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp
         src/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.h
         src/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h
@@ -231,8 +227,6 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Menus/Main/main_menu.h
         src/front_end/SDL_Interface/Menus/Production/Production_Menu_1.cpp
         src/front_end/SDL_Interface/Menus/Production/Production_Menu_1.h
-        src/front_end/SDL_Interface/Menus/Production/Production_Menu_2.cpp
-        src/front_end/SDL_Interface/Menus/Production/Production_Menu_2.h
         src/front_end/SDL_Interface/Menus/Production/Units_Queue.h
         src/front_end/SDL_Interface/Menus/Production/Units_Queue.cpp
         src/front_end/SDL_Interface/Menus/Menu.cpp

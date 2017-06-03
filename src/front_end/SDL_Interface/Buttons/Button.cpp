@@ -50,7 +50,7 @@ void Button::load_texture_up(const std::string &path) {
  */
 void Button::load_texture_down(const std::string &path) {
   try {
-    this->button_up = new Texture(path, window);
+    this->button_down = new Texture(path, window);
   } catch (const std::exception& e){
     throw Front_end_exception("Button::load_texture_down: %s\n",e.what());
   }
