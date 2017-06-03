@@ -12,6 +12,7 @@
 struct Data {
  public:
   unsigned short ticksPerSec;
+  unsigned short rangeMultipliquer;
   unsigned long miliSecsPerTick;
   unsigned short playerInitialTerritories;
   unsigned short playerInitialUnits;
@@ -23,9 +24,17 @@ struct Data {
   Weapon laser;
   Weapon rocket;
 
-  UnitData grunt;
-  UnitData tough;
-  UnitData jeep;
+  UnitData r_grunt;
+  UnitData r_tough;
+  UnitData r_pyro;
+  UnitData r_sniper;
+  UnitData r_laser;
+  UnitData r_psycho;
+  UnitData v_jeep;
+  UnitData v_mtank;
+  UnitData v_ltank;
+  UnitData v_htank;
+  UnitData v_mml;
 
   BuildData fort;
   BuildData robotFactory;
@@ -45,50 +54,51 @@ struct Data {
     miliSecsPerTick =
         (unsigned long) std::lround((1 / (float) ticksPerSec) * 1000);
 
-    playerInitialTerritories = 0;
-    playerInitialUnits = 0;
-
+    playerInitialTerritories = 1;
+    playerInitialUnits = 3;
     defaultDriver = R_GRUNT;
+    //para aumentar el rango de las unidades
+    rangeMultipliquer = 6;
+
     bullet.type = WeaponType::BULLET;
     bullet.damage = 2;
     bullet.isExplosive = false;
     bullet.speed = 0; //llega instantaneamente
+
     rocket.type = WeaponType::ROCKET;
     rocket.damage = 25;
     rocket.isExplosive = true;
     rocket.speed = 13; // 12 es la veloc max del vehiculo mas rapido creo
 
-    grunt.type = UnitType::R_GRUNT;
-    grunt.weapon = bullet;
-    grunt.ticksUntilFire = getTickAmount(0.5);
-//    grunt.health = 60;
-    grunt.health = 10;
-    grunt.range = 35;//7x5
-    grunt.speed = 4;
-    grunt.factoryRate = 3;
-//    grunt.factoryBaseTimeInSec = 575;
-    grunt.factoryBaseTimeInSec = 10;
-    grunt.factoryMinimunTechLevel = 1;
+    r_grunt.type = UnitType::R_GRUNT;
+    r_grunt.weapon = bullet;
+    r_grunt.secsUntilFire = 0.5;
+    r_grunt.health = 10;
+    r_grunt.range = 7;//el rango lo aumentan solo las unidades con el range mult
+    r_grunt.speed = 4;
+    r_grunt.factoryRate = 3;
+    r_grunt.factoryBaseTimeInSec = 10;
+    r_grunt.factoryMinimunTechLevel = 1;
 
-    tough.type = UnitType::R_TOUGH;
-    tough.weapon = rocket;
-    tough.ticksUntilFire = getTickAmount(0.5);
-    tough.health = 300;
-    tough.range = 5;
-    tough.speed = 4;
-    tough.factoryRate = 2;
-    tough.factoryBaseTimeInSec = 42;//742
-    tough.factoryMinimunTechLevel = 2;
+    r_tough.type = UnitType::R_TOUGH;
+    r_tough.weapon = rocket;
+    r_tough.secsUntilFire = 0.5;
+    r_tough.health = 300;
+    r_tough.range = 5;
+    r_tough.speed = 4;
+    r_tough.factoryRate = 2;
+    r_tough.factoryBaseTimeInSec = 42;//742
+    r_tough.factoryMinimunTechLevel = 2;
 
-    jeep.type = UnitType::V_JEEP;
-    jeep.weapon = bullet;
-    jeep.ticksUntilFire = getTickAmount(0.17);//1/6
-    jeep.health = 10;
-    jeep.range = 30;//6x5
-    jeep.speed = 8;
-    jeep.factoryRate = 1;
-    jeep.factoryBaseTimeInSec = 660;
-    jeep.factoryMinimunTechLevel = 1;
+    v_jeep.type = UnitType::V_JEEP;
+    v_jeep.weapon = bullet;
+    v_jeep.secsUntilFire = 0.17;//1/6
+    v_jeep.health = 10;
+    v_jeep.range = 30;//6x5
+    v_jeep.speed = 8;
+    v_jeep.factoryRate = 1;
+    v_jeep.factoryBaseTimeInSec = 660;
+    v_jeep.factoryMinimunTechLevel = 1;
 
     fort.type = BuildType::FORT;
 //    fort.health = 1000;
@@ -126,38 +136,55 @@ struct Data {
   }
   UnitData getData(UnitType type) {
     switch (type) {
-      case R_GRUNT:return grunt;
-      case V_JEEP:return jeep;
-      case R_TOUGH: return tough;
+      case R_GRUNT:return r_grunt;
+      case R_TOUGH:return r_tough;
+      case R_LASER:return r_laser;
+      case R_PSYCHO:return r_psycho;
+      case R_PYRO:return r_pyro;
+      case R_SNIPER:return r_sniper;
+      case V_JEEP:return v_jeep;
+      case V_LTANK:return v_ltank;
+      case V_MTANK:return v_mtank;
+      case V_HTANK:return v_htank;
+      case V_MML:return v_mml;
     }
   }
   BuildData getData(BuildType type) {
     switch (type) {
-      case FORT:return fort; //MAIAMEEEEEEEE
+      case BuildType::FORT : return fort;
       case BuildType::ROBOTF : return robotFactory;
       case BuildType::VEHICLEF : return vehicleFactory;
-      default:return fort;//nunca deberia llegar
+      default:return fort;
     }
   }
   std::vector<UnitType> getFabUnits(const BuildType &buildType,
                                     unsigned short techLevel) {
     std::vector<UnitType> aux;
-    switch (buildType) {
-      case FORT: {
-        aux.push_back(UnitType::R_GRUNT);
-        aux.push_back(UnitType::V_JEEP);
-        if (techLevel > 1)
-          aux.push_back(UnitType::R_TOUGH);
-        break;
-      }
-      case ROBOTF: {
-        aux.push_back(UnitType::R_GRUNT);
-        if (techLevel > 1)
-          aux.push_back(UnitType::R_TOUGH);
-      }
-      case VEHICLEF: {
-        aux.push_back(UnitType::V_JEEP);
-      }
+    if (buildType == ROBOTF || buildType == FORT) {
+      if (techLevel > getData(R_GRUNT).factoryMinimunTechLevel)
+        aux.push_back(R_GRUNT);
+      if (techLevel > getData(R_TOUGH).factoryMinimunTechLevel)
+        aux.push_back(R_TOUGH);
+      /*if (techLevel > getData(R_SNIPER).factoryMinimunTechLevel)
+        aux.push_back(R_SNIPER);
+      if (techLevel > getData(R_PYRO).factoryMinimunTechLevel)
+        aux.push_back(R_PYRO);
+      if (techLevel > getData(R_PSYCHO).factoryMinimunTechLevel)
+        aux.push_back(R_PSYCHO);
+      if (techLevel > getData(R_LASER).factoryMinimunTechLevel)
+        aux.push_back(R_LASER);*/
+    }
+    if (buildType == VEHICLEF || buildType == FORT) {
+      if (techLevel > getData(V_JEEP).factoryMinimunTechLevel)
+        aux.push_back(V_JEEP);
+      /*if (techLevel > getData(V_LTANK).factoryMinimunTechLevel)
+        aux.push_back(V_LTANK);
+      if (techLevel > getData(V_MTANK).factoryMinimunTechLevel)
+        aux.push_back(V_MTANK);
+      if (techLevel > getData(V_HTANK).factoryMinimunTechLevel)
+        aux.push_back(V_HTANK);
+      if (techLevel > getData(V_MML).factoryMinimunTechLevel)
+        aux.push_back(V_MML);*/
     }
     return aux;
   }

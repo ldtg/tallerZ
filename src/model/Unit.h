@@ -37,7 +37,7 @@ class Unit : public Attackable {
   std::vector<unsigned short> damagesToReceive;
 
   Unit(const Position &current,
-       const UnitData &data,
+       const UnitData &unitData,
        Player& owner,
        Team &team);
 
