@@ -14,6 +14,8 @@ void Unit::move(const std::vector<Position> &movementsPositions) {
 void Unit::attack(Attackable *other) {
   this->movState.hunting();
   this->hunted = other;
+  this->firstAttack = true;
+  this->attackCounterActual = this->attackCounterBase;
 }
 
 bool Unit::isInRange(Attackable *other) {
@@ -31,6 +33,9 @@ void Unit::hunt(const std::vector<Position> &movementsPositions,
   this->movementsPositions = movementsPositions;
   this->movState.hunting();
   this->hunted = other;
+  this->firstAttack = true;
+  this->attackCounterActual = this->attackCounterBase;
+
 }
 
 Position Unit::nextMovePosition() const {
@@ -38,7 +43,6 @@ Position Unit::nextMovePosition() const {
     Position aux = currentPosition;
     aux.move(movementsPositions.front());
     return aux;
-
   } else {
     return currentPosition;
   }
@@ -72,19 +76,15 @@ bool Unit::attackedInRange() {
       < range;
 }
 
-bool Unit::isHunting() {
-  return this->movState.isHunting();
+bool Unit::isAttacking() {
+  return this->movState.isHunting() || this->movState.isAutoAttacking();
 }
 
 bool Unit::timeToAttack() {
+  this->firstAttack = false;
   if (attackCounterActual == 0) {
-    if (hunted->isAlive()) {
-      attackCounterActual = attackCounterBase;
-      return true;
-    } else {
-      this->still();
-      return false;
-    }
+    attackCounterActual = attackCounterBase;
+    return true;
   } else {
     attackCounterActual--;
   }
@@ -155,7 +155,7 @@ Unit::Unit(const Position &current,
       range(data.range),
       health(data.health),
       id(data.type),
-      movState(),
+      movState(), firstAttack(true),
       hunted(nullptr), capturable(nullptr) {
 
 }
@@ -196,4 +196,16 @@ void Unit::kill() {
 }
 Capturable *Unit::getCapturable() {
   return capturable;
+}
+bool Unit::isFirstAttack() const {
+  return firstAttack;
+}
+void Unit::autoAttack(Attackable *hunted) {
+  this->movState.autoAttacking();
+  this->hunted = hunted;
+  this->firstAttack = true;
+  this->attackCounterActual = this->attackCounterBase;
+}
+bool Unit::isAutoAttacking() const {
+  return movState.isAutoAttacking();
 }

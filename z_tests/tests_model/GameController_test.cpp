@@ -90,7 +90,7 @@ TEST_F(GameController_test, robotAttack) {
   std::vector<Event *> aux;
   GameController gameController(map, units);
   gameController.attack(robotA->getId(), robotB->getId());
-  while (robotA->isHunting()) {
+  while (robotA->isAttacking()) {
     aux = gameController.tick();
     events.insert(events.end(), aux.begin(), aux.end());
   }

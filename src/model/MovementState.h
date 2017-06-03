@@ -1,7 +1,7 @@
 #ifndef TALLERZ_MOVEMENTSTATE_H
 #define TALLERZ_MOVEMENTSTATE_H
 
-enum MovementStateEnum { STILL, CAPTURING, MOVING, HUNTING };
+enum MovementStateEnum { STILL, CAPTURING, MOVING, HUNTING, AUTOATTACKING };
 struct MovementState {
  private:
   MovementStateEnum movementState;
@@ -21,17 +21,23 @@ struct MovementState {
   void hunting() {
     movementState = HUNTING;
   }
-  bool isStill() const{
+  void autoAttacking() {
+    movementState = AUTOATTACKING;
+  }
+  bool isStill() const {
     return movementState == STILL;
   }
-  bool isMoving() const{
+  bool isMoving() const {
     return movementState == MOVING;
   }
-  bool isHunting() const{
+  bool isHunting() const {
     return movementState == HUNTING;
   }
-  bool isCapturing() const{
+  bool isCapturing() const {
     return movementState == CAPTURING;
+  }
+  bool isAutoAttacking() const {
+    return movementState == AUTOATTACKING;
   }
 };
 #endif //TALLERZ_MOVEMENTSTATE_H

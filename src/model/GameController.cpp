@@ -194,12 +194,12 @@ void GameController::unitsTick(std::vector<Event *> &events) {
     if (current->isAlive()) {
       if (current->isMoving())
         move(current, events, it_units);
-      else if (current->isHunting())
+      else if (current->isAttacking())
         hunt(current, events, it_units);
       else if (current->isCapturing())
         capture(current, events, it_units);
       else if (current->isStill()) {
-        autoAttack(current, it_units);
+        autoAttack(current, events, it_units);
       }
 
       //El ++it_units esta adentro de los metodos porque el capture lo puede
@@ -243,8 +243,6 @@ void GameController::move(Unit *unit,
   ++it;
 }
 
-bool noEntro = true;
-
 void GameController::hunt(Unit *unit,
                           std::vector<Event *> &events,
                           std::map<UnitID, Unit *>::iterator &it) {
@@ -259,29 +257,34 @@ void GameController::hunt(Unit *unit,
   if (unit->attackedInRange()
       && map.canPass(unit->getCenterPosition(),
                      hunted->getAttackPosition(unit->getCenterPosition()))) {
+    if (unit->isFirstAttack())
+      events.push_back(new UnitAttackEvent(unit->getId()));
     if (unit->timeToAttack()) {
-      if (noEntro) {
-        noEntro = false;
-        events.push_back(new UnitAttackEvent(unit->getId()));
-      }
+
       this->bullets.push_back(unit->createBullet());
       events.push_back(new BulletNewEvent(this->bullets.front()));
     }
+    if (hunted->isMoving())
+      unit->addMove(hunted->nextMovePosition());
     ++it;
   } else {
-    noEntro = true;
-    this->move(unit, events, it);
+    if (unit->isAutoAttacking()){
+      unit->still();
+      events.push_back(new UnitStopAttackEvent(unit->getId()));
+    } else {
+      this->move(unit, events, it);
+      if (hunted->isMoving())
+        unit->addMove(hunted->nextMovePosition());
+    }
   }
 
-  if (hunted->isMoving())
-    //en vez de recalcular el path uso los movs del atacado
-    unit->addMove(hunted->nextMovePosition());
+
 }
 
 void GameController::capture(Unit *unit,
                              std::vector<Event *> &events,
                              std::map<UnitID, Unit *>::iterator &it) {
- if (!unit->hasMovesToDo()) { //llego
+  if (!unit->hasMovesToDo()) { //llego
     unit->still();
     Capturable *capturable = unit->getCapturable();
     capturable->capture(unit->getId(), unit->getOwner(), unit->getOwnerTeam());
@@ -316,7 +319,8 @@ void GameController::capture(Unit *unit,
       map.removeCapturable(capturable->getID());
       delete capturable;
     } else {
-      map.updateCapturable(capturable->getID(), capturable->getCapturableState());
+      map.updateCapturable(capturable->getID(),
+                           capturable->getCapturableState());
     }
 
   } else {
@@ -325,16 +329,15 @@ void GameController::capture(Unit *unit,
   }
 }
 
-void GameController::autoAttack(Unit *current,
+void GameController::autoAttack(Unit *current, std::vector<Event *> &events,
                                 std::map<UnitID, Unit *>::iterator &it) {
-/*
+
   for (auto &par: units) {
     if (current->isInRange(par.second)
-        && current->getId() != par.first) {
-      this->attack(current->getId(), par.second->getId());
+        && current->getId() != par.first &&current->canAttack(par.second)) {
+      current->autoAttack(par.second);
     }
   }
-*/
   ++it;
 }
 

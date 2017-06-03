@@ -25,7 +25,7 @@ bool CapturableVehicle::isRecapturable() const {
   return false;
 }
 bool CapturableVehicle::canBeCapturedBy(const UnitID &id) const {
-  switch (id.getType()) {
+  switch (id.getType()) {//TODO: agregar robots
     case UnitType::R_GRUNT: return true;
     case UnitType::R_TOUGH: return true;
     default:return false;

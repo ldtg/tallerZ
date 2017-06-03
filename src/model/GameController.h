@@ -31,7 +31,7 @@ class GameController {
   void capture(Unit *unit,
                std::vector<Event *> &events,
                std::map<UnitID, Unit *>::iterator &it);
-  void autoAttack(Unit *current, std::map<UnitID, Unit *>::iterator &it);
+  void autoAttack(Unit *current,std::vector<Event *> &events, std::map<UnitID, Unit *>::iterator &it);
   void unitReceiveDamage(Unit *current, std::vector<Event *> &events) const;
 
   void doTick(std::vector<Event *> &events);

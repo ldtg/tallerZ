@@ -30,7 +30,7 @@ class Unit : public Attackable {
   const unsigned short attackCounterBase;
   unsigned short health;
   unsigned short attackCounterActual;
-
+  bool firstAttack;
   Attackable *hunted;
   Capturable *capturable;
   std::vector<Position> movementsPositions;
@@ -67,9 +67,12 @@ class Unit : public Attackable {
   virtual bool isMoving() const override;
   virtual bool isCapturing() const;
   virtual bool isStill() const;
+  virtual bool isFirstAttack() const;
+  virtual void autoAttack(Attackable *hunted) ;
+  virtual bool isAutoAttacking() const;
   virtual unsigned short getMovementSpeed(float terrainFactor) const = 0;
   void kill();
-  bool isHunting();
+  bool isAttacking();
   Attackable *getHunted();
   Capturable *getCapturable();
   Weapon getWeapon();
