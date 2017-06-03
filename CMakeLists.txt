@@ -247,7 +247,11 @@ set(SOURCE_FILES
         src/storage/Map_Loader.cpp
         src/storage/Store_map.cpp
         src/storage/Store_map.h
-        )
+
+        z_sounds/Sound_event.h
+        z_sounds/Sound_event.cpp
+
+        src/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.cpp src/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

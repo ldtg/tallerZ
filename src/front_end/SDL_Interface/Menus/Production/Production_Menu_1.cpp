@@ -2,8 +2,7 @@
 // Created by darius on 23/05/17.
 //
 
-#include <front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h>
-#include <front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h>
+
 #include "Production_Menu_1.h"
 /**
  * constructor
@@ -59,10 +58,6 @@ void Production_Menu_1::displace_toXY(int x, int y) {
   this->renderQuad.x = x;
   this->renderQuad.y = y;
   this->background->renderize(&window, &this->renderQuad);
-
-  if(this->joint_menu != NULL){
-    joint_menu->displace_toXY(renderQuad.x + renderQuad.w, renderQuad.y);
-  }
 
   this->set_absolute_position(_time_rect, time_rect);
   this->time->set_rectangle(time_rect);
@@ -123,7 +118,6 @@ void Production_Menu_1::show_health_level(int health) {
  * destructor
  */
 Production_Menu_1::~Production_Menu_1() {
-  if(this->joint_menu != NULL) delete this->joint_menu;
   if(this->time != NULL) delete this->time;
   if(this->status != NULL) delete this->status;
   if(this->health != NULL) delete this->health;

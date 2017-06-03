@@ -10,9 +10,10 @@
 #include <string>
 #include <view/Texture.h>
 #include "Exceptions/Sdl_Exceptions/Sdl_Exception.h"
-/** TODO ¿SIRVE O NO SIRVE?
- * @class Menu
- * Clase padre de la que heredan los distintos menus del juego.
+
+
+/**
+ * @class Menu: clase madre (@virtual) de la que heredan los distintos menus del juego.
  */
 class Menu {
  protected:

@@ -25,16 +25,16 @@
 #define ERROR -1
 
 class Sound_event {
-protected:
-    Mix_Chunk * sound;
-    int replays;
-public:
-    Sound_event(char * sound_file_path, unsigned int replays);
+ protected:
+  Mix_Chunk *sound;
+  int replays;
 
-    void play();
+ public:
+  Sound_event(char *sound_file_path, unsigned int replays);
 
-    ~Sound_event();
+  void play();
+
+  ~Sound_event();
 };
-
 
 #endif //Z_SOUND_EVENT_H
