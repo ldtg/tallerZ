@@ -1,7 +1,7 @@
 #ifndef TALLERZ_CAPTUREEVENT_H
 #define TALLERZ_CAPTUREEVENT_H
 
-#include <model/Events/Event.h>
+#include <Events/Event.h>
 class CaptureEvent : public Event {
  private:
   UnitID capturer;

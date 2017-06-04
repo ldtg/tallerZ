@@ -2,10 +2,11 @@
 #include "Model.h"
 #include "Exceptions/model_exceptions/UnitNotFoundException.h"
 
-Model::Model(Map &map, GameController &gc) : map(map) ,gameController(gc){}
+Model::Model(Map &map, GameController &gc, Camera &camera)
+    : map(map) ,gameController(gc), camera(camera) {}
 
 void Model::leftClick(int x, int y) {
-  Position pos(x, y);
+  Position pos(x + camera.x, y + camera.y);
   if (unitsSelected.empty()) {
     try {
       unitsSelected.push_back(map.getUnitIDFromPosition(pos, 40));
@@ -39,7 +40,7 @@ void Model::leftClick(int x, int y) {
 
 void Model::rightClick(int x, int y) {
   if (!unitsSelected.empty()) {
-    Position pos(x, y);
+    Position pos(x + camera.x, y + camera.y);
     gameController.move(unitsSelected.front(), pos);
     unitsSelected.clear();
   }

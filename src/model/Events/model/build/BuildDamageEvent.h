@@ -1,7 +1,7 @@
 #ifndef TALLERZ_BUILDDAMAGEEVENT_H
 #define TALLERZ_BUILDDAMAGEEVENT_H
 
-#include <model/Events/Event.h>
+#include <Events/Event.h>
 #include "BuildID.h"
 #include "BuildState.h"
 class BuildDamageEvent : public Event{

@@ -1,9 +1,9 @@
 #ifndef TALLERZ_UNITMOVESTEPEVENT_H
 #define TALLERZ_UNITMOVESTEPEVENT_H
 
-#include <model/Events/Event.h>
+#include <Events/Event.h>
 
-class UnitMoveStepEvent  : public Event {
+class UnitMoveStepEvent : public Event {
  private:
 //  Position posFrom;
   Position posToo;

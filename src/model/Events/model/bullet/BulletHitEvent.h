@@ -1,7 +1,7 @@
 #ifndef TALLERZ_BULLETHITEVENT_H
 #define TALLERZ_BULLETHITEVENT_H
 
-#include <model/Events/Event.h>
+#include <Events/Event.h>
 #include "BulletID.h"
 #include "Position.h"
 #include "Bullet.h"

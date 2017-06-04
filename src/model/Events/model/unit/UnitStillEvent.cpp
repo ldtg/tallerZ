@@ -1,18 +1,19 @@
 #include "UnitStillEvent.h"
 
-UnitStopAttackEvent::UnitStopAttackEvent(const UnitID &id)
+UnitStillEvent::UnitStillEvent(const UnitID &id)
     : id(id) {}
 
-void UnitStopAttackEvent::process() {
-  ObjectMapaVista* unitVista = view->getUnitVista(id);
+void UnitStillEvent::process() {
+  Sprite* unitVista = view->getUnitVista(id);
   int rotation = unitVista->getRotation();
   Position pos = unitVista->getPos();
+  std::string color = unitVista->getColor();
 
   view->removeUnitVista(id);
 
   std::string rotation_s = std::to_string(rotation);
   std::string action("look_around");
-  unitVista = view->getUnitVista(id.getType(), action, rotation_s);
+  unitVista = VistasFactory::getUnitVista(id.getType(), color, action, rotation_s);
   unitVista->setPos(pos);
   unitVista->setRotation(rotation);
 

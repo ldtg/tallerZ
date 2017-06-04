@@ -56,6 +56,8 @@ set(SOURCE_FILES
         src/model/Events/EventHandler.h
         src/model/Events/view/QuitEvent.cpp
         src/model/Events/view/QuitEvent.h
+        src/model/Events/view/CameraMove.cpp
+        src/model/Events/view/CameraMove.h
         src/model/Events/Pointer/RightClickEvent.cpp
         src/model/Events/Pointer/RightClickEvent.h
         src/model/Model.cpp
@@ -136,6 +138,9 @@ set(SOURCE_FILES
         src/model/CapturableVehicle.h
         src/model/MapType.h
         z_tests/tests_model/GameControllerCapturables_test.cpp
+        src/model/PlayerColor.h
+        src/model/Events/view/CameraMoveStepEvent.cpp
+        src/model/Events/view/CameraMoveStepEvent.h
 
         src/view/Texture.cpp
         src/view/Texture.h
@@ -153,11 +158,13 @@ set(SOURCE_FILES
         src/view/Sprite.h
         src/view/VistasFactory.cpp
         src/view/VistasFactory.h
+        src/view/Camera.cpp
+        src/view/Camera.h
+        src/view/EffectType.h
 
         src/controller/Controller.cpp
         src/controller/Controller.h
         src/controller/Handler.h
-        src/controller/Handler.cpp
         src/controller/HandlerFactory.cpp
         src/controller/HandlerFactory.h
         src/controller/MouseButtonLeft.cpp
@@ -168,6 +175,10 @@ set(SOURCE_FILES
         src/controller/Quit.h
         src/controller/MouseButtonRight.cpp
         src/controller/MouseButtonRight.h
+        src/controller/MouseMotion.cpp
+        src/controller/MouseMotion.h
+        src/controller/MouseState.cpp
+        src/controller/MouseState.h
 
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.h
@@ -251,7 +262,9 @@ set(SOURCE_FILES
         z_sounds/Sound_event.h
         z_sounds/Sound_event.cpp
 
-        src/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.cpp src/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.h)
+        src/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.cpp
+        src/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.h
+        )
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

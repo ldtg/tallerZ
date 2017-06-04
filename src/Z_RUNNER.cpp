@@ -11,7 +11,7 @@ Z_RUNNER::Z_RUNNER() {
   this->map = new Map();
 //  this->gameController = new GameController(map, );
 //  this->model = new Model(map, );
-  this->view = new View(*map, *eventHandler, *main_window->get_window());
+//  this->view = new View(*map, *eventHandler);
   this->controller = new Controller(*eventHandler);
 }
 

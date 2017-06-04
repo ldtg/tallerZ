@@ -6,15 +6,18 @@
 #include <model/BuildType.h>
 #include <model/TerrainType.h>
 #include "Sprite.h"
+#include "EffectType.h"
 
 class VistasFactory {
  public:
-  ObjectMapaVista *getTerrainVista(TerrainType type);
-  Sprite *getUnitVista(UnitType type,
-                       std::string &action,
-                       std::string &rotation);
-  ObjectMapaVista *getBuildVista(BuildType type, std::string &state);
-  ObjectMapaVista *getBulletVista(WeaponType type);
+  static ObjectMapaVista *getTerrainVista(TerrainType type);
+  static Sprite *getUnitVista(UnitType type,
+                              std::string &color,
+                              std::string &action,
+                              std::string &rotation);
+  static ObjectMapaVista *getBuildVista(BuildType type, std::string &state);
+  static ObjectMapaVista *getBulletVista(WeaponType type, std::string &rotation);
+  static Sprite *getEffectVista(EffectType type);
 };
 
 #endif //TALLERZ_VISTASFACTORY_H

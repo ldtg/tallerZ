@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "ObjectMapaVista.h"
+#include "Camera.h"
 #include <vector>
 
 class Panel {
@@ -14,7 +15,7 @@ class Panel {
         Panel(SDL_Renderer *render);
         ~Panel();
         void add(ObjectMapaVista *objectMapaVista);
-        void draw();
+        void draw(Camera &camera);
 };
 
 

@@ -6,10 +6,13 @@
 #include <vector>
 #include <model/Events/model/unit/UnitMoveStepEvent.h>
 #include <model/Events/model/bullet/BulletMoveStepEvent.h>
+#include <random>
+#include <model/Events/view/CameraMoveStepEvent.h>
 
-View::View(const Map &map, EventHandler &eventHandler, Window& window)
-    : window(window), panel(window.getRender()), eventHandler(eventHandler) {
+View::View(const Map &map, EventHandler &eventHandler, Camera &camera)
+    : window(), panel(window.getRender()), eventHandler(eventHandler), camera(camera) {
   _quit = false;
+
   createInitialTerrainVista(map.getMap());
   createInitialBuildVista(map.getBuilds());
   createInitialUnitVista(map.getUnits());
@@ -17,25 +20,38 @@ View::View(const Map &map, EventHandler &eventHandler, Window& window)
 
 View::~View() {}
 
+
 void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
   for (auto const &posMap : map) {
     Position pos = posMap.first;
     Tile tile = posMap.second;
     TerrainType terrainType = tile.getTerrainType();
-    ObjectMapaVista *terrain = getTerrainVista(terrainType);
+    ObjectMapaVista *terrain = VistasFactory::getTerrainVista(terrainType);
     add(terrain, tile.getCornerPosition());
 
     terrainsVista.emplace(pos, terrain);
   }
 }
 
+int getRandomNumInRange2(const int range_from, const int range_to) {
+  std::random_device rand_dev;
+  std::mt19937 generator(rand_dev());
+  std::uniform_int_distribution<int> distr(range_from, range_to);
+  return distr(generator);
+}
+
 void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
+  std::vector<int> rotations{0, 45, 90, 135, 180, 225, 270, 315};
+
   for (auto const &unit : units) {
     UnitType type = unit.first.getType();
-    std::string rotation("0");
+    //Se elije una rotacion inicial al azar.
+    int i = getRandomNumInRange2(0, 7);
+    std::string rotation = std::to_string(rotations[i]);
     std::string action("look_around");
-    Position pos = translatePos(type, action, unit.second.position);
-    ObjectMapaVista *unitVista = getUnitVista(type, action, rotation);
+    std::string color = unit.second.owner.getColor();
+    Position pos = translateModelPos(type, action, unit.second.position);
+    Sprite *unitVista = VistasFactory::getUnitVista(type, color, action, rotation);
 
     add(unitVista, pos);
 
@@ -48,36 +64,37 @@ void View::createInitialBuildVista(const std::map<BuildID, BuildState> &builds) 
     BuildType type = build.first.getType();
     Position pos = build.second.position;
     std::string state("");
-    ObjectMapaVista *buildVista = getBuildVista(type, state);
+    ObjectMapaVista *buildVista = VistasFactory::getBuildVista(type, state);
     add(buildVista, pos);
 
     buildsVista.emplace(build.first, buildVista);
   }
 }
 
-void View::updateExplosion() {
-  std::vector<Sprite*>::iterator iter;
-  for (iter = explosionsVista.begin(); iter != explosionsVista.end();) {
-    Sprite *explosionVista = *iter;
-    if (explosionVista->doCycle()) {
-      iter = explosionsVista.erase(iter);
-      delete explosionVista;
-    }
-    else {
-      ++iter;
-    }
-  }
-}
 
 void View::update() {
-  updateExplosion();
   while (!eventHandler.empty()) {
     Event *event = eventHandler.get();
     event->process();
     delete (event);
+//    draw();
+  }
+
+//  updateExplosion();
+  drawSteps();
+
+  draw();
+}
+
+void View::drawSteps() {
+  for (int i=0; i < eventHandler.amountSteps(); i++) {
+    for (Event *stepEvent : eventHandler.getSteps(i)) {
+      stepEvent->process();
+      delete (stepEvent);
+    }
     draw();
   }
-  draw();
+  eventHandler.clearSteps();
 }
 
 void View::draw() {
@@ -97,11 +114,24 @@ void View::draw() {
     panel.add(bullet.second);
   }
 
-  for (ObjectMapaVista *explosion : explosionsVista) {
-    panel.add(explosion);
+//  updateExplosion();
+//  for (Sprite *explosion : explosionsVista) {
+//    panel.add(explosion);
+//  }
+  std::vector<Sprite*>::iterator iter;
+  for (iter = explosionsVista.begin(); iter != explosionsVista.end();) {
+    Sprite *explosionVista = *iter;
+    if (explosionVista->doCycle()) {
+      iter = explosionsVista.erase(iter);
+      delete explosionVista;
+    }
+    else {
+      panel.add(explosionVista);
+      ++iter;
+    }
   }
 
-  panel.draw();
+  panel.draw(camera);
 }
 
 void View::add(ObjectMapaVista *objectVista, Position pos) {
@@ -112,24 +142,21 @@ void View::add(ObjectMapaVista *objectVista, Position pos) {
     panel.add(objectVista);
 }
 
-ObjectMapaVista* View::getTerrainVista(TerrainType type) {
-  return vistasFactory.getTerrainVista(type);
+/*
+void View::updateExplosion() {
+  std::vector<Sprite*>::iterator iter;
+  for (iter = explosionsVista.begin(); iter != explosionsVista.end();) {
+    Sprite *explosionVista = *iter;
+    if (explosionVista->doCycle()) {
+      iter = explosionsVista.erase(iter);
+      delete explosionVista;
+    }
+    else {
+      ++iter;
+    }
+  }
 }
-
-ObjectMapaVista* View::getBuildVista(BuildType type, std::string &state) {
-  vistasFactory.getBuildVista(type, state);
-}
-
-Sprite* View::getUnitVista(UnitType type,
-                                    std::string &action,
-                                    std::string &rotation) {
-
-  return vistasFactory.getUnitVista(type, action, rotation);
-}
-
-ObjectMapaVista* View::getBulletVista(WeaponType type) {
-  return vistasFactory.getBulletVista(type);
-}
+*/
 
 void View::setQuit() {
   _quit = true;
@@ -139,7 +166,7 @@ bool View::quit() {
   return _quit;
 }
 
-Position View::translatePos(UnitType type, std::string &action, Position pos) {
+Position View::translateModelPos(UnitType type, std::string &action, Position pos) {
   if (type == R_GRUNT) {
     // size of grunt image is 16x16
     return pos.sub(8,8);
@@ -153,20 +180,34 @@ Position View::translatePos(UnitType type, std::string &action, Position pos) {
   }
 }
 
-ObjectMapaVista* View::getUnitVista(UnitID id) {
-  return unitsVista.at(id);
+void View::moveCamera(int x, int y) {
+  for (int i=0; i < camera.vel; ++i) {
+    eventHandler.addStep(new CameraMoveStepEvent(camera, x, y), i);
+  }
+
+//  camera.move(x, y);
 }
+
 
 void View::move(UnitID id, Position posTo) {
   Position pos_aux = unitsVista.at(id)->getPos();
   std::string action("walk");
-  posTo = translatePos(id.getType(), action, posTo);
+  posTo = translateModelPos(id.getType(), action, posTo);
 
   int rotation = 0;
+  int i = 0;
   while (pos_aux != posTo) {
-    rotation = pos_aux.move(posTo);
-    eventHandler.add(new UnitMoveStepEvent(id, pos_aux, rotation));
+    rotation = pos_aux.getRoration(posTo);
+    pos_aux.move(posTo);
+//    eventHandler.add(new UnitMoveStepEvent(id, pos_aux, rotation));
+    eventHandler.addStep(new UnitMoveStepEvent(id, pos_aux, rotation), i);
+    i += 1;
   }
+}
+
+
+Sprite* View::getUnitVista(UnitID id) {
+  return unitsVista.at(id);
 }
 
 void View::removeUnitVista(UnitID &id) {
@@ -174,7 +215,7 @@ void View::removeUnitVista(UnitID &id) {
   unitsVista.erase(id);
 }
 
-void View::addUnitVista(UnitID &id, ObjectMapaVista *unitVista) {
+void View::addUnitVista(UnitID &id, Sprite *unitVista) {
   unitsVista.emplace(id, unitVista);
 }
 
@@ -185,9 +226,11 @@ ObjectMapaVista* View::getBulletVista(BulletID id) {
 
 void View::move(BulletID id, Position posTo) {
   Position pos_aux = bulletsVista.at(id)->getPos();
+  int i = 0;
   while (pos_aux != posTo) {
     pos_aux.move(posTo);
-    eventHandler.add(new BulletMoveStepEvent(id, pos_aux));
+    eventHandler.addStep(new BulletMoveStepEvent(id, pos_aux), i);
+    i += 1;
   }
 }
 
@@ -221,5 +264,4 @@ void View::addExplosionVista(Sprite *objectVista, Position pos) {
 
   objectVista->setPos(pos);
   explosionsVista.push_back(objectVista);
-//  panel.add(objectVista);
 }

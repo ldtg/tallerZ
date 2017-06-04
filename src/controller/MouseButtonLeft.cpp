@@ -3,9 +3,7 @@
 #include <iostream>
 #include <model/Events/Pointer/LeftClickEvent.h>
 
-MouseButtonLeft::MouseButtonLeft() : Handler() {
-//  SDL_GetMouseState(&x, &y);
-}
+MouseButtonLeft::MouseButtonLeft() : Handler() {}
 
 void MouseButtonLeft::handle(SDL_Event *e, EventHandler &eventHandler) {
   x = e->button.x;

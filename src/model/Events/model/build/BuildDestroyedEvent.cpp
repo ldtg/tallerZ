@@ -9,10 +9,12 @@ void BuildDestroyedEvent::process() {
 
   view->removeBuildVista(id);
   std::string state("destroyed");
-  ObjectMapaVista *buildVista = view->getBuildVista(id.getType(), state);
+  ObjectMapaVista *buildVista = VistasFactory::getBuildVista(id.getType(), state);
   view->addBuildVista(id, buildVista);
 
-  Sprite *deathBuildVista = new Sprite("../src/view/images/explosion/"
-                                                    "tank_missile_explosion1_n", 12, 10, 0);
+//  Sprite *deathBuildVista = new Sprite("../src/view/images/effects/explosion/"
+//                                                    "tank_missile_explosion1_n", 12, 10, 0);
+  Sprite *deathBuildVista = VistasFactory::getEffectVista(TANK_MISSILE);
+
   view->addExplosionVista(deathBuildVista, pos.add(BUILDWIDHT/3, 0));
 }

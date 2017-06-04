@@ -13,6 +13,7 @@
 #include <model/UnitFactory.h>
 #include <model/GameController.h>
 #include <storage/Map_Loader.h>
+#include <controller/MouseState.h>
 
 TEST(VistaTest, Window) {
 
@@ -32,11 +33,12 @@ TEST(VistaTest, Window) {
     stdmap.emplace(Position(2, 2), Tile(Position(250, 250), data.land));
 
 /* ---------- EQUIPOS ---------- */
-    Player player(PlayerColor::RED);
+    Player player(BLUE);
     Team team;
     team.addPlayer(&player);
 //    player.addTerritory();
-    Player player2(PlayerColor::BLUE);
+
+    Player player2(RED);
     Team team2;
     team2.addPlayer(&player2);
 
@@ -51,6 +53,10 @@ TEST(VistaTest, Window) {
     robotB =
         UnitFactory::createGruntDynamic(Position(200, 200), player2, team2);
     units.emplace(robotB->getId(), robotB);
+
+    Unit *robotC;
+    robotC = UnitFactory::createToughDynamic(Position(100, 100), player2, team2);
+    units.emplace(robotC->getId(), robotC);
 
     Unit *vehicle;
     vehicle = UnitFactory::createJeepDynamic(Position(100, 200), player, team);
@@ -71,15 +77,16 @@ TEST(VistaTest, Window) {
 
     map.addUnit(robotA->getId(), robotA->getUnitState());
     map.addUnit(robotB->getId(), robotB->getUnitState());
+    map.addUnit(robotC->getId(), robotC->getUnitState());
     map.addUnit(vehicle->getId(), vehicle->getUnitState());
 
     GameController gameController(map, units, builds);
 
     EventHandler eventHandler;
+    Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
 
-    Model model(map, gameController);
-    Window window;
-    View view(map, eventHandler, window);
+    Model model(map, gameController, camera);
+    View view(map, eventHandler, camera);
 
     eventHandler.setView(&view);
     eventHandler.setModel(&model);
@@ -95,6 +102,10 @@ TEST(VistaTest, Window) {
       while (SDL_PollEvent(&e) != 0) {
         controller.handle(&e);
       }
+      // Chequeo pos del mouse para saber
+      // si se debe mover camara.
+      controller.checkMouseState(&e);
+
 
       if (!events.empty()) {
         for (auto event : events) {
@@ -120,11 +131,12 @@ TEST(VistaTest_Usando_Map_Loader, Window){
   std::map<UnitID, Unit *> units;
   GameController gameController(map, units, map_loader.get_builds());
 
+  Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
   EventHandler eventHandler;
 
-  Model model(map, gameController);
+  Model model(map, gameController, camera);
   Window window;
-  View view(map, eventHandler, window);
+  View view(map, eventHandler, camera);
 
   eventHandler.setView(&view);
   eventHandler.setModel(&model);

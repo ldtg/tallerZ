@@ -50,7 +50,7 @@ struct Data {
   TerrainObjectData rockObject;
 
   Data() {
-    ticksPerSec = 60;
+    ticksPerSec = 40;
     miliSecsPerTick =
         (unsigned long) std::lround((1 / (float) ticksPerSec) * 1000);
 

@@ -65,8 +65,11 @@ void Image::set_texture(SDL_Renderer *render) {
     texture = SDL_CreateTextureFromSurface(render, surface);
 }
 
-void Image::draw(SDL_Renderer *render) {
-  SDL_Rect renderQuad = { x, y, width, height };
+void Image::draw(SDL_Renderer *render, Camera &camera) {
+//  x - camera->x;
+//  y - camera->y;
+
+  SDL_Rect renderQuad = { x - camera.x, y- camera.y, width, height };
 
   SDL_RenderCopy(render, texture, NULL, &renderQuad);
 }

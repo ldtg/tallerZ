@@ -11,8 +11,9 @@ class Model {
   Map &map;
   std::vector<UnitID> unitsSelected;
   GameController &gameController;
+  Camera &camera;
  public:
-  Model(Map &map, GameController& gameController);
+  Model(Map &map, GameController& gameController, Camera &camera);
   void leftClick(int x, int y);
   void rightClick(int x, int y);
 };
