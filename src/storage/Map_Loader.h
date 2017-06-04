@@ -26,6 +26,11 @@ struct Map_Config{
   int map_length;
   int factories_level;
   int max_units;
+  int bridge_type;
+  int road_type;
+  int river_type;
+  int base_terrain;
+  int rock_type;
 };
 
 /**
@@ -36,13 +41,13 @@ struct Map_Config{
 class Map_Loader {
  private:
   json j;
-  Data data;
   std::string file_path;
   std::ifstream map_file;
 
   std::map<Position, Tile> loaded_map;
   std::map<BuildID, BuildState> buildmap;
   std::map<BuildID, Build *> builds;
+  std::map<CapturableID, Capturable *> capturables;
   std::vector<Player> players;
   std::vector<Team> teams;
   Map_Config configuration;
@@ -90,14 +95,12 @@ class Map_Loader {
     this->teams.push_back(team2);
   }
 
-  TerrainData get_terrain_data(TerrainType terrain);
-
   Map_Config get_configuration();
 
-  void emplace_terrain(const Position_Data& data){
-    this->loaded_map.emplace(Position(data.x, data.y),
-                             Tile(centered_position(data.x, data.y),
-                                  get_terrain_data(data.terrain_type)));
+  void emplace_terrain(const Position_Data& pos_data){
+    this->loaded_map.emplace(Position(pos_data.x, pos_data.y),
+                             Tile(centered_position(pos_data.x, pos_data.y),
+                                  data.get_terrain_data(pos_data.terrain_type)));
   }
 
   void assign_fort(const Position_Data& position_data, Player& player, Team& team){
@@ -111,16 +114,7 @@ class Map_Loader {
     builds.emplace(build->getId(), build);
   }
 
-  void assign_robot_factory(const Position_Data& position_data, Player& player, Team& team){
-    Build * build = new
-        Build(data.robotFactory,
-              centered_position(position_data.x, position_data.y),
-              player,
-              team,
-              configuration.factories_level);
-    buildmap.emplace(build->getId(), build->getBuildState());
-    builds.emplace(build->getId(), build);
-  }
+  void assign_robot_factory(const Position_Data& position_data, Player& player, Team& team);
 
   void assign_vehicle_factory(const Position_Data& position_data, Player& player, Team& team){
     Build * build = new
@@ -133,23 +127,23 @@ class Map_Loader {
     builds.emplace(build->getId(), build);
   }
 
-  void build_map(){ ;
-    Position_Data data;
+  void build_map(){
+    Position_Data pos_data;
     int fort_to_assign = 0;
     int tile_amount = configuration.map_width * configuration.map_length;
     for (int i = 0; i < tile_amount; i++){
-      data = read_data(i);
-      emplace_terrain(data);
-      if (data.fort){
-        assign_fort(data, players[fort_to_assign],teams[0]);//teams[0] HARCODEADO
+      pos_data = read_data(i);
+      emplace_terrain(pos_data);
+      if (pos_data.fort){
+        assign_fort(pos_data, players[fort_to_assign],teams[0]);//teams[0] HARCODEADO
         fort_to_assign++;
       }
-      if (data.robot_factory){
-        assign_robot_factory(data, players[0], teams[0]);
-      }
-      if (data.vehicle_factory){
-        assign_vehicle_factory(data, players[0], teams[0]);//players[0] harcodeado tambien, osea, me quedo pensando en la idea esa del player especial que comentaba luis en clase la vez pasada.
-      }
+//      if (pos_data.robot_factory){
+//        assign_robot_factory(pos_data, players[0], teams[0]);
+//      }
+//      if (pos_data.vehicle_factory){
+//        assign_vehicle_factory(pos_data, players[0], teams[0]);//players[0] harcodeado tambien, osea, me quedo pensando en la idea esa del player especial que comentaba luis en clase la vez pasada.
+
     }
   }
 

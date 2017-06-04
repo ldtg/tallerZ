@@ -44,7 +44,10 @@ struct Data {
   TerrainData water;
   TerrainData lava;
   TerrainData road;
+  TerrainData snow;
+  TerrainData asphaltedRoad;
   TerrainData asphaltedBridgeTerrain;
+  TerrainData woodenBridge;
 
   TerrainObjectData asphaltedBridgeObject;
   TerrainObjectData rockObject;
@@ -155,6 +158,39 @@ struct Data {
       case BuildType::ROBOTF : return robotFactory;
       case BuildType::VEHICLEF : return vehicleFactory;
       default:return fort;
+    }
+  }
+
+  /**
+ * get_terrain_data: Devuelve el tipo de TerrainData acorde al
+ * parametro terrain que puede ser: land, prairie, water, lava,
+ * swamp, road, bridge o snow.
+ * @param terrain : tipo de terreno
+ * @return TerrainData
+ */
+  TerrainData get_terrain_data(TerrainType terrain) {
+    //TODO: habría que diferenciar segun los tipos de terrenos como los que estan en terrain_type: land, prairie, water, lava, swamp (no esta), road, bridge (no esta), snow.
+    switch (terrain){
+      case PRAIRIE:
+        return land;
+      case ROAD:
+        return road;
+      case ASPHALTEDROAD:
+        return asphaltedRoad;
+      case WOODENBRIDGE:
+        return woodenBridge;
+      case ASPHALTEDBRIDGE:
+        return asphaltedBridgeTerrain;
+      case LAND:
+        return land;
+      case SWAMP:
+        return water;
+      case LAVA:
+        return lava;
+      case SNOW:
+        return snow;
+      default:
+        return land;
     }
   }
   std::vector<UnitType> getFabUnits(const BuildType &buildType,

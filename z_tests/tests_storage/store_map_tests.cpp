@@ -12,14 +12,15 @@
 using json = nlohmann::json;
 
 TEST(store_map_tests, Store_map){
-  Generator generator(40,40,9,4,HELL,20,3);
-  generator.set_water_lava_percentages(80,20);
+  Generator generator(12,12,9,4,DUSTY,0,2);
+  generator.set_water_lava_percentages(0,0);
   generator.territory_distribution_algorithm();
   generator.building_distribution_algorithm();
   generator.trace_paths();
   generator.trace_rivers();
+  generator.set_rocks_percentages(0,0);
   generator.put_rocks();
-  generator.put_vehicles();
+  //generator.put_vehicles();
   Store_map("mapa.json",generator)();
 
   //std::cerr << std::setw(4) << store_map.get_json() << '\n';

@@ -50,6 +50,8 @@ void Store_map::load_json() {
   this->j["rock_type"] = generated_map.rock_type;
   this->j["river_type"] = generated_map.river_type;
   this->j["teams"] = generated_map.teams;
+  this->j["bridge_type"] = generated_map.bridge_type;
+  this->j["road_type"] = generated_map.road_type;
 
   for (int i = 0; i < generated_map.tile_amount; i++){
     j[std::to_string(i)] = {

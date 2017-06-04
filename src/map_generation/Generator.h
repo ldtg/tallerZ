@@ -73,6 +73,8 @@ class Generator {
   TerrainType base_terrain;
   TerrainType river_type;
   TerrainObjectType rock_type;
+  TerrainType road_type;
+  TerrainType bridge_type;
 
   const unsigned tile_amount;
   const unsigned territories;
