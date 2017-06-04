@@ -1,0 +1,6 @@
+#ifndef TALLERZ_EFFECTTYPE_H
+#define TALLERZ_EFFECTTYPE_H
+
+enum EffectType {TANK_MISSILE};
+
+#endif //TALLERZ_EFFECTTYPE_H

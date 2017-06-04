@@ -17,7 +17,7 @@ class Image : public ObjectMapaVista {
 //  Image& operator=(Image &&other);
   ~Image();
   void set_texture(SDL_Renderer *render);
-  void draw(SDL_Renderer *render);
+  void draw(SDL_Renderer *render, Camera &camera);
 };
 
 #endif //IMAGE_H

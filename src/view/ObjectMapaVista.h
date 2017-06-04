@@ -3,6 +3,7 @@
 
 #include <model/Position.h>
 #include "SDL2/SDL.h"
+#include "Camera.h"
 
 class ObjectMapaVista {
  protected:
@@ -22,7 +23,7 @@ class ObjectMapaVista {
   int getRotation();
 
   virtual void set_texture(SDL_Renderer *render) = 0;
-  virtual void draw(SDL_Renderer *render) = 0;
+  virtual void draw(SDL_Renderer *render, Camera &camera) = 0;
 };
 
 #endif //TALLERZ_OBJECTMAPAVISTA_H

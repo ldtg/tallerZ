@@ -20,7 +20,8 @@ class Position {
   unsigned long euclideanDistance(const Position &other) const;
   unsigned long manhattanDistance(const Position &other) const;
   void mod(unsigned short modx, unsigned short mody);
-  int move(Position target);
+  void move(Position target);
+  int getRoration(Position target) const;
   std::vector<Position> getNeighbors() const;
   coordinates_t getCoordinates() const;
   long getX() const;

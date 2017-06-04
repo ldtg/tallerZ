@@ -19,6 +19,7 @@ class GameController_build_test : public ::testing::Test {
   std::map<BuildID, Build *> builds;
   std::vector<Event *> events;
   GameController_build_test() : playerA(PlayerColor::RED), playerB(PlayerColor::BLUE) {
+
     std::map<Position, Tile> stdmap;
     stdmap.emplace(Position(0, 0), Tile(Position(50, 50), data.land));
     stdmap.emplace(Position(1, 0), Tile(Position(150, 50), data.land));

@@ -3,11 +3,17 @@
 
 #include <SDL2/SDL.h>
 #include <vector>
+#include <front_end/SDL_Interface/Cursor.h>
+
+#define WINDOWWIDTH 800
+#define WINDOWHEIGHT 600
 
 class Window {
  private:
   SDL_Window *window;
   SDL_Renderer *window_render;
+
+  Cursor *cursor;
 
   int width;
   int height;
@@ -17,6 +23,8 @@ class Window {
   ~Window();
   SDL_Renderer *getRender() const;
   SDL_Window *getWindow() const;
+  int getWidth() const;
+  int getHeight() const;
   void update();
 };
 

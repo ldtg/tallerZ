@@ -22,12 +22,12 @@ void Panel::clean() {
     objectsMapaVista.clear();
 }
 
-void Panel::draw() {
+void Panel::draw(Camera &camera) {
     SDL_SetRenderDrawColor(window_render, 0xFF, 0xFF, 0xFF, 0xFF );
     SDL_RenderClear(window_render);
 
     for (ObjectMapaVista *objectMapaVista : objectsMapaVista) {
-        objectMapaVista->draw(window_render);
+        objectMapaVista->draw(window_render, camera);
     }
 
     SDL_RenderPresent(window_render);

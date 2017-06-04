@@ -2,6 +2,7 @@
 #define TALLERZ_PLAYERID_H
 #include <string>
 #include "PlayerColor.h"
+
 class PlayerID {
   static unsigned short nextid;
  private:
@@ -9,6 +10,7 @@ class PlayerID {
   PlayerColor color;
  public:
   explicit PlayerID(const PlayerColor &color);
+  std::string getColor() const;
   bool operator<(const PlayerID &other) const;
   bool operator==(const PlayerID &other) const;
   bool operator!=(const PlayerID &other) const;

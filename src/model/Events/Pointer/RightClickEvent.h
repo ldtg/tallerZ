@@ -1,7 +1,7 @@
 #ifndef TALLERZ_RIGHTCLICKEVENT_H
 #define TALLERZ_RIGHTCLICKEVENT_H
 
-#include <model/Events/Event.h>
+#include <Events/Event.h>
 
 class RightClickEvent : public Event {
    private:

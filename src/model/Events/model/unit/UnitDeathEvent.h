@@ -2,7 +2,7 @@
 #define TALLERZ_UNITDEATHEVENT_H
 
 #include "UnitID.h"
-#include "model/Events/Event.h"
+#include "Events/Event.h"
 
 class UnitDeathEvent : public Event{
  private:

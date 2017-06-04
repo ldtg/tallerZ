@@ -85,8 +85,14 @@ void GameController::move(const UnitID &idunit, const Position &position) {
 
 void GameController::attack(const UnitID &attackerId,
                             const UnitID &attackedId) {
-  Unit *attacker = units.at(attackerId);
-  Attackable *attacked = units.at(attackedId);
+  Unit *attacker;
+  Attackable *attacked;
+  try {
+    attacker = units.at(attackerId);
+    attacked = units.at(attackedId);
+  } catch (const std::exception &e) {
+    return;
+  }
 
   if (!attacker->canAttack(attacked))
     return;
@@ -105,9 +111,14 @@ void GameController::attack(const UnitID &attackerId,
 
 void GameController::attack(const UnitID &attackerId,
                             const BuildID &attackedId) {
-  Unit *attacker = units.at(attackerId);
-  Build *attacked = builds.at(attackedId);
-
+  Unit *attacker;
+  Build *attacked;
+  try {
+    attacker = units.at(attackerId);
+    attacked = builds.at(attackedId);
+  } catch (const std::exception &e) {
+    return;
+  }
   if (!attacker->canAttack(attacked))
     return;
 
@@ -125,21 +136,27 @@ void GameController::attack(const UnitID &attackerId,
 
 void GameController::attack(const UnitID &attackerID,
                             const TerrainObjectID &attackedID) {
-  Unit *attacker = units.at(attackerID);
-  TerrainObject &attacked = terrainObjects.at(attackedID);
+  Unit *attacker;
+  TerrainObject *attacked;
+  try {
+    attacker = units.at(attackerID);
+    attacked = &terrainObjects.at(attackedID);
+  } catch (const std::exception &e) {
+    return;
+  }
 
-  if (!attacker->canAttack(&attacked))
+  if (!attacker->canAttack(attacked))
     return;
 
-  if (attacker->isInRange(&attacked)
+  if (attacker->isInRange(attacked)
       && map.canPass(attacker->getCenterPosition(),
-                     attacked.getCenterPosition())) {
-    attacker->attack(&attacked);
+                     attacked->getCenterPosition())) {
+    attacker->attack(attacked);
   } else {
     AStar astar(map,
                 attacker,
-                attacked.getCenterPosition());
-    attacker->hunt(astar.find(), &attacked);
+                attacked->getCenterPosition());
+    attacker->hunt(astar.find(), attacked);
   }
 }
 
@@ -234,7 +251,7 @@ void GameController::move(Unit *unit,
     map.updateUnit(unit->getId(), unit->getUnitState());
 
     if (still) {
-      events.push_back(new UnitStopAttackEvent(unit->getId()));
+      events.push_back(new UnitStillEvent(unit->getId()));
     }
 
   } else {
@@ -249,7 +266,7 @@ void GameController::hunt(Unit *unit,
   Attackable *hunted = unit->getHunted();
 
   if (!hunted->isAlive()) {
-    events.push_back(new UnitStopAttackEvent(unit->getId()));
+    events.push_back(new UnitStillEvent(unit->getId()));
     unit->still();
     return;
   }
@@ -257,28 +274,31 @@ void GameController::hunt(Unit *unit,
   if (unit->attackedInRange()
       && map.canPass(unit->getCenterPosition(),
                      hunted->getAttackPosition(unit->getCenterPosition()))) {
-    if (unit->isFirstAttack())
-      events.push_back(new UnitAttackEvent(unit->getId()));
+    if (unit->isFirstAttack()) {
+      Position huntedPos = hunted->getAttackPosition(unit->getCenterPosition());
+      Position attackerPos = unit->getCenterPosition();
+      events.push_back(new UnitAttackEvent(unit->getId(),
+                                           huntedPos,
+                                           attackerPos));
+    }
     if (unit->timeToAttack()) {
-
       this->bullets.push_back(unit->createBullet());
       events.push_back(new BulletNewEvent(this->bullets.front()));
     }
-    if (hunted->isMoving())
+    if (hunted->isMoving()) {
       unit->addMove(hunted->nextMovePosition());
+    }
     ++it;
   } else {
-    if (unit->isAutoAttacking()){
+    if (unit->isAutoAttacking()) {
       unit->still();
-      events.push_back(new UnitStopAttackEvent(unit->getId()));
+      events.push_back(new UnitStillEvent(unit->getId()));
     } else {
       this->move(unit, events, it);
       if (hunted->isMoving())
         unit->addMove(hunted->nextMovePosition());
     }
   }
-
-
 }
 
 void GameController::capture(Unit *unit,
@@ -331,13 +351,14 @@ void GameController::capture(Unit *unit,
 
 void GameController::autoAttack(Unit *current, std::vector<Event *> &events,
                                 std::map<UnitID, Unit *>::iterator &it) {
-
+/*
   for (auto &par: units) {
     if (current->isInRange(par.second)
         && current->getId() != par.first &&current->canAttack(par.second)) {
       current->autoAttack(par.second);
     }
   }
+*/
   ++it;
 }
 

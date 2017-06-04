@@ -1,18 +1,20 @@
 #include "UnitAttackEvent.h"
 
-UnitAttackEvent::UnitAttackEvent(const UnitID &attacker)
-    : attacker(attacker) {}
+UnitAttackEvent::UnitAttackEvent(const UnitID &attacker, Position huntedPos,
+                                 Position attackerPos)
+    : attacker(attacker), huntedPos(huntedPos), attackerPos(attackerPos) {}
 
 void UnitAttackEvent::process() {
-  ObjectMapaVista* unitVista = view->getUnitVista(attacker);
-  int rotation = unitVista->getRotation();
+  Sprite* unitVista = view->getUnitVista(attacker);
   Position pos = unitVista->getPos();
+  std::string color = unitVista->getColor();
 
   view->removeUnitVista(attacker);
 
+  int rotation = attackerPos.getRoration(huntedPos);
   std::string rotation_s = std::to_string(rotation);
   std::string action("fire");
-  unitVista = view->getUnitVista(attacker.getType(), action, rotation_s);
+  unitVista = VistasFactory::getUnitVista(attacker.getType(), color, action, rotation_s);
   unitVista->setPos(pos);
   unitVista->setRotation(rotation);
 

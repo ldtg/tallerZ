@@ -3,8 +3,6 @@
 
 #include "Handler.h"
 class HandlerFactory {
- private:
-
  public:
   static Handler* get(SDL_Event *e);
 };

@@ -3,7 +3,7 @@
 
 #include "UnitState.h"
 #include "UnitID.h"
-#include "model/Events/Event.h"
+#include "Events/Event.h"
 
 class UnitMoveEvent : public Event {
  private:

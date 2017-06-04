@@ -1,13 +1,13 @@
 #ifndef TALLERZ_UNITSTOPATTACKEVENT_H
 #define TALLERZ_UNITSTOPATTACKEVENT_H
 
-#include <model/Events/Event.h>
+#include <Events/Event.h>
 
-class UnitStopAttackEvent : public Event {
+class UnitStillEvent : public Event {
  private:
   UnitID id;
  public:
-  UnitStopAttackEvent(const UnitID &id);
+  UnitStillEvent(const UnitID &id);
   void process();
 };
 

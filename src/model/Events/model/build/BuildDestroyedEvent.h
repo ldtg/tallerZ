@@ -2,7 +2,7 @@
 #define TALLERZ_BUILDDESTROYEDEVENT_H
 
 #include <model/BuildID.h>
-#include <model/Events/Event.h>
+#include <Events/Event.h>
 class BuildDestroyedEvent : public Event{
  private:
   BuildID id;

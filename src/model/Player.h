@@ -4,6 +4,7 @@
 #include "PlayerID.h"
 #include "Position.h"
 #include "BuildType.h"
+
 class Player {
  private:
   PlayerID id;

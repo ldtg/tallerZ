@@ -1,7 +1,7 @@
 #ifndef TALLERZ_BULLETMOVESTEPEVENT_H
 #define TALLERZ_BULLETMOVESTEPEVENT_H
 
-#include <model/Events/Event.h>
+#include <Events/Event.h>
 
 class BulletMoveStepEvent : public Event {
  private:
