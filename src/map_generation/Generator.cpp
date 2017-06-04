@@ -382,26 +382,36 @@ void Generator::set_geography() {
       this->base_terrain = SNOW;
       this->river_type = WATER;
       this->rock_type = ICEROCK;
+      this->road_type = ASPHALTEDROAD;
+      this->bridge_type = ASPHALTEDBRIDGE;
       break;
     case DUSTY:
       this->base_terrain = LAND;
       this->river_type = WATER;
       this->rock_type = ROCK;
+      this->road_type = ROAD;
+      this->bridge_type = ASPHALTEDBRIDGE;
       break;
     case SPRING:
       this->base_terrain = PRAIRIE;
       this->river_type = WATER;
       this->rock_type = ROCK;
+      this->road_type = ROAD;
+      this->bridge_type = WOODENBRIDGE;
       break;
     case HUMID:
       this->base_terrain = PRAIRIE;
       this->river_type = SWAMP;
       this->rock_type = ROCK;
+      this->road_type = ROAD;
+      this->bridge_type = WOODENBRIDGE;
       break;
     case HELL:
       this->base_terrain = LAND;
       this->river_type = LAVA;
       this->rock_type = ROCK;
+      this->road_type = ASPHALTEDROAD;
+      this->bridge_type = ASPHALTEDBRIDGE;
       break;
   }
 }

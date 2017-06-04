@@ -34,32 +34,7 @@ json Map_Loader::get_json() {
 void Map_Loader::load_file() {
   map_file >> this->j;
 }
-/**
- * get_terrain_data: Devuelve el tipo de TerrainData acorde al
- * parametro terrain que puede ser: land, prairie, water, lava,
- * swamp, road, bridge o snow.
- * @param terrain : tipo de terreno
- * @return TerrainData
- */
-TerrainData Map_Loader::get_terrain_data(TerrainType terrain) {
-  //TODO: habría que diferenciar segun los tipos de terrenos como los que estan en terrain_type: land, prairie, water, lava, swamp (no esta), road, bridge (no esta), snow.
-  switch (terrain){
-    case PRAIRIE:
-      return data.land;
-    case ROAD:
-      return data.road;
-    case LAND:
-      return data.land;
-    case SWAMP:
-      return data.water;
-    case LAVA:
-      return data.lava;
-    case SNOW:
-      return data.land;
-    default:
-      return data.land;
-  }
-}
+
 void Map_Loader::load_configuration() {
   this->configuration.max_units = j["max_units"];
   this->configuration.factories_level = j["factories_level"];
@@ -67,7 +42,13 @@ void Map_Loader::load_configuration() {
   this->configuration.map_length = j["map_length"];
   this->configuration.teams = j["teams"];
   this->configuration.territories_amount = j["territories_amount"];
+  this->configuration.base_terrain = j["base_terrain"];
+  this->configuration.bridge_type = j["bridge_type"];
+  this->configuration.river_type = j["river_type"];
+  this->configuration.road_type = j["road_type"];
+  this->configuration.rock_type = j["rock_type"];
 }
+
 Position Map_Loader::centered_position(int x, int y) {
   int _x, _y;
   _x = ( x + TILEWIDHT/2);
@@ -101,4 +82,14 @@ void Map_Loader::set_players() {
   for (int i = 0; i < configuration.teams; i++){
     players.push_back(Player((PlayerColor)i));
   }
+}
+void Map_Loader::assign_robot_factory(const Position_Data &position_data, Player &player, Team &team) {
+  Build * build = new
+      Build(data.robotFactory,
+            centered_position(position_data.x, position_data.y),
+            player,
+            team,
+            configuration.factories_level);
+  buildmap.emplace(build->getId(), build->getBuildState());
+  builds.emplace(build->getId(), build);
 }
