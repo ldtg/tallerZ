@@ -12,7 +12,7 @@ class ObjectMapaVista {
   long x;
   long y;
   int rotation;
-
+  ObjectMapaVista();
  public:
   int getWidth() const;
   int getHeight() const;

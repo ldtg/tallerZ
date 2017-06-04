@@ -90,7 +90,7 @@ class Map_Loader {
     team1.addPlayer(&players[1]);
     Team team2;
     team2.addPlayer(&players[2]);
-    team2.addPlayer(&players[3]);
+    //team2.addPlayer(&players[3]);
     this->teams.push_back(team1);
     this->teams.push_back(team2);
   }

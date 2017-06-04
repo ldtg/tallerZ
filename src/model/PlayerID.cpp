@@ -16,6 +16,7 @@ std::string PlayerID::getColor() const {
     case RED: color_s = "red"; break;
     case GREEN: color_s = "green"; break;
     case BLUE: color_s = "blue"; break;
+    case GREY: color_s = "grey"; break;
     default: color_s = ""; break;
   }
 

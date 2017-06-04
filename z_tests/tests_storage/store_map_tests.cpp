@@ -12,7 +12,7 @@
 using json = nlohmann::json;
 
 TEST(store_map_tests, Store_map){
-  Generator generator(12,12,9,4,DUSTY,0,2);
+  Generator generator(12,12,9,3,DUSTY,0,2);
   generator.set_water_lava_percentages(0,0);
   generator.territory_distribution_algorithm();
   generator.building_distribution_algorithm();
@@ -36,7 +36,7 @@ TEST(load_map_tests, Map_Loader){
 
 TEST(center_position_test, Map_Loader){
   Map_Loader map_loader("mapa.json");
-  Position pos = map_loader.centered_position(0,0);
+  Position pos = map_loader.centered_position(10,10);
   std::cout << pos.getX() << '\n';
   std::cout << pos.getY() << '\n';
 }

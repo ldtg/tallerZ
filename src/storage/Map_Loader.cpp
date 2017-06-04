@@ -51,8 +51,8 @@ void Map_Loader::load_configuration() {
 
 Position Map_Loader::centered_position(int x, int y) {
   int _x, _y;
-  _x = ( x + TILEWIDHT/2);
-  _y = ( y + TILEHEIGHT/2);
+  _x = ( x*TILEWIDHT + TILEWIDHT/2);
+  _y = ( y*TILEHEIGHT + TILEHEIGHT/2);
   return Position(_x,_y);
 }
 /**

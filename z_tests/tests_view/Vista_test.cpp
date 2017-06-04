@@ -135,7 +135,6 @@ TEST(VistaTest_Usando_Map_Loader, Window){
   EventHandler eventHandler;
 
   Model model(map, gameController, camera);
-  Window window;
   View view(map, eventHandler, camera);
 
   eventHandler.setView(&view);
