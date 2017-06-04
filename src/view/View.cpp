@@ -77,12 +77,9 @@ void View::update() {
     Event *event = eventHandler.get();
     event->process();
     delete (event);
-//    draw();
   }
 
-//  updateExplosion();
   drawSteps();
-
   draw();
 }
 

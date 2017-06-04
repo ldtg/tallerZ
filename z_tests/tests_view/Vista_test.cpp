@@ -151,6 +151,9 @@ TEST(VistaTest_Usando_Map_Loader, Window){
     while (SDL_PollEvent(&e) != 0) {
       controller.handle(&e);
     }
+    // Chequeo pos del mouse para saber
+    // si se debe mover camara.
+    controller.checkMouseState(&e);
 
     if (!events.empty()) {
       for (auto event : events) {
