@@ -3,12 +3,35 @@
 #include <random>
 
 ObjectMapaVista* VistasFactory::getTerrainVista(TerrainType type) {
-  if (type == LAND) {
-    return new Image("../src/view/images/terrain/land.png");
-  }
-  else {
+  std::string path = "../src/view/images/terrain/";
+  std::string type_s;
+  if (type == LAND)
+    type_s = "land";
+  else if (type == PRAIRIE)
+    type_s = "land";
+  else if (type == PRAIRIE)
+    type_s = "prairie";
+  else if (type == SNOW)
+    type_s = "snow";
+  else if (type == WATER)
+    type_s = "water";
+  else if (type == SWAMP)
+    type_s = "swamp";
+  else if (type == LAVA)
+    type_s = "lava";
+  else if (type == ROAD)
+    type_s = "road";
+  else if (type == ASPHALTEDROAD)
+    type_s = "asphaltedroad";
+  else if (type == WOODENBRIDGE)
+    type_s = "woodenbridge";
+  else if (type == ASPHALTEDBRIDGE)
+    type_s = "asphaltedbridge";
+  else
     return nullptr;
-  }
+
+  path = path + type_s + ".png";
+  return new Image(path.c_str());
 }
 
 int getRandomNumInRange(const int range_from, const int range_to) {

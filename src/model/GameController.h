@@ -16,12 +16,13 @@ class GameController {
   Map &map;
   std::map<UnitID, Unit *> units;
   std::vector<Bullet> bullets;
-  std::vector<Unit *> deathUnits;
   std::map<BuildID, Build *> builds;
   std::map<CapturableID, Capturable *> capturables;
   std::map<PlayerID, Player *> players;
   std::map<TeamID, Team> teams;
   std::map<TerrainObjectID, TerrainObject> terrainObjects;
+  std::vector<Unit *> deathUnits;
+
   void move(Unit *unit,
             std::vector<Event *> &events,
             std::map<UnitID, Unit *>::iterator &it);

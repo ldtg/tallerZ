@@ -69,6 +69,8 @@ void Image::draw(SDL_Renderer *render, Camera &camera) {
 //  x - camera->x;
 //  y - camera->y;
 
+// TODO: dibujar imagen solo si esta dentro de la camera.
+
   SDL_Rect renderQuad = { x - camera.x, y- camera.y, width, height };
 
   SDL_RenderCopy(render, texture, NULL, &renderQuad);

@@ -94,7 +94,7 @@ struct Data {
     v_jeep.weapon = bullet;
     v_jeep.secsUntilFire = 0.17;//1/6
     v_jeep.health = 10;
-    v_jeep.range = 30;//6x5
+    v_jeep.range = 5;//6x5
     v_jeep.speed = 8;
     v_jeep.factoryRate = 1;
     v_jeep.factoryBaseTimeInSec = 660;
