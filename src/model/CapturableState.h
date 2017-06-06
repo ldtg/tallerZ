@@ -4,7 +4,9 @@
 #include "PlayerID.h"
 struct CapturableState {
   PlayerID ownerID;
-  CapturableState(const PlayerID &id):ownerID(id){};
+  Position pos;
+  CapturableState(const PlayerID &id, const Position pos)
+      : ownerID(id), pos(pos) {};
 };
 
 #endif //TALLERZ_CAPTURABLESTATE_H

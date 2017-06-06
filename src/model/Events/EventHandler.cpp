@@ -21,8 +21,6 @@ void EventHandler::add(Event *event) {
 }
 
 Event* EventHandler::get() {
-  std::cerr<<"QUEUE: " << eventQueue.size() <<std::endl;
-
   Event *event_aux = eventQueue.front();
   eventQueue.pop();
   return event_aux;

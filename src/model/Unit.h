@@ -84,6 +84,7 @@ class Unit : public Attackable {
   virtual Team& getOwnerTeam();
   Bullet createBullet();
   void still();
+  virtual bool capturableInRange();
 };
 
 #endif //TALLERZ_UNIT_H

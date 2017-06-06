@@ -6,7 +6,7 @@
 class UnitMoveStepEvent : public Event {
  private:
 //  Position posFrom;
-  Position posToo;
+  Position posTo;
   UnitID id;
   int rotation;
 //  UnitState newState;

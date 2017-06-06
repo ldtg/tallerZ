@@ -5,7 +5,8 @@
 #include "Player.h"
 #include "Build.h"
 #include "Capturable.h"
-class Territory : public Capturable{
+
+class Territory : public Capturable {
  private:
   std::vector<Build *> builds;
   Position flagPosition;

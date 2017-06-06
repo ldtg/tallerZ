@@ -7,7 +7,7 @@ class BulletNewEvent : public Event {
  private:
   BulletID id;
   const Weapon weapon;
-  const Position from;
+  Position from;
   const Position to;
 
  public:

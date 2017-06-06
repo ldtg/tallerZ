@@ -40,6 +40,7 @@ class Map {
       const std::map<BuildID, BuildState> &builds,
       unsigned short width,
       unsigned short height);
+
   Map(const std::map<Position, Tile> &map,
       const std::map<BuildID, BuildState> &builds,
       std::map<CapturableID, CapturableState> capturables,
@@ -51,6 +52,7 @@ class Map {
       const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
       unsigned short width,
       unsigned short height);
+
   ~Map();
 
   std::vector<Tile> getNeighbors(const Tile &tile) const;
@@ -84,10 +86,12 @@ class Map {
   const std::map<Position, Tile> &getMap() const;
   const std::map<UnitID, UnitState> &getUnits() const;
   const std::map<BuildID, BuildState> &getBuilds() const;
+  const std::map<CapturableID, CapturableState> &getCapturables() const;
 
   UnitID getUnitIDFromPosition(const Position &pos, unsigned short range) const;
-  BuildID getBuildIDFromPosition(const Position &pos,
-                                 unsigned short range) const;
+  BuildID getBuildIDFromPosition(const Position &pos, unsigned short range) const;
+  CapturableID getCapturableIDFromPosition(const Position &pos, unsigned short range) const;
+
   UnitState getUnitState(const UnitID &unitID) const;
 
   //Para crear el mapa

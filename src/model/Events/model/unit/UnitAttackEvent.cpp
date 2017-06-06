@@ -14,8 +14,8 @@ void UnitAttackEvent::process() {
   int rotation = attackerPos.getRoration(huntedPos);
   std::string rotation_s = std::to_string(rotation);
   std::string action("fire");
-  unitVista = VistasFactory::getUnitVista(attacker.getType(), color, action, rotation_s);
-  unitVista->setPos(pos);
+  unitVista = VistasFactory::getUnitVista(attacker.getType(), color, action, rotation_s, pos);
+//  unitVista->setPos(pos);
   unitVista->setRotation(rotation);
 
   view->addUnitVista(attacker, unitVista);

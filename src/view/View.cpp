@@ -14,8 +14,10 @@ View::View(const Map &map, EventHandler &eventHandler, Camera &camera)
   _quit = false;
 
   createInitialTerrainVista(map.getMap());
+  TerrainType terrainType = map.getMap().at(Position(0,0)).getTerrainType();
   createInitialBuildVista(map.getBuilds());
   createInitialUnitVista(map.getUnits());
+  createInitialCapturableVista(map.getCapturables());
 }
 
 View::~View() {}
@@ -23,11 +25,12 @@ View::~View() {}
 
 void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
   for (auto const &posMap : map) {
-    Position pos = posMap.first;
     Tile tile = posMap.second;
     TerrainType terrainType = tile.getTerrainType();
-    ObjectMapaVista *terrain = VistasFactory::getTerrainVista(terrainType);
-    add(terrain, tile.getCornerPosition());
+    Position pos = tile.getCornerPosition();
+    ObjectMapaVista *terrain = VistasFactory::getTerrainVista(terrainType, pos);
+//    add(terrain, tile.getCornerPosition());
+//    panel.add(terrain);
 
     terrainsVista.emplace(pos, terrain);
   }
@@ -50,10 +53,12 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
     std::string rotation = std::to_string(rotations[i]);
     std::string action("look_around");
     std::string color = unit.second.owner.getColor();
-    Position pos = translateModelPos(type, action, unit.second.position);
-    Sprite *unitVista = VistasFactory::getUnitVista(type, color, action, rotation);
-
-    add(unitVista, pos);
+//    Position pos = translateModelPos(type, action, unit.second.position);
+    Sprite *unitVista = VistasFactory::getUnitVista(type, color,
+                                                    action, rotation,
+                                                    unit.second.position);
+//    add(unitVista, pos);
+//    panel.add(unitVista);
 
     unitsVista.emplace(unit.first, unitVista);
   }
@@ -64,10 +69,26 @@ void View::createInitialBuildVista(const std::map<BuildID, BuildState> &builds) 
     BuildType type = build.first.getType();
     Position pos = build.second.position;
     std::string state("");
-    ObjectMapaVista *buildVista = VistasFactory::getBuildVista(type, state);
-    add(buildVista, pos);
+    ObjectMapaVista *buildVista = VistasFactory::getBuildVista(type, state, pos);
+//    add(buildVista, pos);
+//    panel.add(buildVista);
 
     buildsVista.emplace(build.first, buildVista);
+  }
+}
+
+void View::createInitialCapturableVista(const std::map<CapturableID,
+                                        CapturableState> &capturables) {
+  for (auto const &capturable : capturables) {
+    CapturableType type = capturable.first.getType();
+//    std::string color = capturable.second.ownerID.getColor();
+    Position pos = capturable.second.pos;
+    ObjectMapaVista *capturableVista = VistasFactory::getCapturableVista(type, pos);
+
+//    add(capturableVista, pos);
+//    panel.add(capturableVista);
+
+    capturablesVista.emplace(capturable.first, capturableVista);
   }
 }
 
@@ -107,8 +128,16 @@ void View::draw() {
     panel.add(unit.second);
   }
 
+  for (auto const &capturable : capturablesVista) {
+    panel.add(capturable.second);
+  }
+
   for (auto const &bullet : bulletsVista) {
     panel.add(bullet.second);
+  }
+
+  for (Sprite *effect : effectsVista) {
+    panel.add(effect);
   }
 
 //  updateExplosion();
@@ -131,6 +160,7 @@ void View::draw() {
   panel.draw(camera);
 }
 
+/*
 void View::add(ObjectMapaVista *objectVista, Position pos) {
     if (objectVista == NULL)
       throw std::invalid_argument("View::add() objectMapaVista es NULL");
@@ -138,6 +168,7 @@ void View::add(ObjectMapaVista *objectVista, Position pos) {
     objectVista->setPos(pos);
     panel.add(objectVista);
 }
+*/
 
 /*
 void View::updateExplosion() {
@@ -163,8 +194,9 @@ bool View::quit() {
   return _quit;
 }
 
+/*
 Position View::translateModelPos(UnitType type, std::string &action, Position pos) {
-  if (type == R_GRUNT) {
+  if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO) {
     // size of grunt image is 16x16
     return pos.sub(8,8);
   }
@@ -176,20 +208,25 @@ Position View::translateModelPos(UnitType type, std::string &action, Position po
       return pos.sub(25,25);
   }
 }
+*/
 
 void View::moveCamera(int x, int y) {
-  for (int i=0; i < camera.vel; ++i) {
-    eventHandler.addStep(new CameraMoveStepEvent(camera, x, y), i);
+  long cantSteps = eventHandler.amountSteps();
+  // no hay unidades moviendose
+  if (cantSteps == 0) {
+    cantSteps = camera.vel;
   }
 
-//  camera.move(x, y);
+  for (int i=0; i < cantSteps; ++i) {
+    eventHandler.addStep(new CameraMoveStepEvent(camera, x, y), i);
+  }
 }
 
 
 void View::move(UnitID id, Position posTo) {
   Position pos_aux = unitsVista.at(id)->getPos();
   std::string action("walk");
-  posTo = translateModelPos(id.getType(), action, posTo);
+//  posTo = translateModelPos(id.getType(), action, posTo);
 
   int rotation = 0;
   int i = 0;
@@ -212,7 +249,7 @@ void View::removeUnitVista(UnitID &id) {
   unitsVista.erase(id);
 }
 
-void View::addUnitVista(UnitID &id, Sprite *unitVista) {
+void View::addUnitVista(const UnitID &id, Sprite *unitVista) {
   unitsVista.emplace(id, unitVista);
 }
 
@@ -254,11 +291,30 @@ void View::addBuildVista(BuildID &id, ObjectMapaVista *buildVista) {
   buildsVista.emplace(id, buildVista);
 }
 
+ObjectMapaVista* View::getCapturedVista(const CapturableID &id) {
+  return capturablesVista.at(id);
+}
 
-void View::addExplosionVista(Sprite *objectVista, Position pos) {
+void View::addCapturableVista(const CapturableID &id, ObjectMapaVista *capturableVista) {
+  capturablesVista.emplace(id, capturableVista);
+}
+
+void View::removeCapturableVista(CapturableID &id) {
+  delete capturablesVista.at(id);
+  capturablesVista.erase(id);
+}
+
+
+void View::addExplosionVista(Sprite *objectVista) {
   if (objectVista == NULL)
     throw std::invalid_argument("View::addExplosionVista() objectMapaVista es NULL");
 
-  objectVista->setPos(pos);
   explosionsVista.push_back(objectVista);
+}
+
+void View::addEffectVista(Sprite *objectVista) {
+  if (objectVista == NULL)
+    throw std::invalid_argument("View::addExplosionVista() objectMapaVista es NULL");
+
+  effectsVista.push_back(objectVista);
 }

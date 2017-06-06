@@ -77,6 +77,11 @@ bool Unit::attackedInRange() {
       < range;
 }
 
+bool Unit::capturableInRange() {
+  return currentPosition.euclideanDistance(capturable->getCapturePosition())
+      < 10;
+}
+
 bool Unit::isAttacking() {
   return this->movState.isHunting() || this->movState.isAutoAttacking();
 }
@@ -98,18 +103,22 @@ Attackable *Unit::getHunted() {
 Weapon Unit::getWeapon() {
   return this->weapon;
 }
+
 void Unit::capture(const std::vector<Position> &movementsPositions,
                    Capturable *capturable) {
   this->capturable = capturable;
   this->movementsPositions = movementsPositions;
   this->movState.capturing();
 }
+
 bool Unit::isCapturing() const {
   return this->movState.isCapturing();
 }
+
 bool Unit::isStill() const {
   return this->movState.isStill();
 }
+
 UnitID Unit::getId() const {
   return this->id;
 }
@@ -117,6 +126,7 @@ UnitID Unit::getId() const {
 bool Unit::isAlive() const {
   return health > 0;
 }
+
 bool Unit::isMoving() const {
   return movState.isMoving();
 }

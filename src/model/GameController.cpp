@@ -22,6 +22,7 @@
 #include "model/Events/model/bullet/BulletNewEvent.h"
 #include "model/Events/model/build/BuildDamageEvent.h"
 #include "UnitFactory.h"
+
 GameController::GameController(Map &map,
                                const std::map<UnitID, Unit *> &units,
                                const std::map<BuildID, Build *> &builds)
@@ -35,10 +36,9 @@ GameController::GameController(Map &map,
                                const std::map<UnitID, Unit *> &units,
                                const std::map<BuildID, Build *> &builds,
                                const std::map<CapturableID,
-                                              Capturable *> &capturables) : map(
-    map), units(units), builds(builds), capturables(capturables) {
-
-}
+                                              Capturable *> &capturables)
+    : map(map), units(units),
+      builds(builds), capturables(capturables) {}
 
 GameController::GameController(Map &map,
                                const std::map<UnitID, Unit *> &units,
@@ -47,13 +47,10 @@ GameController::GameController(Map &map,
                                               Capturable *> &capturables,
                                const std::map<TerrainObjectID,
                                               TerrainObject> &terrainObjects)
-    : map(map),
-      units(units),
+    : map(map), units(units),
       builds(builds),
       capturables(capturables),
-      terrainObjects(terrainObjects) {
-
-}
+      terrainObjects(terrainObjects) {}
 
 GameController::GameController(Map &map,
                                const std::map<UnitID, Unit *> &units,
@@ -64,14 +61,11 @@ GameController::GameController(Map &map,
                                               TerrainObject> &terrainObjects,
                                const std::map<PlayerID, Player *> &players,
                                const std::map<TeamID, Team> &teams) :
-    map(map),
-    units(units),
+    map(map), units(units),
     builds(builds),
     capturables(capturables),
     terrainObjects(terrainObjects),
-    players(players), teams(teams) {
-
-}
+    players(players), teams(teams) {}
 
 void GameController::move(const UnitID &idunit, const Position &position) {
   Unit *unit = units.at(idunit);
@@ -304,7 +298,8 @@ void GameController::hunt(Unit *unit,
 void GameController::capture(Unit *unit,
                              std::vector<Event *> &events,
                              std::map<UnitID, Unit *>::iterator &it) {
-  if (!unit->hasMovesToDo()) { //llego
+//  if (!unit->hasMovesToDo()) { //llego
+  if (unit->capturableInRange()) {
     unit->still();
     Capturable *capturable = unit->getCapturable();
     capturable->capture(unit->getId(), unit->getOwner(), unit->getOwnerTeam());
@@ -320,10 +315,12 @@ void GameController::capture(Unit *unit,
       map.updateUnit(par.first, par.second);
     }
     //create event
-    events.push_back(new CaptureEvent(unit->getId(),
+    events.push_back(new UnitStillEvent(unit->getId()));
+
+    events.push_back(new CaptureEvent(unit->getId(), capturable->getID(),
+                                      capturable->getCapturePosition(),
                                       capturedBuilds,
-                                      capturedUnits,
-                                      dissapear));
+                                      capturedUnits, dissapear));
     if (dissapear) {
       // si alguien la estaba persiguiendo la tiene que ver muerta,
       // pero no se tiene que disparar el evento muerte

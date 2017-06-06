@@ -5,6 +5,7 @@
 #include "Vehicle.h"
 #include "BuildID.h"
 #include "BuildState.h"
+
 class CapturableVehicle : public Capturable {
  private:
   Vehicle &vehicle;
