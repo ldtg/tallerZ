@@ -2,11 +2,11 @@
 #include <algorithm>
 #include "Generator.h"
 
-Generator::Generator(const unsigned &width, const unsigned &length, unsigned territories, const unsigned& teams, MAP_TYPE map_type, int vehicles, int factories_level) :
+Generator::Generator(const unsigned &width, const unsigned &length, unsigned territories, const unsigned& players, MAP_TYPE map_type, int vehicles, int factories_level) :
     map_width(width),
     map_length(length),
     tile_amount(width*length),
-    territories(territories), teams(teams), map_type(map_type),
+    territories(territories), players(players), map_type(map_type),
     abandoned_vehicles_amount(vehicles), factories_level(factories_level){
 
   calculate_tiles_per_territory();
@@ -252,14 +252,12 @@ int Generator::draw_line(const Position_Data &start, const Position_Data &end, T
   xdiff = end.x - start.x;
   if (xdiff > 0){
     for (int i = 0; i < xdiff; i++){
-      //this->map_positions[get_position(start.x+i,start.y)].terrain_type = terrain_type;
       set_terrain((start.x + i), start.y, terrain_type);
       marked_tiles++;
     }
   }
   if (xdiff < 0){
     for (int i = 0; i < abs(xdiff); i++){
-      //this->map_positions[get_position(start.x-i,start.y)].terrain_type = terrain_type;
       set_terrain((start.x-i), start.y, terrain_type);
       marked_tiles++;
     }
@@ -268,14 +266,12 @@ int Generator::draw_line(const Position_Data &start, const Position_Data &end, T
   ydiff = end.y - start.y;
   if ( ydiff > 0){
     for (int i = 0; i < ydiff; i++){
-      //this->map_positions[get_position(end.x,start.y+i)].terrain_type = terrain_type;
       set_terrain(end.x, start.y + i, terrain_type);
       marked_tiles++;
     }
   }
   if (ydiff < 0){
     for (int i = 0; i < abs(ydiff); i++){
-      //this->map_positions[get_position(end.x,start.y-i)].terrain_type = terrain_type;
       set_terrain(end.x, start.y - i, terrain_type);
       marked_tiles++;
     }
@@ -318,11 +314,11 @@ void Generator::building_distribution_algorithm() {
   int frecuency;
   std::vector<int> territories_with_forts;
   std::vector<int> territories_with_flags_and_factories;
-  frecuency = territories/teams;
+  frecuency = territories/players;
 
   j = 0;
   for (int i = 0; i < territories; i++){
-    if (i % frecuency == 0 && j < teams){
+    if (i % frecuency == 0 && j < players){
       territories_with_forts.push_back(i);
       j++;
     } else {

@@ -80,7 +80,7 @@ class Generator {
   const unsigned territories;
   const unsigned map_length;
   const unsigned map_width;
-  const unsigned teams;
+  const unsigned players;
   unsigned tiles_per_territory;
   unsigned frame; //encuadrado
   Position_Data * map_positions;

@@ -170,14 +170,9 @@ TEST(VistaTest, Window) {
 
 TEST(VistaTest_Usando_Map_Loader, Window){
   Map_Loader map_loader("mapa.json");
-  map_loader.load_file();
-  map_loader.load_configuration();
-  map_loader.set_players();
-  map_loader.set_teams();
-  map_loader.build_map();
-  Map map(map_loader.get_loaded_map(), map_loader.get_buildmap(),
-          map_loader.get_configuration().map_width,
-          map_loader.get_configuration().map_length);
+
+  Map map = map_loader.run();
+
 
   std::map<UnitID, Unit *> units;
   GameController gameController(map, units, map_loader.get_builds());

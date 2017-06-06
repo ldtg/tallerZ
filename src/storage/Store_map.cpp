@@ -49,7 +49,7 @@ void Store_map::load_json() {
   this->j["base_terrain"] = generated_map.base_terrain;
   this->j["rock_type"] = generated_map.rock_type;
   this->j["river_type"] = generated_map.river_type;
-  this->j["teams"] = generated_map.teams;
+  this->j["players"] = generated_map.players;
   this->j["bridge_type"] = generated_map.bridge_type;
   this->j["road_type"] = generated_map.road_type;
 

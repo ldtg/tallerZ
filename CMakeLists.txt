@@ -264,7 +264,7 @@ set(SOURCE_FILES
 
         src/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.cpp
         src/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.h
-        )
+        z_tests/tests_storage/load_map_tests.cpp)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)
