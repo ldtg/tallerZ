@@ -40,7 +40,7 @@ void Map_Loader::load_configuration() {
   this->configuration.factories_level = j["factories_level"];
   this->configuration.map_width = j["map_width"];
   this->configuration.map_length = j["map_length"];
-  this->configuration.teams = j["teams"];
+  this->configuration.players = j["players"];
   this->configuration.territories_amount = j["territories_amount"];
   this->configuration.base_terrain = j["base_terrain"];
   this->configuration.bridge_type = j["bridge_type"];
@@ -79,9 +79,10 @@ Map_Config Map_Loader::get_configuration() {
   return this->configuration;
 }
 void Map_Loader::set_players() {
-  for (int i = 0; i < configuration.teams; i++){
+  for (int i = 0; i < configuration.players; i++){
     players.push_back(Player((PlayerColor)i));
   }
+  players.push_back(gaiaPlayer);
 }
 void Map_Loader::assign_robot_factory(const Position_Data &position_data, Player &player, Team &team) {
   Build * build = new
@@ -94,13 +95,17 @@ void Map_Loader::assign_robot_factory(const Position_Data &position_data, Player
   builds.emplace(build->getId(), build);
 }
 void Map_Loader::set_teams() {
-  /**@WARNING muy HARCODEADO esto**/
+  const int team_amount = 2;
   Team team1;
-  team1.addPlayer(&players[0]);
-
   Team team2;
-  team2.addPlayer(&players[1]);
-  //team2.addPlayer(&players[3]);
+  for (int i = 0; i < configuration.players; i++){
+    if ( i % team_amount == 0){
+      team1.addPlayer(&players[i]);
+    } else {
+      team2.addPlayer(&players[i]);
+    }
+  }
+
   this->teams.push_back(team1);
   this->teams.push_back(team2);
 }
@@ -137,7 +142,7 @@ void Map_Loader::build_map() {
     pos_data = read_data(i);
     emplace_terrain(pos_data);
     if (pos_data.fort){
-      assign_fort(pos_data, players[fort_to_assign],teams[0]);//teams[0] HARCODEADO
+      assign_fort(pos_data, players[fort_to_assign],teams[0]);//players[0] HARCODEADO
       fort_to_assign++;
     }
     if (pos_data.bridge || pos_data.rock){
@@ -147,10 +152,10 @@ void Map_Loader::build_map() {
       assign_capturable(pos_data);
     }
     if (pos_data.robot_factory){
-        assign_robot_factory(pos_data, players[0], teams[0]);
+      assign_robot_factory(pos_data, gaiaPlayer, teams[0]);//TODO desharcodear teams[0]
     }
     if (pos_data.vehicle_factory){
-      assign_vehicle_factory(pos_data, players[0], teams[0]);//players[0] harcodeado tambien, osea, me quedo pensando en la idea esa del player especial que comentaba luis en clase la vez pasada.
+      assign_vehicle_factory(pos_data, gaiaPlayer, teams[0]);//TODO desharcodear teams[0]
     }
   }
 }
@@ -192,23 +197,24 @@ void Map_Loader::assign_terrain_object(const Position_Data& position_data) {
     TerrainObjectState objectState(pos, size, rock_health, false);
     switch (configuration.rock_type){
       case (TerrainObjectType ::ROCK):{
-        terrainObject[TerrainObjectID(ROCK)] = objectState;
+        this->terrainObject.emplace(TerrainObjectID(ROCK),objectState);
         break;
       }
       case (TerrainObjectType ::ICEROCK):{
-        terrainObject[TerrainObjectID(ICEROCK)] = objectState;
+        this->terrainObject.emplace(TerrainObjectID(ICEROCK),objectState);
         break;
       }
     }
   }
 }
 void Map_Loader::assign_capturable(const Position_Data &position_data) {
-  //std::map<CapturableID, CapturableState> capturables;
+  Position pos(position_data.x, position_data.y);
   if (position_data.flag){
-    capturables[CapturableID(FLAG)] = CapturableState(GaiaPlayer().getID());
+    capturables.emplace(CapturableID(FLAG), CapturableState(GaiaPlayer().getID(), pos));
   }
   if (position_data.vehicle){
-    capturables[CapturableID(UNIT)] = CapturableState(GaiaPlayer().getID());
+    capturables.emplace(CapturableID(UNIT), CapturableState(GaiaPlayer().getID(), pos));
+    assign_unit(position_data);
   }
 }
 std::map<CapturableID, CapturableState> Map_Loader::get_capturables() {
@@ -216,4 +222,10 @@ std::map<CapturableID, CapturableState> Map_Loader::get_capturables() {
 }
 std::map<TerrainObjectID, TerrainObjectState> Map_Loader::get_terrainObject() {
   return this->terrainObject;
+}
+void Map_Loader::assign_unit(const Position_Data &position_data) {
+  Position pos(position_data.x, position_data.y);
+  Player& gaiaPlayer = players[players.size()-1];
+  UnitID unitID(V_JEEP);
+  this->units.emplace(unitID, UnitState(R_GRUNT, gaiaPlayer.getID(), 60, data.bullet, pos));
 }

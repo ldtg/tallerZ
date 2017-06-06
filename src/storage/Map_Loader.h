@@ -26,7 +26,7 @@ using json = nlohmann::json;
 
 struct Map_Config{
   int territories_amount;
-  int teams;
+  int players;
   int map_width;
   int map_length;
   int factories_level;
@@ -59,6 +59,7 @@ class Map_Loader {
 
   std::map<TerrainObjectID, TerrainObjectState> terrainObject;
   std::map<CapturableID, CapturableState> capturables;
+  GaiaPlayer gaiaPlayer;
 
  public:
   Map_Loader(std::string file_path);
@@ -81,19 +82,37 @@ class Map_Loader {
     this->set_players();
     this->set_teams();
     this->build_map();
-    return Map(map, buildmap, capturables, terrainObject,
+    return Map(map, buildmap, capturables, terrainObject, units,
                configuration.map_width, configuration.map_length);
   }
 
  private:
+  /**
+   * load_file: convierte el archivo .json en una variable de tipo json.
+   */
   void load_file();//paso 0
 
+  /**
+   * load_configuration: selecciona las variables de configuracion guardadas
+   * en el archivo .json y las almacena en la variable configuration
+   */
   void load_configuration();//paso 1
 
+  /**
+   * set_players: carga las variables de jugadores en base a la cantidad
+   * de jugadores para los que está diseñado el mapa.
+   */
   void set_players();//paso 2
 
+  /**
+   * set_teams: reparte los jugadores en dos equipos que se van a enfrentar
+   * entre sí.
+   */
   void set_teams();//paso 3
 
+  /**
+   * build_map: carga todos los elementos del mapa
+   */
   void build_map();//paso 4
 
   void emplace_terrain(const Position_Data& pos_data);
@@ -108,14 +127,7 @@ class Map_Loader {
 
   void assign_capturable(const Position_Data& position_data);
 
-  void assign_unit(const Position_Data& position_data){
-    //std::map<UnitID, UnitState> units;
-    GaiaPlayer gaiaPlayer;//TODO añadir gaia a la lista de players, y desharcodear esto
-    UnitID unitID(V_JEEP);
-    Position pos(position_data.x, position_data.y);
-    UnitState unitState(R_GRUNT, gaiaPlayer.getID(), 60, data.bullet, pos);
-    units[unitID] = unitState;
-  }
+  void assign_unit(const Position_Data& position_data);
 
   Position_Data read_data(int position);
 
