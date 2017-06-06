@@ -195,32 +195,35 @@ void GameController::doTick(std::vector<Event *> &events) {
 
 void GameController::unitsTick(std::vector<Event *> &events) {
   for (auto it_units = units.begin(); it_units != units.end();) {
-
     Unit *current = it_units->second;
-
-    if (current->hasDamagesToReceive()) {
-      unitReceiveDamage(current, events);
-    }
-
-    if (current->isAlive()) {
-      if (current->isMoving())
-        move(current, events, it_units);
-      else if (current->isAttacking())
-        hunt(current, events, it_units);
-      else if (current->isCapturing())
-        capture(current, events, it_units);
-      else if (current->isStill()) {
-        autoAttack(current, events, it_units);
+    if (!current->getOwner().getID().isGaia()) {
+      if (current->hasDamagesToReceive()) {
+        unitReceiveDamage(current, events);
       }
 
-      //El ++it_units esta adentro de los metodos porque el capture lo puede
-      // modificar si tiene que hacer desaparecer a la unidad
+      if (current->isAlive()) {
+        if (current->isMoving())
+          move(current, events, it_units);
+        else if (current->isAttacking())
+          hunt(current, events, it_units);
+        else if (current->isCapturing())
+          capture(current, events, it_units);
+        else if (current->isStill()) {
+          autoAttack(current, events, it_units);
+        }
+
+        //El ++it_units esta adentro de los metodos porque el capture lo puede
+        // modificar si tiene que hacer desaparecer a la unidad
+      } else {
+        events.push_back(new UnitDeathEvent(current->getId()));
+        map.removeUnit(current->getId());
+        deathUnits.push_back(current);
+        it_units = units.erase(it_units);
+      }
     } else {
-      events.push_back(new UnitDeathEvent(current->getId()));
-      map.removeUnit(current->getId());
-      deathUnits.push_back(current);
-      it_units = units.erase(it_units);
+      ++it_units;
     }
+
   }
 }
 
@@ -380,21 +383,24 @@ void GameController::bulletsTick(std::vector<Event *> &vector) {
 void GameController::buildsTick(std::vector<Event *> &events) {
   for (auto b_iter = builds.begin(); b_iter != builds.end();) {
     Build *current = b_iter->second;
+    if (!current->getOwner().getID().isGaia()) {
+      if (current->hasDamagesToReceive())
+        buildReceiveDamage(current, events);
 
-    if (current->hasDamagesToReceive())
-      buildReceiveDamage(current, events);
-
-    if (current->isAlive()) {
-      if (current->hasToBuild()) {
-        this->addUnits(current->fabricateUnits(), events);
+      if (current->isAlive()) {
+        if (current->hasToBuild()) {
+          this->addUnits(current->fabricateUnits(), events);
+        }
+        map.updateBuild(current->getId(), current->getBuildState());
+        current->tick();
+        b_iter++;
+      } else {
+        events.push_back(new BuildDestroyedEvent(current->getId()));
+        map.updateBuild(current->getId(), current->getBuildState());
+        b_iter = builds.erase(b_iter);
       }
-      map.updateBuild(current->getId(), current->getBuildState());
-      current->tick();
-      b_iter++;
-    } else {
-      events.push_back(new BuildDestroyedEvent(current->getId()));
-      map.updateBuild(current->getId(), current->getBuildState());
-      b_iter = builds.erase(b_iter);
+    }else {
+      ++b_iter;
     }
   }
 }
