@@ -21,6 +21,7 @@ class View {
   bool _quit;
 
   std::map<Position, ObjectMapaVista*> terrainsVista;
+  std::map<TerrainObjectID, ObjectMapaVista*> terrainObjectsVista;
   std::map<BuildID, ObjectMapaVista*> buildsVista;
   std::map<UnitID, Sprite*> unitsVista;
   std::map<CapturableID, ObjectMapaVista*> capturablesVista;
@@ -33,7 +34,9 @@ class View {
   void createInitialBuildVista(const std::map<BuildID, BuildState> &builds);
   void createInitialCapturableVista(const std::map<CapturableID, CapturableState> &capturables);
 
-//  void add(ObjectMapaVista *objectVista, Position pos);
+  void createInitialTerrainObjectVista(const std::map<TerrainObjectID, TerrainObjectState> &terrainObjects);
+
+  //  void add(ObjectMapaVista *objectVista, Position pos);
 //  ObjectMapaVista *getTerrainVista(TerrainType type);
 //  void updateExplosion();
   void drawSteps();

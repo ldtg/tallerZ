@@ -14,7 +14,7 @@ View::View(const Map &map, EventHandler &eventHandler, Camera &camera)
   _quit = false;
 
   createInitialTerrainVista(map.getMap());
-  TerrainType terrainType = map.getMap().at(Position(0,0)).getTerrainType();
+  createInitialTerrainObjectVista(map.getTerrainObjects());
   createInitialBuildVista(map.getBuilds());
   createInitialUnitVista(map.getUnits());
   createInitialCapturableVista(map.getCapturables());
@@ -92,6 +92,16 @@ void View::createInitialCapturableVista(const std::map<CapturableID,
   }
 }
 
+void View::createInitialTerrainObjectVista(const std::map<TerrainObjectID,
+                                           TerrainObjectState> &terrainObjects) {
+  for (auto const &terrainObject : terrainObjects) {
+    TerrainObjectType type = terrainObject.first.getType();
+    Position pos = terrainObject.second.centerPosition;
+    ObjectMapaVista *terrainObjVista = VistasFactory::getTerrainObjectVista(type, pos);
+
+    terrainObjectsVista.emplace(terrainObject.first, terrainObjVista);
+  }
+}
 
 void View::update() {
   while (!eventHandler.empty()) {
@@ -118,6 +128,10 @@ void View::drawSteps() {
 void View::draw() {
   for (auto const &posTerrain : terrainsVista) {
     panel.add(posTerrain.second);
+  }
+
+  for (auto const &posTerrainObj : terrainObjectsVista) {
+    panel.add(posTerrainObj.second);
   }
 
   for (auto const &build : buildsVista) {

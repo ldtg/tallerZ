@@ -163,6 +163,10 @@ const std::map<CapturableID, CapturableState> &Map::getCapturables() const {
   return capturables;
 }
 
+const std::map<TerrainObjectID, TerrainObjectState>& Map::getTerrainObjects() const {
+  return terrainObject;
+}
+
 void Map::setUnits(const std::map<UnitID, UnitState> &units) {
   Map::units = units;
 }
