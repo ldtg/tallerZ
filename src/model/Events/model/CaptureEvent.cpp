@@ -22,18 +22,23 @@ void CaptureEvent::process() {
     view->removeUnitVista(capturer);
   }
 
-  if (!capturedUnits.empty()) {
+//  if (!capturedUnits.empty()) {
+  if (captured.getType() == UNIT) {
     std::string action("look_around");
-    std::string rotation("0");
+//    std::string rotation("0");
     for (auto par: capturedUnits) {
       UnitType type = par.first.getType();
+      Sprite *capturedVistaOld = view->getUnitVista(par.first);
+      int rotation = capturedVistaOld->getRotation();
+      std::string rotation_s = std::to_string(rotation);
       Sprite *capturedVista = VistasFactory::getUnitVista(type, color,
-                                                          action, rotation,
+                                                          action, rotation_s,
                                                           par.second.position);
 //      capturedVista->setPos(par.second.position);
+      view->removeUnitVista(par.first);
       view->addUnitVista(par.first, capturedVista);
     }
-    view->removeCapturableVista(captured);
+//    view->removeCapturableVista(captured);
   }
   else {
     ObjectMapaVista *flagVista = view->getCapturedVista(captured);

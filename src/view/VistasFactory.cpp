@@ -184,11 +184,12 @@ ObjectMapaVista* VistasFactory::getCapturableVista(CapturableType type, Position
   long despX=0, despY=0;
 
   switch (type) {
-    case UNIT: {
-      despX = 25, despY = 25;
-      capturableVista = new Image("../src/view/images/units/vehicles/jeep/capturable.png");
-      break;
-    } case FLAG: {
+//    case UNIT: {
+//      despX = 25, despY = 25;
+//      capturableVista = new Image("../src/view/images/units/vehicles/jeep/capturable.png");
+//      break;
+//    }
+  case FLAG: {
       std::string color("null");
       despX = 15, despY = 15;
       capturableVista = getFlagsVista(color, pos);

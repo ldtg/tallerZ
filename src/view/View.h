@@ -56,7 +56,7 @@ class View {
 
   Sprite* getUnitVista(UnitID id);
   void move(UnitID id, Position posTo);
-  void removeUnitVista(UnitID &id);
+  void removeUnitVista(const UnitID &id);
   void addUnitVista(const UnitID &id, Sprite *unitVista);
 
   ObjectMapaVista* getBulletVista(BulletID id);

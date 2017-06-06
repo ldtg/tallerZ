@@ -127,7 +127,7 @@ TEST(VistaTest, Window) {
     map.addUnit(robotB->getId(), robotB->getUnitState());
     map.addUnit(robotC->getId(), robotC->getUnitState());
     map.addUnit(robotD->getId(), robotD->getUnitState());
-//    map.addUnit(vehicle->getId(), vehicle->getUnitState());
+    map.addUnit(vehicle->getId(), vehicle->getUnitState());
 
     GameController gameController(map, units, builds, capturables);
 

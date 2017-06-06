@@ -87,8 +87,8 @@ void View::createInitialCapturableVista(const std::map<CapturableID,
 
 //    add(capturableVista, pos);
 //    panel.add(capturableVista);
-
-    capturablesVista.emplace(capturable.first, capturableVista);
+    if (capturableVista != nullptr)
+      capturablesVista.emplace(capturable.first, capturableVista);
   }
 }
 
@@ -258,7 +258,7 @@ Sprite* View::getUnitVista(UnitID id) {
   return unitsVista.at(id);
 }
 
-void View::removeUnitVista(UnitID &id) {
+void View::removeUnitVista(const UnitID &id) {
   delete unitsVista.at(id);
   unitsVista.erase(id);
 }

@@ -24,6 +24,16 @@ void Model::rightClick(int x, int y) {
   Position pos(x + camera.x, y + camera.y);
 
   try {
+    CapturableID capturable = map.getCapturableIDFromPosition(pos, 20);
+    for (UnitID unit : unitsSelected) {
+      gameController.capture(unit, capturable);
+    }
+    unitsSelected.clear();
+    return;
+  } catch(const UnitNotFoundException &e) {
+    // Donde se hizo click no hay edificio ni undida.
+  }
+  try {
     UnitID attacked = map.getUnitIDFromPosition(pos, 20);
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, attacked);
@@ -37,16 +47,6 @@ void Model::rightClick(int x, int y) {
     BuildID buildAttacked = map.getBuildIDFromPosition(pos, 50);
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, buildAttacked);
-    }
-    unitsSelected.clear();
-    return;
-  } catch(const UnitNotFoundException &e) {
-    // Donde se hizo click no hay edificio ni undida.
-  }
-  try {
-    CapturableID capturable = map.getCapturableIDFromPosition(pos, 20);
-    for (UnitID unit : unitsSelected) {
-      gameController.capture(unit, capturable);
     }
     unitsSelected.clear();
     return;
