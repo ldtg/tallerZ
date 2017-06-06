@@ -12,7 +12,7 @@
 #include <model/Data.h>
 #include <model/UnitFactory.h>
 #include <model/GameController.h>
-#include <storage/Map_Loader.h>
+#include <storage/Game_Loader.h>
 #include <controller/MouseState.h>
 #include <model/CapturableVehicle.h>
 #include <model/GaiaPlayer.h>
@@ -169,13 +169,19 @@ TEST(VistaTest, Window) {
 }
 
 TEST(VistaTest_Usando_Map_Loader, Window){
-  Map_Loader map_loader("mapa.json");
+  Game_Loader map_loader("mapa.json");
 
   Map map = map_loader.run();
 
   GameController gameController(map, map_loader.get_controller_units(),
                                 map_loader.get_builds());
 
+  GameController _gameController(map, map_loader.get_controller_units(),
+                                 map_loader.get_builds(),
+                                 map_loader.get_controller_capturables(),
+                                 map_loader.get_controller_terrainObjects(),
+                                 map_loader.get_players(),
+                                 map_loader.get_teams());
   Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
   EventHandler eventHandler;
 

@@ -18,7 +18,6 @@ View::View(const Map &map, EventHandler &eventHandler, Camera &camera)
   createInitialBuildVista(map.getBuilds());
   createInitialUnitVista(map.getUnits());
   createInitialCapturableVista(map.getCapturables());
-  SDL_SetWindowGrab(this->window.getWindow(), SDL_TRUE);
 }
 
 View::~View() {}

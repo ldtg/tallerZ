@@ -99,7 +99,7 @@ class Generator {
   Generator(const unsigned& width
       , const unsigned& length
       , unsigned territories
-      , const unsigned& teams
+      , const unsigned& players
       , MAP_TYPE map_type, int vehicles, int factories_level);
 
   ~Generator();

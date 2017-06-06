@@ -46,7 +46,7 @@ struct Map_Config{
  * La funcionalidad de esta clase es cargar un mapa a partir
  * de un archivo .json
  */
-class Map_Loader {
+class Game_Loader {
  private:
   json j;
   std::string file_path;
@@ -70,9 +70,9 @@ class Map_Loader {
   GaiaPlayer gaiaPlayer;
   Team gaiaTeam;
  public:
-  Map_Loader(std::string file_path);
+  Game_Loader(std::string file_path);
 
-  ~Map_Loader();
+  ~Game_Loader();
 
   json get_json();
   std::map<BuildID, Build *> get_builds();
@@ -85,6 +85,8 @@ class Map_Loader {
   std::map<UnitID, Unit *> get_controller_units();
   std::map<int, std::vector<Build*>> get_territory_buildings();
   std::map<TerrainObjectID, TerrainObject> get_controller_terrainObjects();;
+  std::map<PlayerID, Player *> get_players();
+  std::map<TeamID, Team> get_teams();
 
   Map run(){
     this->load_file();
@@ -142,6 +144,8 @@ class Map_Loader {
   Position_Data read_data(int position);
 
   Position centered_position(int x, int y);
+
+  Team get_team(Player * player);
 
   void open_file();
 

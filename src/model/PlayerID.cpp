@@ -42,3 +42,6 @@ bool PlayerID::operator!=(const PlayerID &other) const {
 bool PlayerID::isGaia() const{
   return id == 0;
 }
+unsigned short PlayerID::getID() const {
+  return id;
+}

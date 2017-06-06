@@ -53,6 +53,8 @@ struct Data {
 
   TerrainObjectData asphaltedBridgeObject;
   TerrainObjectData rockObject;
+  TerrainObjectData woodenBridgeObject;
+  TerrainObjectData iceRockObject;
 
   Data() {
     ticksPerSec = 40;
@@ -157,14 +159,22 @@ struct Data {
     woodenBridge.type = TerrainType::WOODENBRIDGE;
     woodenBridge.terrainFactor = 1;
 
-    asphaltedBridgeObject.type = TerrainObjectType::BRIDGE;
+    asphaltedBridgeObject.type = TerrainObjectType::_ASPHALTEDBRIDGE;
     asphaltedBridgeObject.passable = true;
-    asphaltedBridgeObject.health = 10;//1000
+    asphaltedBridgeObject.health = 1000;
     asphaltedBridgeObject.size = 50;
     rockObject.type = TerrainObjectType::ROCK;
     rockObject.passable = false;
-    rockObject.health = 10;//1000
+    rockObject.health = 1000;//1000
     rockObject.size = 50;
+    woodenBridgeObject.type = TerrainObjectType ::_WOODENBRIDGE;
+    woodenBridgeObject.passable = true;
+    woodenBridgeObject.health = 1000;
+    woodenBridgeObject.size = 50;
+    iceRockObject.type = TerrainObjectType ::ICEROCK;
+    iceRockObject.passable = false;
+    iceRockObject.health = 1000;
+    iceRockObject.size = 50;
   }
   UnitData getData(UnitType type) {
     switch (type) {
@@ -222,6 +232,19 @@ struct Data {
         return water;
       default:
         return land;
+    }
+  }
+
+  TerrainObjectData getObjectData(TerrainObjectType terrainObjectType){
+    switch (terrainObjectType){
+      case (TerrainObjectType ::_WOODENBRIDGE):
+        return woodenBridgeObject;
+      case (TerrainObjectType ::_ASPHALTEDBRIDGE):
+        return asphaltedBridgeObject;
+      case (TerrainObjectType ::ICEROCK):
+        return iceRockObject;
+      case (TerrainObjectType ::ROCK):
+        return rockObject;
     }
   }
   std::vector<UnitType> getFabUnits(const BuildType &buildType,

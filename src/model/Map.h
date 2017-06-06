@@ -66,7 +66,7 @@ class Map {
       const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
       std::map<UnitID, UnitState> units,
       unsigned short width,
-      unsigned short height); //El que usa Map_Loader
+      unsigned short height); //El que usa Game_Loader
 
   ~Map();
 

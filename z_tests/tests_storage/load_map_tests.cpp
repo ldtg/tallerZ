@@ -4,28 +4,28 @@
 
 #include "map_generation/Generator.h"
 #include "../../src/storage/Store_map.h"
-#include "Map_Loader.h"
+#include "Game_Loader.h"
 #include "json.hpp"
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
-//TEST(load_map_tests, Map_Loader){
-//  Map_Loader map_loader("mapa.json");
+//TEST(load_map_tests, Game_Loader){
+//  Game_Loader map_loader("mapa.json");
 //  map_loader.load_file();
 //  std::cout << map_loader.get_json()["100"]["territory"] << '\n';
 //
 //  //std::cerr << std::setw(4) << map_loader.get_json() << '\n';
 //}
 
-//TEST(center_position_test, Map_Loader){
-//  Map_Loader map_loader("mapa.json");
+//TEST(center_position_test, Game_Loader){
+//  Game_Loader map_loader("mapa.json");
 //  Position pos = map_loader.centered_position(10,10);
 //  std::cout << pos.getX() << '\n';
 //  std::cout << pos.getY() << '\n';
 //}
 
-//TEST(read_data_test, Map_Loader){
-//  Map_Loader map_loader("mapa.json");
+//TEST(read_data_test, Game_Loader){
+//  Game_Loader map_loader("mapa.json");
 //  map_loader.load_file();
 //  Position_Data data = map_loader.read_data(868);
 //  ASSERT_TRUE(data.x == 28);
@@ -41,15 +41,15 @@
 //  ASSERT_TRUE(data.flag == false);
 //}
 
-//TEST(set_players_test, Map_Loader){
-//  Map_Loader map_loader("mapa.json");
+//TEST(set_players_test, Game_Loader){
+//  Game_Loader map_loader("mapa.json");
 //  map_loader.load_file();
 //  map_loader.load_configuration();
 //  map_loader.set_players();
 //}
 
 TEST(run_test, Map_Loader){
-  Map_Loader map_loader("mapa.json");
+  Game_Loader map_loader("mapa.json");
   Map map1 = map_loader.run();
   std::cout << "Capturables\n";
   for (const auto& i: map_loader.get_capturables()){
