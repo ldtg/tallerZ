@@ -20,6 +20,9 @@
 #include <model/GaiaPlayer.h>
 #include <model/Map.h>
 #include <model/Vehicle.h>
+#include <model/CapturableVehicle.h>
+#include <model/Territory.h>
+#include <model/TerrainObject.h>
 #include "../../json/src/json.hpp"
 
 using json = nlohmann::json;
@@ -53,12 +56,15 @@ class Map_Loader {
   std::map<BuildID, BuildState> buildmap;
   std::map<BuildID, Build *> builds;
   std::map<UnitID, UnitState> units;
+  std::map<CapturableID, Capturable *> controller_capturables;
+  std::map<int, std::vector<Build*>> territory_buildings;
+  std::map<TerrainObjectID, TerrainObject> controller_terrainObjects;
   std::map<UnitID, Unit *> controller_units;
-  std::vector<Player> players;
-  std::vector<Team> teams;
+  std::map<PlayerID, Player *> players;
+  std::map<TeamID, Team> teams;
   Map_Config configuration;
 
-  std::map<TerrainObjectID, TerrainObjectState> terrainObject;
+  std::map<TerrainObjectID, TerrainObjectState> terrainObjects;
   std::map<CapturableID, CapturableState> capturables;
 
   GaiaPlayer gaiaPlayer;
@@ -69,15 +75,16 @@ class Map_Loader {
   ~Map_Loader();
 
   json get_json();
-  std::vector<Team> get_teams();
-  std::vector<Player> get_players();
   std::map<BuildID, Build *> get_builds();
   std::map<BuildID, BuildState> get_buildmap();
   Map_Config get_configuration();
   std::map<Position, Tile> get_loaded_map();
   std::map<CapturableID, CapturableState> get_capturables();
+  std::map<CapturableID, Capturable *> get_controller_capturables();
   std::map<TerrainObjectID, TerrainObjectState> get_terrainObject();
-  std::map<UnitID, Unit *> get_controller_units();;
+  std::map<UnitID, Unit *> get_controller_units();
+  std::map<int, std::vector<Build*>> get_territory_buildings();
+  std::map<TerrainObjectID, TerrainObject> get_controller_terrainObjects();;
 
   Map run(){
     this->load_file();
@@ -85,7 +92,7 @@ class Map_Loader {
     this->set_players();
     this->set_teams();
     this->build_map();
-    return Map(map, buildmap, capturables, terrainObject, units,
+    return Map(map, buildmap, capturables, terrainObjects, units,
                configuration.map_width, configuration.map_length);
   }
 

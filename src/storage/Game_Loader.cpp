@@ -81,9 +81,9 @@ Map_Config Map_Loader::get_configuration() {
 }
 void Map_Loader::set_players() {
   for (int i = 0; i < configuration.players; i++){
-    players.push_back(Player((PlayerColor)i));
+    Player * player = new Player((PlayerColor)i);
+    players[player->getID()] = player;
   }
-  players.push_back(gaiaPlayer);
 }
 void Map_Loader::assign_robot_factory(const Position_Data &position_data, Player &player, Team &team) {
   Build * build = new
@@ -93,14 +93,17 @@ void Map_Loader::assign_robot_factory(const Position_Data &position_data, Player
             team,
             configuration.factories_level);
   buildmap.emplace(build->getId(), build->getBuildState());
+  territory_buildings[position_data.territory].push_back(build);
   builds.emplace(build->getId(), build);
 }
 void Map_Loader::set_teams() {
   const int team_amount = 2;
   Team team1;
   Team team2;
-  for (int i = 0; i < configuration.players; i++){
-    if ( i % team_amount == 0){
+  //std::map<TeamID, Team> &teams
+  for (const auto& i: players){
+    if ((i.first.getID() - 1) % team_amount == 0){
+      team1.addPlayer(players[i].second());
       team1.addPlayer(&players[i]);
     } else {
       team2.addPlayer(&players[i]);
@@ -135,6 +138,7 @@ void Map_Loader::assign_vehicle_factory(const Position_Data &position_data, Play
             team,
             configuration.factories_level);
   buildmap.emplace(build->getId(), build->getBuildState());
+  territory_buildings[position_data.territory].push_back(build);
   builds.emplace(build->getId(), build);
 }
 void Map_Loader::build_map() {
@@ -165,9 +169,6 @@ void Map_Loader::build_map() {
 std::vector<Team> Map_Loader::get_teams() {
   return this->teams;
 }
-std::vector<Player> Map_Loader::get_players() {
-  return this->players;
-}
 std::map<BuildID, Build *> Map_Loader::get_builds() {
   return this->builds;
 }
@@ -179,32 +180,44 @@ std::map<Position, Tile> Map_Loader::get_loaded_map() {
 }
 void Map_Loader::assign_terrain_object(const Position_Data& position_data) {
   Position pos(position_data.x, position_data.y);
-
-  const int size = 50;
-  const int bridge_health = 1000;
-  const int rock_health = 10;
-
   if (position_data.bridge) {
-    TerrainObjectState objectState(pos, size, bridge_health, true);
     switch (configuration.bridge_type) {
       case TerrainType::WOODENBRIDGE:
-        terrainObject[TerrainObjectID(_WOODENBRIDGE)] = objectState;
-        //TODO ver como afecta esto a la creacion de objectID
+        TerrainObject wooden_bridge(data.getObjectData(_WOODENBRIDGE),
+                                     centered_position(position_data.x,
+                                                       position_data.y),
+                                     gaiaPlayer);
+
+        terrainObjects[wooden_bridge.getID()] = wooden_bridge.getState();
+        this->controller_terrainObjects[wooden_bridge.getID()] = wooden_bridge;
+
       case TerrainType::ASPHALTEDBRIDGE:
-        terrainObject[TerrainObjectID(_ASPHALTEDBRIDGE)] = objectState;
-        //TODO ver como afecta esto a la creacion de objectID
+        TerrainObject asphalted_bridge(data.getObjectData(_ASPHALTEDBRIDGE),
+                                    centered_position(position_data.x,
+                                                      position_data.y),
+                                    gaiaPlayer);
+
+        terrainObjects[asphalted_bridge.getID()] = asphalted_bridge.getState();
+        this->controller_terrainObjects[asphalted_bridge.getID()] = asphalted_bridge;
     }
   }
 
   if (position_data.rock){
-    TerrainObjectState objectState(pos, size, rock_health, false);
     switch (configuration.rock_type){
       case (TerrainObjectType ::ROCK):{
-        this->terrainObject.emplace(TerrainObjectID(ROCK),objectState);
+        TerrainObject rock(data.getObjectData(ROCK),
+                           centered_position(position_data.x,
+                                             position_data.y),
+                           gaiaPlayer);
+        this->terrainObjects.emplace(rock.getID(),rock.getState());
         break;
       }
       case (TerrainObjectType ::ICEROCK):{
-        this->terrainObject.emplace(TerrainObjectID(ICEROCK),objectState);
+        TerrainObject icerock(data.getObjectData(ICEROCK),
+                           centered_position(position_data.x,
+                                             position_data.y),
+                           gaiaPlayer);
+        this->terrainObjects.emplace(icerock.getID(),icerock.getState());
         break;
       }
     }
@@ -213,20 +226,26 @@ void Map_Loader::assign_terrain_object(const Position_Data& position_data) {
 void Map_Loader::assign_capturable(const Position_Data &position_data) {
   Position pos(position_data.x, position_data.y);
   if (position_data.flag){
-    capturables.emplace(CapturableID(FLAG),
-                        CapturableState(GaiaPlayer().getID(),
-                                        centered_position(position_data.x, position_data.y)));
+    Territory * territory = new
+        Territory(pos, territory_buildings[position_data.territory],
+                  gaiaPlayer, gaiaTeam);
+    capturables.emplace(territory->getID(), territory->getCapturableState());
+    controller_capturables.emplace(territory->getID(), territory);
   }
   if (position_data.vehicle){
-    capturables.emplace(CapturableID(UNIT), CapturableState(GaiaPlayer().getID(), pos));
-    assign_unit(position_data);
+    Vehicle* unit = UnitFactory::createVehicleDynamic(pos,V_JEEP,gaiaPlayer,gaiaTeam);
+    this->units.emplace(unit->getId(), unit->getUnitState());
+    this->controller_units.emplace(unit->getId(), unit);
+    CapturableVehicle * vehicle = new CapturableVehicle(*unit);
+    capturables.emplace(vehicle->getID(), vehicle->getCapturableState());
+    controller_capturables.emplace(vehicle->getID(), vehicle);
   }
 }
 std::map<CapturableID, CapturableState> Map_Loader::get_capturables() {
   return this->capturables;
 }
 std::map<TerrainObjectID, TerrainObjectState> Map_Loader::get_terrainObject() {
-  return this->terrainObject;
+  return this->terrainObjects;
 }
 void Map_Loader::assign_unit(const Position_Data &position_data) {
   Position pos(position_data.x, position_data.y);
@@ -236,4 +255,13 @@ void Map_Loader::assign_unit(const Position_Data &position_data) {
 }
 std::map<UnitID, Unit *> Map_Loader::get_controller_units() {
   return this->controller_units;
+}
+std::map<int, std::vector<Build *>> Map_Loader::get_territory_buildings() {
+  return this->territory_buildings;
+}
+std::map<CapturableID, Capturable *> Map_Loader::get_controller_capturables() {
+  return this->controller_capturables;
+}
+std::map<TerrainObjectID, TerrainObject> Map_Loader::get_controller_terrainObjects() {
+  return this->controller_terrainObjects;
 }
