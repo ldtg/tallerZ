@@ -61,7 +61,8 @@ struct Data {
     playerInitialUnits = 3;
     defaultDriver = R_GRUNT;
     //para aumentar el rango de las unidades
-    rangeMultipliquer = 6;
+    rangeMultipliquer = 10;
+
 
     bullet.type = WeaponType::BULLET;
     bullet.damage = 2;
@@ -72,6 +73,12 @@ struct Data {
     rocket.damage = 25;
     rocket.isExplosive = true;
     rocket.speed = 13; // 12 es la veloc max del vehiculo mas rapido creo
+
+    flamethrower.type = WeaponType::FIRE;
+    flamethrower.damage = 10;
+    flamethrower.isExplosive = true;
+    flamethrower.speed = 12;
+
 
     r_grunt.type = UnitType::R_GRUNT;
     r_grunt.weapon = bullet;
@@ -93,6 +100,16 @@ struct Data {
     r_tough.factoryBaseTimeInSec = 42;//742
     r_tough.factoryMinimunTechLevel = 2;
 
+    r_pyro.type = UnitType::R_PYRO;
+    r_pyro.weapon = flamethrower;
+    r_pyro.secsUntilFire = 0.5;
+    r_pyro.health = 100;
+    r_pyro.range = 6;
+    r_pyro.speed = 4;
+    r_pyro.factoryRate = 4;
+    r_pyro.factoryBaseTimeInSec = 10;
+    r_pyro.factoryMinimunTechLevel = 1;
+
     v_jeep.type = UnitType::V_JEEP;
     v_jeep.weapon = bullet;
     v_jeep.secsUntilFire = 0.17;//1/6
@@ -104,8 +121,8 @@ struct Data {
     v_jeep.factoryMinimunTechLevel = 1;
 
     fort.type = BuildType::FORT;
-//  fort.health = 1000;
-    fort.health = 10;
+//    fort.health = 1000;
+    fort.health = 20;
     fort.size = 50;
 
     robotFactory.type = BuildType::ROBOTF;
@@ -121,7 +138,7 @@ struct Data {
     water.type = TerrainType::WATER;
     water.terrainFactor = 0.7;
     road.type = TerrainType::ROAD;
-    road.terrainFactor = 1.5;
+    road.terrainFactor = 2;
     lava.type = TerrainType::LAVA;
     lava.terrainFactor = 0.1; //no importa el valor
 

@@ -5,10 +5,11 @@
 #include "GaiaPlayer.h"
 struct CapturableState {
   PlayerID ownerID;
+  Position pos;
 
   CapturableState():ownerID(GaiaPlayer().getID()){}
-
-  CapturableState(const PlayerID &id):ownerID(id){};
+  CapturableState(const PlayerID &id, const Position pos)
+      : ownerID(id), pos(pos) {};
 };
 
 #endif //TALLERZ_CAPTURABLESTATE_H

@@ -45,22 +45,32 @@ class GameControllerCapturables_test : public ::testing::Test {
 
     teamA.addPlayer(&playerA);
     teamA.addPlayer(&gaia);
+
+    robotA = UnitFactory::createToughDynamic(Position(50, 150), playerA, teamA);
+    playerA.addUnit();
+
+    jeepA = UnitFactory::createJeepDynamic(Position(150, 150), gaia, teamA);
+    capturableJeep = new CapturableVehicle(*jeepA);
+
+    capturables.emplace(capturableJeep->getID(), capturableJeep);
+
+
     build = new Build(data.fort, Position(50, 50), gaia, teamA, 3);
     builds.emplace(build->getId(), build);
+
     std::map<BuildID, BuildState> buildmap;
     buildmap.emplace(build->getId(), build->getBuildState());
-    robotA = UnitFactory::createToughDynamic(Position(50, 150), playerA, teamA);
-    jeepA = UnitFactory::createJeepDynamic(Position(150, 150), gaia, teamA);
-    playerA.addUnit();
-    capturableJeep = new CapturableVehicle(*jeepA);
+
     std::vector<Build *> buildsT;
     buildsT.push_back(build);
+
     terrain = new Territory(Position(50, 250), buildsT, gaia, teamA);
-    capturables.emplace(capturableJeep->getID(), capturableJeep);
     capturables.emplace(terrain->getID(), terrain);
+
     std::map<CapturableID, CapturableState> capmap;
     capmap.emplace(capturableJeep->getID(), capturableJeep->getCapturableState());
     capmap.emplace(terrain->getID(), terrain->getCapturableState());
+
     map = Map(stdmap, buildmap, capmap, 3, 3);
 
     units.emplace(robotA->getId(), robotA);

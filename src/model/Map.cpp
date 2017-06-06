@@ -134,6 +134,10 @@ const std::map<BuildID, BuildState> &Map::getBuilds() const {
   return builds;
 }
 
+const std::map<CapturableID, CapturableState>& Map::getCapturables() const {
+  return capturables;
+}
+
 void Map::setUnits(const std::map<UnitID, UnitState> &units) {
   Map::units = units;
 }
@@ -168,6 +172,15 @@ BuildID Map::getBuildIDFromPosition(const Position &pos,
       return par.first;
   }
   throw UnitNotFoundException("edificio no encontrado");
+}
+
+CapturableID Map::getCapturableIDFromPosition(const Position &pos,
+                                        unsigned short range) const {
+  for (auto &par : capturables) {
+    if (pos.equalDelta(par.second.pos, range))
+      return par.first;
+  }
+  throw UnitNotFoundException("capturable no encontrado");
 }
 
 void Map::updateUnit(const UnitID &unitID, const UnitState &unitState) {

@@ -7,7 +7,7 @@ BulletHitEvent::BulletHitEvent(const Bullet &bullet)
 void BulletHitEvent::process() {
   if (weapon.type != BULLET) {
     view->removeBulletVista(id);
-    Sprite *bulletExplosion = VistasFactory::getEffectVista(TANK_MISSILE);
-    view->addExplosionVista(bulletExplosion, pos.sub(15, 15));
+    Sprite *bulletExplosion = VistasFactory::getBulletHitVista(weapon.type, pos);
+    view->addExplosionVista(bulletExplosion);
   }
 }

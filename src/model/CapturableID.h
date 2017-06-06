@@ -9,6 +9,7 @@ class CapturableID {
   CapturableType type;
  public:
   explicit CapturableID(const CapturableType &type);
+  CapturableType getType() const;
   bool operator<(const CapturableID &other) const;
   bool operator==(const CapturableID &other) const;
   bool operator!=(const CapturableID &other) const;

@@ -1,4 +1,5 @@
 #include "UnitFactory.h"
+
 Robot UnitFactory::createGrunt(const Position &pos,
                                Player &player,
                                Team &team) {

@@ -9,39 +9,51 @@ void Model::leftClick(int x, int y) {
   Position pos(x + camera.x, y + camera.y);
   if (unitsSelected.empty()) {
     try {
-      unitsSelected.push_back(map.getUnitIDFromPosition(pos, 40));
+      unitsSelected.push_back(map.getUnitIDFromPosition(pos, 20));
     } catch(const UnitNotFoundException &e){
       // Donde se hizo click no hay unidad.
     }
-  } else {
-      try {
-        UnitID attacked = map.getUnitIDFromPosition(pos, 40);
-        for (UnitID attacker : unitsSelected) {
-          gameController.attack(attacker, attacked);
-        }
-        unitsSelected.clear();
-        return;
-      } catch(const UnitNotFoundException &e){
-        // Donde se hizo click no hay unidad.
-      }
-      try {
-        BuildID buildAttacked = map.getBuildIDFromPosition(pos, 100);
-        for (UnitID attacker : unitsSelected) {
-          gameController.attack(attacker, buildAttacked);
-        }
-        unitsSelected.clear();
-      } catch(const UnitNotFoundException &e) {
-        // Donde se hizo click no hay edificio ni undida.
-        unitsSelected.clear();
-      }
-//    unitsSelected.clear();
   }
 }
 
 void Model::rightClick(int x, int y) {
-  if (!unitsSelected.empty()) {
-    Position pos(x + camera.x, y + camera.y);
-    gameController.move(unitsSelected.front(), pos);
-    unitsSelected.clear();
+  if (unitsSelected.empty()) {
+    return;
   }
+
+  Position pos(x + camera.x, y + camera.y);
+
+  try {
+    UnitID attacked = map.getUnitIDFromPosition(pos, 20);
+    for (UnitID attacker : unitsSelected) {
+      gameController.attack(attacker, attacked);
+    }
+    unitsSelected.clear();
+    return;
+  } catch(const UnitNotFoundException &e){
+    // Donde se hizo click no hay unidad.
+  }
+  try {
+    BuildID buildAttacked = map.getBuildIDFromPosition(pos, 50);
+    for (UnitID attacker : unitsSelected) {
+      gameController.attack(attacker, buildAttacked);
+    }
+    unitsSelected.clear();
+    return;
+  } catch(const UnitNotFoundException &e) {
+    // Donde se hizo click no hay edificio ni undida.
+  }
+  try {
+    CapturableID capturable = map.getCapturableIDFromPosition(pos, 20);
+    for (UnitID unit : unitsSelected) {
+      gameController.capture(unit, capturable);
+    }
+    unitsSelected.clear();
+    return;
+  } catch(const UnitNotFoundException &e) {
+    // Donde se hizo click no hay edificio ni undida.
+  }
+
+   gameController.move(unitsSelected.front(), pos);
+   unitsSelected.clear();
 }

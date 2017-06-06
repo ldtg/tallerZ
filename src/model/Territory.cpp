@@ -1,4 +1,5 @@
 #include "Territory.h"
+
 Territory::Territory(const Position &flagPosition,
                      const std::vector<Build *> &builds,
                      Player &owner,
@@ -7,9 +8,8 @@ Territory::Territory(const Position &flagPosition,
       flagPosition(flagPosition),
       builds(builds),
       owner(owner),
-      team(team) {
+      team(team) {}
 
-}
 void Territory::capture(const UnitID &unitID,
                         Player &newOwner,
                         Team &ownerTeam) {
@@ -20,11 +20,12 @@ void Territory::capture(const UnitID &unitID,
       build->changePlayer(newOwner, ownerTeam);
     }
   }
-
 }
+
 Position Territory::getCapturePosition() const {
   return flagPosition;
 }
+
 std::map<BuildID, BuildState> Territory::getCapturedBuilds() const {
   std::map<BuildID, BuildState> aux;
   for (Build *build:builds) {
@@ -32,18 +33,23 @@ std::map<BuildID, BuildState> Territory::getCapturedBuilds() const {
   }
   return aux;
 }
+
 std::map<UnitID, UnitState> Territory::getCapturedUnits() const {
   return std::map<UnitID, UnitState>();
 }
+
 bool Territory::capturerDissapear() const {
   return false;
 }
+
 bool Territory::isRecapturable() const {
   return true;
 }
+
 bool Territory::canBeCapturedBy(const UnitID &id) const {
   return true;
 }
+
 CapturableState Territory::getCapturableState() const {
-  return CapturableState(owner.getID());
+  return CapturableState(owner.getID(), flagPosition);
 }

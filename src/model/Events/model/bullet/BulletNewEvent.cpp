@@ -9,9 +9,9 @@ BulletNewEvent::BulletNewEvent(const Bullet &bullet)
 void BulletNewEvent::process() {
   int rotation = from.getRoration(to);
   std::string rotation_s = std::to_string(rotation);
-  ObjectMapaVista *bulletVista = VistasFactory::getBulletVista(weapon.type, rotation_s);
+  ObjectMapaVista *bulletVista = VistasFactory::getBulletVista(weapon.type, rotation_s, from);
   if (bulletVista != nullptr) {
-    bulletVista->setPos(from);
+//    bulletVista->setPos(from);
     view->addBulletVista(this->id, bulletVista);
   }
 }

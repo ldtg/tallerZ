@@ -44,6 +44,7 @@ class GameController {
   void PlayersTick(std::vector<Event *> &vector);
   void TeamsTick(std::vector<Event *> &events);
   void objectsTick(std::vector<Event *> &events);
+
  public:
   GameController(Map &map, const std::map<UnitID, Unit *> &units);
 

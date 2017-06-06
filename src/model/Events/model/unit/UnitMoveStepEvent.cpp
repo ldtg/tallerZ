@@ -1,7 +1,7 @@
 #include "UnitMoveStepEvent.h"
 
 UnitMoveStepEvent::UnitMoveStepEvent(UnitID id, Position &posTo, int rotation)
-    : id(id), posToo(posTo), rotation(rotation) {}
+    : id(id), posTo(posTo), rotation(rotation) {}
 
 void UnitMoveStepEvent::process() {
   Sprite* unitVista = view->getUnitVista(id);
@@ -14,14 +14,15 @@ void UnitMoveStepEvent::process() {
 
     std::string rotation_s = std::to_string(rotation);
     std::string action("walk");
-    unitVista = VistasFactory::getUnitVista(id.getType(), color, action,rotation_s);
-    unitVista->setPos(posToo);
+    unitVista = VistasFactory::getUnitVista(id.getType(), color,
+                                            action, rotation_s, posTo);
+//    unitVista->setPos(posToo);
     unitVista->setRotation(rotation);
 
     view->addUnitVista(id, unitVista);
   }
   else {
-    unitVista->setPos(posToo);
+    unitVista->setPos(posTo);
   }
 
 }

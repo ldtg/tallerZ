@@ -13,7 +13,7 @@ void UnitStillEvent::process() {
 
   std::string rotation_s = std::to_string(rotation);
   std::string action("look_around");
-  unitVista = VistasFactory::getUnitVista(id.getType(), color, action, rotation_s);
+  unitVista = VistasFactory::getUnitVista(id.getType(), color, action, rotation_s, pos);
   unitVista->setPos(pos);
   unitVista->setRotation(rotation);
 

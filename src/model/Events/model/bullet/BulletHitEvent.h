@@ -9,7 +9,7 @@
 class BulletHitEvent : public Event{
  private:
   BulletID id;
-  const Position pos;
+  Position pos;
   Weapon weapon;
 
  public:
