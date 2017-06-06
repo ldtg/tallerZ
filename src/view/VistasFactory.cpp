@@ -1,6 +1,7 @@
 #include "VistasFactory.h"
 #include "Image.h"
 #include <random>
+#include <model/TerrainObjectType.h>
 
 ObjectMapaVista* VistasFactory::getTerrainVista(TerrainType type, Position &pos) {
   std::string path = "../src/view/images/terrain/";
@@ -165,11 +166,11 @@ ObjectMapaVista* VistasFactory::getBuildVista(BuildType type,
   std::string type_s;
   std::string path = "../src/view/images/buildings/";
 
-  if (type == FORT) {
-    type_s = "fort";
-  }
-  else {
-    return nullptr;
+  switch (type) {
+    case FORT: type_s = "fort"; break;
+    case ROBOTF: type_s = "robot"; break;
+    case VEHICLEF: type_s = "vehicle"; break;
+    default: return nullptr;
   }
 
   path = path + type_s + "/" + type_s + state + ".png";
@@ -206,6 +207,20 @@ Sprite* VistasFactory::getFlagsVista(std::string &color, Position &pos) {
   Sprite *flagVista = new Sprite(path.c_str(), num_frames, speed, num_frame_return_cycle);
   flagVista->setPos(pos.sub(despX, despY));
   return flagVista;
+}
+
+ObjectMapaVista* VistasFactory::getTerrainObjectVista(TerrainObjectType type, Position &pos) {
+  std::string path = "../src/view/images/terrain/";
+  switch (type) {
+    case ROCK: path = path + "rocks_jungle.png"; break;
+    case ICEROCK: path = path + "rocks_artic.png"; break;
+    case _WOODENBRIDGE: path = path + "woodenbridge.png"; break;
+    case _ASPHALTEDBRIDGE: path = path + "asphaltedbridge.png"; break;
+    default: return nullptr;
+  }
+  Image *terrainObjVista = new Image(path.c_str());
+  terrainObjVista->setPos(pos.sub(50,50));
+  return terrainObjVista;
 }
 
 ObjectMapaVista* VistasFactory::getBulletVista(WeaponType type,

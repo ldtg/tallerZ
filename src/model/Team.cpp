@@ -10,6 +10,8 @@ void Team::removePlayer(Player *player) {
   this->players.erase(player->getID());
 }
 bool Team::isEnemy(const PlayerID &playerID) const {
+  if(playerID.isGaia())
+    return false;
   return !isaPlayerOfTheTeam(playerID);
 }
 bool Team::isaPlayerOfTheTeam(const PlayerID &id) const {

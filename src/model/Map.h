@@ -103,6 +103,8 @@ class Map {
   const std::map<BuildID, BuildState> &getBuilds() const;
   const std::map<CapturableID, CapturableState> &getCapturables() const;
 
+  const std::map<TerrainObjectID, TerrainObjectState> &getTerrainObjects() const;
+
   UnitID getUnitIDFromPosition(const Position &pos, unsigned short range) const;
   BuildID getBuildIDFromPosition(const Position &pos, unsigned short range) const;
   CapturableID getCapturableIDFromPosition(const Position &pos, unsigned short range) const;

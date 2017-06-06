@@ -159,8 +159,12 @@ const std::map<BuildID, BuildState> &Map::getBuilds() const {
   return builds;
 }
 
-const std::map<CapturableID, CapturableState>& Map::getCapturables() const {
+const std::map<CapturableID, CapturableState> &Map::getCapturables() const {
   return capturables;
+}
+
+const std::map<TerrainObjectID, TerrainObjectState>& Map::getTerrainObjects() const {
+  return terrainObject;
 }
 
 void Map::setUnits(const std::map<UnitID, UnitState> &units) {
@@ -181,12 +185,13 @@ UnitState Map::getUnitState(const UnitID &unitID) const {
 
 UnitID Map::getUnitIDFromPosition(const Position &pos,
                                   unsigned short range) const {
-
+  std::map<unsigned short, UnitID> aux;
   for (auto &par : units) {
-    bool inRange = pos.equalDelta(par.second.position, range);
-    if (inRange)
-      return par.first;
+    if (pos.equalDelta(par.second.position, range))
+      aux.emplace(pos.chebyshevDistance(par.second.position), par.first);
   }
+  if (!aux.empty())
+    return aux.begin()->second;
   throw UnitNotFoundException("unidad no encontrada");
 }
 
@@ -200,7 +205,7 @@ BuildID Map::getBuildIDFromPosition(const Position &pos,
 }
 
 CapturableID Map::getCapturableIDFromPosition(const Position &pos,
-                                        unsigned short range) const {
+                                              unsigned short range) const {
   for (auto &par : capturables) {
     if (pos.equalDelta(par.second.pos, range))
       return par.first;
