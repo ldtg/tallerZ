@@ -213,7 +213,9 @@ void Map_Loader::assign_terrain_object(const Position_Data& position_data) {
 void Map_Loader::assign_capturable(const Position_Data &position_data) {
   Position pos(position_data.x, position_data.y);
   if (position_data.flag){
-    capturables.emplace(CapturableID(FLAG), CapturableState(GaiaPlayer().getID(), pos));
+    capturables.emplace(CapturableID(FLAG),
+                        CapturableState(GaiaPlayer().getID(),
+                                        centered_position(position_data.x, position_data.y)));
   }
   if (position_data.vehicle){
     capturables.emplace(CapturableID(UNIT), CapturableState(GaiaPlayer().getID(), pos));

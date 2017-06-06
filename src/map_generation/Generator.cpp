@@ -278,21 +278,32 @@ int Generator::draw_line(const Position_Data &start, const Position_Data &end, T
   }
   return marked_tiles;
 }
+bool Generator::building_is_not_in_border(int x, int y){
+  return (x != 0 && x != (map_width - 1) && y != 0 && y != (map_length - 1));
+}
+
 void Generator::put_building_random_in_territory(const unsigned &territory, BuildType building) {
   bool tile_found;
-  int random_tile = rand() % tiles_per_territory;
-  int i = -1;
-  int j = -1;
-  tile_found = false;
-  while(!tile_found){
-    i++;
-    if (map_positions[i].territory == territory){
-      j++;
+  bool building_not_in_border = false;
+  int i, j;
+  while (!building_not_in_border){
+    int random_tile = rand() % tiles_per_territory;
+    i = -1;
+    j = -1;
+    tile_found = false;
+    while(!tile_found){
+      i++;
+      if (map_positions[i].territory == territory){
+        j++;
+      }
+      if (j == random_tile){
+        tile_found = true;
+      }
     }
-    if (j == random_tile){
-      tile_found = true;
-    }
+    building_not_in_border = building_is_not_in_border
+        (map_positions[i].x, map_positions[i].y);
   }
+
   this->vertices.push_back(map_positions[i]);
   switch (building){
     case BuildType::FORT:

@@ -41,7 +41,9 @@ struct Data {
   BuildData vehicleFactory;
 
   TerrainData land;
+  TerrainData prairie;
   TerrainData water;
+  TerrainData swamp;
   TerrainData lava;
   TerrainData road;
   TerrainData snow;
@@ -135,15 +137,25 @@ struct Data {
 
     land.type = TerrainType::LAND;
     land.terrainFactor = 1;
+    prairie.type = TerrainType::PRAIRIE;
+    prairie.terrainFactor = 1;
+    snow.type = TerrainType::SNOW;
+    snow.terrainFactor = 1;
     water.type = TerrainType::WATER;
     water.terrainFactor = 0.7;
+    swamp.type = TerrainType::SWAMP;
+    swamp.terrainFactor = 0.7;
     road.type = TerrainType::ROAD;
     road.terrainFactor = 2;
+    asphaltedRoad.type = TerrainType::ASPHALTEDROAD;
+    asphaltedRoad.terrainFactor = 2;
     lava.type = TerrainType::LAVA;
     lava.terrainFactor = 0.1; //no importa el valor
 
     asphaltedBridgeTerrain.type = TerrainType::ASPHALTEDBRIDGE;
     asphaltedBridgeTerrain.terrainFactor = 1;
+    woodenBridge.type = TerrainType::WOODENBRIDGE;
+    woodenBridge.terrainFactor = 1;
 
     asphaltedBridgeObject.type = TerrainObjectType::BRIDGE;
     asphaltedBridgeObject.passable = true;
@@ -189,7 +201,7 @@ struct Data {
     //TODO: habría que diferenciar segun los tipos de terrenos como los que estan en terrain_type: land, prairie, water, lava, swamp (no esta), road, bridge (no esta), snow.
     switch (terrain){
       case PRAIRIE:
-        return land;
+        return prairie;
       case ROAD:
         return road;
       case ASPHALTEDROAD:
@@ -201,11 +213,13 @@ struct Data {
       case LAND:
         return land;
       case SWAMP:
-        return water;
+        return swamp;
       case LAVA:
         return lava;
       case SNOW:
         return snow;
+      case WATER:
+        return water;
       default:
         return land;
     }
