@@ -262,8 +262,8 @@ TEST(put_vehicles_test,Generator){
   generator.building_distribution_algorithm();
   generator.trace_paths();
   generator.trace_rivers();
-  generator.set_rocks_percentages(10,100);
-  generator.put_rocks();
+  //generator.set_rocks_percentages(0,0);
+  //generator.put_rocks();
   generator.put_vehicles();
   int pos;
   std::cout << "\033[1;31mbold red text\033[0m\n";

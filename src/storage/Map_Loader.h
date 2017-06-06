@@ -53,14 +53,16 @@ class Map_Loader {
   std::map<BuildID, BuildState> buildmap;
   std::map<BuildID, Build *> builds;
   std::map<UnitID, UnitState> units;
+  std::map<UnitID, Unit *> controller_units;
   std::vector<Player> players;
   std::vector<Team> teams;
   Map_Config configuration;
 
   std::map<TerrainObjectID, TerrainObjectState> terrainObject;
   std::map<CapturableID, CapturableState> capturables;
-  GaiaPlayer gaiaPlayer;
 
+  GaiaPlayer gaiaPlayer;
+  Team gaiaTeam;
  public:
   Map_Loader(std::string file_path);
 
@@ -75,6 +77,7 @@ class Map_Loader {
   std::map<Position, Tile> get_loaded_map();
   std::map<CapturableID, CapturableState> get_capturables();
   std::map<TerrainObjectID, TerrainObjectState> get_terrainObject();
+  std::map<UnitID, Unit *> get_controller_units();;
 
   Map run(){
     this->load_file();

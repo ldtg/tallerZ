@@ -173,9 +173,8 @@ TEST(VistaTest_Usando_Map_Loader, Window){
 
   Map map = map_loader.run();
 
-
-  std::map<UnitID, Unit *> units;
-  GameController gameController(map, units, map_loader.get_builds());
+  GameController gameController(map, map_loader.get_controller_units(),
+                                map_loader.get_builds());
 
   Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
   EventHandler eventHandler;

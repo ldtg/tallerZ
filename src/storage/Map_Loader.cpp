@@ -2,6 +2,7 @@
 // Created by darius on 01/06/17.
 //
 
+#include <model/UnitFactory.h>
 #include "Map_Loader.h"
 void Map_Loader::open_file() {
   try{
@@ -106,8 +107,10 @@ void Map_Loader::set_teams() {
     }
   }
 
+  this->gaiaTeam.addPlayer(&gaiaPlayer);
   this->teams.push_back(team1);
   this->teams.push_back(team2);
+  this->teams.push_back(gaiaTeam);
 }
 void Map_Loader::emplace_terrain(const Position_Data &pos_data) {
   this->map.emplace(Position(pos_data.x, pos_data.y),
@@ -225,7 +228,10 @@ std::map<TerrainObjectID, TerrainObjectState> Map_Loader::get_terrainObject() {
 }
 void Map_Loader::assign_unit(const Position_Data &position_data) {
   Position pos(position_data.x, position_data.y);
-  Player& gaiaPlayer = players[players.size()-1];
-  UnitID unitID(V_JEEP);
-  this->units.emplace(unitID, UnitState(R_GRUNT, gaiaPlayer.getID(), 60, data.bullet, pos));
+  Unit* unit = UnitFactory::createUnitDynamic(pos,V_JEEP,gaiaPlayer,gaiaTeam);
+  this->units.emplace(unit->getId(), unit->getUnitState());
+  this->controller_units.emplace(unit->getId(), unit);
+}
+std::map<UnitID, Unit *> Map_Loader::get_controller_units() {
+  return this->controller_units;
 }
