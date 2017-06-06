@@ -11,24 +11,24 @@ Camera::Camera(int w, int h) : w(w), h(h) {
 
 void Camera::move(int x, int y) {
   if (x < gap) {
-    dirX =- 2;
+    dirX =- vel;
     dirY = 0;
-    this->x -= 2;
+    this->x -= vel;
   }
   else if (x > w-gap) {
-    dirX = 2;
+    dirX = vel;
     dirY = 0;
-    this->x += 2;
+    this->x += vel;
   }
   else if (y < gap) {
     dirX = 0;
-    dirY = -2;
-    this->y -= 2;
+    dirY = -vel;
+    this->y -= vel;
   }
   else if ( y > h-gap) {
     dirX = 0;
-    dirY = 2;
-    this->y += 2;
+    dirY = vel;
+    this->y += vel;
   }
 }
 

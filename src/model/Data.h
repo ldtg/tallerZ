@@ -104,7 +104,7 @@ struct Data {
     v_jeep.factoryMinimunTechLevel = 1;
 
     fort.type = BuildType::FORT;
-//    fort.health = 1000;
+//  fort.health = 1000;
     fort.health = 10;
     fort.size = 50;
 

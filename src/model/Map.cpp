@@ -34,6 +34,29 @@ Map::Map(const std::map<Position, Tile> &map,
 Map::Map(const std::map<Position, Tile> &map,
          const std::map<BuildID, BuildState> &builds,
          std::map<CapturableID, CapturableState> capturables,
+         const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
+         unsigned short width,
+         unsigned short height): map(map),
+                                 builds(builds),
+                                 capturables(capturables),
+                                 width(width),
+                                 height(height) {
+
+  for (auto &build : builds) {
+    Position pos = this->getTilePositionFromRealPosition(build.second.position);
+    this->map.at(pos).makeNotPassable();
+  }
+  for (auto &tobj : terrainObject) {
+    Position
+        pos = this->getTilePositionFromRealPosition(tobj.second.centerPosition);
+    if (!tobj.second.passable)
+      this->map.at(pos).makeNotPassable();
+  }
+}
+
+Map::Map(const std::map<Position, Tile> &map,
+         const std::map<BuildID, BuildState> &builds,
+         std::map<CapturableID, CapturableState> capturables,
          unsigned short width,
          unsigned short height) : map(map),
                                   builds(builds),

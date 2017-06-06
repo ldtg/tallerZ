@@ -256,18 +256,18 @@ TEST(put_rocks_test,Generator){
 }
 
 TEST(put_vehicles_test,Generator){
-  Generator generator(12,12,9,4,DUSTY,0,3);
-  generator.set_water_lava_percentages(0,0);
+  Generator generator(16,16,4,2,DUSTY,3,2);
+  generator.set_water_lava_percentages(10,100);
   generator.territory_distribution_algorithm();
   generator.building_distribution_algorithm();
   generator.trace_paths();
-  //generator.trace_rivers();
-  //generator.set_rocks_percentages(0,0);
-  //generator.put_rocks();
-  //generator.put_vehicles();
+  generator.trace_rivers();
+  generator.set_rocks_percentages(10,100);
+  generator.put_rocks();
+  generator.put_vehicles();
   int pos;
   std::cout << "\033[1;31mbold red text\033[0m\n";
-  for (int j = generator.map_length -1; j > -1; j--){
+  for (int j = 0; j < generator.map_length; j++){
     for (int i = 0; i < generator.map_width; i++){
       pos = generator.get_position(i,j);
       if(generator.map_positions[pos].fort){
@@ -285,7 +285,7 @@ TEST(put_vehicles_test,Generator){
               if (generator.map_positions[pos].bridge){
                 std::cout << "\033[1;36mB\033[0m" << " ";
               } else {
-                if (generator.map_positions[pos].terrain_type == TerrainType ::LAVA){
+                if (generator.map_positions[pos].terrain_type == TerrainType ::WATER){
                   std::cout << "\033[1;34mw\033[0m" << " ";
                 } else {
                   if (generator.map_positions[pos].terrain_type == TerrainType ::ROAD){

@@ -93,3 +93,127 @@ void Map_Loader::assign_robot_factory(const Position_Data &position_data, Player
   buildmap.emplace(build->getId(), build->getBuildState());
   builds.emplace(build->getId(), build);
 }
+void Map_Loader::set_teams() {
+  /**@WARNING muy HARCODEADO esto**/
+  Team team1;
+  team1.addPlayer(&players[0]);
+
+  Team team2;
+  team2.addPlayer(&players[1]);
+  //team2.addPlayer(&players[3]);
+  this->teams.push_back(team1);
+  this->teams.push_back(team2);
+}
+void Map_Loader::emplace_terrain(const Position_Data &pos_data) {
+  this->map.emplace(Position(pos_data.x, pos_data.y),
+                           Tile(centered_position(pos_data.x, pos_data.y),
+                                data.get_terrain_data(pos_data.terrain_type)));
+}
+void Map_Loader::assign_fort(const Position_Data &position_data, Player &player, Team &team) {
+  Build * build = new
+      Build(data.fort,
+            centered_position(position_data.x, position_data.y),
+            player,
+            team,
+            configuration.factories_level);
+  buildmap.emplace(build->getId(), build->getBuildState());
+  builds.emplace(build->getId(), build);
+}
+void Map_Loader::assign_vehicle_factory(const Position_Data &position_data, Player &player, Team &team) {
+  Build * build = new
+      Build(data.vehicleFactory,
+            centered_position(position_data.x, position_data.y),
+            player,
+            team,
+            configuration.factories_level);
+  buildmap.emplace(build->getId(), build->getBuildState());
+  builds.emplace(build->getId(), build);
+}
+void Map_Loader::build_map() {
+  Position_Data pos_data;
+  int fort_to_assign = 0;
+  int tile_amount = configuration.map_width * configuration.map_length;
+  for (int i = 0; i < tile_amount; i++){
+    pos_data = read_data(i);
+    emplace_terrain(pos_data);
+    if (pos_data.fort){
+      assign_fort(pos_data, players[fort_to_assign],teams[0]);//teams[0] HARCODEADO
+      fort_to_assign++;
+    }
+    if (pos_data.bridge || pos_data.rock){
+      assign_terrain_object(pos_data);
+    }
+    if (pos_data.vehicle || pos_data.flag){
+      assign_capturable(pos_data);
+    }
+    if (pos_data.robot_factory){
+        assign_robot_factory(pos_data, players[0], teams[0]);
+    }
+    if (pos_data.vehicle_factory){
+      assign_vehicle_factory(pos_data, players[0], teams[0]);//players[0] harcodeado tambien, osea, me quedo pensando en la idea esa del player especial que comentaba luis en clase la vez pasada.
+    }
+  }
+}
+std::vector<Team> Map_Loader::get_teams() {
+  return this->teams;
+}
+std::vector<Player> Map_Loader::get_players() {
+  return this->players;
+}
+std::map<BuildID, Build *> Map_Loader::get_builds() {
+  return this->builds;
+}
+std::map<BuildID, BuildState> Map_Loader::get_buildmap() {
+  return this->buildmap;
+}
+std::map<Position, Tile> Map_Loader::get_loaded_map() {
+  return this->map;
+}
+void Map_Loader::assign_terrain_object(const Position_Data& position_data) {
+  Position pos(position_data.x, position_data.y);
+
+  const int size = 50;
+  const int bridge_health = 1000;
+  const int rock_health = 10;
+
+  if (position_data.bridge) {
+    TerrainObjectState objectState(pos, size, bridge_health, true);
+    switch (configuration.bridge_type) {
+      case TerrainType::WOODENBRIDGE:
+        terrainObject[TerrainObjectID(_WOODENBRIDGE)] = objectState;
+        //TODO ver como afecta esto a la creacion de objectID
+      case TerrainType::ASPHALTEDBRIDGE:
+        terrainObject[TerrainObjectID(_ASPHALTEDBRIDGE)] = objectState;
+        //TODO ver como afecta esto a la creacion de objectID
+    }
+  }
+
+  if (position_data.rock){
+    TerrainObjectState objectState(pos, size, rock_health, false);
+    switch (configuration.rock_type){
+      case (TerrainObjectType ::ROCK):{
+        terrainObject[TerrainObjectID(ROCK)] = objectState;
+        break;
+      }
+      case (TerrainObjectType ::ICEROCK):{
+        terrainObject[TerrainObjectID(ICEROCK)] = objectState;
+        break;
+      }
+    }
+  }
+}
+void Map_Loader::assign_capturable(const Position_Data &position_data) {
+  //std::map<CapturableID, CapturableState> capturables;
+  if (position_data.flag){
+    capturables[CapturableID(FLAG)] = CapturableState(GaiaPlayer().getID());
+  }
+  if (position_data.vehicle){
+    capturables[CapturableID(UNIT)] = CapturableState(GaiaPlayer().getID());
+  }
+}
+std::map<CapturableID, CapturableState> Map_Loader::get_capturables() {
+  return this->capturables;
+}
+std::map<TerrainObjectID, TerrainObjectState> Map_Loader::get_terrainObject() {
+  return this->terrainObject;
+}

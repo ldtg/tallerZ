@@ -8,6 +8,7 @@ struct TerrainObjectState {
   unsigned short size;
   unsigned short health;
   bool passable;
+  TerrainObjectState(){};
   TerrainObjectState(const Position &position,
                      unsigned short size,
                      unsigned short health, bool passable);

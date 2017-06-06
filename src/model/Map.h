@@ -51,6 +51,13 @@ class Map {
       const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
       unsigned short width,
       unsigned short height);
+
+  Map(const std::map<Position, Tile> &map,
+      const std::map<BuildID, BuildState> &builds,
+      std::map<CapturableID, CapturableState> capturables,
+      const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
+      unsigned short width,
+      unsigned short height);
   ~Map();
 
   std::vector<Tile> getNeighbors(const Tile &tile) const;
