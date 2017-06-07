@@ -5,11 +5,9 @@
 
 class UnitMoveStepEvent : public Event {
  private:
-//  Position posFrom;
   Position posTo;
   UnitID id;
   int rotation;
-//  UnitState newState;
  public:
   UnitMoveStepEvent(UnitID id, Position &posTo, int rotation);
   void process();

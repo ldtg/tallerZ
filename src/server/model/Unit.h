@@ -5,8 +5,8 @@
 #include <stack>
 #include "Position.h"
 #include "TerrainType.h"
-#include "UnitState.h"
-#include "UnitID.h"
+#include "common/States/UnitState.h"
+#include "common/IDs/UnitID.h"
 #include "Weapon.h"
 #include "Attackable.h"
 #include "UnitData.h"
@@ -15,7 +15,7 @@
 #include "Team.h"
 #include "Bullet.h"
 #include "Capturable.h"
-#include "CapturableID.h"
+#include "common/IDs/CapturableID.h"
 
 class Unit : public Attackable {
  protected:

@@ -10,11 +10,11 @@
 #include <Exceptions/Storage_Exceptions/Storage_Exception.h>
 #include <server/model/Position.h>
 #include <server/model/Tile.h>
-#include <server/model/BuildState.h>
-#include <server/model/BuildID.h>
+#include <common/States/BuildState.h>
+#include <common/IDs/BuildID.h>
 #include <server/model/Build.h>
-#include <server/model/TerrainObjectState.h>
-#include <server/model/TerrainObjectID.h>
+#include <common/States/TerrainObjectState.h>
+#include <common/IDs/TerrainObjectID.h>
 #include <server/model/GaiaPlayer.h>
 #include <server/model/Map.h>
 #include <server/model/Vehicle.h>

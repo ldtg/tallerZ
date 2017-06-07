@@ -4,8 +4,8 @@
 #include <map>
 #include "Position.h"
 #include "TerrainType.h"
-#include "UnitID.h"
-#include "UnitState.h"
+#include "common/IDs/UnitID.h"
+#include "common/States/UnitState.h"
 #include "TerrainData.h"
 #include <vector>
 

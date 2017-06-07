@@ -8,8 +8,6 @@ typedef std::tuple<long, long> coordinates_t;
 
 class Position {
  private:
-//  unsigned long x;
-//  unsigned long y;
   long x;
   long y;
 
@@ -40,6 +38,10 @@ class Position {
   std::vector<Position> getStraighNeighbors() const;
   std::vector<Position> getDiagonalNeighbors() const;
   std::vector<Position> getNeighborsOfDiagonal(const Position &position) const;
+  template<class Archive>
+  void serialize(Archive &archive){
+    archive(x,y);
+  }
 };
 
 #endif //TALLERZ_POSITION_H

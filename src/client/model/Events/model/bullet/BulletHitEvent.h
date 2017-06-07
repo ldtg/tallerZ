@@ -2,7 +2,7 @@
 #define TALLERZ_BULLETHITEVENT_H
 
 #include <client/model/Events/Event.h>
-#include "BulletID.h"
+#include "common/IDs/BulletID.h"
 #include "Position.h"
 #include "Bullet.h"
 

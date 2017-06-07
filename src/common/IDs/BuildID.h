@@ -11,6 +11,7 @@ class BuildID {
   explicit BuildID(const BuildType &buildType);
   bool operator<(const BuildID &other) const;
   BuildType getType() const;
+
 };
 
 #endif //TALLERZ_BUILDID_H

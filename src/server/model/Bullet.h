@@ -3,8 +3,8 @@
 
 #include "Position.h"
 #include "Attackable.h"
-#include "BulletID.h"
-#include "BulletState.h"
+#include "common/IDs/BulletID.h"
+#include "common/States/BulletState.h"
 class Bullet {
  private:
   BulletID id;

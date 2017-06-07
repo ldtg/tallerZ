@@ -2,8 +2,8 @@
 #define TALLERZ_BUILDDAMAGEEVENT_H
 
 #include <client/model/Events/Event.h>
-#include "BuildID.h"
-#include "BuildState.h"
+#include "common/IDs/BuildID.h"
+#include "common/States/BuildState.h"
 class BuildDamageEvent : public Event{
  private:
   BuildID id;

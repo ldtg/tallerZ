@@ -1,7 +1,7 @@
 #ifndef TALLERZ_UNITDEATHEVENT_H
 #define TALLERZ_UNITDEATHEVENT_H
 
-#include "UnitID.h"
+#include "common/IDs/UnitID.h"
 #include "client/model/Events/Event.h"
 
 class UnitDeathEvent : public Event{

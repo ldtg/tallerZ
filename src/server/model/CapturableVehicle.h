@@ -3,8 +3,8 @@
 
 #include "Capturable.h"
 #include "Vehicle.h"
-#include "BuildID.h"
-#include "BuildState.h"
+#include "common/IDs/BuildID.h"
+#include "common/States/BuildState.h"
 
 class CapturableVehicle : public Capturable {
  private:

@@ -3,8 +3,8 @@
 
 #include "Map.h"
 #include "Unit.h"
-#include "UnitID.h"
-#include "BuildID.h"
+#include "common/IDs/UnitID.h"
+#include "common/IDs/BuildID.h"
 #include "client/model/Events/Event.h"
 #include "Bullet.h"
 #include "Build.h"

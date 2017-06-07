@@ -6,7 +6,7 @@
 class BulletMoveStepEvent : public Event {
  private:
   BulletID id;
-  const Position posTo;
+  Position posTo;
 
  public:
   BulletMoveStepEvent(BulletID id, Position &posTo);

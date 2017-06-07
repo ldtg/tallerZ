@@ -3,8 +3,8 @@
 
 #include "Attackable.h"
 #include "TerrainObjectType.h"
-#include "TerrainObjectID.h"
-#include "TerrainObjectState.h"
+#include "common/IDs/TerrainObjectID.h"
+#include "common/States/TerrainObjectState.h"
 #include "TerrainObjectData.h"
 class TerrainObject : public Attackable {
  private:

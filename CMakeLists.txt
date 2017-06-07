@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.7)
 project(tallerZ)
 
 set(CMAKE_CXX_STANDARD 11)
+include_directories(include)
 
 set(SOURCE_FILES
         src/main.cpp
@@ -12,10 +13,10 @@ set(SOURCE_FILES
         src/server/model/Tile.cpp
         src/server/model/Tile.h
         src/server/model/TerrainType.h
-        src/server/model/UnitID.cpp
-        src/server/model/UnitID.h
-        src/server/model/UnitState.cpp
-        src/server/model/UnitState.h
+        src/common/IDs/UnitID.cpp
+        src/common/IDs/UnitID.h
+        src/common/States/UnitState.cpp
+        src/common/States/UnitState.h
         src/server/model/AStar.cpp
         src/server/model/AStar.h
         src/server/model/Node.cpp
@@ -68,42 +69,42 @@ set(SOURCE_FILES
         src/server/model/Bullet.h
         src/client/model/Events/model/bullet/BulletNewEvent.cpp
         src/client/model/Events/model/bullet/BulletNewEvent.h
-        src/server/model/BulletID.cpp
-        src/server/model/BulletID.h
+        src/common/IDs/BulletID.cpp
+        src/common/IDs/BulletID.h
         src/client/model/Events/model/bullet/BulletHitEvent.cpp
         src/client/model/Events/model/bullet/BulletHitEvent.h
-        src/server/model/BulletState.cpp
-        src/server/model/BulletState.h
+        src/common/States/BulletState.cpp
+        src/common/States/BulletState.h
         src/server/model/Player.cpp
         src/server/model/Player.h
         src/server/model/Team.cpp
         src/server/model/Team.h
-        src/server/model/PlayerID.cpp
-        src/server/model/PlayerID.h
+        src/common/IDs/PlayerID.cpp
+        src/common/IDs/PlayerID.h
         src/server/model/Territory.cpp
         src/server/model/Territory.h
         src/server/model/Build.cpp
         src/server/model/Build.h
         src/server/model/BuildData.h
         src/server/model/BuildType.h
-        src/server/model/BuildID.cpp
-        src/server/model/BuildID.h
+        src/common/IDs/BuildID.cpp
+        src/common/IDs/BuildID.h
         src/server/model/BuildType.h
-        src/server/model/BuildState.cpp src/server/model/BuildState.h
+        src/common/States/BuildState.cpp src/common/States/BuildState.h
         src/client/model/Events/model/PlayerDefeatedEvent.cpp
         src/client/model/Events/model/PlayerDefeatedEvent.h
-        src/server/model/TeamID.cpp src/server/model/TeamID.h
+        src/common/IDs/TeamID.cpp src/common/IDs/TeamID.h
         src/client/model/Events/model/EndGameEvent.cpp
         src/client/model/Events/model/EndGameEvent.h
         src/server/model/TerrainObject.cpp
         src/server/model/TerrainObject.h
         src/server/model/TerrainObjectType.h
-        src/server/model/TerrainObjectID.cpp
-        src/server/model/TerrainObjectID.h
+        src/common/IDs/TerrainObjectID.cpp
+        src/common/IDs/TerrainObjectID.h
         src/client/model/Events/model/TerrainObjectDestroyedEvent.cpp
         src/client/model/Events/model/TerrainObjectDestroyedEvent.h
-        src/server/model/TerrainObjectState.cpp
-        src/server/model/TerrainObjectState.h
+        src/common/States/TerrainObjectState.cpp
+        src/common/States/TerrainObjectState.h
         src/server/model/TerrainObjectData.h
         src/server/model/PlayerColor.h
         src/server/model/GaiaPlayer.cpp
@@ -126,9 +127,9 @@ set(SOURCE_FILES
         src/client/model/Events/model/unit/UnitStillEvent.h
         z_tests/tests_model/GameController_objects_test.cpp
         z_tests/tests_model/GameController_win_test.cpp
-        src/server/model/CapturableID.cpp
-        src/server/model/CapturableID.h
-        src/server/model/CapturableState.h
+        src/common/IDs/CapturableID.cpp
+        src/common/IDs/CapturableID.h
+        src/common/States/CapturableState.h
         src/server/model/CapturableType.h
         src/server/model/Capturable.cpp
         src/server/model/Capturable.h
@@ -264,7 +265,7 @@ set(SOURCE_FILES
 
         src/client/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.cpp
         src/client/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.h
-        z_tests/tests_storage/load_map_tests.cpp src/client/model/GameControllerProxy.cpp src/client/model/GameControllerProxy.h)
+        z_tests/tests_storage/load_map_tests.cpp src/client/model/GameControllerProxy.cpp src/client/model/GameControllerProxy.h src/server/model/Events/Event.cpp src/server/model/Events/Event.h src/server/model/Events/EventType.h src/server/model/Events/UnitMoveEvent.cpp src/server/model/Events/UnitMoveEvent.h z_tests/test_server/serialize_Events_test.cpp)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(src/server/model)

@@ -1,7 +1,7 @@
 #ifndef TALLERZ_BUILDDESTROYEDEVENT_H
 #define TALLERZ_BUILDDESTROYEDEVENT_H
 
-#include <server/model/BuildID.h>
+#include <common/IDs/BuildID.h>
 #include <client/model/Events/Event.h>
 class BuildDestroyedEvent : public Event{
  private:

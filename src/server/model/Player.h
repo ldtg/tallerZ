@@ -1,7 +1,7 @@
 #ifndef TALLERZ_PLAYER_H
 #define TALLERZ_PLAYER_H
 
-#include "PlayerID.h"
+#include "common/IDs/PlayerID.h"
 #include "Position.h"
 #include "BuildType.h"
 

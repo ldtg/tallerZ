@@ -3,7 +3,7 @@
 
 #include "UnitType.h"
 #include "Position.h"
-#include "PlayerID.h"
+#include "common/IDs/PlayerID.h"
 
 struct BuildState {
  public:

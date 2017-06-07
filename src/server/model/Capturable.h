@@ -2,12 +2,12 @@
 #define TALLERZ_CAPTURABLE_H
 
 #include "Team.h"
-#include "UnitID.h"
-#include "BuildID.h"
-#include "BuildState.h"
-#include "UnitState.h"
-#include "CapturableState.h"
-#include "CapturableID.h"
+#include "common/IDs/UnitID.h"
+#include "common/IDs/BuildID.h"
+#include "common/States/BuildState.h"
+#include "common/States/UnitState.h"
+#include "common/States/CapturableState.h"
+#include "common/IDs/CapturableID.h"
 
 class Capturable {
  protected:

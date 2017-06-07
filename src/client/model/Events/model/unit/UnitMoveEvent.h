@@ -1,16 +1,14 @@
 #ifndef TALLERZ_UNITEVENT_H
 #define TALLERZ_UNITEVENT_H
 
-#include "UnitState.h"
-#include "UnitID.h"
+#include "common/States/UnitState.h"
+#include "common/IDs/UnitID.h"
 #include "client/model/Events/Event.h"
 
 class UnitMoveEvent : public Event {
  private:
-//  Position posFrom;
-  Position posTo;
   UnitID id;
-//  UnitState newState;
+  Position posTo;
  public:
   UnitMoveEvent(UnitID id, Position posTo);
   void process();

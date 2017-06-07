@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Position.h"
 
-Position::Position() {}
+Position::Position() :x(0),y(0){}
 
 Position::Position(long x, long y)
     : x(x), y(y) {}
@@ -214,3 +214,4 @@ std::vector<Position> Position::getNeighborsOfDiagonal(const Position &position)
 
   return neighbors;
 }
+

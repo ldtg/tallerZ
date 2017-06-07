@@ -1,0 +1,4 @@
+#ifndef TALLERZ_EVENTTYPE_H
+#define TALLERZ_EVENTTYPE_H
+enum EventType{};
+#endif //TALLERZ_EVENTTYPE_H

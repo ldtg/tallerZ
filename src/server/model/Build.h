@@ -2,11 +2,11 @@
 #define TALLERZ_BUILD_H
 
 #include "Attackable.h"
-#include "BuildID.h"
+#include "common/IDs/BuildID.h"
 #include "Player.h"
 #include "UnitType.h"
 #include "BuildData.h"
-#include "BuildState.h"
+#include "common/States/BuildState.h"
 #include "Unit.h"
 
 #define BUILDWIDHT 100

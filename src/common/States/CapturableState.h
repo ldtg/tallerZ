@@ -1,7 +1,7 @@
 #ifndef TALLERZ_CAPTURABLESTATE_H
 #define TALLERZ_CAPTURABLESTATE_H
 
-#include "PlayerID.h"
+#include "common/IDs/PlayerID.h"
 #include "GaiaPlayer.h"
 struct CapturableState {
   PlayerID ownerID;
