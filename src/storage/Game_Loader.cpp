@@ -158,7 +158,7 @@ void Game_Loader::build_map() {
     emplace_terrain(pos_data);
     if (pos_data.fort){
       Team team = get_team(fort_player->second);
-      assign_fort(pos_data, *fort_player->second, team);//players[0] HARCODEADO
+      assign_fort(pos_data, *fort_player->second, team);
       fort_player++;
     }
     if (pos_data.bridge || pos_data.rock){
