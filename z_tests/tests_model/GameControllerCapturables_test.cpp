@@ -1,3 +1,4 @@
+/*
 #include "gtest/gtest.h"
 #include <Data.h>
 #include <Tile.h>
@@ -8,7 +9,6 @@
 #include <model/Territory.h>
 #include <model/GaiaPlayer.h>
 #include "GameController.h"
-/*
 class GameControllerCapturables_test : public ::testing::Test {
 
  public:

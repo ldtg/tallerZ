@@ -1,11 +1,11 @@
-#include <model/Build.h>
+/*#include <model/Build.h>
 #include <model/Events/Event.h>
 #include <model/Data.h>
 #include <chrono>
 #include <model/UnitFactory.h>
 #include "gtest/gtest.h"
 #include "Map.h"
-/*
+
 class GameController_build_test : public ::testing::Test {
  public:
   Map map;

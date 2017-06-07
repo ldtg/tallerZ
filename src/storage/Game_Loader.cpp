@@ -2,7 +2,7 @@
 // Created by darius on 01/06/17.
 //
 
-#include <model/UnitFactory.h>
+#include <server/model/UnitFactory.h>
 #include "Game_Loader.h"
 void Game_Loader::open_file() {
   try{

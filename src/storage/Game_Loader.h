@@ -8,21 +8,21 @@
 #include <fstream>
 #include <TerrainType.h>
 #include <Exceptions/Storage_Exceptions/Storage_Exception.h>
-#include <model/Position.h>
-#include <model/Tile.h>
+#include <server/model/Position.h>
+#include <server/model/Tile.h>
+#include <server/model/BuildState.h>
+#include <server/model/BuildID.h>
+#include <server/model/Build.h>
+#include <server/model/TerrainObjectState.h>
+#include <server/model/TerrainObjectID.h>
+#include <server/model/GaiaPlayer.h>
+#include <server/model/Map.h>
+#include <server/model/Vehicle.h>
+#include <server/model/CapturableVehicle.h>
+#include <server/model/Territory.h>
+#include <server/model/TerrainObject.h>
 #include <map_generation/Generator.h>
 #include <Data.h>
-#include <model/BuildState.h>
-#include <model/BuildID.h>
-#include <model/Build.h>
-#include <model/TerrainObjectState.h>
-#include <model/TerrainObjectID.h>
-#include <model/GaiaPlayer.h>
-#include <model/Map.h>
-#include <model/Vehicle.h>
-#include <model/CapturableVehicle.h>
-#include <model/Territory.h>
-#include <model/TerrainObject.h>
 #include "../../json/src/json.hpp"
 
 using json = nlohmann::json;

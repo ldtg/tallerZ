@@ -1,4 +1,4 @@
-#include <model/Build.h>
+/*#include <model/Build.h>
 #include <model/Events/Event.h>
 #include <model/Data.h>
 #include <chrono>
@@ -6,7 +6,7 @@
 #include <model/GaiaPlayer.h>
 #include "gtest/gtest.h"
 #include "Map.h"
-/*
+
 class GameController_objects_test : public ::testing::Test {
  public:
   Map map;

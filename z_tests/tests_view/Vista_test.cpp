@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
-#include "view/View.h"
-#include "controller/Controller.h"
-#include "model/Events/EventHandler.h"
+#include "client/view/View.h"
+#include "client/controller/Controller.h"
+#include "client/model/Events/EventHandler.h"
 
 #include <SDL2/SDL_image.h>
 #include <thread>
@@ -9,14 +9,14 @@
 #include <ctime>
 #include <chrono>
 #include <ratio>
-#include <model/Data.h>
-#include <model/UnitFactory.h>
-#include <model/GameController.h>
+#include <server/model/Data.h>
+#include <server/model/UnitFactory.h>
+#include <server/model/GameController.h>
 #include <storage/Game_Loader.h>
-#include <controller/MouseState.h>
-#include <model/CapturableVehicle.h>
-#include <model/GaiaPlayer.h>
-#include <model/Territory.h>
+#include <client/controller/MouseState.h>
+#include <server/model/CapturableVehicle.h>
+#include <server/model/GaiaPlayer.h>
+#include <server/model/Territory.h>
 
 TEST(VistaTest, Window) {
 

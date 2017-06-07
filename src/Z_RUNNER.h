@@ -5,8 +5,8 @@
 #ifndef TALLERZ_RUN_H
 #define TALLERZ_RUN_H
 
-#include <controller/Controller.h>
-#include <front_end/SDL_Interface/Main_Window.h>
+#include <client/controller/Controller.h>
+#include <client/front_end/SDL_Interface/Main_Window.h>
 
 /**
  * @class Z_RUNNER

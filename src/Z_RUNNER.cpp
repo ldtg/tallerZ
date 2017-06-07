@@ -3,7 +3,7 @@
 //
 
 #include <SDL_ttf.h>
-#include <front_end/SDL_Interface/Labels/Label.h>
+#include <client/front_end/SDL_Interface/Labels/Label.h>
 #include "Z_RUNNER.h"
 Z_RUNNER::Z_RUNNER() {
   main_window = new Main_Window();
