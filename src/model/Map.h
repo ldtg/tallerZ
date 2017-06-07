@@ -110,12 +110,13 @@ class Map {
   CapturableID getCapturableIDFromPosition(const Position &pos, unsigned short range) const;
 
   UnitState getUnitState(const UnitID &unitID) const;
-
+  Position getNeighborFreePos(const Position &tileCenterPos);
   //Para crear el mapa
   void setUnits(const std::map<UnitID, UnitState> &units);
   int getWidht() const;
   int getHeight() const;
 
+  bool diagPassable(const Position &center,const Position &diag) const;
 };
 
 #endif //TALLERZ_MAP_H

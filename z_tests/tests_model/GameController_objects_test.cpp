@@ -6,7 +6,7 @@
 #include <model/GaiaPlayer.h>
 #include "gtest/gtest.h"
 #include "Map.h"
-
+/*
 class GameController_objects_test : public ::testing::Test {
  public:
   Map map;
@@ -103,4 +103,4 @@ TEST_F(GameController_objects_test, bridge_destroy) {
     events.insert(events.end(), aux.begin(), aux.end());
   }
   ASSERT_TRUE(unit->isStill());
-}
+}*/

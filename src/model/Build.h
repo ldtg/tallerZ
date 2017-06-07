@@ -33,7 +33,7 @@ class Build : public Attackable {
  public:
   Build(const BuildData &data,
         const Position &centerPosition,
-        Player &owner,Team team,
+        Player &owner,const Team &team,
         const unsigned short techLevel);
   virtual Position getCenterPosition() const override;
   virtual Player* getOwner() ;
@@ -53,8 +53,8 @@ class Build : public Attackable {
   UnitType getActualUnitFab() const;
   std::vector<UnitType> getFabricableUnits() const;
   void changeFabUnit(const UnitType &type);
-  void changePlayer(Player *player, Team &team);
-  std::vector<Unit *> fabricateUnits();
+  void changePlayer(Player *player, const Team &team);
+  std::vector<Unit *> fabricateUnits(const Position &buildPos);
 };
 
 #endif //TALLERZ_BUILD_H

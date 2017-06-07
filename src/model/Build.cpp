@@ -25,8 +25,8 @@ Position Build::nextMovePosition() const {
 }
 
 void Build::receiveAttack(const Weapon &weapon) {
-//  if (weapon.isExplosive)
-    this->damagesToReceive.push_back(weapon.damage);
+  //if (weapon.isExplosive)
+  this->damagesToReceive.push_back(weapon.damage);
 }
 
 Position Build::getAttackPosition(const Position &attackerPosition) const {
@@ -36,7 +36,8 @@ Position Build::getAttackPosition(const Position &attackerPosition) const {
 void Build::tick() {
   if (ticksBeforeCreate > 0) {
     ticksBeforeCreate--;
-  } else if (owner->getAmountOfTerritories() > 0) {//para que gaia no cree unidades
+  } else if (owner->getAmountOfTerritories()
+      > 0) {//para que gaia no cree unidades
     ticksBeforeCreate = this->getSpeedRate();
     timeToBuild = true;
   }
@@ -53,7 +54,7 @@ unsigned short Build::getSpeedRate() const {
   float rel = (float) (this->health - data.getData(this->id.getType()).health)
       / (float) data.getData(this->id.getType()).health;
   float relsqrt = std::sqrt(1 - rel);
-  timeInSecs = std::lround(baseTaken / relsqrt);
+  timeInSecs = (unsigned long) std::lround(baseTaken / relsqrt);
 
   return data.getTickAmount(timeInSecs);
 }
@@ -78,7 +79,7 @@ void Build::receiveDamages() {
 
 Build::Build(const BuildData &buildData,
              const Position &centerPosition,
-             Player &owner, Team team,
+             Player &owner, const Team &team,
              const unsigned short techLevel)
     : id(buildData.type),
       owner(&owner), team(team),
@@ -118,19 +119,18 @@ BuildID Build::getId() const {
 }
 
 BuildState Build::getBuildState() const {
-  return BuildState(owner->getID(), centerPosition.sub(BUILDWIDHT/2, BUILDHEIGHT/2),
+  return BuildState(owner->getID(),
+                    centerPosition.sub(size, size),
                     health,
                     data.ticksToSec(ticksBeforeCreate),
                     actualUnitFab);
 }
 
-std::vector<Unit *> Build::fabricateUnits() {
+std::vector<Unit *> Build::fabricateUnits(const Position &buildPos) {
   std::vector<Unit *> aux;
   for (int i = 0; i < data.getData(actualUnitFab).factoryRate; ++i) {
-    //mejorar
-    Position buildPosition(this->centerPosition.getX() + i * 16,
-                           this->centerPosition.getY() + this->size);
-    aux.push_back(UnitFactory::createUnitDynamic(buildPosition,
+
+    aux.push_back(UnitFactory::createUnitDynamic(buildPos.add(i * 32, 0),
                                                  actualUnitFab,
                                                  *owner,
                                                  team));
@@ -140,10 +140,13 @@ std::vector<Unit *> Build::fabricateUnits() {
   return aux;
 }
 
-void Build::changePlayer(Player *player, Team &team) {
+void Build::changePlayer(Player *player, const Team &team) {
   this->owner = player;
   this->team = team;
-  this->actualUnitFab = UnitType::R_GRUNT;
+  if (this->id.getType() == VEHICLEF)
+    this->actualUnitFab = UnitType::V_JEEP;
+  else
+    this->actualUnitFab = UnitType::R_GRUNT;
   this->ticksBeforeCreate = this->getSpeedRate();
   this->timeToBuild = false;
 }

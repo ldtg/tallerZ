@@ -174,9 +174,6 @@ TEST(VistaTest_Usando_Map_Loader, Window){
   Map map = map_loader.run();
 
   GameController gameController(map, map_loader.get_controller_units(),
-                                map_loader.get_builds());
-
-  GameController _gameController(map, map_loader.get_controller_units(),
                                  map_loader.get_builds(),
                                  map_loader.get_controller_capturables(),
                                  map_loader.get_controller_terrainObjects(),

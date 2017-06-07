@@ -36,11 +36,11 @@ Map::Map(const std::map<Position, Tile> &map,
          std::map<CapturableID, CapturableState> capturables,
          const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
          unsigned short width,
-         unsigned short height): map(map),
-                                 builds(builds),
-                                 capturables(capturables),
-                                 width(width),
-                                 height(height) {
+         unsigned short height) : map(map),
+                                  builds(builds),
+                                  capturables(capturables),
+                                  width(width),
+                                  height(height) {
 
   for (auto &build : builds) {
     Position pos = this->getTilePositionFromRealPosition(build.second.position);
@@ -60,12 +60,12 @@ Map::Map(const std::map<Position, Tile> &map,
          const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
          std::map<UnitID, UnitState> units,
          unsigned short width,
-         unsigned short height): map(map),
-                                 builds(builds),
-                                 capturables(capturables),
-                                 width(width),
-                                 height(height),
-                                 units(units){
+         unsigned short height) : map(map),
+                                  builds(builds),
+                                  capturables(capturables),
+                                  width(width),
+                                  height(height),
+                                  units(units) {
 
   for (auto &build : builds) {
     Position pos = this->getTilePositionFromRealPosition(build.second.position);
@@ -101,10 +101,19 @@ std::vector<Tile> Map::getNeighbors(const Tile &tile) const {
   Position tilePosition = tile.getCenterPosition();
   tilePosition.mod(TILEWIDHT, TILEHEIGHT);
   std::vector<Tile> neighborsTiles;
-  std::vector<Position> neighborsPos = tilePosition.getNeighbors();
-  for (Position &pos : neighborsPos) {
-    if (pos.isIn(width, height))
+  std::vector<Position>
+      straighNeighborsPos = tilePosition.getStraighNeighbors();
+  std::vector<Position>
+      diagonalNeighborsPos = tilePosition.getDiagonalNeighbors();
+  for (Position &pos : straighNeighborsPos) {
+    if (pos.isIn(width, height)) {
       neighborsTiles.push_back(map.at(pos));
+    }
+  }
+  for (Position &pos : diagonalNeighborsPos) {
+    if (pos.isIn(width, height) && diagPassable(tilePosition, pos)) {
+      neighborsTiles.push_back(map.at(pos));
+    }
   }
   return neighborsTiles;
 }
@@ -163,7 +172,8 @@ const std::map<CapturableID, CapturableState> &Map::getCapturables() const {
   return capturables;
 }
 
-const std::map<TerrainObjectID, TerrainObjectState>& Map::getTerrainObjects() const {
+const std::map<TerrainObjectID,
+               TerrainObjectState> &Map::getTerrainObjects() const {
   return terrainObject;
 }
 
@@ -274,5 +284,21 @@ void Map::updateCapturable(const CapturableID &id,
 }
 void Map::removeCapturable(const CapturableID &id) {
   capturables.erase(id);
+}
+Position Map::getNeighborFreePos(const Position &tileC) {
+  for (Tile &tile : this->getNeighbors(this->getTile(tileC))) {
+    if (tile.isPassable()) {
+      return tile.getCenterPosition();
+    }
+  }
+}
+bool Map::diagPassable(const Position &center,const Position &diag) const {
+  std::vector<Position> diagNeigh = center.getNeighborsOfDiagonal(diag);
+  bool passable = true;
+  for (Position &pDiag : diagNeigh) {
+    if (!map.at(pDiag).isPassable())
+      passable = false;
+  }
+  return passable;
 }
 

@@ -305,9 +305,10 @@ void GameController::capture(Unit *unit,
   if (unit->capturableInRange()) {
     unit->still();
     Capturable *capturable = unit->getCapturable();
-    capturable->capture(unit->getId(), unit->getOwner(),unit->getOwnerTeam());
+    capturable->capture(unit->getId(), unit->getOwner(), unit->getOwnerTeam());
 
-    std::map<BuildID, BuildState> capturedBuilds = capturable->getCapturedBuilds();
+    std::map<BuildID, BuildState>
+        capturedBuilds = capturable->getCapturedBuilds();
     std::map<UnitID, UnitState> capturedUnits = capturable->getCapturedUnits();
 
     bool dissapear = capturable->capturerDissapear();
@@ -390,7 +391,7 @@ void GameController::buildsTick(std::vector<Event *> &events) {
 
       if (current->isAlive()) {
         if (current->hasToBuild()) {
-          this->addUnits(current->fabricateUnits(), events);
+          this->addUnits(current->fabricateUnits(map.getNeighborFreePos(current->getCenterPosition())), events);
         }
         map.updateBuild(current->getId(), current->getBuildState());
         current->tick();
@@ -400,7 +401,7 @@ void GameController::buildsTick(std::vector<Event *> &events) {
         map.updateBuild(current->getId(), current->getBuildState());
         b_iter = builds.erase(b_iter);
       }
-    }else {
+    } else {
       ++b_iter;
     }
   }
@@ -422,15 +423,15 @@ void GameController::PlayersTick(std::vector<Event *> &events) {
 
 void GameController::TeamsTick(std::vector<Event *> &events) {
   unsigned short count = 0;
-  TeamID winnerId;
+  const TeamID *winnerId = nullptr;
   for (auto &team : teams) {
     if (team.second.isTeamAlive()) {
       count++;
-      winnerId = team.first;
+      winnerId = &team.first;
     }
   }
   if (count == 1) {
-    events.push_back(new EndGameEvent(winnerId));
+    events.push_back(new EndGameEvent(*winnerId));
   }
 
 }

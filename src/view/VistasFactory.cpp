@@ -148,6 +148,12 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       speed = 1 * num_frames;
       despX = 0, despY = 10;
       path = path + type_s + "/" + action + "/" + action + "_n";
+    } else {//TODO: AGREGAR CREATEEE
+      num_frames = 2;
+      speed = 3 * num_frames;
+      despX = 25, despY = 25;
+      path = path + type_s + "/" + "look_around"
+          + "/" + "look_around" + "_" + color + "_r" + rotation + "_n";
     }
   }
   else {

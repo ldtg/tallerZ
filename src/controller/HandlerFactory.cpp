@@ -8,25 +8,21 @@
 #include "MouseMotion.h"
 #include "MouseState.h"
 
-Handler* HandlerFactory::get(SDL_Event *e) {
+Handler *HandlerFactory::get(SDL_Event *e) {
 //    if (e->type == SDL_QUIT) {
   if (e->type == SDL_KEYDOWN) {
     switch (e->key.keysym.sym) {
-      case SDLK_ESCAPE:
-        return new Quit();
+      case SDLK_ESCAPE:return new Quit();
         break;
+      default:return nullptr;
     }
-  }
-  else if (e->type == SDL_MOUSEBUTTONDOWN) {
+  } else if (e->type == SDL_MOUSEBUTTONDOWN) {
     if (e->button.button == SDL_BUTTON_LEFT)
       return new MouseButtonLeft();
     else if (e->button.button == SDL_BUTTON_RIGHT)
       return new MouseButtonRight();
-  }
-//  else if (e->type == SDL_MOUSEMOTION) {
-//    return new MouseMotion();
-//  }
-  else {
+  } else {
     return nullptr;
   }
+  return nullptr;
 }

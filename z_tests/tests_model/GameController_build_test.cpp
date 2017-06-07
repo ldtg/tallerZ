@@ -5,7 +5,7 @@
 #include <model/UnitFactory.h>
 #include "gtest/gtest.h"
 #include "Map.h"
-
+/*
 class GameController_build_test : public ::testing::Test {
  public:
   Map map;
@@ -99,4 +99,4 @@ TEST_F(GameController_build_test, build_attack_destroy) {
       std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
   std::cerr << diff.count() << std::endl;
   ASSERT_TRUE(diff.count() > 20);
-}
+}*/

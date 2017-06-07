@@ -15,8 +15,8 @@ class Capturable {
   Capturable(const CapturableType &type);
  public:
   virtual void capture(const UnitID &unitID,
-                       Player *newOwner,
-                       Team ownerTeam) = 0;
+                       Player *newOwner, const
+                       Team &ownerTeam) = 0;
   virtual Position getCapturePosition() const = 0;
   virtual std::map<BuildID, BuildState> getCapturedBuilds() const = 0;
   virtual std::map<UnitID, UnitState> getCapturedUnits() const = 0;

@@ -27,7 +27,7 @@ UnitState Vehicle::getUnitState() const {
   return UnitState(conductor, owner->getID(), health, weapon, currentPosition);
 }
 
-void Vehicle::capture(Player *player, Team team, UnitType conductor) {
+void Vehicle::capture(Player *player,const Team &team, UnitType conductor) {
   this->owner = player;
   this->team = team;
   this->conductor = conductor;

@@ -12,7 +12,7 @@ class Vehicle : public Unit{
           const UnitType& conductorType, Player &player, Team &team);
   ~Vehicle();
 
-  void capture(Player *player, Team team, UnitType conductor);
+  void capture(Player *player,const Team &team, UnitType conductor);
   virtual bool canGoThrough(const TerrainData &terrainData) const override;
   virtual unsigned short getMovementSpeed(float terrainFactor) const override;
   virtual UnitState getUnitState() const override;

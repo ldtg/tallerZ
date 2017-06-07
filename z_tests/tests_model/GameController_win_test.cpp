@@ -6,7 +6,7 @@
 #include <model/GaiaPlayer.h>
 #include "gtest/gtest.h"
 #include "Map.h"
-
+/*
 class GameController_win_test : public ::testing::Test {
  public:
   Map map;
@@ -103,4 +103,4 @@ TEST_F(GameController_win_test, fort_end_test) {
   }
   ASSERT_FALSE(playerA.isAlive());
 
-}
+}*/

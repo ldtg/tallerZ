@@ -6,7 +6,7 @@ CapturableVehicle::CapturableVehicle(Vehicle &vehicle)
 
 void CapturableVehicle::capture(const UnitID &unitID,
                                 Player *newOwner,
-                                Team ownerTeam) {
+                                const Team &ownerTeam) {
   vehicle.capture(newOwner, ownerTeam, unitID.getType());
 }
 

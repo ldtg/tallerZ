@@ -12,7 +12,7 @@ Territory::Territory(const Position &flagPosition,
 
 void Territory::capture(const UnitID &unitID,
                         Player *newOwner,
-                        Team ownerTeam) {
+                        const Team &ownerTeam) {
   if (owner->getID() != newOwner->getID()) {
     owner->subTerritory();
     newOwner->addTerritory();

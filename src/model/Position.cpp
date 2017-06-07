@@ -19,9 +19,9 @@ unsigned long Position::chebyshevDistance(const Position &other) const {
 
 unsigned long Position::manhattanDistance(const Position &other) const {
   long
-    distanceX = std::max(this->x, other.x) - std::min(this->x, other.x);
+      distanceX = std::max(this->x, other.x) - std::min(this->x, other.x);
   long
-    distanceY = std::max(this->y, other.y) - std::min(this->x, other.x);
+      distanceY = std::max(this->y, other.y) - std::min(this->x, other.x);
   return (distanceX + distanceY);
 }
 
@@ -51,7 +51,6 @@ std::vector<Position> Position::getNeighbors() const {
     neighbors.push_back(Position(x, y - 1));
     neighbors.push_back(Position(x + 1, y - 1));
   }
-
   return neighbors;
 }
 
@@ -81,15 +80,13 @@ void Position::mod(unsigned short modx, unsigned short mody) {
 void Position::move(Position target) {
   if (this->x < target.x) {
     this->x++;
-  }
-  else if (this->x > target.x) {
+  } else if (this->x > target.x) {
     this->x--;
   }
 
   if (this->y < target.y) {
     this->y++;
-  }
-  else if (this->y > target.y) {
+  } else if (this->y > target.y) {
     this->y--;
   }
 }
@@ -100,19 +97,15 @@ int Position::getRoration(Position target) const {
   if (this->x < target.x) {
     if (this->y < target.y) {
       rotation = 315;
-    }
-    else if (this->y > target.y) {
+    } else if (this->y > target.y) {
       rotation = 45;
     } else {
       rotation = 0;
     }
-  }
-
-  else if (this->x > target.x) {
+  } else if (this->x > target.x) {
     if (this->y < target.y) {
       rotation = 225;
-    }
-    else if (this->y > target.y) {
+    } else if (this->y > target.y) {
       rotation = 135;
     } else {
       rotation = 180;
@@ -120,8 +113,7 @@ int Position::getRoration(Position target) const {
   } else {
     if (this->y < target.y) {
       rotation = 270;
-    }
-    else if (this->y > target.y) {
+    } else if (this->y > target.y) {
       rotation = 90;
     }
   }
@@ -169,8 +161,56 @@ Position Position::add(unsigned long x, unsigned long y) const {
 Position Position::getAttackPosition(const Position &position,
                                      const unsigned short size) const {
   Position aux = position;
-  while (aux.euclideanDistance(*this) > size ) {
+  while (aux.euclideanDistance(*this) > size) {
     aux.move(*this);
   }
   return aux;
+}
+std::vector<Position> Position::getStraighNeighbors() const{
+  std::vector<Position> neighbors;
+  neighbors.push_back(Position(x + 1, y));
+  neighbors.push_back(Position(x, y + 1));
+  if (x != 0) {
+    neighbors.push_back(Position(x - 1, y));
+  }
+  if (y != 0) {
+    neighbors.push_back(Position(x, y - 1));
+  }
+
+  return neighbors;
+}
+std::vector<Position> Position::getDiagonalNeighbors() const{
+  std::vector<Position> neighbors;
+  neighbors.push_back(Position(x + 1, y + 1));
+  if (x != 0) {
+    neighbors.push_back(Position(x - 1, y + 1));
+    if (y != 0) {
+      neighbors.push_back(Position(x - 1, y - 1));
+    }
+  }
+  if (y != 0) {
+    neighbors.push_back(Position(x + 1, y - 1));
+  }
+
+  return neighbors;
+}
+std::vector<Position> Position::getNeighborsOfDiagonal(const Position &position) const{
+  std::vector<Position> neighbors;
+  if (position.x > this->x) {
+    neighbors.push_back(Position(x + 1, y));
+    if (position.y > this->y) {
+      neighbors.push_back(Position(x, y + 1));
+    } else {
+      neighbors.push_back(Position(x, y - 1));
+    }
+  } else {
+    neighbors.push_back(Position(x - 1, y));
+    if (position.y > this->y) {
+      neighbors.push_back(Position(x, y + 1));
+    } else {
+      neighbors.push_back(Position(x, y - 1));
+    }
+  }
+
+  return neighbors;
 }

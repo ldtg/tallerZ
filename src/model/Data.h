@@ -61,12 +61,11 @@ struct Data {
     miliSecsPerTick =
         (unsigned long) std::lround((1 / (float) ticksPerSec) * 1000);
 
-    playerInitialTerritories = 2;
+    playerInitialTerritories = 1;
     playerInitialUnits = 3;
     defaultDriver = R_GRUNT;
     //para aumentar el rango de las unidades
     rangeMultipliquer = 10;
-
 
     bullet.type = WeaponType::BULLET;
     bullet.damage = 2;
@@ -82,7 +81,6 @@ struct Data {
     flamethrower.damage = 10;
     flamethrower.isExplosive = true;
     flamethrower.speed = 12;
-
 
     r_grunt.type = UnitType::R_GRUNT;
     r_grunt.weapon = bullet;
@@ -121,7 +119,7 @@ struct Data {
     v_jeep.range = 5;//6x5
     v_jeep.speed = 8;
     v_jeep.factoryRate = 1;
-    v_jeep.factoryBaseTimeInSec = 660;
+    v_jeep.factoryBaseTimeInSec = 10;
     v_jeep.factoryMinimunTechLevel = 1;
 
     fort.type = BuildType::FORT;
@@ -167,11 +165,11 @@ struct Data {
     rockObject.passable = false;
     rockObject.health = 1000;//1000
     rockObject.size = 50;
-    woodenBridgeObject.type = TerrainObjectType ::_WOODENBRIDGE;
+    woodenBridgeObject.type = TerrainObjectType::_WOODENBRIDGE;
     woodenBridgeObject.passable = true;
     woodenBridgeObject.health = 1000;
     woodenBridgeObject.size = 50;
-    iceRockObject.type = TerrainObjectType ::ICEROCK;
+    iceRockObject.type = TerrainObjectType::ICEROCK;
     iceRockObject.passable = false;
     iceRockObject.health = 1000;
     iceRockObject.size = 50;
@@ -189,6 +187,7 @@ struct Data {
       case V_MTANK:return v_mtank;
       case V_HTANK:return v_htank;
       case V_MML:return v_mml;
+      default: return r_grunt;
     }
   }
   BuildData getData(BuildType type) {
@@ -209,42 +208,27 @@ struct Data {
  */
   TerrainData get_terrain_data(TerrainType terrain) {
     //TODO: habría que diferenciar segun los tipos de terrenos como los que estan en terrain_type: land, prairie, water, lava, swamp (no esta), road, bridge (no esta), snow.
-    switch (terrain){
-      case PRAIRIE:
-        return prairie;
-      case ROAD:
-        return road;
-      case ASPHALTEDROAD:
-        return asphaltedRoad;
-      case WOODENBRIDGE:
-        return woodenBridge;
-      case ASPHALTEDBRIDGE:
-        return asphaltedBridgeTerrain;
-      case LAND:
-        return land;
-      case SWAMP:
-        return swamp;
-      case LAVA:
-        return lava;
-      case SNOW:
-        return snow;
-      case WATER:
-        return water;
-      default:
-        return land;
+    switch (terrain) {
+      case PRAIRIE:return prairie;
+      case ROAD:return road;
+      case ASPHALTEDROAD:return asphaltedRoad;
+      case WOODENBRIDGE:return woodenBridge;
+      case ASPHALTEDBRIDGE:return asphaltedBridgeTerrain;
+      case LAND:return land;
+      case SWAMP:return swamp;
+      case LAVA:return lava;
+      case SNOW:return snow;
+      case WATER:return water;
+      default:return land;
     }
   }
 
-  TerrainObjectData getObjectData(TerrainObjectType terrainObjectType){
-    switch (terrainObjectType){
-      case (TerrainObjectType ::_WOODENBRIDGE):
-        return woodenBridgeObject;
-      case (TerrainObjectType ::_ASPHALTEDBRIDGE):
-        return asphaltedBridgeObject;
-      case (TerrainObjectType ::ICEROCK):
-        return iceRockObject;
-      case (TerrainObjectType ::ROCK):
-        return rockObject;
+  TerrainObjectData getObjectData(TerrainObjectType terrainObjectType) {
+    switch (terrainObjectType) {
+      case (TerrainObjectType::_WOODENBRIDGE):return woodenBridgeObject;
+      case (TerrainObjectType::_ASPHALTEDBRIDGE):return asphaltedBridgeObject;
+      case (TerrainObjectType::ICEROCK):return iceRockObject;
+      case (TerrainObjectType::ROCK):return rockObject;
     }
   }
   std::vector<UnitType> getFabUnits(const BuildType &buildType,

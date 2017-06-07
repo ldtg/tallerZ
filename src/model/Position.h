@@ -37,6 +37,9 @@ class Position {
   Position sub(unsigned long x, unsigned long y) const;
   Position add(unsigned long x, unsigned long y) const;
   Position getAttackPosition(const Position &position, const unsigned short size) const;
+  std::vector<Position> getStraighNeighbors() const;
+  std::vector<Position> getDiagonalNeighbors() const;
+  std::vector<Position> getNeighborsOfDiagonal(const Position &position) const;
 };
 
 #endif //TALLERZ_POSITION_H
