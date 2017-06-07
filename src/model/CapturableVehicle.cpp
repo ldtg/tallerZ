@@ -5,8 +5,8 @@ CapturableVehicle::CapturableVehicle(Vehicle &vehicle)
 }
 
 void CapturableVehicle::capture(const UnitID &unitID,
-                                Player &newOwner,
-                                Team &ownerTeam) {
+                                Player *newOwner,
+                                Team ownerTeam) {
   vehicle.capture(newOwner, ownerTeam, unitID.getType());
 }
 
@@ -45,5 +45,5 @@ bool CapturableVehicle::canBeCapturedBy(const UnitID &id) const {
 }
 
 CapturableState CapturableVehicle::getCapturableState() const {
-  return CapturableState(vehicle.getOwner().getID(), vehicle.getCenterPosition());
+  return CapturableState(vehicle.getOwner()->getID(), vehicle.getCenterPosition());
 }

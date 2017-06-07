@@ -40,7 +40,7 @@ TerrainObjectState TerrainObject::getState() const {
   return TerrainObjectState(centerPosition, size, health, passable);
 }
 TerrainObject::TerrainObject(const TerrainObjectData &data,
-                             const Position &centerPos, Player &owner)
+                             const Position &centerPos, Player *owner)
     : id(data.type),
       centerPosition(centerPos),
       health(data.health),
@@ -48,7 +48,7 @@ TerrainObject::TerrainObject(const TerrainObjectData &data,
       passable(data.passable), owner(owner) {
 
 }
-Player &TerrainObject::getOwner() {
+Player *TerrainObject::getOwner() {
   return owner;
 }
 Position TerrainObject::getCenterPosition() const {

@@ -14,12 +14,12 @@ class TerrainObject : public Attackable {
   unsigned short size;
   std::vector<unsigned short> damagesToReceive;
   bool passable;
-  Player &owner;
+  Player *owner;
  public:
-  virtual Player &getOwner();
+  virtual Player *getOwner();
   explicit TerrainObject(const TerrainObjectData &data,
                          const Position &centerPos,
-                         Player &owner);
+                         Player *owner);
   virtual Position getAttackPosition(const Position &attacker) const override;
   virtual bool isAlive() const;
   virtual bool isMoving() const;

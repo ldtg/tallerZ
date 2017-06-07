@@ -9,7 +9,7 @@ class Attackable {
  public:
   virtual Position getAttackPosition(const Position &attacker) const = 0;
   virtual Position getCenterPosition() const = 0;
-  virtual Player& getOwner() = 0;
+  virtual Player* getOwner() = 0;
   virtual bool isAlive() const = 0;
   virtual bool isMoving() const = 0;
   virtual Position nextMovePosition() const = 0;

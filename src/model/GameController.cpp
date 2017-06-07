@@ -196,7 +196,7 @@ void GameController::doTick(std::vector<Event *> &events) {
 void GameController::unitsTick(std::vector<Event *> &events) {
   for (auto it_units = units.begin(); it_units != units.end();) {
     Unit *current = it_units->second;
-    if (!current->getOwner().getID().isGaia()) {
+    if (!current->getOwner()->getID().isGaia()) {
       if (current->hasDamagesToReceive()) {
         unitReceiveDamage(current, events);
       }
@@ -305,10 +305,11 @@ void GameController::capture(Unit *unit,
   if (unit->capturableInRange()) {
     unit->still();
     Capturable *capturable = unit->getCapturable();
-    capturable->capture(unit->getId(), unit->getOwner(), unit->getOwnerTeam());
-    std::map<BuildID, BuildState>
-        capturedBuilds = capturable->getCapturedBuilds();
+    capturable->capture(unit->getId(), unit->getOwner(),unit->getOwnerTeam());
+
+    std::map<BuildID, BuildState> capturedBuilds = capturable->getCapturedBuilds();
     std::map<UnitID, UnitState> capturedUnits = capturable->getCapturedUnits();
+
     bool dissapear = capturable->capturerDissapear();
     //update map
     for (auto par: capturedBuilds) {
@@ -383,7 +384,7 @@ void GameController::bulletsTick(std::vector<Event *> &vector) {
 void GameController::buildsTick(std::vector<Event *> &events) {
   for (auto b_iter = builds.begin(); b_iter != builds.end();) {
     Build *current = b_iter->second;
-    if (!current->getOwner().getID().isGaia()) {
+    if (!current->getOwner()->getID().isGaia()) {
       if (current->hasDamagesToReceive())
         buildReceiveDamage(current, events);
 

@@ -21,7 +21,7 @@ class Unit : public Attackable {
  protected:
   const UnitID id;
   Player *owner;
-  Team *team;
+  Team team;
   Position currentPosition;
   MovementState movState;
   const Weapon weapon;
@@ -39,7 +39,7 @@ class Unit : public Attackable {
   Unit(const Position &current,
        const UnitData &unitData,
        Player& owner,
-       Team &team);
+       Team team);
 
  public:
   virtual ~Unit();
@@ -80,8 +80,8 @@ class Unit : public Attackable {
   UnitID getId() const;
   void addMove(const Position &position);
   bool canAttack(Attackable *attackable);
-  virtual Player& getOwner();
-  virtual Team& getOwnerTeam();
+  virtual Player* getOwner();
+  virtual Team getOwnerTeam();
   Bullet createBullet();
   void still();
   virtual bool capturableInRange();

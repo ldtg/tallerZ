@@ -8,8 +8,8 @@ Position Build::getCenterPosition() const {
   return centerPosition;
 }
 
-Player &Build::getOwner() {
-  return *owner;
+Player *Build::getOwner() {
+  return owner;
 }
 
 bool Build::isAlive() const {
@@ -78,10 +78,10 @@ void Build::receiveDamages() {
 
 Build::Build(const BuildData &buildData,
              const Position &centerPosition,
-             Player &owner, Team &team,
+             Player &owner, Team team,
              const unsigned short techLevel)
     : id(buildData.type),
-      owner(&owner), team(&team),
+      owner(&owner), team(team),
       centerPosition(centerPosition),
       size(buildData.size),
       techLevel(techLevel),
@@ -133,16 +133,16 @@ std::vector<Unit *> Build::fabricateUnits() {
     aux.push_back(UnitFactory::createUnitDynamic(buildPosition,
                                                  actualUnitFab,
                                                  *owner,
-                                                 *team));
+                                                 team));
     owner->addUnit();
   }
   this->timeToBuild = false;
   return aux;
 }
 
-void Build::changePlayer(Player &player, Team &team) {
-  this->owner = &player;
-  this->team = &team;
+void Build::changePlayer(Player *player, Team &team) {
+  this->owner = player;
+  this->team = team;
   this->actualUnitFab = UnitType::R_GRUNT;
   this->ticksBeforeCreate = this->getSpeedRate();
   this->timeToBuild = false;

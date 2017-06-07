@@ -13,8 +13,8 @@ class CapturableVehicle : public Capturable {
   explicit CapturableVehicle(Vehicle &vehicle);
 
   virtual void capture(const UnitID &unitID,
-                       Player &newOwner,
-                       Team &ownerTeam);
+                       Player *newOwner,
+                       Team ownerTeam);
   virtual Position getCapturePosition() const;
   virtual std::map<BuildID, BuildState> getCapturedBuilds() const;
   virtual std::map<UnitID, UnitState> getCapturedUnits() const;

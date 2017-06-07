@@ -156,8 +156,8 @@ bool Unit::hasDamagesToReceive() const {
 Unit::Unit(const Position &current,
            const UnitData &unitData,
            Player &owner,
-           Team &team)
-    : owner(&owner), team(&team),
+           Team team)
+    : owner(&owner), team(team),
       currentPosition(current),
       weapon(unitData.weapon),
       attackCounterBase(data.getTickAmount(unitData.secsUntilFire)),
@@ -176,7 +176,7 @@ unsigned short Unit::getRange() const {
 }
 
 bool Unit::canAttack(Attackable *attackable) {
-  return this->team->isEnemy(attackable->getOwner().getID());
+  return this->team.isEnemy(attackable->getOwner()->getID());
 }
 
 Bullet Unit::createBullet() {
@@ -193,11 +193,11 @@ void Unit::still() {
 Position Unit::getAttackPosition(const Position &attacker) const {
   return currentPosition;
 }
-Player &Unit::getOwner() {
-  return *owner;
+Player *Unit::getOwner() {
+  return owner;
 }
-Team &Unit::getOwnerTeam() {
-  return *team;
+Team Unit::getOwnerTeam() {
+  return team;
 }
 bool Unit::hasMovesToDo() const {
   return !movementsPositions.empty();

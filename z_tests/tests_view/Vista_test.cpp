@@ -114,9 +114,9 @@ TEST(VistaTest, Window) {
     capmap.emplace(capturableJeep->getID(), capturableJeep->getCapturableState());
 
     std::vector<Build *> buildsT;
-//    buildsT.push_back(build);
+    buildsT.push_back(build);
 
-    Capturable *terrain = new Territory(Position(150, 50), buildsT, gaia, team2);
+    Capturable *terrain = new Territory(Position(150, 50), buildsT, &player, team);
     capturables.emplace(terrain->getID(), terrain);
     capmap.emplace(terrain->getID(), terrain->getCapturableState());
 
