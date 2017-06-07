@@ -99,7 +99,7 @@ class Generator {
   Generator(const unsigned& width
       , const unsigned& length
       , unsigned territories
-      , const unsigned& teams
+      , const unsigned& players
       , MAP_TYPE map_type, int vehicles, int factories_level);
 
   ~Generator();
@@ -275,6 +275,13 @@ class Generator {
    */
   void territory_distribution_algorithm();
 
+  /**
+   * building_is_not_in_border
+   * @param x : posicion x
+   * @param y : posicion y
+   * @return : si el edificio se situa o no en un borde del mapa
+   */
+  bool building_is_not_in_border(int x, int y);
   /****PRIVATE****/
   /**
    * get_position : extrapola una posición matricial a la de un array

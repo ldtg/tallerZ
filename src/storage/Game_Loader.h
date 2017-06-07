@@ -85,6 +85,8 @@ class Game_Loader {
   std::map<UnitID, Unit *> get_controller_units();
   std::map<int, std::vector<Build*>> get_territory_buildings();
   std::map<TerrainObjectID, TerrainObject> get_controller_terrainObjects();;
+  std::map<PlayerID, Player *> get_players();
+  std::map<TeamID, Team> get_teams();
 
   Map run(){
     this->load_file();
@@ -142,6 +144,8 @@ class Game_Loader {
   Position_Data read_data(int position);
 
   Position centered_position(int x, int y);
+
+  Team get_team(Player * player);
 
   void open_file();
 

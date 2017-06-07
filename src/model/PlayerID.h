@@ -11,6 +11,7 @@ class PlayerID {
  public:
   explicit PlayerID(const PlayerColor &color);
   bool isGaia() const;
+  unsigned short getID() const;
   std::string getColor() const;
   bool operator<(const PlayerID &other) const;
   bool operator==(const PlayerID &other) const;

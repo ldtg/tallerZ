@@ -53,3 +53,18 @@ Unit *UnitFactory::createUnitDynamic(const Position &pos,
       return new Vehicle(pos, data.v_mml, data.defaultDriver, player, team);
   }
 }
+Vehicle *UnitFactory::createVehicleDynamic(const Position &pos, const UnitType &type, Player &player, Team &team) {
+  switch (type) {
+    case UnitType::V_JEEP:
+      return new Vehicle(pos, data.v_jeep, data.defaultDriver, player, team);
+    case UnitType::V_LTANK:
+      return new Vehicle(pos, data.v_ltank, data.defaultDriver, player, team);
+    case UnitType::V_MTANK:
+      return new Vehicle(pos, data.v_mtank, data.defaultDriver, player, team);
+    case UnitType::V_HTANK:
+      return new Vehicle(pos, data.v_htank, data.defaultDriver, player, team);
+    case UnitType::V_MML:
+      return new Vehicle(pos, data.v_mml, data.defaultDriver, player, team);
+    default:return nullptr;
+  }
+}

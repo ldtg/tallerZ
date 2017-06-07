@@ -110,10 +110,9 @@ void Game_Loader::set_teams() {
   }
 //  std::map<TeamID, Team> teams;
 
+  teams.emplace(team1.getID(), team1);
+  teams.emplace(team2.getID(), team2);
   this->gaiaTeam.addPlayer(&gaiaPlayer);
-  this->teams.push_back(team1);
-  this->teams.push_back(team2);
-  this->teams.push_back(gaiaTeam);
 }
 void Game_Loader::emplace_terrain(const Position_Data &pos_data) {
   this->map.emplace(Position(pos_data.x, pos_data.y),
@@ -141,16 +140,28 @@ void Game_Loader::assign_vehicle_factory(const Position_Data &position_data, Pla
   territory_buildings[position_data.territory].push_back(build);
   builds.emplace(build->getId(), build);
 }
+
+Team Game_Loader::get_team(Player * player){
+  bool encontrado;
+  for (const auto team: teams) {
+    if (team.second.isaPlayerOfTheTeam(player->getID())) {
+      return team.second;
+    }
+  }
+  throw std::exception();
+}
+
 void Game_Loader::build_map() {
   Position_Data pos_data;
-  int fort_to_assign = 0;
+  auto fort_player = players.begin();
   int tile_amount = configuration.map_width * configuration.map_length;
   for (int i = 0; i < tile_amount; i++){
     pos_data = read_data(i);
     emplace_terrain(pos_data);
     if (pos_data.fort){
-      assign_fort(pos_data, players[fort_to_assign],teams[0]);//players[0] HARCODEADO
-      fort_to_assign++;
+      Team team = get_team(fort_player->second);
+      assign_fort(pos_data, *fort_player->second, team);//players[0] HARCODEADO
+      fort_player++;
     }
     if (pos_data.bridge || pos_data.rock){
       assign_terrain_object(pos_data);
@@ -159,16 +170,14 @@ void Game_Loader::build_map() {
       assign_capturable(pos_data);
     }
     if (pos_data.robot_factory){
-      assign_robot_factory(pos_data, gaiaPlayer, teams[0]);//TODO desharcodear teams[0]
+      assign_robot_factory(pos_data, gaiaPlayer, gaiaTeam);
     }
     if (pos_data.vehicle_factory){
-      assign_vehicle_factory(pos_data, gaiaPlayer, teams[0]);//TODO desharcodear teams[0]
+      assign_vehicle_factory(pos_data, gaiaPlayer, gaiaTeam);
     }
   }
 }
-std::vector<Team> Game_Loader::get_teams() {
-  return this->teams;
-}
+
 std::map<BuildID, Build *> Game_Loader::get_builds() {
   return this->builds;
 }
@@ -182,23 +191,26 @@ void Game_Loader::assign_terrain_object(const Position_Data& position_data) {
   Position pos(position_data.x, position_data.y);
   if (position_data.bridge) {
     switch (configuration.bridge_type) {
-      case TerrainType::WOODENBRIDGE:
+      case TerrainType::WOODENBRIDGE:{
         TerrainObject wooden_bridge(data.getObjectData(_WOODENBRIDGE),
-                                     centered_position(position_data.x,
-                                                       position_data.y),
-                                     gaiaPlayer);
-
-        terrainObjects[wooden_bridge.getID()] = wooden_bridge.getState();
-        this->controller_terrainObjects[wooden_bridge.getID()] = wooden_bridge;
-
-      case TerrainType::ASPHALTEDBRIDGE:
-        TerrainObject asphalted_bridge(data.getObjectData(_ASPHALTEDBRIDGE),
                                     centered_position(position_data.x,
                                                       position_data.y),
-                                    gaiaPlayer);
+                                    &gaiaPlayer);
+
+        terrainObjects[wooden_bridge.getID()] = wooden_bridge.getState();
+        this->controller_terrainObjects.emplace(wooden_bridge.getID(),wooden_bridge);
+        break;
+      }
+      case TerrainType::ASPHALTEDBRIDGE:{
+        TerrainObject asphalted_bridge(data.getObjectData(_ASPHALTEDBRIDGE),
+                                       centered_position(position_data.x,
+                                                         position_data.y),
+                                       &gaiaPlayer);
 
         terrainObjects[asphalted_bridge.getID()] = asphalted_bridge.getState();
-        this->controller_terrainObjects[asphalted_bridge.getID()] = asphalted_bridge;
+        this->controller_terrainObjects.emplace(asphalted_bridge.getID(),asphalted_bridge);
+        break;
+      }
     }
   }
 
@@ -208,7 +220,7 @@ void Game_Loader::assign_terrain_object(const Position_Data& position_data) {
         TerrainObject rock(data.getObjectData(ROCK),
                            centered_position(position_data.x,
                                              position_data.y),
-                           gaiaPlayer);
+                           &gaiaPlayer);
         this->terrainObjects.emplace(rock.getID(),rock.getState());
         break;
       }
@@ -216,7 +228,7 @@ void Game_Loader::assign_terrain_object(const Position_Data& position_data) {
         TerrainObject icerock(data.getObjectData(ICEROCK),
                            centered_position(position_data.x,
                                              position_data.y),
-                           gaiaPlayer);
+                           &gaiaPlayer);
         this->terrainObjects.emplace(icerock.getID(),icerock.getState());
         break;
       }
@@ -227,8 +239,9 @@ void Game_Loader::assign_capturable(const Position_Data &position_data) {
   Position pos(position_data.x, position_data.y);
   if (position_data.flag){
     Territory * territory = new
-        Territory(pos, territory_buildings[position_data.territory],
-                  gaiaPlayer, gaiaTeam);
+        Territory(centered_position(position_data.x, position_data.y),
+                  territory_buildings[position_data.territory],
+                  &gaiaPlayer, gaiaTeam);
     capturables.emplace(territory->getID(), territory->getCapturableState());
     controller_capturables.emplace(territory->getID(), territory);
   }
@@ -264,4 +277,10 @@ std::map<CapturableID, Capturable *> Game_Loader::get_controller_capturables() {
 }
 std::map<TerrainObjectID, TerrainObject> Game_Loader::get_controller_terrainObjects() {
   return this->controller_terrainObjects;
+}
+std::map<PlayerID, Player *> Game_Loader::get_players() {
+  return this->players;
+}
+std::map<TeamID, Team> Game_Loader::get_teams() {
+  return this->teams;
 }

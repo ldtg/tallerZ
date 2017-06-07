@@ -27,7 +27,8 @@ void TerrainObject::receiveDamages() {
     } else {
       this->health = 0;
       damagesToReceive.clear();
-      passable = !(this->id.getType() == TerrainObjectType::BRIDGE);
+      passable = !(this->id.getType() == TerrainObjectType::_ASPHALTEDBRIDGE
+      || this->id.getType() == TerrainObjectType::_WOODENBRIDGE);
       return;
     }
   }

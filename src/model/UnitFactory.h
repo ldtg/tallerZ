@@ -13,6 +13,7 @@ class UnitFactory {
   static Vehicle createJeep(const Position &pos, Player& player, Team &team);
   static Vehicle* createJeepDynamic(const Position &pos, Player& player, Team &team);
   static Unit* createUnitDynamic(const Position &pos, const UnitType &type, Player& player, Team &team);
+  static Vehicle* createVehicleDynamic(const Position &pos, const UnitType &type, Player& player, Team &team);
 };
 
 #endif //TALLERZ_ROBOTFACTORY_H
