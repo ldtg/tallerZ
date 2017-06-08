@@ -61,7 +61,7 @@ struct Data {
     miliSecsPerTick =
         (unsigned long) std::lround((1 / (float) ticksPerSec) * 1000);
 
-    playerInitialTerritories = 1;
+    playerInitialTerritories = 2;
     playerInitialUnits = 3;
     defaultDriver = R_GRUNT;
     //para aumentar el rango de las unidades

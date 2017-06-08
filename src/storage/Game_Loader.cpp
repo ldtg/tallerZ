@@ -109,6 +109,7 @@ void Game_Loader::set_teams() {
     }
   }
 //  std::map<TeamID, Team> teams;
+
   teams.emplace(team1.getID(), team1);
   teams.emplace(team2.getID(), team2);
   this->gaiaTeam.addPlayer(&gaiaPlayer);
@@ -139,6 +140,7 @@ void Game_Loader::assign_vehicle_factory(const Position_Data &position_data, Pla
   territory_buildings[position_data.territory].push_back(build);
   builds.emplace(build->getId(), build);
 }
+
 Team Game_Loader::get_team(Player * player){
   bool encontrado;
   for (const auto team: teams) {
@@ -193,7 +195,7 @@ void Game_Loader::assign_terrain_object(const Position_Data& position_data) {
         TerrainObject wooden_bridge(data.getObjectData(_WOODENBRIDGE),
                                     centered_position(position_data.x,
                                                       position_data.y),
-                                    gaiaPlayer);
+                                    &gaiaPlayer);
 
         terrainObjects[wooden_bridge.getID()] = wooden_bridge.getState();
         this->controller_terrainObjects.emplace(wooden_bridge.getID(),wooden_bridge);
@@ -203,7 +205,7 @@ void Game_Loader::assign_terrain_object(const Position_Data& position_data) {
         TerrainObject asphalted_bridge(data.getObjectData(_ASPHALTEDBRIDGE),
                                        centered_position(position_data.x,
                                                          position_data.y),
-                                       gaiaPlayer);
+                                       &gaiaPlayer);
 
         terrainObjects[asphalted_bridge.getID()] = asphalted_bridge.getState();
         this->controller_terrainObjects.emplace(asphalted_bridge.getID(),asphalted_bridge);
@@ -218,7 +220,7 @@ void Game_Loader::assign_terrain_object(const Position_Data& position_data) {
         TerrainObject rock(data.getObjectData(ROCK),
                            centered_position(position_data.x,
                                              position_data.y),
-                           gaiaPlayer);
+                           &gaiaPlayer);
         this->terrainObjects.emplace(rock.getID(),rock.getState());
         break;
       }
@@ -226,7 +228,7 @@ void Game_Loader::assign_terrain_object(const Position_Data& position_data) {
         TerrainObject icerock(data.getObjectData(ICEROCK),
                            centered_position(position_data.x,
                                              position_data.y),
-                           gaiaPlayer);
+                           &gaiaPlayer);
         this->terrainObjects.emplace(icerock.getID(),icerock.getState());
         break;
       }
@@ -239,7 +241,7 @@ void Game_Loader::assign_capturable(const Position_Data &position_data) {
     Territory * territory = new
         Territory(centered_position(position_data.x, position_data.y),
                   territory_buildings[position_data.territory],
-                  gaiaPlayer, gaiaTeam);
+                  &gaiaPlayer, gaiaTeam);
     capturables.emplace(territory->getID(), territory->getCapturableState());
     controller_capturables.emplace(territory->getID(), territory);
   }

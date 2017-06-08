@@ -81,14 +81,12 @@ void View::createInitialCapturableVista(const std::map<CapturableID,
                                         CapturableState> &capturables) {
   for (auto const &capturable : capturables) {
     CapturableType type = capturable.first.getType();
-//    std::string color = capturable.second.ownerID.getColor();
-    Position pos = capturable.second.pos;
-    ObjectMapaVista *capturableVista = VistasFactory::getCapturableVista(type, pos);
-
-//    add(capturableVista, pos);
-//    panel.add(capturableVista);
-    if (capturableVista != nullptr)
+    if (type == FLAG) {
+      std::string color = capturable.second.ownerID.getColor();
+      Position pos = capturable.second.pos;
+      ObjectMapaVista *capturableVista = VistasFactory::getFlagsVista(color, pos);
       capturablesVista.emplace(capturable.first, capturableVista);
+    }
   }
 }
 

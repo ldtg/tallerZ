@@ -46,8 +46,8 @@ class GameController_objects_test : public ::testing::Test {
     teamB.addPlayer(&playerB);
 
     bridge =
-        new TerrainObject(data.asphaltedBridgeObject, Position(250, 150), gaia);
-    rock = new TerrainObject(data.rockObject, Position(50, 150), gaia);
+        new TerrainObject(data.asphaltedBridgeObject, Position(250, 150), &gaia);
+    rock = new TerrainObject(data.rockObject, Position(50, 150), &gaia);
     terrainObjects.emplace(bridge->getID(), *bridge);
     terrainObjects.emplace(rock->getID(), *rock);
 

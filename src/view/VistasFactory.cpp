@@ -179,6 +179,7 @@ ObjectMapaVista* VistasFactory::getBuildVista(BuildType type,
   return buildVista;
 }
 
+/*
 ObjectMapaVista* VistasFactory::getCapturableVista(CapturableType type, Position &pos) {
   ObjectMapaVista *capturableVista = nullptr;
   long despX=0, despY=0;
@@ -199,6 +200,7 @@ ObjectMapaVista* VistasFactory::getCapturableVista(CapturableType type, Position
   capturableVista->setPos(pos.sub(despX, despY));
   return capturableVista;
 }
+*/
 
 Sprite* VistasFactory::getFlagsVista(std::string &color, Position &pos) {
   int num_frames=4, speed=6, num_frame_return_cycle=0;

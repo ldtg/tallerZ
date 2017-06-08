@@ -4,6 +4,7 @@
 #include "SDL2/SDL.h"
 #include <string>
 #include "ObjectMapaVista.h"
+#include "Image.h"
 
 class Sprite : public ObjectMapaVista {
  protected:
@@ -14,6 +15,7 @@ class Sprite : public ObjectMapaVista {
   std::string filename;
   bool _doCycle;
   std::string color;
+  std::vector<Image*> images;
 
  public:
   Sprite();

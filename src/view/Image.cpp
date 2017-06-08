@@ -59,9 +59,11 @@ Image::~Image() {
 }
 
 void Image::set_texture(SDL_Renderer *render) {
-    if (texture == nullptr){
-      texture = SDL_CreateTextureFromSurface(render, surface);
-    }
+  if (texture != nullptr) {
+//      SDL_DestroyTexture(texture);
+  } else {
+    texture = SDL_CreateTextureFromSurface(render, surface);
+  }
 }
 
 void Image::draw(SDL_Renderer *render, Camera &camera) {

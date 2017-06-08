@@ -10,11 +10,11 @@ class Territory : public Capturable {
  private:
   std::vector<Build *> builds;
   Position flagPosition;
-  Player &owner;
-  Team &team;
+  Player *owner;
+  Team team;
  public:
-  Territory(const Position &flagPosition, const std::vector<Build *> &builds, Player &owner, Team &team);
-  virtual void capture(const UnitID &unitID, Player &newOwner, Team &ownerTeam) override;
+  Territory(const Position &flagPosition, const std::vector<Build *> &builds, Player *owner, Team team);
+  virtual void capture(const UnitID &unitID, Player *newOwner, Team ownerTeam) override;
   virtual Position getCapturePosition() const override;
   virtual std::map<BuildID, BuildState> getCapturedBuilds() const;
   virtual std::map<UnitID, UnitState> getCapturedUnits() const;

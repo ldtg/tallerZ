@@ -64,7 +64,7 @@ class GameControllerCapturables_test : public ::testing::Test {
     std::vector<Build *> buildsT;
     buildsT.push_back(build);
 
-    terrain = new Territory(Position(50, 250), buildsT, gaia, teamA);
+    terrain = new Territory(Position(50, 250), buildsT, &gaia, teamA);
     capturables.emplace(terrain->getID(), terrain);
 
     std::map<CapturableID, CapturableState> capmap;
