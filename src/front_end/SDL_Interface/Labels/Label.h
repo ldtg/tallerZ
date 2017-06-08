@@ -9,6 +9,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <view/Texture.h>
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
+#include <view/ObjectMapaVista.h>
 
 /**
  * @class Label
@@ -18,10 +19,9 @@
  * Label por defecto tiene fondo transparente pero si modificamos el texto
  * se sobreescribe sobre un fondo negro.
  */
-class Label {
+class Label : public ObjectMapaVista{
  private:
   //TODO borrar esta linea siguiente cuando la fuente esté inicializada afuera y pasar como parámetro al constructor
-  const std::string font_path = "../src/front_end/fonts/BEBAS.ttf";
  protected:
   Window& window;
   std::string text;
@@ -33,7 +33,7 @@ class Label {
   const SDL_Color color = {0xFF, 0xFF, 0xFF, 0xFF}; //blanco
 
  public:
-  Label(Window& window, const std::string &text, const SDL_Rect &rect);
+  Label(Window& window, const std::string &text, const SDL_Rect &rect, TTF_Font *font);
 
   ~Label();
 
@@ -46,9 +46,12 @@ class Label {
   void modify_text(const std::string& text);
 
   void reload();
- private:
 
-  void load_font();
+  void set_texture(SDL_Renderer *render){};
+
+  void draw(SDL_Renderer *render, Camera &camera){
+    SDL_RenderCopy(render, texture->get_texture(), NULL, &renderQuad);
+  };
 };
 
 #endif //TALLERZ_LABEL_H

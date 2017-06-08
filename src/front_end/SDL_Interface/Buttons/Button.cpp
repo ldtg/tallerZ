@@ -61,14 +61,9 @@ void Button::load_texture_down(const std::string &path) {
  * invoca al método que cambia el estado gráfico del boton que
  * a su vez, si el evento es un mouse_button_up llama a
  * button_launch que dispara la lógica asociada al botón
- * @param click: Click ameo.
  */
-void Button::handle_event(LeftClickEvent *click) {
-/*  if (click->get_click_data().state == SDL_PRESSED){
-    this->on_button_pressed();
-  } else {
-    this->on_button_released();
-  }*/
+void Button::handle_event() {
+  this->on_button_pressed();
 }
 /**
  * on_button_pressed
@@ -77,7 +72,7 @@ void Button::handle_event(LeftClickEvent *click) {
  */
 void Button::on_button_pressed() {
   if (this->button_down != NULL){
-    this->button_down->renderize(this->window);
+    this->button_down->renderize(this->window, &this->renderQuad);
   }
 }
 /**

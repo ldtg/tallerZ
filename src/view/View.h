@@ -7,6 +7,7 @@ class EventHandler;
 #include "Window.h"
 #include "Panel.h"
 #include <string>
+#include <front_end/SDL_Interface/Menus/Production/Production_Menu.h>
 #include "../model/Events/EventHandler.h"
 #include "Sprite.h"
 #include "VistasFactory.h"
@@ -17,6 +18,7 @@ class View {
   Window window;
   Camera &camera;
   Panel panel;
+  Menu * menu = nullptr;
   EventHandler &eventHandler;
   bool _quit;
 
@@ -75,7 +77,22 @@ class View {
   void addExplosionVista(Sprite *objectVista);
   void addEffectVista(Sprite *objectVista);
 
+  /*************************************************/
+  Menu * get_present_menu(){
+    return this->menu;
+  }
+
+  void load_production_menu(int x, int y){
+    menu = new Production_Menu(window, x, y);
+  }
+  void free_menu(){
+    delete menu;
+    menu = nullptr;
+  }
+  /*************************************************/
+
   void update();
+
 };
 
 

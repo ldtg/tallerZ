@@ -168,7 +168,10 @@ void View::draw() {
       ++iter;
     }
   }
-
+  if (menu != nullptr){
+    //panel.add(menu);
+    menu->add_to_panel(panel);
+  }
   panel.draw(camera);
 }
 

@@ -7,21 +7,19 @@
 
 #include <controller/Controller.h>
 #include <front_end/SDL_Interface/Main_Window.h>
-
+#include <model/Data.h>
+#include <model/UnitFactory.h>
+#include <storage/Game_Loader.h>
+#include "view/View.h"
+#include <model/CapturableVehicle.h>
+#include <model/UnitFactory.h>
+#include <model/Territory.h>
 /**
  * @class Z_RUNNER
  * ejecutora del juego que conecta los distintos componentes
  * realizados hasta ahora
  */
 class Z_RUNNER {
- private:
-  Main_Window * main_window;
-  Controller * controller;
-  View * view;
-  EventHandler * eventHandler;
-  Model * model;
-  Map * map;
-  GameController * gameController;
  public:
   Z_RUNNER();
 

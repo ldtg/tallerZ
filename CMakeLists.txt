@@ -196,7 +196,7 @@ set(SOURCE_FILES
         src/Exceptions/Storage_Exceptions/Storage_Exception.cpp
 
         src/header_for_tests.h
-        z_tests/tests_front_end/FEnd_test.cpp
+        #z_tests/tests_front_end/FEnd_test.cpp
         z_tests/tests_model/GameController_test.cpp
         z_tests/tests_model/Map_test.cpp
         z_tests/tests_view/Vista_test.cpp
@@ -209,8 +209,8 @@ set(SOURCE_FILES
 
         src/SDL_START.cpp
         src/SDL_START.h
-        src/Z_RUNNER.cpp
-        src/Z_RUNNER.h
+        #src/Z_RUNNER.cpp
+        #src/Z_RUNNER.h
         src/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp
         src/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.h
         src/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp
@@ -224,8 +224,6 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp
         src/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h
 
-        src/front_end/SDL_Interface/Map_View.cpp
-        src/front_end/SDL_Interface/Map_View.h
         src/front_end/SDL_Interface/Side_Board.cpp
         src/front_end/SDL_Interface/Side_Board.h
         src/front_end/SDL_Interface/Weapon_Img.cpp
@@ -236,10 +234,8 @@ set(SOURCE_FILES
         src/front_end/SDL_Interface/Main_Window.h
         src/front_end/SDL_Interface/Menus/Main/main_menu.cpp
         src/front_end/SDL_Interface/Menus/Main/main_menu.h
-        src/front_end/SDL_Interface/Menus/Production/Production_Menu_1.cpp
-        src/front_end/SDL_Interface/Menus/Production/Production_Menu_1.h
-        src/front_end/SDL_Interface/Menus/Production/Units_Queue.h
-        src/front_end/SDL_Interface/Menus/Production/Units_Queue.cpp
+        src/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp
+        src/front_end/SDL_Interface/Menus/Production/Production_Menu.h
         src/front_end/SDL_Interface/Menus/Menu.cpp
         src/front_end/SDL_Interface/Menus/Menu.h
         src/front_end/SDL_Interface/Labels/Label.cpp
@@ -264,7 +260,7 @@ set(SOURCE_FILES
 
         src/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.cpp
         src/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.h
-        z_tests/tests_storage/load_map_tests.cpp)
+        z_tests/tests_storage/load_map_tests.cpp src/Exceptions/model_exceptions/BuildingNotFoundException.cpp src/Exceptions/model_exceptions/BuildingNotFoundException.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/model)

@@ -9,11 +9,13 @@ class GameController;
 class Model {
  private:
   Map &map;
+  View &view;
   std::vector<UnitID> unitsSelected;
   GameController &gameController;
   Camera &camera;
+
  public:
-  Model(Map &map, GameController& gameController, Camera &camera);
+  Model(Map &map, GameController& gameController, Camera &camera, View &view);
   void leftClick(int x, int y);
   void rightClick(int x, int y);
 };

@@ -9,9 +9,10 @@
  * @param text : Texto del label
  * @param rect : Posicion y area del label
  */
-Label::Label(Window &window, const std::string &text, const SDL_Rect &rect) : window(window){
+Label::Label(Window &window, const std::string &text, const SDL_Rect &rect, TTF_Font *font) : window(window), font(font){
   //TODO: this->font = font Para que cada label no cargue el archivo, se tiene que cargar
-  this->load_font();
+  this->font = font;
+
   this->renderQuad = rect;
   this->text = text;
   this->surface = TTF_RenderText_Solid(this->font, text.c_str(), this->color);
@@ -23,21 +24,6 @@ Label::Label(Window &window, const std::string &text, const SDL_Rect &rect) : wi
  */
 Label::~Label() {
   delete this->texture;
-}
-/**
- * load_font: carga una font ("BEBAS.ttf") predeterminada a partir de un archivo.
- */
-void Label::load_font() {
-  try {
-    this->font = TTF_OpenFont(font_path.c_str(), 60);
-    if (font == NULL){
-      throw -1;
-    }
-  } catch (int e) {
-    throw Sdl_Exception(
-        "Error en Label.cpp: load_font. \n\tNo se pudo cargar la fuente"
-            " '%s: %s'\n", font_path.c_str(), TTF_GetError());
-  }
 }
 
 /**

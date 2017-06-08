@@ -7,6 +7,7 @@
 
 #include <string>
 #include <SDL2/SDL_ttf.h>
+#include "model/Position.h"
 #include <front_end/SDL_Interface/Buttons/Button.h>
 #include <front_end/SDL_Interface/Menus/Menu.h>
 #include <front_end/SDL_Interface/Labels/Label.h>
@@ -14,9 +15,8 @@
 #include <front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h>
 #include <front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h>
 #include <front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h>
-#include "model/Position.h"
 
-class Production_Menu_1 : public Menu {
+class Production_Menu : public Menu {
  private:
   const int width = 111;
   const int length = 79;
@@ -56,8 +56,7 @@ class Production_Menu_1 : public Menu {
       = "../src/front_end/Images/Interface/production_gui/base_image.png";
 
  public:
-  //TODO pasarle fabrica y desharcodear
-  Production_Menu_1(Window &window, int x, int y);
+  Production_Menu(Window &window, int x, int y);
 
   void displace_toXY(int x, int y);
 
@@ -67,7 +66,23 @@ class Production_Menu_1 : public Menu {
 
   void show_building_status();
 
-  ~Production_Menu_1();
+  void add_to_panel(Panel& panel);
+
+  void handle_click(int x, int y){
+    if (up->inRectangle(x,y)){
+      up->handle_event();
+    }
+    if (down->inRectangle(x,y)){
+      down->handle_event();
+    }
+    if (cancel->inRectangle(x,y)){
+      cancel->handle_event();
+    }
+    if (ok->inRectangle(x,y)){
+      ok->handle_event();
+    }
+  }
+  ~Production_Menu();
 
  private:
   void load_items();

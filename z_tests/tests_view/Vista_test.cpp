@@ -10,15 +10,16 @@
 #include <chrono>
 #include <ratio>
 #include <model/Data.h>
-#include <model/UnitFactory.h>
 #include <model/GameController.h>
-#include <storage/Game_Loader.h>
 #include <controller/MouseState.h>
 #include <model/CapturableVehicle.h>
+#include <model/UnitFactory.h>
 #include <model/GaiaPlayer.h>
 #include <model/Territory.h>
+#include <storage/Game_Loader.h>
 
 TEST(VistaTest, Window) {
+
 
   try {
 /* ---------- TERRENOS ---------- */
@@ -134,8 +135,8 @@ TEST(VistaTest, Window) {
     EventHandler eventHandler;
     Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
 
-    Model model(map, gameController, camera);
     View view(map, eventHandler, camera);
+    Model model(map, gameController, camera, view);
 
     eventHandler.setView(&view);
     eventHandler.setModel(&model);
@@ -182,8 +183,8 @@ TEST(VistaTest_Usando_Map_Loader, Window){
   Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
   EventHandler eventHandler;
 
-  Model model(map, gameController, camera);
   View view(map, eventHandler, camera);
+  Model model(map, gameController, camera, view);
 
   eventHandler.setView(&view);
   eventHandler.setModel(&model);

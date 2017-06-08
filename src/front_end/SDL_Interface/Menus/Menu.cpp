@@ -31,3 +31,22 @@ Position Menu::get_relative_pos(const SDL_Rect &item_rect) {
   y = this->renderQuad.y + item_rect.y;
   return Position(x,y);
 }
+Menu::Menu() {
+  TTF_Init();
+  this->load_font();
+}
+Menu::~Menu() {
+  TTF_CloseFont(this->font);
+}
+void Menu::load_font() {
+  try {
+    this->font = TTF_OpenFont(font_path.c_str(), 60);
+    if (font == NULL){
+      throw -1;
+    }
+  } catch (int e) {
+    throw Sdl_Exception(
+        "Error en Menu.cpp: load_font. \n\tNo se pudo cargar la fuente"
+            " '%s: %s'\n", font_path.c_str(), TTF_GetError());
+  }
+}
