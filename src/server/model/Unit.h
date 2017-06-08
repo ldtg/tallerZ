@@ -3,19 +3,20 @@
 
 #include <queue>
 #include <stack>
-#include "Position.h"
-#include "TerrainType.h"
+#include "common/Map/Position.h"
+#include "common/Types/TerrainType.h"
 #include "common/States/UnitState.h"
 #include "common/IDs/UnitID.h"
 #include "Weapon.h"
 #include "Attackable.h"
 #include "UnitData.h"
-#include "TerrainData.h"
+#include "common/Map/TerrainData.h"
 #include "Player.h"
 #include "Team.h"
 #include "Bullet.h"
 #include "Capturable.h"
 #include "common/IDs/CapturableID.h"
+#include "MovementState.h"
 
 class Unit : public Attackable {
  protected:

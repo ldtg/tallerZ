@@ -282,7 +282,10 @@ void GameController::hunt(Unit *unit,
     }
     if (unit->timeToAttack()) {
       this->bullets.push_back(unit->createBullet());
-      events.push_back(new BulletNewEvent(this->bullets.front()));
+      events.push_back(new BulletNewEvent(this->bullets.front().getId(),
+                                          this->bullets.front().getWeapon().type,
+                                          this->bullets.front().getFrom(),
+                                          this->bullets.front().getTo()));
     }
     if (hunted->isMoving()) {
       unit->addMove(hunted->nextMovePosition());
@@ -359,7 +362,7 @@ void GameController::autoAttack(Unit *current, std::vector<Event *> &events,
 
   for (auto &par: units) {
     if (current->isInRange(par.second)
-        && current->getId() != par.first &&current->canAttack(par.second)) {
+        && current->getId() != par.first && current->canAttack(par.second)) {
       current->autoAttack(par.second);
     }
   }
@@ -374,12 +377,13 @@ void GameController::bulletsTick(std::vector<Event *> &vector) {
     current.move();
     if (current.didHit()) {
       current.doHit();
-      vector.push_back(new BulletHitEvent(current));
+      vector.push_back(new BulletHitEvent(current.getId(),
+                                          current.getWeapon().type));
       map.removeBullet(current.getId());
       iterator = bullets.erase(iterator);
     } else {
       map.updateBullet(current.getId(), current.getState());
-      vector.push_back(new BulletMoveEvent(current));
+      vector.push_back(new BulletMoveEvent(current.getId(), current.getTo()));
       ++iterator;
     }
   }
@@ -394,7 +398,8 @@ void GameController::buildsTick(std::vector<Event *> &events) {
 
       if (current->isAlive()) {
         if (current->hasToBuild()) {
-          this->addUnits(current->fabricateUnits(map.getNeighborFreePos(current->getCenterPosition())), events);
+          this->addUnits(current->fabricateUnits(map.getNeighborFreePos(current->getCenterPosition())),
+                         events);
         }
         map.updateBuild(current->getId(), current->getBuildState());
         current->tick();

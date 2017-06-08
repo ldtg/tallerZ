@@ -3,8 +3,6 @@
 
 #include "Position.h"
 #include "Tile.h"
-#include "Weapon.h"
-#include "Unit.h"
 #include "common/States/BulletState.h"
 #include "common/States/BuildState.h"
 #include "common/IDs/BuildID.h"
@@ -15,6 +13,7 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <common/IDs/BulletID.h>
 
 class Map {
  private:

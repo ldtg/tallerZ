@@ -3,11 +3,11 @@
 
 #include <queue>
 #include <map>
-#include "Position.h"
-#include "Map.h"
+#include "common/Map/Position.h"
+#include "common/Map/Map.h"
 #include "Node.h"
 #include "Unit.h"
-#include "Tile.h"
+#include "common/Map/Tile.h"
 class AStar {
  private:
   const Map &map;

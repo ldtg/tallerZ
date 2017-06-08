@@ -1,7 +1,7 @@
 #ifndef TALLERZ_GAMECOTROLLER_H
 #define TALLERZ_GAMECOTROLLER_H
 
-#include "Map.h"
+#include "common/Map/Map.h"
 #include "Unit.h"
 #include "common/IDs/UnitID.h"
 #include "common/IDs/BuildID.h"

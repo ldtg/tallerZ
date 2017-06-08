@@ -6,13 +6,13 @@ include_directories(include)
 
 set(SOURCE_FILES
         src/main.cpp
-        src/server/model/Map.cpp
-        src/server/model/Map.h
-        src/server/model/Position.cpp
-        src/server/model/Position.h
-        src/server/model/Tile.cpp
-        src/server/model/Tile.h
-        src/server/model/TerrainType.h
+        src/common/Map/Map.cpp
+        src/common/Map/Map.h
+        src/common/Map/Position.cpp
+        src/common/Map/Position.h
+        src/common/Map/Tile.cpp
+        src/common/Map/Tile.h
+        src/common/Types/TerrainType.h
         src/common/IDs/UnitID.cpp
         src/common/IDs/UnitID.h
         src/common/States/UnitState.cpp
@@ -27,8 +27,8 @@ set(SOURCE_FILES
         src/server/model/Weapon.cpp
         src/server/model/Weapon.h
         src/server/model/Attackable.h
-        src/server/model/UnitType.h
-        src/server/model/WeaponType.h
+        src/common/Types/UnitType.h
+        src/common/Types/WeaponType.h
         src/server/model/Data.cpp
         src/server/model/Data.h
         src/server/model/Robot.cpp
@@ -40,7 +40,7 @@ set(SOURCE_FILES
         src/server/model/UnitData.h
         src/server/model/UnitFactory.cpp
         src/server/model/UnitFactory.h
-        src/server/model/TerrainData.h
+        src/common/Map/TerrainData.h
         src/client/model/Events/model/unit/UnitMoveEvent.cpp
         src/client/model/Events/model/unit/UnitMoveEvent.h
         src/client/model/Events/Event.cpp
@@ -86,10 +86,10 @@ set(SOURCE_FILES
         src/server/model/Build.cpp
         src/server/model/Build.h
         src/server/model/BuildData.h
-        src/server/model/BuildType.h
+        src/common/Types/BuildType.h
         src/common/IDs/BuildID.cpp
         src/common/IDs/BuildID.h
-        src/server/model/BuildType.h
+        src/common/Types/BuildType.h
         src/common/States/BuildState.cpp src/common/States/BuildState.h
         src/client/model/Events/model/PlayerDefeatedEvent.cpp
         src/client/model/Events/model/PlayerDefeatedEvent.h
@@ -98,7 +98,7 @@ set(SOURCE_FILES
         src/client/model/Events/model/EndGameEvent.h
         src/server/model/TerrainObject.cpp
         src/server/model/TerrainObject.h
-        src/server/model/TerrainObjectType.h
+        src/common/Types/TerrainObjectType.h
         src/common/IDs/TerrainObjectID.cpp
         src/common/IDs/TerrainObjectID.h
         src/client/model/Events/model/TerrainObjectDestroyedEvent.cpp
@@ -106,7 +106,7 @@ set(SOURCE_FILES
         src/common/States/TerrainObjectState.cpp
         src/common/States/TerrainObjectState.h
         src/server/model/TerrainObjectData.h
-        src/server/model/PlayerColor.h
+        src/common/Types/PlayerColor.h
         src/server/model/GaiaPlayer.cpp
         src/server/model/GaiaPlayer.h
 
@@ -130,7 +130,7 @@ set(SOURCE_FILES
         src/common/IDs/CapturableID.cpp
         src/common/IDs/CapturableID.h
         src/common/States/CapturableState.h
-        src/server/model/CapturableType.h
+        src/common/Types/CapturableType.h
         src/server/model/Capturable.cpp
         src/server/model/Capturable.h
         src/client/model/Events/model/CaptureEvent.cpp
@@ -139,7 +139,7 @@ set(SOURCE_FILES
         src/server/model/CapturableVehicle.h
         src/server/model/MapType.h
         z_tests/tests_model/GameControllerCapturables_test.cpp
-        src/server/model/PlayerColor.h
+        src/common/Types/PlayerColor.h
         src/client/model/Events/view/CameraMoveStepEvent.cpp
         src/client/model/Events/view/CameraMoveStepEvent.h
 
@@ -274,10 +274,12 @@ set(SOURCE_FILES
         src/common/DataEvents/dataUnitMoveEvent.h
         src/server/model/Events/serverEvent.cpp
         src/server/model/Events/serverEvent.h
-        src/server/model/Events/serverUMoveEvent.cpp src/server/model/Events/serverUMoveEvent.h)
+        src/client/model/Events/EventFactory.cpp src/client/model/Events/EventFactory.h src/server/model/Events/serverUAttackEvent.cpp src/server/model/Events/serverUAttackEvent.h src/common/DataEvents/dataUnitAttackEvent.cpp src/common/DataEvents/dataUnitAttackEvent.h src/server/model/Events/serverUMoveEvent.cpp src/server/model/Events/serverUMoveEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
-INCLUDE_DIRECTORIES(src/server/model)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/server)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/client)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/common)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Exceptions)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Utils)

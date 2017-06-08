@@ -1,10 +1,10 @@
 #ifndef TALLERZ_UNITSTATE_H
 #define TALLERZ_UNITSTATE_H
 
-#include "MovementState.h"
-#include "Attackable.h"
-#include "UnitType.h"
-#include "UnitData.h"
+#include <common/IDs/PlayerID.h>
+#include <server/model/Weapon.h>
+#include <common/Map/Position.h>
+#include <common/Types/UnitType.h>
 
 #define UNITWIDHT 16
 #define UNITHEIGHT 16
@@ -13,13 +13,13 @@ struct UnitState {
  public:
   PlayerID owner;
   unsigned short health;
-  Weapon weapon;
+  WeaponType weapon;
   Position position;
   UnitType secondType;
 
   UnitState(UnitType secondType, const PlayerID &owner,
             unsigned short health,
-            const Weapon &weapon,
+            const WeaponType &weapon,
             const Position &current)
       : secondType(secondType),
         owner(owner),

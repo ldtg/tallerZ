@@ -2,8 +2,8 @@
 #define TALLERZ_BUILDDATA_H
 
 #include <vector>
-#include "BuildType.h"
-#include "UnitType.h"
+#include "common/Types/BuildType.h"
+#include "common/Types/UnitType.h"
 struct BuildData {
   BuildType type;
   unsigned short health;

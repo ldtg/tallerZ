@@ -3,17 +3,15 @@
 
 #include <client/model/Events/Event.h>
 #include "common/IDs/BulletID.h"
-#include "Position.h"
-#include "Bullet.h"
 
 class BulletHitEvent : public Event{
  private:
   BulletID id;
   Position pos;
-  Weapon weapon;
+  WeaponType weapon;
 
  public:
-  BulletHitEvent(const Bullet &bullet);
+  BulletHitEvent(const BulletID &id, const WeaponType &type);
   virtual void process();
 };
 

@@ -1,7 +1,7 @@
 #ifndef TALLERZ_TERRAINDATA_H
 #define TALLERZ_TERRAINDATA_H
 
-#include "TerrainType.h"
+#include "common/Types/TerrainType.h"
 struct TerrainData {
   TerrainType type;
   float terrainFactor;

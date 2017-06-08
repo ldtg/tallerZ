@@ -1,7 +1,7 @@
 #ifndef TALLERZ_CAMERA_H
 #define TALLERZ_CAMERA_H
 
-#include <server/model/Position.h>
+#include <common/Map/Position.h>
 struct Camera {
  public:
   int x;

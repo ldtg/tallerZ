@@ -6,12 +6,12 @@
 class BulletNewEvent : public Event {
  private:
   BulletID id;
-  Weapon weapon;
+  WeaponType weapon;
   Position from;
   Position to;
 
  public:
-  BulletNewEvent(const Bullet &bullet);
+  BulletNewEvent(const BulletID &bullet, const WeaponType &weaponType, const Position &from, const Position &to);
   virtual void process();
 };
 

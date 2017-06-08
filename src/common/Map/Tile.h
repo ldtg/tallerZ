@@ -3,7 +3,7 @@
 
 #include <map>
 #include "Position.h"
-#include "TerrainType.h"
+#include "common/Types/TerrainType.h"
 #include "common/IDs/UnitID.h"
 #include "common/States/UnitState.h"
 #include "TerrainData.h"

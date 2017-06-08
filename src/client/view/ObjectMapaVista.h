@@ -1,7 +1,7 @@
 #ifndef TALLERZ_OBJECTMAPAVISTA_H
 #define TALLERZ_OBJECTMAPAVISTA_H
 
-#include <server/model/Position.h>
+#include <common/Map/Position.h>
 #include "SDL2/SDL.h"
 #include "Camera.h"
 

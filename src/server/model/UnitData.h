@@ -2,7 +2,7 @@
 #define TALLERZ_UNITDATA_H
 
 #include "Weapon.h"
-#include "UnitType.h"
+#include "common/Types/UnitType.h"
 
 struct UnitData {
   UnitType type;

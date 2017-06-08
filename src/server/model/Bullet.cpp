@@ -30,5 +30,5 @@ Position Bullet::getTo() const {
   return target->getAttackPosition(currentPosition);
 }
 BulletState Bullet::getState() const {
-  return BulletState(weapon, currentPosition);
+  return BulletState(weapon.type, currentPosition);
 }

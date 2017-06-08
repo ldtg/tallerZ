@@ -1,7 +1,7 @@
 #ifndef TALLERZ_ATTACKABLE_H
 #define TALLERZ_ATTACKABLE_H
 
-#include "Position.h"
+#include "common/Map/Position.h"
 #include "Weapon.h"
 #include "common/IDs/PlayerID.h"
 #include "Player.h"

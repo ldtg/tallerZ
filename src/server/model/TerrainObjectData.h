@@ -1,7 +1,7 @@
 #ifndef TALLERZ_TERRAINOBJECTDATA_H
 #define TALLERZ_TERRAINOBJECTDATA_H
 
-#include "TerrainObjectType.h"
+#include "common/Types/TerrainObjectType.h"
 struct TerrainObjectData {
   TerrainObjectType type;
   unsigned short health;

@@ -1,7 +1,7 @@
 #ifndef TALLERZ_TERRAINOBJECTID_H
 #define TALLERZ_TERRAINOBJECTID_H
 
-#include "TerrainObjectType.h"
+#include <common/Types/TerrainObjectType.h>
 class TerrainObjectID {
   static unsigned long nextid;
  private:

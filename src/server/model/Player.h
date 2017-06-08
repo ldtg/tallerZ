@@ -2,8 +2,8 @@
 #define TALLERZ_PLAYER_H
 
 #include "common/IDs/PlayerID.h"
-#include "Position.h"
-#include "BuildType.h"
+#include "common/Map/Position.h"
+#include "common/Types/BuildType.h"
 
 class Player {
  private:

@@ -1,7 +1,7 @@
 #ifndef TALLERZ_TERRITORY_H
 #define TALLERZ_TERRITORY_H
 
-#include "Position.h"
+#include "common/Map/Position.h"
 #include "Player.h"
 #include "Build.h"
 #include "Capturable.h"

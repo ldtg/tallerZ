@@ -2,7 +2,7 @@
 // Created by darius on 23/05/17.
 //
 
-#include <server/model/Position.h>
+#include <common/Map/Position.h>
 #include "Menu.h"
 
 /**

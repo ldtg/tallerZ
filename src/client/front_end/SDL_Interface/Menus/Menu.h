@@ -10,7 +10,6 @@
 #include <string>
 #include <client/view/Texture.h>
 #include "Exceptions/Sdl_Exceptions/Sdl_Exception.h"
-#include <Position.h>
 #include <client/view/ObjectMapaVista.h>
 #include <client/view/Panel.h>
 

@@ -1,13 +1,15 @@
 #include <client/view/Sprite.h>
 #include "BulletHitEvent.h"
 
-BulletHitEvent::BulletHitEvent(const Bullet &bullet)
-    : id(bullet.getId()), pos(bullet.getTo()), weapon(bullet.getWeapon()) {}
-
 void BulletHitEvent::process() {
-  if (weapon.type != BULLET) {
+  if (weapon != BULLET) {
     view->removeBulletVista(id);
-    Sprite *bulletExplosion = VistasFactory::getBulletHitVista(weapon.type, pos);
+    Sprite
+        *bulletExplosion = VistasFactory::getBulletHitVista(weapon, pos);
     view->addExplosionVista(bulletExplosion);
   }
+}
+BulletHitEvent::BulletHitEvent(const BulletID &id, const WeaponType &type) : id(
+    id), weapon(type) {
+
 }

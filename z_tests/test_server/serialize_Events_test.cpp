@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include <cereal/archives/binary.hpp>
 #include <common/DataEvents/dataUnitMoveEvent.h>
+#include <server/model/Events/serverUMoveEvent.h>
+#include <client/model/Events/EventFactory.h>
 
 TEST(serialize_test, position) {
   std::stringstream ss;
@@ -33,10 +35,14 @@ TEST(serialize_test, unitID) {
 
 }
 TEST(serialize_test, unitmove) {
+
+}
+TEST(serialize_test, srvumoveEvent) {
+  //server
   std::stringstream ss;
-  dataUnitMoveEvent umOut(UnitID(R_SNIPER), Position(1,1));
-  ss = umOut.getStream();
-  dataUnitMoveEvent umIn(ss);
-  ASSERT_EQ(umIn.posTo, umOut.posTo);
-  ASSERT_EQ(umIn.id, umOut.id);
+  serverEvent * se = new serverUMoveEvent(UnitID(R_PSYCHO), Position(10,10));
+  ss = se->getDataToSend();
+  //cliente primero recibe el type y despues el ss
+  Event * ev = EventFactory::createEvent(se->getType(), ss);
+
 }

@@ -7,7 +7,7 @@
 
 #include <string>
 #include <SDL2/SDL_ttf.h>
-#include "server/model/Position.h"
+#include "common/Map/Position.h"
 #include <client/front_end/SDL_Interface/Buttons/Button.h>
 #include <client/front_end/SDL_Interface/Menus/Menu.h>
 #include <client/front_end/SDL_Interface/Labels/Label.h>

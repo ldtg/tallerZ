@@ -4,7 +4,7 @@
 #include "Attackable.h"
 #include "common/IDs/BuildID.h"
 #include "Player.h"
-#include "UnitType.h"
+#include "common/Types/UnitType.h"
 #include "BuildData.h"
 #include "common/States/BuildState.h"
 #include "Unit.h"

@@ -2,6 +2,7 @@
 #define TALLERZ_ENDGAMEEVENT_H
 
 #include <client/model/Events/Event.h>
+#include <common/IDs/TeamID.h>
 class EndGameEvent : public Event{
  private:
   TeamID winner;

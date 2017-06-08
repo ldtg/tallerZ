@@ -2,7 +2,7 @@
 #define TALLERZ_TERRAINOBJECT_H
 
 #include "Attackable.h"
-#include "TerrainObjectType.h"
+#include "common/Types/TerrainObjectType.h"
 #include "common/IDs/TerrainObjectID.h"
 #include "common/States/TerrainObjectState.h"
 #include "TerrainObjectData.h"

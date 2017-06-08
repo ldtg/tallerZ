@@ -3,8 +3,8 @@
 
 #include <vector>
 #include <queue>
-#include "Position.h"
-#include "Tile.h"
+#include "common/Map/Position.h"
+#include "common/Map/Tile.h"
 
 class Node {
  private:

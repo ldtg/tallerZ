@@ -24,7 +24,7 @@ unsigned short Vehicle::getMovementSpeed(float terrainFactor) const {
 }
 
 UnitState Vehicle::getUnitState() const {
-  return UnitState(conductor, owner->getID(), health, weapon, currentPosition);
+  return UnitState(conductor, owner->getID(), health, weapon.type, currentPosition);
 }
 
 void Vehicle::capture(Player *player,const Team &team, UnitType conductor) {

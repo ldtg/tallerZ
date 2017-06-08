@@ -1,6 +1,10 @@
+#include <cereal/archives/binary.hpp>
 #include "serverUMoveEvent.h"
 serverUMoveEvent::serverUMoveEvent(const UnitID &id, const Position &pos)
     : serverEvent(U_MOVE), data(id, pos) {}
 std::stringstream serverUMoveEvent::getDataToSend() const {
-  return data.getStream();
+  std::stringstream out;
+  cereal::BinaryOutputArchive oarchive(out);
+  oarchive(data);
+  return out;
 }

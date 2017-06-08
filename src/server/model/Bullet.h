@@ -1,7 +1,7 @@
 #ifndef TALLERZ_BULLET_H
 #define TALLERZ_BULLET_H
 
-#include "Position.h"
+#include "common/Map/Position.h"
 #include "Attackable.h"
 #include "common/IDs/BulletID.h"
 #include "common/States/BulletState.h"

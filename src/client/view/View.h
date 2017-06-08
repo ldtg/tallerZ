@@ -3,7 +3,7 @@
 
 class EventHandler;
 
-#include "server/model/Map.h"
+#include "common/Map/Map.h"
 #include "Window.h"
 #include "Panel.h"
 #include <string>

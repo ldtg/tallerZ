@@ -3,6 +3,7 @@
 
 class Event;
 
+#include <queue>
 #include "client/model/Model.h"
 #include "client/view/View.h"
 #include "Event.h"

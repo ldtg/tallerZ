@@ -1,7 +1,7 @@
 #ifndef TALLERZ_BUILDID_H
 #define TALLERZ_BUILDID_H
 
-#include "BuildType.h"
+#include <common/Types/BuildType.h>
 class BuildID {
  private:
   static unsigned long nextid;

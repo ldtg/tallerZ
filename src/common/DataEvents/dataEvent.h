@@ -4,7 +4,7 @@
 #include <iosfwd>
 class dataEvent {
  public:
-  virtual std::stringstream getStream() const = 0;
+  virtual std::stringstream getStream() const=0;
 };
 
 #endif //TALLERZ_SERVEREVENT_H

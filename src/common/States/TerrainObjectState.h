@@ -1,7 +1,7 @@
 #ifndef TALLERZ_TERRAINOBJECTSTATE_H
 #define TALLERZ_TERRAINOBJECTSTATE_H
 
-#include "Position.h"
+#include <common/Map/Position.h>
 struct TerrainObjectState {
  public:
   Position centerPosition;

@@ -2,9 +2,7 @@
 #define TALLERZ_SERVEREVENT_H
 
 #include <common/DataEvents/EventType.h>
-#include <iosfwd>
 #include <sstream>
-#include <common/DataEvents/dataUnitMoveEvent.h>
 class serverEvent {
  protected:
   EventType type;

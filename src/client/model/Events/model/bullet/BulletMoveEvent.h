@@ -9,7 +9,7 @@ class BulletMoveEvent  : public Event {
   Position posTo;
 
  public:
-  BulletMoveEvent(const Bullet &bullet);
+  BulletMoveEvent(const BulletID &id, const Position &to);
   virtual void process();
 };
 

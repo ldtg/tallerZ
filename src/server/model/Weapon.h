@@ -1,7 +1,7 @@
 #ifndef TALLERZ_WEAPON_H
 #define TALLERZ_WEAPON_H
 
-#include "WeaponType.h"
+#include "common/Types/WeaponType.h"
 struct Weapon {
   WeaponType type;
   unsigned short damage;

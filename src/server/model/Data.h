@@ -4,8 +4,8 @@
 #include <cmath>
 #include "Weapon.h"
 #include "UnitData.h"
-#include "TerrainData.h"
-#include "BuildType.h"
+#include "common/Map/TerrainData.h"
+#include "common/Types/BuildType.h"
 #include "BuildData.h"
 #include "TerrainObjectData.h"
 

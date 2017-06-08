@@ -1,7 +1,7 @@
 #ifndef TALLERZ_CAPTURABLEID_H
 #define TALLERZ_CAPTURABLEID_H
 
-#include "CapturableType.h"
+#include <common/Types/CapturableType.h>
 class CapturableID {
   static unsigned short nextid;
  private:

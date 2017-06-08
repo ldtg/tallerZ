@@ -1,7 +1,7 @@
 #ifndef TALLERZ_PLAYERID_H
 #define TALLERZ_PLAYERID_H
 #include <string>
-#include "PlayerColor.h"
+#include <common/Types/PlayerColor.h>
 
 class PlayerID {
   static unsigned short nextid;

@@ -1,8 +1,8 @@
 #ifndef TALLERZ_BUILDSTATE_H
 #define TALLERZ_BUILDSTATE_H
 
-#include "UnitType.h"
-#include "Position.h"
+#include <common/Map/Position.h>
+#include <common/Types/UnitType.h>
 #include "common/IDs/PlayerID.h"
 
 struct BuildState {
