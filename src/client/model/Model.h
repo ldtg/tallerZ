@@ -1,7 +1,7 @@
 #ifndef TALLERZ_MODEL_H
 #define TALLERZ_MODEL_H
 
-
+class GameController;
 #include <client/view/Camera.h>
 #include <common/Map/Map.h>
 #include <client/view/View.h>
