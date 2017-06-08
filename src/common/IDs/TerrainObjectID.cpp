@@ -18,3 +18,4 @@ bool TerrainObjectID::operator!=(const TerrainObjectID &other) const {
 TerrainObjectType TerrainObjectID::getType() const {
   return type;
 }
+TerrainObjectID::TerrainObjectID() {}

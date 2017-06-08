@@ -8,6 +8,10 @@ class BulletID {
  public:
   BulletID();
   bool operator<(const BulletID &other) const;
+  template<class Archive>
+  void serialize(Archive &archive) {
+    archive(id);
+  }
 };
 
 #endif //TALLERZ_BULLETID_H

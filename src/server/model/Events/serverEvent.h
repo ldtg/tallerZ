@@ -9,7 +9,9 @@ class serverEvent {
   serverEvent(const EventType &type);
  public:
   EventType getType() const;
+  //es en todos los ev igual pero si se declara aca le falta el data
   virtual std::stringstream getDataToSend() const = 0;
+
 };
 
 #endif //TALLERZ_SERVEREVENT_H

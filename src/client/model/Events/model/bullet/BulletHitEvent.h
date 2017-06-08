@@ -11,7 +11,7 @@ class BulletHitEvent : public Event{
   WeaponType weapon;
 
  public:
-  BulletHitEvent(const BulletID &id, const WeaponType &type);
+  BulletHitEvent(const BulletID &id,const Position &pos, const WeaponType &type);
   virtual void process();
 };
 

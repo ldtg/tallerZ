@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <cereal/archives/binary.hpp>
-#include <common/DataEvents/dataUnitMoveEvent.h>
-#include <server/model/Events/serverUMoveEvent.h>
+#include <common/DataEvents/Unit/dataUnitMoveEvent.h>
+#include <server/model/Events/Unit/serverUMoveEvent.h>
 #include <client/model/Events/EventFactory.h>
 
 TEST(serialize_test, position) {

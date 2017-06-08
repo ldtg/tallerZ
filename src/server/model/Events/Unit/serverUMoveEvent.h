@@ -1,7 +1,7 @@
 #ifndef TALLERZ_SERVERUMOVEEVENT_H
 #define TALLERZ_SERVERUMOVEEVENT_H
 #include <server/model/Events/serverEvent.h>
-#include <common/DataEvents/dataUnitMoveEvent.h>
+#include <common/DataEvents/Unit/dataUnitMoveEvent.h>
 
 class serverUMoveEvent : public serverEvent {
  private:

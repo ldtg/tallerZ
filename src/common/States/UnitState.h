@@ -16,7 +16,7 @@ struct UnitState {
   WeaponType weapon;
   Position position;
   UnitType secondType;
-
+  UnitState(){};
   UnitState(UnitType secondType, const PlayerID &owner,
             unsigned short health,
             const WeaponType &weapon,

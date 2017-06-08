@@ -91,18 +91,18 @@ set(SOURCE_FILES
         src/common/IDs/BuildID.h
         src/common/Types/BuildType.h
         src/common/States/BuildState.cpp src/common/States/BuildState.h
-        src/client/model/Events/model/PlayerDefeatedEvent.cpp
-        src/client/model/Events/model/PlayerDefeatedEvent.h
+        src/client/model/Events/model/game/PlayerDefeatedEvent.cpp
+        src/client/model/Events/model/game/PlayerDefeatedEvent.h
         src/common/IDs/TeamID.cpp src/common/IDs/TeamID.h
-        src/client/model/Events/model/EndGameEvent.cpp
-        src/client/model/Events/model/EndGameEvent.h
+        src/client/model/Events/model/game/EndGameEvent.cpp
+        src/client/model/Events/model/game/EndGameEvent.h
         src/server/model/TerrainObject.cpp
         src/server/model/TerrainObject.h
         src/common/Types/TerrainObjectType.h
         src/common/IDs/TerrainObjectID.cpp
         src/common/IDs/TerrainObjectID.h
-        src/client/model/Events/model/TerrainObjectDestroyedEvent.cpp
-        src/client/model/Events/model/TerrainObjectDestroyedEvent.h
+        src/client/model/Events/model/terrainObject/TerrainObjectDestroyedEvent.cpp
+        src/client/model/Events/model/terrainObject/TerrainObjectDestroyedEvent.h
         src/common/States/TerrainObjectState.cpp
         src/common/States/TerrainObjectState.h
         src/server/model/TerrainObjectData.h
@@ -133,8 +133,8 @@ set(SOURCE_FILES
         src/common/Types/CapturableType.h
         src/server/model/Capturable.cpp
         src/server/model/Capturable.h
-        src/client/model/Events/model/CaptureEvent.cpp
-        src/client/model/Events/model/CaptureEvent.h
+        src/client/model/Events/model/capturable/CaptureEvent.cpp
+        src/client/model/Events/model/capturable/CaptureEvent.h
         src/server/model/CapturableVehicle.cpp
         src/server/model/CapturableVehicle.h
         src/server/model/MapType.h
@@ -270,11 +270,64 @@ set(SOURCE_FILES
         z_tests/test_server/serialize_Events_test.cpp
         src/common/DataEvents/dataEvent.cpp
         src/common/DataEvents/dataEvent.h
-        src/common/DataEvents/dataUnitMoveEvent.cpp
-        src/common/DataEvents/dataUnitMoveEvent.h
+        src/common/DataEvents/Unit/dataUnitMoveEvent.cpp
+        src/common/DataEvents/Unit/dataUnitMoveEvent.h
         src/server/model/Events/serverEvent.cpp
         src/server/model/Events/serverEvent.h
-        src/client/model/Events/EventFactory.cpp src/client/model/Events/EventFactory.h src/server/model/Events/serverUAttackEvent.cpp src/server/model/Events/serverUAttackEvent.h src/common/DataEvents/dataUnitAttackEvent.cpp src/common/DataEvents/dataUnitAttackEvent.h src/server/model/Events/serverUMoveEvent.cpp src/server/model/Events/serverUMoveEvent.h)
+        src/client/model/Events/EventFactory.cpp
+        src/client/model/Events/EventFactory.h
+        src/server/model/Events/Unit/serverUAttackEvent.cpp
+        src/server/model/Events/Unit/serverUAttackEvent.h
+        src/common/DataEvents/Unit/dataUnitAttackEvent.cpp
+        src/common/DataEvents/Unit/dataUnitAttackEvent.h
+        src/server/model/Events/Unit/serverUMoveEvent.cpp
+        src/server/model/Events/Unit/serverUMoveEvent.h
+        src/common/DataEvents/Unit/dataUnitCreateEvent.cpp
+        src/common/DataEvents/Unit/dataUnitCreateEvent.h
+        src/server/model/Events/Unit/serverUCreateEvent.cpp
+        src/server/model/Events/Unit/serverUCreateEvent.h
+        src/common/DataEvents/Unit/dataUnitIDEvent.cpp
+        src/common/DataEvents/Unit/dataUnitIDEvent.h
+        src/server/model/Events/Unit/serverUDeathEvent.cpp
+        src/server/model/Events/Unit/serverUDeathEvent.h
+        src/server/model/Events/Unit/serverUStillEvent.cpp
+        src/server/model/Events/Unit/serverUStillEvent.h
+        src/common/DataEvents/Build/dataBuildDamageEvent.cpp
+        src/common/DataEvents/Build/dataBuildDamageEvent.h
+        src/server/model/Events/Build/serverBDamageEvent.cpp
+        src/server/model/Events/Build/serverBDamageEvent.h
+        src/common/DataEvents/Build/dataBuildIDEvent.cpp
+        src/common/DataEvents/Build/dataBuildIDEvent.h
+        src/server/model/Events/Build/serverBDestroyedEvent.cpp
+        src/server/model/Events/Build/serverBDestroyedEvent.h
+        src/common/DataEvents/Bullet/dataBulletNewEvent.cpp
+        src/common/DataEvents/Bullet/dataBulletNewEvent.h
+        src/server/model/Events/Bullet/serverBLTMoveEvent.cpp
+        src/server/model/Events/Bullet/serverBLTMoveEvent.h
+        src/server/model/Events/Bullet/serverBLTNewEvent.cpp
+        src/server/model/Events/Bullet/serverBLTNewEvent.h
+        src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp
+        src/common/DataEvents/Bullet/dataBulletMoveEvent.h
+        src/common/DataEvents/Bullet/dataBulletHitEvent.cpp
+        src/common/DataEvents/Bullet/dataBulletHitEvent.h
+        src/server/model/Events/Bullet/serverBLTHitEvent.cpp
+        src/server/model/Events/Bullet/serverBLTHitEvent.h
+        src/common/DataEvents/Capturable/dataCaptureEvent.cpp
+        src/common/DataEvents/Capturable/dataCaptureEvent.h
+        src/server/model/Events/Capturable/serverCCaptureEvent.cpp
+        src/server/model/Events/Capturable/serverCCaptureEvent.h
+        src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp
+        src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.h
+        src/server/model/Events/TerrainObject/serverTODestroyedEvent.cpp
+        src/server/model/Events/TerrainObject/serverTODestroyedEvent.h
+        src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp
+        src/common/DataEvents/Game/dataPlayerDefeatEvent.h
+        src/server/model/Events/Game/serverGPlayerDefeatedEvent.cpp
+        src/server/model/Events/Game/serverGPlayerDefeatedEvent.h
+        src/common/DataEvents/Game/dataEndGameEvent.cpp
+        src/common/DataEvents/Game/dataEndGameEvent.h
+        src/server/model/Events/Game/serverGEndGameEvent.cpp
+        src/server/model/Events/Game/serverGEndGameEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/server)

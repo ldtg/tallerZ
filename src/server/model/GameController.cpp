@@ -5,12 +5,12 @@
 #include <client/model/Events/model/build/BuildDestroyedEvent.h>
 #include <client/model/Events/model/unit/UnitCreateEvent.h>
 #include <client/model/Events/model/bullet/BulletHitEvent.h>
-#include <client/model/Events/model/CaptureEvent.h>
+#include <client/model/Events/model/capturable/CaptureEvent.h>
 #include <client/model/Events/model/bullet/BulletMoveEvent.h>
 #include <client/model/Events/model/unit/UnitStillEvent.h>
-#include <client/model/Events/model/PlayerDefeatedEvent.h>
-#include <client/model/Events/model/EndGameEvent.h>
-#include <client/model/Events/model/TerrainObjectDestroyedEvent.h>
+#include <client/model/Events/model/game/PlayerDefeatedEvent.h>
+#include <client/model/Events/model/game/EndGameEvent.h>
+#include <client/model/Events/model/terrainObject/TerrainObjectDestroyedEvent.h>
 #include "client/model/Events/model/bullet/BulletNewEvent.h"
 #include "client/model/Events/model/build/BuildDamageEvent.h"
 #include "client/model/Events/model/unit/UnitMoveEvent.h"
@@ -377,7 +377,7 @@ void GameController::bulletsTick(std::vector<Event *> &vector) {
     current.move();
     if (current.didHit()) {
       current.doHit();
-      vector.push_back(new BulletHitEvent(current.getId(),
+      vector.push_back(new BulletHitEvent(current.getId(), current.getTo(),
                                           current.getWeapon().type));
       map.removeBullet(current.getId());
       iterator = bullets.erase(iterator);

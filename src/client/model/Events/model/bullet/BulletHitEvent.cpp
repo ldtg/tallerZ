@@ -9,7 +9,9 @@ void BulletHitEvent::process() {
     view->addExplosionVista(bulletExplosion);
   }
 }
-BulletHitEvent::BulletHitEvent(const BulletID &id, const WeaponType &type) : id(
-    id), weapon(type) {
+BulletHitEvent::BulletHitEvent(const BulletID &id,
+                               const Position &pos,
+                               const WeaponType &type) : id(
+    id), pos(pos), weapon(type) {
 
 }

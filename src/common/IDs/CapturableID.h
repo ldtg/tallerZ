@@ -9,13 +9,14 @@ class CapturableID {
   CapturableType type;
  public:
   explicit CapturableID(const CapturableType &type);
+  CapturableID() {};
   CapturableType getType() const;
   bool operator<(const CapturableID &other) const;
   bool operator==(const CapturableID &other) const;
   bool operator!=(const CapturableID &other) const;
   template<class Archive>
-  void serialize(Archive &archive){
-    archive(type,id);
+  void serialize(Archive &archive) {
+    archive(type, id);
   }
 };
 

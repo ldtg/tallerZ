@@ -9,6 +9,7 @@ class BuildID {
   unsigned long id;
  public:
   explicit BuildID(const BuildType &buildType);
+  BuildID(){};
   bool operator<(const BuildID &other) const;
   BuildType getType() const;
   template<class Archive>

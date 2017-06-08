@@ -45,3 +45,4 @@ bool PlayerID::isGaia() const{
 unsigned short PlayerID::getID() const {
   return id;
 }
+PlayerID::PlayerID() {}

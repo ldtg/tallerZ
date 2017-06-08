@@ -10,6 +10,7 @@ class PlayerID {
   PlayerColor color;
  public:
   explicit PlayerID(const PlayerColor &color);
+  explicit PlayerID();
   bool isGaia() const;
   unsigned short getID() const;
   std::string getColor() const;
