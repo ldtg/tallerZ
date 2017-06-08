@@ -2,7 +2,7 @@
 // Created by darius on 01/06/17.
 //
 
-#include <model/UnitFactory.h>
+#include <server/model/UnitFactory.h>
 #include "Game_Loader.h"
 void Game_Loader::open_file() {
   try{
@@ -166,14 +166,17 @@ void Game_Loader::build_map() {
     if (pos_data.bridge || pos_data.rock){
       assign_terrain_object(pos_data);
     }
-    if (pos_data.vehicle || pos_data.flag){
-      assign_capturable(pos_data);
-    }
     if (pos_data.robot_factory){
       assign_robot_factory(pos_data, gaiaPlayer, gaiaTeam);
     }
     if (pos_data.vehicle_factory){
       assign_vehicle_factory(pos_data, gaiaPlayer, gaiaTeam);
+    }
+  }
+  for (int i = 0; i < tile_amount; i++){
+    pos_data = read_data(i);
+    if (pos_data.vehicle || pos_data.flag){
+      assign_capturable(pos_data);
     }
   }
 }

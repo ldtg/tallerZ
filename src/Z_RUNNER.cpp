@@ -2,6 +2,8 @@
 // Created by darius on 22/05/17.
 //
 
+#include <SDL_ttf.h>
+#include <client/front_end/SDL_Interface/Labels/Label.h>
 #include "Z_RUNNER.h"
 Z_RUNNER::Z_RUNNER() {
 }

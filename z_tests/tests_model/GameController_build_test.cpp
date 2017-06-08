@@ -1,4 +1,4 @@
-#include <model/Build.h>
+/*#include <model/Build.h>
 #include <model/Events/Event.h>
 #include <model/Data.h>
 #include <chrono>
@@ -99,4 +99,4 @@ TEST_F(GameController_build_test, build_attack_destroy) {
       std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
   std::cerr << diff.count() << std::endl;
   ASSERT_TRUE(diff.count() > 20);
-}
+}*/

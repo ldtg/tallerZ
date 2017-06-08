@@ -32,11 +32,11 @@ puede estar en una isla, aislado del resto del mapa.
 #include <time.h>
 #include <vector>
 #include <random>
-#include <model/Position.h>
-#include <model/MapType.h>
-#include <model/TerrainType.h>
-#include <model/BuildType.h>
-#include <model/TerrainObjectType.h>
+#include <server/model/Position.h>
+#include <server/model/MapType.h>
+#include <server/model/TerrainType.h>
+#include <server/model/BuildType.h>
+#include <server/model/TerrainObjectType.h>
 
 /**@struct Delegation: utilizado unicamente en el algoritmo de distribucion de
  * territorios. */

@@ -7,14 +7,14 @@
 
 #include <string>
 #include <SDL2/SDL_ttf.h>
-#include "model/Position.h"
-#include <front_end/SDL_Interface/Buttons/Button.h>
-#include <front_end/SDL_Interface/Menus/Menu.h>
-#include <front_end/SDL_Interface/Labels/Label.h>
-#include <front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h>
-#include <front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h>
-#include <front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h>
-#include <front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h>
+#include "server/model/Position.h"
+#include <client/front_end/SDL_Interface/Buttons/Button.h>
+#include <client/front_end/SDL_Interface/Menus/Menu.h>
+#include <client/front_end/SDL_Interface/Labels/Label.h>
+#include <client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h>
+#include <client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h>
+#include <client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h>
+#include <client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h>
 
 class Production_Menu : public Menu {
  private:
