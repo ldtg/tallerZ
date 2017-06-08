@@ -13,6 +13,10 @@ class TerrainObjectID {
   bool operator==(const TerrainObjectID &other) const;
   bool operator!=(const TerrainObjectID &other) const;
   TerrainObjectType getType() const;
+  template<class Archive>
+  void serialize(Archive &archive){
+    archive(type,id);
+  }
 };
 
 #endif //TALLERZ_TERRAINOBJECTID_H

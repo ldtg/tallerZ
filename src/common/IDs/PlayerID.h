@@ -16,6 +16,10 @@ class PlayerID {
   bool operator<(const PlayerID &other) const;
   bool operator==(const PlayerID &other) const;
   bool operator!=(const PlayerID &other) const;
+  template<class Archive>
+  void serialize(Archive &archive){
+    archive(color,id);
+  }
 };
 
 #endif //TALLERZ_PLAYERID_H

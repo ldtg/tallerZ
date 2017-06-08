@@ -15,6 +15,10 @@ struct BuildState {
   BuildState(const PlayerID &owner, const Position &pos, unsigned short health,
              unsigned short timeRemainingInSecs,
              const UnitType &type);
+  template<class Archive>
+  void serialize(Archive &archive){
+    archive(owner,position, health, timeRemainingInSecs, actualUnitFab);
+  }
 };
 
 #endif //TALLERZ_BUILDSTATE_H

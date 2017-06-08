@@ -7,6 +7,10 @@ struct Weapon {
   unsigned short damage;
   bool isExplosive;
   unsigned short speed;
+  template<class Archive>
+  void serialize(Archive &archive) {
+    archive(type, damage, isExplosive, speed);
+  }
 };
 
 #endif //TALLERZ_WEAPON_H

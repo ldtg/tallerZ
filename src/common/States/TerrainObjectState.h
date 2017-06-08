@@ -8,10 +8,14 @@ struct TerrainObjectState {
   unsigned short size;
   unsigned short health;
   bool passable;
-  TerrainObjectState(){};
+  TerrainObjectState() {};
   TerrainObjectState(const Position &position,
                      unsigned short size,
                      unsigned short health, bool passable);
+  template<class Archive>
+  void serialize(Archive &archive) {
+    archive(centerPosition, size, health, passable);
+  }
 };
 
 #endif //TALLERZ_TERRAINOBJECTSTATE_H

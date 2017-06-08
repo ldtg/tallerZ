@@ -13,6 +13,10 @@ class CapturableID {
   bool operator<(const CapturableID &other) const;
   bool operator==(const CapturableID &other) const;
   bool operator!=(const CapturableID &other) const;
+  template<class Archive>
+  void serialize(Archive &archive){
+    archive(type,id);
+  }
 };
 
 #endif //TALLERZ_CAPTURABLEID_H

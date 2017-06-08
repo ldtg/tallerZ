@@ -265,7 +265,18 @@ set(SOURCE_FILES
 
         src/client/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.cpp
         src/client/front_end/SDL_Interface/Menus/Server_Login_Menu/Server_Login_Menu.h
-        z_tests/tests_storage/load_map_tests.cpp src/client/model/GameControllerProxy.cpp src/client/model/GameControllerProxy.h src/server/model/Events/Event.cpp src/server/model/Events/Event.h src/server/model/Events/EventType.h src/server/model/Events/UnitMoveEvent.cpp src/server/model/Events/UnitMoveEvent.h z_tests/test_server/serialize_Events_test.cpp)
+        z_tests/tests_storage/load_map_tests.cpp
+        src/client/model/GameControllerProxy.cpp
+        src/client/model/GameControllerProxy.h
+        src/common/DataEvents/EventType.h
+        z_tests/test_server/serialize_Events_test.cpp
+        src/common/DataEvents/dataEvent.cpp
+        src/common/DataEvents/dataEvent.h
+        src/common/DataEvents/dataUnitMoveEvent.cpp
+        src/common/DataEvents/dataUnitMoveEvent.h
+        src/server/model/Events/serverEvent.cpp
+        src/server/model/Events/serverEvent.h
+        src/server/model/Events/serverUMoveEvent.cpp src/server/model/Events/serverUMoveEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(src/server/model)

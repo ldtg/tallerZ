@@ -34,13 +34,14 @@ class Position {
   std::string toString() const;
   Position sub(unsigned long x, unsigned long y) const;
   Position add(unsigned long x, unsigned long y) const;
-  Position getAttackPosition(const Position &position, const unsigned short size) const;
+  Position getAttackPosition(const Position &position,
+                             const unsigned short size) const;
   std::vector<Position> getStraighNeighbors() const;
   std::vector<Position> getDiagonalNeighbors() const;
   std::vector<Position> getNeighborsOfDiagonal(const Position &position) const;
   template<class Archive>
-  void serialize(Archive &archive){
-    archive(x,y);
+  void serialize(Archive &archive) {
+    archive(x, y);
   }
 };
 

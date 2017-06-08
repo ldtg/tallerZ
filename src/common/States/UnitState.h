@@ -21,7 +21,15 @@ struct UnitState {
             unsigned short health,
             const Weapon &weapon,
             const Position &current)
-      : secondType(secondType), owner(owner), health(health), weapon(weapon), position(current) {}
+      : secondType(secondType),
+        owner(owner),
+        health(health),
+        weapon(weapon),
+        position(current) {}
+  template<class Archive>
+  void serialize(Archive &archive) {
+    archive(owner, health, weapon, position, secondType);
+  }
 };
 
 #endif //TALLERZ_UNITSTATE_H

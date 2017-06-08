@@ -11,7 +11,10 @@ class BuildID {
   explicit BuildID(const BuildType &buildType);
   bool operator<(const BuildID &other) const;
   BuildType getType() const;
-
+  template<class Archive>
+  void serialize(Archive &archive){
+    archive(type,id);
+  }
 };
 
 #endif //TALLERZ_BUILDID_H
