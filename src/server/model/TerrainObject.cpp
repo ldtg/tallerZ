@@ -1,5 +1,4 @@
 #include "TerrainObject.h"
-#include "Data.h"
 Position TerrainObject::getAttackPosition(const Position &attacker) const {
   return centerPosition.getAttackPosition(attacker, size);
 }

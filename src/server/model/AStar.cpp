@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <Exceptions/model_exceptions/UnableToFindAPathException.h>
 #include "AStar.h"
 
 AStar::AStar(const Map &map, const Unit *unit, const Position &target)

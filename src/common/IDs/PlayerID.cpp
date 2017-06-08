@@ -9,7 +9,7 @@ PlayerID::PlayerID(const PlayerColor &color) : id(nextid), color(color) {
     this->nextid++;
   }
 }
-
+PlayerID::PlayerID() {}
 std::string PlayerID::getColor() const {
   std::string color_s;
   switch (color) {
@@ -39,10 +39,10 @@ bool PlayerID::operator==(const PlayerID &other) const {
 bool PlayerID::operator!=(const PlayerID &other) const {
   return !this->operator==(other);
 }
-bool PlayerID::isGaia() const{
+bool PlayerID::isGaia() const {
   return id == 0;
 }
 unsigned short PlayerID::getID() const {
   return id;
 }
-PlayerID::PlayerID() {}
+

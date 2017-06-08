@@ -1,6 +1,5 @@
 #include "MouseButtonLeft.h"
 
-#include <iostream>
 #include <client/model/Events/Pointer/LeftClickEvent.h>
 
 MouseButtonLeft::MouseButtonLeft() : Handler() {}

@@ -1,4 +1,4 @@
-#include "gtest/gtest.h"
+
 /*
 TEST(TileTest, IsEmpty) {
   Tile tile(Position(0, 0), );

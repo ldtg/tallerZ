@@ -1,10 +1,9 @@
 #include <iostream>
-#include <Exceptions/model_exceptions/BuildingNotFoundException.h>
 #include <front_end/SDL_Interface/Menus/Production/Production_Menu.h>
 #include "Model.h"
 #include "Exceptions/model_exceptions/UnitNotFoundException.h"
 
-Model::Model(Map &map, GameController &gc, Camera &camera, View &view)
+Model::Model(Map &map, GameControllerProxy &gc, Camera &camera, View &view)
     : map(map) ,gameController(gc), camera(camera), view(view) {}
 
 void Model::leftClick(int x, int y) {

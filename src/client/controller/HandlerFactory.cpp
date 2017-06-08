@@ -3,10 +3,7 @@
 #include "HandlerFactory.h"
 #include "Quit.h"
 #include "MouseButtonLeft.h"
-#include "NullHandler.h"
 #include "MouseButtonRight.h"
-#include "MouseMotion.h"
-#include "MouseState.h"
 
 Handler *HandlerFactory::get(SDL_Event *e) {
 //    if (e->type == SDL_QUIT) {

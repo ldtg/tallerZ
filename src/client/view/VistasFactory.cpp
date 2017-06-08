@@ -1,7 +1,5 @@
 #include "VistasFactory.h"
-#include "Image.h"
 #include <random>
-#include <common/Types/TerrainObjectType.h>
 
 ObjectMapaVista* VistasFactory::getTerrainVista(TerrainType type, Position &pos) {
   std::string path = "../src/view/images/terrain/";

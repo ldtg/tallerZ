@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <iostream>
 #include "Sprite.h"
-#include "Image.h"
 
 Sprite::Sprite() {}
 

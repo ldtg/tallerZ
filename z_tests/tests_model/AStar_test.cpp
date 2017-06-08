@@ -1,5 +1,4 @@
 
-#include "gtest/gtest.h"
 
 /*class AStar_test : public ::testing::Test {
  public:

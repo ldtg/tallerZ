@@ -18,8 +18,8 @@ class PlayerID {
   bool operator==(const PlayerID &other) const;
   bool operator!=(const PlayerID &other) const;
   template<class Archive>
-  void serialize(Archive &archive){
-    archive(color,id);
+  void serialize(Archive &archive) {
+    archive(id, color);
   }
 };
 

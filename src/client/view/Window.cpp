@@ -1,6 +1,5 @@
 #include "Window.h"
 #include <SDL2/SDL_image.h>
-#include <iostream>
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
 
 Window::Window() {

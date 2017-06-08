@@ -1,9 +1,5 @@
 #include "View.h"
-#include <string>
-#include "Image.h"
-#include "Sprite.h"
 #include <iostream>
-#include <vector>
 #include <random>
 #include <client/model/Events/model/unit/UnitMoveStepEvent.h>
 #include <client/model/Events/model/bullet/BulletMoveStepEvent.h>

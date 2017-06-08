@@ -1,6 +1,7 @@
 #ifndef TALLERZ_GAMECOTROLLER_H
 #define TALLERZ_GAMECOTROLLER_H
 
+#include <server/model/Events/serverEvent.h>
 #include "common/Map/Map.h"
 #include "Unit.h"
 #include "common/IDs/UnitID.h"
@@ -22,7 +23,7 @@ class GameController {
   std::map<TeamID, Team> teams;
   std::map<TerrainObjectID, TerrainObject> terrainObjects;
   std::vector<Unit *> deathUnits;
-
+  std::queue<serverEvent*> &eventQueue;
   void move(Unit *unit,
             std::vector<Event *> &events,
             std::map<UnitID, Unit *>::iterator &it);
@@ -32,7 +33,9 @@ class GameController {
   void capture(Unit *unit,
                std::vector<Event *> &events,
                std::map<UnitID, Unit *>::iterator &it);
-  void autoAttack(Unit *current,std::vector<Event *> &events, std::map<UnitID, Unit *>::iterator &it);
+  void autoAttack(Unit *current,
+                  std::vector<Event *> &events,
+                  std::map<UnitID, Unit *>::iterator &it);
   void unitReceiveDamage(Unit *current, std::vector<Event *> &events) const;
 
   void doTick(std::vector<Event *> &events);
@@ -46,25 +49,6 @@ class GameController {
   void objectsTick(std::vector<Event *> &events);
 
  public:
-  GameController(Map &map, const std::map<UnitID, Unit *> &units);
-
-  GameController(Map &map,
-                 const std::map<UnitID, Unit *> &units,
-                 const std::map<BuildID, Build *> &builds);
-  GameController(
-      Map &map,
-      const std::map<UnitID, Unit *> &units,
-      const std::map<BuildID, Build *> &builds,
-      const std::map<CapturableID, Capturable *> &capturables
-  );
-
-  GameController(
-      Map &map,
-      const std::map<UnitID, Unit *> &units,
-      const std::map<BuildID, Build *> &builds,
-      const std::map<CapturableID, Capturable *> &capturables,
-      const std::map<TerrainObjectID, TerrainObject> &terrainObjects
-  );
   GameController(
       Map &map,
       const std::map<UnitID, Unit *> &units,
@@ -72,15 +56,17 @@ class GameController {
       const std::map<CapturableID, Capturable *> &capturables,
       const std::map<TerrainObjectID, TerrainObject> &terrainObjects,
       const std::map<PlayerID, Player *> &players,
-      const std::map<TeamID, Team> &teams
+      const std::map<TeamID, Team> &teams,
+      std::queue<serverEvent*> &eventQueue
+
   );
-  void move(const UnitID &unit, const Position &position);
-  void attack(const UnitID &attacker, const UnitID &attacked);
-  void attack(const UnitID &attacker, const BuildID &attacked);
-  void attack(const UnitID &attacker, const TerrainObjectID &attacked);
-  void changeUnitFab(const BuildID &buildId, const UnitType &type);
-  void capture(const UnitID &unit, const CapturableID &capturable);
-  std::vector<Event *> tick();
+  virtual void move(const UnitID &unit, const Position &position);
+  virtual void attack(const UnitID &attacker, const UnitID &attacked);
+  virtual void attack(const UnitID &attacker, const BuildID &attacked);
+  virtual void attack(const UnitID &attacker, const TerrainObjectID &attacked);
+  virtual void changeUnitFab(const BuildID &buildId, const UnitType &type);
+  virtual void capture(const UnitID &unit, const CapturableID &capturable);
+  virtual std::vector<Event *> tick();
 
   ~GameController();
 };

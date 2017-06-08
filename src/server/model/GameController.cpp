@@ -1,7 +1,6 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include <Exceptions/model_exceptions/UnableToFindAPathException.h>
 #include <client/model/Events/model/build/BuildDestroyedEvent.h>
 #include <client/model/Events/model/unit/UnitCreateEvent.h>
 #include <client/model/Events/model/bullet/BulletHitEvent.h>
@@ -11,48 +10,29 @@
 #include <client/model/Events/model/game/PlayerDefeatedEvent.h>
 #include <client/model/Events/model/game/EndGameEvent.h>
 #include <client/model/Events/model/terrainObject/TerrainObjectDestroyedEvent.h>
+#include <server/model/Events/Bullet/serverBLTHitEvent.h>
+#include <server/model/Events/Bullet/serverBLTMoveEvent.h>
+#include <server/model/Events/Unit/serverUMoveEvent.h>
+#include <server/model/Events/Unit/serverUStillEvent.h>
+#include <server/model/Events/Unit/serverUAttackEvent.h>
+#include <server/model/Events/Bullet/serverBLTNewEvent.h>
+#include <server/model/Events/Capturable/serverCCaptureEvent.h>
+#include <server/model/Events/Build/serverBDestroyedEvent.h>
+#include <server/model/Events/Build/serverBDamageEvent.h>
+#include <server/model/Events/Game/serverGEndGameEvent.h>
+#include <server/model/Events/Unit/serverUCreateEvent.h>
+#include <server/model/Events/TerrainObject/serverTODestroyedEvent.h>
+#include <server/model/Events/Unit/serverUDeathEvent.h>
+#include <server/model/Events/Game/serverGPlayerDefeatedEvent.h>
 #include "client/model/Events/model/bullet/BulletNewEvent.h"
 #include "client/model/Events/model/build/BuildDamageEvent.h"
 #include "client/model/Events/model/unit/UnitMoveEvent.h"
 #include "client/model/Events/model/unit/UnitDamageReceiveEvent.h"
 #include "client/model/Events/model/unit/UnitAttackEvent.h"
 #include "client/model/Events/model/unit/UnitDeathEvent.h"
-#include "GameController.h"
 #include "AStar.h"
 
 #include "Data.h"
-#include "Exceptions/model_exceptions/UnitNotFoundException.h"
-
-#include "UnitFactory.h"
-
-GameController::GameController(Map &map,
-                               const std::map<UnitID, Unit *> &units,
-                               const std::map<BuildID, Build *> &builds)
-    : map(map), units(units), builds(builds) {}
-
-GameController::GameController(Map &map,
-                               const std::map<UnitID, Unit *> &units)
-    : map(map), units(units) {}
-
-GameController::GameController(Map &map,
-                               const std::map<UnitID, Unit *> &units,
-                               const std::map<BuildID, Build *> &builds,
-                               const std::map<CapturableID,
-                                              Capturable *> &capturables)
-    : map(map), units(units),
-      builds(builds), capturables(capturables) {}
-
-GameController::GameController(Map &map,
-                               const std::map<UnitID, Unit *> &units,
-                               const std::map<BuildID, Build *> &builds,
-                               const std::map<CapturableID,
-                                              Capturable *> &capturables,
-                               const std::map<TerrainObjectID,
-                                              TerrainObject> &terrainObjects)
-    : map(map), units(units),
-      builds(builds),
-      capturables(capturables),
-      terrainObjects(terrainObjects) {}
 
 GameController::GameController(Map &map,
                                const std::map<UnitID, Unit *> &units,
@@ -62,12 +42,15 @@ GameController::GameController(Map &map,
                                const std::map<TerrainObjectID,
                                               TerrainObject> &terrainObjects,
                                const std::map<PlayerID, Player *> &players,
-                               const std::map<TeamID, Team> &teams) :
-    map(map), units(units),
-    builds(builds),
-    capturables(capturables),
-    terrainObjects(terrainObjects),
-    players(players), teams(teams) {}
+                               const std::map<TeamID, Team> &teams,
+                               std::queue<serverEvent *> &eventQueue)
+    : map(map), units(units),
+      builds(builds),
+      capturables(capturables),
+      terrainObjects(terrainObjects),
+      players(players), teams(teams), eventQueue(eventQueue) {
+
+}
 
 void GameController::move(const UnitID &idunit, const Position &position) {
   Unit *unit = units.at(idunit);
@@ -218,6 +201,7 @@ void GameController::unitsTick(std::vector<Event *> &events) {
         // modificar si tiene que hacer desaparecer a la unidad
       } else {
         events.push_back(new UnitDeathEvent(current->getId()));
+        eventQueue.push(new serverUDeathEvent(current->getId()));
         map.removeUnit(current->getId());
         deathUnits.push_back(current);
         it_units = units.erase(it_units);
@@ -232,9 +216,8 @@ void GameController::unitsTick(std::vector<Event *> &events) {
 void GameController::unitReceiveDamage(Unit *current,
                                        std::vector<Event *> &events) const {
   current->receiveDamages();
-  events.push_back(new UnitDamageReceiveEvent(current->getId(),
-                                              current->getUnitState()));
   map.updateUnit(current->getId(), current->getUnitState());
+  //el evento damage receive no se usaba
 }
 
 void GameController::move(Unit *unit,
@@ -247,10 +230,13 @@ void GameController::move(Unit *unit,
     bool still = unit->doMoveWithSpeed(terrainFactor);
     events.push_back(new UnitMoveEvent(unit->getId(),
                                        unit->getCenterPosition()));
+    eventQueue.push(new serverUMoveEvent(unit->getId(),
+                                         unit->getCenterPosition()));
     map.updateUnit(unit->getId(), unit->getUnitState());
 
     if (still) {
       events.push_back(new UnitStillEvent(unit->getId()));
+      eventQueue.push(new serverUStillEvent(unit->getId()));
     }
 
   } else {
@@ -266,6 +252,7 @@ void GameController::hunt(Unit *unit,
 
   if (!hunted->isAlive()) {
     events.push_back(new UnitStillEvent(unit->getId()));
+    eventQueue.push(new serverUStillEvent(unit->getId()));
     unit->still();
     return;
   }
@@ -279,6 +266,9 @@ void GameController::hunt(Unit *unit,
       events.push_back(new UnitAttackEvent(unit->getId(),
                                            huntedPos,
                                            attackerPos));
+      eventQueue.push(new serverUAttackEvent(unit->getId(),
+                                             huntedPos,
+                                             attackerPos));
     }
     if (unit->timeToAttack()) {
       this->bullets.push_back(unit->createBullet());
@@ -286,6 +276,10 @@ void GameController::hunt(Unit *unit,
                                           this->bullets.front().getWeapon().type,
                                           this->bullets.front().getFrom(),
                                           this->bullets.front().getTo()));
+      eventQueue.push(new serverBLTNewEvent(this->bullets.front().getId(),
+                                            this->bullets.front().getWeapon().type,
+                                            this->bullets.front().getFrom(),
+                                            this->bullets.front().getTo()));
     }
     if (hunted->isMoving()) {
       unit->addMove(hunted->nextMovePosition());
@@ -295,6 +289,7 @@ void GameController::hunt(Unit *unit,
     if (unit->isAutoAttacking()) {
       unit->still();
       events.push_back(new UnitStillEvent(unit->getId()));
+      eventQueue.push(new serverUStillEvent(unit->getId()));
     } else {
       this->move(unit, events, it);
       if (hunted->isMoving())
@@ -327,11 +322,16 @@ void GameController::capture(Unit *unit,
     }
     //create event
     events.push_back(new UnitStillEvent(unit->getId()));
+    eventQueue.push(new serverUStillEvent(unit->getId()));
 
     events.push_back(new CaptureEvent(unit->getId(), capturable->getID(),
                                       capturable->getCapturePosition(),
                                       capturedBuilds,
                                       capturedUnits, dissapear));
+    eventQueue.push(new serverCCaptureEvent(unit->getId(), capturable->getID(),
+                                            capturable->getCapturePosition(),
+                                            capturedBuilds,
+                                            capturedUnits, dissapear));
     if (dissapear) {
       // si alguien la estaba persiguiendo la tiene que ver muerta,
       // pero no se tiene que disparar el evento muerte
@@ -379,11 +379,14 @@ void GameController::bulletsTick(std::vector<Event *> &vector) {
       current.doHit();
       vector.push_back(new BulletHitEvent(current.getId(), current.getTo(),
                                           current.getWeapon().type));
+      eventQueue.push(new serverBLTHitEvent(current.getId(), current.getTo(),
+                                            current.getWeapon().type));
       map.removeBullet(current.getId());
       iterator = bullets.erase(iterator);
     } else {
       map.updateBullet(current.getId(), current.getState());
       vector.push_back(new BulletMoveEvent(current.getId(), current.getTo()));
+      eventQueue.push(new serverBLTMoveEvent(current.getId(), current.getTo()));
       ++iterator;
     }
   }
@@ -406,6 +409,7 @@ void GameController::buildsTick(std::vector<Event *> &events) {
         b_iter++;
       } else {
         events.push_back(new BuildDestroyedEvent(current->getId()));
+        eventQueue.push(new serverBDestroyedEvent(current->getId()));
         map.updateBuild(current->getId(), current->getBuildState());
         b_iter = builds.erase(b_iter);
       }
@@ -420,12 +424,16 @@ void GameController::buildReceiveDamage(Build *current,
   current->receiveDamages();
   events.push_back(new BuildDamageEvent(current->getId(),
                                         current->getBuildState()));
+  eventQueue.push(new serverBDamageEvent(current->getId(),
+                                         current->getBuildState()));
 }
 
 void GameController::PlayersTick(std::vector<Event *> &events) {
   for (auto &player : players) {
-    if (!player.second->isAlive())
+    if (!player.second->isAlive()){
       events.push_back(new PlayerDefeatedEvent(player.first));
+      eventQueue.push(new serverGPlayerDefeatedEvent(player.first));
+    }
   }
 }
 
@@ -440,6 +448,7 @@ void GameController::TeamsTick(std::vector<Event *> &events) {
   }
   if (count == 1) {
     events.push_back(new EndGameEvent(*winnerId));
+    eventQueue.push(new serverGEndGameEvent(*winnerId));
   }
 
 }
@@ -450,6 +459,8 @@ void GameController::addUnits(std::vector<Unit *> vector,
     units.emplace(unit->getId(), unit);
     map.addUnit(unit->getId(), unit->getUnitState());
     events.push_back(new UnitCreateEvent(unit->getId(), unit->getUnitState()));
+    eventQueue.push(new serverUCreateEvent(unit->getId(),
+                                           unit->getUnitState()));
   }
 }
 
@@ -463,6 +474,7 @@ void GameController::objectsTick(std::vector<Event *> &events) {
     }
     if (!current.isAlive()) {
       events.push_back(new TerrainObjectDestroyedEvent(current.getID()));
+      eventQueue.push(new serverTODestroyedEvent(current.getID()));
       t_it = terrainObjects.erase(t_it);
     } else {
       ++t_it;
@@ -481,3 +493,4 @@ GameController::~GameController() {
     delete (par.second);
   }
 }
+

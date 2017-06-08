@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include "UnitMoveEvent.h"
 
 UnitMoveEvent::UnitMoveEvent(UnitID id, Position posTo)

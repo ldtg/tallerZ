@@ -9,6 +9,7 @@ class clientCommand {
   clientCommand(const CommandType &type);
  public:
   virtual std::stringstream getDataToSend() = 0;
+  CommandType getType() const;
 };
 
 #endif //TALLERZ_CLIENTCOMMAND_H

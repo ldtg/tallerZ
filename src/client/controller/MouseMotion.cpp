@@ -1,6 +1,5 @@
 #include <client/model/Events/view/CameraMove.h>
 #include "MouseMotion.h"
-#include "Handler.h"
 
 MouseMotion::MouseMotion() : Handler() {}
 

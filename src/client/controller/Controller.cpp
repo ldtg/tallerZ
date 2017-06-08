@@ -1,7 +1,4 @@
 #include "Controller.h"
-#include "Quit.h"
-#include "MouseButtonLeft.h"
-#include "iostream"
 #include "MouseState.h"
 
 Controller::Controller(EventHandler &eventHandler)

@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <cmath>
 #include <sstream>
 #include <iostream>
 #include "Position.h"
