@@ -15,12 +15,22 @@
 #include <client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h>
 #include <client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h>
 #include <client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h>
+#include <common/IDs/BuildID.h>
+#include <common/Types/UnitType.h>
+#include <server/model/Build.h>
+#include <server/model/Data.h>
+
+class Model;
 
 class Production_Menu : public Menu {
  private:
   const int width = 111;
   const int length = 79;
   Window &window;
+  Model &model;
+  const BuildID& buildID;
+  const BuildState& buildState;
+  UnitType showing_unit_type;
 
   Label * time = NULL;
   Label *status = NULL;
@@ -56,7 +66,11 @@ class Production_Menu : public Menu {
       = "../src/client/front_end/Images/Interface/production_gui/base_image.png";
 
  public:
-  Production_Menu(Window &window, int x, int y);
+  Production_Menu(const BuildID &buildID,
+                  const BuildState &buildState,
+                  Window &window,
+                  Model& model,
+                  int x, int y);
 
   void displace_toXY(int x, int y);
 
@@ -66,27 +80,24 @@ class Production_Menu : public Menu {
 
   void show_building_status();
 
+  void show_previous_buildable_unit();
+
+  void show_next_buildable_unit();
+
   void add_to_panel(Panel& panel);
 
-  void handle_click(int x, int y){
-    if (up->inRectangle(x,y)){
-      up->handle_event();
-    }
-    if (down->inRectangle(x,y)){
-      down->handle_event();
-    }
-    if (cancel->inRectangle(x,y)){
-      cancel->handle_event();
-    }
-    if (ok->inRectangle(x,y)){
-      ok->handle_event();
-    }
-  }
+  void update_unit_to_build();
+
+  void handle_click(int x, int y);
+
   ~Production_Menu();
 
  private:
   void load_items();
 
+  std::string get_building_type(const BuildType& buildType);
+
+  std::string get_unit_name(const UnitType& utype);
 };
 
 #endif //TALLERZ_PRODUCTION_MENU_1_H

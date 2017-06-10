@@ -2,12 +2,12 @@
 #define TALLERZ_VISTA_H
 
 class EventHandler;
-
+class Model;
 #include "common/Map/Map.h"
 #include "Window.h"
 #include "Panel.h"
 #include <string>
-#include <front_end/SDL_Interface/Menus/Production/Production_Menu.h>
+#include <client/front_end/SDL_Interface/Menus/Production/Production_Menu.h>
 #include "client/model/Events/EventHandler.h"
 #include "Sprite.h"
 #include "VistasFactory.h"
@@ -82,9 +82,8 @@ class View {
     return this->menu;
   }
 
-  void load_production_menu(int x, int y){
-    menu = new Production_Menu(window, x, y);
-  }
+  void load_production_menu(const BuildID& factoryID, const BuildState& buildState, Model& model, int x, int y);
+
   void free_menu(){
     delete menu;
     menu = nullptr;

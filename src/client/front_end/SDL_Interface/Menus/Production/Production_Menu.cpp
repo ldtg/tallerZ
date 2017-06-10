@@ -4,17 +4,19 @@
 
 
 #include "Production_Menu.h"
+#include <client/model/Model.h>
 /**
  * constructor
  * @param window : ventana sobre la que se renderiza
  * @param x : coordenada X del menu
  * @param y : coordenada Y del menu
  */
-Production_Menu::Production_Menu(Window &window, int x, int y) : window(window) {
+Production_Menu::Production_Menu(const BuildID &buildID, const BuildState &buildState, Window &window, Model &model, int x, int y) : buildID(buildID), window(window), model(model), buildState(buildState){
   this->renderQuad = { x, y, width, length};
   this->background = new Texture(background_path.c_str(), &window);
   this->background->renderize(&window, &renderQuad);
   load_items();
+  this->showing_unit_type = buildState.actualUnitFab;
 }
 /**
  * load_items
@@ -22,32 +24,38 @@ Production_Menu::Production_Menu(Window &window, int x, int y) : window(window) 
 void Production_Menu::load_items() {
   /******Labels*****/
   set_absolute_position(_time_rect, this->time_rect);
-  this->time = new Label(window, "01:00", this->time_rect, this->font);
+  this->time = new Label(window,
+                         std::to_string(buildState.timeRemainingInSecs),
+                         this->time_rect,
+                         this->font);
 
   set_absolute_position(_unit_rect, this->unit_rect);
-  this->unit = new Label(window, "Robot", this->unit_rect, this->font);
+  this->unit = new Label(window, get_unit_name(showing_unit_type),
+                         this->unit_rect, this->font);
 
   set_absolute_position(_health_rect, this->health_rect);
-  this->health = new Label(window, "100%", this->health_rect, this->font);
+  this->health = new Label(window, std::to_string(buildState.health) + "%",
+                           this->health_rect, this->font);
 
   set_absolute_position(_building_name_rect, this->building_name_rect);
-  this->building_name = new Label(window, "Factory", this->building_name_rect, this->font);
+  this->building_name = new Label(window, get_building_type(buildID.getType()),
+                                  this->building_name_rect, this->font);
 
   set_absolute_position(_status_rect, this->status_rect);
   this->status = new Label(window, "Select", this->status_rect, this->font);
 
   /******Buttons*****/
   set_absolute_position(_cancel_b_rect, this->cancel_b_rect);
-  this->cancel = new Cancel_Button(&window, cancel_b_rect);
+  this->cancel = new Cancel_Button(&window, &model, this, cancel_b_rect);
 
   set_absolute_position(_ok_b_rect, this->ok_b_rect);
-  this->ok = new Ok_Button(&window, ok_b_rect);
+  this->ok = new Ok_Button(&window, &model, this, ok_b_rect);
 
   set_absolute_position(_up_rect, this->up_rect);
-  this->up = new Up_Button(&window, up_rect);
+  this->up = new Up_Button(&window, &model, this, up_rect);
 
   set_absolute_position(_down_rect, this->down_rect);
-  this->down = new Down_Button(&window, down_rect);
+  this->down = new Down_Button(&window, &model, this, down_rect);
 }
 /**
  * displace_toXY : mueve el menu a las coordenadas x,y
@@ -140,5 +148,96 @@ void Production_Menu::add_to_panel(Panel &panel) {
   panel.add(health);
   panel.add(unit);
   panel.add(building_name);
+}
+std::string Production_Menu::get_building_type(const BuildType &buildType) {
+  switch (buildType){
+    case (BuildType ::FORT):
+      return "FORT";
+    case (BuildType ::VEHICLEF):
+      return "V. FACTORY";
+    case (BuildType ::ROBOTF):
+      return "R. FACTORY";
+  }
+}
+std::string Production_Menu::get_unit_name(const UnitType &utype) {
+  switch (utype){
+    case UnitType ::R_GRUNT:
+      return "GRUNT";
+    case UnitType ::R_TOUGH:
+      return "TOUGH";
+    case UnitType ::R_PSYCHO:
+      return "PSYCHO";
+    case UnitType ::R_PYRO:
+      return "PYRO";
+    case UnitType ::R_SNIPER:
+      return "SNIPER";
+    case UnitType ::R_LASER:
+      return "LASER";
+    case UnitType ::V_JEEP:
+      return "JEEP";
+    case UnitType ::V_MTANK:
+      return "M.TANK";
+    case UnitType ::V_LTANK:
+      return "L.TANK";
+    case UnitType ::V_HTANK:
+      return "H.TANK";
+    case UnitType ::V_MML:
+      return "MML";
+  }
+}
+void Production_Menu::handle_click(int x, int y) {
+  if (up->inRectangle(x,y)){
+    up->handle_event();
+  }
+  if (down->inRectangle(x,y)){
+    down->handle_event();
+  }
+  if (cancel->inRectangle(x,y)){
+    cancel->handle_event();
+  }
+  if (ok->inRectangle(x,y)){
+    ok->handle_event();
+  }
+}
+void Production_Menu::show_previous_buildable_unit() {
+  bool found = false;
+  std::vector<UnitType>::const_iterator it;
+  it = buildState.fabricableUnits.begin();
+  while (!found){
+    if (*it == showing_unit_type){
+      found = true;
+    } else {
+      it++;
+    }
+  }
+  if (it != buildState.fabricableUnits.begin()){
+    it--;
+    showing_unit_type = *it;
+  } else {
+    showing_unit_type = *(buildState.fabricableUnits.end()-1);
+  }
+  unit->modify_text(get_unit_name(showing_unit_type));
+  unit->reload();
+}
+void Production_Menu::show_next_buildable_unit() {
+  bool found = false;
+  std::vector<UnitType >::const_iterator it;
+  it = buildState.fabricableUnits.begin();
+  while (!found){
+    if (*it == showing_unit_type){
+      found = true;
+    }
+    it++;
+  }
+  if (it != buildState.fabricableUnits.end()){
+    showing_unit_type = *it;
+  } else {
+    showing_unit_type = *buildState.fabricableUnits.begin();
+  }
+  unit->modify_text(get_unit_name(showing_unit_type));
+  unit->reload();
+}
+void Production_Menu::update_unit_to_build() {
+  model.get_gameControllerProxy()->changeUnitFab(buildID,showing_unit_type);
 }
 

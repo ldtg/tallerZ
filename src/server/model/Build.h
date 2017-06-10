@@ -55,6 +55,10 @@ class Build : public Attackable {
   void changeFabUnit(const UnitType &type);
   void changePlayer(Player *player, const Team &team);
   std::vector<Unit *> fabricateUnits(const Position &buildPos);
+
+  unsigned short get_health(){
+    return this->health;
+  }
 };
 
 #endif //TALLERZ_BUILD_H

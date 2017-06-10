@@ -73,6 +73,7 @@ void Button::handle_event() {
 void Button::on_button_pressed() {
   if (this->button_down != NULL){
     this->button_down->renderize(this->window, &this->renderQuad);
+    this->button_launch();
   }
 }
 /**

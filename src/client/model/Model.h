@@ -16,8 +16,12 @@ class Model {
 
  public:
   Model(Map &map, GameControllerProxy& gameController, Camera &camera, View &view);
+  GameControllerProxy * get_gameControllerProxy(){
+    return &gameController;
+  }
   void leftClick(int x, int y);
   void rightClick(int x, int y);
+
 };
 
 #endif //TALLERZ_MODEL_H

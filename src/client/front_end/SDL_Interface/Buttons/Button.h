@@ -9,13 +9,11 @@
 
 #include <client/view/Sprite.h>
 #include <client/view/Texture.h>
+#include <client/front_end/SDL_Interface/Menus/Menu.h>
 #include "Front_end_exceptions/Generator_Exception.h"
 
-/*
- * TODO: barajar la posibilidad de armar una clase clickable de la que herede button y demas objetos clickeables. Por ahora lo dejo así.
- */
-
 class LeftClickEvent;
+class Model;
 /**
  * @class Button
  * De button heredan los botones que disparan un evento.
@@ -25,6 +23,7 @@ class LeftClickEvent;
 class Button : public ObjectMapaVista  {
  protected:
   Window * window;
+  Model * model;
   SDL_Point * position = NULL;
   SDL_Event * event = NULL;
   Texture * button_up = NULL;

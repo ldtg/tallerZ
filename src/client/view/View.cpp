@@ -4,6 +4,7 @@
 #include <client/model/Events/model/unit/UnitMoveStepEvent.h>
 #include <client/model/Events/model/bullet/BulletMoveStepEvent.h>
 #include <client/model/Events/view/CameraMoveStepEvent.h>
+#include <client/model/Model.h>
 
 View::View(const Map &map, EventHandler &eventHandler, Camera &camera)
     : window(), panel(window.getRender()), eventHandler(eventHandler), camera(camera) {
@@ -328,4 +329,8 @@ void View::addEffectVista(Sprite *objectVista) {
     throw std::invalid_argument("View::addExplosionVista() objectMapaVista es NULL");
 
   effectsVista.push_back(objectVista);
+}
+
+void View::load_production_menu(const BuildID &factoryID, const BuildState& buildState, Model &model, int x, int y) {
+  menu = new Production_Menu(factoryID, buildState, window, model, x, y);
 }

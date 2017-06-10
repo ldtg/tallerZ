@@ -92,6 +92,7 @@ void Game_Loader::assign_robot_factory(const Position_Data &position_data, Playe
             player,
             team,
             configuration.factories_level);
+
   buildmap.emplace(build->getId(), build->getBuildState());
   territory_buildings[position_data.territory].push_back(build);
   builds.emplace(build->getId(), build);

@@ -123,7 +123,7 @@ BuildState Build::getBuildState() const {
                     centerPosition.sub(size, size),
                     health,
                     data.ticksToSec(ticksBeforeCreate),
-                    actualUnitFab);
+                    actualUnitFab,fabricableUnits);
 }
 
 std::vector<Unit *> Build::fabricateUnits(const Position &buildPos) {

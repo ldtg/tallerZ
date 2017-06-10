@@ -3,6 +3,8 @@
 //
 
 #include "Up_Button.h"
+#include <client/front_end/SDL_Interface/Menus/Production/Production_Menu.h>
+
 void Up_Button::button_launch() {
-  //TODO implementar la logica de boton arriba, de mostrar otra unidad.
+  menu->show_previous_buildable_unit();
 }

@@ -62,3 +62,4 @@ void GameControllerProxy::capture(const UnitID &unit,
   delete sc;
 }
 GameControllerProxy::GameControllerProxy(GameController &gc) : gc(gc) {}
+

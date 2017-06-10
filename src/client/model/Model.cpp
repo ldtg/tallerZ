@@ -17,8 +17,8 @@ void Model::leftClick(int x, int y) {
   }
   if (view.get_present_menu() == nullptr){
     try {
-      BuildID factoryID = map.getBuildIDFromPosition(pos,50);
-      view.load_production_menu(x,y);
+      BuildID factoryID = map.getBuildIDFromPosition(pos,30);
+      view.load_production_menu(factoryID,map.getBuilds().at(factoryID),*this,x,y);
     } catch(const UnitNotFoundException &e){
       // Donde se hizo click no hay fabrica
     }
@@ -60,6 +60,7 @@ void Model::rightClick(int x, int y) {
   }
   try {
     BuildID buildAttacked = map.getBuildIDFromPosition(pos, 50);
+
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, buildAttacked);
     }
@@ -72,3 +73,4 @@ void Model::rightClick(int x, int y) {
    gameController.move(unitsSelected.front(), pos);
    unitsSelected.clear();
 }
+
