@@ -1,3 +1,4 @@
+#include <server/model/GameController.h>
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -430,7 +431,7 @@ void GameController::buildReceiveDamage(Build *current,
 
 void GameController::PlayersTick(std::vector<Event *> &events) {
   for (auto &player : players) {
-    if (!player.second->isAlive()){
+    if (!player.second->isAlive()) {
       events.push_back(new PlayerDefeatedEvent(player.first));
       eventQueue.push(new serverGPlayerDefeatedEvent(player.first));
     }
@@ -490,6 +491,12 @@ GameController::~GameController() {
     delete unit;
   }
   for (auto &par : builds) {
+    delete (par.second);
+  }
+  for (auto &par : capturables) {
+    delete (par.second);
+  }
+  for (auto &par : players) {
     delete (par.second);
   }
 }

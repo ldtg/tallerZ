@@ -65,32 +65,33 @@ class Game_Loader {
   std::map<TerrainObjectID, TerrainObjectState> terrainObjects;
   std::map<CapturableID, CapturableState> capturables;
 
-  GaiaPlayer gaiaPlayer;
+  GaiaPlayer &gaiaPlayer;
   Team gaiaTeam;
  public:
-  Game_Loader(std::string file_path);
+  Game_Loader(const std::string &file_path,
+              const std::map<PlayerID, Player *> &players,
+              const std::map<TeamID, Team> &teams,
+              GaiaPlayer &gaia);
 
   ~Game_Loader();
 
   json get_json();
-  std::map<BuildID, Build *> get_builds();
-  std::map<BuildID, BuildState> get_buildmap();
+  std::map<BuildID, Build *> get_builds() const;
+  std::map<BuildID, BuildState> get_buildmap() const;
   Map_Config get_configuration();
-  std::map<Position, Tile> get_loaded_map();
-  std::map<CapturableID, CapturableState> get_capturables();
-  std::map<CapturableID, Capturable *> get_controller_capturables();
-  std::map<TerrainObjectID, TerrainObjectState> get_terrainObject();
-  std::map<UnitID, Unit *> get_controller_units();
-  std::map<int, std::vector<Build *>> get_territory_buildings();
-  std::map<TerrainObjectID, TerrainObject> get_controller_terrainObjects();;
-  std::map<PlayerID, Player *> get_players();
-  std::map<TeamID, Team> get_teams();
+  std::map<Position, Tile> get_loaded_map() const;
+  std::map<CapturableID, CapturableState> get_capturables() const;
+  std::map<CapturableID, Capturable *> get_controller_capturables() const;
+  std::map<TerrainObjectID, TerrainObjectState> get_terrainObject() const;
+  std::map<UnitID, Unit *> get_controller_units() const;
+  std::map<int, std::vector<Build *>> get_territory_buildings() const;
+  std::map<TerrainObjectID, TerrainObject> get_controller_terrainObjects()const;
+  std::map<PlayerID, Player *> get_players() const;
+  std::map<TeamID, Team> get_teams() const;
 
   Map run() {
     this->load_file();
     this->load_configuration();
-    this->set_players();
-    this->set_teams();
     this->build_map();
     return Map(map, buildmap, capturables, terrainObjects, units,
                configuration.map_width, configuration.map_length);

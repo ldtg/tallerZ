@@ -3,6 +3,6 @@ serverBChangeUCommand::serverBChangeUCommand(const dataBuildChangeUnitCommand &d
     : data(data) {
 
 }
-void serverBChangeUCommand::execute(GameController &gc) {
+void serverBChangeUCommand::execute(serverGameController &gc) {
   gc.changeUnitFab(data.id, data.type);
 }

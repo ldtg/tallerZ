@@ -5,6 +5,7 @@
 struct CapturableState {
   PlayerID ownerID;
   Position pos;
+  CapturableState(){};
   CapturableState(const PlayerID &id, const Position pos)
       : ownerID(id), pos(pos) {};
   template<class Archive>
@@ -12,5 +13,6 @@ struct CapturableState {
     archive(ownerID, pos);
   }
 };
+
 
 #endif //TALLERZ_CAPTURABLESTATE_H

@@ -8,7 +8,7 @@ class serverUMoveCommand : public serverCommand{
   dataUnitMoveCommand data;
  public:
   serverUMoveCommand(const dataUnitMoveCommand & data);
-  virtual void execute(GameController &gc);
+  virtual void execute(serverGameController &gc);
 };
 
 #endif //TALLERZ_SERVERUMOVECOMMAND_H

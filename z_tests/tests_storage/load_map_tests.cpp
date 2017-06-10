@@ -48,7 +48,7 @@
 //}
 
 TEST(run_test, Map_Loader){
-  Game_Loader map_loader("mapa.json");
+/*  Game_Loader map_loader("mapa.json");
   Map map1 = map_loader.run();
   std::cout << "Capturables\n";
   for (const auto& i: map_loader.get_capturables()){
@@ -77,6 +77,6 @@ TEST(run_test, Map_Loader){
     }
     std::cout << " Posicion: " << i.second.position.getX()
               << " " << i.second.position.getY() << std::endl;
-  }
+  }*/
 }
 

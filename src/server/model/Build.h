@@ -9,9 +9,6 @@
 #include "common/States/BuildState.h"
 #include "Unit.h"
 
-#define BUILDWIDHT 100
-#define BUILDHEIGHT 100
-
 class Build : public Attackable {
  private:
   BuildID id;

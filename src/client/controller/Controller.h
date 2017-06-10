@@ -2,10 +2,7 @@
 #define TALLERZ_CONTROLLER_H
 
 #include <vector>
-#include "Handler.h"
-#include "Quit.h"
-#include "HandlerFactory.h"
-#include "client/view/View.h"
+#include <client/model/Events/EventHandler.h>
 
 class Controller {
  private:

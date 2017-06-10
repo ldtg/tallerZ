@@ -3,7 +3,7 @@
 #include <gmock/gmock.h>
 
 
-
+/*
 int main(int argc, char *argv[]) {
   int warning;
   testing::InitGoogleTest(&argc, argv);
@@ -12,5 +12,5 @@ int main(int argc, char *argv[]) {
   warning = RUN_ALL_TESTS();
   return 0;
 }
-
+*/
 

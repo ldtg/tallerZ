@@ -18,25 +18,27 @@ class View {
   Window window;
   Camera &camera;
   Panel panel;
-  Menu * menu = nullptr;
+  Menu *menu = nullptr;
   EventHandler &eventHandler;
   bool _quit;
 
-  std::map<Position, ObjectMapaVista*> terrainsVista;
-  std::map<TerrainObjectID, ObjectMapaVista*> terrainObjectsVista;
-  std::map<BuildID, ObjectMapaVista*> buildsVista;
-  std::map<UnitID, Sprite*> unitsVista;
-  std::map<CapturableID, ObjectMapaVista*> capturablesVista;
-  std::map<BulletID, ObjectMapaVista*> bulletsVista;
-  std::vector<Sprite*> effectsVista;
-  std::vector<Sprite*> explosionsVista;
+  std::map<Position, ObjectMapaVista *> terrainsVista;
+  std::map<TerrainObjectID, ObjectMapaVista *> terrainObjectsVista;
+  std::map<BuildID, ObjectMapaVista *> buildsVista;
+  std::map<UnitID, Sprite *> unitsVista;
+  std::map<CapturableID, ObjectMapaVista *> capturablesVista;
+  std::map<BulletID, ObjectMapaVista *> bulletsVista;
+  std::vector<Sprite *> effectsVista;
+  std::vector<Sprite *> explosionsVista;
 
   void createInitialTerrainVista(const std::map<Position, Tile> &map);
   void createInitialUnitVista(const std::map<UnitID, UnitState> &units);
   void createInitialBuildVista(const std::map<BuildID, BuildState> &builds);
-  void createInitialCapturableVista(const std::map<CapturableID, CapturableState> &capturables);
+  void createInitialCapturableVista(const std::map<CapturableID,
+                                                   CapturableState> &capturables);
 
-  void createInitialTerrainObjectVista(const std::map<TerrainObjectID, TerrainObjectState> &terrainObjects);
+  void createInitialTerrainObjectVista(const std::map<TerrainObjectID,
+                                                      TerrainObjectState> &terrainObjects);
 
   //  void add(ObjectMapaVista *objectVista, Position pos);
 //  ObjectMapaVista *getTerrainVista(TerrainType type);
@@ -56,36 +58,37 @@ class View {
   void setQuit();
   bool quit();
 
-  Sprite* getUnitVista(UnitID id);
+  Sprite *getUnitVista(UnitID id);
   void move(UnitID id, Position posTo);
   void removeUnitVista(const UnitID &id);
   void addUnitVista(const UnitID &id, Sprite *unitVista);
 
-  ObjectMapaVista* getBulletVista(BulletID id);
+  ObjectMapaVista *getBulletVista(BulletID id);
   void move(BulletID id, Position posTo);
   void removeBulletVista(BulletID &id);
   void addBulletVista(BulletID &id, ObjectMapaVista *bulletVista);
 
-  ObjectMapaVista* getBuildVista(BuildID id);
+  ObjectMapaVista *getBuildVista(BuildID id);
   void removeBuildVista(BuildID &id);
   void addBuildVista(BuildID &id, ObjectMapaVista *buildVista);
 
-  ObjectMapaVista* getCapturedVista(const CapturableID &id);
-  void addCapturableVista(const CapturableID &id, ObjectMapaVista *capturableVista);
+  ObjectMapaVista *getCapturedVista(const CapturableID &id);
+  void addCapturableVista(const CapturableID &id,
+                          ObjectMapaVista *capturableVista);
   void removeCapturableVista(CapturableID &id);
 
   void addExplosionVista(Sprite *objectVista);
   void addEffectVista(Sprite *objectVista);
 
   /*************************************************/
-  Menu * get_present_menu(){
+  Menu *get_present_menu() {
     return this->menu;
   }
 
-  void load_production_menu(int x, int y){
+  void load_production_menu(int x, int y) {
     menu = new Production_Menu(window, x, y);
   }
-  void free_menu(){
+  void free_menu() {
     delete menu;
     menu = nullptr;
   }
@@ -94,6 +97,5 @@ class View {
   void update();
 
 };
-
 
 #endif //TALLERZ_VISTA_H

@@ -8,7 +8,7 @@ class serverUCaptureCommand : public serverCommand{
   dataUnitCaptureCommand data;
  public:
   serverUCaptureCommand(const dataUnitCaptureCommand & data);
-  virtual void execute(GameController &gc);
+  virtual void execute(serverGameController &gc);
 };
 
 #endif //TALLERZ_SERVERUCAPTURECOMMAND_H

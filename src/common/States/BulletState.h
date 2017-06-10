@@ -6,8 +6,9 @@
 
 struct BulletState {
  public:
-  const WeaponType weapon;
-  const Position position;
+  WeaponType weapon;
+  Position position;
+  BulletState();
   BulletState(const WeaponType &weapon, const Position &pos);
   template<class Archive>
   void serialize(Archive &archive){

@@ -18,6 +18,7 @@ class Tile {
   TerrainData terrainData;
   bool passable;
  public:
+  Tile();
   Tile(Position tileCenterPosition, TerrainData terrainData);
   TerrainData getTerrainData() const;
   ~Tile();
@@ -28,6 +29,10 @@ class Tile {
   Position getCornerPosition() const;
   TerrainType getTerrainType() const;
   bool operator==(const Tile &other) const;
+  template<class Archive>
+  void serialize(Archive &archive) {
+    archive(centerPosition, terrainData, passable);
+  }
 };
 
 #endif //TALLERZ_TILE_H

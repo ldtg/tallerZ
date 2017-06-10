@@ -1,7 +1,6 @@
 #include <common/DataEvents/Unit/dataUnitMoveEvent.h>
 #include <client/model/Events/model/unit/UnitMoveEvent.h>
 #include <cereal/archives/binary.hpp>
-#include <cereal/types/map.hpp>
 #include <common/DataEvents/Unit/dataUnitAttackEvent.h>
 #include <client/model/Events/model/unit/UnitAttackEvent.h>
 #include <common/DataEvents/Unit/dataUnitCreateEvent.h>

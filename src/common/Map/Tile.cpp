@@ -39,3 +39,4 @@ void Tile::makeNotPassable() {
 void Tile::makePassable() {
   passable = true;
 }
+Tile::Tile() {}

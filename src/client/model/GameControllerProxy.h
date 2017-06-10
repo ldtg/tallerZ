@@ -1,12 +1,19 @@
 #ifndef TALLERZ_GAMECONTROLLERPROXY_H
 #define TALLERZ_GAMECONTROLLERPROXY_H
-class GameController;
-#include <server/model/GameController.h>
+#include <client/model/Commands/clientCommand.h>
+#include <common/IDs/UnitID.h>
+#include <common/IDs/BuildID.h>
+#include <common/Map/Position.h>
+#include <common/IDs/TerrainObjectID.h>
+#include <common/IDs/CapturableID.h>
+#include <common/IDs/BuildID.h>
+#include <common/Queue/Queue.h>
+#include <common/IDs/PlayerID.h>
 class GameControllerProxy {
  private:
-  GameController &gc;//test
+  Queue<clientCommand *> &queue;
  public:
-  GameControllerProxy(GameController &gc);
+  GameControllerProxy(Queue<clientCommand *> &queue);
   void move(const UnitID &unit, const Position &position);
   void attack(const UnitID &attacker, const UnitID &attacked);
   void attack(const UnitID &attacker, const BuildID &attacked);

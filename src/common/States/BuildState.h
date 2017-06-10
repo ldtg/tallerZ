@@ -4,7 +4,6 @@
 #include <common/Map/Position.h>
 #include <common/Types/UnitType.h>
 #include "common/IDs/PlayerID.h"
-
 struct BuildState {
  public:
   PlayerID owner;

@@ -8,7 +8,7 @@ class serverBChangeUCommand : public serverCommand{
   dataBuildChangeUnitCommand data;
  public:
   serverBChangeUCommand(const dataBuildChangeUnitCommand & data);
-  virtual void execute(GameController &gc);
+  virtual void execute(serverGameController &gc);
 };
 
 #endif //TALLERZ_SERVERBCHANGEUCOMMAND_H

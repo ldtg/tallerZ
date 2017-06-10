@@ -1,5 +1,6 @@
 #include "Controller.h"
 #include "MouseState.h"
+#include "HandlerFactory.h"
 
 Controller::Controller(EventHandler &eventHandler)
     : eventHandler(eventHandler) {}
