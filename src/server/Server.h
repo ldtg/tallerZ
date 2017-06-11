@@ -9,7 +9,6 @@
 #include <map>
 #include <server/model/Team.h>
 #include <common/Map/Map.h>
-#include <server/model/GameController.h>
 #include <server/model/protectedGameController.h>
 class Server : public Thread{
  private:

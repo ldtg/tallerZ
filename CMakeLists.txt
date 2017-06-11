@@ -78,10 +78,6 @@ set(SOURCE_FILES
         src/server/model/GaiaPlayer.cpp
         src/server/model/GaiaPlayer.h
 
-        z_tests/tests_model/GameController_build_test.cpp
-
-        z_tests/tests_model/GameController_objects_test.cpp
-        z_tests/tests_model/GameController_win_test.cpp
         src/common/IDs/CapturableID.cpp
         src/common/IDs/CapturableID.h
         src/common/States/CapturableState.h
@@ -94,164 +90,12 @@ set(SOURCE_FILES
         z_tests/tests_model/GameControllerCapturables_test.cpp
         src/common/Types/PlayerColor.h
 
-        #        src/client/model/Events/model/unit/UnitAttackEvent.cpp
-        #        src/client/model/Events/model/unit/UnitAttackEvent.h
-        #        src/client/model/Events/model/unit/UnitMoveEvent.cpp
-        #        src/client/model/Events/model/unit/UnitMoveEvent.h
-        #        src/client/model/Events/Event.cpp
-        #        src/client/model/Events/Event.h
-        #        src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp
-        #        src/client/model/Events/model/unit/UnitDamageReceiveEvent.h
-        #        src/client/model/Events/model/unit/UnitDeathEvent.cpp
-        #        src/client/model/Events/model/unit/UnitDeathEvent.h
-        #        src/client/model/Events/Pointer/LeftClickEvent.cpp
-        #        src/client/model/Events/Pointer/LeftClickEvent.h
-        #        src/client/model/Events/EventHandler.cpp
-        #        src/client/model/Events/EventHandler.h
-        #        src/client/model/Events/view/QuitEvent.cpp
-        #        src/client/model/Events/view/QuitEvent.h
-        #        src/client/model/Events/view/CameraMove.cpp
-        #        src/client/model/Events/view/CameraMove.h
-        #        src/client/model/Events/Pointer/RightClickEvent.cpp
-        #        src/client/model/Events/Pointer/RightClickEvent.h
-        #        src/client/model/Model.cpp
-        #        src/client/model/Model.h
-        #        src/client/model/Events/model/bullet/BulletNewEvent.cpp
-        #        src/client/model/Events/model/bullet/BulletNewEvent.h
-        #        src/client/model/Events/model/bullet/BulletHitEvent.cpp
-        #        src/client/model/Events/model/bullet/BulletHitEvent.h
-        #        src/client/model/Events/model/game/PlayerDefeatedEvent.cpp
-        #        src/client/model/Events/model/game/PlayerDefeatedEvent.h
-        #        src/client/model/Events/model/game/EndGameEvent.cpp
-        #        src/client/model/Events/model/game/EndGameEvent.h
-        #        src/client/model/Events/model/terrainObject/TerrainObjectDestroyedEvent.cpp
-        #        src/client/model/Events/model/terrainObject/TerrainObjectDestroyedEvent.h
-        #        src/client/model/Events/model/build/BuildDamageEvent.cpp
-        #        src/client/model/Events/model/build/BuildDamageEvent.h
-        #        src/client/model/Events/model/build/BuildDestroyedEvent.cpp
-        #        src/client/model/Events/model/build/BuildDestroyedEvent.h
-        #        src/client/model/Events/model/unit/UnitCreateEvent.cpp
-        #        src/client/model/Events/model/unit/UnitCreateEvent.h
-        #        src/client/model/Events/model/capturable/CaptureEvent.cpp
-        #        src/client/model/Events/model/capturable/CaptureEvent.h
-        #        src/client/model/Events/model/unit/UnitMoveStepEvent.cpp
-        #        src/client/model/Events/model/unit/UnitMoveStepEvent.h
-        #        src/client/model/Events/model/bullet/BulletMoveEvent.cpp
-        #        src/client/model/Events/model/bullet/BulletMoveEvent.h
-        #        src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp
-        #        src/client/model/Events/model/bullet/BulletMoveStepEvent.h
-        #        src/client/model/Events/model/unit/UnitStillEvent.cpp
-        #        src/client/model/Events/model/unit/UnitStillEvent.h
-        #        src/client/model/Events/view/CameraMoveStepEvent.cpp
-        #        src/client/model/Events/view/CameraMoveStepEvent.h
-        #        src/client/view/Texture.cpp
-        #        src/client/view/Texture.h
-        #        src/client/view/Window.cpp
-        #        src/client/view/Window.h
-        #        src/client/view/Panel.cpp
-        #        src/client/view/Panel.h
-        #        src/client/view/Image.cpp
-        #        src/client/view/Image.h
-        #        src/client/view/ObjectMapaVista.cpp
-        #        src/client/view/ObjectMapaVista.h
-        #        src/client/view/View.cpp
-        #        src/client/view/View.h
-        #        src/client/view/Sprite.cpp
-        #        src/client/view/Sprite.h
-        #        src/client/view/VistasFactory.cpp
-        #        src/client/view/VistasFactory.h
-        #        src/client/view/Camera.cpp
-        #        src/client/view/Camera.h
-        #        src/client/view/EffectType.h
-        #        src/client/controller/Controller.cpp
-        #        src/client/controller/Controller.h
-        #        src/client/controller/Handler.h
-        #        src/client/controller/HandlerFactory.cpp
-        #        src/client/controller/HandlerFactory.h
-        #        src/client/controller/MouseButtonLeft.cpp
-        #        src/client/controller/MouseButtonLeft.h
-        #        src/client/controller/NullHandler.cpp
-        #        src/client/controller/NullHandler.h
-        #        src/client/controller/Quit.cpp
-        #        src/client/controller/Quit.h
-        #        src/client/controller/MouseButtonRight.cpp
-        #        src/client/controller/MouseButtonRight.h
-        #        src/client/controller/MouseMotion.cpp
-        #        src/client/controller/MouseMotion.h
-        #        src/client/controller/MouseState.cpp
-        #        src/client/controller/MouseState.h
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.h
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.h
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp
-        #        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h
-        #        src/client/front_end/SDL_Interface/Side_Board.cpp
-        #        src/client/front_end/SDL_Interface/Side_Board.h
-        #        src/client/front_end/SDL_Interface/Weapon_Img.cpp
-        #        src/client/front_end/SDL_Interface/Weapon_Img.h
-        #        src/client/front_end/SDL_Interface/Robot_Face.cpp
-        #        src/client/front_end/SDL_Interface/Robot_Face.h
-        #        src/client/front_end/SDL_Interface/Main_Window.cpp
-        #        src/client/front_end/SDL_Interface/Main_Window.h
-        #        src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp
-        #        src/client/front_end/SDL_Interface/Menus/Main/main_menu.h
-        #        src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp
-        #        src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.h
-        #        src/client/front_end/SDL_Interface/Menus/Menu.cpp
-        #        src/client/front_end/SDL_Interface/Menus/Menu.h
-        #        src/client/front_end/SDL_Interface/Labels/Label.cpp
-        #        src/client/front_end/SDL_Interface/Labels/Label.h
-        #        src/client/front_end/SDL_Interface/Cursor.h
-        #        src/client/front_end/SDL_Interface/Cursor.cpp
-        #        src/client/front_end/SDL_Interface/Buttons/Button.cpp
-        #        src/client/front_end/SDL_Interface/Buttons/Button.h
-        #        src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp
-        #        src/client/front_end/SDL_Interface/Buttons/Menu_Button.h
-        #        src/client/model/Events/EventFactory.h
-        #        src/client/model/Events/EventFactory.cpp
-        #        src/client/model/GameControllerProxy.cpp
-        #        src/client/model/GameControllerProxy.h
-        #        src/client/model/Commands/clientCommand.cpp
-        #        src/client/model/Commands/clientCommand.h
-        #        src/client/model/Commands/Unit/clientUnitMoveCommand.cpp
-        #        src/client/model/Commands/Unit/clientUnitMoveCommand.h
-        #        src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp
-        #        src/client/model/Commands/Unit/clientUnitAttackUnitCommand.h
-        #        src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp
-        #        src/client/model/Commands/Unit/clientUnitAttackBuildCommand.h
-        #        src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp
-        #        src/client/model/Commands/Unit/clientUnitAttackTOCommand.h
-        #        src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp
-        #        src/client/model/Commands/Unit/clientUnitCaptureCommand.h
-        #        src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp
-        #        src/client/model/Commands/Build/clientBuildChangeUnitCommand.h
-        #        src/client/clientEventReceiver.cpp
-        #        src/client/clientEventReceiver.h
-        #        src/client/clientCommandSender.cpp
-        #        src/client/clientCommandSender.h
-        #        src/client/clientMain.cpp
-        #        src/client/clientRunner.cpp
-        #        src/client/clientRunner.h
-
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.h
-        src/Exceptions/Front_end_exceptions/Generator_Exception.h
-        src/Exceptions/Front_end_exceptions/Front_end_exception.cpp
-        src/Exceptions/Map_Generator_Exceptions/Generator_Exception.h
-        src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp
         src/Exceptions/model_exceptions/UnableToFindAPathException.cpp
         src/Exceptions/model_exceptions/UnableToFindAPathException.h
         src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
         src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h
-        src/Exceptions/Map_Generator_Exceptions/Generator_Exception.h
-        src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp
         src/Exceptions/Storage_Exceptions/Storage_Exception.h
         src/Exceptions/Storage_Exceptions/Storage_Exception.cpp
 
@@ -270,19 +114,9 @@ set(SOURCE_FILES
         #        z_tests/tests_storage/load_map_tests.cpp
         #        z_tests/test_server/serialize_Events_test.cpp
 
-        src/SDL_START.cpp
-        src/SDL_START.h
-
-        #src/Z_RUNNER.cpp
-        #src/Z_RUNNER.h
-
-        src/map_generation/Generator.cpp
-        src/map_generation/Generator.h
 
         src/storage/Game_Loader.h
         src/storage/Game_Loader.cpp
-        src/storage/Store_map.cpp
-        src/storage/Store_map.h
 
         z_sounds/Sound_event.h
         z_sounds/Sound_event.cpp

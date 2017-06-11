@@ -219,60 +219,6 @@ gtest/fast:
 	$(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
-src/Exceptions/Front_end_exceptions/Front_end_exception.o: src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o
-
-.PHONY : src/Exceptions/Front_end_exceptions/Front_end_exception.o
-
-# target to build an object file
-src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o
-.PHONY : src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o
-
-src/Exceptions/Front_end_exceptions/Front_end_exception.i: src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.i
-
-.PHONY : src/Exceptions/Front_end_exceptions/Front_end_exception.i
-
-# target to preprocess a source file
-src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.i
-.PHONY : src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.i
-
-src/Exceptions/Front_end_exceptions/Front_end_exception.s: src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.s
-
-.PHONY : src/Exceptions/Front_end_exceptions/Front_end_exception.s
-
-# target to generate assembly for a file
-src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.s
-.PHONY : src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.s
-
-src/Exceptions/Map_Generator_Exceptions/Generator_Exception.o: src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.o
-
-.PHONY : src/Exceptions/Map_Generator_Exceptions/Generator_Exception.o
-
-# target to build an object file
-src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.o
-.PHONY : src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.o
-
-src/Exceptions/Map_Generator_Exceptions/Generator_Exception.i: src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.i
-
-.PHONY : src/Exceptions/Map_Generator_Exceptions/Generator_Exception.i
-
-# target to preprocess a source file
-src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.i
-.PHONY : src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.i
-
-src/Exceptions/Map_Generator_Exceptions/Generator_Exception.s: src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.s
-
-.PHONY : src/Exceptions/Map_Generator_Exceptions/Generator_Exception.s
-
-# target to generate assembly for a file
-src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.s
-.PHONY : src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.s
-
 src/Exceptions/Sdl_Exceptions/Sdl_Exception.o: src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp.o
 
 .PHONY : src/Exceptions/Sdl_Exceptions/Sdl_Exception.o
@@ -434,33 +380,6 @@ src/Exceptions/model_exceptions/UnitNotFoundException.s: src/Exceptions/model_ex
 src/Exceptions/model_exceptions/UnitNotFoundException.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/model_exceptions/UnitNotFoundException.cpp.s
 .PHONY : src/Exceptions/model_exceptions/UnitNotFoundException.cpp.s
-
-src/SDL_START.o: src/SDL_START.cpp.o
-
-.PHONY : src/SDL_START.o
-
-# target to build an object file
-src/SDL_START.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/SDL_START.cpp.o
-.PHONY : src/SDL_START.cpp.o
-
-src/SDL_START.i: src/SDL_START.cpp.i
-
-.PHONY : src/SDL_START.i
-
-# target to preprocess a source file
-src/SDL_START.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/SDL_START.cpp.i
-.PHONY : src/SDL_START.cpp.i
-
-src/SDL_START.s: src/SDL_START.cpp.s
-
-.PHONY : src/SDL_START.s
-
-# target to generate assembly for a file
-src/SDL_START.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/SDL_START.cpp.s
-.PHONY : src/SDL_START.cpp.s
 
 src/common/DataClientServerMessages/dataClientConnectedMessage.o: src/common/DataClientServerMessages/dataClientConnectedMessage.cpp.o
 
@@ -1541,33 +1460,6 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
-
-src/map_generation/Generator.o: src/map_generation/Generator.cpp.o
-
-.PHONY : src/map_generation/Generator.o
-
-# target to build an object file
-src/map_generation/Generator.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/map_generation/Generator.cpp.o
-.PHONY : src/map_generation/Generator.cpp.o
-
-src/map_generation/Generator.i: src/map_generation/Generator.cpp.i
-
-.PHONY : src/map_generation/Generator.i
-
-# target to preprocess a source file
-src/map_generation/Generator.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/map_generation/Generator.cpp.i
-.PHONY : src/map_generation/Generator.cpp.i
-
-src/map_generation/Generator.s: src/map_generation/Generator.cpp.s
-
-.PHONY : src/map_generation/Generator.s
-
-# target to generate assembly for a file
-src/map_generation/Generator.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/map_generation/Generator.cpp.s
-.PHONY : src/map_generation/Generator.cpp.s
 
 src/server/Server.o: src/server/Server.cpp.o
 
@@ -2919,33 +2811,6 @@ src/storage/Game_Loader.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/storage/Game_Loader.cpp.s
 .PHONY : src/storage/Game_Loader.cpp.s
 
-src/storage/Store_map.o: src/storage/Store_map.cpp.o
-
-.PHONY : src/storage/Store_map.o
-
-# target to build an object file
-src/storage/Store_map.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/storage/Store_map.cpp.o
-.PHONY : src/storage/Store_map.cpp.o
-
-src/storage/Store_map.i: src/storage/Store_map.cpp.i
-
-.PHONY : src/storage/Store_map.i
-
-# target to preprocess a source file
-src/storage/Store_map.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/storage/Store_map.cpp.i
-.PHONY : src/storage/Store_map.cpp.i
-
-src/storage/Store_map.s: src/storage/Store_map.cpp.s
-
-.PHONY : src/storage/Store_map.s
-
-# target to generate assembly for a file
-src/storage/Store_map.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/src/storage/Store_map.cpp.s
-.PHONY : src/storage/Store_map.cpp.s
-
 z_sounds/Sound_event.o: z_sounds/Sound_event.cpp.o
 
 .PHONY : z_sounds/Sound_event.o
@@ -3000,87 +2865,6 @@ z_tests/tests_model/GameControllerCapturables_test.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.s
 .PHONY : z_tests/tests_model/GameControllerCapturables_test.cpp.s
 
-z_tests/tests_model/GameController_build_test.o: z_tests/tests_model/GameController_build_test.cpp.o
-
-.PHONY : z_tests/tests_model/GameController_build_test.o
-
-# target to build an object file
-z_tests/tests_model/GameController_build_test.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_build_test.cpp.o
-.PHONY : z_tests/tests_model/GameController_build_test.cpp.o
-
-z_tests/tests_model/GameController_build_test.i: z_tests/tests_model/GameController_build_test.cpp.i
-
-.PHONY : z_tests/tests_model/GameController_build_test.i
-
-# target to preprocess a source file
-z_tests/tests_model/GameController_build_test.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_build_test.cpp.i
-.PHONY : z_tests/tests_model/GameController_build_test.cpp.i
-
-z_tests/tests_model/GameController_build_test.s: z_tests/tests_model/GameController_build_test.cpp.s
-
-.PHONY : z_tests/tests_model/GameController_build_test.s
-
-# target to generate assembly for a file
-z_tests/tests_model/GameController_build_test.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_build_test.cpp.s
-.PHONY : z_tests/tests_model/GameController_build_test.cpp.s
-
-z_tests/tests_model/GameController_objects_test.o: z_tests/tests_model/GameController_objects_test.cpp.o
-
-.PHONY : z_tests/tests_model/GameController_objects_test.o
-
-# target to build an object file
-z_tests/tests_model/GameController_objects_test.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_objects_test.cpp.o
-.PHONY : z_tests/tests_model/GameController_objects_test.cpp.o
-
-z_tests/tests_model/GameController_objects_test.i: z_tests/tests_model/GameController_objects_test.cpp.i
-
-.PHONY : z_tests/tests_model/GameController_objects_test.i
-
-# target to preprocess a source file
-z_tests/tests_model/GameController_objects_test.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_objects_test.cpp.i
-.PHONY : z_tests/tests_model/GameController_objects_test.cpp.i
-
-z_tests/tests_model/GameController_objects_test.s: z_tests/tests_model/GameController_objects_test.cpp.s
-
-.PHONY : z_tests/tests_model/GameController_objects_test.s
-
-# target to generate assembly for a file
-z_tests/tests_model/GameController_objects_test.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_objects_test.cpp.s
-.PHONY : z_tests/tests_model/GameController_objects_test.cpp.s
-
-z_tests/tests_model/GameController_win_test.o: z_tests/tests_model/GameController_win_test.cpp.o
-
-.PHONY : z_tests/tests_model/GameController_win_test.o
-
-# target to build an object file
-z_tests/tests_model/GameController_win_test.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_win_test.cpp.o
-.PHONY : z_tests/tests_model/GameController_win_test.cpp.o
-
-z_tests/tests_model/GameController_win_test.i: z_tests/tests_model/GameController_win_test.cpp.i
-
-.PHONY : z_tests/tests_model/GameController_win_test.i
-
-# target to preprocess a source file
-z_tests/tests_model/GameController_win_test.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_win_test.cpp.i
-.PHONY : z_tests/tests_model/GameController_win_test.cpp.i
-
-z_tests/tests_model/GameController_win_test.s: z_tests/tests_model/GameController_win_test.cpp.s
-
-.PHONY : z_tests/tests_model/GameController_win_test.s
-
-# target to generate assembly for a file
-z_tests/tests_model/GameController_win_test.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Servidor.dir/build.make CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_win_test.cpp.s
-.PHONY : z_tests/tests_model/GameController_win_test.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -3098,12 +2882,6 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
-	@echo "... src/Exceptions/Front_end_exceptions/Front_end_exception.o"
-	@echo "... src/Exceptions/Front_end_exceptions/Front_end_exception.i"
-	@echo "... src/Exceptions/Front_end_exceptions/Front_end_exception.s"
-	@echo "... src/Exceptions/Map_Generator_Exceptions/Generator_Exception.o"
-	@echo "... src/Exceptions/Map_Generator_Exceptions/Generator_Exception.i"
-	@echo "... src/Exceptions/Map_Generator_Exceptions/Generator_Exception.s"
 	@echo "... src/Exceptions/Sdl_Exceptions/Sdl_Exception.o"
 	@echo "... src/Exceptions/Sdl_Exceptions/Sdl_Exception.i"
 	@echo "... src/Exceptions/Sdl_Exceptions/Sdl_Exception.s"
@@ -3122,9 +2900,6 @@ help:
 	@echo "... src/Exceptions/model_exceptions/UnitNotFoundException.o"
 	@echo "... src/Exceptions/model_exceptions/UnitNotFoundException.i"
 	@echo "... src/Exceptions/model_exceptions/UnitNotFoundException.s"
-	@echo "... src/SDL_START.o"
-	@echo "... src/SDL_START.i"
-	@echo "... src/SDL_START.s"
 	@echo "... src/common/DataClientServerMessages/dataClientConnectedMessage.o"
 	@echo "... src/common/DataClientServerMessages/dataClientConnectedMessage.i"
 	@echo "... src/common/DataClientServerMessages/dataClientConnectedMessage.s"
@@ -3245,9 +3020,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/map_generation/Generator.o"
-	@echo "... src/map_generation/Generator.i"
-	@echo "... src/map_generation/Generator.s"
 	@echo "... src/server/Server.o"
 	@echo "... src/server/Server.i"
 	@echo "... src/server/Server.s"
@@ -3398,24 +3170,12 @@ help:
 	@echo "... src/storage/Game_Loader.o"
 	@echo "... src/storage/Game_Loader.i"
 	@echo "... src/storage/Game_Loader.s"
-	@echo "... src/storage/Store_map.o"
-	@echo "... src/storage/Store_map.i"
-	@echo "... src/storage/Store_map.s"
 	@echo "... z_sounds/Sound_event.o"
 	@echo "... z_sounds/Sound_event.i"
 	@echo "... z_sounds/Sound_event.s"
 	@echo "... z_tests/tests_model/GameControllerCapturables_test.o"
 	@echo "... z_tests/tests_model/GameControllerCapturables_test.i"
 	@echo "... z_tests/tests_model/GameControllerCapturables_test.s"
-	@echo "... z_tests/tests_model/GameController_build_test.o"
-	@echo "... z_tests/tests_model/GameController_build_test.i"
-	@echo "... z_tests/tests_model/GameController_build_test.s"
-	@echo "... z_tests/tests_model/GameController_objects_test.o"
-	@echo "... z_tests/tests_model/GameController_objects_test.i"
-	@echo "... z_tests/tests_model/GameController_objects_test.s"
-	@echo "... z_tests/tests_model/GameController_win_test.o"
-	@echo "... z_tests/tests_model/GameController_win_test.i"
-	@echo "... z_tests/tests_model/GameController_win_test.s"
 .PHONY : help
 
 

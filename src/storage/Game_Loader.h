@@ -20,10 +20,23 @@
 #include <server/model/CapturableVehicle.h>
 #include <server/model/Territory.h>
 #include <server/model/TerrainObject.h>
-#include <map_generation/Generator.h>
 #include "../../json/src/json.hpp"
 #include <server/model/Data.h>
 using json = nlohmann::json;
+
+struct Position_Data{
+  bool flag;
+  bool fort;
+  bool robot_factory;
+  bool rock;
+  bool bridge;
+  TerrainType terrain_type;
+  int territory;
+  bool vehicle;
+  bool vehicle_factory;
+  int x;
+  int y;
+};
 
 struct Map_Config {
   int territories_amount;

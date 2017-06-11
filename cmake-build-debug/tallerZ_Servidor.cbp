@@ -451,18 +451,6 @@
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/googletest-src/googletest/src/gtest_main.cc">
 			<Option target="gtest_main"/>
 		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/Front_end_exceptions/Generator_Exception.h">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/Map_Generator_Exceptions/Generator_Exception.h">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp">
 			<Option target="tallerZ_Servidor"/>
 		</Unit>
@@ -497,12 +485,6 @@
 			<Option target="tallerZ_Servidor"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/model_exceptions/UnitNotFoundException.h">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/SDL_START.cpp">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/SDL_START.h">
 			<Option target="tallerZ_Servidor"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp">
@@ -779,12 +761,6 @@
 			<Option target="tallerZ_Servidor"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/main.cpp">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/map_generation/Generator.cpp">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/map_generation/Generator.h">
 			<Option target="tallerZ_Servidor"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/server/Server.cpp">
@@ -1102,12 +1078,6 @@
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/storage/Game_Loader.h">
 			<Option target="tallerZ_Servidor"/>
 		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/storage/Store_map.cpp">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/src/storage/Store_map.h">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/z_sounds/Sound_event.cpp">
 			<Option target="tallerZ_Servidor"/>
 		</Unit>
@@ -1115,15 +1085,6 @@
 			<Option target="tallerZ_Servidor"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/z_tests/tests_model/GameControllerCapturables_test.cpp">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/z_tests/tests_model/GameController_build_test.cpp">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/z_tests/tests_model/GameController_objects_test.cpp">
-			<Option target="tallerZ_Servidor"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/z_tests/tests_model/GameController_win_test.cpp">
 			<Option target="tallerZ_Servidor"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Servidor/CMakeLists.txt">

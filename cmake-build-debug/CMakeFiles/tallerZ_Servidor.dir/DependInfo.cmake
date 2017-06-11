@@ -4,15 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/Map_Generator_Exceptions/Generator_Exception.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/Exceptions/model_exceptions/UnitNotFoundException.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/Exceptions/model_exceptions/UnitNotFoundException.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Servidor/src/SDL_START.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/SDL_START.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/common/DataClientServerMessages/dataServerClientAccepted.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/common/DataClientServerMessages/dataServerClientAccepted.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp.o"
@@ -53,7 +50,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/darius/CLionProjects/tallerZ_Servidor/src/common/States/UnitState.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/common/States/UnitState.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/common/Thread/Thread.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/common/Thread/Thread.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/main.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/main.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Servidor/src/map_generation/Generator.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/map_generation/Generator.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/server/Server.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/server/Server.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/server/model/AStar.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/server/model/AStar.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/server/model/Build.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/server/model/Build.cpp.o"
@@ -104,12 +100,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/darius/CLionProjects/tallerZ_Servidor/src/server/serverMain.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/server/serverMain.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/server/serverPlayersManager.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/server/serverPlayersManager.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/src/storage/Game_Loader.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/storage/Game_Loader.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Servidor/src/storage/Store_map.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/src/storage/Store_map.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/z_sounds/Sound_event.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/z_sounds/Sound_event.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Servidor/z_tests/tests_model/GameControllerCapturables_test.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Servidor/z_tests/tests_model/GameController_build_test.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_build_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Servidor/z_tests/tests_model/GameController_objects_test.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_objects_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Servidor/z_tests/tests_model/GameController_win_test.cpp" "/home/darius/CLionProjects/tallerZ_Servidor/cmake-build-debug/CMakeFiles/tallerZ_Servidor.dir/z_tests/tests_model/GameController_win_test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
