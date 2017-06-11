@@ -11,6 +11,6 @@ void UnitCreateEvent::process() {
                                                         action, rotation_s,
                                                         state.position);
 //  unitCreateVista->setPos(state.position);
-
+  model->getMap().addUnit(id, state);
   view->addUnitVista(id, unitCreateVista);
 }

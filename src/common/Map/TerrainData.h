@@ -11,6 +11,10 @@ struct TerrainData {
   bool operator!=(const TerrainData &other) const {
     return !this->operator==(other);
   }
+  template<class Archive>
+  void serialize(Archive &archive) {
+    archive(type, terrainFactor);
+  }
 };
 
 #endif //TALLERZ_TERRAINDATA_H

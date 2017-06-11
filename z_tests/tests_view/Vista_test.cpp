@@ -167,9 +167,7 @@ TEST(VistaTest, Window) {
 }
 
 TEST(VistaTest_Usando_Map_Loader, Window) {
-  std::cout << "AAA"<< std::endl;
-
-  Game_Loader map_loader("mapa.json");
+/*  Game_Loader map_loader("mapa.json");
 
   Map map = map_loader.run();
   std::queue<serverEvent *> evqueue;
@@ -210,14 +208,14 @@ TEST(VistaTest_Usando_Map_Loader, Window) {
       }
     }
     view.update();
-  }
-
-  std::cout << "BBB"<< std::endl;
+  }*/
 }
 
 TEST(VistaTest_Usando_Map_Loader, proxy_cmds_events) {
-  std::cout << "CCC"<< std::endl;
-  Game_Loader map_loader("mapa.json");
+
+ /* Game_Loader map_loader("mapa.json");
+
+>>>>>>> clienteServidor
   Map map = map_loader.run();
   std::queue<serverEvent *> srvEvents;
   GameController gameController(map, map_loader.get_controller_units(),
@@ -265,6 +263,7 @@ TEST(VistaTest_Usando_Map_Loader, proxy_cmds_events) {
       srvEvents.pop();
     }
     view.update();
+<<<<<<< HEAD
 
 /*
     //If frame finished early
@@ -280,5 +279,4 @@ TEST(VistaTest_Usando_Map_Loader, proxy_cmds_events) {
     }
 */
 
-  }
 }

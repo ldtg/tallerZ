@@ -89,7 +89,7 @@ Build::Build(const BuildData &buildData,
       fabricableUnits(data.getFabUnits(buildData.type, techLevel)),
       ticksBeforeCreate(this->getSpeedRate()),
       health(buildData.health),
-      timeToBuild(false),
+      timeToBuild(true),
       actualUnitFab(UnitType::R_GRUNT) {
 
 }

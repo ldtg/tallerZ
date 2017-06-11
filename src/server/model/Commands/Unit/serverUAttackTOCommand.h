@@ -8,7 +8,7 @@ class serverUAttackTOCommand : public serverCommand{
   dataUnitAttackTOCommand data;
  public:
   serverUAttackTOCommand(const dataUnitAttackTOCommand & data);
-  virtual void execute(GameController &gc);
+  virtual void execute(serverGameController &gc);
 };
 
 #endif //TALLERZ_SERVERUATTACKTOCOMMAND_H

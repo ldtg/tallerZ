@@ -1,20 +1,17 @@
 #ifndef TALLERZ_MAP_H
 #define TALLERZ_MAP_H
 
-#include "Position.h"
-#include "Tile.h"
-#include "common/States/BulletState.h"
-#include "common/States/BuildState.h"
-#include "common/IDs/BuildID.h"
-#include "common/IDs/TerrainObjectID.h"
-#include "common/States/TerrainObjectState.h"
-#include "common/States/CapturableState.h"
-#include "common/IDs/CapturableID.h"
-#include <vector>
-#include <map>
-#include <string>
-#include <common/IDs/BulletID.h>
 
+#include <cereal/types/map.hpp>
+#include <common/IDs/BulletID.h>
+#include <common/States/BulletState.h>
+#include <common/IDs/BuildID.h>
+#include <common/States/BuildState.h>
+#include <common/IDs/TerrainObjectID.h>
+#include <common/States/TerrainObjectState.h>
+#include <common/IDs/CapturableID.h>
+#include <common/States/CapturableState.h>
+#include "Tile.h"
 class Map {
  private:
   //guarda los nros de tiles ej: tile 0,0 va de 0<x<100.
@@ -26,8 +23,9 @@ class Map {
   std::map<CapturableID, CapturableState> capturables;
   int width;
   int height;
-  Position getTilePositionFromRealPosition(Position position) const;
 
+  Position getTilePositionFromRealPosition(Position position) const;
+  bool diagPassable(const Position &center, const Position &diag) const;
  public:
   Map();
   //Para mapas de prueba sin edificios
@@ -102,11 +100,14 @@ class Map {
   const std::map<BuildID, BuildState> &getBuilds() const;
   const std::map<CapturableID, CapturableState> &getCapturables() const;
 
-  const std::map<TerrainObjectID, TerrainObjectState> &getTerrainObjects() const;
+  const std::map<TerrainObjectID,
+                 TerrainObjectState> &getTerrainObjects() const;
 
   UnitID getUnitIDFromPosition(const Position &pos, unsigned short range) const;
-  BuildID getBuildIDFromPosition(const Position &pos, unsigned short range) const;
-  CapturableID getCapturableIDFromPosition(const Position &pos, unsigned short range) const;
+  BuildID getBuildIDFromPosition(const Position &pos,
+                                 unsigned short range) const;
+  CapturableID getCapturableIDFromPosition(const Position &pos,
+                                           unsigned short range) const;
 
   UnitState getUnitState(const UnitID &unitID) const;
   Position getNeighborFreePos(const Position &tileCenterPos);
@@ -114,8 +115,17 @@ class Map {
   void setUnits(const std::map<UnitID, UnitState> &units);
   int getWidht() const;
   int getHeight() const;
-
-  bool diagPassable(const Position &center,const Position &diag) const;
+  template<class Archive>
+  void serialize(Archive &archive) {
+    archive(map,
+            units,
+            bullets,
+            builds,
+            terrainObject,
+            capturables,
+            width,
+            height);
+  }
 };
 
 #endif //TALLERZ_MAP_H

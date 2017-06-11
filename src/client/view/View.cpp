@@ -1,5 +1,4 @@
 #include "View.h"
-#include <iostream>
 #include <random>
 #include <client/model/Events/model/unit/UnitMoveStepEvent.h>
 #include <client/model/Events/model/bullet/BulletMoveStepEvent.h>

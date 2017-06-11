@@ -3,6 +3,6 @@ serverUAttackTOCommand::serverUAttackTOCommand(const dataUnitAttackTOCommand &da
     : data(data) {
 
 }
-void serverUAttackTOCommand::execute(GameController &gc) {
+void serverUAttackTOCommand::execute(serverGameController &gc) {
   gc.attack(data.attacker, data.attacked);
 }
