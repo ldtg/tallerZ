@@ -12,7 +12,7 @@
  * @param x : coordenada X del menu
  * @param y : coordenada Y del menu
  */
-Production_Menu::Production_Menu(const BuildID &buildID,
+Production_Menu::Production_Menu(const BuildID buildID,
                                  const BuildState &buildState,
                                  Window &window, Model &model,
                                  int x, int y)

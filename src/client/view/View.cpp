@@ -15,9 +15,12 @@ View::View(const Map &map, EventHandler &eventHandler, Camera &camera)
   createInitialBuildVista(map.getBuilds());
   createInitialUnitVista(map.getUnits());
   createInitialCapturableVista(map.getCapturables());
+  this->side_board = new Side_Board(&window);
 }
 
-View::~View() {}
+View::~View() {
+  delete this->side_board;
+}
 
 void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
   for (auto const &posMap : map) {
@@ -170,6 +173,7 @@ void View::draw() {
     //panel.add(menu);
     menu->add_to_panel(panel);
   }
+  side_board->add_to_panel(panel);
   panel.draw(camera);
 }
 

@@ -8,6 +8,7 @@ class Model;
 #include "Panel.h"
 #include <string>
 #include <client/front_end/SDL_Interface/Menus/Production/Production_Menu.h>
+#include <client/front_end/SDL_Interface/Side_Board.h>
 #include "client/model/Events/EventHandler.h"
 #include "Sprite.h"
 #include "VistasFactory.h"
@@ -19,6 +20,7 @@ class View {
   Camera &camera;
   Panel panel;
   Menu * menu = nullptr;
+  Side_Board * side_board = nullptr;
   EventHandler &eventHandler;
   bool _quit;
 
