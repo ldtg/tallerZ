@@ -1,7 +1,4 @@
-#include <Map.h>
-#include <Robot.h>
-#include <AStar.h>
-#include "gtest/gtest.h"
+
 
 /*class AStar_test : public ::testing::Test {
  public:

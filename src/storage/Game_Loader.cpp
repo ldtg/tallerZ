@@ -2,7 +2,7 @@
 // Created by darius on 01/06/17.
 //
 
-#include <model/UnitFactory.h>
+#include <server/model/UnitFactory.h>
 #include "Game_Loader.h"
 void Game_Loader::open_file() {
   try{
@@ -92,6 +92,7 @@ void Game_Loader::assign_robot_factory(const Position_Data &position_data, Playe
             player,
             team,
             configuration.factories_level);
+
   buildmap.emplace(build->getId(), build->getBuildState());
   territory_buildings[position_data.territory].push_back(build);
   builds.emplace(build->getId(), build);
@@ -160,20 +161,23 @@ void Game_Loader::build_map() {
     emplace_terrain(pos_data);
     if (pos_data.fort){
       Team team = get_team(fort_player->second);
-      assign_fort(pos_data, *fort_player->second, team);//players[0] HARCODEADO
+      assign_fort(pos_data, *fort_player->second, team);
       fort_player++;
     }
     if (pos_data.bridge || pos_data.rock){
       assign_terrain_object(pos_data);
-    }
-    if (pos_data.vehicle || pos_data.flag){
-      assign_capturable(pos_data);
     }
     if (pos_data.robot_factory){
       assign_robot_factory(pos_data, gaiaPlayer, gaiaTeam);
     }
     if (pos_data.vehicle_factory){
       assign_vehicle_factory(pos_data, gaiaPlayer, gaiaTeam);
+    }
+  }
+  for (int i = 0; i < tile_amount; i++){
+    pos_data = read_data(i);
+    if (pos_data.vehicle || pos_data.flag){
+      assign_capturable(pos_data);
     }
   }
 }

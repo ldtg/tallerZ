@@ -1,7 +1,4 @@
-#include "gtest/gtest.h"
-#include <map>
-#include <Tile.h>
-#include <Map.h>
+
 /*TEST(MapTest, getTile) {
   Tile tile_1(Position(50, 50), TerrainType::LAND, 1);
   Tile tile_2(Position(0, 150), TerrainType::LAND, 1);

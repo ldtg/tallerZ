@@ -6,28 +6,26 @@
 #define TALLERZ_MAP_LOADER_H
 
 #include <fstream>
-#include <TerrainType.h>
 #include <Exceptions/Storage_Exceptions/Storage_Exception.h>
-#include <model/Position.h>
-#include <model/Tile.h>
+#include <common/Map/Position.h>
+#include <common/Map/Tile.h>
+#include <common/States/BuildState.h>
+#include <common/IDs/BuildID.h>
+#include <server/model/Build.h>
+#include <common/States/TerrainObjectState.h>
+#include <common/IDs/TerrainObjectID.h>
+#include <server/model/GaiaPlayer.h>
+#include <common/Map/Map.h>
+#include <server/model/Vehicle.h>
+#include <server/model/CapturableVehicle.h>
+#include <server/model/Territory.h>
+#include <server/model/TerrainObject.h>
 #include <map_generation/Generator.h>
-#include <Data.h>
-#include <model/BuildState.h>
-#include <model/BuildID.h>
-#include <model/Build.h>
-#include <model/TerrainObjectState.h>
-#include <model/TerrainObjectID.h>
-#include <model/GaiaPlayer.h>
-#include <model/Map.h>
-#include <model/Vehicle.h>
-#include <model/CapturableVehicle.h>
-#include <model/Territory.h>
-#include <model/TerrainObject.h>
 #include "../../json/src/json.hpp"
-
+#include <server/model/Data.h>
 using json = nlohmann::json;
 
-struct Map_Config{
+struct Map_Config {
   int territories_amount;
   int players;
   int map_width;
@@ -57,7 +55,7 @@ class Game_Loader {
   std::map<BuildID, Build *> builds;
   std::map<UnitID, UnitState> units;
   std::map<CapturableID, Capturable *> controller_capturables;
-  std::map<int, std::vector<Build*>> territory_buildings;
+  std::map<int, std::vector<Build *>> territory_buildings;
   std::map<TerrainObjectID, TerrainObject> controller_terrainObjects;
   std::map<UnitID, Unit *> controller_units;
   std::map<PlayerID, Player *> players;
@@ -83,12 +81,12 @@ class Game_Loader {
   std::map<CapturableID, Capturable *> get_controller_capturables();
   std::map<TerrainObjectID, TerrainObjectState> get_terrainObject();
   std::map<UnitID, Unit *> get_controller_units();
-  std::map<int, std::vector<Build*>> get_territory_buildings();
+  std::map<int, std::vector<Build *>> get_territory_buildings();
   std::map<TerrainObjectID, TerrainObject> get_controller_terrainObjects();;
   std::map<PlayerID, Player *> get_players();
   std::map<TeamID, Team> get_teams();
 
-  Map run(){
+  Map run() {
     this->load_file();
     this->load_configuration();
     this->set_players();
@@ -127,25 +125,31 @@ class Game_Loader {
    */
   void build_map();//paso 4
 
-  void emplace_terrain(const Position_Data& pos_data);
+  void emplace_terrain(const Position_Data &pos_data);
 
-  void assign_fort(const Position_Data& position_data, Player& player, Team& team);
+  void assign_fort(const Position_Data &position_data,
+                   Player &player,
+                   Team &team);
 
-  void assign_robot_factory(const Position_Data& position_data, Player& player, Team& team);
+  void assign_robot_factory(const Position_Data &position_data,
+                            Player &player,
+                            Team &team);
 
-  void assign_vehicle_factory(const Position_Data& position_data, Player& player, Team& team);
+  void assign_vehicle_factory(const Position_Data &position_data,
+                              Player &player,
+                              Team &team);
 
-  void assign_terrain_object(const Position_Data& position_data);
+  void assign_terrain_object(const Position_Data &position_data);
 
-  void assign_capturable(const Position_Data& position_data);
+  void assign_capturable(const Position_Data &position_data);
 
-  void assign_unit(const Position_Data& position_data);
+  void assign_unit(const Position_Data &position_data);
 
   Position_Data read_data(int position);
 
   Position centered_position(int x, int y);
 
-  Team get_team(Player * player);
+  Team get_team(Player *player);
 
   void open_file();
 

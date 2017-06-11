@@ -1,6 +1,6 @@
 #include <SDL_START.h>
-#include <view/Window.h>
-#include <view/Panel.h>
+#include <client/view/Window.h>
+#include <client/view/Panel.h>
 #include "gtest/gtest.h"
 
 TEST(window_create, Window) {

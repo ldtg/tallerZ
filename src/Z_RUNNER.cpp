@@ -3,37 +3,55 @@
 //
 
 #include <SDL_ttf.h>
-#include <front_end/SDL_Interface/Labels/Label.h>
+#include <client/front_end/SDL_Interface/Labels/Label.h>
 #include "Z_RUNNER.h"
 Z_RUNNER::Z_RUNNER() {
-  main_window = new Main_Window();
-  eventHandler = new EventHandler();
-  this->map = new Map();
-//  this->gameController = new GameController(map, );
-//  this->model = new Model(map, );
-//  this->view = new View(*map, *eventHandler);
-  this->controller = new Controller(*eventHandler);
 }
 
 void Z_RUNNER::run() {
-  bool quit = false;
-  SDL_Event event;
-  while (!quit){
-    while (SDL_PollEvent(&event)){
-      if (event.type == SDL_QUIT){
-        quit = true;
-      }
-      controller->handle(&event);
+  Game_Loader map_loader("mapa.json");
+
+  Map map = map_loader.run();
+
+  GameController gameController(map, map_loader.get_controller_units(),
+                                map_loader.get_builds(),
+                                map_loader.get_controller_capturables(),
+                                map_loader.get_controller_terrainObjects(),
+                                map_loader.get_players(),
+                                map_loader.get_teams());
+  Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
+  EventHandler eventHandler;
+
+  Model model(map, gameController, camera);
+  View view(map, eventHandler, camera);
+
+  eventHandler.setView(&view);
+  eventHandler.setModel(&model);
+
+  SDL_Event e;
+
+  Controller controller(eventHandler);
+
+  //While application is running
+  while (!view.quit()) {
+
+    std::vector<Event *> events = gameController.tick();
+    while (SDL_PollEvent(&e) != 0) {
+      controller.handle(&e);
     }
+    // Chequeo pos del mouse para saber
+    // si se debe mover camara.
+    controller.checkMouseState(&e);
+
+    if (!events.empty()) {
+      for (auto event : events) {
+        eventHandler.add(event);
+      }
+    }
+    view.update();
   }
 }
-
 Z_RUNNER::~Z_RUNNER() {
-  delete controller;
-  delete view;
-  delete map;
-  delete model;
-  delete eventHandler;
-  delete main_window;
 }
+
 

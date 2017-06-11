@@ -1,4 +1,4 @@
-#include <model/Build.h>
+/*#include <model/Build.h>
 #include <model/Events/Event.h>
 #include <model/Data.h>
 #include <chrono>
@@ -103,4 +103,4 @@ TEST_F(GameController_objects_test, bridge_destroy) {
     events.insert(events.end(), aux.begin(), aux.end());
   }
   ASSERT_TRUE(unit->isStill());
-}
+}*/

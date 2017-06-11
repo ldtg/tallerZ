@@ -1,22 +1,14 @@
 #include "gtest/gtest.h"
-#include "view/View.h"
-#include "controller/Controller.h"
-#include "model/Events/EventHandler.h"
+#include "client/view/View.h"
+#include "client/controller/Controller.h"
 
-#include <SDL2/SDL_image.h>
 #include <thread>
 
-#include <ctime>
-#include <chrono>
-#include <ratio>
-#include <model/Data.h>
-#include <model/UnitFactory.h>
-#include <model/GameController.h>
+#include <server/model/Data.h>
+#include <server/model/UnitFactory.h>
 #include <storage/Game_Loader.h>
-#include <controller/MouseState.h>
-#include <model/CapturableVehicle.h>
-#include <model/GaiaPlayer.h>
-#include <model/Territory.h>
+#include <server/model/GameController.h>
+#include <client/model/Events/EventFactory.h>
 
 TEST(VistaTest, Window) {
 
@@ -82,11 +74,13 @@ TEST(VistaTest, Window) {
     units.emplace(robotB->getId(), robotB);
 
     Unit *robotC;
-    robotC = UnitFactory::createToughDynamic(Position(100, 100), player2, team2);
+    robotC =
+        UnitFactory::createToughDynamic(Position(100, 100), player2, team2);
     units.emplace(robotC->getId(), robotC);
 
     Unit *robotD;
-    robotD = UnitFactory::createUnitDynamic(Position(50, 300), R_PYRO, player, team);
+    robotD =
+        UnitFactory::createUnitDynamic(Position(50, 300), R_PYRO, player, team);
     units.emplace(robotD->getId(), robotD);
 
     Vehicle *vehicle;
@@ -111,31 +105,35 @@ TEST(VistaTest, Window) {
     capturables.emplace(capturableJeep->getID(), capturableJeep);
 
     std::map<CapturableID, CapturableState> capmap;
-    capmap.emplace(capturableJeep->getID(), capturableJeep->getCapturableState());
+    capmap.emplace(capturableJeep->getID(),
+                   capturableJeep->getCapturableState());
 
     std::vector<Build *> buildsT;
     buildsT.push_back(build);
 
-    Capturable *terrain = new Territory(Position(150, 50), buildsT, &player, team);
+    Capturable
+        *terrain = new Territory(Position(150, 50), buildsT, &player, team);
     capturables.emplace(terrain->getID(), terrain);
     capmap.emplace(terrain->getID(), terrain->getCapturableState());
 
 /* ---------- CREACION MAPA ---------- */
-    Map map(stdmap, buildmap, capmap,5, 5);
+    Map map(stdmap, buildmap, capmap, 5, 5);
 
     map.addUnit(robotA->getId(), robotA->getUnitState());
     map.addUnit(robotB->getId(), robotB->getUnitState());
     map.addUnit(robotC->getId(), robotC->getUnitState());
     map.addUnit(robotD->getId(), robotD->getUnitState());
     map.addUnit(vehicle->getId(), vehicle->getUnitState());
+    /*std::queue<serverEvent *> evqueue;
 
-    GameController gameController(map, units, builds, capturables);
+    GameController gameController(map, units, builds, capturables, evqueue);
+    GameControllerProxy gcp(gameController);
 
     EventHandler eventHandler;
     Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
 
-    Model model(map, gameController, camera);
     View view(map, eventHandler, camera);
+    Model model(map, gcp, camera, view);
 
     eventHandler.setView(&view);
     eventHandler.setModel(&model);
@@ -162,29 +160,29 @@ TEST(VistaTest, Window) {
       controller.checkMouseState(&e);
 
       view.update();
-    }
+    }*/
   } catch (const std::exception &e) {
     std::cout << e.what() << std::endl;
   }
 }
 
-TEST(VistaTest_Usando_Map_Loader, Window){
+TEST(VistaTest_Usando_Map_Loader, Window) {
   Game_Loader map_loader("mapa.json");
 
   Map map = map_loader.run();
-
+  std::queue<serverEvent *> evqueue;
   GameController gameController(map, map_loader.get_controller_units(),
-                                 map_loader.get_builds(),
-                                 map_loader.get_controller_capturables(),
-                                 map_loader.get_controller_terrainObjects(),
-                                 map_loader.get_players(),
-                                 map_loader.get_teams());
-
+                                map_loader.get_builds(),
+                                map_loader.get_controller_capturables(),
+                                map_loader.get_controller_terrainObjects(),
+                                map_loader.get_players(),
+                                map_loader.get_teams(), evqueue);
+  GameControllerProxy gcp(gameController);
   Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
   EventHandler eventHandler;
 
-  Model model(map, gameController, camera);
   View view(map, eventHandler, camera);
+  Model model(map, gcp, camera, view);
 
   eventHandler.setView(&view);
   eventHandler.setModel(&model);
@@ -210,5 +208,73 @@ TEST(VistaTest_Usando_Map_Loader, Window){
       }
     }
     view.update();
+  }
+}
+
+TEST(VistaTest_Usando_Map_Loader, proxy_cmds_events) {
+  Game_Loader map_loader("mapa.json");
+
+  Map map = map_loader.run();
+  std::queue<serverEvent *> srvEvents;
+  GameController gameController(map, map_loader.get_controller_units(),
+                                map_loader.get_builds(),
+                                map_loader.get_controller_capturables(),
+                                map_loader.get_controller_terrainObjects(),
+                                map_loader.get_players(),
+                                map_loader.get_teams(), srvEvents);
+  GameControllerProxy gcp(gameController);
+  Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
+  EventHandler eventHandler;
+
+  View view(map, eventHandler, camera);
+  Model model(map, gcp, camera, view);
+
+  eventHandler.setView(&view);
+  eventHandler.setModel(&model);
+
+  SDL_Event e;
+
+  Controller controller(eventHandler);
+
+//  const int SCREEN_FPS = 10;
+//  const int SCREEN_TICK_PER_FRAME = 1000 / SCREEN_FPS;
+
+  //While application is running
+  while (!view.quit()) {
+
+    //The frames per second cap timer
+//    unsigned int capTimer = SDL_GetTicks();
+
+    gameController.tick();
+    while (SDL_PollEvent(&e) != 0) {
+      controller.handle(&e);
+    }
+    // Chequeo pos del mouse para saber
+    // si se debe mover camara.
+    controller.checkMouseState(&e);
+
+    while (!srvEvents.empty()) {
+      serverEvent *aux = srvEvents.front();
+      std::stringstream ss = aux->getDataToSend();
+      Event *ev = EventFactory::createEvent(aux->getType(), ss);
+      eventHandler.add(ev);
+      srvEvents.pop();
+    }
+    view.update();
+
+/*
+    //If frame finished early
+    int capTimerTicks = SDL_GetTicks() - capTimer;
+
+    std::cout << capTimerTicks << std::endl;
+    std::cout << "TICKS: " << SCREEN_TICK_PER_FRAME << std::endl;
+
+    if(capTimerTicks < SCREEN_TICK_PER_FRAME) {
+      std::cout << "AAA"<< std::endl;
+      //Wait remaining time
+      SDL_Delay(SCREEN_TICK_PER_FRAME - capTimerTicks);
+    }
+*/
+
   }
 }
