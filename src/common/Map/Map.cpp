@@ -36,11 +36,13 @@ Map::Map(const std::map<Position, Tile> &map,
          std::map<CapturableID, CapturableState> capturables,
          const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
          unsigned short width,
-         unsigned short height) : map(map),
-                                  builds(builds),
-                                  capturables(capturables),
-                                  width(width),
-                                  height(height) {
+         unsigned short height)
+    : map(map),
+      builds(builds),
+      capturables(capturables),
+      terrainObject(terrainObject),
+      width(width),
+      height(height) {
 
   for (auto &build : builds) {
     Position pos = this->getTilePositionFromRealPosition(build.second.position);
@@ -137,8 +139,7 @@ bool Map::isUnitIn(const Position &position) const {
 std::pair<UnitID, UnitState> Map::getUnit(const Position &position) {
   for (auto const &unit : units) {
     Position curPos = unit.second.position;
-    bool
-        in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
+    bool in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
     if (in)
       return unit;
   }
@@ -209,7 +210,7 @@ UnitID Map::getUnitIDFromPosition(const Position &pos,
 BuildID Map::getBuildIDFromPosition(const Position &pos,
                                     unsigned short range) const {
   for (auto &par : builds) {
-    if (pos.equalDelta(par.second.position, range))
+    if (pos.equalDelta(par.second.position.add(range, range), range))
       return par.first;
   }
   throw UnitNotFoundException("edificio no encontrado");

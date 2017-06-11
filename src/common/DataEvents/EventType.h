@@ -1,5 +1,6 @@
 #ifndef TALLERZ_EVENTTYPE_H
 #define TALLERZ_EVENTTYPE_H
+
 enum EventType {
   U_MOVE,
   U_ATTACK,
@@ -16,4 +17,5 @@ enum EventType {
   G_PDEFEATED,
   G_ENDGAME
 };
+
 #endif //TALLERZ_EVENTTYPE_H

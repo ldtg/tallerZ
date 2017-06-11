@@ -85,6 +85,7 @@ class Generator {
   unsigned frame; //encuadrado
   Position_Data * map_positions;
   std::vector<Position_Data> vertices;
+  std::vector<Position_Data> side_vertices;
 
   int partial_lava_water_percentage = 80;
   int total_lava_water_percentage = 10;
@@ -354,6 +355,7 @@ class Generator {
    * calculate_frame calcula el numero de filas que componen el marco.
    */
   void calculate_frame();
+
 };
 
 #endif //TALLERZ_GENERATOR_H

@@ -3,6 +3,7 @@
 
 #include <common/DataEvents/EventType.h>
 #include <sstream>
+
 class serverEvent {
  protected:
   EventType type;

@@ -3,6 +3,7 @@
 
 #include <common/Map/Position.h>
 #include <common/IDs/UnitID.h>
+
 struct dataUnitAttackEvent {
   UnitID attacker;
   Position huntedPos;

@@ -167,6 +167,8 @@ TEST(VistaTest, Window) {
 }
 
 TEST(VistaTest_Usando_Map_Loader, Window) {
+  std::cout << "AAA"<< std::endl;
+
   Game_Loader map_loader("mapa.json");
 
   Map map = map_loader.run();
@@ -209,8 +211,12 @@ TEST(VistaTest_Usando_Map_Loader, Window) {
     }
     view.update();
   }
+
+  std::cout << "BBB"<< std::endl;
 }
-TEST(VistaTest_Usando_Map_Loader2, proxy_cmds_events) {
+
+TEST(VistaTest_Usando_Map_Loader, proxy_cmds_events) {
+  std::cout << "CCC"<< std::endl;
   Game_Loader map_loader("mapa.json");
   Map map = map_loader.run();
   std::queue<serverEvent *> srvEvents;
@@ -234,8 +240,14 @@ TEST(VistaTest_Usando_Map_Loader2, proxy_cmds_events) {
 
   Controller controller(eventHandler);
 
+//  const int SCREEN_FPS = 10;
+//  const int SCREEN_TICK_PER_FRAME = 1000 / SCREEN_FPS;
+
   //While application is running
   while (!view.quit()) {
+
+    //The frames per second cap timer
+//    unsigned int capTimer = SDL_GetTicks();
 
     gameController.tick();
     while (SDL_PollEvent(&e) != 0) {
@@ -253,5 +265,20 @@ TEST(VistaTest_Usando_Map_Loader2, proxy_cmds_events) {
       srvEvents.pop();
     }
     view.update();
+
+/*
+    //If frame finished early
+    int capTimerTicks = SDL_GetTicks() - capTimer;
+
+    std::cout << capTimerTicks << std::endl;
+    std::cout << "TICKS: " << SCREEN_TICK_PER_FRAME << std::endl;
+
+    if(capTimerTicks < SCREEN_TICK_PER_FRAME) {
+      std::cout << "AAA"<< std::endl;
+      //Wait remaining time
+      SDL_Delay(SCREEN_TICK_PER_FRAME - capTimerTicks);
+    }
+*/
+
   }
 }

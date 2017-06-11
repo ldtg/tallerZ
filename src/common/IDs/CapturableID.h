@@ -7,6 +7,7 @@ class CapturableID {
  private:
   unsigned short id;
   CapturableType type;
+
  public:
   explicit CapturableID(const CapturableType &type);
   CapturableID() {};

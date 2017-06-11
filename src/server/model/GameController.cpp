@@ -142,7 +142,6 @@ void GameController::attack(const UnitID &attackerID,
 void GameController::changeUnitFab(const BuildID &buildId,
                                    const UnitType &type) {
   builds.at(buildId)->changeFabUnit(type);
-
 }
 
 void GameController::capture(const UnitID &idunit,
@@ -401,7 +400,8 @@ void GameController::buildsTick(std::vector<Event *> &events) {
 
       if (current->isAlive()) {
         if (current->hasToBuild()) {
-          this->addUnits(current->fabricateUnits(map.getNeighborFreePos(current->getCenterPosition())),
+          this->addUnits(current->fabricateUnits(
+              map.getNeighborFreePos(current->getCenterPosition())),
                          events);
         }
         map.updateBuild(current->getId(), current->getBuildState());

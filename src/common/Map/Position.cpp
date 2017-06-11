@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <sstream>
 #include <iostream>
+#include <cmath>
 #include "Position.h"
 
 Position::Position() :x(0),y(0){}
@@ -125,13 +126,19 @@ bool Position::operator!=(const Position &other) const {
 }
 
 bool Position::equalDelta(const Position &other, unsigned short delta) const {
+  double xdelta = std::pow(this->x - other.x, 2);
+  double ydelta = std::pow(this->y - other.y, 2);
+
+  return std::sqrt(xdelta + ydelta) <= delta;
+
+/*
   double xdelta = std::abs(this->x - other.x);
   bool xb = xdelta < delta;
   double ydelta = std::abs(this->y - other.y);
   bool yb = ydelta < delta;
 
   return xb && yb;
-
+*/
 //  return std::abs(this->x - other.x) < delta
 //      && std::abs(this->y - other.y) < delta;
 }

@@ -29,8 +29,8 @@ Window::Window() {
           " crear la ventana con SDL_CreateWindow: %s\n",SDL_GetError());
     }
 
-  window_render = SDL_CreateRenderer(window, -1,
-                  SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+  window_render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+//  window_render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
   if (window_render == NULL) {
     throw Sdl_Exception(
         "Error al crear render de la ventana: no se pudo "

@@ -4,12 +4,12 @@
 BuildDestroyedEvent::BuildDestroyedEvent(const BuildID &id) : id(id) {}
 
 void BuildDestroyedEvent::process() {
-  ObjectMapaVista* unitVista = view->getBuildVista(id);
-  Position pos = unitVista->getPos();
+  ObjectMapaVista* buildVista = view->getBuildVista(id);
+  Position pos = buildVista->getPos();
 
   view->removeBuildVista(id);
   std::string state("destroyed");
-  ObjectMapaVista *buildVista = VistasFactory::getBuildVista(id.getType(), state, pos);
+  buildVista = VistasFactory::getBuildVista(id.getType(), state, pos);
 //  buildVista->setPos(pos);
   view->addBuildVista(id, buildVista);
 

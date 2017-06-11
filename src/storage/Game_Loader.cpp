@@ -4,6 +4,7 @@
 
 #include <server/model/UnitFactory.h>
 #include "Game_Loader.h"
+
 void Game_Loader::open_file() {
   try{
     this->map_file.open(this->file_path);
@@ -14,6 +15,7 @@ void Game_Loader::open_file() {
         this->file_path.c_str(),e.what());
   }
 }
+
 void Game_Loader::close_file() {
   try {
     this->map_file.close();
@@ -23,15 +25,19 @@ void Game_Loader::close_file() {
             "%s\n",this->file_path,e.what());
   }
 }
+
 Game_Loader::Game_Loader(std::string file_path) : file_path(file_path){
   open_file();
 }
+
 Game_Loader::~Game_Loader() {
   close_file();
 }
+
 json Game_Loader::get_json() {
   return this->j;
 }
+
 void Game_Loader::load_file() {
   map_file >> this->j;
 }
@@ -250,7 +256,8 @@ void Game_Loader::assign_capturable(const Position_Data &position_data) {
     controller_capturables.emplace(territory->getID(), territory);
   }
   if (position_data.vehicle){
-    Vehicle* unit = UnitFactory::createVehicleDynamic(pos,V_JEEP,gaiaPlayer,gaiaTeam);
+    Vehicle* unit = UnitFactory::createVehicleDynamic(
+        centered_position(pos.getX(), pos.getY()),V_JEEP,gaiaPlayer,gaiaTeam);
     this->units.emplace(unit->getId(), unit->getUnitState());
     this->controller_units.emplace(unit->getId(), unit);
     CapturableVehicle * vehicle = new CapturableVehicle(*unit);

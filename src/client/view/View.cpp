@@ -22,7 +22,6 @@ View::~View() {
   delete this->side_board;
 }
 
-
 void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
   for (auto const &posMap : map) {
     Tile tile = posMap.second;
@@ -33,6 +32,18 @@ void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
 //    panel.add(terrain);
 
     terrainsVista.emplace(pos, terrain);
+  }
+}
+
+void View::createInitialTerrainObjectVista(const std::map<TerrainObjectID,
+                                           TerrainObjectState> &terrainObjects) {
+  for (auto const &terrainObject : terrainObjects) {
+    TerrainObjectType type = terrainObject.first.getType();
+    Position pos = terrainObject.second.centerPosition;
+    std::string state("");
+    ObjectMapaVista *terrainObjVista = VistasFactory::getTerrainObjectVista(type, state, pos);
+
+    terrainObjectsVista.emplace(terrainObject.first, terrainObjVista);
   }
 }
 
@@ -90,16 +101,6 @@ void View::createInitialCapturableVista(const std::map<CapturableID,
   }
 }
 
-void View::createInitialTerrainObjectVista(const std::map<TerrainObjectID,
-                                           TerrainObjectState> &terrainObjects) {
-  for (auto const &terrainObject : terrainObjects) {
-    TerrainObjectType type = terrainObject.first.getType();
-    Position pos = terrainObject.second.centerPosition;
-    ObjectMapaVista *terrainObjVista = VistasFactory::getTerrainObjectVista(type, pos);
-
-    terrainObjectsVista.emplace(terrainObject.first, terrainObjVista);
-  }
-}
 
 void View::update() {
   while (!eventHandler.empty()) {
@@ -256,6 +257,21 @@ void View::move(UnitID id, Position posTo) {
 }
 
 
+ObjectMapaVista* View::getTerrainObjectVista(TerrainObjectID id) {
+  return terrainObjectsVista.at(id);
+}
+
+void View::removeTerrainObjectVista(const TerrainObjectID &id) {
+  delete terrainObjectsVista.at(id);
+  terrainObjectsVista.erase(id);
+
+}
+
+void View::addTerrainObjectVista(TerrainObjectID &id,
+                                 ObjectMapaVista *terrainObjectVista) {
+  terrainObjectsVista.emplace(id, terrainObjectVista);
+}
+
 Sprite* View::getUnitVista(UnitID id) {
   return unitsVista.at(id);
 }
@@ -335,6 +351,8 @@ void View::addEffectVista(Sprite *objectVista) {
   effectsVista.push_back(objectVista);
 }
 
-void View::load_production_menu(const BuildID &factoryID, const BuildState& buildState, Model &model, int x, int y) {
+void View::load_production_menu(const BuildID &factoryID,
+                                const BuildState& buildState,
+                                Model &model, int x, int y) {
   menu = new Production_Menu(factoryID, buildState, window, model, x, y);
 }

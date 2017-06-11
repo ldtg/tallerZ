@@ -5,19 +5,27 @@
 
 #include "Production_Menu.h"
 #include <client/model/Model.h>
+
 /**
  * constructor
  * @param window : ventana sobre la que se renderiza
  * @param x : coordenada X del menu
  * @param y : coordenada Y del menu
  */
-Production_Menu::Production_Menu(const BuildID buildID, const BuildState &buildState, Window &window, Model &model, int x, int y) : buildID(buildID), window(window), model(model), buildState(buildState){
+Production_Menu::Production_Menu(const BuildID buildID,
+                                 const BuildState &buildState,
+                                 Window &window, Model &model,
+                                 int x, int y)
+    : buildID(buildID), window(window),
+      model(model), buildState(buildState) {
+
   this->renderQuad = { x, y, width, length};
   this->background = new Texture(background_path.c_str(), &window);
   this->background->renderize(&window, &renderQuad);
   load_items();
   this->showing_unit_type = buildState.actualUnitFab;
 }
+
 /**
  * load_items
  */
@@ -57,6 +65,7 @@ void Production_Menu::load_items() {
   set_absolute_position(_down_rect, this->down_rect);
   this->down = new Down_Button(&window, &model, this, down_rect);
 }
+
 /**
  * displace_toXY : mueve el menu a las coordenadas x,y
  * @param x : coordenada x
@@ -103,18 +112,21 @@ void Production_Menu::displace_toXY(int x, int y) {
   this->down->set_rectangle(down_rect);
   this->down->reload();
 }
+
 /**
  * show_select_status: En lugar de Building pone Select
  */
 void Production_Menu::show_select_status() {
   this->status->modify_text("Select");
 }
+
 /**
  * show_building_status: En lugar de Select pone Building
  */
 void Production_Menu::show_building_status() {
   this->status->modify_text("Building");
 }
+
 /**
  * show_health_level
  * @param health : nivel de salud de la fabrica.
@@ -122,6 +134,7 @@ void Production_Menu::show_building_status() {
 void Production_Menu::show_health_level(int health) {
   this->health->modify_text(std::to_string(health)+"%");
 }
+
 /**
  * destructor
  */
@@ -137,6 +150,7 @@ Production_Menu::~Production_Menu() {
   if(this->down != NULL) delete this->down;
   if(this->background != NULL) delete this->background;
 }
+
 void Production_Menu::add_to_panel(Panel &panel) {
   panel.add(this);
   panel.add(ok);
@@ -149,6 +163,7 @@ void Production_Menu::add_to_panel(Panel &panel) {
   panel.add(unit);
   panel.add(building_name);
 }
+
 std::string Production_Menu::get_building_type(const BuildType &buildType) {
   switch (buildType){
     case (BuildType ::FORT):
@@ -159,6 +174,7 @@ std::string Production_Menu::get_building_type(const BuildType &buildType) {
       return "R. FACTORY";
   }
 }
+
 std::string Production_Menu::get_unit_name(const UnitType &utype) {
   switch (utype){
     case UnitType ::R_GRUNT:
@@ -185,6 +201,7 @@ std::string Production_Menu::get_unit_name(const UnitType &utype) {
       return "MML";
   }
 }
+
 void Production_Menu::handle_click(int x, int y) {
   if (up->inRectangle(x,y)){
     up->handle_event();
@@ -199,6 +216,7 @@ void Production_Menu::handle_click(int x, int y) {
     ok->handle_event();
   }
 }
+
 void Production_Menu::show_previous_buildable_unit() {
   bool found = false;
   std::vector<UnitType>::const_iterator it;
@@ -219,6 +237,7 @@ void Production_Menu::show_previous_buildable_unit() {
   unit->modify_text(get_unit_name(showing_unit_type));
   unit->reload();
 }
+
 void Production_Menu::show_next_buildable_unit() {
   bool found = false;
   std::vector<UnitType >::const_iterator it;
@@ -237,6 +256,7 @@ void Production_Menu::show_next_buildable_unit() {
   unit->modify_text(get_unit_name(showing_unit_type));
   unit->reload();
 }
+
 void Production_Menu::update_unit_to_build() {
   model.get_gameControllerProxy()->changeUnitFab(buildID,showing_unit_type);
 }

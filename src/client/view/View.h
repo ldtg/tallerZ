@@ -34,11 +34,11 @@ class View {
   std::vector<Sprite*> explosionsVista;
 
   void createInitialTerrainVista(const std::map<Position, Tile> &map);
+  void createInitialTerrainObjectVista(const std::map<TerrainObjectID,
+                                       TerrainObjectState> &terrainObjects);
   void createInitialUnitVista(const std::map<UnitID, UnitState> &units);
   void createInitialBuildVista(const std::map<BuildID, BuildState> &builds);
   void createInitialCapturableVista(const std::map<CapturableID, CapturableState> &capturables);
-
-  void createInitialTerrainObjectVista(const std::map<TerrainObjectID, TerrainObjectState> &terrainObjects);
 
   //  void add(ObjectMapaVista *objectVista, Position pos);
 //  ObjectMapaVista *getTerrainVista(TerrainType type);
@@ -57,6 +57,11 @@ class View {
 
   void setQuit();
   bool quit();
+
+  ObjectMapaVista* getTerrainObjectVista(TerrainObjectID id);
+  void removeTerrainObjectVista(const TerrainObjectID &id);
+  void addTerrainObjectVista(TerrainObjectID &id,
+                             ObjectMapaVista *terrainObjectVista);
 
   Sprite* getUnitVista(UnitID id);
   void move(UnitID id, Position posTo);
@@ -84,7 +89,9 @@ class View {
     return this->menu;
   }
 
-  void load_production_menu(const BuildID& factoryID, const BuildState& buildState, Model& model, int x, int y);
+  void load_production_menu(const BuildID& factoryID,
+                            const BuildState& buildState,
+                            Model& model, int x, int y);
 
   void free_menu(){
     delete menu;

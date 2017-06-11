@@ -1,7 +1,8 @@
 #include "VistasFactory.h"
 #include <random>
 
-ObjectMapaVista* VistasFactory::getTerrainVista(TerrainType type, Position &pos) {
+ObjectMapaVista* VistasFactory::getTerrainVista(TerrainType type,
+                                                Position &pos) {
   std::string path = "../src/view/images/terrain/";
   std::string type_s;
 
@@ -216,15 +217,20 @@ Sprite* VistasFactory::getFlagsVista(std::string &color, Position &pos) {
   return flagVista;
 }
 
-ObjectMapaVista* VistasFactory::getTerrainObjectVista(TerrainObjectType type, Position &pos) {
+ObjectMapaVista* VistasFactory::getTerrainObjectVista(TerrainObjectType type,
+                                                      std::string &state,
+                                                      Position &pos) {
   std::string path = "../src/view/images/terrain/";
+  std::string type_s;
   switch (type) {
-    case ROCK: path = path + "rocks_jungle.png"; break;
-    case ICEROCK: path = path + "rocks_artic.png"; break;
-    case _WOODENBRIDGE: path = path + "woodenbridge.png"; break;
-    case _ASPHALTEDBRIDGE: path = path + "asphaltedbridge.png"; break;
+    case ROCK: type_s = "rocks_jungle"; break;
+    case ICEROCK: type_s = "rocks_artic"; break;
+    case _WOODENBRIDGE: type_s = "woodenbridge"; break;
+    case _ASPHALTEDBRIDGE: type_s = "asphaltedbridge"; break;
     default: return nullptr;
   }
+
+  path = path + type_s + state + ".png";
   Image *terrainObjVista = new Image(path.c_str());
   terrainObjVista->setPos(pos.sub(50,50));
   return terrainObjVista;

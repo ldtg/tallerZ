@@ -3,9 +3,11 @@
 
 #include <common/DataEvents/Unit/dataUnitAttackEvent.h>
 #include "server/model/Events/serverEvent.h"
-class serverUAttackEvent : public serverEvent{
+
+class serverUAttackEvent : public serverEvent {
  private:
   dataUnitAttackEvent data;
+
  public:
   serverUAttackEvent(const UnitID &id,
                      const Position &hpos,
