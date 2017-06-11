@@ -167,6 +167,8 @@ TEST(VistaTest, Window) {
 }
 
 TEST(VistaTest_Usando_Map_Loader, Window) {
+  std::cout << "AAA"<< std::endl;
+
   Game_Loader map_loader("mapa.json");
 
   Map map = map_loader.run();
@@ -209,9 +211,13 @@ TEST(VistaTest_Usando_Map_Loader, Window) {
     }
     view.update();
   }
+
+  std::cout << "BBB"<< std::endl;
 }
 
 TEST(VistaTest_Usando_Map_Loader, proxy_cmds_events) {
+  std::cout << "CCC"<< std::endl;
+
   Game_Loader map_loader("mapa.json");
 
   Map map = map_loader.run();

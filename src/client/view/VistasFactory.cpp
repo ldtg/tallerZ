@@ -230,7 +230,7 @@ ObjectMapaVista* VistasFactory::getTerrainObjectVista(TerrainObjectType type,
     default: return nullptr;
   }
 
-  path = path + type_s + "/" + type_s + state + ".png";
+  path = path + type_s + state + ".png";
   Image *terrainObjVista = new Image(path.c_str());
   terrainObjVista->setPos(pos.sub(50,50));
   return terrainObjVista;
