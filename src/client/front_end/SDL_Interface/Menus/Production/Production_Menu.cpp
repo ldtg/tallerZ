@@ -11,7 +11,7 @@
  * @param x : coordenada X del menu
  * @param y : coordenada Y del menu
  */
-Production_Menu::Production_Menu(const BuildID &buildID, const BuildState &buildState, Window &window, Model &model, int x, int y) : buildID(buildID), window(window), model(model), buildState(buildState){
+Production_Menu::Production_Menu(const BuildID buildID, const BuildState &buildState, Window &window, Model &model, int x, int y) : buildID(buildID), window(window), model(model), buildState(buildState){
   this->renderQuad = { x, y, width, length};
   this->background = new Texture(background_path.c_str(), &window);
   this->background->renderize(&window, &renderQuad);

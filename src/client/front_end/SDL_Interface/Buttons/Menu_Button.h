@@ -10,9 +10,9 @@ class Menu_Button : public Button {
  private:
   const SDL_Rect renderQuad = {481, 458, 56, 20};
   const std::string path_up =
-      "../src/front_end/Images/Interface/menu_button_active.bmp";
+      "../src/client/front_end/Images/Interface/menu_button_active.bmp";
   const std::string path_down =
-      "../src/front_end/Images/Interface/menu_button_pressed.bmp";
+      "../src/client/front_end/Images/Interface/menu_button_pressed.bmp";
  public:
   Menu_Button(Window * window);
 

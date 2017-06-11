@@ -28,7 +28,7 @@ class Production_Menu : public Menu {
   const int length = 79;
   Window &window;
   Model &model;
-  const BuildID& buildID;
+  const BuildID buildID;
   const BuildState& buildState;
   UnitType showing_unit_type;
 
@@ -66,7 +66,7 @@ class Production_Menu : public Menu {
       = "../src/client/front_end/Images/Interface/production_gui/base_image.png";
 
  public:
-  Production_Menu(const BuildID &buildID,
+  Production_Menu(const BuildID buildID,
                   const BuildState &buildState,
                   Window &window,
                   Model& model,
