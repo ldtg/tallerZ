@@ -4,6 +4,7 @@
 #include <common/Map/Position.h>
 #include <common/Types/UnitType.h>
 #include "common/IDs/PlayerID.h"
+#include <cereal/types/vector.hpp>
 struct BuildState {
  public:
   PlayerID owner;
@@ -21,7 +22,7 @@ struct BuildState {
   }
   template<class Archive>
   void serialize(Archive &archive){
-    archive(owner,position, health, timeRemainingInSecs, actualUnitFab);
+    archive(owner,position, health, timeRemainingInSecs, actualUnitFab,fabricableUnits);
   }
 };
 
