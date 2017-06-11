@@ -95,7 +95,6 @@ class Game_Loader {
     return Map(map, buildmap, capturables, terrainObjects, units,
                configuration.map_width, configuration.map_length);
   }
-
  private:
   /**
    * load_file: convierte el archivo .json en una variable de tipo json.

@@ -242,8 +242,10 @@ void Generator::set_terrain(int x, int y, TerrainType terrain_type) {
   if ((this->map_positions[pos].terrain_type == ROAD) && (terrain_type == SWAMP
       || terrain_type == WATER || terrain_type == LAVA)){
     this->map_positions[pos].bridge = true;
+    this->map_positions[pos].terrain_type = bridge_type;
+  } else {
+    this->map_positions[pos].terrain_type = terrain_type;
   }
-  this->map_positions[pos].terrain_type = terrain_type;
 }
 int Generator::draw_line(const Position_Data &start, const Position_Data &end, TerrainType terrain_type) {
   int xdiff;

@@ -63,6 +63,7 @@ Map::Map(const std::map<Position, Tile> &map,
          unsigned short height) : map(map),
                                   builds(builds),
                                   capturables(capturables),
+                                  terrainObject(terrainObject),
                                   width(width),
                                   height(height),
                                   units(units) {

@@ -48,6 +48,7 @@ class Menu : public ObjectMapaVista {
   virtual void draw(SDL_Renderer *render, Camera &camera){
     SDL_RenderCopy(render, background->get_texture(), NULL, &renderQuad);
   }
+
   virtual void load_items() = 0;
 
   void set_absolute_position(SDL_Rect& rect, SDL_Rect& rect_abs);

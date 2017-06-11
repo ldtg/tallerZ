@@ -10,7 +10,7 @@
 using json = nlohmann::json;
 
 TEST(store_map_tests, Store_map){
-  Generator generator(20,20,9,2,DUSTY,3,2);
+  Generator generator(20,20,9,2,WINTER,3,2);
   generator.set_water_lava_percentages(10,80);
   generator.territory_distribution_algorithm();
   generator.building_distribution_algorithm();
