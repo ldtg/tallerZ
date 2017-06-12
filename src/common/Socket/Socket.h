@@ -2,7 +2,7 @@
 #define TALLERZ_SOCKET_H
 #include <string>
 #include "SocketException.h"
-#define MAX_MSG_LEN 65535
+#define MAX_MSG_LEN 265535
 #define MAX_CLIENTES_ESPERA 10
 #define INVALID_SOCKET -1
 enum ShutdownMode { READ, WRITE, READWRITE };
