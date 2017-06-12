@@ -16,7 +16,7 @@ dataServerClientAccepted getDataClientAccepted(Socket &socket);
 Map getMap(Socket &socket);
 int main(int argc, char *argv[]) {
   Socket socket;
-  socket.connectToServer("192.168.0.11", "8080");
+  socket.connectToServer("127.0.0.1", "8080");
 
   sendPlayerConnected(socket, 1, "mapa");
   dataServerClientAccepted accepted = getDataClientAccepted(socket);
