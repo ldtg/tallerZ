@@ -39,71 +39,27 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/share/clion-2016.3.4/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/martin/clion-2017.1.1/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /usr/share/clion-2016.3.4/bin/cmake/bin/cmake -E remove -f
+RM = /home/martin/clion-2017.1.1/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tg/FIUBA/taller/zheta/new/tallerZ
+CMAKE_SOURCE_DIR = /home/martin/GitHub/tallerZ_client
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug
+CMAKE_BINARY_DIR = /home/martin/GitHub/tallerZ_client/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: install/local
-
-.PHONY : install/local/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/martin/clion-2017.1.1/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -114,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/martin/clion-2017.1.1/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -124,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/CMakeFiles /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/martin/GitHub/tallerZ_client/cmake-build-debug/CMakeFiles /home/martin/GitHub/tallerZ_client/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/martin/GitHub/tallerZ_client/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -166,58 +122,6 @@ tallerZ_Cliente: cmake_check_build_system
 tallerZ_Cliente/fast:
 	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/build
 .PHONY : tallerZ_Cliente/fast
-
-#=============================================================================
-# Target rules for targets named gmock_main
-
-# Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
-
-# fast build rule for target.
-gmock_main/fast:
-	$(MAKE) -f googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
-
-#=============================================================================
-# Target rules for targets named gmock
-
-# Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
-
-# fast build rule for target.
-gmock/fast:
-	$(MAKE) -f googletest-build/googlemock/CMakeFiles/gmock.dir/build.make googletest-build/googlemock/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
-
-#=============================================================================
-# Target rules for targets named gtest_main
-
-# Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	$(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
-
-#=============================================================================
-# Target rules for targets named gtest
-
-# Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
-
-# fast build rule for target.
-gtest/fast:
-	$(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
 
 src/Exceptions/Front_end_exceptions/Front_end_exception.o: src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o
 
@@ -1812,33 +1716,6 @@ src/client/model/Events/model/unit/UnitCreateEvent.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitCreateEvent.cpp.s
 .PHONY : src/client/model/Events/model/unit/UnitCreateEvent.cpp.s
 
-src/client/model/Events/model/unit/UnitDamageReceiveEvent.o: src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.o
-
-.PHONY : src/client/model/Events/model/unit/UnitDamageReceiveEvent.o
-
-# target to build an object file
-src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.o
-.PHONY : src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.o
-
-src/client/model/Events/model/unit/UnitDamageReceiveEvent.i: src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.i
-
-.PHONY : src/client/model/Events/model/unit/UnitDamageReceiveEvent.i
-
-# target to preprocess a source file
-src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.i
-.PHONY : src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.i
-
-src/client/model/Events/model/unit/UnitDamageReceiveEvent.s: src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.s
-
-.PHONY : src/client/model/Events/model/unit/UnitDamageReceiveEvent.s
-
-# target to generate assembly for a file
-src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.s
-.PHONY : src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.s
-
 src/client/model/Events/model/unit/UnitDeathEvent.o: src/client/model/Events/model/unit/UnitDeathEvent.cpp.o
 
 .PHONY : src/client/model/Events/model/unit/UnitDeathEvent.o
@@ -2243,6 +2120,33 @@ src/client/view/Texture.s: src/client/view/Texture.cpp.s
 src/client/view/Texture.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.s
 .PHONY : src/client/view/Texture.cpp.s
+
+src/client/view/UnitView.o: src/client/view/UnitView.cpp.o
+
+.PHONY : src/client/view/UnitView.o
+
+# target to build an object file
+src/client/view/UnitView.cpp.o:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/view/UnitView.cpp.o
+.PHONY : src/client/view/UnitView.cpp.o
+
+src/client/view/UnitView.i: src/client/view/UnitView.cpp.i
+
+.PHONY : src/client/view/UnitView.i
+
+# target to preprocess a source file
+src/client/view/UnitView.cpp.i:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/view/UnitView.cpp.i
+.PHONY : src/client/view/UnitView.cpp.i
+
+src/client/view/UnitView.s: src/client/view/UnitView.cpp.s
+
+.PHONY : src/client/view/UnitView.s
+
+# target to generate assembly for a file
+src/client/view/UnitView.cpp.s:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/view/UnitView.cpp.s
+.PHONY : src/client/view/UnitView.cpp.s
 
 src/client/view/View.o: src/client/view/View.cpp.o
 
@@ -3681,17 +3585,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... install"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... tallerZ_Cliente"
-	@echo "... gmock_main"
-	@echo "... gmock"
-	@echo "... gtest_main"
-	@echo "... gtest"
 	@echo "... src/Exceptions/Front_end_exceptions/Front_end_exception.o"
 	@echo "... src/Exceptions/Front_end_exceptions/Front_end_exception.i"
 	@echo "... src/Exceptions/Front_end_exceptions/Front_end_exception.s"
@@ -3869,9 +3765,6 @@ help:
 	@echo "... src/client/model/Events/model/unit/UnitCreateEvent.o"
 	@echo "... src/client/model/Events/model/unit/UnitCreateEvent.i"
 	@echo "... src/client/model/Events/model/unit/UnitCreateEvent.s"
-	@echo "... src/client/model/Events/model/unit/UnitDamageReceiveEvent.o"
-	@echo "... src/client/model/Events/model/unit/UnitDamageReceiveEvent.i"
-	@echo "... src/client/model/Events/model/unit/UnitDamageReceiveEvent.s"
 	@echo "... src/client/model/Events/model/unit/UnitDeathEvent.o"
 	@echo "... src/client/model/Events/model/unit/UnitDeathEvent.i"
 	@echo "... src/client/model/Events/model/unit/UnitDeathEvent.s"
@@ -3917,6 +3810,9 @@ help:
 	@echo "... src/client/view/Texture.o"
 	@echo "... src/client/view/Texture.i"
 	@echo "... src/client/view/Texture.s"
+	@echo "... src/client/view/UnitView.o"
+	@echo "... src/client/view/UnitView.i"
+	@echo "... src/client/view/UnitView.s"
 	@echo "... src/client/view/View.o"
 	@echo "... src/client/view/View.i"
 	@echo "... src/client/view/View.s"

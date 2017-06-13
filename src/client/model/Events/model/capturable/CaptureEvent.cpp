@@ -31,14 +31,12 @@ void CaptureEvent::process() {
       Sprite *capturedVistaOld = view->getUnitVista(par.first);
       int rotation = capturedVistaOld->getRotation();
       std::string rotation_s = std::to_string(rotation);
-      Sprite *capturedVista = VistasFactory::getUnitVista(type, color,
-                                                          action, rotation_s,
-                                                          par.second.position);
-//      capturedVista->setPos(par.second.position);
+
+      UnitView capturedVista(type, color, par.second.position, action, rotation_s);
+
       view->removeUnitVista(par.first);
       view->addUnitVista(par.first, capturedVista);
     }
-//    view->removeCapturableVista(captured);
   }
   else {
     ObjectMapaVista *flagVista = view->getCapturedVista(captured);

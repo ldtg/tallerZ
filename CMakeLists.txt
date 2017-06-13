@@ -28,8 +28,6 @@ set(SOURCE_FILES
         src/client/model/Events/model/unit/UnitMoveEvent.h
         src/client/model/Events/Event.cpp
         src/client/model/Events/Event.h
-        src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp
-        src/client/model/Events/model/unit/UnitDamageReceiveEvent.h
         src/client/model/Events/model/unit/UnitDeathEvent.cpp
         src/client/model/Events/model/unit/UnitDeathEvent.h
         src/client/model/Events/Pointer/LeftClickEvent.cpp
@@ -284,7 +282,7 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
 
 
-        )
+        src/client/view/UnitView.cpp src/client/view/UnitView.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/client)
@@ -295,7 +293,7 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Utils)
 
 
 #nota a futuro: la mayoria de esos flags del SDL2 vienen de ejecutar `sdl2-config --cflags --libs --static-libs` en la terminal (estan copipasteados). Habrá que ver como hacerlo bien a esto.
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -O0 -pg -std=c++11 -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2 -lpthread -Wl,--no-undefined -lm -ldl -lasound -lm -ldl -lpthread -lpulse-simple -lpulse -lX11 -lXext -lXcursor -lXinerama -lXi -lXrandr -lXss -lXxf86vm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -lpthread -lrt")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -O0 -pg -std=c++11 -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2 -pthread -Wl,--no-undefined -lm -ldl -lasound -lm -ldl -lpthread -lpulse-simple -lpulse -lX11 -lXext -lXcursor -lXinerama -lXi -lXrandr -lXss -lXxf86vm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -lpthread -lrt")
 
 
 find_package(PkgConfig REQUIRED)
@@ -313,37 +311,37 @@ INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS} ${SLD2MIXER_I
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/json/src)
 
-# Download and unpack googletest at configure time
-configure_file (CMakeLists.txt.in
-        googletest-download/CMakeLists.txt)
-execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download)
-execute_process(COMMAND ${CMAKE_COMMAND} --build .
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download)
-
-# Prevent GoogleTest from overriding our compiler/linker options
-# when building with Visual Studio
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-
-# Add googletest directly to our build. This adds
-# the following targets: gtest, gtest_main, gmock
-# and gmock_main
-add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
-        ${CMAKE_BINARY_DIR}/googletest-build)
-
-# The gtest/gmock targets carry header search path
-# dependencies automatically when using CMake 2.8.11 or
-# later. Otherwise we have to add them here ourselves.
-if (CMAKE_VERSION VERSION_LESS 2.8.11)
-    include_directories("${gtest_SOURCE_DIR}/include"
-            "${gmock_SOURCE_DIR}/include")
-endif ()
-
-# Now simply link your own targets against gtest, gmock,
-# etc. as appropriate
-include_directories(cmake-build-debug/googletest-src/googlemock/include)
-include_directories(cmake-build-debug/googletest-src/googletest/include)
-target_link_libraries(${PROJECT_NAME} gtest gtest_main)
-#target_link_libraries(${PROJECT_NAME} ${GTK3_LIBRARIES} ${GTKMM_LIBRARIES})
+## Download and unpack googletest at configure time
+#configure_file (CMakeLists.txt.in
+#        googletest-download/CMakeLists.txt)
+#execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
+#        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download)
+#execute_process(COMMAND ${CMAKE_COMMAND} --build .
+#        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download)
+#
+## Prevent GoogleTest from overriding our compiler/linker options
+## when building with Visual Studio
+#set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+#
+## Add googletest directly to our build. This adds
+## the following targets: gtest, gtest_main, gmock
+## and gmock_main
+#add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
+#        ${CMAKE_BINARY_DIR}/googletest-build)
+#
+## The gtest/gmock targets carry header search path
+## dependencies automatically when using CMake 2.8.11 or
+## later. Otherwise we have to add them here ourselves.
+#if (CMAKE_VERSION VERSION_LESS 2.8.11)
+#    include_directories("${gtest_SOURCE_DIR}/include"
+#            "${gmock_SOURCE_DIR}/include")
+#endif ()
+#
+## Now simply link your own targets against gtest, gmock,
+## etc. as appropriate
+#include_directories(cmake-build-debug/googletest-src/googlemock/include)
+#include_directories(cmake-build-debug/googletest-src/googletest/include)
+#target_link_libraries(${PROJECT_NAME} gtest gtest_main)
+##target_link_libraries(${PROJECT_NAME} ${GTK3_LIBRARIES} ${GTKMM_LIBRARIES})
 target_link_libraries(${PROJECT_NAME})
 

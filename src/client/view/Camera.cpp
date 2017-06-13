@@ -32,12 +32,25 @@ void Camera::move(int x, int y) {
   }
 }
 
-/*
-Position Camera::translateToViewPos(Position &pos) {
-  return pos.sub(x, y);
-}
+bool Camera::inLimits(int x, int y, int mapWidth, int mapHeight) {
+  int x_aux = 0;
+  int y_aux = 0;
 
-Position Camera::translateToModelPos(Position &pos) {
-  return pos.add(x, y);
+  if (x < gap) {
+    x_aux = this->x - vel;
+  }
+  else if (x > w-gap) {
+    x_aux = this->x + vel;
+  }
+  else if (y < gap) {
+    y_aux = this->y - vel;
+  }
+  else if (y > h-gap) {
+    y_aux = this->y + vel;
+  }
+
+  bool limits = x_aux >= 0 && y_aux >= 0 &&
+      x_aux+w < mapWidth && y_aux+h < mapHeight+30;
+
+  return limits;
 }
-*/

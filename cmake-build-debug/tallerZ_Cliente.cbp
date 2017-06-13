@@ -5,96 +5,54 @@
 		<Option title="tallerZ_Cliente"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\googletest-src\;CMake Files\cmake-build-debug\googletest-src\googlemock\;CMake Files\cmake-build-debug\googletest-src\googletest\;CMake Files\cmake-build-debug\googletest-src\googletest\cmake\;"/>
+		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug"/>
+				<Option working_dir="/home/martin/GitHub/tallerZ_client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="install/strip">
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="install/local">
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="install">
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="list_install_components">
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug"/>
+				<Option working_dir="/home/martin/GitHub/tallerZ_client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug"/>
+				<Option working_dir="/home/martin/GitHub/tallerZ_client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="tallerZ_Cliente">
-				<Option output="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/tallerZ_Cliente" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug"/>
+				<Option output="/home/martin/GitHub/tallerZ_client/cmake-build-debug/tallerZ_Cliente" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/martin/GitHub/tallerZ_client/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/storage"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Utils"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/json/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/include"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/include"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src/client"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src/common"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src/storage"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src/Exceptions"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src/Utils"/>
+					<Add directory="/usr/local/include/SDL2"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/json/src"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -105,30 +63,28 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 tallerZ_Cliente"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 tallerZ_Cliente"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="tallerZ_Cliente/fast">
-				<Option output="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/tallerZ_Cliente" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug"/>
+				<Option output="/home/martin/GitHub/tallerZ_client/cmake-build-debug/tallerZ_Cliente" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/martin/GitHub/tallerZ_client/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/storage"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Utils"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/json/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/include"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/include"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src/client"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src/common"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src/storage"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src/Exceptions"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/src/Utils"/>
+					<Add directory="/usr/local/include/SDL2"/>
+					<Add directory="/home/martin/GitHub/tallerZ_client/json/src"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -139,1129 +95,792 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 tallerZ_Cliente/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gmock_main">
-				<Option output="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/libgmock_main.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/storage"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Utils"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/json/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 gmock_main"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gmock_main/fast">
-				<Option output="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/libgmock_main.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/storage"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Utils"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/json/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 gmock_main/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gmock">
-				<Option output="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/libgmock.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/storage"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Utils"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/json/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 gmock"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gmock/fast">
-				<Option output="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/libgmock.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/storage"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Utils"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/json/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 gmock/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gtest_main">
-				<Option output="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/libgtest_main.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/storage"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Utils"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/json/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 gtest_main"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gtest_main/fast">
-				<Option output="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/libgtest_main.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/storage"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Utils"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/json/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 gtest_main/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gtest">
-				<Option output="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/libgtest.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/storage"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Utils"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/json/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 gtest"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gtest/fast">
-				<Option output="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/libgtest.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/storage"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Utils"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/json/src"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/include"/>
-					<Add directory="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 gtest/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 tallerZ_Cliente/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/martin/GitHub/tallerZ_client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/src/gmock-all.cc">
-			<Option target="gmock_main"/>
-			<Option target="gmock"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/src/gmock_main.cc">
-			<Option target="gmock_main"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/src/gtest-all.cc">
-			<Option target="gmock_main"/>
-			<Option target="gmock"/>
-			<Option target="gtest"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/src/gtest_main.cc">
-			<Option target="gtest_main"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/Front_end_exceptions/Generator_Exception.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/Front_end_exceptions/Generator_Exception.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/Sdl_Exceptions/Sdl_Exception.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/Sdl_Exceptions/Sdl_Exception.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/Storage_Exceptions/Storage_Exception.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/Storage_Exceptions/Storage_Exception.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/model_exceptions/BuildingNotFoundException.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/model_exceptions/BuildingNotFoundException.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/model_exceptions/UnableToFindAPathException.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/model_exceptions/UnableToFindAPathException.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/model_exceptions/UnitNotFoundException.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/model_exceptions/UnitNotFoundException.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/Exceptions/model_exceptions/UnitNotFoundException.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/Exceptions/model_exceptions/UnitNotFoundException.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/clientCommandSender.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/clientCommandSender.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/clientCommandSender.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/clientCommandSender.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/clientEventReceiver.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/clientEventReceiver.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/clientEventReceiver.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/clientEventReceiver.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/clientMain.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/clientMain.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/clientRunner.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/clientRunner.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/clientRunner.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/clientRunner.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/Controller.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/Controller.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/Controller.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/Controller.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/Handler.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/Handler.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/HandlerFactory.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/HandlerFactory.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/HandlerFactory.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/HandlerFactory.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/MouseButtonLeft.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/MouseButtonLeft.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/MouseButtonLeft.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/MouseButtonLeft.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/MouseButtonRight.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/MouseButtonRight.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/MouseButtonRight.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/MouseButtonRight.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/MouseMotion.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/MouseMotion.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/MouseMotion.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/MouseMotion.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/MouseState.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/MouseState.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/MouseState.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/MouseState.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/NullHandler.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/NullHandler.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/NullHandler.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/NullHandler.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/Quit.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/Quit.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/controller/Quit.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/controller/Quit.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Buttons/Button.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Buttons/Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Buttons/Button.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Buttons/Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Buttons/Quit_Button.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Buttons/Quit_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Cursor.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Cursor.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Cursor.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Cursor.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Labels/Label.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Labels/Label.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Labels/Label.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Labels/Label.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Menu.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Menu.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Menu.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Menu.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Robot_Face.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Robot_Face.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Robot_Face.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Robot_Face.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Side_Board.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Side_Board.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Side_Board.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Side_Board.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Weapon_Img.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Weapon_Img.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/front_end/SDL_Interface/Weapon_Img.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/front_end/SDL_Interface/Weapon_Img.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Build/clientBuildChangeUnitCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Build/clientBuildChangeUnitCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Unit/clientUnitAttackTOCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Unit/clientUnitAttackTOCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Unit/clientUnitCaptureCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Unit/clientUnitCaptureCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Unit/clientUnitMoveCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Unit/clientUnitMoveCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/Unit/clientUnitMoveCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/Unit/clientUnitMoveCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/clientCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/clientCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Commands/clientCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Commands/clientCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/Event.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/Event.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/Event.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/Event.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/EventFactory.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/EventFactory.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/EventFactory.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/EventFactory.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/EventHandler.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/EventHandler.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/EventHandler.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/EventHandler.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/Pointer/LeftClickEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/Pointer/LeftClickEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/Pointer/LeftClickEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/Pointer/LeftClickEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/Pointer/RightClickEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/Pointer/RightClickEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/Pointer/RightClickEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/Pointer/RightClickEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/build/BuildDamageEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/build/BuildDamageEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/build/BuildDamageEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/build/BuildDamageEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/build/BuildDestroyedEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/build/BuildDestroyedEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/build/BuildDestroyedEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/build/BuildDestroyedEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/bullet/BulletHitEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/bullet/BulletHitEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/bullet/BulletHitEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/bullet/BulletHitEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/bullet/BulletMoveEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/bullet/BulletMoveEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/bullet/BulletMoveEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/bullet/BulletMoveEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/bullet/BulletMoveStepEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/bullet/BulletMoveStepEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/bullet/BulletNewEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/bullet/BulletNewEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/bullet/BulletNewEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/bullet/BulletNewEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/capturable/CaptureEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/capturable/CaptureEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/capturable/CaptureEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/capturable/CaptureEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/game/EndGameEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/game/EndGameEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/game/EndGameEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/game/EndGameEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/game/PlayerDefeatedEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/game/PlayerDefeatedEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/game/PlayerDefeatedEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/game/PlayerDefeatedEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/terrainObject/TerrainObjectDestroyedEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/terrainObject/TerrainObjectDestroyedEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/terrainObject/TerrainObjectDestroyedEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/terrainObject/TerrainObjectDestroyedEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitAttackEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitAttackEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitAttackEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitAttackEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitCreateEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitCreateEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitCreateEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitCreateEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitDeathEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitDamageReceiveEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitDeathEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitDeathEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitMoveEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitDeathEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitMoveEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitMoveEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitMoveEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitMoveStepEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitStillEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitMoveStepEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/model/unit/UnitStillEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitStillEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/view/CameraMove.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/model/unit/UnitStillEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/view/CameraMove.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/view/CameraMove.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/view/CameraMoveStepEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/view/CameraMove.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/view/CameraMoveStepEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/view/CameraMoveStepEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/view/QuitEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/view/CameraMoveStepEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Events/view/QuitEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/view/QuitEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/GameControllerProxy.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Events/view/QuitEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/GameControllerProxy.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/GameControllerProxy.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Model.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/GameControllerProxy.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/model/Model.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Model.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Camera.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/model/Model.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Camera.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Camera.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/EffectType.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Camera.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Image.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/EffectType.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Image.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Image.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/ObjectMapaVista.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Image.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/ObjectMapaVista.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/ObjectMapaVista.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Panel.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/ObjectMapaVista.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Panel.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Panel.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Sprite.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Panel.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Sprite.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Sprite.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Texture.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Sprite.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Texture.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Texture.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/UnitView.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Texture.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/UnitView.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/View.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/View.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/View.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/View.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/VistasFactory.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/VistasFactory.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/VistasFactory.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/VistasFactory.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Window.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Window.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/client/view/Window.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/client/view/Window.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataClientServerMessages/dataClientConnectedMessage.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataClientServerMessages/dataClientConnectedMessage.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataClientServerMessages/dataServerClientAccepted.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataClientServerMessages/dataServerClientAccepted.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataClientServerMessages/dataServerClientAccepted.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataClientServerMessages/dataServerClientAccepted.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Build/dataBuildChangeUnitCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Build/dataBuildChangeUnitCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/CommandType.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/CommandType.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Unit/dataUnitAttackTOCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Unit/dataUnitAttackTOCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Unit/dataUnitCaptureCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Unit/dataUnitCaptureCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Unit/dataUnitMoveCommand.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Unit/dataUnitMoveCommand.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataCommands/Unit/dataUnitMoveCommand.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataCommands/Unit/dataUnitMoveCommand.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Build/dataBuildDamageEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Build/dataBuildDamageEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Build/dataBuildDamageEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Build/dataBuildDamageEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Build/dataBuildIDEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Build/dataBuildIDEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Build/dataBuildIDEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Build/dataBuildIDEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Bullet/dataBulletHitEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Bullet/dataBulletHitEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Bullet/dataBulletHitEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Bullet/dataBulletHitEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Bullet/dataBulletMoveEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Bullet/dataBulletMoveEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Bullet/dataBulletNewEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Bullet/dataBulletNewEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Bullet/dataBulletNewEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Bullet/dataBulletNewEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Capturable/dataCaptureEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Capturable/dataCaptureEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Capturable/dataCaptureEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Capturable/dataCaptureEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/EventType.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/EventType.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Game/dataEndGameEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Game/dataEndGameEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Game/dataEndGameEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Game/dataEndGameEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Game/dataPlayerDefeatEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Game/dataPlayerDefeatEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Unit/dataUnitAttackEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Unit/dataUnitAttackEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Unit/dataUnitAttackEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Unit/dataUnitAttackEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Unit/dataUnitCreateEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Unit/dataUnitCreateEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Unit/dataUnitCreateEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Unit/dataUnitCreateEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Unit/dataUnitIDEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Unit/dataUnitIDEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Unit/dataUnitIDEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Unit/dataUnitIDEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Unit/dataUnitMoveEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Unit/dataUnitMoveEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/Unit/dataUnitMoveEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/Unit/dataUnitMoveEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/dataEvent.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/dataEvent.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/DataEvents/dataEvent.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/DataEvents/dataEvent.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/BuildID.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/BuildID.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/BuildID.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/BuildID.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/BulletID.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/BulletID.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/BulletID.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/BulletID.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/CapturableID.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/CapturableID.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/CapturableID.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/CapturableID.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/PlayerID.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/PlayerID.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/PlayerID.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/PlayerID.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/TeamID.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/TeamID.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/TeamID.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/TeamID.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/TerrainObjectID.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/TerrainObjectID.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/TerrainObjectID.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/TerrainObjectID.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/UnitID.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/UnitID.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/IDs/UnitID.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/IDs/UnitID.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Map/Map.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Map/Map.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Map/Map.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Map/Map.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Map/Position.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Map/Position.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Map/Position.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Map/Position.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Map/TerrainData.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Map/TerrainData.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Map/Tile.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Map/Tile.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Map/Tile.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Map/Tile.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Queue/Queue.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Queue/Queue.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Socket/Socket.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Socket/Socket.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Socket/Socket.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Socket/Socket.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Socket/SocketException.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Socket/SocketException.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Socket/SocketException.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Socket/SocketException.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/States/BuildState.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/States/BuildState.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/States/BuildState.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/States/BuildState.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/States/BulletState.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/States/BulletState.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/States/BulletState.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/States/BulletState.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/States/CapturableState.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/States/CapturableState.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/States/TerrainObjectState.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/States/TerrainObjectState.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/States/TerrainObjectState.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/States/TerrainObjectState.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/States/UnitState.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/States/UnitState.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/States/UnitState.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/States/UnitState.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Thread/Thread.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Thread/Thread.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Thread/Thread.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Thread/Thread.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Types/BuildType.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Types/BuildType.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Types/CapturableType.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Types/CapturableType.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Types/PlayerColor.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Types/PlayerColor.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Types/TerrainObjectType.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Types/TerrainObjectType.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Types/TerrainType.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Types/TerrainType.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Types/UnitType.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Types/UnitType.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/src/common/Types/WeaponType.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/src/common/Types/WeaponType.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_sounds/Sound_event.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_sounds/Sound_event.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_sounds/Sound_event.h">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_sounds/Sound_event.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_tests/tests_model/AStar_test.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_tests/tests_model/AStar_test.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_tests/tests_model/GameControllerCapturables_test.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_tests/tests_model/GameControllerCapturables_test.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_tests/tests_model/GameController_build_test.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_tests/tests_model/GameController_build_test.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_tests/tests_model/GameController_objects_test.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_tests/tests_model/GameController_objects_test.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_tests/tests_model/GameController_test.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_tests/tests_model/GameController_test.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_tests/tests_model/GameController_win_test.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_tests/tests_model/GameController_win_test.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_tests/tests_model/Map_test.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_tests/tests_model/Map_test.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_tests/tests_model/Robot_test.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_tests/tests_model/Robot_test.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_tests/tests_model/Tile_test.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_tests/tests_model/Tile_test.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/z_tests/tests_view/Vista_test.cpp">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/z_tests/tests_view/Vista_test.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/CMakeLists.txt">
+		<Unit filename="/home/martin/GitHub/tallerZ_client/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/CMakeLists.txt.in">
-			<Option virtualFolder="CMake Files\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googlemock\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googlemock\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googlemock/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googlemock\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googletest\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googletest\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googletest\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googletest\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/cmake/internal_utils.cmake">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googletest\cmake\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/cmake/internal_utils.cmake">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googletest\cmake\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/cmake/internal_utils.cmake">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googletest\cmake\"/>
-		</Unit>
-		<Unit filename="/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src/googletest/cmake/internal_utils.cmake">
-			<Option virtualFolder="CMake Files\cmake-build-debug\googletest-src\googletest\cmake\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

@@ -8,7 +8,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnitNotFoundException.cpp.o"
   "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveEvent.cpp.o"
   "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/Event.cpp.o"
-  "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp.o"
   "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitDeathEvent.cpp.o"
   "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/Pointer/LeftClickEvent.cpp.o"
   "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/EventHandler.cpp.o"
@@ -127,6 +126,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataServerClientAccepted.cpp.o"
   "CMakeFiles/tallerZ_Cliente.dir/src/client/clientRunner.cpp.o"
   "CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o"
+  "CMakeFiles/tallerZ_Cliente.dir/src/client/view/UnitView.cpp.o"
   "tallerZ_Cliente.pdb"
   "tallerZ_Cliente"
 )
