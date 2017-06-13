@@ -7,15 +7,21 @@ void serverEventSender::run() {
   try {
     while (open) {
       serverEvent *sev = queue.pop();
-      for (Socket *sck : clients) {
-        EventType type = sev->getType();
-        sck->send_tcp((char *) &type, sizeof(EventType));
-        sck->send_str_preconcatenated(sev->getDataToSend().str());
+      if (sev != nullptr) {
+        for (Socket *sck : clients) {
+          EventType type = sev->getType();
+          sck->send_tcp((char *) &type, sizeof(EventType));
+          sck->send_str_preconcatenated(sev->getDataToSend().str());
+        }
+        if (sev->getType() == G_ENDGAME) {
+          open = false;
+        }
+        delete (sev);
+
+      } else {
+        this->stop();
       }
-      if (sev->getType() == G_ENDGAME) {
-        open = false;
-      }
-      delete (sev);
+
     }
   } catch (const SocketException &e) {
     this->stop();
