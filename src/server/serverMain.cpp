@@ -48,8 +48,11 @@ int main(int argc, char *argv[]) {
     commandReceiver->start();
   }
 
-  while (getc(stdin) != 'q' && !gameController.isGameEnded()
-      && eventSender.isOpen()) {};
+  while (!gameController.isGameEnded()
+      && eventSender.isOpen()) {
+    if (commandReceivers.at(0)->isOpen())
+      std::cerr << "open" << std::endl;
+  };
   evqueue.push(nullptr);// no se me ocurrio otra para destrabar el pop
   gameRunner.stop();
   eventSender.stop();
