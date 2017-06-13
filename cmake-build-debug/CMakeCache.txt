@@ -243,16 +243,10 @@ gtest_hide_internal_symbols:BOOL=OFF
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
 //Value Computed by CMake
-tallerZ_BINARY_DIR:STATIC=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug
-
-//Value Computed by CMake
 tallerZ_Cliente_BINARY_DIR:STATIC=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug
 
 //Value Computed by CMake
 tallerZ_Cliente_SOURCE_DIR:STATIC=/home/darius/CLionProjects/tallerZ_Cliente
-
-//Value Computed by CMake
-tallerZ_SOURCE_DIR:STATIC=/home/darius/CLionProjects/tallerZ_Cliente
 
 
 ########################
