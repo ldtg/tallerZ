@@ -18,7 +18,7 @@ void sendMapToClients(const std::vector<Socket *> &clients, const Map &map);
 
 int main(int argc, char *argv[]) {
   //Espera a que se conecten todos los jugadores
-  std::vector<Socket *> clients = getClients(std::stoi(argv[1]));
+  std::vector<Socket *> clients = getClients(1);
 
   std::string mapPath;
   //carga los equipos y le dice a cada cliente que id tiene
