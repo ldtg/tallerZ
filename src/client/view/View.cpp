@@ -4,6 +4,7 @@
 #include <client/model/Events/model/bullet/BulletMoveStepEvent.h>
 #include <client/model/Events/view/CameraMoveStepEvent.h>
 #include <client/model/Model.h>
+#include <thread>
 
 View::View(const Map &map, EventHandler &eventHandler, Camera &camera)
     : window(), panel(window.getRender()), eventHandler(eventHandler), camera(camera) {
@@ -99,6 +100,12 @@ void View::createInitialCapturableVista(const std::map<CapturableID,
 
 
 void View::update() {
+  float fps = 40;
+  unsigned long milifps =
+      (unsigned long) std::lround((1 / fps) * 1000);
+
+  auto begin = std::chrono::high_resolution_clock::now();
+
   while (!eventHandler.empty()) {
     Event *event = eventHandler.get();
     event->process();
@@ -107,6 +114,12 @@ void View::update() {
 
   drawSteps();
   draw();
+
+  auto end = std::chrono::high_resolution_clock::now();
+  auto diff =
+      std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
+  auto sleepTime = std::chrono::milliseconds(milifps) - diff;
+  std::this_thread::sleep_for(sleepTime);
 }
 
 void View::drawSteps() {
@@ -244,9 +257,15 @@ void View::moveCamera(int x, int y) {
 void View::move(UnitID id, Position posTo) {
   UnitView &unitView = unitsVista.at(id);
   Position pos_aux = unitView.getPos();
+
+  int i = 0;
   while (pos_aux != posTo) {
     pos_aux.move(posTo);
     unitView.addMove(pos_aux);
+
+    int rotation = pos_aux.getRoration(posTo);
+    eventHandler.addStep(new UnitMoveStepEvent(id, pos_aux, rotation), i);
+    i+=1;
   }
 }
 
@@ -268,6 +287,10 @@ void View::addTerrainObjectVista(TerrainObjectID &id,
 
 Sprite* View::getUnitVista(UnitID id) {
   return unitsVista.at(id).getView();
+}
+
+UnitView& View::getUnitView(UnitID id) {
+  return unitsVista.at(id);
 }
 
 void View::removeUnitVista(const UnitID &id) {
