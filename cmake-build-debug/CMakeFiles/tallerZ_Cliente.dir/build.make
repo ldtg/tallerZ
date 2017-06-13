@@ -849,33 +849,9 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitCreateEven
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitCreateEvent.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitCreateEvent.cpp.o
 
 
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o: ../z_tests/tests_model/GameController_build_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_build_test.cpp
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_build_test.cpp > CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.i
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_build_test.cpp -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.s
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o.requires:
-
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o.requires
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o.provides: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o.provides.build
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o.provides
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o
-
-
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp.o: ../src/client/model/Events/model/unit/UnitMoveStepEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp.i: cmake_force
@@ -899,7 +875,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveStepEv
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveEvent.cpp.o: ../src/client/model/Events/model/bullet/BulletMoveEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Events/model/bullet/BulletMoveEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveEvent.cpp.i: cmake_force
@@ -923,7 +899,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveEv
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp.o: ../src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp.i: cmake_force
@@ -947,7 +923,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveSt
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.o: ../src/client/model/Events/model/unit/UnitStillEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Events/model/unit/UnitStillEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.i: cmake_force
@@ -969,57 +945,9 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.o
 
 
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o: ../z_tests/tests_model/GameController_objects_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_objects_test.cpp
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_objects_test.cpp > CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.i
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_objects_test.cpp -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.s
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o.requires:
-
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o.requires
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o.provides: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o.provides.build
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o.provides
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o
-
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o: ../z_tests/tests_model/GameController_win_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_win_test.cpp
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_win_test.cpp > CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.i
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_win_test.cpp -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.s
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o.requires:
-
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o.requires
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o.provides: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o.provides.build
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o.provides
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o
-
-
 CMakeFiles/tallerZ_Cliente.dir/src/common/IDs/CapturableID.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/IDs/CapturableID.cpp.o: ../src/common/IDs/CapturableID.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/IDs/CapturableID.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/IDs/CapturableID.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/IDs/CapturableID.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/IDs/CapturableID.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/IDs/CapturableID.cpp.i: cmake_force
@@ -1043,7 +971,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/IDs/CapturableID.cpp.o.provides.build:
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.o: ../src/client/model/Events/model/capturable/CaptureEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Events/model/capturable/CaptureEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.i: cmake_force
@@ -1065,33 +993,9 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureE
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.o
 
 
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o: ../z_tests/tests_model/GameControllerCapturables_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameControllerCapturables_test.cpp
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameControllerCapturables_test.cpp > CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.i
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameControllerCapturables_test.cpp -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.s
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o.requires:
-
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o.requires
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o.provides: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o.provides.build
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o.provides
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o
-
-
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/view/CameraMoveStepEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/view/CameraMoveStepEvent.cpp.o: ../src/client/model/Events/view/CameraMoveStepEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/view/CameraMoveStepEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/view/CameraMoveStepEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/view/CameraMoveStepEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Events/view/CameraMoveStepEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/view/CameraMoveStepEvent.cpp.i: cmake_force
@@ -1115,7 +1019,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/view/CameraMoveStepEvent.
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.o: ../src/client/view/Texture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/Texture.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.i: cmake_force
@@ -1139,7 +1043,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.o.provides.build: CMa
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Window.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Window.cpp.o: ../src/client/view/Window.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Window.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/view/Window.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/Window.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Window.cpp.i: cmake_force
@@ -1163,7 +1067,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/view/Window.cpp.o.provides.build: CMak
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Panel.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Panel.cpp.o: ../src/client/view/Panel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Panel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Panel.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/view/Panel.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/Panel.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Panel.cpp.i: cmake_force
@@ -1187,7 +1091,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/view/Panel.cpp.o.provides.build: CMake
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Image.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Image.cpp.o: ../src/client/view/Image.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Image.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Image.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/view/Image.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/Image.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Image.cpp.i: cmake_force
@@ -1211,7 +1115,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/view/Image.cpp.o.provides.build: CMake
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/ObjectMapaVista.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/ObjectMapaVista.cpp.o: ../src/client/view/ObjectMapaVista.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/ObjectMapaVista.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/ObjectMapaVista.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/view/ObjectMapaVista.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/ObjectMapaVista.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/ObjectMapaVista.cpp.i: cmake_force
@@ -1235,7 +1139,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/view/ObjectMapaVista.cpp.o.provides.bu
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/View.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/View.cpp.o: ../src/client/view/View.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/View.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/View.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/view/View.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/View.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/View.cpp.i: cmake_force
@@ -1259,7 +1163,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/view/View.cpp.o.provides.build: CMakeF
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Sprite.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Sprite.cpp.o: ../src/client/view/Sprite.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Sprite.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Sprite.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/view/Sprite.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/Sprite.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Sprite.cpp.i: cmake_force
@@ -1283,7 +1187,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/view/Sprite.cpp.o.provides.build: CMak
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/VistasFactory.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/VistasFactory.cpp.o: ../src/client/view/VistasFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/VistasFactory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/VistasFactory.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/view/VistasFactory.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/VistasFactory.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/VistasFactory.cpp.i: cmake_force
@@ -1307,7 +1211,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/view/VistasFactory.cpp.o.provides.buil
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Camera.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Camera.cpp.o: ../src/client/view/Camera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Camera.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/view/Camera.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/view/Camera.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/Camera.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/view/Camera.cpp.i: cmake_force
@@ -1331,7 +1235,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/view/Camera.cpp.o.provides.build: CMak
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Controller.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Controller.cpp.o: ../src/client/controller/Controller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Controller.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Controller.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/controller/Controller.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Controller.cpp.i: cmake_force
@@ -1355,7 +1259,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Controller.cpp.o.provides.b
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/HandlerFactory.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/HandlerFactory.cpp.o: ../src/client/controller/HandlerFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/HandlerFactory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/HandlerFactory.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/controller/HandlerFactory.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/controller/HandlerFactory.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/HandlerFactory.cpp.i: cmake_force
@@ -1379,7 +1283,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/controller/HandlerFactory.cpp.o.provid
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonLeft.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonLeft.cpp.o: ../src/client/controller/MouseButtonLeft.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonLeft.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonLeft.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonLeft.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/controller/MouseButtonLeft.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonLeft.cpp.i: cmake_force
@@ -1403,7 +1307,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonLeft.cpp.o.provi
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/NullHandler.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/NullHandler.cpp.o: ../src/client/controller/NullHandler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/NullHandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/NullHandler.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/controller/NullHandler.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/controller/NullHandler.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/NullHandler.cpp.i: cmake_force
@@ -1427,7 +1331,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/controller/NullHandler.cpp.o.provides.
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Quit.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Quit.cpp.o: ../src/client/controller/Quit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Quit.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Quit.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Quit.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/controller/Quit.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Quit.cpp.i: cmake_force
@@ -1451,7 +1355,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/controller/Quit.cpp.o.provides.build: 
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonRight.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonRight.cpp.o: ../src/client/controller/MouseButtonRight.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonRight.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonRight.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonRight.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/controller/MouseButtonRight.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonRight.cpp.i: cmake_force
@@ -1475,7 +1379,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseButtonRight.cpp.o.prov
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseMotion.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseMotion.cpp.o: ../src/client/controller/MouseMotion.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseMotion.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseMotion.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseMotion.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/controller/MouseMotion.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseMotion.cpp.i: cmake_force
@@ -1499,7 +1403,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseMotion.cpp.o.provides.
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseState.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseState.cpp.o: ../src/client/controller/MouseState.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseState.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseState.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseState.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/controller/MouseState.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseState.cpp.i: cmake_force
@@ -1523,7 +1427,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/controller/MouseState.cpp.o.provides.b
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp.o: ../src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp.i: cmake_force
@@ -1547,7 +1451,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp.o
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o: ../src/Exceptions/Front_end_exceptions/Front_end_exception.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Front_end_exceptions/Front_end_exception.cpp.i: cmake_force
@@ -1571,7 +1475,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Front_end_exceptions/Front_end_exc
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp.o: ../src/Exceptions/model_exceptions/UnableToFindAPathException.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp.i: cmake_force
@@ -1595,7 +1499,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToFindAPath
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp.o: ../src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp.i: cmake_force
@@ -1619,7 +1523,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToBuildThat
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o: ../src/Exceptions/Storage_Exceptions/Storage_Exception.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.i: cmake_force
@@ -1641,153 +1545,9 @@ CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Excepti
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o
 
 
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o: ../z_tests/tests_model/GameController_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_test.cpp
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_test.cpp > CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.i
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_test.cpp -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.s
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o.requires:
-
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o.requires
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o.provides: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o.provides.build
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o.provides
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o
-
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o: ../z_tests/tests_model/Map_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Map_test.cpp
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Map_test.cpp > CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.i
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Map_test.cpp -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.s
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o.requires:
-
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o.requires
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o.provides: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o.provides.build
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o.provides
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o
-
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o: ../z_tests/tests_view/Vista_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_view/Vista_test.cpp
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_view/Vista_test.cpp > CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.i
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_view/Vista_test.cpp -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.s
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o.requires:
-
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o.requires
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o.provides: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o.provides.build
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o.provides
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o
-
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o: ../z_tests/tests_model/Tile_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Tile_test.cpp
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Tile_test.cpp > CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.i
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Tile_test.cpp -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.s
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o.requires:
-
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o.requires
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o.provides: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o.provides.build
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o.provides
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o
-
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o: ../z_tests/tests_model/Robot_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Robot_test.cpp
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Robot_test.cpp > CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.i
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Robot_test.cpp -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.s
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o.requires:
-
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o.requires
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o.provides: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o.provides.build
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o.provides
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o
-
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o: ../z_tests/tests_model/AStar_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/AStar_test.cpp
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/AStar_test.cpp > CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.i
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/AStar_test.cpp -o CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.s
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o.requires:
-
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o.requires
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o.provides: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o.provides.build
-.PHONY : CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o.provides
-
-CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o.provides.build: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o
-
-
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp.o: ../src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp.i: cmake_force
@@ -1811,7 +1571,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Producti
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o: ../src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.i: cmake_force
@@ -1835,7 +1595,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Producti
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.o: ../src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.i: cmake_force
@@ -1859,7 +1619,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Producti
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp.o: ../src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp.i: cmake_force
@@ -1883,7 +1643,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Producti
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp.o: ../src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp.i: cmake_force
@@ -1907,7 +1667,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Producti
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Side_Board.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Side_Board.cpp.o: ../src/client/front_end/SDL_Interface/Side_Board.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Side_Board.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Side_Board.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Side_Board.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Side_Board.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Side_Board.cpp.i: cmake_force
@@ -1931,7 +1691,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Side_Board.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Weapon_Img.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Weapon_Img.cpp.o: ../src/client/front_end/SDL_Interface/Weapon_Img.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Weapon_Img.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Weapon_Img.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Weapon_Img.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Weapon_Img.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Weapon_Img.cpp.i: cmake_force
@@ -1955,7 +1715,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Weapon_Img.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Robot_Face.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Robot_Face.cpp.o: ../src/client/front_end/SDL_Interface/Robot_Face.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Robot_Face.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Robot_Face.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Robot_Face.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Robot_Face.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Robot_Face.cpp.i: cmake_force
@@ -1979,7 +1739,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Robot_Face.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.o: ../src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.i: cmake_force
@@ -2003,7 +1763,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Qui
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp.o: ../src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp.i: cmake_force
@@ -2027,7 +1787,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Producti
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Menu.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Menu.cpp.o: ../src/client/front_end/SDL_Interface/Menus/Menu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Menu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Menu.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Menu.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Menu.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Menu.cpp.i: cmake_force
@@ -2051,7 +1811,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Menu.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Labels/Label.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Labels/Label.cpp.o: ../src/client/front_end/SDL_Interface/Labels/Label.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Labels/Label.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Labels/Label.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Labels/Label.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Labels/Label.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Labels/Label.cpp.i: cmake_force
@@ -2075,7 +1835,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Labels/Label.c
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Cursor.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Cursor.cpp.o: ../src/client/front_end/SDL_Interface/Cursor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Cursor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Cursor.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Cursor.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Cursor.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Cursor.cpp.i: cmake_force
@@ -2099,7 +1859,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Cursor.cpp.o.p
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Button.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Button.cpp.o: ../src/client/front_end/SDL_Interface/Buttons/Button.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Button.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Button.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Button.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Button.cpp.i: cmake_force
@@ -2123,7 +1883,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Button
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.o: ../src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.i: cmake_force
@@ -2147,7 +1907,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Quit_B
 
 CMakeFiles/tallerZ_Cliente.dir/z_sounds/Sound_event.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/z_sounds/Sound_event.cpp.o: ../z_sounds/Sound_event.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_sounds/Sound_event.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/z_sounds/Sound_event.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/z_sounds/Sound_event.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/z_sounds/Sound_event.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/z_sounds/Sound_event.cpp.i: cmake_force
@@ -2171,7 +1931,7 @@ CMakeFiles/tallerZ_Cliente.dir/z_sounds/Sound_event.cpp.o.provides.build: CMakeF
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp.o: ../src/Exceptions/model_exceptions/BuildingNotFoundException.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/BuildingNotFoundException.cpp.i: cmake_force
@@ -2195,7 +1955,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/BuildingNotFoundE
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/GameControllerProxy.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/GameControllerProxy.cpp.o: ../src/client/model/GameControllerProxy.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/GameControllerProxy.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/GameControllerProxy.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/GameControllerProxy.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/GameControllerProxy.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/GameControllerProxy.cpp.i: cmake_force
@@ -2219,7 +1979,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/GameControllerProxy.cpp.o.provid
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/dataEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/dataEvent.cpp.o: ../src/common/DataEvents/dataEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/dataEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/dataEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/dataEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/dataEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/dataEvent.cpp.i: cmake_force
@@ -2243,7 +2003,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/dataEvent.cpp.o.provides.bu
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitMoveEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitMoveEvent.cpp.o: ../src/common/DataEvents/Unit/dataUnitMoveEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitMoveEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitMoveEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitMoveEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Unit/dataUnitMoveEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitMoveEvent.cpp.i: cmake_force
@@ -2267,7 +2027,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitMoveEvent.cpp.
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/EventFactory.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/EventFactory.cpp.o: ../src/client/model/Events/EventFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/EventFactory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/EventFactory.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/EventFactory.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Events/EventFactory.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/EventFactory.cpp.i: cmake_force
@@ -2291,7 +2051,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/EventFactory.cpp.o.provid
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitAttackEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitAttackEvent.cpp.o: ../src/common/DataEvents/Unit/dataUnitAttackEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitAttackEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitAttackEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitAttackEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Unit/dataUnitAttackEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitAttackEvent.cpp.i: cmake_force
@@ -2315,7 +2075,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitAttackEvent.cp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitCreateEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitCreateEvent.cpp.o: ../src/common/DataEvents/Unit/dataUnitCreateEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitCreateEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitCreateEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitCreateEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Unit/dataUnitCreateEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitCreateEvent.cpp.i: cmake_force
@@ -2339,7 +2099,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitCreateEvent.cp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitIDEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitIDEvent.cpp.o: ../src/common/DataEvents/Unit/dataUnitIDEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitIDEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitIDEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitIDEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Unit/dataUnitIDEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitIDEvent.cpp.i: cmake_force
@@ -2363,7 +2123,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Unit/dataUnitIDEvent.cpp.o.
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildDamageEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildDamageEvent.cpp.o: ../src/common/DataEvents/Build/dataBuildDamageEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildDamageEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildDamageEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildDamageEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Build/dataBuildDamageEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildDamageEvent.cpp.i: cmake_force
@@ -2387,7 +2147,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildDamageEvent.
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildIDEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildIDEvent.cpp.o: ../src/common/DataEvents/Build/dataBuildIDEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildIDEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildIDEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildIDEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Build/dataBuildIDEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildIDEvent.cpp.i: cmake_force
@@ -2411,7 +2171,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Build/dataBuildIDEvent.cpp.
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletNewEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletNewEvent.cpp.o: ../src/common/DataEvents/Bullet/dataBulletNewEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletNewEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletNewEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletNewEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Bullet/dataBulletNewEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletNewEvent.cpp.i: cmake_force
@@ -2435,7 +2195,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletNewEvent.c
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp.o: ../src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp.i: cmake_force
@@ -2459,7 +2219,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletMoveEvent.
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletHitEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletHitEvent.cpp.o: ../src/common/DataEvents/Bullet/dataBulletHitEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletHitEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletHitEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletHitEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Bullet/dataBulletHitEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletHitEvent.cpp.i: cmake_force
@@ -2483,7 +2243,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Bullet/dataBulletHitEvent.c
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Capturable/dataCaptureEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Capturable/dataCaptureEvent.cpp.o: ../src/common/DataEvents/Capturable/dataCaptureEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Capturable/dataCaptureEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Capturable/dataCaptureEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Capturable/dataCaptureEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Capturable/dataCaptureEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Capturable/dataCaptureEvent.cpp.i: cmake_force
@@ -2507,7 +2267,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Capturable/dataCaptureEvent
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp.o: ../src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp.i: cmake_force
@@ -2531,7 +2291,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/TerrainObject/dataTerrainOb
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp.o: ../src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp.i: cmake_force
@@ -2555,7 +2315,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataPlayerDefeatEvent.
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataEndGameEvent.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataEndGameEvent.cpp.o: ../src/common/DataEvents/Game/dataEndGameEvent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataEndGameEvent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataEndGameEvent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataEndGameEvent.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataEvents/Game/dataEndGameEvent.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataEndGameEvent.cpp.i: cmake_force
@@ -2579,7 +2339,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataEvents/Game/dataEndGameEvent.cpp.o
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitMoveCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitMoveCommand.cpp.o: ../src/common/DataCommands/Unit/dataUnitMoveCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitMoveCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitMoveCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitMoveCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataCommands/Unit/dataUnitMoveCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitMoveCommand.cpp.i: cmake_force
@@ -2603,7 +2363,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitMoveCommand.
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/clientCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/clientCommand.cpp.o: ../src/client/model/Commands/clientCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/clientCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/clientCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/clientCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Commands/clientCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/clientCommand.cpp.i: cmake_force
@@ -2627,7 +2387,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/clientCommand.cpp.o.pro
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitMoveCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitMoveCommand.cpp.o: ../src/client/model/Commands/Unit/clientUnitMoveCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitMoveCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitMoveCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitMoveCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Commands/Unit/clientUnitMoveCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitMoveCommand.cpp.i: cmake_force
@@ -2651,7 +2411,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitMoveComm
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp.o: ../src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp.i: cmake_force
@@ -2675,7 +2435,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackUnitCo
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp.o: ../src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackUnitCommand.cpp.i: cmake_force
@@ -2699,7 +2459,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackUn
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp.o: ../src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp.i: cmake_force
@@ -2723,7 +2483,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackBuildC
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp.o: ../src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackBuildCommand.cpp.i: cmake_force
@@ -2747,7 +2507,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackBu
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp.o: ../src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp.i: cmake_force
@@ -2771,7 +2531,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitAttackTOComm
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp.o: ../src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackTOCommand.cpp.i: cmake_force
@@ -2795,7 +2555,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitAttackTO
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp.o: ../src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp.i: cmake_force
@@ -2819,7 +2579,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Unit/dataUnitCaptureComma
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp.o: ../src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitCaptureCommand.cpp.i: cmake_force
@@ -2843,7 +2603,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Unit/clientUnitCaptureC
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp.o: ../src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp.i: cmake_force
@@ -2867,7 +2627,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataCommands/Build/dataBuildChangeUnit
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp.o: ../src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Build/clientBuildChangeUnitCommand.cpp.i: cmake_force
@@ -2891,7 +2651,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/model/Commands/Build/clientBuildChange
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/Socket.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/Socket.cpp.o: ../src/common/Socket/Socket.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/Socket.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/Socket.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/Socket.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/Socket/Socket.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/Socket.cpp.i: cmake_force
@@ -2915,7 +2675,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/Socket.cpp.o.provides.build: CM
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/SocketException.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/SocketException.cpp.o: ../src/common/Socket/SocketException.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/SocketException.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/SocketException.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/SocketException.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/Socket/SocketException.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/SocketException.cpp.i: cmake_force
@@ -2939,7 +2699,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/Socket/SocketException.cpp.o.provides.
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/Thread/Thread.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/Thread/Thread.cpp.o: ../src/common/Thread/Thread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/Thread/Thread.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/Thread/Thread.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/Thread/Thread.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/Thread/Thread.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/Thread/Thread.cpp.i: cmake_force
@@ -2963,7 +2723,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/Thread/Thread.cpp.o.provides.build: CM
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientEventReceiver.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientEventReceiver.cpp.o: ../src/client/clientEventReceiver.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/clientEventReceiver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/clientEventReceiver.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/clientEventReceiver.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/clientEventReceiver.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientEventReceiver.cpp.i: cmake_force
@@ -2987,7 +2747,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/clientEventReceiver.cpp.o.provides.bui
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientCommandSender.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientCommandSender.cpp.o: ../src/client/clientCommandSender.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/clientCommandSender.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/clientCommandSender.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/clientCommandSender.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/clientCommandSender.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientCommandSender.cpp.i: cmake_force
@@ -3011,7 +2771,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/clientCommandSender.cpp.o.provides.bui
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientMain.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientMain.cpp.o: ../src/client/clientMain.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/clientMain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/clientMain.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/clientMain.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/clientMain.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientMain.cpp.i: cmake_force
@@ -3035,7 +2795,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/clientMain.cpp.o.provides.build: CMake
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp.o: ../src/common/DataClientServerMessages/dataClientConnectedMessage.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataClientConnectedMessage.cpp.i: cmake_force
@@ -3059,7 +2819,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataClientCon
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataServerClientAccepted.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataServerClientAccepted.cpp.o: ../src/common/DataClientServerMessages/dataServerClientAccepted.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataServerClientAccepted.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataServerClientAccepted.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataServerClientAccepted.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/common/DataClientServerMessages/dataServerClientAccepted.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataServerClientAccepted.cpp.i: cmake_force
@@ -3083,7 +2843,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessages/dataServerCli
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientRunner.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientRunner.cpp.o: ../src/client/clientRunner.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/clientRunner.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/clientRunner.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/clientRunner.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/clientRunner.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/clientRunner.cpp.i: cmake_force
@@ -3107,7 +2867,7 @@ CMakeFiles/tallerZ_Cliente.dir/src/client/clientRunner.cpp.o.provides.build: CMa
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o: CMakeFiles/tallerZ_Cliente.dir/flags.make
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o: ../src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building CXX object CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o -c /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp
 
 CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.i: cmake_force
@@ -3164,16 +2924,12 @@ tallerZ_Cliente_OBJECTS = \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/build/BuildDamageEvent.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/build/BuildDestroyedEvent.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitCreateEvent.cpp.o" \
-"CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveEvent.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.o" \
-"CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o" \
-"CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/common/IDs/CapturableID.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.o" \
-"CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/view/CameraMoveStepEvent.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/view/Window.cpp.o" \
@@ -3197,12 +2953,6 @@ tallerZ_Cliente_OBJECTS = \
 "CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o" \
-"CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o" \
-"CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o" \
-"CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o" \
-"CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o" \
-"CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o" \
-"CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o" \
 "CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.o" \
@@ -3296,16 +3046,12 @@ tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/common/States/TerrainObjectS
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/build/BuildDamageEvent.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/build/BuildDestroyedEvent.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitCreateEvent.cpp.o
-tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveEvent.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.o
-tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o
-tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/common/IDs/CapturableID.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.o
-tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/view/CameraMoveStepEvent.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/view/Window.cpp.o
@@ -3329,12 +3075,6 @@ tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Front_end_excepti
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o
-tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o
-tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o
-tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o
-tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o
-tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o
-tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.o
@@ -3392,11 +3132,8 @@ tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/common/DataClientServerMessa
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/clientRunner.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/build.make
-tallerZ_Cliente: googletest-build/googlemock/gtest/libgtest.a
-tallerZ_Cliente: googletest-build/googlemock/gtest/libgtest_main.a
-tallerZ_Cliente: googletest-build/googlemock/gtest/libgtest.a
 tallerZ_Cliente: CMakeFiles/tallerZ_Cliente.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Linking CXX executable tallerZ_Cliente"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Linking CXX executable tallerZ_Cliente"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tallerZ_Cliente.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -3437,16 +3174,12 @@ CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/comm
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/build/BuildDamageEvent.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/build/BuildDestroyedEvent.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitCreateEvent.cpp.o.requires
-CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitMoveStepEvent.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveEvent.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/unit/UnitStillEvent.cpp.o.requires
-CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o.requires
-CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/common/IDs/CapturableID.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/model/capturable/CaptureEvent.cpp.o.requires
-CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/model/Events/view/CameraMoveStepEvent.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/view/Texture.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/view/Window.cpp.o.requires
@@ -3470,12 +3203,6 @@ CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/Exce
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToFindAPathException.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/Exceptions/Storage_Exceptions/Storage_Exception.cpp.o.requires
-CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o.requires
-CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o.requires
-CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o.requires
-CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o.requires
-CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o.requires
-CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o.requires
 CMakeFiles/tallerZ_Cliente.dir/requires: CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.o.requires

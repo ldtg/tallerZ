@@ -122,16 +122,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/darius/CLionProjects/tallerZ_Cliente/src/common/States/UnitState.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/src/common/States/UnitState.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Cliente/src/common/Thread/Thread.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/src/common/Thread/Thread.cpp.o"
   "/home/darius/CLionProjects/tallerZ_Cliente/z_sounds/Sound_event.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_sounds/Sound_event.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/AStar_test.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/AStar_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameControllerCapturables_test.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameControllerCapturables_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_build_test.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_build_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_objects_test.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_objects_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_test.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/GameController_win_test.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/GameController_win_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Map_test.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Map_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Robot_test.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Robot_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_model/Tile_test.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_model/Tile_test.cpp.o"
-  "/home/darius/CLionProjects/tallerZ_Cliente/z_tests/tests_view/Vista_test.cpp" "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir/z_tests/tests_view/Vista_test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -146,14 +136,10 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../src/Utils"
   "/usr/include/SDL2"
   "../json/src"
-  "googletest-src/googlemock/include"
-  "googletest-src/googletest/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/DependInfo.cmake"
-  "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
