@@ -15,7 +15,6 @@ class Quit_Button : public Button {
       "../src/client/front_end/Images/Interface/quit_button_active.bmp";
   const std::string path_down =
       "../src/client/front_end/Images/Interface/quit_button_pressed.bmp";
-
  public:
   Quit_Button(Window * window, View& view) : view(view){
     renderQuad = {635, 573, 56, 20};
