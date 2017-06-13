@@ -10,7 +10,7 @@
 #include "serverGameRunner.h"
 #include "serverEventSender.h"
 #include "serverCommandReceiver.h"
-std::vector<Socket *> getClients(unsigned short playersExpected);
+std::vector<Socket *> getClients(unsigned short playersExpected, const std::string &port);
 
 std::vector<serverCommandReceiver *> getCommandReceivers(const std::vector<
     Socket *> &clients, protectedGameController &pgc);
@@ -18,7 +18,7 @@ void sendMapToClients(const std::vector<Socket *> &clients, const Map &map);
 
 int main(int argc, char *argv[]) {
   //Espera a que se conecten todos los jugadores
-  std::vector<Socket *> clients = getClients(1);
+  std::vector<Socket *> clients = getClients(std::stoi(argv[2]), argv[1]);
 
   std::string mapPath;
   //carga los equipos y le dice a cada cliente que id tiene
@@ -38,8 +38,8 @@ int main(int argc, char *argv[]) {
   realGameController gameController(map, game_loader, evqueue);
   protectedGameController pgc(gameController);
   //lanza los threads
-  serverGameRunner gameRunner(pgc);
-  gameRunner.start();
+  /*serverGameRunner gameRunner(pgc);
+  gameRunner.start();*/
   serverEventSender eventSender(clients, evqueue);
   eventSender.start();
   std::vector<serverCommandReceiver *>
@@ -50,16 +50,15 @@ int main(int argc, char *argv[]) {
 
   while (!gameController.isGameEnded()
       && eventSender.isOpen()) {
-    if (commandReceivers.at(0)->isOpen())
-      std::cerr << "open" << std::endl;
+    gameController.tick();
   };
   evqueue.push(nullptr);// no se me ocurrio otra para destrabar el pop
-  gameRunner.stop();
+  //gameRunner.stop();
   eventSender.stop();
   for (serverCommandReceiver *commandReceiver: commandReceivers) {
     commandReceiver->stop();
   }
-  gameRunner.join();
+ // gameRunner.join();
   eventSender.join();
   for (serverCommandReceiver *commandReceiver: commandReceivers) {
     commandReceiver->join();
@@ -84,9 +83,10 @@ std::vector<serverCommandReceiver *> getCommandReceivers(const std::vector<
   return rcvrs;
 }
 
-std::vector<Socket *> getClients(unsigned short playersExpected) {
+std::vector<Socket *> getClients(unsigned short playersExpected,
+                                 const std::string &port) {
   Socket accpt;
-  accpt.bindandlisten("8080");
+  accpt.bindandlisten(port);
   unsigned short connectedPlayers = 0;
   std::vector<Socket *> clients;
   while (connectedPlayers < playersExpected) {

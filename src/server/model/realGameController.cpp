@@ -130,7 +130,7 @@ void realGameController::tick() {
   auto diff =
       std::chrono::duration_cast<std::chrono::duration<float>>(end - begin);
   auto sleepTime = std::chrono::milliseconds(data.miliSecsPerTick) - diff;
-  std::this_thread::sleep_for(sleepTime);
+  std::this_thread::sleep_for(std::chrono::milliseconds(200));
 }
 
 void realGameController::doTick() {
