@@ -1,3 +1,0 @@
-/home/martin/GitHub/tallerZ_client/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/martin/GitHub/tallerZ_client/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/martin/GitHub/tallerZ_client/cmake-build-debug/CMakeFiles/tallerZ_Cliente.dir
