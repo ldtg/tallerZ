@@ -39,6 +39,18 @@ Generator::Generator(const unsigned& width
   this->map_positions = new Position_Data[tile_amount];
   memset(this->map_positions,0,sizeof(Position_Data)*tile_amount);
   set_geography();
+
+  territory_distribution_algorithm();
+
+  building_distribution_algorithm();
+
+  trace_paths();
+
+  trace_rivers();
+
+  put_rocks();
+
+  put_vehicles();
 }
 Delegation Generator::fill_territory(int territory, int tile_amount, int x, int y, int frame_number) {
   int _tile_amount;

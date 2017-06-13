@@ -26,6 +26,8 @@
 int main(int argc, char *argv[]) {
   Interface gc_interface;
   Parametros parametros = gc_interface.run();
+
+  //Parametros parametros = { 20, 20, 9, 2, 0, 9, 1, 20, 20, "invierno.json"};
   Generator generator(parametros.ancho,
                       parametros.largo,
                       parametros.territorios,

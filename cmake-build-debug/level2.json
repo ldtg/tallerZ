@@ -5201,7 +5201,7 @@
     },
     "base_terrain": 1,
     "bridge_type": 8,
-    "factories_level": 2,
+    "factories_level": 1,
     "map_length": 20,
     "map_width": 20,
     "max_units": 150,
