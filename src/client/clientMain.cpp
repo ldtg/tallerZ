@@ -16,7 +16,7 @@ dataServerClientAccepted getDataClientAccepted(Socket &socket);
 Map getMap(Socket &socket);
 int main(int argc, char *argv[]) {
   Socket socket;
-  socket.connectToServer("127.0.0.1", "8080");
+  socket.connectToServer("localhost", "8080");
 
   sendPlayerConnected(socket, 1, "mapa");
   dataServerClientAccepted accepted = getDataClientAccepted(socket);
@@ -56,6 +56,7 @@ int main(int argc, char *argv[]) {
       eventHandler.add(eventQueue.pop());
     view.update();
   }
+  commandsQueue.push(nullptr);
   commandSender.stop();
   eventReceiver.stop();
   commandSender.join();
