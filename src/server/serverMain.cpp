@@ -10,7 +10,7 @@
 #include "serverGameRunner.h"
 #include "serverEventSender.h"
 #include "serverCommandReceiver.h"
-std::vector<Socket *> getClients();
+std::vector<Socket *> getClients(unsigned short playersExpected);
 
 std::vector<serverCommandReceiver *> getCommandReceivers(const std::vector<
     Socket *> &clients, protectedGameController &pgc);
@@ -18,7 +18,7 @@ void sendMapToClients(const std::vector<Socket *> &clients, const Map &map);
 
 int main(int argc, char *argv[]) {
   //Espera a que se conecten todos los jugadores
-  std::vector<Socket *> clients = getClients();
+  std::vector<Socket *> clients = getClients(1);
 
   std::string mapPath;
   //carga los equipos y le dice a cada cliente que id tiene
@@ -48,8 +48,9 @@ int main(int argc, char *argv[]) {
     commandReceiver->start();
   }
 
-  while (getc(stdin) != 'q' && !gameController.isGameEnded()) {};
-
+  while (getc(stdin) != 'q' && !gameController.isGameEnded()
+      && eventSender.isOpen()) {};
+  evqueue.push(nullptr);// no se me ocurrio otra para destrabar el pop
   gameRunner.stop();
   eventSender.stop();
   for (serverCommandReceiver *commandReceiver: commandReceivers) {
@@ -80,11 +81,10 @@ std::vector<serverCommandReceiver *> getCommandReceivers(const std::vector<
   return rcvrs;
 }
 
-std::vector<Socket *> getClients() {
+std::vector<Socket *> getClients(unsigned short playersExpected) {
   Socket accpt;
   accpt.bindandlisten("8080");
   unsigned short connectedPlayers = 0;
-  unsigned short playersExpected = 1;
   std::vector<Socket *> clients;
   while (connectedPlayers < playersExpected) {
     Socket *cli = new Socket(std::move(accpt.acceptConnection()));

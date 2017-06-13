@@ -234,8 +234,6 @@ set(SOURCE_FILES
         src/server/serverPlayersManager.h
         src/common/DataClientServerMessages/dataClientConnectedMessage.cpp
         src/common/DataClientServerMessages/dataClientConnectedMessage.h
-        src/server/Server.cpp
-        src/server/Server.h
         src/common/DataClientServerMessages/dataServerClientAccepted.cpp
         src/common/DataClientServerMessages/dataServerClientAccepted.h
         src/common/Queue/Queue.h)
