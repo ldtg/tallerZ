@@ -6,10 +6,15 @@ void clientCommandSender::run() {
   try {
     while (open) {
       clientCommand *cmd = queue.pop();
-      CommandType type = cmd->getType();
-      socket.send_tcp((char *) &type, sizeof(CommandType));
-      socket.send_str_preconcatenated(cmd->getDataToSend().str());
-      delete (cmd);
+      if(cmd != nullptr){
+        CommandType type = cmd->getType();
+        socket.send_tcp((char *) &type, sizeof(CommandType));
+        socket.send_str_preconcatenated(cmd->getDataToSend().str());
+        delete (cmd);
+      } else {
+        this->stop();
+      }
+
     }
   } catch (const SocketException &e) {
     this->stop();

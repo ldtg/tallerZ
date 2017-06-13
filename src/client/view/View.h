@@ -15,6 +15,7 @@ class Model;
 #include "Sprite.h"
 #include "VistasFactory.h"
 #include "Camera.h"
+#include "UnitView.h"
 #include <client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h>
 
 class View {
@@ -29,10 +30,13 @@ class View {
   EventHandler &eventHandler;
   bool _quit;
 
+  int mapWidth;
+  int mapHeight;
+
   std::map<Position, ObjectMapaVista *> terrainsVista;
   std::map<TerrainObjectID, ObjectMapaVista *> terrainObjectsVista;
   std::map<BuildID, ObjectMapaVista *> buildsVista;
-  std::map<UnitID, Sprite *> unitsVista;
+  std::map<UnitID, UnitView> unitsVista;
   std::map<CapturableID, ObjectMapaVista *> capturablesVista;
   std::map<BulletID, ObjectMapaVista *> bulletsVista;
   std::vector<Sprite *> effectsVista;
@@ -73,7 +77,7 @@ class View {
 
   void move(UnitID id, Position posTo);
   void removeUnitVista(const UnitID &id);
-  void addUnitVista(const UnitID &id, Sprite *unitVista);
+  void addUnitVista(const UnitID &id, UnitView &unitVista);
 
   ObjectMapaVista *getBulletVista(BulletID id);
   void move(BulletID id, Position posTo);

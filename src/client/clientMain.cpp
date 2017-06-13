@@ -56,6 +56,7 @@ int main(int argc, char *argv[]) {
       eventHandler.add(eventQueue.pop());
     view.update();
   }
+  commandsQueue.push(nullptr);
   commandSender.stop();
   eventReceiver.stop();
   commandSender.join();

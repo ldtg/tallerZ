@@ -1,4 +1,0 @@
-/home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/darius/CLionProjects/tallerZ_Cliente
--- Configuring done
--- Generating done
--- Build files have been written to: /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug

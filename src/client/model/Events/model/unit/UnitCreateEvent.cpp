@@ -7,10 +7,11 @@ void UnitCreateEvent::process() {
   std::string rotation_s("270");
   std::string action("create");
   std::string color = state.owner.getColor();
-  Sprite *unitCreateVista = VistasFactory::getUnitVista(id.getType(), color,
-                                                        action, rotation_s,
-                                                        state.position);
-//  unitCreateVista->setPos(state.position);
+  UnitView unitVista(id.getType(), color, state.position, action, rotation_s);
+
   model->getMap().addUnit(id, state);
-  view->addUnitVista(id, unitCreateVista);
+  view->addUnitVista(id, unitVista);
+
+  Map &map = model->getMap();
+  map.addUnit(id, state);
 }

@@ -14,8 +14,7 @@ struct Camera {
   int gap;
   Camera(int w, int h);
   void move(int x, int y);
-//  Position translateToViewPos(Position &pos);
-//  Position translateToModelPos(Position &pos);
+  bool inLimits(int x, int y, int mapWidht, int mapHeight);
 };
 
 #endif //TALLERZ_CAMERA_H
