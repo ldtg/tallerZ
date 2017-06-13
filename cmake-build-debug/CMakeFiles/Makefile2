@@ -77,7 +77,7 @@ all: CMakeFiles/tallerZ_Cliente.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tallerZ_Cliente.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 96
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 95
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tallerZ_Cliente.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/tallerZ_Cliente.dir/rule
@@ -144,7 +144,7 @@ googletest-build/googlemock/preinstall: googletest-build/googlemock/gtest/preins
 googletest-build/googlemock/CMakeFiles/gmock_main.dir/all:
 	$(MAKE) -f googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make googletest-build/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=3,4,5 "Built target gmock_main"
 .PHONY : googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Include target in all.
@@ -154,7 +154,7 @@ all: googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
 googletest-build/googlemock/CMakeFiles/gmock_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 0
 .PHONY : googletest-build/googlemock/CMakeFiles/gmock_main.dir/rule
@@ -248,7 +248,7 @@ all: googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
 googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 0
 .PHONY : googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/rule
@@ -275,7 +275,7 @@ clean: googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/clean
 googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles --progress-num=6 "Built target gtest"
 .PHONY : googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/all
 
 # Include target in all.
@@ -285,7 +285,7 @@ all: googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
 googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 0
 .PHONY : googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/rule

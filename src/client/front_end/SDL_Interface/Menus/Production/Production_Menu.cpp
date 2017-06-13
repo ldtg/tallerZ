@@ -53,11 +53,8 @@ void Production_Menu::load_items() {
   this->status = new Label(window, "Select", this->status_rect, this->font);
 
   /******Buttons*****/
-  set_absolute_position(_cancel_b_rect, this->cancel_b_rect);
-  this->cancel = new Cancel_Button(&window, &model, this, cancel_b_rect);
-
-  set_absolute_position(_ok_b_rect, this->ok_b_rect);
-  this->ok = new Ok_Button(&window, &model, this, ok_b_rect);
+  set_absolute_position(_build_b_rect, this->build_b_rect);
+  this->build = new Build_Button(&window, &model, this, build_b_rect);
 
   set_absolute_position(_up_rect, this->up_rect);
   this->up = new Up_Button(&window, &model, this, up_rect);
@@ -96,13 +93,9 @@ void Production_Menu::displace_toXY(int x, int y) {
   this->building_name->set_rectangle(building_name_rect);
   this->building_name->reload();
 
-  this->set_absolute_position(_ok_b_rect, ok_b_rect);
-  this->ok->set_rectangle(ok_b_rect);
-  this->ok->reload();
-
-  this->set_absolute_position(_cancel_b_rect, cancel_b_rect);
-  this->cancel->set_rectangle(cancel_b_rect);
-  this->cancel->reload();
+  this->set_absolute_position(_build_b_rect, build_b_rect);
+  this->build->set_rectangle(build_b_rect);
+  this->build->reload();
 
   this->set_absolute_position(_up_rect, up_rect);
   this->up->set_rectangle(up_rect);
@@ -144,8 +137,7 @@ Production_Menu::~Production_Menu() {
   if(this->health != NULL) delete this->health;
   if(this->unit != NULL) delete this->unit;
   if(this->building_name != NULL) delete this->building_name;
-  if(this->cancel != NULL) delete this->cancel;
-  if(this->ok != NULL) delete this->ok;
+  if(this->build != NULL) delete this->build;
   if(this->up != NULL) delete this->up;
   if(this->down != NULL) delete this->down;
   if(this->background != NULL) delete this->background;
@@ -153,8 +145,7 @@ Production_Menu::~Production_Menu() {
 
 void Production_Menu::add_to_panel(Panel &panel) {
   panel.add(this);
-  panel.add(ok);
-  panel.add(cancel);
+  panel.add(build);
   panel.add(up);
   panel.add(down);
   panel.add(time);
@@ -209,11 +200,8 @@ void Production_Menu::handle_click(int x, int y) {
   if (down->inRectangle(x,y)){
     down->handle_event();
   }
-  if (cancel->inRectangle(x,y)){
-    cancel->handle_event();
-  }
-  if (ok->inRectangle(x,y)){
-    ok->handle_event();
+  if (build->inRectangle(x,y)){
+    build->handle_event();
   }
 }
 

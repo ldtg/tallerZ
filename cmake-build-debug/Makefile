@@ -759,32 +759,32 @@ src/client/front_end/SDL_Interface/Buttons/Button.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Button.cpp.s
 .PHONY : src/client/front_end/SDL_Interface/Buttons/Button.cpp.s
 
-src/client/front_end/SDL_Interface/Buttons/Menu_Button.o: src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.o
+src/client/front_end/SDL_Interface/Buttons/Quit_Button.o: src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.o
 
-.PHONY : src/client/front_end/SDL_Interface/Buttons/Menu_Button.o
+.PHONY : src/client/front_end/SDL_Interface/Buttons/Quit_Button.o
 
 # target to build an object file
-src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.o
-.PHONY : src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.o
+src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.o:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.o
+.PHONY : src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.o
 
-src/client/front_end/SDL_Interface/Buttons/Menu_Button.i: src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.i
+src/client/front_end/SDL_Interface/Buttons/Quit_Button.i: src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.i
 
-.PHONY : src/client/front_end/SDL_Interface/Buttons/Menu_Button.i
+.PHONY : src/client/front_end/SDL_Interface/Buttons/Quit_Button.i
 
 # target to preprocess a source file
-src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.i
-.PHONY : src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.i
+src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.i:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.i
+.PHONY : src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.i
 
-src/client/front_end/SDL_Interface/Buttons/Menu_Button.s: src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.s
+src/client/front_end/SDL_Interface/Buttons/Quit_Button.s: src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.s
 
-.PHONY : src/client/front_end/SDL_Interface/Buttons/Menu_Button.s
+.PHONY : src/client/front_end/SDL_Interface/Buttons/Quit_Button.s
 
 # target to generate assembly for a file
-src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.s
-.PHONY : src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp.s
+src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.s:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.s
+.PHONY : src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp.s
 
 src/client/front_end/SDL_Interface/Cursor.o: src/client/front_end/SDL_Interface/Cursor.cpp.o
 
@@ -840,60 +840,6 @@ src/client/front_end/SDL_Interface/Labels/Label.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Labels/Label.cpp.s
 .PHONY : src/client/front_end/SDL_Interface/Labels/Label.cpp.s
 
-src/client/front_end/SDL_Interface/Main_Window.o: src/client/front_end/SDL_Interface/Main_Window.cpp.o
-
-.PHONY : src/client/front_end/SDL_Interface/Main_Window.o
-
-# target to build an object file
-src/client/front_end/SDL_Interface/Main_Window.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Main_Window.cpp.o
-.PHONY : src/client/front_end/SDL_Interface/Main_Window.cpp.o
-
-src/client/front_end/SDL_Interface/Main_Window.i: src/client/front_end/SDL_Interface/Main_Window.cpp.i
-
-.PHONY : src/client/front_end/SDL_Interface/Main_Window.i
-
-# target to preprocess a source file
-src/client/front_end/SDL_Interface/Main_Window.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Main_Window.cpp.i
-.PHONY : src/client/front_end/SDL_Interface/Main_Window.cpp.i
-
-src/client/front_end/SDL_Interface/Main_Window.s: src/client/front_end/SDL_Interface/Main_Window.cpp.s
-
-.PHONY : src/client/front_end/SDL_Interface/Main_Window.s
-
-# target to generate assembly for a file
-src/client/front_end/SDL_Interface/Main_Window.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Main_Window.cpp.s
-.PHONY : src/client/front_end/SDL_Interface/Main_Window.cpp.s
-
-src/client/front_end/SDL_Interface/Menus/Main/main_menu.o: src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.o
-
-.PHONY : src/client/front_end/SDL_Interface/Menus/Main/main_menu.o
-
-# target to build an object file
-src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.o
-.PHONY : src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.o
-
-src/client/front_end/SDL_Interface/Menus/Main/main_menu.i: src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.i
-
-.PHONY : src/client/front_end/SDL_Interface/Menus/Main/main_menu.i
-
-# target to preprocess a source file
-src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.i
-.PHONY : src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.i
-
-src/client/front_end/SDL_Interface/Menus/Main/main_menu.s: src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.s
-
-.PHONY : src/client/front_end/SDL_Interface/Menus/Main/main_menu.s
-
-# target to generate assembly for a file
-src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.s
-.PHONY : src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp.s
-
 src/client/front_end/SDL_Interface/Menus/Menu.o: src/client/front_end/SDL_Interface/Menus/Menu.cpp.o
 
 .PHONY : src/client/front_end/SDL_Interface/Menus/Menu.o
@@ -948,32 +894,32 @@ src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.s
 .PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp.s
 
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.o: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.o
+src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.o: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o
 
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.o
+.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.o
 
 # target to build an object file
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.o
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.o
+src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o
+.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.o
 
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.i: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.i
+src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.i: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.i
 
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.i
+.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.i
 
 # target to preprocess a source file
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.i
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.i
+src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.i:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.i
+.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.i
 
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.s: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.s
+src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.s: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.s
 
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.s
+.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.s
 
 # target to generate assembly for a file
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.s
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp.s
+src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.s:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.s
+.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp.s
 
 src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.o: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp.o
 
@@ -1001,33 +947,6 @@ src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.s: src/c
 src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp.s
 .PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp.s
-
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.o: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.o
-
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.o
-
-# target to build an object file
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.o:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.o
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.o
-
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.i: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.i
-
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.i
-
-# target to preprocess a source file
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.i:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.i
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.i
-
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.s: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.s
-
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.s
-
-# target to generate assembly for a file
-src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.s:
-	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.s
-.PHONY : src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp.s
 
 src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.o: src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp.o
 
@@ -1109,6 +1028,60 @@ src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.s: src/clien
 src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp.s:
 	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp.s
 .PHONY : src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp.s
+
+src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.o: src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o
+
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.o
+
+# target to build an object file
+src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.o
+
+src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.i: src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.i
+
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.i
+
+# target to preprocess a source file
+src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.i:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.i
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.i
+
+src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.s: src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.s
+
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.s
+
+# target to generate assembly for a file
+src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.s:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.s
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp.s
+
+src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.o: src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.o
+
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.o
+
+# target to build an object file
+src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.o:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.o
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.o
+
+src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.i: src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.i
+
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.i
+
+# target to preprocess a source file
+src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.i:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.i
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.i
+
+src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.s: src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.s
+
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.s
+
+# target to generate assembly for a file
+src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.s:
+	$(MAKE) -f CMakeFiles/tallerZ_Cliente.dir/build.make CMakeFiles/tallerZ_Cliente.dir/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.s
+.PHONY : src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp.s
 
 src/client/front_end/SDL_Interface/Robot_Face.o: src/client/front_end/SDL_Interface/Robot_Face.cpp.o
 
@@ -3779,36 +3752,27 @@ help:
 	@echo "... src/client/front_end/SDL_Interface/Buttons/Button.o"
 	@echo "... src/client/front_end/SDL_Interface/Buttons/Button.i"
 	@echo "... src/client/front_end/SDL_Interface/Buttons/Button.s"
-	@echo "... src/client/front_end/SDL_Interface/Buttons/Menu_Button.o"
-	@echo "... src/client/front_end/SDL_Interface/Buttons/Menu_Button.i"
-	@echo "... src/client/front_end/SDL_Interface/Buttons/Menu_Button.s"
+	@echo "... src/client/front_end/SDL_Interface/Buttons/Quit_Button.o"
+	@echo "... src/client/front_end/SDL_Interface/Buttons/Quit_Button.i"
+	@echo "... src/client/front_end/SDL_Interface/Buttons/Quit_Button.s"
 	@echo "... src/client/front_end/SDL_Interface/Cursor.o"
 	@echo "... src/client/front_end/SDL_Interface/Cursor.i"
 	@echo "... src/client/front_end/SDL_Interface/Cursor.s"
 	@echo "... src/client/front_end/SDL_Interface/Labels/Label.o"
 	@echo "... src/client/front_end/SDL_Interface/Labels/Label.i"
 	@echo "... src/client/front_end/SDL_Interface/Labels/Label.s"
-	@echo "... src/client/front_end/SDL_Interface/Main_Window.o"
-	@echo "... src/client/front_end/SDL_Interface/Main_Window.i"
-	@echo "... src/client/front_end/SDL_Interface/Main_Window.s"
-	@echo "... src/client/front_end/SDL_Interface/Menus/Main/main_menu.o"
-	@echo "... src/client/front_end/SDL_Interface/Menus/Main/main_menu.i"
-	@echo "... src/client/front_end/SDL_Interface/Menus/Main/main_menu.s"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Menu.o"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Menu.i"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Menu.s"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.o"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.i"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.s"
-	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.o"
-	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.i"
-	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.s"
+	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.o"
+	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.i"
+	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.s"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.o"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.i"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.s"
-	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.o"
-	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.i"
-	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.s"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.o"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.i"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.s"
@@ -3818,6 +3782,12 @@ help:
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.o"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.i"
 	@echo "... src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.s"
+	@echo "... src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.o"
+	@echo "... src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.i"
+	@echo "... src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.s"
+	@echo "... src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.o"
+	@echo "... src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.i"
+	@echo "... src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.s"
 	@echo "... src/client/front_end/SDL_Interface/Robot_Face.o"
 	@echo "... src/client/front_end/SDL_Interface/Robot_Face.i"
 	@echo "... src/client/front_end/SDL_Interface/Robot_Face.s"

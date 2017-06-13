@@ -561,10 +561,10 @@
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp">
+		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Menu_Button.h">
+		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Quit_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Cursor.cpp">
@@ -579,18 +579,6 @@
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Labels/Label.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Main_Window.cpp">
-			<Option target="tallerZ_Cliente"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Main_Window.h">
-			<Option target="tallerZ_Cliente"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp">
-			<Option target="tallerZ_Cliente"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Main/main_menu.h">
-			<Option target="tallerZ_Cliente"/>
-		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Menu.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
@@ -603,22 +591,16 @@
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp">
+		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h">
+		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h">
-			<Option target="tallerZ_Cliente"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp">
-			<Option target="tallerZ_Cliente"/>
-		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp">
@@ -637,6 +619,18 @@
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.h">
+			<Option target="tallerZ_Cliente"/>
+		</Unit>
+		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp">
+			<Option target="tallerZ_Cliente"/>
+		</Unit>
+		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.h">
+			<Option target="tallerZ_Cliente"/>
+		</Unit>
+		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp">
+			<Option target="tallerZ_Cliente"/>
+		</Unit>
+		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h">
 			<Option target="tallerZ_Cliente"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Robot_Face.cpp">

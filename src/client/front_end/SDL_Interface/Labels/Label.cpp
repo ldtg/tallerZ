@@ -9,10 +9,11 @@
  * @param text : Texto del label
  * @param rect : Posicion y area del label
  */
-Label::Label(Window &window, const std::string &text, const SDL_Rect &rect, TTF_Font *font) : window(window), font(font){
-  //TODO: this->font = font Para que cada label no cargue el archivo, se tiene que cargar
-  this->font = font;
+Label::Label(Window &window, const std::string &text,
+             const SDL_Rect &rect, TTF_Font *font) : window(window),
+                                                     font(font){
 
+  this->font = font;
   this->renderQuad = rect;
   this->text = text;
   this->surface = TTF_RenderText_Solid(this->font, text.c_str(), this->color);

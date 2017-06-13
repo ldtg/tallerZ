@@ -16,9 +16,7 @@ class Model {
 
  public:
   Model(Map &map, GameControllerProxy& gameController, Camera &camera, View &view);
-  GameControllerProxy * get_gameControllerProxy(){
-    return &gameController;
-  }
+  GameControllerProxy * get_gameControllerProxy();
   void leftClick(int x, int y);
   void rightClick(int x, int y);
 

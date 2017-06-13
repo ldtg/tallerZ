@@ -12,31 +12,34 @@
 #include <client/view/Texture.h>
 #include <client/view/ObjectMapaVista.h>
 #include <client/view/Panel.h>
-#include <client/front_end/SDL_Interface/Buttons/Menu_Button.h>
-
+#include <client/front_end/SDL_Interface/Buttons/Quit_Button.h>
+#include <client/front_end/SDL_Interface/Buttons/Button.h>
+class View;
 class Side_Board : public ObjectMapaVista{
  private:
   const std::string path = "../src/client/front_end/Images/Interface/interface.png";
-
-  Menu_Button * menu_button;
-  Texture * side_board_texture;
-
+  Window * window;
+  View& view;
+  Button * menu_button = NULL;
+  Texture * side_board_texture = NULL;
+  SDL_Rect renderQuad = {0,0,800, 600};
  public:
-  Side_Board(Window * window);
+  Side_Board(Window * window, View& view);
 
   ~Side_Board();
 
   void load_side_board(Window * window);
 
-  void load_items(){
+  void load_items();
 
-  }
   Texture *get_side_board();
 
-  void add_to_panel(Panel& panel){
-    panel.add(this);
-    panel.add(menu_button);
-  };
+  bool is_in_menu_button(int x, int y);
+
+  void launch_menu_button(){
+    this->menu_button->handle_event();
+  }
+  void add_to_panel(Panel& panel);
 
   virtual void set_texture(SDL_Renderer *render){};
 

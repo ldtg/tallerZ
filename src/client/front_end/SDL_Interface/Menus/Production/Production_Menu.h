@@ -11,8 +11,7 @@
 #include <client/front_end/SDL_Interface/Buttons/Button.h>
 #include <client/front_end/SDL_Interface/Menus/Menu.h>
 #include <client/front_end/SDL_Interface/Labels/Label.h>
-#include <client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h>
-#include <client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h>
+#include <client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h>
 #include <client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h>
 #include <client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h>
 #include <common/IDs/BuildID.h>
@@ -36,8 +35,7 @@ class Production_Menu : public Menu {
   Label *health = NULL;
   Label *unit = NULL;
   Label *building_name = NULL;
-  Button * ok = NULL;
-  Button * cancel = NULL;
+  Button * build = NULL;
   Button * up = NULL;
   Button * down = NULL;
 
@@ -46,8 +44,7 @@ class Production_Menu : public Menu {
   SDL_Rect health_rect;
   SDL_Rect status_rect;
   SDL_Rect building_name_rect;
-  SDL_Rect cancel_b_rect;
-  SDL_Rect ok_b_rect;
+  SDL_Rect build_b_rect;
   SDL_Rect up_rect;
   SDL_Rect down_rect;
 
@@ -56,8 +53,7 @@ class Production_Menu : public Menu {
   SDL_Rect _health_rect = {73, 5, 20, 10};
   SDL_Rect _status_rect = {68, 20, 35, 10};
   SDL_Rect _building_name_rect = {5, 5, 65, 11};
-  SDL_Rect _cancel_b_rect = {66, 46, 41, 14};
-  SDL_Rect _ok_b_rect = {66, 60, 41, 14};
+  SDL_Rect _build_b_rect = {66, 46, 41, 26};
   SDL_Rect _up_rect = {50, 21, 13, 13};
   SDL_Rect _down_rect = {50, 62, 13, 13};
 

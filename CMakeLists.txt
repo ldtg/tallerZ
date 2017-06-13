@@ -162,10 +162,8 @@ set(SOURCE_FILES
         #src/Z_RUNNER.h
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.h
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h
+        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp
+        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.h
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h
@@ -179,10 +177,8 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Weapon_Img.h
         src/client/front_end/SDL_Interface/Robot_Face.cpp
         src/client/front_end/SDL_Interface/Robot_Face.h
-        src/client/front_end/SDL_Interface/Main_Window.cpp
-        src/client/front_end/SDL_Interface/Main_Window.h
-        src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp
-        src/client/front_end/SDL_Interface/Menus/Main/main_menu.h
+        src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
+        src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h
         src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp
         src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.h
         src/client/front_end/SDL_Interface/Menus/Menu.cpp
@@ -193,8 +189,8 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Cursor.cpp
         src/client/front_end/SDL_Interface/Buttons/Button.cpp
         src/client/front_end/SDL_Interface/Buttons/Button.h
-        src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp
-        src/client/front_end/SDL_Interface/Buttons/Menu_Button.h
+        src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp
+        src/client/front_end/SDL_Interface/Buttons/Quit_Button.h
 
 
         z_sounds/Sound_event.h
@@ -280,7 +276,15 @@ set(SOURCE_FILES
         src/common/DataClientServerMessages/dataServerClientAccepted.h
         src/client/clientRunner.cpp
         src/client/clientRunner.h
-        src/common/Queue/Queue.h)
+        src/common/Queue/Queue.h
+
+        src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.h
+        src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp
+        src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h
+        src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
+
+
+        )
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/client)

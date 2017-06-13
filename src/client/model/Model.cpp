@@ -30,6 +30,12 @@ void Model::leftClick(int x, int y) {
       view.get_present_menu()->handle_click(x, y);
     }
   }
+  if (view.get_side_board()->is_in_menu_button(x,y)){
+    if (view.get_present_menu() != nullptr){
+      view.free_menu();
+    }
+    view.get_side_board()->launch_menu_button();
+  }
 }
 
 void Model::rightClick(int x, int y) {
@@ -76,5 +82,8 @@ void Model::rightClick(int x, int y) {
 }
 Map &Model::getMap() {
   return map;
+}
+GameControllerProxy *Model::get_gameControllerProxy() {
+  return &gameController;
 }
 

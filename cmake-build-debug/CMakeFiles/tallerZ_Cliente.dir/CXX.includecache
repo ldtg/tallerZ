@@ -190,7 +190,7 @@ client/front_end/SDL_Interface/Menus/Menu.h
 Front_end_exceptions/Generator_Exception.h
 ../src/client/front_end/SDL_Interface/Buttons/Front_end_exceptions/Generator_Exception.h
 
-../src/client/front_end/SDL_Interface/Buttons/Menu_Button.h
+../src/client/front_end/SDL_Interface/Buttons/Quit_Button.h
 Button.h
 ../src/client/front_end/SDL_Interface/Buttons/Button.h
 
@@ -228,15 +228,11 @@ client/view/ObjectMapaVista.h
 client/view/Panel.h
 -
 
-../src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h
+../src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h
 client/front_end/SDL_Interface/Buttons/Button.h
 -
 
 ../src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h
-client/front_end/SDL_Interface/Buttons/Button.h
--
-
-../src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h
 client/front_end/SDL_Interface/Buttons/Button.h
 -
 
@@ -257,9 +253,7 @@ client/front_end/SDL_Interface/Menus/Menu.h
 -
 client/front_end/SDL_Interface/Labels/Label.h
 -
-client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h
--
-client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h
+client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h
 -
 client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h
 -
@@ -270,6 +264,24 @@ common/IDs/BuildID.h
 common/Types/UnitType.h
 -
 common/States/BuildState.h
+-
+
+../src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.h
+client/front_end/SDL_Interface/Buttons/Button.h
+-
+client/view/View.h
+-
+
+../src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h
+string
+-
+client/front_end/SDL_Interface/Menus/Menu.h
+-
+client/front_end/SDL_Interface/Buttons/Button.h
+-
+client/view/View.h
+-
+client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.h
 -
 
 ../src/client/front_end/SDL_Interface/Side_Board.h
@@ -287,7 +299,9 @@ client/view/ObjectMapaVista.h
 -
 client/view/Panel.h
 -
-client/front_end/SDL_Interface/Buttons/Menu_Button.h
+client/front_end/SDL_Interface/Buttons/Quit_Button.h
+-
+client/front_end/SDL_Interface/Buttons/Button.h
 -
 
 ../src/client/model/Commands/Build/clientBuildChangeUnitCommand.h
@@ -559,6 +573,8 @@ VistasFactory.h
 ../src/client/view/VistasFactory.h
 Camera.h
 ../src/client/view/Camera.h
+client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h
+-
 
 ../src/client/view/VistasFactory.h
 common/Types/UnitType.h
@@ -1126,13 +1142,15 @@ client/front_end/SDL_Interface/Menus/Menu.h
 Front_end_exceptions/Generator_Exception.h
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Front_end_exceptions/Generator_Exception.h
 
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Menu_Button.cpp
+/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp
 iostream
 -
-Menu_Button.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Menu_Button.h
+Quit_Button.h
+/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Quit_Button.h
+client/view/View.h
+-
 
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Menu_Button.h
+/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Quit_Button.h
 Button.h
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Buttons/Button.h
 
@@ -1161,34 +1179,6 @@ Exceptions/Sdl_Exceptions/Sdl_Exception.h
 -
 client/view/ObjectMapaVista.h
 -
-
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Main_Window.cpp
-Main_Window.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Main_Window.h
-
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Main_Window.h
-client/view/Image.h
--
-client/view/Sprite.h
--
-client/front_end/SDL_Interface/Buttons/Menu_Button.h
--
-client/view/Window.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/client/view/Window.h
-client/controller/Controller.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/client/controller/Controller.h
-Side_Board.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Side_Board.h
-Cursor.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Cursor.h
-Side_Board.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Side_Board.h
-Cursor.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Cursor.h
-Front_end_exceptions/Generator_Exception.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Front_end_exceptions/Generator_Exception.h
-
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp
 
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Menu.cpp
 common/Map/Position.h
@@ -1222,11 +1212,13 @@ client/front_end/SDL_Interface/Menus/Production/Production_Menu.h
 client/front_end/SDL_Interface/Buttons/Button.h
 -
 
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp
-Cancel_Button.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h
+/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp
+Build_Button.h
+/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h
+client/front_end/SDL_Interface/Menus/Production/Production_Menu.h
+-
 
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h
+/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h
 client/front_end/SDL_Interface/Buttons/Button.h
 -
 
@@ -1237,16 +1229,6 @@ client/model/Model.h
 -
 
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h
-client/front_end/SDL_Interface/Buttons/Button.h
--
-
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp
-Ok_Button.h
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h
-client/front_end/SDL_Interface/Menus/Production/Production_Menu.h
--
-
-/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h
 client/front_end/SDL_Interface/Buttons/Button.h
 -
 
@@ -1293,9 +1275,7 @@ client/front_end/SDL_Interface/Menus/Menu.h
 -
 client/front_end/SDL_Interface/Labels/Label.h
 -
-client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.h
--
-client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.h
+client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h
 -
 client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.h
 -
@@ -1308,11 +1288,27 @@ common/Types/UnitType.h
 common/States/BuildState.h
 -
 
+/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp
+Salir_Button.h
+/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.h
+
+/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.h
+client/front_end/SDL_Interface/Buttons/Button.h
+-
+client/view/View.h
+-
+
+/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
+client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h
+-
+
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Robot_Face.cpp
 
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Side_Board.cpp
 Side_Board.h
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Side_Board.h
+client/view/View.h
+-
 
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Side_Board.h
 SDL2/SDL_surface.h
@@ -1329,7 +1325,9 @@ client/view/ObjectMapaVista.h
 -
 client/view/Panel.h
 -
-client/front_end/SDL_Interface/Buttons/Menu_Button.h
+client/front_end/SDL_Interface/Buttons/Quit_Button.h
+-
+client/front_end/SDL_Interface/Buttons/Button.h
 -
 
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Weapon_Img.cpp
@@ -1889,6 +1887,8 @@ VistasFactory.h
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/VistasFactory.h
 Camera.h
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/Camera.h
+client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h
+-
 
 /home/darius/CLionProjects/tallerZ_Cliente/src/client/view/VistasFactory.cpp
 VistasFactory.h

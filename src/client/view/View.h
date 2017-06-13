@@ -3,6 +3,7 @@
 
 class EventHandler;
 class Model;
+//class Quit_Menu;
 #include "common/Map/Map.h"
 #include "Window.h"
 #include "Panel.h"
@@ -14,6 +15,7 @@ class Model;
 #include "Sprite.h"
 #include "VistasFactory.h"
 #include "Camera.h"
+#include <client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h>
 
 class View {
  private:
@@ -99,8 +101,13 @@ class View {
                             const BuildState& buildState,
                             Model& model, int x, int y);
 
-  void free_menu(){
+  void load_quit_menu();
 
+  Side_Board * get_side_board(){
+    return this->side_board;
+  }
+
+  void free_menu(){
     delete menu;
     menu = nullptr;
   }

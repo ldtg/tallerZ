@@ -64,6 +64,7 @@ void Button::load_texture_down(const std::string &path) {
  */
 void Button::handle_event() {
   this->on_button_pressed();
+
 }
 /**
  * on_button_pressed

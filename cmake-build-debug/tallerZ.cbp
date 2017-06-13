@@ -607,10 +607,10 @@
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Main_Window.h">
 			<Option target="tallerZ"/>
 		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Main/main_menu.cpp">
+		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Main/Quit_Menu.cpp">
 			<Option target="tallerZ"/>
 		</Unit>
-		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Main/main_menu.h">
+		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Main/Quit_Menu.h">
 			<Option target="tallerZ"/>
 		</Unit>
 		<Unit filename="/home/darius/CLionProjects/tallerZ_Cliente/src/client/front_end/SDL_Interface/Menus/Menu.cpp">
