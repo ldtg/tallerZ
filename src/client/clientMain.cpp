@@ -60,6 +60,7 @@ int main(int argc, char *argv[]) {
   eventReceiver.stop();
   commandSender.join();
   eventReceiver.join();
+
   return 0;
 }
 Map getMap(Socket &socket) {
