@@ -16,9 +16,9 @@ dataServerClientAccepted getDataClientAccepted(Socket &socket);
 Map getMap(Socket &socket);
 int main(int argc, char *argv[]) {
   Socket socket;
-  socket.connectToServer("127.0.0.1", "8080");
+  socket.connectToServer(argv[1], argv[2]);
 
-  sendPlayerConnected(socket, 1, "mapa");
+  sendPlayerConnected(socket, std::stoi(argv[3]), argv[4]);
   dataServerClientAccepted accepted = getDataClientAccepted(socket);
 
   Map map = getMap(socket);
