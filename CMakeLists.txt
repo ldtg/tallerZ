@@ -346,4 +346,3 @@ include_directories(cmake-build-debug/googletest-src/googletest/include)
 target_link_libraries(${PROJECT_NAME} gtest gtest_main)
 #target_link_libraries(${PROJECT_NAME} ${GTK3_LIBRARIES} ${GTKMM_LIBRARIES})
 target_link_libraries(${PROJECT_NAME})
-

@@ -2,11 +2,11 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="tallerZ_Cliente" targetName="gtest" />
-      <config projectName="tallerZ_Cliente" targetName="gmock_main" />
       <config projectName="tallerZ_Cliente" targetName="gmock" />
-      <config projectName="tallerZ_Cliente" targetName="gtest_main" />
+      <config projectName="tallerZ_Cliente" targetName="gtest" />
       <config projectName="tallerZ_Cliente" targetName="tallerZ_Cliente" />
+      <config projectName="tallerZ_Cliente" targetName="gmock_main" />
+      <config projectName="tallerZ_Cliente" targetName="gtest_main" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -16,6 +16,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ee5b01-2d3a-4ba2-ac59-49aeb10576c5" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/CMakeFiles/" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,73 +50,54 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Model.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/model/Model.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="clientMain.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/clientMain.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1120">
-              <caret line="56" column="18" lean-forward="false" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Quit_Menu.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Salir_Button.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Production_Menu.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1480">
-              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="220">
+              <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
               <folding>
-                <element signature="e#114#131#0" expanded="true" />
+                <element signature="e#1#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Quit_Menu.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp">
+      <file leaf-file-name="Image.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/view/Image.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+            <state relative-caret-position="220">
+              <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Quit_Button.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/front_end/SDL_Interface/Buttons/Quit_Button.h">
+      <file leaf-file-name="land.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/images/terrain/land.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="land2.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/images/terrain/land2.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="flag_blue_n1.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/images/flags/flag_blue_n1.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            <state relative-caret-position="262">
+              <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -124,8 +106,18 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="42" column="22" lean-forward="true" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+            <state relative-caret-position="338">
+              <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CMakeLists.txt.in" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt.in">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -169,7 +161,6 @@
         <option value="$PROJECT_DIR$/z_tests/tests_view/Vista_test.cpp" />
         <option value="$PROJECT_DIR$/src/client/model/GameControllerProxy.cpp" />
         <option value="$PROJECT_DIR$/src/common/Socket/Socket.h" />
-        <option value="$PROJECT_DIR$/src/client/clientMain.cpp" />
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Labels/Label.cpp" />
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Ok_Button.cpp" />
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Main/main_menu.h" />
@@ -177,7 +168,6 @@
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h" />
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Quit_Button.cpp" />
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Quit_Button.h" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Ok_Button.h" />
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Ok_Button.cpp" />
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Menus/Production/Buttons/Cancel_Button.cpp" />
@@ -198,6 +188,9 @@
         <option value="$PROJECT_DIR$/src/client/view/View.cpp" />
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Buttons/Exit_Button.h" />
         <option value="$PROJECT_DIR$/src/client/front_end/SDL_Interface/Buttons/Quit_Button.h" />
+        <option value="$PROJECT_DIR$/src/client/clientMain.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -254,24 +247,6 @@
               <option name="myItemId" value="z_tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests_view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tallerZ_Cliente" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tallerZ_Cliente" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="z_tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -280,6 +255,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="project.scopes" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="ignore_missing_gitignore" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -304,7 +280,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Google Test.tallerZ_Cliente">
+  <component name="RunManager" selected="Application.Build All">
     <configuration default="true" type="BashConfigurationType" factoryName="Bash">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="INTERPRETER_PATH" value="/bin/bash" />
@@ -498,10 +474,6 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="tallerZ_Cliente" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" PROJECT_NAME="tallerZ_Cliente" TARGET_NAME="tallerZ_Cliente" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="tallerZ_Cliente" RUN_TARGET_NAME="tallerZ_Cliente" TEST_MODE="SUITE_TEST">
       <envs />
       <method />
@@ -522,13 +494,17 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="tallerZ_Cliente" TARGET_NAME="tallerZ_Cliente" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="tallerZ_Cliente" RUN_TARGET_NAME="tallerZ_Cliente">
+      <envs />
+      <method />
+    </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
-      <item index="1" class="java.lang.String" itemvalue="Google Test.tallerZ_Cliente" />
-      <item index="2" class="java.lang.String" itemvalue="Application.gmock" />
-      <item index="3" class="java.lang.String" itemvalue="Application.gmock_main" />
-      <item index="4" class="java.lang.String" itemvalue="Application.gtest" />
-      <item index="5" class="java.lang.String" itemvalue="Application.gtest_main" />
+      <item index="0" class="java.lang.String" itemvalue="Google Test.tallerZ_Cliente" />
+      <item index="1" class="java.lang.String" itemvalue="Application.gmock" />
+      <item index="2" class="java.lang.String" itemvalue="Application.gmock_main" />
+      <item index="3" class="java.lang.String" itemvalue="Application.gtest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.gtest_main" />
+      <item index="5" class="java.lang.String" itemvalue="Application.Build All" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -544,16 +520,11 @@
       <workItem from="1497278712975" duration="20330000" />
       <workItem from="1497315751934" duration="10426000" />
       <workItem from="1497365097480" duration="831000" />
+      <workItem from="1497379744765" duration="2380000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="tallerZ_Cliente - 2017.06.12 at 16h 37m 45s.xml">
-      <configuration name="tallerZ_Cliente" configurationId="CMakeGoogleTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="tallerZ_Cliente - 2017.06.12 at 17h 48m 43s.xml">
-      <configuration name="tallerZ_Cliente" configurationId="CMakeGoogleTestRunConfigurationType" />
-    </history-entry>
     <history-entry file="tallerZ_Cliente - 2017.06.12 at 23h 01m 21s.xml">
       <configuration name="tallerZ_Cliente" configurationId="CMakeGoogleTestRunConfigurationType" />
     </history-entry>
@@ -578,9 +549,15 @@
     <history-entry file="tallerZ_Cliente - 2017.06.13 at 11h 45m 59s.xml">
       <configuration name="tallerZ_Cliente" configurationId="CMakeGoogleTestRunConfigurationType" />
     </history-entry>
+    <history-entry file="tallerZ_Cliente - 2017.06.13 at 14h 27m 04s.xml">
+      <configuration name="tallerZ_Cliente" configurationId="CMakeGoogleTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="tallerZ_Cliente - 2017.06.13 at 14h 28m 13s.xml">
+      <configuration name="tallerZ_Cliente" configurationId="CMakeGoogleTestRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31587000" />
+    <option name="totallyTimeSpent" value="36666000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1368" height="780" extended-state="6" />
@@ -591,7 +568,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23916294" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -634,28 +611,22 @@
           <line>228</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/client/clientMain.cpp</url>
+          <line>23</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/json/src/json.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/serverMain.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/storage/Game_Loader.h" />
-    <entry file="file://$PROJECT_DIR$/src/storage/Game_Loader.cpp" />
-    <entry file="file://$PROJECT_DIR$/z_tests/tests_view/Window_test.cpp" />
     <entry file="file://$PROJECT_DIR$/z_tests/tests_storage/store_map_tests.cpp" />
     <entry file="file://$PROJECT_DIR$/z_tests/tests_storage/load_map_tests.cpp" />
     <entry file="file://$PROJECT_DIR$/src/common/Socket/Socket.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
+        <state relative-caret-position="20">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
         </state>
       </provider>
@@ -768,14 +739,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="283" column="63" lean-forward="false" selection-start-line="283" selection-start-column="63" selection-end-line="283" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/front_end/Images/Interface/quit_gui/cancel_button.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -818,7 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="39" column="25" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -826,9 +788,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#41#60#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -836,7 +795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="25" column="50" lean-forward="false" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -867,9 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1480">
           <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding>
-            <element signature="e#114#131#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,7 +832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -893,7 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -901,6 +854,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/front_end/SDL_Interface/Buttons/Quit_Button.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/view/Image.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -923,26 +891,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/clientMain.cpp">
+    <entry file="file://$PROJECT_DIR$/src/view/images/terrain/land.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/images/terrain/land2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/images/flags/flag_blue_n1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt.in">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1120">
-          <caret line="56" column="18" lean-forward="false" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/front_end/SDL_Interface/Buttons/Quit_Button.h">
+    <entry file="file://$PROJECT_DIR$/src/client/clientMain.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        <state relative-caret-position="220">
+          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          <folding>
+            <element signature="e#1#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="42" column="22" lean-forward="true" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+        <state relative-caret-position="338">
+          <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding />
         </state>
       </provider>

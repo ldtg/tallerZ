@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   Socket socket;
   socket.connectToServer("127.0.0.1", "8080");
 
-  sendPlayerConnected(socket, 1, "mapa");
+  sendPlayerConnected(socket, 1, "minimapa");
   dataServerClientAccepted accepted = getDataClientAccepted(socket);
 
   Map map = getMap(socket);
