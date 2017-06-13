@@ -1,4 +1,4 @@
-# Install script for directory: /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/googletest-src
+# Install script for directory: /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/googletest-build/googlemock/cmake_install.cmake")
+  include("/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/cmake_install.cmake")
 
 endif()
 

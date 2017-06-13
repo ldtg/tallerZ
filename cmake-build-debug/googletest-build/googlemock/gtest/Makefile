@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake
+CMAKE_COMMAND = /usr/share/clion-2016.3.4/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake -E remove -f
+RM = /usr/share/clion-2016.3.4/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/darius/CLionProjects/tallerZ_Cliente
+CMAKE_SOURCE_DIR = /home/tg/FIUBA/taller/zheta/new/tallerZ
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug
+CMAKE_BINARY_DIR = /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
@@ -70,7 +70,7 @@ install/strip/fast: install/strip
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
@@ -81,13 +81,13 @@ install/local/fast: install/local
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake -P cmake_install.cmake
+	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake -P cmake_install.cmake
+	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target list_install_components
@@ -103,7 +103,7 @@ list_install_components/fast: list_install_components
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -114,7 +114,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -124,14 +124,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/googletest-build/googlemock/gtest/CMakeFiles/progress.marks
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/CMakeFiles 0
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/CMakeFiles /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/googlemock/gtest/CMakeFiles/progress.marks
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/clean
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/clean
 .PHONY : clean
 
 # The main clean target
@@ -141,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/preinstall
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/preinstall
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/rule:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/rule
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/rule
 .PHONY : googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/rule
 
 # Convenience name for target.
@@ -166,12 +166,12 @@ gtest_main: googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/rule
 
 # fast build rule for target.
 gtest_main/fast:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
 # Convenience name for target.
 googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/rule:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/rule
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/rule
 .PHONY : googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/rule
 
 # Convenience name for target.
@@ -181,7 +181,7 @@ gtest: googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/rule
 
 # fast build rule for target.
 gtest/fast:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
 src/gtest-all.o: src/gtest-all.cc.o
@@ -190,7 +190,7 @@ src/gtest-all.o: src/gtest-all.cc.o
 
 # target to build an object file
 src/gtest-all.cc.o:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
 .PHONY : src/gtest-all.cc.o
 
 src/gtest-all.i: src/gtest-all.cc.i
@@ -199,7 +199,7 @@ src/gtest-all.i: src/gtest-all.cc.i
 
 # target to preprocess a source file
 src/gtest-all.cc.i:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.i
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.i
 .PHONY : src/gtest-all.cc.i
 
 src/gtest-all.s: src/gtest-all.cc.s
@@ -208,7 +208,7 @@ src/gtest-all.s: src/gtest-all.cc.s
 
 # target to generate assembly for a file
 src/gtest-all.cc.s:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.s
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.s
 .PHONY : src/gtest-all.cc.s
 
 src/gtest_main.o: src/gtest_main.cc.o
@@ -217,7 +217,7 @@ src/gtest_main.o: src/gtest_main.cc.o
 
 # target to build an object file
 src/gtest_main.cc.o:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
 .PHONY : src/gtest_main.cc.o
 
 src/gtest_main.i: src/gtest_main.cc.i
@@ -226,7 +226,7 @@ src/gtest_main.i: src/gtest_main.cc.i
 
 # target to preprocess a source file
 src/gtest_main.cc.i:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.i
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.i
 .PHONY : src/gtest_main.cc.i
 
 src/gtest_main.s: src/gtest_main.cc.s
@@ -235,7 +235,7 @@ src/gtest_main.s: src/gtest_main.cc.s
 
 # target to generate assembly for a file
 src/gtest_main.cc.s:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.s
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(MAKE) -f googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make googletest-build/googlemock/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.s
 .PHONY : src/gtest_main.cc.s
 
 # Help Target
@@ -269,6 +269,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/darius/CLionProjects/tallerZ_Cliente
+# Install script for directory: /home/tg/FIUBA/taller/zheta/new/tallerZ
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/googletest-build/cmake_install.cmake")
+  include("/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-build/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

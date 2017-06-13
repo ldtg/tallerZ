@@ -1,15 +1,38 @@
-/home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/darius/CLionProjects/tallerZ_Cliente
+/usr/share/clion-2016.3.4/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/tg/FIUBA/taller/zheta/new/tallerZ
+-- The C compiler identification is GNU 5.4.0
+-- The CXX compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+-- Checking for one of the modules 'sdl2'
+-- Checking for one of the modules 'SDL2_image>=2.0.0'
+-- Checking for one of the modules 'SDL2_mixer>=2.0.0'
+-- Checking for one of the modules 'SDL2_ttf>=2.0.0'
+CMake Error: The current CMakeCache.txt directory /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-download/CMakeCache.txt is different than the directory /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/googletest-download where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+CMake Error: The current CMakeCache.txt directory /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug/googletest-download/CMakeCache.txt is different than the directory /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/googletest-download where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+make: /home/darius/Documentos/Taller2017/CLION/clion-2017.1.1/bin/cmake/bin/cmake: No se encontró el programa
+Makefile:146: fallo en las instrucciones para el objetivo 'cmake_check_build_system'
+make: *** [cmake_check_build_system] Error 127
+-- Found PythonInterp: /usr/bin/python (found version "2.7.12") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug/googletest-download
-[ 11%] Performing update step for 'googletest'
-Current branch master is up to date.
-[ 22%] No configure step for 'googletest'
-[ 33%] No build step for 'googletest'
-[ 44%] No install step for 'googletest'
-[ 55%] No test step for 'googletest'
-[ 66%] Completed 'googletest'
-[100%] Built target googletest
--- Configuring done
--- Generating done
--- Build files have been written to: /home/darius/CLionProjects/tallerZ_Cliente/cmake-build-debug
+-- Build files have been written to: /home/tg/FIUBA/taller/zheta/new/tallerZ/cmake-build-debug
