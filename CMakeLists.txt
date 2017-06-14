@@ -176,7 +176,6 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp
         src/client/front_end/SDL_Interface/Buttons/Quit_Button.h
 
-
         z_sounds/Sound_event.h
         z_sounds/Sound_event.cpp
 
@@ -279,6 +278,7 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Utils)
 
 
 #nota a futuro: la mayoria de esos flags del SDL2 vienen de ejecutar `sdl2-config --cflags --libs --static-libs` en la terminal (estan copipasteados). Habrá que ver como hacerlo bien a esto.
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -O0 -pg -std=c++11 -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2 -pthread -Wl,--no-undefined -lm -ldl -lasound -lm -ldl -lpulse-simple -lpulse -lX11 -lXext -lXcursor -lXinerama -lXi -lXrandr -lXss -lXxf86vm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -lrt")
 
 
@@ -298,4 +298,3 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} $
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/json/src)
 
 target_link_libraries(${PROJECT_NAME})
-

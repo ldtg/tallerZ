@@ -17,7 +17,7 @@ void CaptureEvent::process() {
   Sprite* capturerVista = view->getUnitVista(capturer);
 //    Position pos = unitVista->getPos();
   std::string color = capturerVista->getColor();
-
+//TODO: ACTUALIZAR MAPA
   if (capturerDissapear) {
     view->removeUnitVista(capturer);
   }
