@@ -213,11 +213,14 @@ void realGameController::hunt(Unit *unit,
     return;
   }
 
+  Position huntedPos = hunted->getAttackPosition(unit->getCenterPosition());
+  Position unitPos = unit->getCenterPosition();
+
   if (unit->attackedInRange()
-      && map.canPass(unit->getCenterPosition(),
-                     hunted->getAttackPosition(unit->getCenterPosition()))) {
+      && map.canPass(unitPos, huntedPos))
+  {
     if (unit->isFirstAttack()) {
-      Position huntedPos = hunted->getAttackPosition(unit->getCenterPosition());
+      Position huntedPos = hunted->getAttackPosition(unitPos);
       Position attackerPos = unit->getCenterPosition();
 
       eventQueue.push(new serverUAttackEvent(unit->getId(),

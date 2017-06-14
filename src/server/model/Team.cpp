@@ -11,7 +11,7 @@ void Team::removePlayer(Player *player) {
 }
 bool Team::isEnemy(const PlayerID &playerID) const {
   if(playerID.isGaia())
-    return false;
+    return true;
   return !isaPlayerOfTheTeam(playerID);
 }
 bool Team::isaPlayerOfTheTeam(const PlayerID &id) const {

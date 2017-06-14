@@ -163,7 +163,8 @@ struct Data {
     asphaltedBridgeObject.size = 50;
     rockObject.type = TerrainObjectType::ROCK;
     rockObject.passable = false;
-    rockObject.health = 1000;//1000
+//    rockObject.health = 1000;//1000
+    iceRockObject.health = 20;
     rockObject.size = 50;
     woodenBridgeObject.type = TerrainObjectType::_WOODENBRIDGE;
     woodenBridgeObject.passable = true;
@@ -171,7 +172,8 @@ struct Data {
     woodenBridgeObject.size = 50;
     iceRockObject.type = TerrainObjectType::ICEROCK;
     iceRockObject.passable = false;
-    iceRockObject.health = 1000;
+//    iceRockObject.health = 1000;
+    iceRockObject.health = 20;
     iceRockObject.size = 50;
   }
   UnitData getData(UnitType type) {
