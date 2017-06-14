@@ -31,6 +31,8 @@ class Texture {
 
   Texture(const Window * window);
 
+  ~Texture();
+
   void load_texture(const std::string& path, SDL_Window * window);
 
   void renderize(const Window * window);

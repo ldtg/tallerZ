@@ -57,7 +57,7 @@ class View {
   void draw();
 
  public:
-  View(const Map &map, EventHandler &eventHandler, Camera &camera);
+  View(const Map &map, EventHandler &eventHandler, Camera &camera, const std::string& player_color);
   ~View();
 
 //  void add(ObjectMapaVista *objectVista, Position pos);
@@ -114,6 +114,13 @@ class View {
   void free_menu(){
     delete menu;
     menu = nullptr;
+  }
+
+  void show_unit_side_details(UnitType unitType){
+    this->side_board->load_unit_images(unitType);
+  }
+  void clear_unit_side_details(){
+    this->side_board->clean_unit_images();
   }
   /*************************************************/
 
