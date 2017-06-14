@@ -13,9 +13,9 @@ void UnitStillEvent::process() {
 
   std::string rotation_s = std::to_string(rotation);
   std::string action("look_around");
-  unitVista = VistasFactory::getUnitVista(id.getType(), color, action, rotation_s, pos);
+  UnitView unitStillVista(id.getType(), color, pos, action, rotation_s);
   unitVista->setPos(pos);
   unitVista->setRotation(rotation);
 
-  view->addUnitVista(id, unitVista);
+  view->addUnitVista(id, unitStillVista);
 }

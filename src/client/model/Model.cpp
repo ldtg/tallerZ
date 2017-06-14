@@ -76,13 +76,26 @@ void Model::rightClick(int x, int y) {
   } catch (const UnitNotFoundException &e) {
     // Donde se hizo click no hay edificio ni undida.
   }
+  try {
+    TerrainObjectID terrainID = map.getTerrainObjectIDFromPosition(pos, 50);
+
+    for (UnitID attacker : unitsSelected) {
+      gameController.attack(attacker, terrainID);
+    }
+    unitsSelected.clear();
+    return;
+  } catch (const UnitNotFoundException &e) {
+    // Donde se hizo click no hay edificio ni undida.
+  }
 
   gameController.move(unitsSelected.front(), pos);
   unitsSelected.clear();
 }
+
 Map &Model::getMap() {
   return map;
 }
+
 GameControllerProxy *Model::get_gameControllerProxy() {
   return &gameController;
 }

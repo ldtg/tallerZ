@@ -6,6 +6,7 @@ void clientCommandSender::run() {
   try {
     while (open) {
       clientCommand *cmd = queue.pop();
+
       if (cmd != nullptr) {
         CommandType type = cmd->getType();
         socket.send_tcp((char *) &type, sizeof(CommandType));

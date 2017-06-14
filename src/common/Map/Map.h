@@ -108,6 +108,9 @@ class Map {
                                  unsigned short range) const;
   CapturableID getCapturableIDFromPosition(const Position &pos,
                                            unsigned short range) const;
+  TerrainObjectID getTerrainObjectIDFromPosition(const Position &pos,
+                                                 unsigned short range) const;
+
 
   UnitState getUnitState(const UnitID &unitID) const;
   Position getNeighborFreePos(const Position &tileCenterPos);

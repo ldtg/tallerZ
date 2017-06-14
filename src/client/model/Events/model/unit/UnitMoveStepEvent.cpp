@@ -4,6 +4,9 @@ UnitMoveStepEvent::UnitMoveStepEvent(UnitID id, Position &posTo, int rotation)
     : id(id), posTo(posTo), rotation(rotation) {}
 
 void UnitMoveStepEvent::process() {
+  UnitView &unitView = view->getUnitView(id);
+  unitView.update();
+/*
   Sprite* unitVista = view->getUnitVista(id);
   int oldRotation = unitVista->getRotation();
 
@@ -24,5 +27,5 @@ void UnitMoveStepEvent::process() {
   else {
     unitVista->setPos(posTo);
   }
-
+*/
 }

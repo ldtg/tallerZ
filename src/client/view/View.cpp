@@ -4,10 +4,14 @@
 #include <client/model/Events/model/bullet/BulletMoveStepEvent.h>
 #include <client/model/Events/view/CameraMoveStepEvent.h>
 #include <client/model/Model.h>
+#include <thread>
 
 View::View(const Map &map, EventHandler &eventHandler, Camera &camera)
     : window(), panel(window.getRender()), eventHandler(eventHandler), camera(camera) {
   _quit = false;
+
+  mapWidth = map.getWidht()*TILEWIDHT;
+  mapHeight = map.getHeight()*TILEHEIGHT;
 
   createInitialTerrainVista(map.getMap());
   createInitialTerrainObjectVista(map.getTerrainObjects());
@@ -56,7 +60,6 @@ int getRandomNumInRange2(const int range_from, const int range_to) {
 
 void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
   std::vector<int> rotations{0, 45, 90, 135, 180, 225, 270, 315};
-
   for (auto const &unit : units) {
     UnitType type = unit.first.getType();
     //Se elije una rotacion inicial al azar.
@@ -64,13 +67,7 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
     std::string rotation = std::to_string(rotations[i]);
     std::string action("look_around");
     std::string color = unit.second.owner.getColor();
-//    Position pos = translateModelPos(type, action, unit.second.position);
-    Sprite *unitVista = VistasFactory::getUnitVista(type, color,
-                                                    action, rotation,
-                                                    unit.second.position);
-//    add(unitVista, pos);
-//    panel.add(unitVista);
-
+    UnitView unitVista(type, color, unit.second.position, action, rotation);
     unitsVista.emplace(unit.first, unitVista);
   }
 }
@@ -103,6 +100,12 @@ void View::createInitialCapturableVista(const std::map<CapturableID,
 
 
 void View::update() {
+  float fps = 60;
+  unsigned long milifps =
+      (unsigned long) std::lround((1 / fps) * 1000);
+
+  auto begin = std::chrono::high_resolution_clock::now();
+
   while (!eventHandler.empty()) {
     Event *event = eventHandler.get();
     event->process();
@@ -111,6 +114,12 @@ void View::update() {
 
   drawSteps();
   draw();
+
+  auto end = std::chrono::high_resolution_clock::now();
+  auto diff =
+      std::chrono::duration_cast<std::chrono::duration<double>>(end - begin);
+  auto sleepTime = std::chrono::milliseconds(milifps) - diff;
+  std::this_thread::sleep_for(sleepTime);
 }
 
 void View::drawSteps() {
@@ -137,8 +146,9 @@ void View::draw() {
     panel.add(build.second);
   }
 
-  for (auto const &unit : unitsVista) {
-    panel.add(unit.second);
+  for (auto &unit : unitsVista) {
+    unit.second.update();
+    panel.add(unit.second.getView());
   }
 
   for (auto const &capturable : capturablesVista) {
@@ -230,31 +240,32 @@ Position View::translateModelPos(UnitType type, std::string &action, Position po
 */
 
 void View::moveCamera(int x, int y) {
-  long cantSteps = eventHandler.amountSteps();
-  // no hay unidades moviendose
-  if (cantSteps == 0) {
-    cantSteps = camera.vel;
-  }
+  if (camera.inLimits(x, y, mapWidth, mapHeight)) {
+    long cantSteps = eventHandler.amountSteps();
+    // no hay unidades moviendose
+    if (cantSteps == 0) {
+      cantSteps = camera.vel;
+    }
 
-  for (int i=0; i < cantSteps; ++i) {
-    eventHandler.addStep(new CameraMoveStepEvent(camera, x, y), i);
+    for (int i = 0; i < cantSteps; ++i) {
+      eventHandler.addStep(new CameraMoveStepEvent(camera, x, y), i);
+    }
   }
 }
 
 
 void View::move(UnitID id, Position posTo) {
-  Position pos_aux = unitsVista.at(id)->getPos();
-  std::string action("walk");
-//  posTo = translateModelPos(id.getType(), action, posTo);
+  UnitView &unitView = unitsVista.at(id);
+  Position pos_aux = unitView.getPos();
 
-  int rotation = 0;
   int i = 0;
   while (pos_aux != posTo) {
-    rotation = pos_aux.getRoration(posTo);
     pos_aux.move(posTo);
-//    eventHandler.add(new UnitMoveStepEvent(id, pos_aux, rotation));
-    eventHandler.addStep(new UnitMoveStepEvent(id, pos_aux, rotation), i);
-    i += 1;
+    unitView.addMove(pos_aux);
+
+    int rotation = pos_aux.getRoration(posTo);
+//    eventHandler.addStep(new UnitMoveStepEvent(id, pos_aux, rotation), i);
+    i+=1;
   }
 }
 
@@ -275,15 +286,19 @@ void View::addTerrainObjectVista(TerrainObjectID &id,
 }
 
 Sprite* View::getUnitVista(UnitID id) {
+  return unitsVista.at(id).getView();
+}
+
+UnitView& View::getUnitView(UnitID id) {
   return unitsVista.at(id);
 }
 
 void View::removeUnitVista(const UnitID &id) {
-  delete unitsVista.at(id);
+//  delete unitsVista.at(id);
   unitsVista.erase(id);
 }
 
-void View::addUnitVista(const UnitID &id, Sprite *unitVista) {
+void View::addUnitVista(const UnitID &id, UnitView &unitVista) {
   unitsVista.emplace(id, unitVista);
 }
 
