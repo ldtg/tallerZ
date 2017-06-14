@@ -13,15 +13,8 @@ void UnitDeathEvent::process() {
   std::string rotation_s = std::to_string(rotation);
   std::string action("die");
   Sprite *explosionVista = VistasFactory::getUnitVista(id.getType(), color, action, rotation_s, pos);
-//  explosionVista->setPos(view->translateModelPos(id.getType(), action, pos));
   explosionVista->setRotation(rotation);
 
-//  if (id.getType() == V_JEEP) {
-//    explosionVista->setPos(view->translateModelPos(id.getType(), action, pos));
-//    explosionVista->setPos(pos);
-//    view->addUnitVista(id, explosionVista);
-//  }
-//  else
     view->addExplosionVista(explosionVista);
 
 }

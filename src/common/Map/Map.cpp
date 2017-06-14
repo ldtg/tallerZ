@@ -225,6 +225,15 @@ CapturableID Map::getCapturableIDFromPosition(const Position &pos,
   throw UnitNotFoundException("capturable no encontrado");
 }
 
+TerrainObjectID Map::getTerrainObjectIDFromPosition(const Position &pos,
+                                                    unsigned short range) const {
+  for (auto &par : terrainObject) {
+    if (pos.equalDelta(par.second.centerPosition, range))
+      return par.first;
+  }
+  throw UnitNotFoundException("terrainObject no encontrado");
+}
+
 void Map::updateUnit(const UnitID &unitID, const UnitState &unitState) {
   this->removeUnit(unitID);
   this->addUnit(unitID, unitState);

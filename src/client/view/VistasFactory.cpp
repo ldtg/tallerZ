@@ -46,7 +46,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
     type_s = "robots";
     if (action == "walk") {
       num_frames = 4;
-      speed = 3 * num_frames;
+      speed = 4 * num_frames;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
@@ -297,6 +297,13 @@ Sprite* VistasFactory::getEffectVista(EffectType type) {
     speed = 6;
     num_frame_return_cycle = 0;
     path = path + type_s + "/tank_missile_explosion1_n";
+  }
+  else if (type == SIDE_EXPLOSION) {
+    type_s = "explosion";
+    num_frames = 7;
+    speed = 6;
+    num_frame_return_cycle = 0;
+    path = path + type_s + "/side_explosion_n";
   }
   else if (type == BIG_SMOKE) {
     type_s = "smoke";

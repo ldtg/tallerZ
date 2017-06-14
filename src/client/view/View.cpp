@@ -100,7 +100,7 @@ void View::createInitialCapturableVista(const std::map<CapturableID,
 
 
 void View::update() {
-  float fps = 40;
+  float fps = 60;
   unsigned long milifps =
       (unsigned long) std::lround((1 / fps) * 1000);
 
@@ -264,7 +264,7 @@ void View::move(UnitID id, Position posTo) {
     unitView.addMove(pos_aux);
 
     int rotation = pos_aux.getRoration(posTo);
-    eventHandler.addStep(new UnitMoveStepEvent(id, pos_aux, rotation), i);
+//    eventHandler.addStep(new UnitMoveStepEvent(id, pos_aux, rotation), i);
     i+=1;
   }
 }

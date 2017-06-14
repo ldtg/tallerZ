@@ -9,8 +9,7 @@ void TerrainObjectDestroyedEvent::process() {
 
   view->removeTerrainObjectVista(id);
 
-  std::string state("destroyed");
-  terrainObjVista = VistasFactory::getTerrainObjectVista(id.getType(), state, pos);
-//  buildVista->setPos(pos);
-  view->addTerrainObjectVista(id, terrainObjVista);
+  Sprite *explosion = VistasFactory::getEffectVista(SIDE_EXPLOSION);
+  explosion->setPos(pos);
+  view->addExplosionVista(explosion);
 }
