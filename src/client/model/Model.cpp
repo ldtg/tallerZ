@@ -25,7 +25,8 @@ void Model::leftClick(int x, int y) {
       UnitID unit = map.getUnitIDFromPosition(pos, 40);
       if (map.getUnitState(unit).owner == player) {
         unitsSelected.push_back(unit);
-        view.show_unit_side_details(unit.getType());
+        view.show_unit_side_details(unit.getType(),
+                                    map.getUnitState(unit).secondType);
       }
     } catch (const UnitNotFoundException &e) {
       view.clear_unit_side_details();

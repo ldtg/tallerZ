@@ -116,8 +116,8 @@ class View {
     menu = nullptr;
   }
 
-  void show_unit_side_details(UnitType unitType){
-    this->side_board->load_unit_images(unitType);
+  void show_unit_side_details(UnitType unitType, UnitType secondType) {
+    this->side_board->load_unit_images(unitType, secondType);
   }
   void clear_unit_side_details(){
     this->side_board->clean_unit_images();

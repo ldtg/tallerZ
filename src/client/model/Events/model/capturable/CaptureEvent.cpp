@@ -37,6 +37,7 @@ void CaptureEvent::process() {
 
       view->removeUnitVista(par.first);
       view->addUnitVista(par.first, capturedVista);
+      model->getMap().removeCapturable(captured);
     }
   } else {
     ObjectMapaVista *flagVista = view->getCapturedVista(captured);
