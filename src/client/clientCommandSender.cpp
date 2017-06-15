@@ -6,7 +6,8 @@ void clientCommandSender::run() {
   try {
     while (open) {
       clientCommand *cmd = queue.pop();
-      if(cmd != nullptr){
+
+      if (cmd != nullptr) {
         CommandType type = cmd->getType();
         socket.send_tcp((char *) &type, sizeof(CommandType));
         socket.send_str_preconcatenated(cmd->getDataToSend().str());
@@ -14,13 +15,13 @@ void clientCommandSender::run() {
       } else {
         this->stop();
       }
-
     }
   } catch (const SocketException &e) {
-    this->stop();
+    this->open = false;
   }
 }
 void clientCommandSender::stop() {
+  socket.shutdownConnection(ShutdownMode::WRITE);
   open = false;
 }
 bool clientCommandSender::isOpen() const {

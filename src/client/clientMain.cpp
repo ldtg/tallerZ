@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
   Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
   EventHandler eventHandler;
 
-  View view(map, eventHandler, camera);
+  View view(map, eventHandler, camera, accepted.id.getColor());
   Model model(map, gcp, camera, view);
 
   eventHandler.setView(&view);

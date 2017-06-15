@@ -9,6 +9,7 @@ enum EventType {
   U_STILL,
   B_DAMAGE,
   B_DESTROYED,
+  B_UPDATE,
   BLT_NEW,
   BLT_MOVE,
   BLT_HIT,

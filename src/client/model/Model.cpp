@@ -10,9 +10,11 @@ void Model::leftClick(int x, int y) {
   Position pos(x + camera.x, y + camera.y);
   if (unitsSelected.empty()) {
     try {
-      unitsSelected.push_back(map.getUnitIDFromPosition(pos, 40));
+      UnitID unit = map.getUnitIDFromPosition(pos, 40);
+      unitsSelected.push_back(unit);
+      view.show_unit_side_details(unit.getType());
     } catch(const UnitNotFoundException &e){
-
+      view.clear_unit_side_details();
       // Donde se hizo click no hay unidad.
     }
   }

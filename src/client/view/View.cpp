@@ -7,7 +7,7 @@
 #include <client/model/Model.h>
 #include <thread>
 
-View::View(const Map &map, EventHandler &eventHandler, Camera &camera)
+View::View(const Map &map, EventHandler &eventHandler, Camera &camera, const std::string& player_color)
     : window(), panel(window.getRender()), eventHandler(eventHandler), camera(camera) {
   _quit = false;
 
@@ -19,7 +19,7 @@ View::View(const Map &map, EventHandler &eventHandler, Camera &camera)
   createInitialBuildVista(map.getBuilds());
   createInitialUnitVista(map.getUnits());
   createInitialCapturableVista(map.getCapturables());
-  this->side_board = new Side_Board(&window, *this);
+  this->side_board = new Side_Board(&window, *this, player_color);
 }
 
 View::~View() {

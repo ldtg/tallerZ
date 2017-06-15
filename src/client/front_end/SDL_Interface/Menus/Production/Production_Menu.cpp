@@ -19,11 +19,11 @@ Production_Menu::Production_Menu(const BuildID buildID,
     : buildID(buildID), window(window),
       model(model), buildState(buildState) {
 
-  this->renderQuad = { x, y, width, length};
+  this->renderQuad = {x, y, width, length};
   this->background = new Texture(background_path.c_str(), &window);
   this->background->renderize(&window, &renderQuad);
-  load_items();
   this->showing_unit_type = buildState.actualUnitFab;
+  load_items();
 }
 
 /**
@@ -38,8 +38,9 @@ void Production_Menu::load_items() {
                          this->font);
 
   set_absolute_position(_unit_rect, this->unit_rect);
-  this->unit = new Label(window, get_unit_name(showing_unit_type),
-                         this->unit_rect, this->font);
+  this->unit =
+      new Texture(get_label_path(showing_unit_type), &window, unit_rect);
+  //this->unit->renderize(&window, &unit_rect);
 
   set_absolute_position(_health_rect, this->health_rect);
   this->health = new Label(window, std::to_string(buildState.health) + "%",
@@ -63,48 +64,48 @@ void Production_Menu::load_items() {
   this->down = new Down_Button(&window, &model, this, down_rect);
 }
 
-/**
- * displace_toXY : mueve el menu a las coordenadas x,y
- * @param x : coordenada x
- * @param y : coordenada y
- */
-void Production_Menu::displace_toXY(int x, int y) {
-  this->renderQuad.x = x;
-  this->renderQuad.y = y;
-  this->background->renderize(&window, &this->renderQuad);
-
-  this->set_absolute_position(_time_rect, time_rect);
-  this->time->set_rectangle(time_rect);
-  this->time->reload();
-
-  this->set_absolute_position(_status_rect, status_rect);
-  this->status->set_rectangle(status_rect);
-  this->status->reload();
-
-  this->set_absolute_position(_health_rect, health_rect);
-  this->health->set_rectangle(health_rect);
-  this->health->reload();
-
-  this->set_absolute_position(_unit_rect, unit_rect);
-  this->unit->set_rectangle(unit_rect);
-  this->unit->reload();
-
-  this->set_absolute_position(_building_name_rect, building_name_rect);
-  this->building_name->set_rectangle(building_name_rect);
-  this->building_name->reload();
-
-  this->set_absolute_position(_build_b_rect, build_b_rect);
-  this->build->set_rectangle(build_b_rect);
-  this->build->reload();
-
-  this->set_absolute_position(_up_rect, up_rect);
-  this->up->set_rectangle(up_rect);
-  this->up->reload();
-
-  this->set_absolute_position(_down_rect, down_rect);
-  this->down->set_rectangle(down_rect);
-  this->down->reload();
-}
+///**
+// * displace_toXY : mueve el menu a las coordenadas x,y
+// * @param x : coordenada x
+// * @param y : coordenada y
+// */
+//void Production_Menu::displace_toXY(int x, int y) {
+//  this->renderQuad.x = x;
+//  this->renderQuad.y = y;
+//  this->background->renderize(&window, &this->renderQuad);
+//
+//  this->set_absolute_position(_time_rect, time_rect);
+//  this->time->set_rectangle(time_rect);
+//  this->time->reload();
+//
+//  this->set_absolute_position(_status_rect, status_rect);
+//  this->status->set_rectangle(status_rect);
+//  this->status->reload();
+//
+//  this->set_absolute_position(_health_rect, health_rect);
+//  this->health->set_rectangle(health_rect);
+//  this->health->reload();
+//
+//  this->set_absolute_position(_unit_rect, unit_rect);
+//  this->unit->set_rectangle(unit_rect);
+//  this->unit->reload();
+//
+//  this->set_absolute_position(_building_name_rect, building_name_rect);
+//  this->building_name->set_rectangle(building_name_rect);
+//  this->building_name->reload();
+//
+//  this->set_absolute_position(_build_b_rect, build_b_rect);
+//  this->build->set_rectangle(build_b_rect);
+//  this->build->reload();
+//
+//  this->set_absolute_position(_up_rect, up_rect);
+//  this->up->set_rectangle(up_rect);
+//  this->up->reload();
+//
+//  this->set_absolute_position(_down_rect, down_rect);
+//  this->down->set_rectangle(down_rect);
+//  this->down->reload();
+//}
 
 /**
  * show_select_status: En lugar de Building pone Select
@@ -125,22 +126,22 @@ void Production_Menu::show_building_status() {
  * @param health : nivel de salud de la fabrica.
  */
 void Production_Menu::show_health_level(int health) {
-  this->health->modify_text(std::to_string(health)+"%");
+  this->health->modify_text(std::to_string(health) + "%");
 }
 
 /**
  * destructor
  */
 Production_Menu::~Production_Menu() {
-  if(this->time != NULL) delete this->time;
-  if(this->status != NULL) delete this->status;
-  if(this->health != NULL) delete this->health;
-  if(this->unit != NULL) delete this->unit;
-  if(this->building_name != NULL) delete this->building_name;
-  if(this->build != NULL) delete this->build;
-  if(this->up != NULL) delete this->up;
-  if(this->down != NULL) delete this->down;
-  if(this->background != NULL) delete this->background;
+  if (this->time != NULL) delete this->time;
+  if (this->status != NULL) delete this->status;
+  if (this->health != NULL) delete this->health;
+  if (this->unit != NULL) delete this->unit;
+  if (this->building_name != NULL) delete this->building_name;
+  if (this->build != NULL) delete this->build;
+  if (this->up != NULL) delete this->up;
+  if (this->down != NULL) delete this->down;
+  if (this->background != NULL) delete this->background;
 }
 
 void Production_Menu::add_to_panel(Panel &panel) {
@@ -156,51 +157,38 @@ void Production_Menu::add_to_panel(Panel &panel) {
 }
 
 std::string Production_Menu::get_building_type(const BuildType &buildType) {
-  switch (buildType){
-    case (BuildType ::FORT):
-      return "FORT";
-    case (BuildType ::VEHICLEF):
-      return "V. FACTORY";
-    case (BuildType ::ROBOTF):
-      return "R. FACTORY";
+  switch (buildType) {
+    case (BuildType::FORT):return "FORT";
+    case (BuildType::VEHICLEF):return "V. FACTORY";
+    case (BuildType::ROBOTF):return "R. FACTORY";
   }
 }
 
 std::string Production_Menu::get_unit_name(const UnitType &utype) {
-  switch (utype){
-    case UnitType ::R_GRUNT:
-      return "GRUNT";
-    case UnitType ::R_TOUGH:
-      return "TOUGH";
-    case UnitType ::R_PSYCHO:
-      return "PSYCHO";
-    case UnitType ::R_PYRO:
-      return "PYRO";
-    case UnitType ::R_SNIPER:
-      return "SNIPER";
-    case UnitType ::R_LASER:
-      return "LASER";
-    case UnitType ::V_JEEP:
-      return "JEEP";
-    case UnitType ::V_MTANK:
-      return "M.TANK";
-    case UnitType ::V_LTANK:
-      return "L.TANK";
-    case UnitType ::V_HTANK:
-      return "H.TANK";
-    case UnitType ::V_MML:
-      return "MML";
+  switch (utype) {
+    case UnitType::R_GRUNT:return "grunt";
+    case UnitType::R_TOUGH:return "tough";
+    case UnitType::R_PSYCHO:return "psycho";
+    case UnitType::R_PYRO:return "pyro";
+    case UnitType::R_SNIPER:return "sniper";
+    case UnitType::R_LASER:return "laser";
+    case UnitType::V_JEEP:return "jeep";
+    case UnitType::V_MTANK:return "medium";
+    case UnitType::V_LTANK:return "light";
+    case UnitType::V_HTANK:return "heavy";
+    case UnitType::V_MML:return "missile_launcher";
+    default :return "grunt";
   }
 }
 
 void Production_Menu::handle_click(int x, int y) {
-  if (up->inRectangle(x,y)){
+  if (up->inRectangle(x, y)) {
     up->handle_event();
   }
-  if (down->inRectangle(x,y)){
+  if (down->inRectangle(x, y)) {
     down->handle_event();
   }
-  if (build->inRectangle(x,y)){
+  if (build->inRectangle(x, y)) {
     build->handle_event();
   }
 }
@@ -209,43 +197,49 @@ void Production_Menu::show_previous_buildable_unit() {
   bool found = false;
   std::vector<UnitType>::const_iterator it;
   it = buildState.fabricableUnits.begin();
-  while (!found){
-    if (*it == showing_unit_type){
+  while (!found) {
+    if (*it == showing_unit_type) {
       found = true;
     } else {
       it++;
     }
   }
-  if (it != buildState.fabricableUnits.begin()){
+  if (it != buildState.fabricableUnits.begin()) {
     it--;
     showing_unit_type = *it;
   } else {
-    showing_unit_type = *(buildState.fabricableUnits.end()-1);
+    showing_unit_type = *(buildState.fabricableUnits.end() - 1);
   }
-  unit->modify_text(get_unit_name(showing_unit_type));
-  unit->reload();
+  unit->load_texture(get_label_path(showing_unit_type), window.getWindow());
+  unit->renderize(&window, &unit_rect);
 }
 
 void Production_Menu::show_next_buildable_unit() {
   bool found = false;
-  std::vector<UnitType >::const_iterator it;
+  std::vector<UnitType>::const_iterator it;
   it = buildState.fabricableUnits.begin();
-  while (!found){
-    if (*it == showing_unit_type){
+  while (!found) {
+    if (*it == showing_unit_type) {
       found = true;
     }
     it++;
   }
-  if (it != buildState.fabricableUnits.end()){
+  if (it != buildState.fabricableUnits.end()) {
     showing_unit_type = *it;
   } else {
     showing_unit_type = *buildState.fabricableUnits.begin();
   }
-  unit->modify_text(get_unit_name(showing_unit_type));
-  unit->reload();
+  unit->load_texture(get_label_path(showing_unit_type), window.getWindow());
+  unit->renderize(&window, &unit_rect);
 }
 
 void Production_Menu::update_unit_to_build() {
-  model.get_gameControllerProxy()->changeUnitFab(buildID,showing_unit_type);
+  model.get_gameControllerProxy()->changeUnitFab(buildID, showing_unit_type);
+  BuildState bs = model.getMap().getBuildState(buildID);
+  bs.actualUnitFab = showing_unit_type;
+  model.getMap().updateBuild(buildID, bs);
+}
+std::string Production_Menu::get_label_path(const UnitType &utype) {
+  return (folder_path + get_unit_name(utype) + "_label.png");
 }
 
