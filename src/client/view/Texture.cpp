@@ -26,6 +26,10 @@ Texture::~Texture() {
 Texture::Texture(const std::string &path, const Window *window) {
   this->load_texture(path, window->getWindow());
 }
+Texture::Texture(const std::string &path, const Window *window, const SDL_Rect &rect) {
+  this->load_texture(path, window->getWindow());
+  this->renderQuad = rect;
+}
 /**
  * Constructor
  * @param surface : Surface a partir de la cual se genera la textura

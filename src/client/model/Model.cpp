@@ -27,6 +27,7 @@ void Model::leftClick(int x, int y) {
     }
   } else {
     if (!view.get_present_menu()->isInRectangle(x, y)) {
+      std::cout << std::to_string((size_t)view.get_present_menu());
       view.free_menu();
     } else {
       view.get_present_menu()->handle_click(x, y);

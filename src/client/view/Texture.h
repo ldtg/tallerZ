@@ -9,6 +9,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "Window.h"
+#include "ObjectMapaVista.h"
 
 /**
  * @class Texture:
@@ -20,12 +21,14 @@
  * En algún caso extraño se puede posteriormente con load_texture modificar
  * la textura y renderizar de nuevo.
  */
-class Texture {
+class Texture : public ObjectMapaVista{
  private:
   SDL_Texture * texture;
-
+  SDL_Rect renderQuad;
  public:
   Texture(const std::string& path, const Window * window);
+
+  Texture(const std::string& path, const Window * window, const SDL_Rect& rect);
 
   Texture(SDL_Surface* surface, const Window * window);
 
@@ -40,6 +43,11 @@ class Texture {
   void renderize(const Window * window, const SDL_Rect* renderQuad);
 
   SDL_Texture * get_texture() const;
+
+  virtual void set_texture(SDL_Renderer *render){};
+  virtual void draw(SDL_Renderer *render, Camera &camera){
+    SDL_RenderCopy(render, texture, NULL, &renderQuad);
+  };
 
  private:
   SDL_Surface * load_image(const std::string& path);
