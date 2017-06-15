@@ -139,7 +139,8 @@ bool Map::isUnitIn(const Position &position) const {
 std::pair<UnitID, UnitState> Map::getUnit(const Position &position) {
   for (auto const &unit : units) {
     Position curPos = unit.second.position;
-    bool in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
+    bool
+        in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
     if (in)
       return unit;
   }
@@ -294,7 +295,7 @@ Position Map::getNeighborFreePos(const Position &tileC) {
     }
   }
 }
-bool Map::diagPassable(const Position &center,const Position &diag) const {
+bool Map::diagPassable(const Position &center, const Position &diag) const {
   std::vector<Position> diagNeigh = center.getNeighborsOfDiagonal(diag);
   bool passable = true;
   for (Position &pDiag : diagNeigh) {
@@ -302,5 +303,8 @@ bool Map::diagPassable(const Position &center,const Position &diag) const {
       passable = false;
   }
   return passable;
+}
+BuildState Map::getBuildState(const BuildID &buildID) const {
+  return builds.at(buildID);
 }
 

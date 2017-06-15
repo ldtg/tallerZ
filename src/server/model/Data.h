@@ -89,7 +89,7 @@ struct Data {
     r_grunt.range = 7;//el rango lo aumentan solo las unidades con el range mult
     r_grunt.speed = 4;
     r_grunt.factoryRate = 3;
-    r_grunt.factoryBaseTimeInSec = 10;
+    r_grunt.factoryBaseTimeInSec = 30;
     r_grunt.factoryMinimunTechLevel = 1;
 
     r_tough.type = UnitType::R_TOUGH;
@@ -159,7 +159,7 @@ struct Data {
 
     asphaltedBridgeObject.type = TerrainObjectType::_ASPHALTEDBRIDGE;
     asphaltedBridgeObject.passable = true;
-    asphaltedBridgeObject.health = 1000;
+    asphaltedBridgeObject.health = 10;
     asphaltedBridgeObject.size = 50;
     rockObject.type = TerrainObjectType::ROCK;
     rockObject.passable = false;
@@ -168,7 +168,7 @@ struct Data {
     rockObject.size = 50;
     woodenBridgeObject.type = TerrainObjectType::_WOODENBRIDGE;
     woodenBridgeObject.passable = true;
-    woodenBridgeObject.health = 1000;
+    woodenBridgeObject.health = 10;
     woodenBridgeObject.size = 50;
     iceRockObject.type = TerrainObjectType::ICEROCK;
     iceRockObject.passable = false;

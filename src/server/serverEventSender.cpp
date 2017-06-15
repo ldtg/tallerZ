@@ -19,17 +19,18 @@ void serverEventSender::run() {
         delete (sev);
 
       } else {
-        this->stop();
+        this->open = false;
       }
-
     }
   } catch (const SocketException &e) {
-    this->stop();
+    this->open = false;
   }
-
 }
 void serverEventSender::stop() {
-  open = false;
+  for (Socket *cli :clients) {
+    cli->shutdownConnection(ShutdownMode::WRITE);
+  }
+  this->open = false;
 }
 bool serverEventSender::isOpen() const {
   return open;

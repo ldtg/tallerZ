@@ -7,15 +7,16 @@
 #include <server/model/protectedGameController.h>
 #include <cereal/archives/binary.hpp>
 #include "serverPlayersManager.h"
-#include "serverGameRunner.h"
 #include "serverEventSender.h"
 #include "serverCommandReceiver.h"
-std::vector<Socket *> getClients(unsigned short playersExpected, const std::string &port);
+std::vector<Socket *> getClients(unsigned short playersExpected,
+                                 const std::string &port);
 
 std::vector<serverCommandReceiver *> getCommandReceivers(const std::vector<
     Socket *> &clients, protectedGameController &pgc);
 void sendMapToClients(const std::vector<Socket *> &clients, const Map &map);
 
+bool allPlayersAreConnected(std::vector<serverCommandReceiver *> vector);
 int main(int argc, char *argv[]) {
   //Espera a que se conecten todos los jugadores
   std::vector<Socket *> clients = getClients(std::stoi(argv[2]), argv[1]);
@@ -49,7 +50,7 @@ int main(int argc, char *argv[]) {
   }
 
   while (!gameController.isGameEnded()
-      && eventSender.isOpen()) {
+      && eventSender.isOpen() && allPlayersAreConnected(commandReceivers)) {
     gameController.tick();
   };
   evqueue.push(nullptr);// no se me ocurrio otra para destrabar el pop
@@ -58,7 +59,7 @@ int main(int argc, char *argv[]) {
   for (serverCommandReceiver *commandReceiver: commandReceivers) {
     commandReceiver->stop();
   }
- // gameRunner.join();
+  // gameRunner.join();
   eventSender.join();
   for (serverCommandReceiver *commandReceiver: commandReceivers) {
     commandReceiver->join();
@@ -66,6 +67,14 @@ int main(int argc, char *argv[]) {
   }
   return 0;
 }
+bool allPlayersAreConnected(std::vector<serverCommandReceiver *> vector) {
+  for (serverCommandReceiver *player : vector) {
+    if (!player->isOpen())
+      return false;
+  }
+  return true;
+}
+
 void sendMapToClients(const std::vector<Socket *> &clients, const Map &map) {
   std::stringstream ss;
   cereal::BinaryOutputArchive oarchive(ss);

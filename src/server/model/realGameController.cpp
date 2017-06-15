@@ -14,6 +14,7 @@
 #include <server/model/Events/TerrainObject/serverTODestroyedEvent.h>
 #include <server/model/Events/Unit/serverUDeathEvent.h>
 #include <server/model/Events/Game/serverGPlayerDefeatedEvent.h>
+#include <server/model/Events/Build/serverBUpdateTimeEvent.h>
 #include "AStar.h"
 
 #include "Data.h"
@@ -166,6 +167,7 @@ void realGameController::unitsTick() {
       } else {
         eventQueue.push(new serverUDeathEvent(current->getId()));
         map.removeUnit(current->getId());
+
         deathUnits.push_back(current);
         it_units = units.erase(it_units);
       }
@@ -217,8 +219,7 @@ void realGameController::hunt(Unit *unit,
   Position unitPos = unit->getCenterPosition();
 
   if (unit->attackedInRange()
-      && map.canPass(unitPos, huntedPos))
-  {
+      && map.canPass(unitPos, huntedPos)) {
     if (unit->isFirstAttack()) {
       Position huntedPos = hunted->getAttackPosition(unitPos);
       Position attackerPos = unit->getCenterPosition();
@@ -255,7 +256,6 @@ void realGameController::capture(Unit *unit,
                                  std::map<UnitID, Unit *>::iterator &it) {
 //  if (!unit->hasMovesToDo()) { //llego
   if (unit->capturableInRange()) {
-    unit->still();
     Capturable *capturable = unit->getCapturable();
 
     capturable->capture(unit->getId(), unit->getOwner(), unit->getOwnerTeam());
@@ -287,11 +287,17 @@ void realGameController::capture(Unit *unit,
       deathUnits.push_back(unit);
       it = units.erase(it);
     } else {
+      unit->still();
+      eventQueue.push(new serverUStillEvent(unit->getId()));
       ++it;
     }
     if (!capturable->isRecapturable()) {
       this->capturables.erase(capturable->getID());
       map.removeCapturable(capturable->getID());
+      for (auto par: units) {
+        if (par.second->getCapturable() == capturable)
+          par.second->still();
+      }
       delete capturable;
     } else {
       map.updateCapturable(capturable->getID(),
@@ -309,7 +315,8 @@ void realGameController::autoAttack(Unit *current,
 
   for (auto &par: units) {
     if (current->isInRange(par.second)
-        && current->getId() != par.first && current->canAttack(par.second)) {
+        && current->getId() != par.first && current->canAttack(par.second)
+        && !par.second->getOwner()->getID().isGaia()) {
       current->autoAttack(par.second);
     }
   }
@@ -347,6 +354,10 @@ void realGameController::buildsTick() {
       if (current->isAlive()) {
         if (current->hasToBuild()) {
           this->addUnits(current->fabricateUnits(map.getNeighborFreePos(current->getCenterPosition())));
+        }
+        BuildState actual = map.getBuildState(current->getId());
+        if(actual.timeRemainingInSecs != current->getBuildState().timeRemainingInSecs){
+          eventQueue.push(new serverBUpdateTimeEvent(current->getId(), current->getBuildState()));
         }
         map.updateBuild(current->getId(), current->getBuildState());
         current->tick();

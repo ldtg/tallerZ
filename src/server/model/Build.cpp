@@ -36,8 +36,14 @@ Position Build::getAttackPosition(const Position &attackerPosition) const {
 void Build::tick() {
   if (ticksBeforeCreate > 0) {
     ticksBeforeCreate--;
-  } else if (owner->getAmountOfTerritories()
-      > 0) {//para que gaia no cree unidades
+    unsigned short aux = this->getSpeedRate();
+    if (actualTicksBeforeCreateBase != aux) {
+      ticksBeforeCreate = ticksBeforeCreate
+          - (unsigned short) std::lround((float) (ticksBeforeCreate
+              / actualTicksBeforeCreateBase)) * aux;
+      actualTicksBeforeCreateBase = aux;
+    }
+  } else if (owner->getAmountOfTerritories() > 0) {
     ticksBeforeCreate = this->getSpeedRate();
     timeToBuild = true;
   }
@@ -88,11 +94,9 @@ Build::Build(const BuildData &buildData,
       techLevel(techLevel),
       fabricableUnits(data.getFabUnits(buildData.type, techLevel)),
       ticksBeforeCreate(this->getSpeedRate()),
-      health(buildData.health),
+      health(buildData.health), actualTicksBeforeCreateBase(ticksBeforeCreate),
       timeToBuild(true),
-      actualUnitFab(UnitType::R_GRUNT) {
-
-}
+      actualUnitFab(UnitType::R_GRUNT) {}
 
 UnitType Build::getActualUnitFab() const {
   return actualUnitFab;
@@ -110,6 +114,7 @@ void Build::changeFabUnit(const UnitType &type) {
   } else {
     this->actualUnitFab = type;
     this->ticksBeforeCreate = this->getSpeedRate();
+    this->actualTicksBeforeCreateBase = this->ticksBeforeCreate;
     this->timeToBuild = false;
   }
 }
@@ -123,7 +128,7 @@ BuildState Build::getBuildState() const {
                     centerPosition.sub(size, size),
                     health,
                     data.ticksToSec(ticksBeforeCreate),
-                    actualUnitFab,fabricableUnits);
+                    actualUnitFab, fabricableUnits);
 }
 
 std::vector<Unit *> Build::fabricateUnits(const Position &buildPos) {
@@ -148,6 +153,7 @@ void Build::changePlayer(Player *player, const Team &team) {
   else
     this->actualUnitFab = UnitType::R_GRUNT;
   this->ticksBeforeCreate = this->getSpeedRate();
+  this->actualTicksBeforeCreateBase = this->ticksBeforeCreate;
   this->timeToBuild = false;
 }
 

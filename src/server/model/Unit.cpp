@@ -67,7 +67,7 @@ void Unit::doOneMove() {
     movementsPositions.erase(movementsPositions.begin());
   }
   if (movementsPositions.empty() && this->isMoving())
-    this->movState.still();
+    this->still();
 }
 
 bool Unit::attackedInRange() {
@@ -142,6 +142,8 @@ Unit::~Unit() {}
 bool Unit::doMoveWithSpeed(float terrainFactor) {
   for (int i = 0; i < this->getMovementSpeed(terrainFactor); ++i) {
     doOneMove();
+    if (this->isStill())
+      break;
   }
   return this->movState.isStill();
 }
@@ -189,6 +191,7 @@ Bullet Unit::createBullet() {
 void Unit::still() {
   this->movState.still();
   hunted = nullptr;
+  capturable = nullptr;
   movementsPositions.clear();
   attackCounterActual = attackCounterBase;
 }
