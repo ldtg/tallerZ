@@ -81,6 +81,7 @@ class Map {
 
   void updateTerrainObject(const TerrainObjectID &id,
                            const TerrainObjectState &newState);
+  void removeTerrainObject(const TerrainObjectID &id);
 
   void updateCapturable(const CapturableID &id, const CapturableState &state);
   void removeCapturable(const CapturableID &id);

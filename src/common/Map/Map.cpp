@@ -316,4 +316,7 @@ bool Map::diagPassable(const Position &center, const Position &diag) const {
 BuildState Map::getBuildState(const BuildID &buildID) const {
   return builds.at(buildID);
 }
+void Map::removeTerrainObject(const TerrainObjectID &id) {
+  terrainObject.erase(id);
+}
 

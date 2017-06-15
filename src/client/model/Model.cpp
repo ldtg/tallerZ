@@ -20,19 +20,23 @@ Model::Model(Map &map,
 
 void Model::leftClick(int x, int y) {
   Position pos(x + camera.x, y + camera.y);
-  if (unitsSelected.empty()) {
-    try {
-      UnitID unit = map.getUnitIDFromPosition(pos, 40);
-      if (map.getUnitState(unit).owner == player) {
-        unitsSelected.push_back(unit);
-        view.show_unit_side_details(unit.getType(),
-                                    map.getUnitState(unit).secondType);
-      }
-    } catch (const UnitNotFoundException &e) {
-      view.clear_unit_side_details();
-      // Donde se hizo click no hay unidad.
+  //if (unitsSelected.empty()) {
+  unitsSelected.clear();
+  try {
+    UnitID unit = map.getUnitIDFromPosition(pos, 40);
+    if (map.getUnitState(unit).owner == player) {
+      unitsSelected.push_back(unit);
+      view.show_unit_side_details(unit.getType(),
+                                  map.getUnitState(unit).secondType);
     }
+  } catch (const UnitNotFoundException &e) {
+    view.clear_unit_side_details();
+    // Donde se hizo click no hay unidad.
   }
+  /* } else {
+     unitsSelected.clear();
+     view.clear_unit_side_details();
+   }*/
   if (view.get_present_menu() == nullptr) {
     try {
       BuildID factoryID = map.getBuildIDFromPosition(pos, 50);
