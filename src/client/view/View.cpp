@@ -1,4 +1,5 @@
 #include "View.h"
+#include "ViewPosition.h"
 #include <random>
 #include <client/model/Events/model/unit/UnitMoveStepEvent.h>
 #include <client/model/Events/model/bullet/BulletMoveStepEvent.h>
@@ -100,7 +101,7 @@ void View::createInitialCapturableVista(const std::map<CapturableID,
 
 
 void View::update() {
-  float fps = 60;
+  float fps = 40;
   unsigned long milifps =
       (unsigned long) std::lround((1 / fps) * 1000);
 
@@ -256,6 +257,21 @@ void View::moveCamera(int x, int y) {
 
 void View::move(UnitID id, Position posTo) {
   UnitView &unitView = unitsVista.at(id);
+  Position unitPos = unitView.getPos();
+
+  Position dist = posTo.sub(unitPos);
+  // La velocidad de la vista respecto al server
+  float velView = 4.0;
+  ViewPosition step(dist.getX()/velView, dist.getY()/velView);
+
+  ViewPosition unitViewPos = unitView.getViewPos();
+  for (int i=0; i < velView; i++) {
+    unitViewPos.add(step);
+    unitView.addMove(unitViewPos);
+  }
+
+/*
+  UnitView &unitView = unitsVista.at(id);
   Position pos_aux = unitView.getPos();
 
   int i = 0;
@@ -267,6 +283,7 @@ void View::move(UnitID id, Position posTo) {
 //    eventHandler.addStep(new UnitMoveStepEvent(id, pos_aux, rotation), i);
     i+=1;
   }
+*/
 }
 
 

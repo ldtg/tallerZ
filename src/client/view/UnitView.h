@@ -8,7 +8,7 @@
 class UnitView {
  private:
   Sprite *view;
-  std::queue<Position> movements;
+  std::queue<ViewPosition> movements;
   UnitType type;
   std::string color;
 
@@ -16,7 +16,8 @@ class UnitView {
   UnitView(UnitType type, std::string &color, Position pos,
            std::string &action, std::string &rotation);
   Position getPos() const;
-  void addMove(const Position &pos);
+  ViewPosition getViewPos() const;
+  void addMove(const ViewPosition &pos);
   void update();
   Sprite* getView();
 };

@@ -33,6 +33,7 @@ class Position {
   bool isIn(long width, long height, int otherX, int otherY) const;
   std::string toString() const;
   Position sub(unsigned long x, unsigned long y) const;
+  Position sub(const Position &other) const;
   Position add(unsigned long x, unsigned long y) const;
   Position getAttackPosition(const Position &position,
                              const unsigned short size) const;
