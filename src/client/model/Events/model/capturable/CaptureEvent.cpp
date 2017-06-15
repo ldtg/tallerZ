@@ -14,12 +14,12 @@ CaptureEvent::CaptureEvent(const UnitID &capturer,
       capturerDissapear(dissapear) {}
 
 void CaptureEvent::process() {
-  Sprite* capturerVista = view->getUnitVista(capturer);
+  Sprite *capturerVista = view->getUnitVista(capturer);
 //    Position pos = unitVista->getPos();
   std::string color = capturerVista->getColor();
-//TODO: ACTUALIZAR MAPA
   if (capturerDissapear) {
     view->removeUnitVista(capturer);
+    model->getMap().removeCapturable(captured);
   }
 
 //  if (!capturedUnits.empty()) {
@@ -32,18 +32,24 @@ void CaptureEvent::process() {
       int rotation = capturedVistaOld->getRotation();
       std::string rotation_s = std::to_string(rotation);
 
-      UnitView capturedVista(type, color, par.second.position, action, rotation_s);
+      UnitView
+          capturedVista(type, color, par.second.position, action, rotation_s);
 
       view->removeUnitVista(par.first);
       view->addUnitVista(par.first, capturedVista);
     }
-  }
-  else {
+  } else {
     ObjectMapaVista *flagVista = view->getCapturedVista(captured);
     Position pos = flagVista->getPos();
     view->removeCapturableVista(captured);
     Sprite *flag = VistasFactory::getFlagsVista(color, pos);
 //    flag->setPos(capturedPosition);
     view->addCapturableVista(captured, flag);
+  }
+  for (auto par :capturedUnits) {
+    model->getMap().updateUnit(par.first, par.second);
+  }
+  for (auto par :capturedBuilds) {
+    model->getMap().updateBuild(par.first, par.second);
   }
 }
