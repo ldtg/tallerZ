@@ -33,8 +33,8 @@ class Production_Menu : public Menu {
   Label * time = NULL;
   Label *status = NULL;
   Label *health = NULL;
-  Label *unit = NULL;
   Label *building_name = NULL;
+  Texture *unit = NULL;
   Button * build = NULL;
   Button * up = NULL;
   Button * down = NULL;
@@ -59,6 +59,7 @@ class Production_Menu : public Menu {
 
   const std::string background_path
       = "../src/client/front_end/Images/Interface/production_gui/base_image.png";
+  const std::string folder_path = "../src/client/front_end/Images/Interface/production_gui/";
 
  public:
   Production_Menu(const BuildID buildID,
@@ -67,7 +68,7 @@ class Production_Menu : public Menu {
                   Model& model,
                   int x, int y);
 
-  void displace_toXY(int x, int y);
+  //void displace_toXY(int x, int y);
 
   void show_health_level(int health);
 
@@ -90,6 +91,7 @@ class Production_Menu : public Menu {
  private:
   void load_items();
 
+  std::string get_label_path(const UnitType& utype);
   std::string get_building_type(const BuildType& buildType);
 
   std::string get_unit_name(const UnitType& utype);

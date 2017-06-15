@@ -10,9 +10,11 @@ void Model::leftClick(int x, int y) {
   Position pos(x + camera.x, y + camera.y);
   if (unitsSelected.empty()) {
     try {
-      unitsSelected.push_back(map.getUnitIDFromPosition(pos, 40));
+      UnitID unit = map.getUnitIDFromPosition(pos, 40);
+      unitsSelected.push_back(unit);
+      view.show_unit_side_details(unit.getType());
     } catch(const UnitNotFoundException &e){
-
+      view.clear_unit_side_details();
       // Donde se hizo click no hay unidad.
     }
   }
@@ -25,6 +27,7 @@ void Model::leftClick(int x, int y) {
     }
   } else {
     if (!view.get_present_menu()->isInRectangle(x, y)) {
+      std::cout << std::to_string((size_t)view.get_present_menu());
       view.free_menu();
     } else {
       view.get_present_menu()->handle_click(x, y);

@@ -28,7 +28,7 @@ class Quit_Menu : public Menu {
 
   void handle_click(int x, int y);
 
-  void displace_toXY(int x, int y) override {};
+  //void displace_toXY(int x, int y) override {};
 
   void add_to_panel(Panel& panel) override{
     panel.add(this);

@@ -7,11 +7,16 @@
  * Este constructor genera una textura default negra.
  */
 Texture::Texture(const Window *window) {
-  //TODO cuando definamos el tamaño de la ventana, modificar los valores 500, 500 que están harcodeados y poner el tamaño de la ventana definido.
   SDL_Surface * surface = SDL_CreateRGBSurface(0, 500, 500, 32, 0, 0, 0, 0);
   SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0, 0, 0));
   this->generate_texture(surface, window->getWindow());
   SDL_FreeSurface(surface);
+}
+/**
+ * Destructor
+ */
+Texture::~Texture() {
+  SDL_DestroyTexture(texture);
 }
 /**
  * Constructor
@@ -20,6 +25,10 @@ Texture::Texture(const Window *window) {
  */
 Texture::Texture(const std::string &path, const Window *window) {
   this->load_texture(path, window->getWindow());
+}
+Texture::Texture(const std::string &path, const Window *window, const SDL_Rect &rect) {
+  this->load_texture(path, window->getWindow());
+  this->renderQuad = rect;
 }
 /**
  * Constructor
@@ -80,7 +89,7 @@ SDL_Texture *Texture::get_texture() const {
  */
 void Texture::renderize(const Window * window, const SDL_Rect* renderQuad) {
   SDL_RenderCopy(window->getRender(), this->texture, NULL, renderQuad);
-  SDL_RenderPresent( window->getRender());
+  //SDL_RenderPresent( window->getRender()); TODO Ver si esto sirve
 }
 /**
  * renderize: renderiza la textura de modo que se carga en la window
