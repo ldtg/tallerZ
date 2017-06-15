@@ -159,7 +159,8 @@ struct Data {
 
     asphaltedBridgeObject.type = TerrainObjectType::_ASPHALTEDBRIDGE;
     asphaltedBridgeObject.passable = true;
-    asphaltedBridgeObject.health = 10;
+//    asphaltedBridgeObject.health = 1000;
+    asphaltedBridgeObject.health = 20;
     asphaltedBridgeObject.size = 50;
     rockObject.type = TerrainObjectType::ROCK;
     rockObject.passable = false;
