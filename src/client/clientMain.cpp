@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
   EventHandler eventHandler;
 
   View view(map, eventHandler, camera, accepted.id.getColor());
-  Model model(map, gcp, camera, view);
+  Model model(map, gcp, camera, view, accepted.id, accepted.teamID);
 
   eventHandler.setView(&view);
   eventHandler.setModel(&model);

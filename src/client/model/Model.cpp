@@ -3,26 +3,47 @@
 #include "Model.h"
 #include "Exceptions/model_exceptions/UnitNotFoundException.h"
 
-Model::Model(Map &map, GameControllerProxy &gc, Camera &camera, View &view)
-    : map(map), gameController(gc), camera(camera), view(view) {}
+Model::Model(Map &map,
+             GameControllerProxy &gameController,
+             Camera &camera,
+             View &view,
+             const PlayerID &player,
+             const TeamID &teamID)
+    : map(map),
+      gameController(gameController),
+      camera(camera),
+      view(view),
+      player(player),
+      teamID(teamID) {
+
+}
 
 void Model::leftClick(int x, int y) {
   Position pos(x + camera.x, y + camera.y);
   if (unitsSelected.empty()) {
     try {
       UnitID unit = map.getUnitIDFromPosition(pos, 40);
-      unitsSelected.push_back(unit);
-      view.show_unit_side_details(unit.getType());
-    } catch(const UnitNotFoundException &e){
+      if (map.getUnitState(unit).owner == player) {
+        unitsSelected.push_back(unit);
+        view.show_unit_side_details(unit.getType());
+      }
+    } catch (const UnitNotFoundException &e) {
       view.clear_unit_side_details();
       // Donde se hizo click no hay unidad.
     }
   }
   if (view.get_present_menu() == nullptr) {
     try {
-      BuildID factoryID = map.getBuildIDFromPosition(pos,50);
-      view.load_production_menu(factoryID,map.getBuilds().at(factoryID),*this,x,y);
-    } catch(const UnitNotFoundException &e){
+      BuildID factoryID = map.getBuildIDFromPosition(pos, 50);
+      if (map.getBuildState(factoryID).owner == player) {
+        view.load_production_menu(factoryID,
+                                  map.getBuilds().at(factoryID),
+                                  *this,
+                                  x,
+                                  y);
+      }
+
+    } catch (const UnitNotFoundException &e) {
       // Donde se hizo click no hay fabrica
     }
   } else {
@@ -32,8 +53,8 @@ void Model::leftClick(int x, int y) {
       view.get_present_menu()->handle_click(x, y);
     }
   }
-  if (view.get_side_board()->is_in_menu_button(x,y)){
-    if (view.get_present_menu() != nullptr){
+  if (view.get_side_board()->is_in_menu_button(x, y)) {
+    if (view.get_present_menu() != nullptr) {
       view.free_menu();
     }
     view.get_side_board()->launch_menu_button();
@@ -101,4 +122,3 @@ Map &Model::getMap() {
 GameControllerProxy *Model::get_gameControllerProxy() {
   return &gameController;
 }
-
