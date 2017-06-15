@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 
   while (!gameController.isGameEnded()
       && eventSender.isOpen() && allPlayersAreConnected(commandReceivers)) {
-    gameController.tick();
+    pgc.tick();
   };
   evqueue.push(nullptr);// no se me ocurrio otra para destrabar el pop
   //gameRunner.stop();

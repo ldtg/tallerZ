@@ -39,7 +39,8 @@ void realGameController::attack(const UnitID &attackerId,
   } catch (const std::exception &e) {
     return;
   }
-  Tile etile = map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
+  Tile etile =
+      map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
 
   if (!attacker->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
     return;
@@ -68,7 +69,8 @@ void realGameController::attack(const UnitID &attackerId,
   } catch (const std::exception &e) {
     return;
   }
-  Tile etile = map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
+  Tile etile =
+      map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
 
   if (!attacker->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
     return;
@@ -97,7 +99,8 @@ void realGameController::attack(const UnitID &attackerID,
   } catch (const std::exception &e) {
     return;
   }
-  Tile etile = map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
+  Tile etile =
+      map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
 
   if (!attacker->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
     return;
@@ -120,14 +123,12 @@ void realGameController::attack(const UnitID &attackerID,
 void realGameController::changeUnitFab(const BuildID &buildId,
                                        const UnitType &type) {
   builds.at(buildId)->changeFabUnit(type);
-
 }
 
 void realGameController::capture(const UnitID &idunit,
                                  const CapturableID &capturableID) {
   Capturable *capturable = capturables.at(capturableID);
   Tile etile = map.getTile(capturable->getCapturePosition());
-
 
   if (capturable->canBeCapturedBy(idunit)) {
     Unit *unit = units.at(idunit);
@@ -371,8 +372,10 @@ void realGameController::buildsTick() {
           this->addUnits(current->fabricateUnits(map.getNeighborFreePos(current->getCenterPosition())));
         }
         BuildState actual = map.getBuildState(current->getId());
-        if(actual.timeRemainingInSecs != current->getBuildState().timeRemainingInSecs){
-          eventQueue.push(new serverBUpdateTimeEvent(current->getId(), current->getBuildState()));
+        if (actual.timeRemainingInSecs
+            != current->getBuildState().timeRemainingInSecs) {
+          eventQueue.push(new serverBUpdateTimeEvent(current->getId(),
+                                                     current->getBuildState()));
         }
         map.updateBuild(current->getId(), current->getBuildState());
         current->tick();
@@ -439,6 +442,7 @@ void realGameController::objectsTick() {
       eventQueue.push(new serverTODestroyedEvent(current.getID()));
       t_it = terrainObjects.erase(t_it);
     } else {
+
       ++t_it;
     }
   }
