@@ -46,15 +46,14 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
     type_s = "robots";
     if (action == "walk") {
       num_frames = 4;
-      speed = 4 * num_frames;
+      speed = 2 * num_frames;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "look_around") {
-      despX=8, despY=8;
+//      despX=8, despY=8;
       num_frames = 3;
       speed = 6*num_frames;
-      despX = 8, despY = 8;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
@@ -121,9 +120,11 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
   }
   else if (type == V_JEEP) {
     type_s = "vehicles/jeep";
-//    despX = 0, despY = 0;
+//    despX = 25, despY = 25;
 
     if (action == "walk") {
+      despX = 25, despY = 25;
+
       num_frames = 2;
       speed = 3 * num_frames;
       path = path + type_s + "/" + action
@@ -132,7 +133,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
     else if (action == "look_around") {
       num_frames = 2;
       speed = 3 * num_frames;
-      despX = 25, despY = 25;
+//      despX = 25, despY = 25;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
@@ -145,12 +146,12 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
     else if (action == "die") {
       num_frames = 13;
       speed = 1 * num_frames;
-      despX = 0, despY = 10;
+//      despX = 0, despY = 10;
       path = path + type_s + "/" + action + "/" + action + "_n";
     } else {//TODO: AGREGAR CREATEEE
       num_frames = 2;
       speed = 3 * num_frames;
-      despX = 25, despY = 25;
+//      despX = 25, despY = 25;
       path = path + type_s + "/" + "look_around"
           + "/" + "look_around" + "_" + color + "_r" + rotation + "_n";
     }

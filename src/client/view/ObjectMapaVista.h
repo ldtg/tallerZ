@@ -4,21 +4,24 @@
 #include <common/Map/Position.h>
 #include "SDL2/SDL.h"
 #include "Camera.h"
+#include "ViewPosition.h"
 
 class ObjectMapaVista {
  protected:
   int width;
   int height;
-  long x;
-  long y;
+  float x;
+  float y;
   int rotation;
   ObjectMapaVista();
  public:
   int getWidth() const;
   int getHeight() const;
 
+  void setPos(ViewPosition pos);
   void setPos(Position pos);
   Position getPos() const;
+  ViewPosition getViewPos() const;
   void setRotation(int rotation);
   int getRotation();
 

@@ -160,6 +160,10 @@ Position Position::sub(unsigned long x, unsigned long y) const {
   return Position(this->x - x, this->y - y);
 }
 
+Position Position::sub(const Position &other) const {
+  return Position(this->x - other.x, this->y - other.y);
+}
+
 Position Position::add(unsigned long x, unsigned long y) const {
   return Position(this->x + x, this->y + y);
 }

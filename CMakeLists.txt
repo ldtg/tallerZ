@@ -264,7 +264,7 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
 
-
+        src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/view/ViewPosition.cpp src/client/view/ViewPosition.h
         src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/model/Events/model/build/BuildUpdateEvent.cpp src/client/model/Events/model/build/BuildUpdateEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)

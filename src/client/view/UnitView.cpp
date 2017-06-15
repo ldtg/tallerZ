@@ -10,24 +10,35 @@ UnitView::UnitView(UnitType type, std::string &color, Position pos,
 
 Position UnitView::getPos() const {
   if (!movements.empty()) {
-    return movements.back();
+    return movements.back().getPos();
   }
   else {
     return view->getPos();
   }
 }
 
-void UnitView::addMove(const Position &pos) {
+ViewPosition UnitView::getViewPos() const {
+  if (!movements.empty()) {
+    return movements.back();
+  }
+  else {
+    return view->getViewPos();
+  }
+}
+
+void UnitView::addMove(const ViewPosition &pos) {
   movements.push(pos);
 }
 
 void UnitView::update() {
   if (!movements.empty()) {
-    Position posTo = movements.front();
+    ViewPosition viewPosTo = movements.front();
     movements.pop();
+    Position posTo = viewPosTo.getPos();
 
-    Position pos = view->getPos();
-    int newRotation = pos.getRoration(posTo);
+//    Position pos = view->getPos();
+    ViewPosition pos = view->getViewPos();
+    int newRotation = pos.getRoration(viewPosTo);
     int rotation = view->getRotation();
 
     if (rotation != newRotation) {
@@ -38,9 +49,10 @@ void UnitView::update() {
       view = VistasFactory::getUnitVista(type, color, action,
                                          rotation_s, posTo);
       view->setRotation(newRotation);
+      view->setPos(viewPosTo);
     }
     else {
-      view->setPos(posTo);
+      view->setPos(viewPosTo);
     }
 
   }
