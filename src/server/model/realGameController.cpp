@@ -39,7 +39,10 @@ void realGameController::attack(const UnitID &attackerId,
   } catch (const std::exception &e) {
     return;
   }
+  Tile etile = map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
 
+  if (!attacker->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
+    return;
   if (!attacker->canAttack(attacked))
     return;
 
@@ -65,6 +68,10 @@ void realGameController::attack(const UnitID &attackerId,
   } catch (const std::exception &e) {
     return;
   }
+  Tile etile = map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
+
+  if (!attacker->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
+    return;
   if (!attacker->canAttack(attacked))
     return;
 
@@ -90,6 +97,10 @@ void realGameController::attack(const UnitID &attackerID,
   } catch (const std::exception &e) {
     return;
   }
+  Tile etile = map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
+
+  if (!attacker->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
+    return;
 
   if (!attacker->canAttack(attacked))
     return;
@@ -115,8 +126,13 @@ void realGameController::changeUnitFab(const BuildID &buildId,
 void realGameController::capture(const UnitID &idunit,
                                  const CapturableID &capturableID) {
   Capturable *capturable = capturables.at(capturableID);
+  Tile etile = map.getTile(capturable->getCapturePosition());
+
+
   if (capturable->canBeCapturedBy(idunit)) {
     Unit *unit = units.at(idunit);
+    if (!unit->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
+      return;
     AStar astar(map, unit, capturable->getCapturePosition());
     unit->capture(astar.find(), capturable);
   }
