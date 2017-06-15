@@ -270,8 +270,7 @@ void realGameController::hunt(Unit *unit,
 
 void realGameController::capture(Unit *unit,
                                  std::map<UnitID, Unit *>::iterator &it) {
-//  if (!unit->hasMovesToDo()) { //llego
-  if (unit->capturableInRange()) {
+  if (!unit->hasMovesToDo()) { //llego
     Capturable *capturable = unit->getCapturable();
 
     capturable->capture(unit->getId(), unit->getOwner(), unit->getOwnerTeam());

@@ -8,19 +8,17 @@ serverCommandReceiver::serverCommandReceiver(Socket &socket,
                                              serverGameController &gc)
     : socketClient(socket), gameController(gc), open(true) {}
 void serverCommandReceiver::run() {
-  serverCommand *sc;
-  CommandType type;
   try {
     while (open) {
+      CommandType type;
       socketClient.receive_tcp((char *) &type, sizeof(CommandType));
       std::string cmdstr(socketClient.rcv_str_preconcatenated());
       std::stringstream ss(cmdstr);
-      sc = serverCommandFactory::createCommand(type, ss);
+      serverCommand *sc = serverCommandFactory::createCommand(type, ss);
       sc->execute(gameController);
       delete (sc);
     }
-  } catch (const std::exception &e) {
-    std::cerr << "Error en serverCommandReceiver::run(): " << e.what();
+  } catch (const SocketException &e) {
     this->stop();
   }
 }

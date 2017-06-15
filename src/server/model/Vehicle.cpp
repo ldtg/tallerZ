@@ -4,7 +4,7 @@
 
 Vehicle::Vehicle(const Position &current, const UnitData &data,
                  const UnitType &conductorType, Player &player, Team &team)
-    : Unit(current, data, player, team) {}
+    : Unit(current, data, player, team), conductor(conductorType) {}
 
 Vehicle::~Vehicle() {}
 
@@ -24,10 +24,14 @@ unsigned short Vehicle::getMovementSpeed(float terrainFactor) const {
 }
 
 UnitState Vehicle::getUnitState() const {
-  return UnitState(conductor, owner->getID(), health, weapon.type, currentPosition);
+  return UnitState(conductor,
+                   owner->getID(),
+                   health,
+                   weapon.type,
+                   currentPosition);
 }
 
-void Vehicle::capture(Player *player,const Team &team, UnitType conductor) {
+void Vehicle::capture(Player *player, const Team &team, UnitType conductor) {
   this->owner = player;
   this->team = team;
   this->conductor = conductor;
