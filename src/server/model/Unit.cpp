@@ -210,6 +210,7 @@ bool Unit::hasMovesToDo() const {
 }
 void Unit::kill() {
   this->health = 0;
+  this->movState.still();
 }
 Capturable *Unit::getCapturable() {
   return capturable;

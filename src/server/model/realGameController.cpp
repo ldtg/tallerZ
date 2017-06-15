@@ -271,7 +271,8 @@ void realGameController::hunt(Unit *unit,
 
 void realGameController::capture(Unit *unit,
                                  std::map<UnitID, Unit *>::iterator &it) {
-  if (!unit->hasMovesToDo()) { //llego
+  if (unit->getCenterPosition()
+      == unit->getCapturable()->getCapturePosition()) { //llego
     Capturable *capturable = unit->getCapturable();
 
     capturable->capture(unit->getId(), unit->getOwner(), unit->getOwnerTeam());
@@ -304,16 +305,18 @@ void realGameController::capture(Unit *unit,
       it = units.erase(it);
     } else {
       unit->still();
-      eventQueue.push(new serverUStillEvent(unit->getId()));
       ++it;
     }
     if (!capturable->isRecapturable()) {
       this->capturables.erase(capturable->getID());
       map.removeCapturable(capturable->getID());
-      for (auto par: units) {
-        if (par.second->getCapturable() == capturable)
+      /*for (auto par: units) {
+        if ((par.second->getCapturable() == capturable)
+            && unit->getId() != par.first) {
           par.second->still();
-      }
+          eventQueue.push(new serverUStillEvent(par.first));
+        }
+      }*/
       delete capturable;
     } else {
       map.updateCapturable(capturable->getID(),
@@ -322,7 +325,6 @@ void realGameController::capture(Unit *unit,
 
   } else {
     this->move(unit, it);
-    ++it;
   }
 }
 
