@@ -4,7 +4,7 @@
 #include "serverCommandReceiver.h"
 
 serverCommandReceiver::serverCommandReceiver(Socket &socket,
-                                     serverGameController &gc)
+                                             serverGameController &gc)
     : socketClient(socket), gameController(gc), open(true) {}
 void serverCommandReceiver::run() {
   try {
@@ -18,12 +18,12 @@ void serverCommandReceiver::run() {
       delete (sc);
     }
   } catch (const SocketException &e) {
-    this->stop();
+    this->open = false;
   }
 }
 void serverCommandReceiver::stop() {
+  //no tiene que hacer shutdown porque es socket de receive
   open = false;
-  socketClient.closeSocket();
 }
 bool serverCommandReceiver::isOpen() const {
   return open;

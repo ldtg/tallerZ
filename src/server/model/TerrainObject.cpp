@@ -1,6 +1,6 @@
 #include "TerrainObject.h"
 Position TerrainObject::getAttackPosition(const Position &attacker) const {
-  return centerPosition.getAttackPosition(attacker, size);
+  return centerPosition.getAttackPosition(attacker, size+1);
 }
 bool TerrainObject::isAlive() const {
   return health > 0;
@@ -12,9 +12,9 @@ Position TerrainObject::nextMovePosition() const {
   return centerPosition;
 }
 void TerrainObject::receiveAttack(const Weapon &weapon) {
-  if (weapon.isExplosive) {
+//  if (weapon.isExplosive) {
     damagesToReceive.push_back(weapon.damage);
-  }
+//  }
 }
 bool TerrainObject::hasDamagesToReceive() const {
   return !damagesToReceive.empty();

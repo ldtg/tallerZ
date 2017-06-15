@@ -128,8 +128,8 @@ set(SOURCE_FILES
         src/server/model/Events/Unit/serverUDeathEvent.h
         src/server/model/Events/Unit/serverUStillEvent.cpp
         src/server/model/Events/Unit/serverUStillEvent.h
-        src/common/DataEvents/Build/dataBuildDamageEvent.cpp
-        src/common/DataEvents/Build/dataBuildDamageEvent.h
+        src/common/DataEvents/Build/dataBuildUpdateEvent.cpp
+        src/common/DataEvents/Build/dataBuildUpdateEvent.h
         src/server/model/Events/Build/serverBDamageEvent.cpp
         src/server/model/Events/Build/serverBDamageEvent.h
         src/common/DataEvents/Build/dataBuildIDEvent.cpp
@@ -207,8 +207,6 @@ set(SOURCE_FILES
         src/server/model/protectedGameController.h
         src/server/serverGameController.cpp
         src/server/serverGameController.h
-        src/server/serverGameRunner.cpp
-        src/server/serverGameRunner.h
         src/server/serverEventSender.cpp
         src/server/serverEventSender.h
         src/server/serverMain.cpp
@@ -218,7 +216,7 @@ set(SOURCE_FILES
         src/common/DataClientServerMessages/dataClientConnectedMessage.h
         src/common/DataClientServerMessages/dataServerClientAccepted.cpp
         src/common/DataClientServerMessages/dataServerClientAccepted.h
-        src/common/Queue/Queue.h)
+        src/common/Queue/Queue.h src/server/model/Events/Build/serverBUpdateTimeEvent.cpp src/server/model/Events/Build/serverBUpdateTimeEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/server)

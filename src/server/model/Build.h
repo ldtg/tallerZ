@@ -23,6 +23,7 @@ class Build : public Attackable {
   unsigned short health;
   UnitType actualUnitFab;
   unsigned short ticksBeforeCreate;
+  unsigned short actualTicksBeforeCreateBase;
   bool timeToBuild;
 
   unsigned short getSpeedRate() const;

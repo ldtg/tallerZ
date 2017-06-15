@@ -234,6 +234,8 @@ void Game_Loader::assign_terrain_object(const Position_Data &position_data) {
                                              position_data.y),
                            &gaiaPlayer);
         this->terrainObjects.emplace(rock.getID(), rock.getState());
+        this->controller_terrainObjects.emplace(rock.getID(),
+                                                rock);
         break;
       }
       case (TerrainObjectType::ICEROCK): {
@@ -242,6 +244,8 @@ void Game_Loader::assign_terrain_object(const Position_Data &position_data) {
                                                 position_data.y),
                               &gaiaPlayer);
         this->terrainObjects.emplace(icerock.getID(), icerock.getState());
+        this->controller_terrainObjects.emplace(icerock.getID(),
+                                                icerock);
         break;
       }
     }

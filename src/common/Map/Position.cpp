@@ -167,8 +167,8 @@ Position Position::add(unsigned long x, unsigned long y) const {
 Position Position::getAttackPosition(const Position &position,
                                      const unsigned short size) const {
   Position aux = position;
-  while (aux.euclideanDistance(*this) > size) {
-    aux.move(*this);
+  while (aux.euclideanDistance(Position(x,y)) > size) {
+    aux.move(Position(x,y));
   }
   return aux;
 }

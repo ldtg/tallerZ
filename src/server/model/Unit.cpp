@@ -21,8 +21,7 @@ void Unit::attack(Attackable *other) {
 
 bool Unit::isInRange(Attackable *other) {
   return this->currentPosition.euclideanDistance(other->getAttackPosition(
-      currentPosition))
-      < range;
+      currentPosition)) < range;
 }
 
 void Unit::receiveAttack(const Weapon &weapon) {
@@ -68,13 +67,17 @@ void Unit::doOneMove() {
     movementsPositions.erase(movementsPositions.begin());
   }
   if (movementsPositions.empty() && this->isMoving())
-    this->movState.still();
+    this->still();
 }
 
 bool Unit::attackedInRange() {
-  return currentPosition.euclideanDistance(hunted->getAttackPosition(
-      currentPosition))
-      < range;
+  Position huntedPos = hunted->getAttackPosition(currentPosition);
+  unsigned long distance = currentPosition.euclideanDistance(huntedPos);
+  bool b = distance < range;
+  return b;
+
+//  return currentPosition.euclideanDistance(hunted->getAttackPosition(
+//      currentPosition)) < range;
 }
 
 bool Unit::capturableInRange() {
@@ -139,6 +142,8 @@ Unit::~Unit() {}
 bool Unit::doMoveWithSpeed(float terrainFactor) {
   for (int i = 0; i < this->getMovementSpeed(terrainFactor); ++i) {
     doOneMove();
+    if (this->isStill())
+      break;
   }
   return this->movState.isStill();
 }
@@ -186,6 +191,7 @@ Bullet Unit::createBullet() {
 void Unit::still() {
   this->movState.still();
   hunted = nullptr;
+  capturable = nullptr;
   movementsPositions.clear();
   attackCounterActual = attackCounterBase;
 }
