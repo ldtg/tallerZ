@@ -210,7 +210,6 @@ struct Data {
  * @return TerrainData
  */
   TerrainData get_terrain_data(TerrainType terrain) {
-    //TODO: habría que diferenciar segun los tipos de terrenos como los que estan en terrain_type: land, prairie, water, lava, swamp (no esta), road, bridge (no esta), snow.
     switch (terrain) {
       case PRAIRIE:return prairie;
       case ROAD:return road;
@@ -242,26 +241,26 @@ struct Data {
         aux.push_back(R_GRUNT);
       if (techLevel > getData(R_TOUGH).factoryMinimunTechLevel)
         aux.push_back(R_TOUGH);
-      /*if (techLevel > getData(R_SNIPER).factoryMinimunTechLevel)
+      if (techLevel > getData(R_SNIPER).factoryMinimunTechLevel)
         aux.push_back(R_SNIPER);
       if (techLevel > getData(R_PYRO).factoryMinimunTechLevel)
         aux.push_back(R_PYRO);
       if (techLevel > getData(R_PSYCHO).factoryMinimunTechLevel)
         aux.push_back(R_PSYCHO);
       if (techLevel > getData(R_LASER).factoryMinimunTechLevel)
-        aux.push_back(R_LASER);*/
+        aux.push_back(R_LASER);
     }
     if (buildType == VEHICLEF || buildType == FORT) {
       if (techLevel > getData(V_JEEP).factoryMinimunTechLevel)
         aux.push_back(V_JEEP);
-      /*if (techLevel > getData(V_LTANK).factoryMinimunTechLevel)
+      if (techLevel > getData(V_LTANK).factoryMinimunTechLevel)
         aux.push_back(V_LTANK);
       if (techLevel > getData(V_MTANK).factoryMinimunTechLevel)
         aux.push_back(V_MTANK);
       if (techLevel > getData(V_HTANK).factoryMinimunTechLevel)
         aux.push_back(V_HTANK);
       if (techLevel > getData(V_MML).factoryMinimunTechLevel)
-        aux.push_back(V_MML);*/
+        aux.push_back(V_MML);
     }
     return aux;
   }
