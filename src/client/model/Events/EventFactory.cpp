@@ -8,7 +8,7 @@
 #include <common/DataEvents/Unit/dataUnitIDEvent.h>
 #include <client/model/Events/model/unit/UnitDeathEvent.h>
 #include <client/model/Events/model/unit/UnitStillEvent.h>
-#include <common/DataEvents/Build/dataBuildDamageEvent.h>
+#include <common/DataEvents/Build/dataBuildUpdateEvent.h>
 #include <client/model/Events/model/build/BuildDamageEvent.h>
 #include <common/DataEvents/Build/dataBuildIDEvent.h>
 #include <client/model/Events/model/build/BuildDestroyedEvent.h>
@@ -26,6 +26,7 @@
 #include <client/model/Events/model/game/PlayerDefeatedEvent.h>
 #include <common/DataEvents/Game/dataEndGameEvent.h>
 #include <client/model/Events/model/game/EndGameEvent.h>
+#include <client/model/Events/model/build/BuildUpdateEvent.h>
 #include "EventFactory.h"
 Event *EventFactory::createEvent(const EventType &type, std::stringstream &ss) {
   switch (type) {
@@ -63,9 +64,15 @@ Event *EventFactory::createEvent(const EventType &type, std::stringstream &ss) {
     }
     case B_DAMAGE: {
       cereal::BinaryInputArchive iarchive(ss);
-      dataBuildDamageEvent data;
+      dataBuildUpdateEvent data;
       iarchive(data);
       return new BuildDamageEvent(data.id, data.newState);
+    }
+    case B_UPDATE: {
+      cereal::BinaryInputArchive iarchive(ss);
+      dataBuildUpdateEvent data;
+      iarchive(data);
+      return new BuildUpdateEvent(data.id, data.newState);//
     }
     case B_DESTROYED: {
       cereal::BinaryInputArchive iarchive(ss);

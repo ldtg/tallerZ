@@ -19,11 +19,11 @@ Production_Menu::Production_Menu(const BuildID buildID,
     : buildID(buildID), window(window),
       model(model), buildState(buildState) {
 
-  this->renderQuad = { x, y, width, length};
+  this->renderQuad = {x, y, width, length};
   this->background = new Texture(background_path.c_str(), &window);
   this->background->renderize(&window, &renderQuad);
-  load_items();
   this->showing_unit_type = buildState.actualUnitFab;
+  load_items();
 }
 
 /**
@@ -38,7 +38,8 @@ void Production_Menu::load_items() {
                          this->font);
 
   set_absolute_position(_unit_rect, this->unit_rect);
-  this->unit = new Texture(get_label_path(showing_unit_type), &window, unit_rect);
+  this->unit =
+      new Texture(get_label_path(showing_unit_type), &window, unit_rect);
   //this->unit->renderize(&window, &unit_rect);
 
   set_absolute_position(_health_rect, this->health_rect);
@@ -125,22 +126,22 @@ void Production_Menu::show_building_status() {
  * @param health : nivel de salud de la fabrica.
  */
 void Production_Menu::show_health_level(int health) {
-  this->health->modify_text(std::to_string(health)+"%");
+  this->health->modify_text(std::to_string(health) + "%");
 }
 
 /**
  * destructor
  */
 Production_Menu::~Production_Menu() {
-  if(this->time != NULL) delete this->time;
-  if(this->status != NULL) delete this->status;
-  if(this->health != NULL) delete this->health;
-  if(this->unit != NULL) delete this->unit;
-  if(this->building_name != NULL) delete this->building_name;
-  if(this->build != NULL) delete this->build;
-  if(this->up != NULL) delete this->up;
-  if(this->down != NULL) delete this->down;
-  if(this->background != NULL) delete this->background;
+  if (this->time != NULL) delete this->time;
+  if (this->status != NULL) delete this->status;
+  if (this->health != NULL) delete this->health;
+  if (this->unit != NULL) delete this->unit;
+  if (this->building_name != NULL) delete this->building_name;
+  if (this->build != NULL) delete this->build;
+  if (this->up != NULL) delete this->up;
+  if (this->down != NULL) delete this->down;
+  if (this->background != NULL) delete this->background;
 }
 
 void Production_Menu::add_to_panel(Panel &panel) {
@@ -156,53 +157,38 @@ void Production_Menu::add_to_panel(Panel &panel) {
 }
 
 std::string Production_Menu::get_building_type(const BuildType &buildType) {
-  switch (buildType){
-    case (BuildType ::FORT):
-      return "FORT";
-    case (BuildType ::VEHICLEF):
-      return "V. FACTORY";
-    case (BuildType ::ROBOTF):
-      return "R. FACTORY";
+  switch (buildType) {
+    case (BuildType::FORT):return "FORT";
+    case (BuildType::VEHICLEF):return "V. FACTORY";
+    case (BuildType::ROBOTF):return "R. FACTORY";
   }
 }
 
 std::string Production_Menu::get_unit_name(const UnitType &utype) {
-  switch (utype){
-    case UnitType ::R_GRUNT:
-      return "grunt";
-    case UnitType ::R_TOUGH:
-      return "tough";
-    case UnitType ::R_PSYCHO:
-      return "psycho";
-    case UnitType ::R_PYRO:
-      return "pyro";
-    case UnitType ::R_SNIPER:
-      return "sniper";
-    case UnitType ::R_LASER:
-      return "laser";
-    case UnitType ::V_JEEP:
-      return "jeep";
-    case UnitType ::V_MTANK:
-      return "medium";
-    case UnitType ::V_LTANK:
-      return "light";
-    case UnitType ::V_HTANK:
-      return "heavy";
-    case UnitType ::V_MML:
-      return "missile_launcher";
-    default :
-      return "grunt";
+  switch (utype) {
+    case UnitType::R_GRUNT:return "grunt";
+    case UnitType::R_TOUGH:return "tough";
+    case UnitType::R_PSYCHO:return "psycho";
+    case UnitType::R_PYRO:return "pyro";
+    case UnitType::R_SNIPER:return "sniper";
+    case UnitType::R_LASER:return "laser";
+    case UnitType::V_JEEP:return "jeep";
+    case UnitType::V_MTANK:return "medium";
+    case UnitType::V_LTANK:return "light";
+    case UnitType::V_HTANK:return "heavy";
+    case UnitType::V_MML:return "missile_launcher";
+    default :return "grunt";
   }
 }
 
 void Production_Menu::handle_click(int x, int y) {
-  if (up->inRectangle(x,y)){
+  if (up->inRectangle(x, y)) {
     up->handle_event();
   }
-  if (down->inRectangle(x,y)){
+  if (down->inRectangle(x, y)) {
     down->handle_event();
   }
-  if (build->inRectangle(x,y)){
+  if (build->inRectangle(x, y)) {
     build->handle_event();
   }
 }
@@ -211,18 +197,18 @@ void Production_Menu::show_previous_buildable_unit() {
   bool found = false;
   std::vector<UnitType>::const_iterator it;
   it = buildState.fabricableUnits.begin();
-  while (!found){
-    if (*it == showing_unit_type){
+  while (!found) {
+    if (*it == showing_unit_type) {
       found = true;
     } else {
       it++;
     }
   }
-  if (it != buildState.fabricableUnits.begin()){
+  if (it != buildState.fabricableUnits.begin()) {
     it--;
     showing_unit_type = *it;
   } else {
-    showing_unit_type = *(buildState.fabricableUnits.end()-1);
+    showing_unit_type = *(buildState.fabricableUnits.end() - 1);
   }
   unit->load_texture(get_label_path(showing_unit_type), window.getWindow());
   unit->renderize(&window, &unit_rect);
@@ -230,15 +216,15 @@ void Production_Menu::show_previous_buildable_unit() {
 
 void Production_Menu::show_next_buildable_unit() {
   bool found = false;
-  std::vector<UnitType >::const_iterator it;
+  std::vector<UnitType>::const_iterator it;
   it = buildState.fabricableUnits.begin();
-  while (!found){
-    if (*it == showing_unit_type){
+  while (!found) {
+    if (*it == showing_unit_type) {
       found = true;
     }
     it++;
   }
-  if (it != buildState.fabricableUnits.end()){
+  if (it != buildState.fabricableUnits.end()) {
     showing_unit_type = *it;
   } else {
     showing_unit_type = *buildState.fabricableUnits.begin();
@@ -248,7 +234,10 @@ void Production_Menu::show_next_buildable_unit() {
 }
 
 void Production_Menu::update_unit_to_build() {
-  model.get_gameControllerProxy()->changeUnitFab(buildID,showing_unit_type);
+  model.get_gameControllerProxy()->changeUnitFab(buildID, showing_unit_type);
+  BuildState bs = model.getMap().getBuildState(buildID);
+  bs.actualUnitFab = showing_unit_type;
+  model.getMap().updateBuild(buildID, bs);
 }
 std::string Production_Menu::get_label_path(const UnitType &utype) {
   return (folder_path + get_unit_name(utype) + "_label.png");

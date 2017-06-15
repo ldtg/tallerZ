@@ -3,11 +3,11 @@
 
 #include <common/States/BuildState.h>
 #include <common/IDs/BuildID.h>
-struct dataBuildDamageEvent {
+struct dataBuildUpdateEvent {
   BuildID id;
   BuildState newState;
-  dataBuildDamageEvent(const BuildID &id, const BuildState &newState);
-  dataBuildDamageEvent() {};
+  dataBuildUpdateEvent(const BuildID &id, const BuildState &newState);
+  dataBuildUpdateEvent() {};
   template<class Archive>
   void serialize(Archive &archive) {
     archive(id, newState);

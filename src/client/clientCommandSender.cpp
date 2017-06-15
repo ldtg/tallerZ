@@ -17,10 +17,11 @@ void clientCommandSender::run() {
       }
     }
   } catch (const SocketException &e) {
-    this->stop();
+    this->open = false;
   }
 }
 void clientCommandSender::stop() {
+  socket.shutdownConnection(ShutdownMode::WRITE);
   open = false;
 }
 bool clientCommandSender::isOpen() const {

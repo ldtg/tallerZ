@@ -16,11 +16,12 @@ void clientEventReceiver::run() {
         open = false;
     }
   } catch (const SocketException &e) {
-    this->stop();
+    this->open = false;
   }
 }
 void clientEventReceiver::stop() {
   open = false;
+  srvSocket.shutdownConnection(ShutdownMode::WRITE);
 }
 bool clientEventReceiver::isOpen() const {
   return open;

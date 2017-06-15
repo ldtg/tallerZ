@@ -113,6 +113,7 @@ class Map {
 
 
   UnitState getUnitState(const UnitID &unitID) const;
+  BuildState getBuildState(const BuildID &buildID) const;
   Position getNeighborFreePos(const Position &tileCenterPos);
   //Para crear el mapa
   void setUnits(const std::map<UnitID, UnitState> &units);

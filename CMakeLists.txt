@@ -194,8 +194,8 @@ set(SOURCE_FILES
         src/common/DataEvents/Unit/dataUnitCreateEvent.h
         src/common/DataEvents/Unit/dataUnitIDEvent.cpp
         src/common/DataEvents/Unit/dataUnitIDEvent.h
-        src/common/DataEvents/Build/dataBuildDamageEvent.cpp
-        src/common/DataEvents/Build/dataBuildDamageEvent.h
+        src/common/DataEvents/Build/dataBuildUpdateEvent.cpp
+        src/common/DataEvents/Build/dataBuildUpdateEvent.h
         src/common/DataEvents/Build/dataBuildIDEvent.cpp
         src/common/DataEvents/Build/dataBuildIDEvent.h
         src/common/DataEvents/Bullet/dataBulletNewEvent.cpp
@@ -265,7 +265,7 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
 
 
-        src/client/view/UnitView.cpp src/client/view/UnitView.h)
+        src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/model/Events/model/build/BuildUpdateEvent.cpp src/client/model/Events/model/build/BuildUpdateEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/client)
