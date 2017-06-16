@@ -27,7 +27,7 @@ class Production_Menu : public Menu {
   Window &window;
   Model &model;
   const BuildID buildID;
-  const BuildState& buildState;
+  BuildState buildState;
   UnitType showing_unit_type;
 
   Label * time = NULL;

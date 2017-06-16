@@ -44,6 +44,12 @@ View::~View() {
   for (auto &par : bulletsVista) {
     delete par.second;
   }
+  for (auto &exp : explosionsVista) {
+    delete exp;
+  }
+  for (auto &exp : effectsVista) {
+    delete exp;
+  }
   for (auto &par : unitsVista) {
     delete par.second.getView();
   }

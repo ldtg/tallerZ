@@ -24,7 +24,7 @@ Sprite::Sprite(const char *file, int num_frames, int speed,
 
 Sprite::~Sprite() {
   for (int frame = 0; frame < num_frames; ++frame) {
-    delete images[frame];
+    delete (images.at(frame));
   }
 }
 

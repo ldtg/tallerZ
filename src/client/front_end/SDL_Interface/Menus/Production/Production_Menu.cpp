@@ -226,8 +226,7 @@ void Production_Menu::show_previous_buildable_unit() {
 
 void Production_Menu::show_next_buildable_unit() {
   bool found = false;
-  std::vector<UnitType>::const_iterator it;
-  it = buildState.fabricableUnits.begin();
+  auto it = buildState.fabricableUnits.begin();
   while (!found) {
     if (*it == showing_unit_type) {
       found = true;

@@ -9,13 +9,13 @@ void UnitStillEvent::process() {
   Position pos = unitVista->getPos();
   std::string color = unitVista->getColor();
 
-  view->removeUnitVista(id);
 
   std::string rotation_s = std::to_string(rotation);
   std::string action("look_around");
   UnitView unitStillVista(id.getType(), color, pos, action, rotation_s);
   unitVista->setPos(pos);
   unitVista->setRotation(rotation);
+  view->removeUnitVista(id);
 
   view->addUnitVista(id, unitStillVista);
 }
