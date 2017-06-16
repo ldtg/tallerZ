@@ -39,8 +39,6 @@ int main(int argc, char *argv[]) {
   realGameController gameController(map, game_loader, evqueue);
   protectedGameController pgc(gameController);
   //lanza los threads
-  /*serverGameRunner gameRunner(pgc);
-  gameRunner.start();*/
   serverEventSender eventSender(clients, evqueue);
   eventSender.start();
   std::vector<serverCommandReceiver *>
@@ -53,12 +51,10 @@ int main(int argc, char *argv[]) {
     pgc.tick();
   };
   evqueue.push(nullptr);// no se me ocurrio otra para destrabar el pop
-  //gameRunner.stop();
   eventSender.stop();
   for (serverCommandReceiver *commandReceiver: commandReceivers) {
     commandReceiver->stop();
   }
-  // gameRunner.join();
   eventSender.join();
   for (serverCommandReceiver *commandReceiver: commandReceivers) {
     commandReceiver->join();

@@ -439,14 +439,12 @@ void realGameController::objectsTick() {
     if (current.hasDamagesToReceive()) {
       current.receiveDamages();
       map.updateTerrainObject(current.getID(), current.getState());
+      if (!current.isAlive()) {
+        eventQueue.push(new serverTODestroyedEvent(current.getID()));
+        //t_it = terrainObjects.erase(t_it);
+      }
     }
-    if (!current.isAlive()) {
-      eventQueue.push(new serverTODestroyedEvent(current.getID()));
-      t_it = terrainObjects.erase(t_it);
-    } else {
-
       ++t_it;
-    }
   }
 }
 
