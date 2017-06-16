@@ -38,9 +38,9 @@ void Build::tick() {
     ticksBeforeCreate--;
     unsigned short aux = this->getSpeedRate();
     if (actualTicksBeforeCreateBase != aux) {
+      float rel = (float)ticksBeforeCreate /(float)actualTicksBeforeCreateBase;
       ticksBeforeCreate = ticksBeforeCreate
-          - (unsigned short) std::lround((float) (ticksBeforeCreate
-              / actualTicksBeforeCreateBase)) * aux;
+          - (unsigned short) std::lround(rel * aux);
       actualTicksBeforeCreateBase = aux;
     }
   } else if (owner->getAmountOfTerritories() > 0) {
