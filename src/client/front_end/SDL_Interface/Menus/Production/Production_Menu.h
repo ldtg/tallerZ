@@ -86,7 +86,7 @@ class Production_Menu : public Menu {
 
   void handle_click(int x, int y);
 
-  ~Production_Menu();
+  virtual ~Production_Menu();
 
  private:
   void load_items();

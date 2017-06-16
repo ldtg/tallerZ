@@ -24,7 +24,7 @@ class ObjectMapaVista {
   ViewPosition getViewPos() const;
   void setRotation(int rotation);
   int getRotation();
-
+  virtual ~ObjectMapaVista(){};
   virtual void set_texture(SDL_Renderer *render) = 0;
   virtual void draw(SDL_Renderer *render, Camera &camera) = 0;
 };

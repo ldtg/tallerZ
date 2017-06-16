@@ -56,6 +56,9 @@ int main(int argc, char *argv[]) {
       eventHandler.add(eventQueue.pop());
     view.update();
   }
+  while (!eventQueue.empty()) {
+    delete (eventQueue.pop());
+  }
   commandsQueue.push(nullptr);
   commandSender.stop();
   eventReceiver.stop();

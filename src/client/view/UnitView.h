@@ -20,6 +20,7 @@ class UnitView {
   void addMove(const ViewPosition &pos);
   void update();
   Sprite* getView();
+
 };
 
 #endif //TALLERZ_ROBOTVIEW_H

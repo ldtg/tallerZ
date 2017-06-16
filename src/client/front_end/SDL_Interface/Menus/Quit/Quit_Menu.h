@@ -34,6 +34,7 @@ class Quit_Menu : public Menu {
     panel.add(this);
     panel.add(salir);
   }
+  virtual ~Quit_Menu();
  private:
   void load_items();
 };

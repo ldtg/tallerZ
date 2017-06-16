@@ -133,15 +133,24 @@ void Production_Menu::show_health_level(int health) {
  * destructor
  */
 Production_Menu::~Production_Menu() {
-  if (this->time != NULL) delete this->time;
-  if (this->status != NULL) delete this->status;
-  if (this->health != NULL) delete this->health;
-  if (this->unit != NULL) delete this->unit;
-  if (this->building_name != NULL) delete this->building_name;
-  if (this->build != NULL) delete this->build;
-  if (this->up != NULL) delete this->up;
-  if (this->down != NULL) delete this->down;
-  if (this->background != NULL) delete this->background;
+  if (this->time != NULL)
+    delete this->time;
+  if (this->status != NULL)
+    delete this->status;
+  if (this->health != NULL)
+    delete this->health;
+  if (this->unit != NULL)
+    delete this->unit;
+  if (this->building_name != NULL)
+    delete this->building_name;
+  if (this->build != NULL)
+    delete this->build;
+  if (this->up != NULL)
+    delete this->up;
+  if (this->down != NULL)
+    delete this->down;
+  if (this->background != NULL)
+    delete this->background;
 }
 
 void Production_Menu::add_to_panel(Panel &panel) {
@@ -161,6 +170,7 @@ std::string Production_Menu::get_building_type(const BuildType &buildType) {
     case (BuildType::FORT):return "FORT";
     case (BuildType::VEHICLEF):return "V. FACTORY";
     case (BuildType::ROBOTF):return "R. FACTORY";
+    default: return "FORT";
   }
 }
 
