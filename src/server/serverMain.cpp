@@ -64,6 +64,9 @@ int main(int argc, char *argv[]) {
     commandReceiver->join();
     delete (commandReceiver);
   }
+  for (Socket *cli :clients) {
+    delete (cli);
+  }
   return 0;
 }
 bool allPlayersAreConnected(std::vector<serverCommandReceiver *> vector) {

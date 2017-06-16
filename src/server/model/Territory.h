@@ -23,6 +23,7 @@ class Territory : public Capturable {
   virtual bool isRecapturable() const;
   virtual bool canBeCapturedBy(const UnitID &id) const;
   virtual CapturableState getCapturableState() const;
+  ~Territory();
 };
 
 #endif //TALLERZ_TERRITORY_H

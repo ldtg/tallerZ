@@ -463,9 +463,6 @@ realGameController::~realGameController() {
   for (auto &par : capturables) {
     delete (par.second);
   }
-  for (auto &par : players) {
-    delete (par.second);
-  }
 }
 void realGameController::startGame() {
   gameInProgress = true;
