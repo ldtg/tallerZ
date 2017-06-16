@@ -154,6 +154,7 @@ Production_Menu::~Production_Menu() {
 }
 
 void Production_Menu::add_to_panel(Panel &panel) {
+  this->update_status();
   panel.add(this);
   panel.add(build);
   panel.add(up);
@@ -250,5 +251,16 @@ void Production_Menu::update_unit_to_build() {
 }
 std::string Production_Menu::get_label_path(const UnitType &utype) {
   return (folder_path + get_unit_name(utype) + "_label.png");
+}
+void Production_Menu::update_status() {
+  buildState = model.getMap().getBuildState(buildID);
+  delete this->health;
+  delete this->time;
+  this->time = new Label(window,
+                         std::to_string(buildState.timeRemainingInSecs),
+                         this->time_rect,
+                         this->font);
+  this->health = new Label(window, std::to_string(buildState.health) + "%",
+                           this->health_rect, this->font);
 }
 

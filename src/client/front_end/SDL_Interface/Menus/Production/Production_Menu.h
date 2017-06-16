@@ -95,6 +95,7 @@ class Production_Menu : public Menu {
   std::string get_building_type(const BuildType& buildType);
 
   std::string get_unit_name(const UnitType& utype);
+  void update_status();
 };
 
 #endif //TALLERZ_PRODUCTION_MENU_1_H
