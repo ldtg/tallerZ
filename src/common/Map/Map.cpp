@@ -152,11 +152,11 @@ bool Map::canPass(const Position &positionFrom,
 }
 
 int Map::getWidht() const {
-  return width;
+  return width * TILEWIDHT;
 }
 
 int Map::getHeight() const {
-  return height;
+  return height * TILEHEIGHT;
 }
 
 const std::map<Position, Tile> &Map::getMap() const {
@@ -318,5 +318,12 @@ BuildState Map::getBuildState(const BuildID &buildID) const {
 }
 void Map::removeTerrainObject(const TerrainObjectID &id) {
   terrainObject.erase(id);
+}
+Position Map::getFortPos(const PlayerID &id) {
+  for (auto &par :builds) {
+    if (par.second.owner == id && par.first.getType() == BuildType::FORT) {
+      return par.second.position;
+    }
+  }
 }
 

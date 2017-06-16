@@ -17,8 +17,8 @@ View::View(const Map &map,
       camera(camera) {
   _quit = false;
 
-  mapWidth = map.getWidht() * TILEWIDHT;
-  mapHeight = map.getHeight() * TILEHEIGHT;
+  mapWidth = map.getWidht();
+  mapHeight = map.getHeight();
 
   createInitialTerrainVista(map.getMap());
   createInitialTerrainObjectVista(map.getTerrainObjects());
@@ -273,7 +273,7 @@ Position View::translateModelPos(UnitType type, std::string &action, Position po
 */
 
 void View::moveCamera(int x, int y) {
-  if (camera.inLimits(x, y, mapWidth, mapHeight)) {
+  if (camera.inLimits(x, y)) {
     long cantSteps = eventHandler.amountSteps();
     // no hay unidades moviendose
     if (cantSteps == 0) {
