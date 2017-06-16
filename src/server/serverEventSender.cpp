@@ -17,7 +17,6 @@ void serverEventSender::run() {
           open = false;
         }
         delete (sev);
-
       } else {
         this->open = false;
       }

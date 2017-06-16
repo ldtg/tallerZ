@@ -25,6 +25,7 @@ class Capturable {
   virtual bool canBeCapturedBy(const UnitID &id) const = 0;
   virtual CapturableState getCapturableState() const = 0;
   virtual CapturableID getID() const;
+  virtual ~Capturable(){};
 };
 
 #endif //TALLERZ_CAPTURABLE_H

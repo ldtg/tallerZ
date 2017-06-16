@@ -39,7 +39,8 @@ void realGameController::attack(const UnitID &attackerId,
   } catch (const std::exception &e) {
     return;
   }
-  Tile etile = map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
+  Tile etile =
+      map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
 
   if (!attacker->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
     return;
@@ -68,7 +69,8 @@ void realGameController::attack(const UnitID &attackerId,
   } catch (const std::exception &e) {
     return;
   }
-  Tile etile = map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
+  Tile etile =
+      map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
 
   if (!attacker->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
     return;
@@ -97,7 +99,8 @@ void realGameController::attack(const UnitID &attackerID,
   } catch (const std::exception &e) {
     return;
   }
-  Tile etile = map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
+  Tile etile =
+      map.getTile(attacked->getAttackPosition(attacker->getCenterPosition()));
 
   if (!attacker->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
     return;
@@ -120,14 +123,12 @@ void realGameController::attack(const UnitID &attackerID,
 void realGameController::changeUnitFab(const BuildID &buildId,
                                        const UnitType &type) {
   builds.at(buildId)->changeFabUnit(type);
-
 }
 
 void realGameController::capture(const UnitID &idunit,
                                  const CapturableID &capturableID) {
   Capturable *capturable = capturables.at(capturableID);
   Tile etile = map.getTile(capturable->getCapturePosition());
-
 
   if (capturable->canBeCapturedBy(idunit)) {
     Unit *unit = units.at(idunit);
@@ -270,8 +271,8 @@ void realGameController::hunt(Unit *unit,
 
 void realGameController::capture(Unit *unit,
                                  std::map<UnitID, Unit *>::iterator &it) {
-//  if (!unit->hasMovesToDo()) { //llego
-  if (unit->capturableInRange()) {
+  if (unit->getCenterPosition()
+      == unit->getCapturable()->getCapturePosition()) { //llego
     Capturable *capturable = unit->getCapturable();
 
     capturable->capture(unit->getId(), unit->getOwner(), unit->getOwnerTeam());
@@ -304,16 +305,18 @@ void realGameController::capture(Unit *unit,
       it = units.erase(it);
     } else {
       unit->still();
-      eventQueue.push(new serverUStillEvent(unit->getId()));
       ++it;
     }
     if (!capturable->isRecapturable()) {
       this->capturables.erase(capturable->getID());
       map.removeCapturable(capturable->getID());
-      for (auto par: units) {
-        if (par.second->getCapturable() == capturable)
+      /*for (auto par: units) {
+        if ((par.second->getCapturable() == capturable)
+            && unit->getId() != par.first) {
           par.second->still();
-      }
+          eventQueue.push(new serverUStillEvent(par.first));
+        }
+      }*/
       delete capturable;
     } else {
       map.updateCapturable(capturable->getID(),
@@ -322,7 +325,6 @@ void realGameController::capture(Unit *unit,
 
   } else {
     this->move(unit, it);
-    ++it;
   }
 }
 
@@ -372,8 +374,10 @@ void realGameController::buildsTick() {
           this->addUnits(current->fabricateUnits(map.getNeighborFreePos(current->getCenterPosition())));
         }
         BuildState actual = map.getBuildState(current->getId());
-        if(actual.timeRemainingInSecs != current->getBuildState().timeRemainingInSecs){
-          eventQueue.push(new serverBUpdateTimeEvent(current->getId(), current->getBuildState()));
+        if (actual.timeRemainingInSecs
+            != current->getBuildState().timeRemainingInSecs) {
+          eventQueue.push(new serverBUpdateTimeEvent(current->getId(),
+                                                     current->getBuildState()));
         }
         map.updateBuild(current->getId(), current->getBuildState());
         current->tick();
@@ -440,6 +444,7 @@ void realGameController::objectsTick() {
       eventQueue.push(new serverTODestroyedEvent(current.getID()));
       t_it = terrainObjects.erase(t_it);
     } else {
+
       ++t_it;
     }
   }
@@ -456,9 +461,6 @@ realGameController::~realGameController() {
     delete (par.second);
   }
   for (auto &par : capturables) {
-    delete (par.second);
-  }
-  for (auto &par : players) {
     delete (par.second);
   }
 }

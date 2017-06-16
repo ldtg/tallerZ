@@ -46,9 +46,7 @@ Socket Socket::acceptConnection() {
 }
 
 void Socket::shutdownConnection(ShutdownMode mode) {
-  if (shutdown(this->socketfd, mode) == -1) {
-    throw SocketException("Error shutdown");
-  }
+  shutdown(this->socketfd, mode);
 }
 
 void Socket::send_tcp(const char *data, size_t data_len) {

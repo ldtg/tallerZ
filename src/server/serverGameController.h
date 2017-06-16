@@ -16,6 +16,7 @@ class serverGameController {
   virtual void changeUnitFab(const BuildID &buildId, const UnitType &type)= 0;
   virtual void capture(const UnitID &unit, const CapturableID &capturable)= 0;
   virtual void tick() = 0;
+  virtual ~serverGameController() {};
 };
 
 #endif //TALLERZ_SERVERGAMECONTROLLER_H

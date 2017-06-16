@@ -4,7 +4,7 @@
 #include <server/serverGameController.h>
 #include <mutex>
 #include "realGameController.h"
-class protectedGameController : public serverGameController{
+class protectedGameController : public serverGameController {
  private:
   realGameController &gameController;
   std::mutex mutex;
@@ -18,6 +18,7 @@ class protectedGameController : public serverGameController{
   virtual void changeUnitFab(const BuildID &buildId, const UnitType &type);
   virtual void capture(const UnitID &unit, const CapturableID &capturable);
   virtual void tick();
+  ~protectedGameController() {};
 };
 
 #endif //TALLERZ_PROTECTEDGAMECONTROLLER_H

@@ -49,9 +49,8 @@ int main(int argc, char *argv[]) {
     commandReceiver->start();
   }
 
-  while (!gameController.isGameEnded()
-      && eventSender.isOpen() && allPlayersAreConnected(commandReceivers)) {
-    gameController.tick();
+  while (eventSender.isOpen() && allPlayersAreConnected(commandReceivers)) {
+    pgc.tick();
   };
   evqueue.push(nullptr);// no se me ocurrio otra para destrabar el pop
   //gameRunner.stop();
@@ -64,6 +63,9 @@ int main(int argc, char *argv[]) {
   for (serverCommandReceiver *commandReceiver: commandReceivers) {
     commandReceiver->join();
     delete (commandReceiver);
+  }
+  for (Socket *cli :clients) {
+    delete (cli);
   }
   return 0;
 }

@@ -54,3 +54,4 @@ bool Territory::canBeCapturedBy(const UnitID &id) const {
 CapturableState Territory::getCapturableState() const {
   return CapturableState(owner->getID(), flagPosition);
 }
+Territory::~Territory() {}
