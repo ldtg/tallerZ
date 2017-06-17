@@ -121,7 +121,7 @@ struct Data {
     v_jeep.range = 5;//6x5
     v_jeep.speed = 8;
     v_jeep.factoryRate = 1;
-    v_jeep.factoryBaseTimeInSec = 10;
+    v_jeep.factoryBaseTimeInSec = 40;
     v_jeep.factoryMinimunTechLevel = 1;
 
     fort.type = BuildType::FORT;
