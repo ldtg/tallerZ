@@ -5,7 +5,7 @@
 #include <vector>
 #include <client/front_end/SDL_Interface/Cursor.h>
 
-#define WINDOWWIDTH 800
+#define WINDOWWIDHT 800
 #define WINDOWHEIGHT 600
 
 class Window {

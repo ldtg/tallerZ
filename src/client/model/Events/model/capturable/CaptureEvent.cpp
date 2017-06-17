@@ -14,36 +14,45 @@ CaptureEvent::CaptureEvent(const UnitID &capturer,
       capturerDissapear(dissapear) {}
 
 void CaptureEvent::process() {
-  Sprite* capturerVista = view->getUnitVista(capturer);
-//    Position pos = unitVista->getPos();
+  Sprite *capturerVista = view->getUnitView(capturer)->getView();
   std::string color = capturerVista->getColor();
-//TODO: ACTUALIZAR MAPA
   if (capturerDissapear) {
     view->removeUnitVista(capturer);
+    model->getMap().removeCapturable(captured);
   }
 
-//  if (!capturedUnits.empty()) {
   if (captured.getType() == UNIT) {
     std::string action("look_around");
-//    std::string rotation("0");
-    for (auto par: capturedUnits) {
+    for (auto par : capturedUnits) {
       UnitType type = par.first.getType();
-      Sprite *capturedVistaOld = view->getUnitVista(par.first);
+      Sprite *capturedVistaOld = view->getUnitView(par.first)->getView();
+
+//      Position pos = capturedVistaOld->getPos();
+
       int rotation = capturedVistaOld->getRotation();
       std::string rotation_s = std::to_string(rotation);
-
-      UnitView capturedVista(type, color, par.second.position, action, rotation_s);
-
+      UnitView *capturedVista = new UnitView(type, color,
+                                             par.second.position,
+                                             action, rotation_s);
+      capturedVista->getView()->setRotation(rotation);
       view->removeUnitVista(par.first);
       view->addUnitVista(par.first, capturedVista);
+
+      model->getMap().removeCapturable(captured);
     }
-  }
-  else {
+  } else {
     ObjectMapaVista *flagVista = view->getCapturedVista(captured);
     Position pos = flagVista->getPos();
     view->removeCapturableVista(captured);
     Sprite *flag = VistasFactory::getFlagsVista(color, pos);
-//    flag->setPos(capturedPosition);
     view->addCapturableVista(captured, flag);
+  }
+
+
+  for (auto par : capturedUnits) {
+    model->getMap().updateUnit(par.first, par.second);
+  }
+  for (auto par : capturedBuilds) {
+    model->getMap().updateBuild(par.first, par.second);
   }
 }

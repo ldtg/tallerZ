@@ -3,28 +3,58 @@
 #include <random>
 #include <client/model/Events/model/unit/UnitMoveStepEvent.h>
 #include <client/model/Events/model/bullet/BulletMoveStepEvent.h>
-#include <client/model/Events/view/CameraMoveStepEvent.h>
 #include <client/model/Model.h>
 #include <thread>
 
-View::View(const Map &map, EventHandler &eventHandler, Camera &camera, const std::string& player_color)
-    : window(), panel(window.getRender()), eventHandler(eventHandler), camera(camera) {
+View::View(const Map &map,
+           EventHandler &eventHandler,
+           Camera &camera,
+           const std::string &player_color)
+    : window(),
+      panel(window.getRender()),
+      eventHandler(eventHandler),
+      camera(camera) {
   _quit = false;
 
-  mapWidth = map.getWidht()*TILEWIDHT;
-  mapHeight = map.getHeight()*TILEHEIGHT;
+//  mapWidth = map.getWidht()*TILEWIDHT;
+//  mapHeight = map.getHeight()*TILEHEIGHT;
 
   createInitialTerrainVista(map.getMap());
   createInitialTerrainObjectVista(map.getTerrainObjects());
   createInitialBuildVista(map.getBuilds());
   createInitialUnitVista(map.getUnits());
   createInitialCapturableVista(map.getCapturables());
+
   this->side_board = new Side_Board(&window, *this, player_color);
 }
 
 View::~View() {
+  for (auto &par : terrainsVista) {
+    delete par.second;
+  }
+  for (auto &par : terrainObjectsVista) {
+    delete par.second;
+  }
+  for (auto &par : buildsVista) {
+    delete par.second;
+  }
+  for (auto &par : capturablesVista) {
+    delete par.second;
+  }
+  for (auto &par : bulletsVista) {
+    delete par.second;
+  }
+  for (auto &exp : explosionsVista) {
+    delete exp;
+  }
+  for (auto &exp : effectsVista) {
+    delete exp;
+  }
+  for (auto &par : unitsVista) {
+    delete par.second->getView();
+  }
   delete this->side_board;
-  if (menu != nullptr){ delete this->menu; }
+  if (menu != nullptr) { delete this->menu; }
 }
 
 void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
@@ -33,20 +63,19 @@ void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
     TerrainType terrainType = tile.getTerrainType();
     Position pos = tile.getCornerPosition();
     ObjectMapaVista *terrain = VistasFactory::getTerrainVista(terrainType, pos);
-//    add(terrain, tile.getCornerPosition());
-//    panel.add(terrain);
 
     terrainsVista.emplace(pos, terrain);
   }
 }
 
 void View::createInitialTerrainObjectVista(const std::map<TerrainObjectID,
-                                           TerrainObjectState> &terrainObjects) {
+                                                          TerrainObjectState> &terrainObjects) {
   for (auto const &terrainObject : terrainObjects) {
     TerrainObjectType type = terrainObject.first.getType();
     Position pos = terrainObject.second.centerPosition;
     std::string state("");
-    ObjectMapaVista *terrainObjVista = VistasFactory::getTerrainObjectVista(type, state, pos);
+    ObjectMapaVista *terrainObjVista =
+        VistasFactory::getTerrainObjectVista(type, state, pos);
 
     terrainObjectsVista.emplace(terrainObject.first, terrainObjVista);
   }
@@ -68,37 +97,37 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
     std::string rotation = std::to_string(rotations[i]);
     std::string action("look_around");
     std::string color = unit.second.owner.getColor();
-    UnitView unitVista(type, color, unit.second.position, action, rotation);
+    UnitView *unitVista = new UnitView(type, color, unit.second.position,
+                                       action, rotation);
+    unitVista->getView()->setRotation(rotations[i]);
     unitsVista.emplace(unit.first, unitVista);
   }
 }
 
-void View::createInitialBuildVista(const std::map<BuildID, BuildState> &builds) {
+void View::createInitialBuildVista(const std::map<BuildID,
+                                                  BuildState> &builds) {
   for (auto const &build : builds) {
     BuildType type = build.first.getType();
     Position pos = build.second.position;
     std::string state("");
-    ObjectMapaVista *buildVista = VistasFactory::getBuildVista(type, state, pos);
-//    add(buildVista, pos);
-//    panel.add(buildVista);
-
+    Image *buildVista = VistasFactory::getBuildVista(type, state, pos);
     buildsVista.emplace(build.first, buildVista);
   }
 }
 
 void View::createInitialCapturableVista(const std::map<CapturableID,
-                                        CapturableState> &capturables) {
+                                                       CapturableState> &capturables) {
   for (auto const &capturable : capturables) {
     CapturableType type = capturable.first.getType();
     if (type == FLAG) {
       std::string color = capturable.second.ownerID.getColor();
       Position pos = capturable.second.pos;
-      ObjectMapaVista *capturableVista = VistasFactory::getFlagsVista(color, pos);
+      ObjectMapaVista
+          *capturableVista = VistasFactory::getFlagsVista(color, pos);
       capturablesVista.emplace(capturable.first, capturableVista);
     }
   }
 }
-
 
 void View::update() {
   float fps = 40;
@@ -112,8 +141,6 @@ void View::update() {
     event->process();
     delete (event);
   }
-
-  drawSteps();
   draw();
 
   auto end = std::chrono::high_resolution_clock::now();
@@ -123,8 +150,9 @@ void View::update() {
   std::this_thread::sleep_for(sleepTime);
 }
 
+/*
 void View::drawSteps() {
-  for (int i=0; i < eventHandler.amountSteps(); i++) {
+  for (int i = 0; i < eventHandler.amountSteps(); i++) {
     for (Event *stepEvent : eventHandler.getSteps(i)) {
       stepEvent->process();
       delete (stepEvent);
@@ -133,6 +161,7 @@ void View::drawSteps() {
   }
   eventHandler.clearSteps();
 }
+*/
 
 void View::draw() {
   for (auto const &posTerrain : terrainsVista) {
@@ -148,8 +177,8 @@ void View::draw() {
   }
 
   for (auto &unit : unitsVista) {
-    unit.second.update();
-    panel.add(unit.second.getView());
+    unit.second->update();
+    panel.add(unit.second->getView());
   }
 
   for (auto const &capturable : capturablesVista) {
@@ -157,7 +186,8 @@ void View::draw() {
   }
 
   for (auto const &bullet : bulletsVista) {
-    panel.add(bullet.second);
+    bullet.second->update();
+    panel.add(bullet.second->getView());
   }
 
   for (Sprite *effect : effectsVista) {
@@ -168,23 +198,22 @@ void View::draw() {
 //  for (Sprite *explosion : explosionsVista) {
 //    panel.add(explosion);
 //  }
-  std::vector<Sprite*>::iterator iter;
+  std::vector<Sprite *>::iterator iter;
   for (iter = explosionsVista.begin(); iter != explosionsVista.end();) {
     Sprite *explosionVista = *iter;
     if (explosionVista->doCycle()) {
       iter = explosionsVista.erase(iter);
       delete explosionVista;
-    }
-    else {
+    } else {
       panel.add(explosionVista);
       ++iter;
     }
   }
-  if (menu != nullptr){
+  if (menu != nullptr) {
     //panel.add(menu);
     menu->add_to_panel(panel);
   }
-  if (side_board != nullptr){
+  if (side_board != nullptr) {
     side_board->add_to_panel(panel);
   }
   panel.draw(camera);
@@ -224,24 +253,13 @@ bool View::quit() {
   return _quit;
 }
 
-/*
-Position View::translateModelPos(UnitType type, std::string &action, Position pos) {
-  if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO) {
-    // size of grunt image is 16x16
-    return pos.sub(8,8);
-  }
-  else if (type == V_JEEP) {
-    if (action == "die")
-      return pos.sub(0,10);
-    else
-      // size of jeep image is 40x40
-      return pos.sub(25,25);
-  }
+Camera& View::getCamera() const {
+  return camera;
 }
-*/
 
+/*
 void View::moveCamera(int x, int y) {
-  if (camera.inLimits(x, y, mapWidth, mapHeight)) {
+  if (camera.inLimits(x, y)) {
     long cantSteps = eventHandler.amountSteps();
     // no hay unidades moviendose
     if (cantSteps == 0) {
@@ -253,8 +271,11 @@ void View::moveCamera(int x, int y) {
     }
   }
 }
+*/
 
-
+/*
+=======
+>>>>>>> 133bb92ccc2f7825deefdc83f1972a14454dfed4
 void View::move(UnitID id, Position posTo) {
   UnitView &unitView = unitsVista.at(id);
   Position unitPos = unitView.getPos();
@@ -262,14 +283,14 @@ void View::move(UnitID id, Position posTo) {
   Position dist = posTo.sub(unitPos);
   // La velocidad de la vista respecto al server
   float velView = 4.0;
-  ViewPosition step(dist.getX()/velView, dist.getY()/velView);
+  ViewPosition step(dist.getX() / velView, dist.getY() / velView);
 
   ViewPosition unitViewPos = unitView.getViewPos();
-  for (int i=0; i < velView; i++) {
+  for (int i = 0; i < velView; i++) {
     unitViewPos.add(step);
     unitView.addMove(unitViewPos);
   }
-
+*/
 /*
   UnitView &unitView = unitsVista.at(id);
   Position pos_aux = unitView.getPos();
@@ -284,10 +305,9 @@ void View::move(UnitID id, Position posTo) {
     i+=1;
   }
 */
-}
+//}
 
-
-ObjectMapaVista* View::getTerrainObjectVista(TerrainObjectID id) {
+ObjectMapaVista *View::getTerrainObjectVista(TerrainObjectID id) {
   return terrainObjectsVista.at(id);
 }
 
@@ -302,49 +322,43 @@ void View::addTerrainObjectVista(TerrainObjectID &id,
   terrainObjectsVista.emplace(id, terrainObjectVista);
 }
 
-Sprite* View::getUnitVista(UnitID id) {
-  return unitsVista.at(id).getView();
-}
-
-UnitView& View::getUnitView(UnitID id) {
+UnitView* View::getUnitView(UnitID id) {
   return unitsVista.at(id);
 }
 
 void View::removeUnitVista(const UnitID &id) {
-//  delete unitsVista.at(id);
+  delete unitsVista.at(id);
   unitsVista.erase(id);
 }
 
-void View::addUnitVista(const UnitID &id, UnitView &unitVista) {
+void View::addUnitVista(const UnitID &id, UnitView *unitVista) {
   unitsVista.emplace(id, unitVista);
 }
 
-
-ObjectMapaVista* View::getBulletVista(BulletID id) {
+BulletView* View::getBulletVista(BulletID id) {
   return bulletsVista.at(id);
 }
-
+/*
 void View::move(BulletID id, Position posTo) {
   Position pos_aux = bulletsVista.at(id)->getPos();
   int i = 0;
   while (pos_aux != posTo) {
     pos_aux.move(posTo);
-    eventHandler.addStep(new BulletMoveStepEvent(id, pos_aux), i);
+//    eventHandler.addStep(new BulletMoveStepEvent(id, pos_aux), i);
     i += 1;
   }
 }
-
+*/
 void View::removeBulletVista(BulletID &id) {
   delete bulletsVista.at(id);
   bulletsVista.erase(id);
 }
 
-void View::addBulletVista(BulletID &id, ObjectMapaVista *bulletVista) {
+void View::addBulletVista(BulletID &id, BulletView *bulletVista) {
   bulletsVista.emplace(id, bulletVista);
 }
 
-
-ObjectMapaVista* View::getBuildVista(BuildID id) {
+ObjectMapaVista *View::getBuildVista(BuildID id) {
   return buildsVista.at(id);
 }
 
@@ -357,11 +371,12 @@ void View::addBuildVista(BuildID &id, ObjectMapaVista *buildVista) {
   buildsVista.emplace(id, buildVista);
 }
 
-ObjectMapaVista* View::getCapturedVista(const CapturableID &id) {
+ObjectMapaVista *View::getCapturedVista(const CapturableID &id) {
   return capturablesVista.at(id);
 }
 
-void View::addCapturableVista(const CapturableID &id, ObjectMapaVista *capturableVista) {
+void View::addCapturableVista(const CapturableID &id,
+                              ObjectMapaVista *capturableVista) {
   capturablesVista.emplace(id, capturableVista);
 }
 
@@ -370,23 +385,24 @@ void View::removeCapturableVista(CapturableID &id) {
   capturablesVista.erase(id);
 }
 
-
 void View::addExplosionVista(Sprite *objectVista) {
   if (objectVista == NULL)
-    throw std::invalid_argument("View::addExplosionVista() objectMapaVista es NULL");
+    throw std::invalid_argument(
+        "View::addExplosionVista() objectMapaVista es NULL");
 
   explosionsVista.push_back(objectVista);
 }
 
 void View::addEffectVista(Sprite *objectVista) {
   if (objectVista == NULL)
-    throw std::invalid_argument("View::addExplosionVista() objectMapaVista es NULL");
+    throw std::invalid_argument(
+        "View::addExplosionVista() objectMapaVista es NULL");
 
   effectsVista.push_back(objectVista);
 }
 
 void View::load_production_menu(const BuildID &factoryID,
-                                const BuildState& buildState,
+                                const BuildState &buildState,
                                 Model &model, int x, int y) {
   menu = new Production_Menu(factoryID, buildState, window, model, x, y);
 }

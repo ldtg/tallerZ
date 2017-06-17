@@ -92,8 +92,6 @@ set(SOURCE_FILES
         src/client/model/Events/model/capturable/CaptureEvent.cpp
         src/client/model/Events/model/capturable/CaptureEvent.h
         src/common/Types/PlayerColor.h
-        src/client/model/Events/view/CameraMoveStepEvent.cpp
-        src/client/model/Events/view/CameraMoveStepEvent.h
 
         src/client/view/Texture.cpp
         src/client/view/Texture.h
@@ -263,7 +261,7 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
 
         src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/view/ViewPosition.cpp src/client/view/ViewPosition.h
-        src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/model/Events/model/build/BuildUpdateEvent.cpp src/client/model/Events/model/build/BuildUpdateEvent.h)
+        src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/model/Events/model/build/BuildUpdateEvent.cpp src/client/model/Events/model/build/BuildUpdateEvent.h src/client/view/ObjectViewMove.cpp src/client/view/ObjectViewMove.h src/client/view/BulletView.cpp src/client/view/BulletView.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/client)
@@ -275,7 +273,7 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Utils)
 
 #nota a futuro: la mayoria de esos flags del SDL2 vienen de ejecutar `sdl2-config --cflags --libs --static-libs` en la terminal (estan copipasteados). Habrá que ver como hacerlo bien a esto.
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -O0 -pg -std=c++11 -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2 -pthread -Wl,--no-undefined -lm -ldl -lasound -lm -ldl -lpulse-simple -lpulse -lX11 -lXext -lXcursor -lXinerama -lXi -lXrandr -lXss -lXxf86vm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -lrt")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -std=c++11 -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2 -pthread -Wl,--no-undefined -lm -ldl -lasound -lm -ldl -lpulse-simple -lpulse -lX11 -lXext -lXcursor -lXinerama -lXi -lXrandr -lXss -lXxf86vm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -lrt")
 
 
 find_package(PkgConfig REQUIRED)

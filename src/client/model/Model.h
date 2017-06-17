@@ -5,6 +5,7 @@ class View;
 #include <client/view/Camera.h>
 #include <common/Map/Map.h>
 #include <client/view/View.h>
+#include <common/IDs/TeamID.h>
 
 class Model {
  private:
@@ -13,10 +14,16 @@ class Model {
   std::vector<UnitID> unitsSelected;
   GameControllerProxy &gameController;
   Camera &camera;
-
+  PlayerID player;
+  TeamID teamID;
  public:
-  Model(Map &map, GameControllerProxy& gameController, Camera &camera, View &view);
-  GameControllerProxy * get_gameControllerProxy();
+  Model(Map &map,
+        GameControllerProxy &gameController,
+        Camera &camera,
+        View &view,
+        const PlayerID &player,
+        const TeamID &teamID);
+  GameControllerProxy *get_gameControllerProxy();
   void leftClick(int x, int y);
   void rightClick(int x, int y);
 

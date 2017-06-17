@@ -27,7 +27,7 @@ class Production_Menu : public Menu {
   Window &window;
   Model &model;
   const BuildID buildID;
-  const BuildState& buildState;
+  BuildState buildState;
   UnitType showing_unit_type;
 
   Label * time = NULL;
@@ -86,7 +86,7 @@ class Production_Menu : public Menu {
 
   void handle_click(int x, int y);
 
-  ~Production_Menu();
+  virtual ~Production_Menu();
 
  private:
   void load_items();
@@ -95,6 +95,7 @@ class Production_Menu : public Menu {
   std::string get_building_type(const BuildType& buildType);
 
   std::string get_unit_name(const UnitType& utype);
+  void update_status();
 };
 
 #endif //TALLERZ_PRODUCTION_MENU_1_H

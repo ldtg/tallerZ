@@ -18,12 +18,12 @@ class VistasFactory {
   static Sprite *getUnitVista(UnitType type, std::string &color,
                               std::string &action, std::string &rotation,
                               const Position &pos);
-  static ObjectMapaVista *getBuildVista(BuildType type, std::string &state, Position &pos);
+  static Image *getBuildVista(BuildType type, std::string &state, Position &pos);
 //  static ObjectMapaVista *getCapturableVista(CapturableType type, Position &pos);
   static ObjectMapaVista *getTerrainObjectVista(TerrainObjectType type,
                                                 std::string &state, Position &pos);
   static Sprite *getFlagsVista(std::string &color, Position &pos);
-  static ObjectMapaVista *getBulletVista(WeaponType type, std::string &rotation, Position &pos);
+  static Sprite *getBulletVista(WeaponType type, std::string &rotation, const Position &pos);
   static Sprite *getBulletHitVista(WeaponType type, Position &pos);
   static Sprite *getEffectVista(EffectType type);
 };

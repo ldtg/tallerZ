@@ -1,5 +1,8 @@
 #include "ObjectMapaVista.h"
 
+ObjectMapaVista::ObjectMapaVista() : x(0), y(0), width(0),
+                                     height(0), rotation(0) {}
+
 int ObjectMapaVista::getWidth() const {
     return width;
 }
@@ -33,7 +36,3 @@ void ObjectMapaVista::setRotation(int rotation) {
 int ObjectMapaVista::getRotation() {
   return rotation;
 }
-ObjectMapaVista::ObjectMapaVista() : x(0),y(0),width(0),height(0),rotation(0){
-}
-
-//void ObjectMapaVista::set_texture(SDL_Renderer *render) {}

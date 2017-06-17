@@ -50,6 +50,8 @@ class Button : public ObjectMapaVista  {
 
   void reload();
 
+  void scale(float scaleW, float scaleH){};
+
   void set_texture(SDL_Renderer *render){};
 
   void draw(SDL_Renderer *render, Camera &camera){

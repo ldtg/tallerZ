@@ -12,10 +12,9 @@ class Image : public ObjectMapaVista {
  public:
   Image();
   Image(const char *file);
-  Image(const char *file, int width, int height);
-//  Image(Image &&other);
-//  Image& operator=(Image &&other);
+//  Image(const char *file, int width, int height);
   ~Image();
+  void scale(float scaleW, float scaleH);
   void set_texture(SDL_Renderer *render);
   void draw(SDL_Renderer *render, Camera &camera);
 };

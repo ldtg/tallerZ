@@ -7,9 +7,9 @@ void UnitCreateEvent::process() {
   std::string rotation_s("270");
   std::string action("create");
   std::string color = state.owner.getColor();
-  UnitView unitVista(id.getType(), color, state.position, action, rotation_s);
-
-  model->getMap().addUnit(id, state);
+  UnitView *unitVista = new UnitView(id.getType(), color,
+                                     state.position, action,
+                                     rotation_s);
   view->addUnitVista(id, unitVista);
 
   Map &map = model->getMap();

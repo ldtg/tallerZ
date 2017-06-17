@@ -11,7 +11,7 @@
  */
 Label::Label(Window &window, const std::string &text,
              const SDL_Rect &rect, TTF_Font *font) : window(window),
-                                                     font(font){
+                                                     font(font) {
 
   this->font = font;
   this->renderQuad = rect;
@@ -25,6 +25,7 @@ Label::Label(Window &window, const std::string &text,
  */
 Label::~Label() {
   delete this->texture;
+  SDL_FreeSurface(this->surface);
 }
 
 /**
@@ -43,7 +44,9 @@ void Label::modify_text(const std::string &text) {
   Texture texture(&window);
   texture.renderize(&window, &this->renderQuad);
   this->text = text;
-  *this->texture = Texture(TTF_RenderText_Solid(this->font, text.c_str(), this->color), &window);
+  *this->texture =
+      Texture(TTF_RenderText_Solid(this->font, text.c_str(), this->color),
+              &window);
   this->reload();
 }
 
@@ -51,7 +54,7 @@ SDL_Rect Label::get_rectangle() {
   return this->renderQuad;
 }
 
-void Label::set_rectangle(const SDL_Rect& rect) {
+void Label::set_rectangle(const SDL_Rect &rect) {
   this->renderQuad = rect;
 }
 void Label::reload() {

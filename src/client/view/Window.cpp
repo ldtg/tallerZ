@@ -3,17 +3,16 @@
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
 
 Window::Window() {
-  width = WINDOWWIDTH;
+  width = WINDOWWIDHT;
   height = WINDOWHEIGHT;
 
   //Las siguientes dos linas las pongo en SDL_START
   SDL_Init(SDL_INIT_VIDEO);
   IMG_Init(IMG_INIT_PNG);
 
-  SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" );
   window = SDL_CreateWindow("TALLERZ",
-                            0,//SDL_WINDOWPOS_UNDEFINED,
-                            0,//SDL_WINDOWPOS_UNDEFINED,
+                            SDL_WINDOWPOS_CENTERED,
+                            SDL_WINDOWPOS_CENTERED,
                             width,
                             height,
                             SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
@@ -29,14 +28,16 @@ Window::Window() {
           " crear la ventana con SDL_CreateWindow: %s\n",SDL_GetError());
     }
 
-  window_render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-//  window_render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+//  window_render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+  window_render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
   if (window_render == NULL) {
     throw Sdl_Exception(
         "Error al crear render de la ventana: no se pudo "
             "crear render con SDL_CreateRenderer: %s\n",SDL_GetError());
   }
   SDL_SetRenderDrawColor(window_render, 0xFF, 0xFF, 0xFF, 0xFF);
+
+  SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "2" );
 
 //  SDL_MaximizeWindow(window);
 //  cursor = new Cursor();
@@ -63,7 +64,7 @@ SDL_Window *Window::getWindow() const {
 }
 
 int Window::getWidth() const {
-  return WINDOWWIDTH;
+  return WINDOWWIDHT;
 }
 
 int Window::getHeight() const {

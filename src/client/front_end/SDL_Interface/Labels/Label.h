@@ -35,7 +35,7 @@ class Label : public ObjectMapaVista{
  public:
   Label(Window& window, const std::string &text, const SDL_Rect &rect, TTF_Font *font);
 
-  ~Label();
+  virtual ~Label();
 
   SDL_Rect get_rectangle();
 
@@ -46,6 +46,8 @@ class Label : public ObjectMapaVista{
   void modify_text(const std::string& text);
 
   void reload();
+
+  void scale(float scaleW, float scaleH){};
 
   void set_texture(SDL_Renderer *render){};
 

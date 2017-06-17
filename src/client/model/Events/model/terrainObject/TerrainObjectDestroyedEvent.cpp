@@ -16,8 +16,10 @@ void TerrainObjectDestroyedEvent::process() {
   TerrainObjectType type = id.getType();
   if (type == _WOODENBRIDGE || type == _ASPHALTEDBRIDGE) {
     std::string state("destroyed");
-    ObjectMapaVista *destBridge = VistasFactory::getTerrainObjectVista(type, state, pos);
+    ObjectMapaVista
+        *destBridge = VistasFactory::getTerrainObjectVista(type, state, pos);
     destBridge->setPos(pos);
     view->addTerrainObjectVista(id, destBridge);
   }
+  model->getMap().removeTerrainObject(id);
 }

@@ -44,6 +44,7 @@ class Texture : public ObjectMapaVista{
 
   SDL_Texture * get_texture() const;
 
+  virtual void scale(float scaleW, float scaleH){};
   virtual void set_texture(SDL_Renderer *render){};
   virtual void draw(SDL_Renderer *render, Camera &camera){
     SDL_RenderCopy(render, texture, NULL, &renderQuad);

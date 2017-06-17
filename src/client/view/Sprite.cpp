@@ -24,7 +24,7 @@ Sprite::Sprite(const char *file, int num_frames, int speed,
 
 Sprite::~Sprite() {
   for (int frame = 0; frame < num_frames; ++frame) {
-    delete images[frame];
+    delete (images.at(frame));
   }
 }
 
@@ -34,6 +34,12 @@ bool Sprite::doCycle() const {
 
 std::string Sprite::getColor() const {
   return color;
+}
+
+void Sprite::scale(float scaleW, float scaleH) {
+  for (int frame = 0; frame < num_frames; ++frame) {
+    images[frame]->scale(scaleW, scaleH);
+  }
 }
 
 void Sprite::set_texture(SDL_Renderer *render) {}

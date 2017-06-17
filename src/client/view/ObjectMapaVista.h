@@ -14,10 +14,12 @@ class ObjectMapaVista {
   float y;
   int rotation;
   ObjectMapaVista();
+
  public:
+  virtual ~ObjectMapaVista() {};
+
   int getWidth() const;
   int getHeight() const;
-
   void setPos(ViewPosition pos);
   void setPos(Position pos);
   Position getPos() const;
@@ -25,6 +27,7 @@ class ObjectMapaVista {
   void setRotation(int rotation);
   int getRotation();
 
+  virtual void scale(float scaleW, float scaleH) = 0;
   virtual void set_texture(SDL_Renderer *render) = 0;
   virtual void draw(SDL_Renderer *render, Camera &camera) = 0;
 };
