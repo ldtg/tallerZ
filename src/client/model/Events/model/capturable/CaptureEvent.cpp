@@ -14,7 +14,7 @@ CaptureEvent::CaptureEvent(const UnitID &capturer,
       capturerDissapear(dissapear) {}
 
 void CaptureEvent::process() {
-  Sprite *capturerVista = view->getUnitVista(capturer);
+  Sprite *capturerVista = view->getUnitView(capturer)->getView();
   std::string color = capturerVista->getColor();
   if (capturerDissapear) {
     view->removeUnitVista(capturer);
@@ -25,7 +25,7 @@ void CaptureEvent::process() {
     std::string action("look_around");
     for (auto par : capturedUnits) {
       UnitType type = par.first.getType();
-      Sprite *capturedVistaOld = view->getUnitVista(par.first);
+      Sprite *capturedVistaOld = view->getUnitView(par.first)->getView();
 
 //      Position pos = capturedVistaOld->getPos();
 
