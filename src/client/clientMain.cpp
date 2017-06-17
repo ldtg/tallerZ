@@ -1,4 +1,3 @@
-
 #include <common/Socket/Socket.h>
 #include <common/Map/Map.h>
 #include <common/DataClientServerMessages/dataServerClientAccepted.h>
@@ -9,11 +8,15 @@
 #include <common/DataClientServerMessages/dataClientConnectedMessage.h>
 #include <clientCommandSender.h>
 #include <clientEventReceiver.h>
+
 void sendPlayerConnected(Socket &socket,
                          unsigned short team,
                          const std::string &map);
+
 dataServerClientAccepted getDataClientAccepted(Socket &socket);
+
 Map getMap(Socket &socket);
+
 int main(int argc, char *argv[]) {
   Socket socket;
   socket.connectToServer(argv[1], argv[2]);
@@ -52,8 +55,9 @@ int main(int argc, char *argv[]) {
     // Chequeo pos del mouse para saber
     // si se debe mover camara.
     controller.checkMouseState(&e);
-    while (!eventQueue.empty())
+    while (!eventQueue.empty()) {
       eventHandler.add(eventQueue.pop());
+    }
     view.update();
   }
   commandsQueue.push(nullptr);
@@ -63,6 +67,7 @@ int main(int argc, char *argv[]) {
   eventReceiver.join();
   return 0;
 }
+
 Map getMap(Socket &socket) {
   std::stringstream mapin(socket.rcv_str_preconcatenated());
   Map map;
@@ -70,6 +75,7 @@ Map getMap(Socket &socket) {
   iarchive(map);
   return map;
 }
+
 dataServerClientAccepted getDataClientAccepted(Socket &socket) {
   dataServerClientAccepted accepted;
   std::stringstream datain(socket.rcv_str_preconcatenated());
@@ -77,6 +83,7 @@ dataServerClientAccepted getDataClientAccepted(Socket &socket) {
   iarchive(accepted);
   return accepted;
 }
+
 void sendPlayerConnected(Socket &socket,
                          unsigned short team,
                          const std::string &map) {

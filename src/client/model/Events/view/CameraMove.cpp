@@ -3,5 +3,11 @@
 CameraMove::CameraMove(int x, int y) : x(x), y(y) {}
 
 void CameraMove::process() {
-  view->moveCamera(x, y);
+  Camera &camera = view->getCamera();
+  int mapWidth = model->getMap().getWidht()*TILEWIDHT;
+  int mapHeight = model->getMap().getHeight()*TILEHEIGHT ;
+
+  if (camera.inLimits(x, y, mapWidth, mapHeight)) {
+      camera.move(x, y);
+  }
 }

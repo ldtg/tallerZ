@@ -45,6 +45,8 @@ class Side_Board : public ObjectMapaVista{
 
   ~Side_Board();
 
+  void scale(float scaleW, float scaleH);
+
   void load_items();
   bool is_in_menu_button(int x, int y);
   void launch_menu_button();

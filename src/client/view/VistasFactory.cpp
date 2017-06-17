@@ -39,6 +39,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
   std::string type_s;
   int num_frames=0, speed=0, num_frame_return_cycle=0;
   long despX=0, despY=0;
+  float scaleW=1.3, scaleH=1.3;
 
   std::string path = "../src/view/images/units/";
 
@@ -68,14 +69,14 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       else if (type == R_TOUGH) {
         robot = "tough";
         num_frames = 3;
-        speed = 7*num_frames;
+        speed = 7;
         num_frame_return_cycle = 0;
       }
       else if (type == R_PYRO) {
         robot = "pyro";
         num_frames = 3;
-        speed = 7*num_frames;
-        num_frame_return_cycle = 0;
+        speed = 3*num_frames;
+        num_frame_return_cycle = 1;
       }
       path = path + type_s + "/" + action + "/" + robot + "/"
           + action + "_" + color + "_r" + rotation + "_n";
@@ -123,7 +124,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
 //    despX = 25, despY = 25;
 
     if (action == "walk") {
-      despX = 25, despY = 25;
+//      despX = 25, despY = 25;
 
       num_frames = 2;
       speed = 3 * num_frames;
@@ -163,14 +164,16 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
   Sprite *unitVista = new Sprite(path.c_str(), num_frames,
                                speed, num_frame_return_cycle, color);
   unitVista->setPos(pos.sub(despX, despY));
+  unitVista->scale(scaleW, scaleH);
   return unitVista;
 }
 
-ObjectMapaVista* VistasFactory::getBuildVista(BuildType type,
+Image* VistasFactory::getBuildVista(BuildType type,
                                               std::string &state,
                                               Position &pos) {
   std::string type_s;
   std::string path = "../src/view/images/buildings/";
+  float scaleW=1.5, scaleH=1.5;
 
   switch (type) {
     case FORT: type_s = "fort"; break;
@@ -180,8 +183,9 @@ ObjectMapaVista* VistasFactory::getBuildVista(BuildType type,
   }
 
   path = path + type_s + "/" + type_s + state + ".png";
-  ObjectMapaVista *buildVista = new Image(path.c_str());
+  Image *buildVista = new Image(path.c_str());
   buildVista->setPos(pos);
+  buildVista->scale(scaleW, scaleH);
   return buildVista;
 }
 
@@ -223,6 +227,7 @@ ObjectMapaVista* VistasFactory::getTerrainObjectVista(TerrainObjectType type,
                                                       Position &pos) {
   std::string path = "../src/view/images/terrain/";
   std::string type_s;
+
   switch (type) {
     case ROCK: type_s = "rocks_jungle"; break;
     case ICEROCK: type_s = "rocks_artic"; break;
@@ -237,26 +242,34 @@ ObjectMapaVista* VistasFactory::getTerrainObjectVista(TerrainObjectType type,
   return terrainObjVista;
 }
 
-ObjectMapaVista* VistasFactory::getBulletVista(WeaponType type,
-                                               std::string &rotation,
-                                               Position &pos) {
-  long despX, despY;
-  ObjectMapaVista *bulletVista = nullptr;
+Sprite* VistasFactory::getBulletVista(WeaponType type,
+                                      std::string &rotation,
+                                      const Position &pos) {
+  long despX=0, despY=0;
+  int num_frames=0, speed=0, num_frame_return_cycle=0;
+  std::string path = "../src/view/images/bullet/";
 
-  if (type == ROCKET) {
-    despX = 0; despY = 0;
-    std::string path = "../src/view/images/bullet/bullet_r" + rotation + ".png";
-    bulletVista = new Image(path.c_str());
+  switch (type) {
+    case ROCKET: {
+      num_frames = 1, speed = 1, num_frame_return_cycle = 0;
+      path = path + "rocket_r" + rotation + "_n";
+      break;
+    }
+    case FIRE: {
+      num_frames = 4, speed = 1, num_frame_return_cycle = 0;
+//    despX = 8; despY = 8;
+      path = path + "fire_r" + rotation + "_n";
+      break;
+    }
+    case BULLET: {
+      num_frames = 1, speed = 1, num_frame_return_cycle = 0;
+      path = path + "bullet_r" + rotation + "_n";
+      break;
+    }
+    default: return nullptr;
   }
-  else if (type == FIRE) {
-    int num_frames=4, speed=4, num_frame_return_cycle=0;
-    despX = 8; despY = 8;
-    std::string path = "../src/view/images/bullet/fire_r" + rotation + "_n";
-    bulletVista = new Sprite(path.c_str(), num_frames, speed, num_frame_return_cycle);
-  }
-  else {
-    return nullptr;
-  }
+
+  Sprite *bulletVista = new Sprite(path.c_str(), num_frames, speed, num_frame_return_cycle);
   bulletVista->setPos(pos.sub(despX, despY));
   return bulletVista;
 }

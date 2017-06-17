@@ -19,6 +19,8 @@ Side_Board::~Side_Board() {
   if (this->side_board_texture != NULL) delete this->side_board_texture;
 }
 
+void Side_Board::scale(float scaleW, float scaleH) {}
+
 void Side_Board::load_items() {
   this->menu_button = new Quit_Button(window, view);
   std::string unit_label_background_path =

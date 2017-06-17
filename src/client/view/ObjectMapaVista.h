@@ -14,6 +14,7 @@ class ObjectMapaVista {
   float y;
   int rotation;
   ObjectMapaVista();
+
  public:
   int getWidth() const;
   int getHeight() const;
@@ -25,6 +26,7 @@ class ObjectMapaVista {
   void setRotation(int rotation);
   int getRotation();
 
+  virtual void scale(float scaleW, float scaleH) = 0;
   virtual void set_texture(SDL_Renderer *render) = 0;
   virtual void draw(SDL_Renderer *render, Camera &camera) = 0;
 };

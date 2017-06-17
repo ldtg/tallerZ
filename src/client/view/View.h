@@ -16,6 +16,7 @@ class Model;
 #include "VistasFactory.h"
 #include "Camera.h"
 #include "UnitView.h"
+#include "BulletView.h"
 #include <client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h>
 
 class View {
@@ -23,24 +24,20 @@ class View {
   Window window;
   Camera &camera;
   Panel panel;
-
   Menu * menu = nullptr;
   Side_Board * side_board = nullptr;
-
   EventHandler &eventHandler;
-  bool _quit;
 
-  int mapWidth;
-  int mapHeight;
+  bool _quit;
 
   std::map<Position, ObjectMapaVista *> terrainsVista;
   std::map<TerrainObjectID, ObjectMapaVista *> terrainObjectsVista;
   std::map<BuildID, ObjectMapaVista *> buildsVista;
-  std::map<UnitID, UnitView> unitsVista;
+  std::map<UnitID, UnitView*> unitsVista;
   std::map<CapturableID, ObjectMapaVista *> capturablesVista;
-  std::map<BulletID, ObjectMapaVista *> bulletsVista;
-  std::vector<Sprite *> effectsVista;
-  std::vector<Sprite *> explosionsVista;
+  std::map<BulletID, BulletView *> bulletsVista;
+  std::vector<Sprite*> effectsVista;
+  std::vector<Sprite*> explosionsVista;
 
   void createInitialTerrainVista(const std::map<Position, Tile> &map);
   void createInitialTerrainObjectVista(const std::map<TerrainObjectID,
@@ -53,20 +50,17 @@ class View {
   //  void add(ObjectMapaVista *objectVista, Position pos);
 //  ObjectMapaVista *getTerrainVista(TerrainType type);
 //  void updateExplosion();
-  void drawSteps();
   void draw();
 
  public:
-  View(const Map &map, EventHandler &eventHandler, Camera &camera, const std::string& player_color);
+  View(const Map &map, EventHandler &eventHandler,
+       Camera &camera, const std::string& player_color);
   ~View();
-
-//  void add(ObjectMapaVista *objectVista, Position pos);
-
-//  Position translateModelPos(UnitType type, std::string &action, Position pos);
-  void moveCamera(int x, int y);
 
   void setQuit();
   bool quit();
+
+  Camera &getCamera() const;
 
   ObjectMapaVista* getTerrainObjectVista(TerrainObjectID id);
   void removeTerrainObjectVista(const TerrainObjectID &id);
@@ -74,15 +68,15 @@ class View {
                              ObjectMapaVista *terrainObjectVista);
 
   Sprite* getUnitVista(UnitID id);
-  UnitView &getUnitView(UnitID id);
-  void move(UnitID id, Position posTo);
+  UnitView *getUnitView(UnitID id);
+//  void move(UnitID id, Position posTo);
   void removeUnitVista(const UnitID &id);
-  void addUnitVista(const UnitID &id, UnitView &unitVista);
+  void addUnitVista(const UnitID &id, UnitView *unitVista);
 
-  ObjectMapaVista *getBulletVista(BulletID id);
-  void move(BulletID id, Position posTo);
+  BulletView *getBulletVista(BulletID id);
+//  void move(BulletID id, Position posTo);
   void removeBulletVista(BulletID &id);
-  void addBulletVista(BulletID &id, ObjectMapaVista *bulletVista);
+  void addBulletVista(BulletID &id, BulletView *bulletVista);
 
   ObjectMapaVista *getBuildVista(BuildID id);
   void removeBuildVista(BuildID &id);

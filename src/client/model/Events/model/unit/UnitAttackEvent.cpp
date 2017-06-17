@@ -7,6 +7,10 @@ UnitAttackEvent::UnitAttackEvent(const UnitID &attacker, Position huntedPos,
     : attacker(attacker), huntedPos(huntedPos), attackerPos(attackerPos) {}
 
 void UnitAttackEvent::process() {
+  UnitView *attackerView = view->getUnitView(attacker);
+  attackerView->fire(huntedPos);
+
+/*
   Sprite* unitVista = view->getUnitVista(attacker);
   Position pos = unitVista->getPos();
   std::string color = unitVista->getColor();
@@ -21,4 +25,5 @@ void UnitAttackEvent::process() {
   unitVista->setRotation(rotation);
 
   view->addUnitVista(attacker, unitAttackerVista);
+*/
 }

@@ -25,6 +25,7 @@ class Sprite : public ObjectMapaVista {
   bool doCycle() const;
   std::string getColor() const;
   void set_texture(SDL_Renderer *render);
+  void scale(float scaleW, float scaleH);
   virtual void draw(SDL_Renderer *render, Camera &camera);
 };
 

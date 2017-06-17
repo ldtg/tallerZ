@@ -92,8 +92,6 @@ set(SOURCE_FILES
         src/client/model/Events/model/capturable/CaptureEvent.cpp
         src/client/model/Events/model/capturable/CaptureEvent.h
         src/common/Types/PlayerColor.h
-        src/client/model/Events/view/CameraMoveStepEvent.cpp
-        src/client/model/Events/view/CameraMoveStepEvent.h
 
         src/client/view/Texture.cpp
         src/client/view/Texture.h
@@ -265,7 +263,7 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
 
         src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/view/ViewPosition.cpp src/client/view/ViewPosition.h
-        src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/model/Events/model/build/BuildUpdateEvent.cpp src/client/model/Events/model/build/BuildUpdateEvent.h)
+        src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/model/Events/model/build/BuildUpdateEvent.cpp src/client/model/Events/model/build/BuildUpdateEvent.h src/client/view/ObjectViewMove.cpp src/client/view/ObjectViewMove.h src/client/view/BulletView.cpp src/client/view/BulletView.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/client)

@@ -32,6 +32,7 @@ class Menu : public ObjectMapaVista {
         && y > renderQuad.y
         && y < (renderQuad.y + renderQuad.h));
   }
+  void scale(float scaleW, float scaleH){};
   virtual void handle_click(int x, int y) = 0;
   //virtual void displace_toXY(int coorX, int coordY) = 0;
   virtual void add_to_panel(Panel& panel) = 0;

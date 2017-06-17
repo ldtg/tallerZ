@@ -1,3 +1,4 @@
+#include <iostream>
 #include "UnitView.h"
 #include "VistasFactory.h"
 
@@ -8,6 +9,10 @@ UnitView::UnitView(UnitType type, std::string &color, Position pos,
                                      rotation, pos);
 }
 
+UnitView::~UnitView() {
+  delete view;
+}
+/*
 Position UnitView::getPos() const {
   if (!movements.empty()) {
     return movements.back().getPos();
@@ -29,35 +34,66 @@ ViewPosition UnitView::getViewPos() const {
 void UnitView::addMove(const ViewPosition &pos) {
   movements.push(pos);
 }
+*/
+void UnitView::walk(int rotation, const Position &posTo) {
+  std::string rotation_s = std::to_string(rotation);
+  std::string action("walk");
 
+  delete view;
+  view = VistasFactory::getUnitVista(type, color, action,
+                                     rotation_s, posTo);
+  view->setRotation(rotation);
+}
+
+void UnitView::still() {
+  int rotation = view->getRotation();
+  Position pos = view->getPos();
+  std::string rotation_s = std::to_string(rotation);
+  std::string action("look_around");
+
+  delete view;
+  view = VistasFactory::getUnitVista(type, color, action, rotation_s, pos);
+  view->setRotation(rotation);
+}
+
+void UnitView::fire(const Position &huntedPos) {
+  Position pos = view->getPos();
+
+  int rotation = pos.getRoration(huntedPos);
+  std::string rotation_s = std::to_string(rotation);
+  std::string action("fire");
+  delete view;
+  view = VistasFactory::getUnitVista(type, color, action, rotation_s, pos);
+  view->setRotation(rotation);
+}
+
+/*
 void UnitView::update() {
   if (!movements.empty()) {
     ViewPosition viewPosTo = movements.front();
     movements.pop();
     Position posTo = viewPosTo.getPos();
 
-//    Position pos = view->getPos();
     ViewPosition pos = view->getViewPos();
     int newRotation = pos.getRoration(viewPosTo);
     int rotation = view->getRotation();
 
-    if (rotation != newRotation) {
-      delete view;
+    std::cout << pos.getX() << " " << pos.getY() << std::endl;
+    std::cout << viewPosTo.getX() << " " << viewPosTo.getY() << std::endl;
+    std::cout << " " << std::endl;
+    std::cout << "rot: " << rotation << std::endl;
+    std::cout << "NEW rot: " << newRotation << std::endl;
+    std::cout << " " << std::endl;
 
-      std::string rotation_s = std::to_string(newRotation);
-      std::string action("walk");
-      view = VistasFactory::getUnitVista(type, color, action,
-                                         rotation_s, posTo);
-      view->setRotation(newRotation);
-      view->setPos(viewPosTo);
+    if (rotation != newRotation) {
+      walk(newRotation, posTo);
     }
     else {
       view->setPos(viewPosTo);
     }
-
   }
 }
-
+*/
 Sprite* UnitView::getView() {
   return view;
 }

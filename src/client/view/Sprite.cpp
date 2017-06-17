@@ -36,6 +36,12 @@ std::string Sprite::getColor() const {
   return color;
 }
 
+void Sprite::scale(float scaleW, float scaleH) {
+  for (int frame = 0; frame < num_frames; ++frame) {
+    images[frame]->scale(scaleW, scaleH);
+  }
+}
+
 void Sprite::set_texture(SDL_Renderer *render) {}
 
 void Sprite::draw(SDL_Renderer *render, Camera &camera) {
