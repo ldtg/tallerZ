@@ -247,11 +247,10 @@ void realGameController::hunt(Unit *unit,
     }
     if (unit->timeToAttack()) {
       this->bullets.push_back(unit->createBullet());
-
-      eventQueue.push(new serverBLTNewEvent(this->bullets.front().getId(),
-                                            this->bullets.front().getWeapon().type,
-                                            this->bullets.front().getFrom(),
-                                            this->bullets.front().getTo()));
+      eventQueue.push(new serverBLTNewEvent(this->bullets.back().getId(),
+                                            this->bullets.back().getWeapon().type,
+                                            this->bullets.back().getFrom(),
+                                            this->bullets.back().getTo()));
     }
     if (hunted->isMoving()) {
       unit->addMove(hunted->nextMovePosition());
@@ -343,13 +342,12 @@ void realGameController::autoAttack(Unit *current,
 }
 
 void realGameController::bulletsTick() {
-  for (std::vector<Bullet>::iterator iterator = bullets.begin();
+  for (auto iterator = bullets.begin();
        iterator != bullets.end();) {
     Bullet &current = *iterator;
     current.move();
     if (current.didHit()) {
       current.doHit();
-
       eventQueue.push(new serverBLTHitEvent(current.getId(), current.getTo(),
                                             current.getWeapon().type));
       map.removeBullet(current.getId());
@@ -444,7 +442,7 @@ void realGameController::objectsTick() {
         //t_it = terrainObjects.erase(t_it);
       }
     }
-      ++t_it;
+    ++t_it;
   }
 }
 
