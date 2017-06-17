@@ -96,10 +96,12 @@ struct Data {
     r_tough.weapon = rocket;
     r_tough.secsUntilFire = 0.5;
     r_tough.health = 300;
-    r_tough.range = 5;
+//    r_tough.range = 5;
+    r_tough.range = 10;
     r_tough.speed = 4;
     r_tough.factoryRate = 2;
-    r_tough.factoryBaseTimeInSec = 42;//742
+//    r_tough.factoryBaseTimeInSec = 42;//742
+    r_tough.factoryBaseTimeInSec = 20;//742
     r_tough.factoryMinimunTechLevel = 2;
 
     r_pyro.type = UnitType::R_PYRO;
@@ -159,13 +161,13 @@ struct Data {
 
     asphaltedBridgeObject.type = TerrainObjectType::_ASPHALTEDBRIDGE;
     asphaltedBridgeObject.passable = true;
-//    asphaltedBridgeObject.health = 1000;
-    asphaltedBridgeObject.health = 20;
+    asphaltedBridgeObject.health = 1000;
+//    asphaltedBridgeObject.health = 200;
     asphaltedBridgeObject.size = 50;
     rockObject.type = TerrainObjectType::ROCK;
     rockObject.passable = false;
-//    rockObject.health = 1000;//1000
-    iceRockObject.health = 20;
+    rockObject.health = 1000;//1000
+//    iceRockObject.health = 200;
     rockObject.size = 50;
     woodenBridgeObject.type = TerrainObjectType::_WOODENBRIDGE;
     woodenBridgeObject.passable = true;
@@ -173,8 +175,8 @@ struct Data {
     woodenBridgeObject.size = 50;
     iceRockObject.type = TerrainObjectType::ICEROCK;
     iceRockObject.passable = false;
-//    iceRockObject.health = 1000;
-    iceRockObject.health = 20;
+    iceRockObject.health = 1000;
+//    iceRockObject.health = 20;
     iceRockObject.size = 50;
   }
   UnitData getData(UnitType type) {

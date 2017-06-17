@@ -248,10 +248,12 @@ void realGameController::hunt(Unit *unit,
     if (unit->timeToAttack()) {
       this->bullets.push_back(unit->createBullet());
 
-      eventQueue.push(new serverBLTNewEvent(this->bullets.front().getId(),
-                                            this->bullets.front().getWeapon().type,
-                                            this->bullets.front().getFrom(),
-                                            this->bullets.front().getTo()));
+//      std::cout << this->bullets.front().getId().getID() << std::endl;
+
+      eventQueue.push(new serverBLTNewEvent(this->bullets.back().getId(),
+                                            this->bullets.back().getWeapon().type,
+                                            this->bullets.back().getFrom(),
+                                            this->bullets.back().getTo()));
     }
     if (hunted->isMoving()) {
       unit->addMove(hunted->nextMovePosition());
