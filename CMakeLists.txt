@@ -255,8 +255,6 @@ set(SOURCE_FILES
         src/common/DataClientServerMessages/dataClientConnectedMessage.h
         src/common/DataClientServerMessages/dataServerClientAccepted.cpp
         src/common/DataClientServerMessages/dataServerClientAccepted.h
-        src/client/clientRunner.cpp
-        src/client/clientRunner.h
         src/common/Queue/Queue.h
 
         src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.h
