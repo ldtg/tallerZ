@@ -131,6 +131,7 @@ class Map {
             width,
             height);
   }
+  Position getFortPos(const PlayerID &id);
 };
 
 #endif //TALLERZ_MAP_H

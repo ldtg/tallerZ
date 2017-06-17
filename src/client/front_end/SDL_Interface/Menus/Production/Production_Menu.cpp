@@ -133,18 +133,28 @@ void Production_Menu::show_health_level(int health) {
  * destructor
  */
 Production_Menu::~Production_Menu() {
-  if (this->time != NULL) delete this->time;
-  if (this->status != NULL) delete this->status;
-  if (this->health != NULL) delete this->health;
-  if (this->unit != NULL) delete this->unit;
-  if (this->building_name != NULL) delete this->building_name;
-  if (this->build != NULL) delete this->build;
-  if (this->up != NULL) delete this->up;
-  if (this->down != NULL) delete this->down;
-  if (this->background != NULL) delete this->background;
+  if (this->time != NULL)
+    delete this->time;
+  if (this->status != NULL)
+    delete this->status;
+  if (this->health != NULL)
+    delete this->health;
+  if (this->unit != NULL)
+    delete this->unit;
+  if (this->building_name != NULL)
+    delete this->building_name;
+  if (this->build != NULL)
+    delete this->build;
+  if (this->up != NULL)
+    delete this->up;
+  if (this->down != NULL)
+    delete this->down;
+  if (this->background != NULL)
+    delete this->background;
 }
 
 void Production_Menu::add_to_panel(Panel &panel) {
+  this->update_status();
   panel.add(this);
   panel.add(build);
   panel.add(up);
@@ -161,6 +171,7 @@ std::string Production_Menu::get_building_type(const BuildType &buildType) {
     case (BuildType::FORT):return "FORT";
     case (BuildType::VEHICLEF):return "V. FACTORY";
     case (BuildType::ROBOTF):return "R. FACTORY";
+    default: return "FORT";
   }
 }
 
@@ -216,8 +227,7 @@ void Production_Menu::show_previous_buildable_unit() {
 
 void Production_Menu::show_next_buildable_unit() {
   bool found = false;
-  std::vector<UnitType>::const_iterator it;
-  it = buildState.fabricableUnits.begin();
+  auto it = buildState.fabricableUnits.begin();
   while (!found) {
     if (*it == showing_unit_type) {
       found = true;
@@ -241,5 +251,16 @@ void Production_Menu::update_unit_to_build() {
 }
 std::string Production_Menu::get_label_path(const UnitType &utype) {
   return (folder_path + get_unit_name(utype) + "_label.png");
+}
+void Production_Menu::update_status() {
+  buildState = model.getMap().getBuildState(buildID);
+  delete this->health;
+  delete this->time;
+  this->time = new Label(window,
+                         std::to_string(buildState.timeRemainingInSecs),
+                         this->time_rect,
+                         this->font);
+  this->health = new Label(window, std::to_string(buildState.health) + "%",
+                           this->health_rect, this->font);
 }
 

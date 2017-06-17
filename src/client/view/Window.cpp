@@ -3,7 +3,7 @@
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
 
 Window::Window() {
-  width = WINDOWWIDTH;
+  width = WINDOWWIDHT;
   height = WINDOWHEIGHT;
 
   //Las siguientes dos linas las pongo en SDL_START
@@ -64,7 +64,7 @@ SDL_Window *Window::getWindow() const {
 }
 
 int Window::getWidth() const {
-  return WINDOWWIDTH;
+  return WINDOWWIDHT;
 }
 
 int Window::getHeight() const {

@@ -16,6 +16,7 @@ class Event {
   void setModel(Model *model);
   void setView(View *view);
   virtual void process() = 0;
+  virtual ~Event() {};
 };
 
 #endif //TALLERZ_EVENT_H

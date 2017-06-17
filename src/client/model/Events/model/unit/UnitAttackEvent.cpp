@@ -15,7 +15,6 @@ void UnitAttackEvent::process() {
   Position pos = unitVista->getPos();
   std::string color = unitVista->getColor();
 
-  view->removeUnitVista(attacker);
 
   int rotation = attackerPos.getRoration(huntedPos);
   std::string rotation_s = std::to_string(rotation);
@@ -23,7 +22,7 @@ void UnitAttackEvent::process() {
   UnitView unitAttackerVista(attacker.getType(), color, pos, action, rotation_s);
 
   unitVista->setRotation(rotation);
-
+  view->removeUnitVista(attacker);
   view->addUnitVista(attacker, unitAttackerVista);
 */
 }

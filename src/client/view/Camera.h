@@ -8,13 +8,15 @@ struct Camera {
   int y;
   int w;
   int h;
+  int mapWidth;
+  int mapHeight;
   int dirX;
   int dirY;
   int vel;
   int gap;
-  Camera(int w, int h);
+  Camera(int w, int h, int mapWidth, int mapHeight, const Position &initial);
   void move(int x, int y);
-  bool inLimits(int x, int y, int mapWidht, int mapHeight);
+  bool inLimits(int x, int y);
 };
 
 #endif //TALLERZ_CAMERA_H

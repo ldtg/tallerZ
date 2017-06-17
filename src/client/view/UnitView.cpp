@@ -16,8 +16,7 @@ UnitView::~UnitView() {
 Position UnitView::getPos() const {
   if (!movements.empty()) {
     return movements.back().getPos();
-  }
-  else {
+  } else {
     return view->getPos();
   }
 }
@@ -25,8 +24,7 @@ Position UnitView::getPos() const {
 ViewPosition UnitView::getViewPos() const {
   if (!movements.empty()) {
     return movements.back();
-  }
-  else {
+  } else {
     return view->getViewPos();
   }
 }
@@ -78,6 +76,7 @@ void UnitView::update() {
     int newRotation = pos.getRoration(viewPosTo);
     int rotation = view->getRotation();
 
+<<<<<<< HEAD
     std::cout << pos.getX() << " " << pos.getY() << std::endl;
     std::cout << viewPosTo.getX() << " " << viewPosTo.getY() << std::endl;
     std::cout << " " << std::endl;
@@ -89,11 +88,27 @@ void UnitView::update() {
       walk(newRotation, posTo);
     }
     else {
+=======
+    if (rotation != newRotation) {
+      delete view;
+      std::string rotation_s = std::to_string(newRotation);
+      std::string action("walk");
+      view = VistasFactory::getUnitVista(type, color, action,
+                                         rotation_s, posTo);
+      view->setRotation(newRotation);
+      view->setPos(viewPosTo);
+    } else {
+>>>>>>> 133bb92ccc2f7825deefdc83f1972a14454dfed4
       view->setPos(viewPosTo);
     }
   }
 }
 */
-Sprite* UnitView::getView() {
+
+Sprite* UnitView::getView() const {
   return view;
+}
+
+std::string UnitView::getColor() const {
+  return color;
 }

@@ -16,9 +16,10 @@ class ObjectMapaVista {
   ObjectMapaVista();
 
  public:
+  virtual ~ObjectMapaVista() {};
+
   int getWidth() const;
   int getHeight() const;
-
   void setPos(ViewPosition pos);
   void setPos(Position pos);
   Position getPos() const;

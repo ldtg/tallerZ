@@ -67,7 +67,6 @@ class View {
   void addTerrainObjectVista(TerrainObjectID &id,
                              ObjectMapaVista *terrainObjectVista);
 
-  Sprite* getUnitVista(UnitID id);
   UnitView *getUnitView(UnitID id);
 //  void move(UnitID id, Position posTo);
   void removeUnitVista(const UnitID &id);

@@ -14,9 +14,10 @@ Side_Board::Side_Board(Window *window, View &view, const std::string &color) :
 
 Side_Board::~Side_Board() {
   this->clean_unit_images();
-  if (this->menu_button != NULL) delete this->menu_button;
-  if (this->unit_label_background != NULL) delete this->unit_label;
-  if (this->side_board_texture != NULL) delete this->side_board_texture;
+  if (this->menu_button != nullptr) delete this->menu_button;
+  if (this->unit_label_background != nullptr)
+    delete this->unit_label_background;
+  if (this->side_board_texture != nullptr) delete this->side_board_texture;
 }
 
 void Side_Board::scale(float scaleW, float scaleH) {}
@@ -52,6 +53,7 @@ std::string Side_Board::w_label_path(const std::string &name) {
 }
 
 void Side_Board::load_unit_images(UnitType unitType, UnitType secType) {
+  this->clean_unit_images();
   switch (unitType) {
     case (R_GRUNT): {
       this->weapon_texture = new Texture(weapon_path("grunt"), window);
@@ -155,20 +157,20 @@ void Side_Board::load_unit_images(UnitType unitType, UnitType secType) {
   this->weapon_label->renderize(window, &weapon_label_rect);
 }
 void Side_Board::clean_unit_images() {
-  if (face_texture != NULL) {
+  if (face_texture != nullptr) {
     delete face_texture;
-    face_texture = NULL;
+    face_texture = nullptr;
   }
-  if (weapon_texture != NULL) {
+  if (weapon_texture != nullptr) {
     delete weapon_texture;
-    weapon_texture = NULL;
+    weapon_texture = nullptr;
   }
-  if (unit_label != NULL) {
+  if (unit_label != nullptr) {
     delete unit_label;
-    unit_label = NULL;
+    unit_label = nullptr;
   }
-  if (weapon_label != NULL) {
+  if (weapon_label != nullptr) {
     delete weapon_label;
-    weapon_label = NULL;
+    weapon_label = nullptr;
   }
 }

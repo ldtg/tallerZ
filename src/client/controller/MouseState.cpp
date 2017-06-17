@@ -6,7 +6,7 @@ MouseState::MouseState() : Handler() {}
 void MouseState::handle(SDL_Event *e, EventHandler &eventHandler) {
   SDL_GetMouseState(&x, &y);
 
-  if (x < 10 || x > WINDOWWIDTH-10 || y < 10 || y > WINDOWHEIGHT-10) {
+  if (x < 10 || x > WINDOWWIDHT-10 || y < 10 || y > WINDOWHEIGHT-10) {
     eventHandler.add(new CameraMove(x, y));
   }
 }

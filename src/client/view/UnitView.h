@@ -24,7 +24,8 @@ class UnitView : public ObjectViewMove {
   void still();
   void fire(const Position &huntedPos);
 //  void update();
-  Sprite* getView();
+  Sprite* getView() const;
+  std::string getColor() const;
 };
 
 #endif //TALLERZ_ROBOTVIEW_H

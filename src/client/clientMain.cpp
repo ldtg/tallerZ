@@ -33,8 +33,11 @@ int main(int argc, char *argv[]) {
   clientEventReceiver eventReceiver(socket, eventQueue);
   eventReceiver.start();
   GameControllerProxy gcp(commandsQueue);
-
-  Camera camera(WINDOWWIDTH, WINDOWHEIGHT);
+  Camera camera(WINDOWWIDHT,
+                WINDOWHEIGHT,
+                map.getWidht(),
+                map.getHeight(),
+                map.getFortPos(accepted.id));
   EventHandler eventHandler;
 
   View view(map, eventHandler, camera, accepted.id.getColor());
@@ -59,6 +62,9 @@ int main(int argc, char *argv[]) {
       eventHandler.add(eventQueue.pop());
     }
     view.update();
+  }
+  while (!eventQueue.empty()) {
+    delete (eventQueue.pop());
   }
   commandsQueue.push(nullptr);
   commandSender.stop();
