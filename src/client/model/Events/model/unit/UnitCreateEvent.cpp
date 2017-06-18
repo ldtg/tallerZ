@@ -1,3 +1,4 @@
+#include <client/view/sounds/SoundsFactory.h>
 #include "UnitCreateEvent.h"
 
 UnitCreateEvent::UnitCreateEvent(UnitID id, UnitState state)
@@ -14,4 +15,8 @@ void UnitCreateEvent::process() {
 
   Map &map = model->getMap();
   map.addUnit(id, state);
+
+  SoundPlayer &soundPlayer = view->getSoundPlayer();
+  Sound *sound = SoundsFactory::getUnitCreateSound(id.getType());
+  soundPlayer.add(sound);
 }

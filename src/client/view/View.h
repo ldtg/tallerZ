@@ -17,6 +17,7 @@ class Model;
 #include "Camera.h"
 #include "UnitView.h"
 #include "BulletView.h"
+#include "client/view/sounds/SoundPlayer.h"
 #include <client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h>
 
 class View {
@@ -27,6 +28,7 @@ class View {
   Menu * menu = nullptr;
   Side_Board * side_board = nullptr;
   EventHandler &eventHandler;
+  SoundPlayer soundPlayer;
 
   bool _quit;
 
@@ -88,6 +90,8 @@ class View {
 
   void addExplosionVista(Sprite *objectVista);
   void addEffectVista(Sprite *objectVista);
+
+  SoundPlayer& getSoundPlayer();
 
   /*************************************************/
   Menu *get_present_menu();

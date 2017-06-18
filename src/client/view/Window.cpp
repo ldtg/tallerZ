@@ -1,14 +1,15 @@
 #include "Window.h"
 #include <SDL2/SDL_image.h>
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
+#include <SDL2/SDL_mixer.h>
 
 Window::Window() {
   width = WINDOWWIDHT;
   height = WINDOWHEIGHT;
 
-  //Las siguientes dos linas las pongo en SDL_START
-  SDL_Init(SDL_INIT_VIDEO);
+  SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
   IMG_Init(IMG_INIT_PNG);
+  Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
 
   window = SDL_CreateWindow("TALLERZ",
                             SDL_WINDOWPOS_CENTERED,
@@ -50,9 +51,9 @@ Window::~Window() {
   SDL_DestroyRenderer(window_render);
   SDL_DestroyWindow(window);
 
-  //Lo mimsmo, las siguientes lineas las pongo en el destructor del SDL_START
   IMG_Quit();
   SDL_Quit();
+  Mix_Quit();
 }
 
 SDL_Renderer* Window::getRender() const {

@@ -77,12 +77,8 @@ set(SOURCE_FILES
         src/client/model/Events/model/build/BuildDestroyedEvent.h
         src/client/model/Events/model/unit/UnitCreateEvent.cpp
         src/client/model/Events/model/unit/UnitCreateEvent.h
-        src/client/model/Events/model/unit/UnitMoveStepEvent.cpp
-        src/client/model/Events/model/unit/UnitMoveStepEvent.h
         src/client/model/Events/model/bullet/BulletMoveEvent.cpp
         src/client/model/Events/model/bullet/BulletMoveEvent.h
-        src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp
-        src/client/model/Events/model/bullet/BulletMoveStepEvent.h
         src/client/model/Events/model/unit/UnitStillEvent.cpp
         src/client/model/Events/model/unit/UnitStillEvent.h
         src/common/IDs/CapturableID.cpp
@@ -173,8 +169,6 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Buttons/Button.h
         src/client/front_end/SDL_Interface/Buttons/Quit_Button.cpp
         src/client/front_end/SDL_Interface/Buttons/Quit_Button.h
-        z_sounds/Sound_event.h
-        z_sounds/Sound_event.cpp
 
         src/Exceptions/model_exceptions/BuildingNotFoundException.cpp
         src/Exceptions/model_exceptions/BuildingNotFoundException.h
@@ -272,11 +266,18 @@ set(SOURCE_FILES
         src/client/view/ObjectViewMove.h
         src/client/view/BulletView.cpp
         src/client/view/BulletView.h
-
+        src/client/view/sounds/Sound.cpp
+        src/client/view/sounds/Sound.h
+        src/client/view/sounds/SoundPlayer.cpp
+        src/client/view/sounds/SoundPlayer.h
+        src/client/view/sounds/SoundsFactory.cpp
+        src/client/view/sounds/SoundsFactory.h
+        src/common/Thread/Lock.h
         src/client/front_end/SDL_Interface/Menus/Result/Defeat.cpp
         src/client/front_end/SDL_Interface/Menus/Result/Defeat.h
         src/client/front_end/SDL_Interface/Menus/Result/Buttons/Ok_Button.cpp
         src/client/front_end/SDL_Interface/Menus/Result/Buttons/Ok_Button.h )
+
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/client)

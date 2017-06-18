@@ -1,7 +1,9 @@
 #include "clientCommandSender.h"
+
 clientCommandSender::clientCommandSender(Socket &socket,
                                          Queue<clientCommand *> &queue)
     : socket(socket), queue(queue), open(true) {}
+
 void clientCommandSender::run() {
   try {
     while (open) {
@@ -20,12 +22,15 @@ void clientCommandSender::run() {
     this->open = false;
   }
 }
+
 void clientCommandSender::stop() {
   socket.shutdownConnection(ShutdownMode::WRITE);
   open = false;
 }
+
 bool clientCommandSender::isOpen() const {
   return open;
 }
+
 clientCommandSender::~clientCommandSender() {
 }

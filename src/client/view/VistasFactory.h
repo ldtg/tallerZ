@@ -19,7 +19,6 @@ class VistasFactory {
                               std::string &action, std::string &rotation,
                               const Position &pos);
   static Image *getBuildVista(BuildType type, std::string &state, Position &pos);
-//  static ObjectMapaVista *getCapturableVista(CapturableType type, Position &pos);
   static ObjectMapaVista *getTerrainObjectVista(TerrainObjectType type,
                                                 std::string &state, Position &pos);
   static Sprite *getFlagsVista(std::string &color, Position &pos);

@@ -1,3 +1,4 @@
+#include <client/view/sounds/SoundsFactory.h>
 #include "CaptureEvent.h"
 
 CaptureEvent::CaptureEvent(const UnitID &capturer,
@@ -48,11 +49,14 @@ void CaptureEvent::process() {
     view->addCapturableVista(captured, flag);
   }
 
-
   for (auto par : capturedUnits) {
     model->getMap().updateUnit(par.first, par.second);
   }
   for (auto par : capturedBuilds) {
     model->getMap().updateBuild(par.first, par.second);
   }
+
+  SoundPlayer &soundPlayer = view->getSoundPlayer();
+  Sound *sound = SoundsFactory::getCapturedSound(captured.getType());
+  soundPlayer.add(sound);
 }

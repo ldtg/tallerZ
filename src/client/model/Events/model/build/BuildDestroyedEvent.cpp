@@ -1,4 +1,5 @@
 #include <client/view/Sprite.h>
+#include <client/view/sounds/SoundsFactory.h>
 #include "BuildDestroyedEvent.h"
 #define BUILDWIDHT 100
 #define BUILDHEIGHT 100
@@ -12,7 +13,6 @@ void BuildDestroyedEvent::process() {
   std::string state("destroyed");
   buildVista = VistasFactory::getBuildVista(id.getType(), state, pos);
 
-//  buildVista->setPos(pos);
   view->addBuildVista(id, buildVista);
 
   Sprite *deathBuildVista = VistasFactory::getEffectVista(TANK_MISSILE);
@@ -38,4 +38,13 @@ void BuildDestroyedEvent::process() {
   Sprite *deathBuildVista6 = VistasFactory::getEffectVista(FIRE_SMOKE);
   deathBuildVista6->setPos(pos.add(BUILDWIDHT / 4, 3 * BUILDHEIGHT / 4 - 5));
   view->addEffectVista(deathBuildVista6);
+
+  Map &map = model->getMap();
+  BuildState buildState = map.getBuildState(id);
+  buildState.health=0;
+  map.updateBuild(id, buildState);
+
+  SoundPlayer &soundPlayer = view->getSoundPlayer();
+  Sound *sound = SoundsFactory::getBuildDestroyedSound();
+  soundPlayer.add(sound);
 }

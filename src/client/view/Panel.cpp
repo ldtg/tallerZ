@@ -11,7 +11,7 @@ Panel::~Panel() {
 }
 
 void Panel::add(ObjectMapaVista *objectMapaVista) {
-  if (objectMapaVista==NULL)
+  if (objectMapaVista== nullptr)
     throw std::invalid_argument("Panel::add() objectMapaVista es NULL");
 
   objectMapaVista->set_texture(window_render);

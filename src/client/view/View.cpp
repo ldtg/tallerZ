@@ -1,8 +1,6 @@
 #include "View.h"
 #include "ViewPosition.h"
 #include <random>
-#include <client/model/Events/model/unit/UnitMoveStepEvent.h>
-#include <client/model/Events/model/bullet/BulletMoveStepEvent.h>
 #include <client/model/Model.h>
 #include <thread>
 #include <client/front_end/SDL_Interface/Menus/Result/Victory.h>
@@ -17,6 +15,7 @@ View::View(const Map &map,
       eventHandler(eventHandler),
       camera(camera) {
   _quit = false;
+  soundPlayer.start();
 
 //  mapWidth = map.getWidht()*TILEWIDHT;
 //  mapHeight = map.getHeight()*TILEHEIGHT;
@@ -57,6 +56,9 @@ View::~View() {
   }
   delete this->side_board;
   if (menu != nullptr) { delete this->menu; }
+
+  soundPlayer.stop();
+  soundPlayer.join();
 }
 
 void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {
@@ -388,19 +390,22 @@ void View::removeCapturableVista(CapturableID &id) {
 }
 
 void View::addExplosionVista(Sprite *objectVista) {
-  if (objectVista == NULL)
-    throw std::invalid_argument(
-        "View::addExplosionVista() objectMapaVista es NULL");
+  if (objectVista == nullptr)
+    return;
 
   explosionsVista.push_back(objectVista);
 }
 
 void View::addEffectVista(Sprite *objectVista) {
-  if (objectVista == NULL)
+  if (objectVista == nullptr)
     throw std::invalid_argument(
         "View::addExplosionVista() objectMapaVista es NULL");
 
   effectsVista.push_back(objectVista);
+}
+
+SoundPlayer& View::getSoundPlayer() {
+  return soundPlayer;
 }
 
 void View::load_production_menu(const BuildID &factoryID,
