@@ -7,6 +7,7 @@ Bullet::Bullet(const Weapon &weapon, const Position &current,
     currentPosition = target->getAttackPosition(currentPosition);
 }
 bool Bullet::didHit() const {
+  if (weapon.speed == 0) return true;
   return currentPosition == target->getAttackPosition(currentPosition);
 }
 void Bullet::move() {

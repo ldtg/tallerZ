@@ -343,13 +343,12 @@ void realGameController::autoAttack(Unit *current,
 }
 
 void realGameController::bulletsTick() {
-  for (std::vector<Bullet>::iterator iterator = bullets.begin();
+  for (auto iterator = bullets.begin();
        iterator != bullets.end();) {
     Bullet &current = *iterator;
     current.move();
     if (current.didHit()) {
       current.doHit();
-
       eventQueue.push(new serverBLTHitEvent(current.getId(), current.getTo(),
                                             current.getWeapon().type));
       map.removeBullet(current.getId());
@@ -444,7 +443,7 @@ void realGameController::objectsTick() {
         t_it = terrainObjects.erase(t_it);
       }
     }
-      ++t_it;
+    ++t_it;
   }
 }
 

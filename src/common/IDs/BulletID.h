@@ -3,7 +3,7 @@
 
 class BulletID {
   static unsigned long nextid;
- private:
+ public:
   unsigned long id;
  public:
   BulletID();

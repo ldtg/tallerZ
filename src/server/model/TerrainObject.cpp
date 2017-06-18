@@ -1,6 +1,6 @@
 #include "TerrainObject.h"
 Position TerrainObject::getAttackPosition(const Position &attacker) const {
-  return centerPosition.getAttackPosition(attacker, size+1);
+  return centerPosition.getAttackPosition(attacker, size + 1);
 }
 bool TerrainObject::isAlive() const {
   return health > 0;
@@ -13,6 +13,7 @@ Position TerrainObject::nextMovePosition() const {
 }
 void TerrainObject::receiveAttack(const Weapon &weapon) {
 //  if (weapon.isExplosive) {
+  if (isAlive())
     damagesToReceive.push_back(weapon.damage);
 //  }
 }
@@ -27,7 +28,7 @@ void TerrainObject::receiveDamages() {
       this->health = 0;
       damagesToReceive.clear();
       passable = !(this->id.getType() == TerrainObjectType::_ASPHALTEDBRIDGE
-      || this->id.getType() == TerrainObjectType::_WOODENBRIDGE);
+          || this->id.getType() == TerrainObjectType::_WOODENBRIDGE);
       return;
     }
   }
