@@ -433,17 +433,15 @@ void realGameController::addUnits(std::vector<Unit *> vector) {
 
 void realGameController::objectsTick() {
   for (auto t_it = terrainObjects.begin();
-       t_it != terrainObjects.end();) {
+       t_it != terrainObjects.end();++t_it;) {
     TerrainObject &current = t_it->second;
     if (current.hasDamagesToReceive()) {
       current.receiveDamages();
       map.updateTerrainObject(current.getID(), current.getState());
       if (!current.isAlive()) {
         eventQueue.push(new serverTODestroyedEvent(current.getID()));
-        t_it = terrainObjects.erase(t_it);
       }
     }
-    ++t_it;
   }
 }
 
