@@ -90,31 +90,17 @@ class View {
   void addEffectVista(Sprite *objectVista);
 
   /*************************************************/
-  Menu *get_present_menu() {
-    return this->menu;
-  }
-
+  Menu *get_present_menu();
   void load_production_menu(const BuildID& factoryID,
                             const BuildState& buildState,
                             Model& model, int x, int y);
-
   void load_quit_menu();
-
-  Side_Board * get_side_board(){
-    return this->side_board;
-  }
-
-  void free_menu(){
-    delete menu;
-    menu = nullptr;
-  }
-
-  void show_unit_side_details(UnitType unitType, UnitType secondType) {
-    this->side_board->load_unit_images(unitType, secondType);
-  }
-  void clear_unit_side_details(){
-    this->side_board->clean_unit_images();
-  }
+  Side_Board * get_side_board();
+  void free_menu();
+  void show_unit_side_details(UnitType unitType, UnitType secondType);
+  void clear_unit_side_details();
+  void show_victory();
+  void show_defeat();
   /*************************************************/
 
   void update();

@@ -5,6 +5,8 @@
 #include <client/model/Events/model/bullet/BulletMoveStepEvent.h>
 #include <client/model/Model.h>
 #include <thread>
+#include <client/front_end/SDL_Interface/Menus/Result/Victory.h>
+#include <client/front_end/SDL_Interface/Menus/Result/Defeat.h>
 
 View::View(const Map &map,
            EventHandler &eventHandler,
@@ -408,4 +410,32 @@ void View::load_production_menu(const BuildID &factoryID,
 }
 void View::load_quit_menu() {
   this->menu = new Quit_Menu(window, *this);
+}
+Menu *View::get_present_menu() {
+  return this->menu;
+}
+void View::show_unit_side_details(UnitType unitType, UnitType secondType) {
+  this->side_board->load_unit_images(unitType, secondType);
+}
+void View::clear_unit_side_details() {
+  this->side_board->clean_unit_images();
+}
+void View::free_menu() {
+  delete menu;
+  menu = nullptr;
+}
+Side_Board *View::get_side_board() {
+  return this->side_board;
+}
+void View::show_victory() {
+  if (this->menu != nullptr){
+    free_menu();
+  }
+  this->menu = new Victory(window, *this);
+}
+void View::show_defeat() {
+  if (this->menu != nullptr){
+    free_menu();
+  }
+  this->menu = new Defeat(window, *this);
 }

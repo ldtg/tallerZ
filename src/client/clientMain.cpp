@@ -21,8 +21,6 @@ int main(int argc, char *argv[]) {
   Socket socket;
   socket.connectToServer(argv[1], argv[2]);
 
-  Window window;
-
   sendPlayerConnected(socket, std::stoi(argv[3]), argv[4]);
   dataServerClientAccepted accepted = getDataClientAccepted(socket);
 
