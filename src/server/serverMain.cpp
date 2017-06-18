@@ -17,7 +17,7 @@ std::vector<serverCommandReceiver *> getCommandReceivers(const std::vector<
 void sendMapToClients(const std::vector<Socket *> &clients, const Map &map);
 
 bool allPlayersAreConnected(std::vector<serverCommandReceiver *> vector);
-int main(int argc, char *argv[]) {
+int smain(int argc, char *argv[]) {
   //Espera a que se conecten todos los jugadores
   std::vector<Socket *> clients = getClients(std::stoi(argv[2]), argv[1]);
 
