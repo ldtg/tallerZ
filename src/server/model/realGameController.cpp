@@ -433,7 +433,7 @@ void realGameController::addUnits(std::vector<Unit *> vector) {
 
 void realGameController::objectsTick() {
   for (auto t_it = terrainObjects.begin();
-       t_it != terrainObjects.end();++t_it;) {
+       t_it != terrainObjects.end();++t_it) {
     TerrainObject &current = t_it->second;
     if (current.hasDamagesToReceive()) {
       current.receiveDamages();
