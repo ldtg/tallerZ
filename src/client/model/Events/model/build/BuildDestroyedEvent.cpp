@@ -39,6 +39,11 @@ void BuildDestroyedEvent::process() {
   deathBuildVista6->setPos(pos.add(BUILDWIDHT / 4, 3 * BUILDHEIGHT / 4 - 5));
   view->addEffectVista(deathBuildVista6);
 
+  Map &map = model->getMap();
+  BuildState buildState = map.getBuildState(id);
+  buildState.health=0;
+  map.updateBuild(id, buildState);
+
   SoundPlayer &soundPlayer = view->getSoundPlayer();
   Sound *sound = SoundsFactory::getBuildDestroyedSound();
   soundPlayer.add(sound);

@@ -313,9 +313,16 @@ bool Map::diagPassable(const Position &center, const Position &diag) const {
   }
   return passable;
 }
+
+
 BuildState Map::getBuildState(const BuildID &buildID) const {
   return builds.at(buildID);
 }
+
+BulletState Map::getBulletState(const BulletID &bulletID) const {
+  return bullets.at(bulletID);
+}
+
 void Map::removeTerrainObject(const TerrainObjectID &id) {
   terrainObject.erase(id);
 }

@@ -16,6 +16,8 @@ void UnitDeathEvent::process() {
   view->removeUnitVista(id);
   view->addExplosionVista(deathVista);
 
+  model->getMap().removeUnit(id);
+
   SoundPlayer &soundPlayer = view->getSoundPlayer();
   Sound *sound = SoundsFactory::getTargetDestroyedSound();
   soundPlayer.add(sound);

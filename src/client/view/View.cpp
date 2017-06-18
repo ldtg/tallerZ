@@ -1,8 +1,6 @@
 #include "View.h"
 #include "ViewPosition.h"
 #include <random>
-#include <client/model/Events/model/unit/UnitMoveStepEvent.h>
-#include <client/model/Events/model/bullet/BulletMoveStepEvent.h>
 #include <client/model/Model.h>
 #include <thread>
 

@@ -4,9 +4,6 @@ BulletMoveEvent::BulletMoveEvent(const BulletID &id, const Position &to)
     : id(id), posTo(to) {}
 
 void BulletMoveEvent::process() {
-//  std::cout << "MOVE MOVE MOVE MOVE" << std::endl;
-//  std::cout << id.getID() << std::endl;
-
   BulletView *bulletView = view->getBulletVista(id);
   Position bulletPos = bulletView->getPos();
 
@@ -20,4 +17,9 @@ void BulletMoveEvent::process() {
     bulletViewPos.add(step);
     bulletView->addMove(bulletViewPos);
   }
+
+  Map &map = model->getMap();
+  BulletState state = map.getBulletState(id);
+  state.position = posTo;
+  map.updateBullet(id, state);
 }

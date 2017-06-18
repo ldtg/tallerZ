@@ -77,12 +77,8 @@ set(SOURCE_FILES
         src/client/model/Events/model/build/BuildDestroyedEvent.h
         src/client/model/Events/model/unit/UnitCreateEvent.cpp
         src/client/model/Events/model/unit/UnitCreateEvent.h
-        src/client/model/Events/model/unit/UnitMoveStepEvent.cpp
-        src/client/model/Events/model/unit/UnitMoveStepEvent.h
         src/client/model/Events/model/bullet/BulletMoveEvent.cpp
         src/client/model/Events/model/bullet/BulletMoveEvent.h
-        src/client/model/Events/model/bullet/BulletMoveStepEvent.cpp
-        src/client/model/Events/model/bullet/BulletMoveStepEvent.h
         src/client/model/Events/model/unit/UnitStillEvent.cpp
         src/client/model/Events/model/unit/UnitStillEvent.h
         src/common/IDs/CapturableID.cpp

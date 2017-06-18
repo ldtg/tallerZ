@@ -13,6 +13,8 @@ void BulletHitEvent::process() {
   Sprite *bulletExplosion = VistasFactory::getBulletHitVista(weapon, pos);
   view->addExplosionVista(bulletExplosion);
 
+  model->getMap().removeBullet(id);
+
   SoundPlayer &soundPlayer = view->getSoundPlayer();
   Sound *sound = SoundsFactory::getBulletHitSound(weapon);
   soundPlayer.add(sound);
