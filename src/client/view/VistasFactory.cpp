@@ -43,7 +43,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
 
   std::string path = "../src/view/images/units/";
 
-  if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO) {
+  if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO || type == R_LASER) {
     type_s = "robots";
     if (action == "walk") {
       num_frames = 4;
@@ -75,8 +75,14 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       else if (type == R_PYRO) {
         robot = "pyro";
         num_frames = 3;
-        speed = 3*num_frames;
+        speed = 2*num_frames;
         num_frame_return_cycle = 1;
+      }
+      else if (type == R_LASER) {
+        robot = "laser";
+        num_frames = 3;
+        speed = 2*num_frames;
+        num_frame_return_cycle = 0;
       }
       path = path + type_s + "/" + action + "/" + robot + "/"
           + action + "_" + color + "_r" + rotation + "_n";
@@ -147,7 +153,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
     else if (action == "die") {
       num_frames = 13;
       speed = 1 * num_frames;
-//      despX = 0, despY = 10;
+      despX = 8, despY = 18;
       path = path + type_s + "/" + action + "/" + action + "_n";
     } else {//TODO: AGREGAR CREATEEE
       num_frames = 2;
@@ -188,29 +194,6 @@ Image* VistasFactory::getBuildVista(BuildType type,
   buildVista->scale(scaleW, scaleH);
   return buildVista;
 }
-
-/*
-ObjectMapaVista* VistasFactory::getCapturableVista(CapturableType type, Position &pos) {
-  ObjectMapaVista *capturableVista = nullptr;
-  long despX=0, despY=0;
-
-  switch (type) {
-//    case UNIT: {
-//      despX = 25, despY = 25;
-//      capturableVista = new Image("../src/view/images/units/vehicles/jeep/capturable.png");
-//      break;
-//    }
-  case FLAG: {
-      std::string color("null");
-      despX = 15, despY = 15;
-      capturableVista = getFlagsVista(color, pos);
-      break;
-    } default: return nullptr;
-  }
-  capturableVista->setPos(pos.sub(despX, despY));
-  return capturableVista;
-}
-*/
 
 Sprite* VistasFactory::getFlagsVista(std::string &color, Position &pos) {
   int num_frames=4, speed=6, num_frame_return_cycle=0;
@@ -266,6 +249,11 @@ Sprite* VistasFactory::getBulletVista(WeaponType type,
       path = path + "bullet_r" + rotation + "_n";
       break;
     }
+    case LASER: {
+      num_frames = 2, speed = 1, num_frame_return_cycle = 0;
+      path = path + "laser_r" + rotation + "_n";
+      break;
+    }
     default: return nullptr;
   }
 
@@ -289,6 +277,11 @@ Sprite* VistasFactory::getBulletHitVista(WeaponType type, Position &pos) {
       num_frames = 4, speed = 4, num_frame_return_cycle = 0;
       despX = 0; despY = 0;
       path = path + "fire/fire2_n";
+      break;
+    case LASER:
+      num_frames = 3, speed = 3, num_frame_return_cycle = 0;
+      despX = 0; despY = 0;
+      path = path + "explosion/laser_n";
       break;
     default: return nullptr;
   }
