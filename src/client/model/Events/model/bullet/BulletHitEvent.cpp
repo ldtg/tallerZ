@@ -1,4 +1,6 @@
 #include <client/view/Sprite.h>
+#include <client/view/sounds/Sound.h>
+#include <client/view/sounds/SoundsFactory.h>
 #include "BulletHitEvent.h"
 
 BulletHitEvent::BulletHitEvent(const BulletID &id,
@@ -7,12 +9,11 @@ BulletHitEvent::BulletHitEvent(const BulletID &id,
     : id(id), pos(pos), weapon(type) {}
 
 void BulletHitEvent::process() {
-//  std::cout << "HIT HIT HIT HIT" << std::endl;
-//  std::cout << id.getID() << std::endl;
-
   view->removeBulletVista(id);
-  if (weapon != BULLET) {
-    Sprite *bulletExplosion = VistasFactory::getBulletHitVista(weapon, pos);
-    view->addExplosionVista(bulletExplosion);
-  }
+  Sprite *bulletExplosion = VistasFactory::getBulletHitVista(weapon, pos);
+  view->addExplosionVista(bulletExplosion);
+
+  SoundPlayer &soundPlayer = view->getSoundPlayer();
+  Sound *sound = SoundsFactory::getBulletHitSound(weapon);
+  soundPlayer.add(sound);
 }

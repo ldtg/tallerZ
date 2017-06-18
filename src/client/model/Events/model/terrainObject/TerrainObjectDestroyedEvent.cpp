@@ -1,11 +1,10 @@
+#include <client/view/sounds/SoundsFactory.h>
 #include "TerrainObjectDestroyedEvent.h"
 
 TerrainObjectDestroyedEvent::TerrainObjectDestroyedEvent(const TerrainObjectID &id)
     : id(id) {}
 
 void TerrainObjectDestroyedEvent::process() {
-  std::cout << "DESTROYED: " << id.getID() << std::endl;
-
   ObjectMapaVista *terrainObjVista = view->getTerrainObjectVista(id);
   Position pos = terrainObjVista->getPos();
 
@@ -27,4 +26,8 @@ void TerrainObjectDestroyedEvent::process() {
   }
 
   model->getMap().removeTerrainObject(id);
+
+  SoundPlayer &soundPlayer = view->getSoundPlayer();
+  Sound *sound = SoundsFactory::getTargetDestroyedSound();
+  soundPlayer.add(sound);
 }

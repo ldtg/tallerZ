@@ -1,3 +1,4 @@
+#include <client/view/sounds/SoundsFactory.h>
 #include "UnitDeathEvent.h"
 
 UnitDeathEvent::UnitDeathEvent(UnitID id) : id(id) {}
@@ -14,4 +15,8 @@ void UnitDeathEvent::process() {
                                                        action, rotation_s, pos);
   view->removeUnitVista(id);
   view->addExplosionVista(deathVista);
+
+  SoundPlayer &soundPlayer = view->getSoundPlayer();
+  Sound *sound = SoundsFactory::getTargetDestroyedSound();
+  soundPlayer.add(sound);
 }
