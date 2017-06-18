@@ -65,7 +65,7 @@ struct Data {
     playerInitialUnits = 0;
     defaultDriver = R_GRUNT;
     //para aumentar el rango de las unidades
-    rangeMultipliquer = 10;
+    rangeMultipliquer = 20;
 
     bullet.type = WeaponType::BULLET;
     bullet.damage = 2;
@@ -96,8 +96,7 @@ struct Data {
     r_tough.weapon = rocket;
     r_tough.secsUntilFire = 0.5;
     r_tough.health = 300;
-//    r_tough.range = 5;
-    r_tough.range = 10;
+    r_tough.range = 5;
     r_tough.speed = 4;
     r_tough.factoryRate = 2;
 //    r_tough.factoryBaseTimeInSec = 42;//742
@@ -175,8 +174,8 @@ struct Data {
     woodenBridgeObject.size = 50;
     iceRockObject.type = TerrainObjectType::ICEROCK;
     iceRockObject.passable = false;
-    iceRockObject.health = 1000;
-//    iceRockObject.health = 20;
+//    iceRockObject.health = 1000;
+    iceRockObject.health = 300;
     iceRockObject.size = 50;
   }
   UnitData getData(UnitType type) {

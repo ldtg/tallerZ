@@ -248,8 +248,6 @@ void realGameController::hunt(Unit *unit,
     if (unit->timeToAttack()) {
       this->bullets.push_back(unit->createBullet());
 
-//      std::cout << this->bullets.front().getId().getID() << std::endl;
-
       eventQueue.push(new serverBLTNewEvent(this->bullets.back().getId(),
                                             this->bullets.back().getWeapon().type,
                                             this->bullets.back().getFrom(),
@@ -443,7 +441,7 @@ void realGameController::objectsTick() {
       map.updateTerrainObject(current.getID(), current.getState());
       if (!current.isAlive()) {
         eventQueue.push(new serverTODestroyedEvent(current.getID()));
-        //t_it = terrainObjects.erase(t_it);
+        t_it = terrainObjects.erase(t_it);
       }
     }
       ++t_it;
