@@ -112,11 +112,15 @@ class Map {
 
   UnitState getUnitState(const UnitID &unitID) const;
   BuildState getBuildState(const BuildID &buildID) const;
+  BulletState getBulletState(const BulletID &bulletID) const;
+
   Position getNeighborFreePos(const Position &tileCenterPos);
+
   //Para crear el mapa
   void setUnits(const std::map<UnitID, UnitState> &units);
   int getWidht() const;
   int getHeight() const;
+
   template<class Archive>
   void serialize(Archive &archive) {
     archive(map,

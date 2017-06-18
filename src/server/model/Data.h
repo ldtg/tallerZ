@@ -65,7 +65,7 @@ struct Data {
     playerInitialUnits = 0;
     defaultDriver = R_GRUNT;
     //para aumentar el rango de las unidades
-    rangeMultipliquer = 10;
+    rangeMultipliquer = 20;
 
     bullet.type = WeaponType::BULLET;
     bullet.damage = 2;
@@ -75,12 +75,17 @@ struct Data {
     rocket.type = WeaponType::ROCKET;
     rocket.damage = 25;
     rocket.isExplosive = true;
-    rocket.speed = 13; // 12 es la veloc max del vehiculo mas rapido creo
+    rocket.speed = 10; // 12 es la veloc max del vehiculo mas rapido creo
 
     flamethrower.type = WeaponType::FIRE;
     flamethrower.damage = 10;
     flamethrower.isExplosive = true;
-    flamethrower.speed = 12;
+    flamethrower.speed = 10;
+
+    laser.type = WeaponType ::LASER;
+    laser.damage = 10;
+    laser.isExplosive = false;
+    laser.speed = 8;
 
     r_grunt.type = UnitType::R_GRUNT;
     r_grunt.weapon = bullet;
@@ -96,8 +101,7 @@ struct Data {
     r_tough.weapon = rocket;
     r_tough.secsUntilFire = 0.5;
     r_tough.health = 300;
-//    r_tough.range = 5;
-    r_tough.range = 10;
+    r_tough.range = 5;
     r_tough.speed = 4;
     r_tough.factoryRate = 2;
 //    r_tough.factoryBaseTimeInSec = 42;//742
@@ -110,9 +114,19 @@ struct Data {
     r_pyro.health = 100;
     r_pyro.range = 6;
     r_pyro.speed = 4;
-    r_pyro.factoryRate = 4;
-    r_pyro.factoryBaseTimeInSec = 10;
-    r_pyro.factoryMinimunTechLevel = 1;
+    r_pyro.factoryRate = 5;
+    r_pyro.factoryBaseTimeInSec = 20;
+    r_pyro.factoryMinimunTechLevel = 5;
+
+    r_laser.type = UnitType::R_LASER;
+    r_laser.weapon = laser;
+    r_laser.secsUntilFire = 0.5;
+    r_laser.health = 100;
+    r_laser.range = 7;
+    r_laser.speed = 4;
+    r_laser.factoryRate = 4;
+    r_laser.factoryBaseTimeInSec = 10;
+    r_laser.factoryMinimunTechLevel = 1;
 
     v_jeep.type = UnitType::V_JEEP;
     v_jeep.weapon = bullet;
@@ -175,8 +189,8 @@ struct Data {
     woodenBridgeObject.size = 50;
     iceRockObject.type = TerrainObjectType::ICEROCK;
     iceRockObject.passable = false;
-    iceRockObject.health = 1000;
-//    iceRockObject.health = 20;
+//    iceRockObject.health = 1000;
+    iceRockObject.health = 300;
     iceRockObject.size = 50;
   }
   UnitData getData(UnitType type) {

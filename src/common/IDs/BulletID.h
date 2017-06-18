@@ -8,7 +8,6 @@ class BulletID {
  public:
   BulletID();
   bool operator<(const BulletID &other) const;
-  unsigned long getID() {return id;}
 
   template<class Archive>
   void serialize(Archive &archive) {
