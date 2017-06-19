@@ -214,13 +214,6 @@ void View::draw() {
 //    panel.add(build.second);
   }
 
-  for (auto &unit : unitsVista) {
-    unit.second->getView()->set_texture(window_render);
-
-    unit.second->draw(window_render, camera);
-//    panel.add(unit.second->getView());
-  }
-
   for (auto const &capturable : capturablesVista) {
     capturable.second->set_texture(window_render);
 
@@ -233,6 +226,13 @@ void View::draw() {
 
     bullet.second->draw(window_render, camera);
 //    panel.add(bullet.second->getView());
+  }
+
+  for (auto &unit : unitsVista) {
+    unit.second->getView()->set_texture(window_render);
+
+    unit.second->draw(window_render, camera);
+//    panel.add(unit.second->getView());
   }
 
   for (Sprite *effect : effectsVista) {

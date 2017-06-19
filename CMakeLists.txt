@@ -287,12 +287,14 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Menus/Result/Defeat.cpp
         src/client/front_end/SDL_Interface/Menus/Result/Defeat.h
         src/client/front_end/SDL_Interface/Menus/Result/Buttons/Ok_Button.cpp
+
         src/client/front_end/SDL_Interface/Menus/Result/Buttons/Ok_Button.h
         src/client/lobby/clientLobby.h
         src/client/lobby/clientLobby.cpp
         src/Exceptions/lobby_exceptions/Close_Exception.h
         src/Exceptions/lobby_exceptions/Close_Exception.cpp
-        )
+        src/client/front_end/SDL_Interface/Menus/Result/Buttons/Ok_Button.h src/common/DataEvents/Unit/dataUnitStillEvent.cpp src/common/DataEvents/Unit/dataUnitStillEvent.h)
+
 
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)

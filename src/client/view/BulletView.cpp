@@ -2,9 +2,10 @@
 #include "VistasFactory.h"
 
 BulletView::BulletView(WeaponType type, std::string &rotation, Position pos)
-    : type(type) {
-  view = VistasFactory::getBulletVista(type, rotation, pos);
-}
+    : ObjectViewMove(VistasFactory::getBulletVista(type, rotation, pos)),
+      type(type) {}
+
+void BulletView::still() {}
 
 void BulletView::walk(int rotation, const Position &posTo) {
   std::string rotation_s = std::to_string(rotation);
