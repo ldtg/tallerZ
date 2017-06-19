@@ -102,13 +102,8 @@ class Game_Loader {
   std::map<PlayerID, Player *> get_players() const;
   std::map<TeamID, Team> get_teams() const;
 
-  Map run() {
-    this->load_file();
-    this->load_configuration();
-    this->build_map();
-    return Map(map, buildmap, capturables, terrainObjects, units,
-               configuration.map_width, configuration.map_length);
-  }
+  Map run();
+
  private:
   /**
    * load_file: convierte el archivo .json en una variable de tipo json.

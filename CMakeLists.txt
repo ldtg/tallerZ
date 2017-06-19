@@ -216,7 +216,8 @@ set(SOURCE_FILES
         src/common/DataClientServerMessages/dataClientConnectedMessage.h
         src/common/DataClientServerMessages/dataServerClientAccepted.cpp
         src/common/DataClientServerMessages/dataServerClientAccepted.h
-        src/common/Queue/Queue.h src/server/model/Events/Build/serverBUpdateTimeEvent.cpp src/server/model/Events/Build/serverBUpdateTimeEvent.h)
+        src/common/Queue/Queue.h src/server/model/Events/Build/serverBUpdateTimeEvent.cpp src/server/model/Events/Build/serverBUpdateTimeEvent.h
+        src/main.cpp src/tests/Data_to_json.cpp src/tests/Data_to_json.h src/tests/data_to_json_tests.cpp src/tests/Json_to_Data.cpp src/tests/Json_to_Data.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/server)
@@ -245,6 +246,38 @@ PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf>=2.0.0)
 INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS} ${SLD2MIXER_INCLUDE_DIRS})
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/json/src)
+
+# Download and unpack googletest at configure time
+configure_file (CMakeLists.txt.in
+        googletest-download/CMakeLists.txt)
+execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download)
+execute_process(COMMAND ${CMAKE_COMMAND} --build .
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download)
+
+# Prevent GoogleTest from overriding our compiler/linker options
+# when building with Visual Studio
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+# Add googletest directly to our build. This adds
+# the following targets: gtest, gtest_main, gmock
+# and gmock_main
+add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
+        ${CMAKE_BINARY_DIR}/googletest-build)
+
+# The gtest/gmock targets carry header search path
+# dependencies automatically when using CMake 2.8.11 or
+# later. Otherwise we have to add them here ourselves.
+if (CMAKE_VERSION VERSION_LESS 2.8.11)
+    include_directories("${gtest_SOURCE_DIR}/include"
+            "${gmock_SOURCE_DIR}/include")
+endif ()
+
+# Now simply link your own targets against gtest, gmock,
+# etc. as appropriate
+include_directories(cmake-build-debug/googletest-src/googlemock/include)
+include_directories(cmake-build-debug/googletest-src/googletest/include)
+target_link_libraries(${PROJECT_NAME} gtest gtest_main)
 
 target_link_libraries(${PROJECT_NAME})
 

@@ -304,4 +304,11 @@ std::map<PlayerID, Player *> Game_Loader::get_players() const{
 std::map<TeamID, Team> Game_Loader::get_teams() const{
   return this->teams;
 }
+Map Game_Loader::run() {
+  this->load_file();
+  this->load_configuration();
+  this->build_map();
+  return Map(map, buildmap, capturables, terrainObjects, units,
+             configuration.map_width, configuration.map_length);
+}
 
