@@ -66,8 +66,9 @@ void Unit::doOneMove() {
   if (currentPosition == movementsPositions.front()) {
     movementsPositions.erase(movementsPositions.begin());
   }
-  if (movementsPositions.empty() && this->isMoving())
+  if (movementsPositions.empty() && this->isMoving()) {
     this->still();
+  }
 }
 
 bool Unit::attackedInRange() {

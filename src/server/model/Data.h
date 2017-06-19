@@ -66,7 +66,7 @@ struct Data {
     playerInitialUnits = 0;
     defaultDriver = R_GRUNT;
     //para aumentar el rango de las unidades
-    rangeMultipliquer = 20;
+    rangeMultipliquer = 15;
 
     bullet.type = WeaponType::BULLET;
     bullet.damage = 2;
@@ -76,12 +76,12 @@ struct Data {
     rocket.type = WeaponType::ROCKET;
     rocket.damage = 25;
     rocket.isExplosive = true;
-    rocket.speed = 10; // 12 es la veloc max del vehiculo mas rapido creo
+    rocket.speed = 6; // 12 es la veloc max del vehiculo mas rapido creo
 
     flamethrower.type = WeaponType::FIRE;
     flamethrower.damage = 10;
     flamethrower.isExplosive = true;
-    flamethrower.speed = 10;
+    flamethrower.speed = 6;
 
     laser.type = WeaponType::LASER;
     laser.damage = 10;
@@ -96,88 +96,115 @@ struct Data {
     r_grunt.type = UnitType::R_GRUNT;
     r_grunt.weapon = bullet;
     r_grunt.secsUntilFire = 0.5;
-    r_grunt.health = 10;
+    r_grunt.health = 60;
     r_grunt.range = 7;//el rango lo aumentan solo las unidades con el range mult
     r_grunt.speed = 4;
     r_grunt.factoryRate = 3;
-    r_grunt.factoryBaseTimeInSec = 30;
+    r_grunt.factoryBaseTimeInSec = 575;
     r_grunt.factoryMinimunTechLevel = 1;
 
     r_tough.type = UnitType::R_TOUGH;
     r_tough.weapon = rocket;
-    r_tough.secsUntilFire = 1;
+    r_tough.secsUntilFire = 0.5;
     r_tough.health = 300;
     r_tough.range = 5;
-    r_tough.speed = 3;
+    r_tough.speed = 4;
     r_tough.factoryRate = 2;
-//    r_tough.factoryBaseTimeInSec = 42;//742
-    r_tough.factoryBaseTimeInSec = 15;//742
+    r_tough.factoryBaseTimeInSec = 742;
     r_tough.factoryMinimunTechLevel = 2;
 
     r_pyro.type = UnitType::R_PYRO;
     r_pyro.weapon = flamethrower;
-    r_pyro.secsUntilFire = 0.5;
+    r_pyro.secsUntilFire = 0.25;
     r_pyro.health = 100;
     r_pyro.range = 6;
     r_pyro.speed = 4;
-    r_pyro.factoryRate = 5;
-//    r_pyro.factoryBaseTimeInSec = 20;
-    r_pyro.factoryBaseTimeInSec = 15;
-    r_pyro.factoryMinimunTechLevel = 5;
+    r_pyro.factoryRate = 4;
+    r_pyro.factoryBaseTimeInSec = 840;
+    r_pyro.factoryMinimunTechLevel = 4;
 
     r_laser.type = UnitType::R_LASER;
     r_laser.weapon = laser;
-    r_laser.secsUntilFire = 0.5;
+    r_laser.secsUntilFire = 0.25;
     r_laser.health = 100;
     r_laser.range = 7;
     r_laser.speed = 4;
-    r_laser.factoryRate = 4;
-    r_laser.factoryBaseTimeInSec = 10;
-    r_laser.factoryMinimunTechLevel = 1;
+    r_laser.factoryRate = 5;
+    r_laser.factoryBaseTimeInSec = 900;
+    r_laser.factoryMinimunTechLevel = 5;
 
     r_psycho.type = UnitType::R_PSYCHO;
     r_psycho.weapon = bullet;
-    r_psycho.secsUntilFire = 0.5;
+    r_psycho.secsUntilFire = 0.1;
     r_psycho.health = 80;
     r_psycho.range = 7;
     r_psycho.speed = 4;
-    r_psycho.factoryRate = 4;
-    r_psycho.factoryBaseTimeInSec = 10;
-    r_psycho.factoryMinimunTechLevel = 1;
+    r_psycho.factoryRate = 3;
+    r_psycho.factoryBaseTimeInSec = 600;
+    r_psycho.factoryMinimunTechLevel = 2;
 
     r_sniper.type = UnitType::R_SNIPER;
     r_sniper.weapon = bullet;
-    r_sniper.secsUntilFire = 0.5;
+    r_sniper.secsUntilFire = 0.25;
     r_sniper.health = 80;
     r_sniper.range = 10;
     r_sniper.speed = 4;
     r_sniper.factoryRate = 3;
-    r_sniper.factoryBaseTimeInSec = 15;
+    r_sniper.factoryBaseTimeInSec = 575;
     r_sniper.factoryMinimunTechLevel = 3;
 
     v_jeep.type = UnitType::V_JEEP;
     v_jeep.weapon = bullet;
     v_jeep.secsUntilFire = 0.17;//1/6
     v_jeep.health = 60;
-    v_jeep.range = 5;//6x5
+    v_jeep.range = 6;
     v_jeep.speed = 8;
     v_jeep.factoryRate = 1;
-    v_jeep.factoryBaseTimeInSec = 40;
+    v_jeep.factoryBaseTimeInSec = 660;
     v_jeep.factoryMinimunTechLevel = 1;
 
     v_ltank.type = UnitType::V_LTANK;
     v_ltank.weapon = hcbullet;
-    v_ltank.secsUntilFire = 1;
+    v_ltank.secsUntilFire = 2;
     v_ltank.health = 80;
-    v_ltank.range = 6;//6x5
-    v_ltank.speed = 3;
+    v_ltank.range = 6;
+    v_ltank.speed = 6;
     v_ltank.factoryRate = 1;
-    v_ltank.factoryBaseTimeInSec = 20;
+    v_ltank.factoryBaseTimeInSec = 840;
     v_ltank.factoryMinimunTechLevel = 2;
 
+    v_mtank.type = UnitType::V_MTANK;
+    v_mtank.weapon = hcbullet;
+    v_mtank.secsUntilFire = 2;
+    v_mtank.health = 120;
+    v_mtank.range = 7;
+    v_mtank.speed = 5;
+    v_mtank.factoryRate = 1;
+    v_mtank.factoryBaseTimeInSec = 1080;
+    v_mtank.factoryMinimunTechLevel = 3;
+
+    v_htank.type = UnitType::V_HTANK;
+    v_htank.weapon = hcbullet;
+    v_htank.secsUntilFire = 2;
+    v_htank.health = 180;
+    v_htank.range = 8;
+    v_htank.speed = 5;
+    v_htank.factoryRate = 1;
+    v_htank.factoryBaseTimeInSec = 1200;
+    v_htank.factoryMinimunTechLevel = 4;
+
+    v_mml.type = UnitType::V_MML;
+    v_mml.weapon = rocket;
+    v_mml.secsUntilFire = 0.5;
+    v_mml.health = 200;
+    v_mml.range = 8;
+    v_mml.speed = 5;
+    v_mml.factoryRate = 1;
+    v_mml.factoryBaseTimeInSec = 1320;
+    v_mml.factoryMinimunTechLevel = 5;
+
     fort.type = BuildType::FORT;
-//    fort.health = 1000;
-    fort.health = 20;
+    fort.health = 1000;
     fort.size = 50;
 
     robotFactory.type = BuildType::ROBOTF;
@@ -213,23 +240,24 @@ struct Data {
     asphaltedBridgeObject.type = TerrainObjectType::_ASPHALTEDBRIDGE;
     asphaltedBridgeObject.passable = true;
     asphaltedBridgeObject.health = 1000;
-//    asphaltedBridgeObject.health = 200;
     asphaltedBridgeObject.size = 50;
+
     rockObject.type = TerrainObjectType::ROCK;
     rockObject.passable = false;
-    rockObject.health = 1000;//1000
-//    iceRockObject.health = 200;
+    rockObject.health = 1000;
     rockObject.size = 50;
+
     woodenBridgeObject.type = TerrainObjectType::_WOODENBRIDGE;
     woodenBridgeObject.passable = true;
-    woodenBridgeObject.health = 10;
+    woodenBridgeObject.health = 1000;
     woodenBridgeObject.size = 50;
+
     iceRockObject.type = TerrainObjectType::ICEROCK;
     iceRockObject.passable = false;
-//    iceRockObject.health = 1000;
-    iceRockObject.health = 300;
+    iceRockObject.health = 1000;
     iceRockObject.size = 50;
   }
+
   UnitData getData(UnitType type) {
     switch (type) {
       case R_GRUNT:return r_grunt;

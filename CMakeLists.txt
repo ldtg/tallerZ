@@ -217,7 +217,7 @@ set(SOURCE_FILES
         src/common/DataClientServerMessages/dataServerClientAccepted.cpp
         src/common/DataClientServerMessages/dataServerClientAccepted.h
         src/common/Queue/Queue.h src/server/model/Events/Build/serverBUpdateTimeEvent.cpp src/server/model/Events/Build/serverBUpdateTimeEvent.h
-        src/main.cpp src/tests/Data_to_json.cpp src/tests/Data_to_json.h src/tests/data_to_json_tests.cpp src/tests/Json_to_Data.cpp src/tests/Json_to_Data.h)
+        src/main.cpp src/tests/Data_to_json.cpp src/tests/Data_to_json.h src/tests/data_to_json_tests.cpp src/tests/Json_to_Data.cpp src/tests/Json_to_Data.h src/common/DataEvents/Unit/dataUnitStillEvent.cpp src/common/DataEvents/Unit/dataUnitStillEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/server)

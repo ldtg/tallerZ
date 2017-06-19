@@ -3,11 +3,12 @@
 
 #include <server/model/Events/serverEvent.h>
 #include <common/DataEvents/Unit/dataUnitIDEvent.h>
+#include <common/DataEvents/Unit/dataUnitStillEvent.h>
 class serverUStillEvent: public serverEvent{
  private:
-  dataUnitIDEvent data;
+  dataUnitStillEvent data;
  public:
-  serverUStillEvent(const UnitID &id);
+  serverUStillEvent(const UnitID &id, const Position &pos);
   virtual std::stringstream getDataToSend() const;
 };
 

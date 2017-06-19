@@ -156,8 +156,8 @@ void realGameController::doTick() {
   unitsTick();
   buildsTick();
   objectsTick();
-  /*PlayersTick();
-  TeamsTick();*/
+  PlayersTick();
+  TeamsTick();
 }
 
 void realGameController::unitsTick() {
@@ -208,15 +208,17 @@ void realGameController::move(Unit *unit,
     float terrainFactor =
         map.getTile(unit->getCenterPosition()).getTerrainData().terrainFactor;
     bool still = unit->doMoveWithSpeed(terrainFactor);
+
     eventQueue.push(new serverUMoveEvent(unit->getId(),
                                          unit->getCenterPosition()));
     map.updateUnit(unit->getId(), unit->getUnitState());
 
     if (still) {
-      eventQueue.push(new serverUStillEvent(unit->getId()));
+      eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
     }
 
   } else {
+    eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
     unit->still();
   }
   ++it;
@@ -227,7 +229,7 @@ void realGameController::hunt(Unit *unit,
   Attackable *hunted = unit->getHunted();
 
   if (!hunted->isAlive()) {
-    eventQueue.push(new serverUStillEvent(unit->getId()));
+    eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
     unit->still();
     return;
   }
@@ -260,7 +262,7 @@ void realGameController::hunt(Unit *unit,
   } else {
     if (unit->isAutoAttacking()) {
       unit->still();
-      eventQueue.push(new serverUStillEvent(unit->getId()));
+      eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
     } else {
       this->move(unit, it);
       if (hunted->isMoving())
@@ -290,7 +292,7 @@ void realGameController::capture(Unit *unit,
       map.updateUnit(par.first, par.second);
     }
     //create event
-    eventQueue.push(new serverUStillEvent(unit->getId()));
+    eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
 
     eventQueue.push(new serverCCaptureEvent(unit->getId(), capturable->getID(),
                                             capturable->getCapturePosition(),
