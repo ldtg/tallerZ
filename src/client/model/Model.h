@@ -16,6 +16,10 @@ class Model {
   Camera &camera;
   PlayerID player;
   TeamID teamID;
+  unsigned short unitSearchRange;
+  unsigned short buildSearchRange;
+  unsigned short terrainObjSearchRange;
+
  public:
   Model(Map &map,
         GameControllerProxy &gameController,
@@ -25,9 +29,12 @@ class Model {
         const TeamID &teamID);
   GameControllerProxy *get_gameControllerProxy();
   void leftClick(int x, int y);
+  PlayerID getPlayer() const;
+  TeamID getTeamID() const;
   void rightClick(int x, int y);
 
   Map &getMap();
+
 };
 
 #endif //TALLERZ_MODEL_H

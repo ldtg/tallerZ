@@ -16,6 +16,9 @@ Model::Model(Map &map,
       player(player),
       teamID(teamID) {
 
+  unitSearchRange = 15;
+  buildSearchRange = 50;
+  terrainObjSearchRange = 50;
 }
 
 void Model::leftClick(int x, int y) {
@@ -23,7 +26,7 @@ void Model::leftClick(int x, int y) {
   //if (unitsSelected.empty()) {
   unitsSelected.clear();
   try {
-    UnitID unit = map.getUnitIDFromPosition(pos, 40);
+    UnitID unit = map.getUnitIDFromPosition(pos, unitSearchRange);
     if (map.getUnitState(unit).owner == player) {
       unitsSelected.push_back(unit);
       view.show_unit_side_details(unit.getType(),
@@ -39,7 +42,7 @@ void Model::leftClick(int x, int y) {
    }*/
   if (view.get_present_menu() == nullptr) {
     try {
-      BuildID factoryID = map.getBuildIDFromPosition(pos, 50);
+      BuildID factoryID = map.getBuildIDFromPosition(pos, buildSearchRange);
       if (map.getBuildState(factoryID).owner == player) {
         view.load_production_menu(factoryID,
                                   map.getBuilds().at(factoryID),
@@ -74,50 +77,57 @@ void Model::rightClick(int x, int y) {
   Position pos(x + camera.x, y + camera.y);
 
   try {
-    CapturableID capturable = map.getCapturableIDFromPosition(pos, 40);
+    CapturableID capturable = map.getCapturableIDFromPosition(pos,unitSearchRange);
     for (UnitID unit : unitsSelected) {
       gameController.capture(unit, capturable);
     }
-    unitsSelected.clear();
+    if (capturable.getType() == UNIT) {
+      unitsSelected.clear();
+      // Se selecciona la unidad capturada.
+      UnitID unit = map.getUnitIDFromPosition(pos,unitSearchRange);
+      unitsSelected.push_back(unit);
+      view.show_unit_side_details(unit.getType(),
+                                  map.getUnitState(unit).secondType);
+    }
     return;
   } catch (const UnitNotFoundException &e) {
     // Donde se hizo click no hay edificio ni undida.
   }
   try {
-    UnitID attacked = map.getUnitIDFromPosition(pos, 40);
+    UnitID attacked = map.getUnitIDFromPosition(pos,unitSearchRange);
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, attacked);
     }
-    unitsSelected.clear();
+//    unitsSelected.clear();
     return;
   } catch (const UnitNotFoundException &e) {
     // Donde se hizo click no hay unidad.
   }
   try {
-    BuildID buildAttacked = map.getBuildIDFromPosition(pos, 50);
+    BuildID buildAttacked = map.getBuildIDFromPosition(pos, buildSearchRange);
 
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, buildAttacked);
     }
-    unitsSelected.clear();
+//    unitsSelected.clear();
     return;
   } catch (const UnitNotFoundException &e) {
-    // Donde se hizo click no hay edificio ni undida.
+    // Donde se hizo click no hay edificio ni undidad.
   }
   try {
-    TerrainObjectID terrainID = map.getTerrainObjectIDFromPosition(pos, 50);
+    TerrainObjectID terrainID = map.getTerrainObjectIDFromPosition(pos, terrainObjSearchRange);
 
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, terrainID);
     }
-    unitsSelected.clear();
+//    unitsSelected.clear();
     return;
   } catch (const UnitNotFoundException &e) {
-    // Donde se hizo click no hay edificio ni undida.
+    // Donde se hizo click no hay edificio ni undidad.
   }
 
   gameController.move(unitsSelected.front(), pos);
-  unitsSelected.clear();
+//  unitsSelected.clear();
 }
 
 Map &Model::getMap() {
@@ -127,3 +137,11 @@ Map &Model::getMap() {
 GameControllerProxy *Model::get_gameControllerProxy() {
   return &gameController;
 }
+PlayerID Model::getPlayer() const {
+  return player;
+}
+
+ TeamID Model::getTeamID() const {
+  return teamID;
+}
+

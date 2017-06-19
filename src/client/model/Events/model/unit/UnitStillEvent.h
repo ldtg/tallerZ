@@ -6,8 +6,9 @@
 class UnitStillEvent : public Event {
  private:
   UnitID id;
+  Position pos;
  public:
-  UnitStillEvent(const UnitID &id);
+  UnitStillEvent(const UnitID &id, const Position &pos);
   void process();
 };
 

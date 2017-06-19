@@ -4,10 +4,8 @@
 
 UnitView::UnitView(UnitType type, std::string &color, Position pos,
                    std::string &action, std::string &rotation)
-    : type(type), color(color) {
-  view = VistasFactory::getUnitVista(type, color, action,
-                                     rotation, pos);
-}
+    : ObjectViewMove(VistasFactory::getUnitVista(type, color, action, rotation, pos)),
+      type(type), color(color) {}
 
 UnitView::~UnitView() {
   delete view;

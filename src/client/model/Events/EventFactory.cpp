@@ -27,6 +27,7 @@
 #include <common/DataEvents/Game/dataEndGameEvent.h>
 #include <client/model/Events/model/game/EndGameEvent.h>
 #include <client/model/Events/model/build/BuildUpdateEvent.h>
+#include <common/DataEvents/Unit/dataUnitStillEvent.h>
 #include "EventFactory.h"
 Event *EventFactory::createEvent(const EventType &type, std::stringstream &ss) {
   switch (type) {
@@ -58,9 +59,9 @@ Event *EventFactory::createEvent(const EventType &type, std::stringstream &ss) {
     }
     case U_STILL: {
       cereal::BinaryInputArchive iarchive(ss);
-      dataUnitIDEvent data;
+      dataUnitStillEvent data;
       iarchive(data);
-      return new UnitStillEvent(data.id);
+      return new UnitStillEvent(data.id, data.posTo);
     }
     case B_DAMAGE: {
       cereal::BinaryInputArchive iarchive(ss);

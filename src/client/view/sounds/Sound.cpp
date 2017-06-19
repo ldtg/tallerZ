@@ -21,7 +21,7 @@ void Sound::play() {
     //throw exception
     std::cout << "Error en play de Sound_event.h\n";
   }
-  std::this_thread::sleep_for(std::chrono::milliseconds(150));
+  std::this_thread::sleep_for(std::chrono::milliseconds(200));
 }
 
 const char* Sound::getPath() const {
