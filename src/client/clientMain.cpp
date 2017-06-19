@@ -8,6 +8,7 @@
 #include <common/DataClientServerMessages/dataClientConnectedMessage.h>
 #include <clientCommandSender.h>
 #include <clientEventReceiver.h>
+#include <client/lobby/clientLobby.h>
 
 void sendPlayerConnected(Socket &socket,
                          unsigned short team,
@@ -17,11 +18,20 @@ dataServerClientAccepted getDataClientAccepted(Socket &socket);
 
 Map getMap(Socket &socket);
 
-int main(int argc, char *argv[]) {
-  Socket socket;
-  socket.connectToServer(argv[1], argv[2]);
+Login_Details display_login_settings(int argc, char *argv[]){
+  Gtk::Main kit(argc, argv);
+  clientLobby lobby;
+  lobby.get_window()->show_all();
+  Gtk::Main::run(*lobby.get_window());
+  return lobby.get_login_details();
+}
 
-  sendPlayerConnected(socket, std::stoi(argv[3]), argv[4]);
+int main(int argc, char *argv[]) {
+  Login_Details ld = display_login_settings(argc, argv);
+  Socket socket;
+  socket.connectToServer(ld.ip, ld.port);
+
+  sendPlayerConnected(socket, std::stoi(ld.team), ld.map);
   dataServerClientAccepted accepted = getDataClientAccepted(socket);
 
   Map map = getMap(socket);
