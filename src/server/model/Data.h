@@ -23,6 +23,7 @@ struct Data {
   Weapon sniperBullet;
   Weapon laser;
   Weapon rocket;
+  Weapon hcbullet;
 
   UnitData r_grunt;
   UnitData r_tough;
@@ -82,10 +83,15 @@ struct Data {
     flamethrower.isExplosive = true;
     flamethrower.speed = 10;
 
-    laser.type = WeaponType ::LASER;
+    laser.type = WeaponType::LASER;
     laser.damage = 10;
     laser.isExplosive = false;
-    laser.speed = 8;
+    laser.speed = 6;
+
+    hcbullet.type = WeaponType::HCBULLET;
+    hcbullet.damage = 20;
+    hcbullet.isExplosive = true;
+    hcbullet.speed = 6;
 
     r_grunt.type = UnitType::R_GRUNT;
     r_grunt.weapon = bullet;
@@ -99,13 +105,13 @@ struct Data {
 
     r_tough.type = UnitType::R_TOUGH;
     r_tough.weapon = rocket;
-    r_tough.secsUntilFire = 0.5;
+    r_tough.secsUntilFire = 1;
     r_tough.health = 300;
     r_tough.range = 5;
-    r_tough.speed = 4;
+    r_tough.speed = 3;
     r_tough.factoryRate = 2;
 //    r_tough.factoryBaseTimeInSec = 42;//742
-    r_tough.factoryBaseTimeInSec = 20;//742
+    r_tough.factoryBaseTimeInSec = 15;//742
     r_tough.factoryMinimunTechLevel = 2;
 
     r_pyro.type = UnitType::R_PYRO;
@@ -115,7 +121,8 @@ struct Data {
     r_pyro.range = 6;
     r_pyro.speed = 4;
     r_pyro.factoryRate = 5;
-    r_pyro.factoryBaseTimeInSec = 20;
+//    r_pyro.factoryBaseTimeInSec = 20;
+    r_pyro.factoryBaseTimeInSec = 15;
     r_pyro.factoryMinimunTechLevel = 5;
 
     r_laser.type = UnitType::R_LASER;
@@ -128,15 +135,45 @@ struct Data {
     r_laser.factoryBaseTimeInSec = 10;
     r_laser.factoryMinimunTechLevel = 1;
 
+    r_psycho.type = UnitType::R_PSYCHO;
+    r_psycho.weapon = bullet;
+    r_psycho.secsUntilFire = 0.5;
+    r_psycho.health = 80;
+    r_psycho.range = 7;
+    r_psycho.speed = 4;
+    r_psycho.factoryRate = 4;
+    r_psycho.factoryBaseTimeInSec = 10;
+    r_psycho.factoryMinimunTechLevel = 1;
+
+    r_sniper.type = UnitType::R_SNIPER;
+    r_sniper.weapon = bullet;
+    r_sniper.secsUntilFire = 0.5;
+    r_sniper.health = 80;
+    r_sniper.range = 10;
+    r_sniper.speed = 4;
+    r_sniper.factoryRate = 3;
+    r_sniper.factoryBaseTimeInSec = 15;
+    r_sniper.factoryMinimunTechLevel = 3;
+
     v_jeep.type = UnitType::V_JEEP;
     v_jeep.weapon = bullet;
     v_jeep.secsUntilFire = 0.17;//1/6
-    v_jeep.health = 10;
+    v_jeep.health = 60;
     v_jeep.range = 5;//6x5
     v_jeep.speed = 8;
     v_jeep.factoryRate = 1;
     v_jeep.factoryBaseTimeInSec = 40;
     v_jeep.factoryMinimunTechLevel = 1;
+
+    v_ltank.type = UnitType::V_LTANK;
+    v_ltank.weapon = hcbullet;
+    v_ltank.secsUntilFire = 1;
+    v_ltank.health = 80;
+    v_ltank.range = 6;//6x5
+    v_ltank.speed = 3;
+    v_ltank.factoryRate = 1;
+    v_ltank.factoryBaseTimeInSec = 20;
+    v_ltank.factoryMinimunTechLevel = 2;
 
     fort.type = BuildType::FORT;
 //    fort.health = 1000;
