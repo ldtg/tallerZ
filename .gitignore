@@ -101,3 +101,5 @@ CTestTestfile.cmake
 
 https:/
 src/client/front_end/SDL_Interface/Menus/Result/
+!/src/client/front_end/SDL_Interface/Menus/Result/
+!/src/client/front_end/SDL_Interface/Menus/Server_Login_Menu/
