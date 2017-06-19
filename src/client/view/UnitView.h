@@ -7,25 +7,21 @@
 #include "ObjectViewMove.h"
 
 class UnitView : public ObjectViewMove {
- private:
-//  Sprite *view;
-//  std::queue<ViewPosition> movements;
+ protected:
   UnitType type;
   std::string color;
 
  public:
   UnitView(UnitType type, std::string &color, Position pos,
            std::string &action, std::string &rotation);
-  ~UnitView();
-//  Position getPos() const;
-//  ViewPosition getViewPos() const;
-//  void addMove(const ViewPosition &pos);
-  void walk(int rotation, const Position &posTo);
+  virtual ~UnitView();
+  virtual void walk(int rotation, const Position &posTo);
   void still();
   void fire(const Position &huntedPos);
-//  void update();
   Sprite* getView() const;
   std::string getColor() const;
+
+  virtual void draw(SDL_Renderer *render, Camera &camera);
 };
 
 #endif //TALLERZ_ROBOTVIEW_H

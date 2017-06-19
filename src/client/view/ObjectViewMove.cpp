@@ -1,9 +1,6 @@
 #include "ObjectViewMove.h"
 #include "VistasFactory.h"
 
-//ObjectViewMove::ObjectViewMove(ObjectMapaVista *view)
-//    : view(view) {}
-
 Position ObjectViewMove::getPos() const {
   if (!movements.empty()) {
     return movements.back().getPos();

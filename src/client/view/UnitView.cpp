@@ -12,27 +12,7 @@ UnitView::UnitView(UnitType type, std::string &color, Position pos,
 UnitView::~UnitView() {
   delete view;
 }
-/*
-Position UnitView::getPos() const {
-  if (!movements.empty()) {
-    return movements.back().getPos();
-  } else {
-    return view->getPos();
-  }
-}
 
-ViewPosition UnitView::getViewPos() const {
-  if (!movements.empty()) {
-    return movements.back();
-  } else {
-    return view->getViewPos();
-  }
-}
-
-void UnitView::addMove(const ViewPosition &pos) {
-  movements.push(pos);
-}
-*/
 void UnitView::walk(int rotation, const Position &posTo) {
   std::string rotation_s = std::to_string(rotation);
   std::string action("walk");
@@ -65,50 +45,14 @@ void UnitView::fire(const Position &huntedPos) {
   view->setRotation(rotation);
 }
 
-/*
-void UnitView::update() {
-  if (!movements.empty()) {
-    ViewPosition viewPosTo = movements.front();
-    movements.pop();
-    Position posTo = viewPosTo.getPos();
-
-    ViewPosition pos = view->getViewPos();
-    int newRotation = pos.getRoration(viewPosTo);
-    int rotation = view->getRotation();
-
-<<<<<<< HEAD
-    std::cout << pos.getX() << " " << pos.getY() << std::endl;
-    std::cout << viewPosTo.getX() << " " << viewPosTo.getY() << std::endl;
-    std::cout << " " << std::endl;
-    std::cout << "rot: " << rotation << std::endl;
-    std::cout << "NEW rot: " << newRotation << std::endl;
-    std::cout << " " << std::endl;
-
-    if (rotation != newRotation) {
-      walk(newRotation, posTo);
-    }
-    else {
-=======
-    if (rotation != newRotation) {
-      delete view;
-      std::string rotation_s = std::to_string(newRotation);
-      std::string action("walk");
-      view = VistasFactory::getUnitVista(type, color, action,
-                                         rotation_s, posTo);
-      view->setRotation(newRotation);
-      view->setPos(viewPosTo);
-    } else {
->>>>>>> 133bb92ccc2f7825deefdc83f1972a14454dfed4
-      view->setPos(viewPosTo);
-    }
-  }
-}
-*/
-
 Sprite* UnitView::getView() const {
   return view;
 }
 
 std::string UnitView::getColor() const {
   return color;
+}
+
+void UnitView::draw(SDL_Renderer *render, Camera &camera) {
+  view->draw(render, camera);
 }

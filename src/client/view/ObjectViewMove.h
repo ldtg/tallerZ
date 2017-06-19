@@ -12,7 +12,6 @@ class ObjectViewMove {
   std::queue<ViewPosition> movements;
 
  public:
-//  ObjectViewMove(ObjectMapaVista *view);
   Position getPos() const;
   ViewPosition getViewPos() const;
   void addMove(const ViewPosition &pos);

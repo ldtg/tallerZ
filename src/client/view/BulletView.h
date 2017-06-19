@@ -11,6 +11,7 @@ class BulletView : public ObjectViewMove {
   BulletView(WeaponType type, std::string &rotation, Position pos);
   void walk(int rotation, const Position &posTo);
   Sprite* getView();
+  void draw(SDL_Renderer *render, Camera &camera);
 };
 
 #endif //TALLERZ_CLIENTE_BULLETVIEW_H

@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
     while (!eventQueue.empty()) {
       eventHandler.add(eventQueue.pop());
     }
-    view.update();
+    view.tick();
   }
   while (!eventQueue.empty()) {
     delete (eventQueue.pop());

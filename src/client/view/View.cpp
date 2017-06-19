@@ -1,5 +1,6 @@
 #include "View.h"
 #include "ViewPosition.h"
+#include "VehicleView.h"
 #include <random>
 #include <client/model/Model.h>
 #include <thread>
@@ -14,9 +15,6 @@ View::View(const Map &map,
       camera(camera) {
   _quit = false;
   soundPlayer.start();
-
-//  mapWidth = map.getWidht()*TILEWIDHT;
-//  mapHeight = map.getHeight()*TILEHEIGHT;
 
   createInitialTerrainVista(map.getMap());
   createInitialTerrainObjectVista(map.getTerrainObjects());
@@ -50,7 +48,7 @@ View::~View() {
     delete exp;
   }
   for (auto &par : unitsVista) {
-    delete par.second->getView();
+    delete par.second;
   }
   delete this->side_board;
   if (menu != nullptr) { delete this->menu; }
@@ -99,8 +97,18 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
     std::string rotation = std::to_string(rotations[i]);
     std::string action("look_around");
     std::string color = unit.second.owner.getColor();
-    UnitView *unitVista = new UnitView(type, color, unit.second.position,
-                                       action, rotation);
+
+    UnitView *unitVista = nullptr;
+    if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO
+        || type == R_LASER || type == R_PSYCHO) {
+      unitVista = new UnitView(type, color, unit.second.position,
+                                         action, rotation);
+    }
+    else if (type == V_JEEP || type == V_LTANK) {
+      unitVista = new VehicleView(type, color, unit.second.position,
+                               action, rotation);
+    }
+
     unitVista->getView()->setRotation(rotations[i]);
     unitsVista.emplace(unit.first, unitVista);
   }
@@ -131,7 +139,7 @@ void View::createInitialCapturableVista(const std::map<CapturableID,
   }
 }
 
-void View::update() {
+void View::tick() {
   float fps = 40;
   unsigned long milifps =
       (unsigned long) std::lround((1 / fps) * 1000);
@@ -143,6 +151,7 @@ void View::update() {
     event->process();
     delete (event);
   }
+  update();
   draw();
 
   auto end = std::chrono::high_resolution_clock::now();
@@ -152,87 +161,17 @@ void View::update() {
   std::this_thread::sleep_for(sleepTime);
 }
 
-/*
-void View::drawSteps() {
-  for (int i = 0; i < eventHandler.amountSteps(); i++) {
-    for (Event *stepEvent : eventHandler.getSteps(i)) {
-      stepEvent->process();
-      delete (stepEvent);
-    }
-    draw();
-  }
-  eventHandler.clearSteps();
-}
-*/
-
-void View::draw() {
-  for (auto const &posTerrain : terrainsVista) {
-    panel.add(posTerrain.second);
-  }
-
-  for (auto const &posTerrainObj : terrainObjectsVista) {
-    panel.add(posTerrainObj.second);
-  }
-
-  for (auto const &build : buildsVista) {
-    panel.add(build.second);
-  }
-
+void View::update() {
   for (auto &unit : unitsVista) {
     unit.second->update();
-    panel.add(unit.second->getView());
   }
-
-  for (auto const &capturable : capturablesVista) {
-    panel.add(capturable.second);
-  }
-
   for (auto const &bullet : bulletsVista) {
     bullet.second->update();
-    panel.add(bullet.second->getView());
   }
-
-  for (Sprite *effect : effectsVista) {
-    panel.add(effect);
-  }
-
-//  updateExplosion();
-//  for (Sprite *explosion : explosionsVista) {
-//    panel.add(explosion);
-//  }
-  std::vector<Sprite *>::iterator iter;
-  for (iter = explosionsVista.begin(); iter != explosionsVista.end();) {
-    Sprite *explosionVista = *iter;
-    if (explosionVista->doCycle()) {
-      iter = explosionsVista.erase(iter);
-      delete explosionVista;
-    } else {
-      panel.add(explosionVista);
-      ++iter;
-    }
-  }
-  if (menu != nullptr) {
-    //panel.add(menu);
-    menu->add_to_panel(panel);
-  }
-  if (side_board != nullptr) {
-    side_board->add_to_panel(panel);
-  }
-  panel.draw(camera);
+  updateExplosions();
 }
 
-/*
-void View::add(ObjectMapaVista *objectVista, Position pos) {
-    if (objectVista == NULL)
-      throw std::invalid_argument("View::add() objectMapaVista es NULL");
-
-    objectVista->setPos(pos);
-    panel.add(objectVista);
-}
-*/
-
-/*
-void View::updateExplosion() {
+void View::updateExplosions() {
   std::vector<Sprite*>::iterator iter;
   for (iter = explosionsVista.begin(); iter != explosionsVista.end();) {
     Sprite *explosionVista = *iter;
@@ -245,7 +184,79 @@ void View::updateExplosion() {
     }
   }
 }
-*/
+
+void View::draw() {
+  SDL_Renderer *window_render = window.getRender();
+
+  SDL_SetRenderDrawColor(window_render, 0xFF, 0xFF, 0xFF, 0xFF );
+  SDL_RenderClear(window_render);
+
+  for (auto const &posTerrain : terrainsVista) {
+    posTerrain.second->set_texture(window_render);
+
+    posTerrain.second->draw(window_render, camera);
+//    panel.add(posTerrain.second);
+  }
+
+  for (auto const &posTerrainObj : terrainObjectsVista) {
+    posTerrainObj.second->set_texture(window_render);
+
+    posTerrainObj.second->draw(window_render, camera);
+//    panel.add(posTerrainObj.second);
+  }
+
+  for (auto const &build : buildsVista) {
+    build.second->set_texture(window_render);
+
+    build.second->draw(window_render, camera);
+//    panel.add(build.second);
+  }
+
+  for (auto &unit : unitsVista) {
+    unit.second->getView()->set_texture(window_render);
+
+    unit.second->draw(window_render, camera);
+//    panel.add(unit.second->getView());
+  }
+
+  for (auto const &capturable : capturablesVista) {
+    capturable.second->set_texture(window_render);
+
+    capturable.second->draw(window_render, camera);
+//    panel.add(capturable.second);
+  }
+
+  for (auto const &bullet : bulletsVista) {
+    bullet.second->getView()->set_texture(window_render);
+
+    bullet.second->draw(window_render, camera);
+//    panel.add(bullet.second->getView());
+  }
+
+  for (Sprite *effect : effectsVista) {
+    effect->set_texture(window_render);
+
+    effect->draw(window_render, camera);
+//    panel.add(effect);
+  }
+
+  for (Sprite *explosion : explosionsVista) {
+    explosion->set_texture(window_render);
+
+    explosion->draw(window_render, camera);
+//    panel.add(explosion);
+  }
+
+  if (menu != nullptr) {
+    //panel.add(menu);
+    menu->add_to_panel(panel);
+  }
+  if (side_board != nullptr) {
+    side_board->add_to_panel(panel);
+  }
+  panel.draw(camera);
+//  SDL_RenderPresent(window_render);
+}
 
 void View::setQuit() {
   _quit = true;
@@ -258,56 +269,6 @@ bool View::quit() {
 Camera& View::getCamera() const {
   return camera;
 }
-
-/*
-void View::moveCamera(int x, int y) {
-  if (camera.inLimits(x, y)) {
-    long cantSteps = eventHandler.amountSteps();
-    // no hay unidades moviendose
-    if (cantSteps == 0) {
-      cantSteps = camera.vel;
-    }
-
-    for (int i = 0; i < cantSteps; ++i) {
-      eventHandler.addStep(new CameraMoveStepEvent(camera, x, y), i);
-    }
-  }
-}
-*/
-
-/*
-=======
->>>>>>> 133bb92ccc2f7825deefdc83f1972a14454dfed4
-void View::move(UnitID id, Position posTo) {
-  UnitView &unitView = unitsVista.at(id);
-  Position unitPos = unitView.getPos();
-
-  Position dist = posTo.sub(unitPos);
-  // La velocidad de la vista respecto al server
-  float velView = 4.0;
-  ViewPosition step(dist.getX() / velView, dist.getY() / velView);
-
-  ViewPosition unitViewPos = unitView.getViewPos();
-  for (int i = 0; i < velView; i++) {
-    unitViewPos.add(step);
-    unitView.addMove(unitViewPos);
-  }
-*/
-/*
-  UnitView &unitView = unitsVista.at(id);
-  Position pos_aux = unitView.getPos();
-
-  int i = 0;
-  while (pos_aux != posTo) {
-    pos_aux.move(posTo);
-    unitView.addMove(pos_aux);
-
-    int rotation = pos_aux.getRoration(posTo);
-//    eventHandler.addStep(new UnitMoveStepEvent(id, pos_aux, rotation), i);
-    i+=1;
-  }
-*/
-//}
 
 ObjectMapaVista *View::getTerrainObjectVista(TerrainObjectID id) {
   return terrainObjectsVista.at(id);
@@ -340,17 +301,7 @@ void View::addUnitVista(const UnitID &id, UnitView *unitVista) {
 BulletView* View::getBulletVista(BulletID id) {
   return bulletsVista.at(id);
 }
-/*
-void View::move(BulletID id, Position posTo) {
-  Position pos_aux = bulletsVista.at(id)->getPos();
-  int i = 0;
-  while (pos_aux != posTo) {
-    pos_aux.move(posTo);
-//    eventHandler.addStep(new BulletMoveStepEvent(id, pos_aux), i);
-    i += 1;
-  }
-}
-*/
+
 void View::removeBulletVista(BulletID &id) {
   delete bulletsVista.at(id);
   bulletsVista.erase(id);

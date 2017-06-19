@@ -256,7 +256,7 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
 
         src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/view/ViewPosition.cpp src/client/view/ViewPosition.h
-        src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/model/Events/model/build/BuildUpdateEvent.cpp src/client/model/Events/model/build/BuildUpdateEvent.h src/client/view/ObjectViewMove.cpp src/client/view/ObjectViewMove.h src/client/view/BulletView.cpp src/client/view/BulletView.h src/client/view/sounds/Sound.cpp src/client/view/sounds/Sound.h src/client/view/sounds/SoundPlayer.cpp src/client/view/sounds/SoundPlayer.h src/client/view/sounds/SoundsFactory.cpp src/client/view/sounds/SoundsFactory.h src/common/Thread/Lock.h)
+        src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/model/Events/model/build/BuildUpdateEvent.cpp src/client/model/Events/model/build/BuildUpdateEvent.h src/client/view/ObjectViewMove.cpp src/client/view/ObjectViewMove.h src/client/view/BulletView.cpp src/client/view/BulletView.h src/client/view/sounds/Sound.cpp src/client/view/sounds/Sound.h src/client/view/sounds/SoundPlayer.cpp src/client/view/sounds/SoundPlayer.h src/client/view/sounds/SoundsFactory.cpp src/client/view/sounds/SoundsFactory.h src/common/Thread/Lock.h src/client/view/VehicleView.cpp src/client/view/VehicleView.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/client)

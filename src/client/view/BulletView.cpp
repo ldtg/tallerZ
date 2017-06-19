@@ -16,3 +16,7 @@ void BulletView::walk(int rotation, const Position &posTo) {
 Sprite* BulletView::getView() {
   return view;
 }
+
+void BulletView::draw(SDL_Renderer *render, Camera &camera) {
+  view->draw(render, camera);
+}

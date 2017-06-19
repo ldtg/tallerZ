@@ -32,12 +32,12 @@ class View {
 
   bool _quit;
 
-  std::map<Position, ObjectMapaVista *> terrainsVista;
-  std::map<TerrainObjectID, ObjectMapaVista *> terrainObjectsVista;
-  std::map<BuildID, ObjectMapaVista *> buildsVista;
+  std::map<Position, ObjectMapaVista*> terrainsVista;
+  std::map<TerrainObjectID, ObjectMapaVista*> terrainObjectsVista;
+  std::map<BuildID, ObjectMapaVista*> buildsVista;
   std::map<UnitID, UnitView*> unitsVista;
-  std::map<CapturableID, ObjectMapaVista *> capturablesVista;
-  std::map<BulletID, BulletView *> bulletsVista;
+  std::map<CapturableID, ObjectMapaVista*> capturablesVista;
+  std::map<BulletID, BulletView*> bulletsVista;
   std::vector<Sprite*> effectsVista;
   std::vector<Sprite*> explosionsVista;
 
@@ -49,9 +49,8 @@ class View {
   void createInitialCapturableVista(const std::map<CapturableID,
                                                    CapturableState> &capturables);
 
-  //  void add(ObjectMapaVista *objectVista, Position pos);
-//  ObjectMapaVista *getTerrainVista(TerrainType type);
-//  void updateExplosion();
+  void updateExplosions();
+  void update();
   void draw();
 
  public:
@@ -121,8 +120,7 @@ class View {
   }
   /*************************************************/
 
-  void update();
-
+  void tick();
 };
 
 #endif //TALLERZ_VISTA_H

@@ -18,6 +18,8 @@ class VistasFactory {
   static Sprite *getUnitVista(UnitType type, std::string &color,
                               std::string &action, std::string &rotation,
                               const Position &pos);
+  static Sprite *getVehicleTopVista(UnitType type, std::string &color,
+                              const Position &pos);
   static Image *getBuildVista(BuildType type, std::string &state, Position &pos);
   static ObjectMapaVista *getTerrainObjectVista(TerrainObjectType type,
                                                 std::string &state, Position &pos);

@@ -1,5 +1,6 @@
 #include "VistasFactory.h"
 #include <random>
+#include <iostream>
 
 ObjectMapaVista* VistasFactory::getTerrainVista(TerrainType type,
                                                 Position &pos) {
@@ -43,7 +44,8 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
 
   std::string path = "../src/view/images/units/";
 
-  if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO || type == R_LASER) {
+  if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO
+      || type == R_LASER || type == R_PSYCHO) {
     type_s = "robots";
     if (action == "walk") {
       num_frames = 4;
@@ -69,7 +71,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       else if (type == R_TOUGH) {
         robot = "tough";
         num_frames = 3;
-        speed = 7;
+        speed = 5*num_frames;
         num_frame_return_cycle = 0;
       }
       else if (type == R_PYRO) {
@@ -81,6 +83,12 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       else if (type == R_LASER) {
         robot = "laser";
         num_frames = 3;
+        speed = 2*num_frames;
+        num_frame_return_cycle = 0;
+      }
+      else if (type == R_PSYCHO) {
+        robot = "psycho";
+        num_frames = 2;
         speed = 2*num_frames;
         num_frame_return_cycle = 0;
       }
@@ -131,7 +139,6 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
 
     if (action == "walk") {
 //      despX = 25, despY = 25;
-
       num_frames = 2;
       speed = 3 * num_frames;
       path = path + type_s + "/" + action
@@ -140,7 +147,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
     else if (action == "look_around") {
       num_frames = 2;
       speed = 3 * num_frames;
-//      despX = 25, despY = 25;
+//      despX = 16, despY = 16;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
@@ -158,7 +165,38 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
     } else {//TODO: AGREGAR CREATEEE
       num_frames = 2;
       speed = 3 * num_frames;
-//      despX = 25, despY = 25;
+//      despX = 16, despY = 16;
+      path = path + type_s + "/" + "look_around"
+          + "/" + "look_around" + "_" + color + "_r" + rotation + "_n";
+    }
+  }
+  else if (type == V_LTANK) {
+    type_s = "vehicles/light";
+    if (action == "walk") {
+      num_frames = 3;
+      speed = 2 * num_frames;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "look_around") {
+      num_frames = 1;
+      speed = 1;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "fire") {
+      num_frames = 1;
+      speed = 1;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "die") {
+      num_frames = 8;
+      speed = 12;
+      path = path + type_s + "/" + action + "/" + action + "_n";
+    } else {
+      num_frames = 1;
+      speed = 1;
       path = path + type_s + "/" + "look_around"
           + "/" + "look_around" + "_" + color + "_r" + rotation + "_n";
     }
@@ -174,9 +212,34 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
   return unitVista;
 }
 
+Sprite* VistasFactory::getVehicleTopVista(UnitType type, std::string &color, const Position &pos) {
+  std::string type_s;
+  int num_frames=0, speed=0, num_frame_return_cycle=0;
+  long despX=8, despY=12;
+  float scaleW=1.3, scaleH=1.3;
+  std::string path = "../src/view/images/units/vehicles/";
+
+  switch (type) {
+    case V_LTANK: {
+      type_s = "light";
+      num_frames=8; speed=3*num_frames; num_frame_return_cycle=0;
+      break;
+    }
+    default: return nullptr;
+  }
+  path = path + type_s + "/" + "top_n";
+  Sprite *top = new Sprite(path.c_str(), num_frames, speed, num_frame_return_cycle, color);
+
+  std::cout << despX << " " << despY << std::endl;
+
+  top->setPos(pos.sub(despX, despY));
+  top->scale(scaleW, scaleH);
+  return top;
+}
+
 Image* VistasFactory::getBuildVista(BuildType type,
-                                              std::string &state,
-                                              Position &pos) {
+                                    std::string &state,
+                                    Position &pos) {
   std::string type_s;
   std::string path = "../src/view/images/buildings/";
   float scaleW=1.5, scaleH=1.5;
@@ -249,6 +312,11 @@ Sprite* VistasFactory::getBulletVista(WeaponType type,
       path = path + "bullet_r" + rotation + "_n";
       break;
     }
+    case HCBULLET: {
+      num_frames = 1, speed = 1, num_frame_return_cycle = 0;
+      path = path + "hcbullet_r" + rotation + "_n";
+      break;
+    }
     case LASER: {
       num_frames = 2, speed = 1, num_frame_return_cycle = 0;
       path = path + "laser_r" + rotation + "_n";
@@ -272,6 +340,11 @@ Sprite* VistasFactory::getBulletHitVista(WeaponType type, Position &pos) {
       num_frames = 12; speed = 6; num_frame_return_cycle = 0;
       despX = 8; despY = 18;
       path = path + "explosion/tank_missile_explosion1_n";
+      break;
+    case HCBULLET:
+      num_frames = 7; speed = 4; num_frame_return_cycle = 0;
+      despX = 0; despY = 0;
+      path = path + "explosion/side_explosion_n";
       break;
     case FIRE:
       num_frames = 4, speed = 4, num_frame_return_cycle = 0;
