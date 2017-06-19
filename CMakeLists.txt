@@ -159,6 +159,8 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.h
         src/client/front_end/SDL_Interface/Menus/Menu.cpp
         src/client/front_end/SDL_Interface/Menus/Menu.h
+        src/client/front_end/SDL_Interface/Menus/Result/Victory.h
+        src/client/front_end/SDL_Interface/Menus/Result/Victory.cpp
         src/client/front_end/SDL_Interface/Labels/Label.cpp
         src/client/front_end/SDL_Interface/Labels/Label.h
         src/client/front_end/SDL_Interface/Cursor.h
@@ -246,8 +248,6 @@ set(SOURCE_FILES
         src/common/DataClientServerMessages/dataClientConnectedMessage.h
         src/common/DataClientServerMessages/dataServerClientAccepted.cpp
         src/common/DataClientServerMessages/dataServerClientAccepted.h
-        src/client/clientRunner.cpp
-        src/client/clientRunner.h
         src/common/Queue/Queue.h
 
         src/client/front_end/SDL_Interface/Menus/Quit/Buttons/Salir_Button.h
@@ -255,8 +255,40 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
 
-        src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/view/ViewPosition.cpp src/client/view/ViewPosition.h
-        src/client/view/UnitView.cpp src/client/view/UnitView.h src/client/model/Events/model/build/BuildUpdateEvent.cpp src/client/model/Events/model/build/BuildUpdateEvent.h src/client/view/ObjectViewMove.cpp src/client/view/ObjectViewMove.h src/client/view/BulletView.cpp src/client/view/BulletView.h src/client/view/sounds/Sound.cpp src/client/view/sounds/Sound.h src/client/view/sounds/SoundPlayer.cpp src/client/view/sounds/SoundPlayer.h src/client/view/sounds/SoundsFactory.cpp src/client/view/sounds/SoundsFactory.h src/common/Thread/Lock.h src/client/view/VehicleView.cpp src/client/view/VehicleView.h)
+        src/client/view/UnitView.cpp src/client/view/UnitView.h
+        src/client/model/Events/model/build/BuildUpdateEvent.cpp
+        src/client/model/Events/model/build/BuildUpdateEvent.h
+        src/client/view/ObjectViewMove.cpp src/client/view/ObjectViewMove.h
+        src/client/view/BulletView.cpp src/client/view/BulletView.h
+        src/client/view/sounds/Sound.cpp src/client/view/sounds/Sound.h
+        src/client/view/sounds/SoundPlayer.cpp src/client/view/sounds/SoundPlayer.h
+        src/client/view/sounds/SoundsFactory.cpp src/client/view/sounds/SoundsFactory.h
+        src/common/Thread/Lock.h
+        src/client/view/VehicleView.cpp src/client/view/VehicleView.h
+
+        src/client/view/UnitView.cpp src/client/view/UnitView.h
+        src/client/view/ViewPosition.cpp
+        src/client/view/ViewPosition.h
+        src/client/view/UnitView.cpp
+        src/client/view/UnitView.h
+        src/client/model/Events/model/build/BuildUpdateEvent.cpp
+        src/client/model/Events/model/build/BuildUpdateEvent.h
+        src/client/view/ObjectViewMove.cpp
+        src/client/view/ObjectViewMove.h
+        src/client/view/BulletView.cpp
+        src/client/view/BulletView.h
+        src/client/view/sounds/Sound.cpp
+        src/client/view/sounds/Sound.h
+        src/client/view/sounds/SoundPlayer.cpp
+        src/client/view/sounds/SoundPlayer.h
+        src/client/view/sounds/SoundsFactory.cpp
+        src/client/view/sounds/SoundsFactory.h
+        src/common/Thread/Lock.h
+        src/client/front_end/SDL_Interface/Menus/Result/Defeat.cpp
+        src/client/front_end/SDL_Interface/Menus/Result/Defeat.h
+        src/client/front_end/SDL_Interface/Menus/Result/Buttons/Ok_Button.cpp
+        src/client/front_end/SDL_Interface/Menus/Result/Buttons/Ok_Button.h )
+
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/client)
@@ -264,7 +296,6 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/common)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/storage)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Exceptions)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/Utils)
-
 
 #nota a futuro: la mayoria de esos flags del SDL2 vienen de ejecutar `sdl2-config --cflags --libs --static-libs` en la terminal (estan copipasteados). Habrá que ver como hacerlo bien a esto.
 

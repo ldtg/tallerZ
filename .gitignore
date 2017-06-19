@@ -100,4 +100,4 @@ CTestTestfile.cmake
 # End of https://www.gitignore.io/api/c++,cmake,clion
 
 https:/
-src/client/front_end/SDL_Interface/Menus/Main/
+src/client/front_end/SDL_Interface/Menus/Result/
