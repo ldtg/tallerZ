@@ -146,6 +146,7 @@ bool Unit::doMoveWithSpeed(float terrainFactor) {
     if (this->isStill())
       break;
   }
+  this->firstAttack = true;
   return this->movState.isStill();
 }
 
@@ -194,6 +195,7 @@ void Unit::still() {
   hunted = nullptr;
   capturable = nullptr;
   movementsPositions.clear();
+  this->firstAttack = true;
   attackCounterActual = attackCounterBase;
 }
 

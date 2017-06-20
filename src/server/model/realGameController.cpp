@@ -242,7 +242,6 @@ void realGameController::hunt(Unit *unit,
     if (unit->isFirstAttack()) {
       Position huntedPos = hunted->getAttackPosition(unitPos);
       Position attackerPos = unit->getCenterPosition();
-
       eventQueue.push(new serverUAttackEvent(unit->getId(),
                                              huntedPos,
                                              attackerPos));
@@ -265,9 +264,9 @@ void realGameController::hunt(Unit *unit,
       eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
       ++it;
     } else {
-      this->move(unit, it);
       if (hunted->isMoving())
         unit->addMove(hunted->nextMovePosition());
+      this->move(unit, it);
     }
   }
 }
