@@ -28,7 +28,7 @@ void UnitCreateEvent::process() {
   Map &map = model->getMap();
   map.addUnit(id, state);
 
-  SoundPlayer &soundPlayer = view->getSoundPlayer();
-  Sound *sound = SoundsFactory::getUnitCreateSound(id.getType());
-  soundPlayer.add(sound);
+//  SoundPlayer &soundPlayer = view->getSoundPlayer();
+//  Sound *sound = SoundsFactory::getUnitCreateSound(id.getType());
+//  soundPlayer.add(sound);
 }

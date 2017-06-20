@@ -5,8 +5,10 @@
 Sprite::Sprite() {}
 
 Sprite::Sprite(const char *file, int num_frames, int speed,
-               int num_frame_return_cycle, std::string color)
-    : filename(file), num_frames(num_frames), speed(speed), color(color) {
+               int num_frame_return_cycle, std::string color,
+               int despX, int despY)
+    : filename(file), num_frames(num_frames), speed(speed),
+      color(color), despX(despX), despY(despY) {
 
   cur_frame = 0;
   this->num_frame_return_cycle =
@@ -23,7 +25,7 @@ Sprite::Sprite(const char *file, int num_frames, int speed,
 }
 
 Sprite::~Sprite() {
-  for (int frame = 0; frame < num_frames; ++frame) {
+  for (unsigned long frame = 0; frame < num_frames; ++frame) {
     delete (images.at(frame));
   }
 }
@@ -45,19 +47,11 @@ void Sprite::scale(float scaleW, float scaleH) {
 void Sprite::set_texture(SDL_Renderer *render) {}
 
 void Sprite::draw(SDL_Renderer *render, Camera &camera) {
-  //TODO: si speed 0 explota todo
   int cur_frame_aux = 0;
   if (speed > 0)
     cur_frame_aux = cur_frame / speed;
 
-//   std::string file_image = filename + std::to_string(cur_frame_aux)
-//                            + ".png";
-
-//   Image image(file_image.c_str());
-//   image.setPos(Position(x, y));
-//   width = image.getWidth();
-//   height = image.getHeight();
-  images[cur_frame_aux]->setPos(Position(x, y));
+  images[cur_frame_aux]->setPos(ViewPosition(x-despX, y-despY));
   images[cur_frame_aux]->set_texture(render);
   images[cur_frame_aux]->draw(render, camera);
 

@@ -56,7 +56,7 @@ void CaptureEvent::process() {
     model->getMap().updateBuild(par.first, par.second);
   }
 
-  SoundPlayer &soundPlayer = view->getSoundPlayer();
-  Sound *sound = SoundsFactory::getCapturedSound(captured.getType());
-  soundPlayer.add(sound);
+//  SoundPlayer &soundPlayer = view->getSoundPlayer();
+//  Sound *sound = SoundsFactory::getCapturedSound(captured.getType());
+//  soundPlayer.add(sound);
 }

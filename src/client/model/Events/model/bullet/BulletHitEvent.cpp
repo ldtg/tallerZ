@@ -15,7 +15,7 @@ void BulletHitEvent::process() {
 
   model->getMap().removeBullet(id);
 
-  SoundPlayer &soundPlayer = view->getSoundPlayer();
-  Sound *sound = SoundsFactory::getBulletHitSound(weapon);
-  soundPlayer.add(sound);
+//  SoundPlayer &soundPlayer = view->getSoundPlayer();
+//  Sound *sound = SoundsFactory::getBulletHitSound(weapon);
+//  soundPlayer.add(sound);
 }

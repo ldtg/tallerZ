@@ -15,12 +15,6 @@ Image::Image(const char *file) {
   texture = nullptr;
 }
 
-//Image::Image(const char *file, int w, int h) {
-//    surface = IMG_Load(file);
-//    this->width = w;
-//    this->height = h;
-//}
-
 Image::~Image() {
     if (surface != nullptr) {
         SDL_FreeSurface(surface);

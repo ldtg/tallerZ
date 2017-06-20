@@ -13,6 +13,8 @@ class Sprite : public ObjectMapaVista {
   int speed;
   int num_frame_return_cycle;
   std::string filename;
+  int despX;
+  int despY;
   bool _doCycle;
   std::string color;
   std::vector<Image*> images;
@@ -20,7 +22,8 @@ class Sprite : public ObjectMapaVista {
  public:
   Sprite();
   Sprite(const char *file, int num_frames, int speed,
-         int num_frame_return_cycle, std::string color="");
+         int num_frame_return_cycle, std::string color="",
+         int despX=0, int despY=0);
   virtual ~Sprite();
   bool doCycle() const;
   std::string getColor() const;

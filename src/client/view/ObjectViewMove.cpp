@@ -54,8 +54,6 @@ void ObjectViewMove::update() {
     int rotation = view->getRotation();
 
     if (rotation != newRotation) {
-      std::cout << "ROTO" << std::endl;
-
       walk(newRotation, posTo);
     }
     else {

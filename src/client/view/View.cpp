@@ -16,7 +16,7 @@ View::View(const Map &map,
       eventHandler(eventHandler),
       camera(camera) {
   _quit = false;
-  soundPlayer.start();
+//  soundPlayer.start();
 
   createInitialTerrainVista(map.getMap());
   createInitialTerrainObjectVista(map.getTerrainObjects());
@@ -55,8 +55,8 @@ View::~View() {
   delete this->side_board;
   if (menu != nullptr) { delete this->menu; }
 
-  soundPlayer.stop();
-  soundPlayer.join();
+//  soundPlayer.stop();
+//  soundPlayer.join();
 }
 
 void View::createInitialTerrainVista(const std::map<Position, Tile> &map) {

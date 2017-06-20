@@ -44,7 +44,7 @@ void BuildDestroyedEvent::process() {
   buildState.health=0;
   map.updateBuild(id, buildState);
 
-  SoundPlayer &soundPlayer = view->getSoundPlayer();
-  Sound *sound = SoundsFactory::getBuildDestroyedSound();
-  soundPlayer.add(sound);
+//  SoundPlayer &soundPlayer = view->getSoundPlayer();
+//  Sound *sound = SoundsFactory::getBuildDestroyedSound();
+//  soundPlayer.add(sound);
 }

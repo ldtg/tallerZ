@@ -18,7 +18,7 @@ void UnitDeathEvent::process() {
 
   model->getMap().removeUnit(id);
 
-  SoundPlayer &soundPlayer = view->getSoundPlayer();
-  Sound *sound = SoundsFactory::getTargetDestroyedSound();
-  soundPlayer.add(sound);
+//  SoundPlayer &soundPlayer = view->getSoundPlayer();
+//  Sound *sound = SoundsFactory::getTargetDestroyedSound();
+//  soundPlayer.add(sound);
 }

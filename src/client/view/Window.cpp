@@ -9,7 +9,7 @@ Window::Window() {
 
   SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
   IMG_Init(IMG_INIT_PNG);
-  Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
+//  Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 
   window = SDL_CreateWindow("TALLERZ",
                             SDL_WINDOWPOS_CENTERED,
@@ -53,7 +53,7 @@ Window::~Window() {
 
   IMG_Quit();
   SDL_Quit();
-  Mix_Quit();
+//  Mix_Quit();
 }
 
 SDL_Renderer* Window::getRender() const {
