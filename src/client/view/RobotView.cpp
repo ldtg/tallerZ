@@ -19,3 +19,12 @@ void RobotView::fire(const Position &huntedPos) {
   UnitView::fire(huntedPos);
   state.attacking();
 }
+
+void RobotView::update() {
+  ObjectViewMove::update();
+
+  // Se cambia a otro tipo de look_around.
+  if ( (state.isStill() || state.isCreating()) && view->doCycle() ) {
+    still();
+  }
+}

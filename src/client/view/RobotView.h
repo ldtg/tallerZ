@@ -9,6 +9,7 @@ class RobotView : public UnitView {
   void walk(int rotation, const Position &posTo);
   void still();
   void fire(const Position &huntedPos);
+  void update();
 };
 
 #endif //TALLERZ_CLIENTE_ROBOTVIEW_H

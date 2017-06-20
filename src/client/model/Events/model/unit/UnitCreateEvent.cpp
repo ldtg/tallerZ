@@ -15,7 +15,7 @@ void UnitCreateEvent::process() {
                                                    action, rotation_s,
                                                    state.position);
   unitVista->getView()->setDrawRotation(270);
-
+  unitVista->create();
   view->addUnitVista(id, unitVista);
 
   Map &map = model->getMap();

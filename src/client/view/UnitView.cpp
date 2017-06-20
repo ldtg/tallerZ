@@ -11,6 +11,10 @@ UnitView::~UnitView() {
   delete view;
 }
 
+void UnitView::create() {
+  state.creating();
+}
+
 void UnitView::walk(int rotation, const Position &posTo) {
   std::string rotation_s = std::to_string(rotation);
   std::string action("walk");
