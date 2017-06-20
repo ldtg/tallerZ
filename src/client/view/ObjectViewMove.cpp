@@ -37,12 +37,6 @@ void ObjectViewMove::update() {
   if (!movements.empty()) {
     ViewPosition pos = view->getViewPos();
     Position currentPos = pos.getPos();
-    int rotation = view->getDrawRotation();
-
-    if (state.isStill() || state.isAttacking()) {
-      walk(rotation, currentPos);
-      state.moving();
-    }
 
     ViewPosition viewPosTo = movements.front();
     movements.pop();
@@ -55,6 +49,12 @@ void ObjectViewMove::update() {
       // Se vacia la cola de movimientos.
       while (!movements.empty()) {movements.pop();}
       return;
+    }
+
+    int rotation = view->getDrawRotation();
+    if (state.isStill() || state.isAttacking()) {
+      walk(rotation, currentPos);
+      state.moving();
     }
 
     double rot = pos.getRotation(viewPosTo);

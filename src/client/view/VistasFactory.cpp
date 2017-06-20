@@ -41,7 +41,6 @@ UnitView* VistasFactory::getUnitView(UnitType type,
                                    std::string &action,
                                    std::string &rotation,
                                    const Position &pos) {
-  UnitView *unitVista = nullptr;
   if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO
       || type == R_LASER || type == R_PSYCHO || type == R_SNIPER) {
     return new RobotView(type, color, pos,
@@ -67,20 +66,18 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
 
   std::string path = "../src/view/images/units/";
 
-  if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO
-      || type == R_LASER || type == R_PSYCHO) {
+  if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO ||
+      type == R_LASER || type == R_PSYCHO || type == R_SNIPER) {
     type_s = "robots";
     despX=8; despY=8;
+
     if (action == "walk") {
-      num_frames = 4;
-      speed = 2 * num_frames;
+      num_frames = 4; speed = 2*num_frames;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "look_around") {
-//      despX=8, despY=8;
-      num_frames = 3;
-      speed = 6*num_frames;
+      num_frames = 3; speed = 6*num_frames;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
@@ -88,42 +85,40 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       std::string robot;
       if (type == R_GRUNT) {
         robot = "grunt";
-        num_frames = 5;
-        speed = 1*num_frames;
+        num_frames = 5; speed = 1*num_frames;
         num_frame_return_cycle = 3;
       }
       else if (type == R_TOUGH) {
         robot = "tough";
-        num_frames = 3;
-        speed = 8;
+        num_frames = 3; speed = 8;
         num_frame_return_cycle = 0;
       }
       else if (type == R_PYRO) {
         robot = "pyro";
-        num_frames = 3;
-        speed = 2*num_frames;
+        num_frames = 3; speed = 2*num_frames;
         num_frame_return_cycle = 1;
       }
       else if (type == R_LASER) {
         robot = "laser";
-        num_frames = 3;
-        speed = 2*num_frames;
+        num_frames = 3; speed = 2*num_frames;
         num_frame_return_cycle = 0;
       }
       else if (type == R_PSYCHO) {
         robot = "psycho";
-        num_frames = 2;
-        speed = 2*num_frames;
+        num_frames = 2; speed = 2*num_frames;
         num_frame_return_cycle = 0;
+      }
+      else if (type == R_SNIPER) {
+        robot = "sniper";
+        num_frames = 5; speed = 1*num_frames;
+        num_frame_return_cycle = 3;
       }
       path = path + type_s + "/" + action + "/" + robot + "/"
           + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "create") {
-      num_frames = 12;
-      speed = 4;
+      num_frames = 12; speed = 4;
       num_frame_return_cycle = 10;
-      despX = 8, despY = 8;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_n";
     }
@@ -133,26 +128,20 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       action = action + std::to_string(num_die);
 
       if (num_die == 1) {
-        num_frames = 10;
-        speed = 12;
+        num_frames = 10; speed = 12;
       }
       else if (num_die == 2) {
-        num_frames = 10;
-        speed = 12;
+        num_frames = 10; speed = 12;
       }
       else if (num_die == 3) {
-        num_frames = 10;
-        speed = 12;
+        num_frames = 10; speed = 12;
       }
       else if (num_die == 4) {
-        num_frames = 8;
-        speed = 12;
+        num_frames = 8; speed = 12;
       }
       else if (num_die == 5) {
-        num_frames = 33;
-        speed = 6;
+        num_frames = 33; speed = 6;
       }
-
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_n";
     }
@@ -162,31 +151,26 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
     despX=15; despY=20;
 
     if (action == "walk") {
-      num_frames = 2;
-      speed = 3 * num_frames;
+      num_frames = 2; speed = 3*num_frames;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "look_around") {
-      num_frames = 2;
-      speed = 3 * num_frames;
+      num_frames = 2; speed = 3*num_frames;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "fire") {
-      num_frames = 2;
-      speed = 2 * num_frames;
+      num_frames = 2; speed = 2*num_frames;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "die") {
-      num_frames = 13;
-      speed = 1 * num_frames;
+      num_frames = 13; speed = 1*num_frames;
       despX = 8, despY = 18;
       path = path + type_s + "/" + action + "/" + action + "_n";
-    } else {//TODO: AGREGAR CREATEEE
-      num_frames = 2;
-      speed = 3 * num_frames;
+    } else if (action == "create") {
+      num_frames = 2; speed = 3*num_frames;
       path = path + type_s + "/" + "look_around"
           + "/" + "look_around" + "_" + color + "_r" + rotation + "_n";
     }
@@ -196,30 +180,25 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
     despX=18; despY=18;
 
     if (action == "walk") {
-      num_frames = 3;
-      speed = 2 * num_frames;
+      num_frames = 3; speed = 2*num_frames;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "look_around") {
-      num_frames = 1;
-      speed = 1;
+      num_frames = 1; speed = 1;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "fire") {
-      num_frames = 1;
-      speed = 1;
+      num_frames = 1; speed = 1;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "die") {
-      num_frames = 8;
-      speed = 12;
+      num_frames = 8; speed = 12;
       path = path + type_s + "/" + action + "/" + action + "_n";
-    } else {
-      num_frames = 1;
-      speed = 1;
+    } else if (action == "create") {
+      num_frames = 1; speed = 1;
       path = path + type_s + "/" + "look_around"
           + "/" + "look_around" + "_" + color + "_r" + rotation + "_n";
     }
@@ -235,7 +214,9 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
   return unitVista;
 }
 
-Sprite* VistasFactory::getVehicleTopVista(UnitType type, std::string &color, const Position &pos) {
+Sprite* VistasFactory::getVehicleTopVista(UnitType type,
+                                          std::string &color,
+                                          const Position &pos) {
   std::string type_s;
   int num_frames=0, speed=0, num_frame_return_cycle=0;
   int despX=0, despY=0;
@@ -245,12 +226,14 @@ Sprite* VistasFactory::getVehicleTopVista(UnitType type, std::string &color, con
   switch (type) {
     case V_LTANK: {
       type_s = "light";
-      num_frames=8; speed=3*num_frames; num_frame_return_cycle=0;
+      num_frames=8; speed=3*num_frames;
+      num_frame_return_cycle=0;
       despX=2, despY=4;
       break;
     }
     default: return nullptr;
   }
+
   path = path + type_s + "/" + "top_n";
   Sprite *top = new Sprite(path.c_str(), num_frames, speed,
                            num_frame_return_cycle, color, despX, despY);
@@ -277,6 +260,7 @@ Sprite* VistasFactory::getVehicleTopStillVista(UnitType type,
     }
     default: return nullptr;
   }
+
   path = path + type_s + "/" + "top_r" + rotation + "_n";
   Sprite *top = new Sprite(path.c_str(), num_frames, speed,
                            num_frame_return_cycle, color, despX, despY);
@@ -373,7 +357,8 @@ Sprite* VistasFactory::getBulletVista(WeaponType type,
     default: return nullptr;
   }
 
-  Sprite *bulletVista = new Sprite(path.c_str(), num_frames, speed, num_frame_return_cycle);
+  Sprite *bulletVista = new Sprite(path.c_str(), num_frames,
+                                   speed, num_frame_return_cycle);
   bulletVista->setPos(pos.sub(despX, despY));
   return bulletVista;
 }
