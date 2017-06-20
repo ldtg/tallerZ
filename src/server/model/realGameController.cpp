@@ -214,11 +214,13 @@ void realGameController::move(Unit *unit,
     map.updateUnit(unit->getId(), unit->getUnitState());
 
     if (still) {
-      eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
+      eventQueue.push(new serverUStillEvent(unit->getId(),
+                                            unit->getCenterPosition()));
     }
 
   } else {
-    eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
+    eventQueue.push(new serverUStillEvent(unit->getId(),
+                                          unit->getCenterPosition()));
     unit->still();
   }
   ++it;
@@ -229,7 +231,8 @@ void realGameController::hunt(Unit *unit,
   Attackable *hunted = unit->getHunted();
 
   if (!hunted->isAlive()) {
-    eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
+    eventQueue.push(new serverUStillEvent(unit->getId(),
+                                          unit->getCenterPosition()));
     unit->still();
     return;
   }
@@ -240,11 +243,9 @@ void realGameController::hunt(Unit *unit,
   if (unit->attackedInRange()
       && map.canPass(unitPos, huntedPos)) {
     if (unit->isFirstAttack()) {
-      Position huntedPos = hunted->getAttackPosition(unitPos);
-      Position attackerPos = unit->getCenterPosition();
       eventQueue.push(new serverUAttackEvent(unit->getId(),
                                              huntedPos,
-                                             attackerPos));
+                                             unitPos));
     }
     if (unit->timeToAttack()) {
       this->bullets.push_back(unit->createBullet());
@@ -261,7 +262,8 @@ void realGameController::hunt(Unit *unit,
   } else {
     if (unit->isAutoAttacking()) {
       unit->still();
-      eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
+      eventQueue.push(new serverUStillEvent(unit->getId(),
+                                            unit->getCenterPosition()));
       ++it;
     } else {
       if (hunted->isMoving())
@@ -292,7 +294,8 @@ void realGameController::capture(Unit *unit,
       map.updateUnit(par.first, par.second);
     }
     //create event
-    eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
+    eventQueue.push(new serverUStillEvent(unit->getId(),
+                                          unit->getCenterPosition()));
 
     eventQueue.push(new serverCCaptureEvent(unit->getId(), capturable->getID(),
                                             capturable->getCapturePosition(),
@@ -357,7 +360,8 @@ void realGameController::bulletsTick() {
       iterator = bullets.erase(iterator);
     } else {
       map.updateBullet(current.getId(), current.getState());
-      eventQueue.push(new serverBLTMoveEvent(current.getId(), current.getFrom()));
+      eventQueue.push(new serverBLTMoveEvent(current.getId(),
+                                             current.getFrom()));
       ++iterator;
     }
   }
@@ -435,7 +439,7 @@ void realGameController::addUnits(std::vector<Unit *> vector) {
 
 void realGameController::objectsTick() {
   for (auto t_it = terrainObjects.begin();
-       t_it != terrainObjects.end();++t_it) {
+       t_it != terrainObjects.end(); ++t_it) {
     TerrainObject &current = t_it->second;
     if (current.hasDamagesToReceive()) {
       current.receiveDamages();
@@ -482,8 +486,8 @@ realGameController::realGameController(Map &map,
   this->teams = game_loader.get_teams();
 }
 void realGameController::playerDisconnected(const PlayerID playerID) {
-  Player * player =players.at(playerID);
-  if(player->isAlive())
+  Player *player = players.at(playerID);
+  if (player->isAlive())
     player->disconnect();
 }
 
