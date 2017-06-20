@@ -156,14 +156,15 @@ void realGameController::doTick() {
   unitsTick();
   buildsTick();
   objectsTick();
-  PlayersTick();
-  TeamsTick();
+  playersTick();
+  teamsTick();
 }
 
 void realGameController::unitsTick() {
   for (auto it_units = units.begin(); it_units != units.end();) {
     Unit *current = it_units->second;
-    if (!current->getOwner()->getID().isGaia()) {
+    if (!current->getOwner()->getID().isGaia()
+        && current->getOwner()->isAlive()) {
       if (current->hasDamagesToReceive()) {
         unitReceiveDamage(current);
       }
@@ -370,7 +371,8 @@ void realGameController::bulletsTick() {
 void realGameController::buildsTick() {
   for (auto b_iter = builds.begin(); b_iter != builds.end();) {
     Build *current = b_iter->second;
-    if (!current->getOwner()->getID().isGaia()) {
+    if (!current->getOwner()->getID().isGaia()
+        && current->getOwner()->isAlive()) {
       if (current->hasDamagesToReceive())
         buildReceiveDamage(current);
 
@@ -404,15 +406,19 @@ void realGameController::buildReceiveDamage(Build *current) {
                                          current->getBuildState()));
 }
 
-void realGameController::PlayersTick() {
-  for (auto &player : players) {
-    if (!player.second->isAlive()) {
-      eventQueue.push(new serverGPlayerDefeatedEvent(player.first));
+void realGameController::playersTick() {
+  for (auto iterator = players.begin();
+       iterator != players.end();) {
+    if (!iterator->second->isAlive()) {
+      eventQueue.push(new serverGPlayerDefeatedEvent(iterator->first));
+      iterator = players.erase(iterator);
+    } else {
+      ++iterator;
     }
   }
 }
 
-void realGameController::TeamsTick() {
+void realGameController::teamsTick() {
   unsigned short count = 0;
   const TeamID *winnerId = nullptr;
   for (auto &team : teams) {
@@ -486,8 +492,14 @@ realGameController::realGameController(Map &map,
   this->teams = game_loader.get_teams();
 }
 void realGameController::playerDisconnected(const PlayerID playerID) {
-  Player *player = players.at(playerID);
-  if (player->isAlive())
-    player->disconnect();
+  try {
+    Player *player = players.at(playerID);
+    if (player->isAlive()) {
+      player->disconnect();
+      players.erase(playerID);
+    }
+  } catch (const std::exception &e) {
+    //si ya estaba muerto no se hace nada
+  }
 }
 

@@ -1,4 +1,5 @@
 #include <server/model/Events/serverEvent.h>
+#include <iostream>
 #include "serverEventSender.h"
 serverEventSender::serverEventSender(const std::vector<Socket *> &clients,
                                      Queue<serverEvent *> &queue) : clients(
@@ -7,16 +8,17 @@ void serverEventSender::run() {
   while (open) {
     serverEvent *sev = queue.pop();
     if (sev != nullptr) {
-      try {
-        for (Socket *sck : clients) {
+      for (auto iterator = clients.begin(); iterator != clients.end();) {
+        try {
+          Socket *cli = *iterator;
           EventType type = sev->getType();
-          sck->send_tcp((char *) &type, sizeof(EventType));
-          sck->send_str_preconcatenated(sev->getDataToSend().str());
+          cli->send_tcp((char *) &type, sizeof(EventType));
+          cli->send_str_preconcatenated(sev->getDataToSend().str());
+          ++iterator;
+        } catch (const SocketException &e) {
+          //cli desconectado
+          iterator = clients.erase(iterator);
         }
-      } catch (const SocketException &e) {
-      }
-      if (sev->getType() == G_ENDGAME) {
-        open = false;
       }
       delete (sev);
     } else {

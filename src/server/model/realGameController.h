@@ -34,8 +34,8 @@ class realGameController : public serverGameController{
   void buildsTick();
   void buildReceiveDamage(Build *pBuild);
   void addUnits(std::vector<Unit *> vector);
-  void PlayersTick();
-  void TeamsTick();
+  void playersTick();
+  void teamsTick();
   void objectsTick();
   bool gameInProgress;
  public:

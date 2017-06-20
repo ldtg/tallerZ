@@ -17,9 +17,7 @@ void Player::addTerritory() {
 void Player::subTerritory() {
   if (this->isAlive()) {
     this->capturedTerritories--;
-    this->alive = capturedTerritories != 0;
   }
-
 }
 
 void Player::addUnit() {
