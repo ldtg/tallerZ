@@ -51,7 +51,7 @@ class realGameController : public serverGameController{
   virtual void startGame();
   virtual void endGame();
   virtual bool isGameEnded() const;
-
+  virtual void playerDisconnected(const PlayerID player);
   ~realGameController();
 };
 

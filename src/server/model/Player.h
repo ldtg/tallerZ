@@ -21,6 +21,7 @@ class Player {
   virtual bool isAlive() const;
   virtual void buildDestroyed(const BuildType &type);
   virtual PlayerID getID() const;
+  void disconnect();
 };
 
 #endif //TALLERZ_PLAYER_H

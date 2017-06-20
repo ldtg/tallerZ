@@ -18,6 +18,7 @@ class protectedGameController : public serverGameController {
   virtual void changeUnitFab(const BuildID &buildId, const UnitType &type);
   virtual void capture(const UnitID &unit, const CapturableID &capturable);
   virtual void tick();
+  virtual void playerDisconnected(const PlayerID player);
   ~protectedGameController() {};
 };
 

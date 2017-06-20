@@ -41,6 +41,7 @@ void serverPlayersManager::receivePlayers() {
     cereal::BinaryOutputArchive oarchive(out);
     oarchive(datasnd);
     cli->send_str_preconcatenated(out.str());
+    clientsSocket.emplace(cli, datasnd.id);
     map = datarcv.map;
   }
 }
@@ -50,4 +51,6 @@ std::string serverPlayersManager::getMap() {
 GaiaPlayer &serverPlayersManager::getGaiaPlayer() {
   return gaiaPlayer;
 }
-
+std::map<Socket *, PlayerID> serverPlayersManager::getClients() const {
+  return clientsSocket;
+}

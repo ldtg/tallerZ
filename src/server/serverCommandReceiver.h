@@ -10,8 +10,9 @@ class serverCommandReceiver : public Thread {
   Socket &socketClient;
   serverGameController &gameController;
   bool open;
+  PlayerID id;
  public:
-  serverCommandReceiver(Socket &socket, serverGameController &gc);
+  serverCommandReceiver(Socket &socket, serverGameController &gc, const PlayerID &id);
   virtual void run() override;
   void stop();
   bool isOpen() const;

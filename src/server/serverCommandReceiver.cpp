@@ -5,8 +5,9 @@
 #include "serverCommandReceiver.h"
 
 serverCommandReceiver::serverCommandReceiver(Socket &socket,
-                                             serverGameController &gc)
-    : socketClient(socket), gameController(gc), open(true) {}
+                                             serverGameController &gc,
+                                             const PlayerID &id)
+    : socketClient(socket), gameController(gc), open(true), id(id) {}
 void serverCommandReceiver::run() {
   try {
     while (open) {
@@ -19,6 +20,7 @@ void serverCommandReceiver::run() {
       delete (sc);
     }
   } catch (const SocketException &e) {
+    gameController.playerDisconnected(id);
     this->stop();
   }
 }

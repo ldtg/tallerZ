@@ -35,3 +35,7 @@ void protectedGameController::tick() {
   std::unique_lock<std::mutex> lck(mutex);
   gameController.tick();
 }
+void protectedGameController::playerDisconnected(const PlayerID player) {
+  std::unique_lock<std::mutex> lck(mutex);
+  gameController.playerDisconnected(player);
+}

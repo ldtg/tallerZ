@@ -6,6 +6,7 @@
 #include <common/IDs/BuildID.h>
 #include <common/IDs/TerrainObjectID.h>
 #include <common/Map/Position.h>
+#include <common/IDs/PlayerID.h>
 class serverGameController {
  public:
   virtual void move(const UnitID &unit, const Position &position) = 0;
@@ -16,6 +17,7 @@ class serverGameController {
   virtual void changeUnitFab(const BuildID &buildId, const UnitType &type)= 0;
   virtual void capture(const UnitID &unit, const CapturableID &capturable)= 0;
   virtual void tick() = 0;
+  virtual void playerDisconnected(const PlayerID player) = 0;
   virtual ~serverGameController() {};
 };
 

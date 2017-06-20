@@ -43,6 +43,9 @@ PlayerID Player::getID() const {
 }
 
 void Player::buildDestroyed(const BuildType &type) {
-  if(type == BuildType::FORT)
+  if (type == BuildType::FORT)
     alive = false;
+}
+void Player::disconnect() {
+  alive = false;
 }

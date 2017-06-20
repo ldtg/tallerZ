@@ -13,6 +13,7 @@ class serverPlayersManager {
   std::vector<Socket *> clients;
   std::map<PlayerID, Player *> players;
   std::map<unsigned short, Team> teams;
+  std::map<Socket *, PlayerID> clientsSocket;
   unsigned short actual;
   std::string map;
   dataServerClientAccepted newPlayer(const dataClientConnectedMessage &data);
@@ -24,6 +25,7 @@ class serverPlayersManager {
   std::map<TeamID, Team> getTeams() const;
   std::map<PlayerID, Player *> getPlayers() const;
   GaiaPlayer& getGaiaPlayer();
+  std::map<Socket *, PlayerID> getClients() const;
   ~serverPlayersManager();
 };
 

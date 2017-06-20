@@ -263,6 +263,7 @@ void realGameController::hunt(Unit *unit,
     if (unit->isAutoAttacking()) {
       unit->still();
       eventQueue.push(new serverUStillEvent(unit->getId(), unit->getCenterPosition()));
+      ++it;
     } else {
       this->move(unit, it);
       if (hunted->isMoving())
@@ -480,5 +481,10 @@ realGameController::realGameController(Map &map,
   this->terrainObjects = game_loader.get_controller_terrainObjects();
   this->players = game_loader.get_players();
   this->teams = game_loader.get_teams();
+}
+void realGameController::playerDisconnected(const PlayerID playerID) {
+  Player * player =players.at(playerID);
+  if(player->isAlive())
+    player->disconnect();
 }
 

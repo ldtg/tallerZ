@@ -12,8 +12,9 @@
 std::vector<Socket *> getClients(unsigned short playersExpected,
                                  const std::string &port);
 
-std::vector<serverCommandReceiver *> getCommandReceivers(const std::vector<
-    Socket *> &clients, protectedGameController &pgc);
+std::vector<serverCommandReceiver *> getCommandReceivers(const std::map<Socket *,
+                                                                        PlayerID> &clients,
+                                                         protectedGameController &pgc);
 void sendMapToClients(const std::vector<Socket *> &clients, const Map &map);
 
 bool allPlayersAreConnected(std::vector<serverCommandReceiver *> vector);
@@ -43,7 +44,7 @@ int main(int argc, char *argv[]) {
   serverEventSender eventSender(clients, evqueue);
   eventSender.start();
   std::vector<serverCommandReceiver *>
-      commandReceivers = getCommandReceivers(clients, pgc);
+      commandReceivers = getCommandReceivers(playersManager.getClients(), pgc);
   for (serverCommandReceiver *commandReceiver: commandReceivers) {
     commandReceiver->start();
   }
@@ -82,11 +83,12 @@ void sendMapToClients(const std::vector<Socket *> &clients, const Map &map) {
     cli->send_str_preconcatenated(ss.str());
   }
 }
-std::vector<serverCommandReceiver *> getCommandReceivers(const std::vector<
-    Socket *> &clients, protectedGameController &pgc) {
+std::vector<serverCommandReceiver *> getCommandReceivers(const std::map<Socket *,
+                                                                        PlayerID> &clients,
+                                                         protectedGameController &pgc) {
   std::vector<serverCommandReceiver *> rcvrs;
-  for (Socket *cli:clients) {
-    rcvrs.push_back(new serverCommandReceiver(*cli, pgc));
+  for (auto &par :clients) {
+    rcvrs.push_back(new serverCommandReceiver(*par.first, pgc, par.second));
   }
   return rcvrs;
 }
