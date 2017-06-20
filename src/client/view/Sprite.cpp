@@ -46,6 +46,10 @@ void Sprite::scale(float scaleW, float scaleH) {
 
 void Sprite::set_texture(SDL_Renderer *render) {}
 
+ViewPosition Sprite::getDrawPosition() const {
+  return ViewPosition(x-despX, y-despY);
+}
+
 void Sprite::draw(SDL_Renderer *render, Camera &camera) {
   int cur_frame_aux = 0;
   if (speed > 0)

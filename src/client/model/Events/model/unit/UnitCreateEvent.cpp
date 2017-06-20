@@ -11,16 +11,9 @@ void UnitCreateEvent::process() {
   std::string color = state.owner.getColor();
   UnitType type = id.getType();
 
-  UnitView *unitVista = nullptr;
-  if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO
-      || type == R_LASER || type == R_PSYCHO) {
-    unitVista = new UnitView(type, color, state.position,
-                             action, rotation_s);
-  }
-  else if (type == V_JEEP || type == V_LTANK) {
-    unitVista = new VehicleView(type, color, state.position,
-                                action, rotation_s);
-  }
+  UnitView *unitVista = VistasFactory::getUnitView(type, color,
+                                                   action, rotation_s,
+                                                   state.position);
   unitVista->getView()->setRotation(270);
 
   view->addUnitVista(id, unitVista);

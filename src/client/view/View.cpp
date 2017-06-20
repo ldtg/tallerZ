@@ -100,17 +100,9 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
     std::string action("look_around");
     std::string color = unit.second.owner.getColor();
 
-    UnitView *unitVista = nullptr;
-    if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO
-        || type == R_LASER || type == R_PSYCHO) {
-      unitVista = new UnitView(type, color, unit.second.position,
-                                         action, rotation);
-    }
-    else if (type == V_JEEP || type == V_LTANK) {
-      unitVista = new VehicleView(type, color, unit.second.position,
-                               action, rotation);
-    }
-
+    UnitView *unitVista = VistasFactory::getUnitView(type, color,
+                                                     action, rotation,
+                                                     unit.second.position);
     unitVista->getView()->setRotation(rotations[i]);
     unitsVista.emplace(unit.first, unitVista);
   }

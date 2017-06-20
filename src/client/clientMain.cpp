@@ -27,11 +27,13 @@ Login_Details display_login_settings(int argc, char *argv[]){
 }
 
 int main(int argc, char *argv[]) {
-  Login_Details ld = display_login_settings(argc, argv);
+//  Login_Details ld = display_login_settings(argc, argv);
   Socket socket;
-  socket.connectToServer(ld.ip, ld.port);
+//  socket.connectToServer(ld.ip, ld.port);
+  socket.connectToServer(argv[1], argv[2]);
 
-  sendPlayerConnected(socket, std::stoi(ld.team), ld.map);
+//  sendPlayerConnected(socket, std::stoi(ld.team), ld.map);
+  sendPlayerConnected(socket, std::stoi(argv[3]), argv[4]);
   dataServerClientAccepted accepted = getDataClientAccepted(socket);
 
   Map map = getMap(socket);

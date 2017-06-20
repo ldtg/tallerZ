@@ -2,6 +2,7 @@
 #define TALLERZ_CLIENTE_OBJECTVIEWMOVE_H
 
 #include <queue>
+#include <client/model/MovementState.h>
 #include "ViewPosition.h"
 #include "ObjectMapaVista.h"
 #include "Sprite.h"
@@ -11,6 +12,7 @@ class ObjectViewMove {
   Sprite *view;
   std::queue<ViewPosition> movements;
   bool lastMove;
+  MovementState state;
   ObjectViewMove(Sprite *view);
 
  public:

@@ -9,7 +9,9 @@ class VehicleView : public UnitView {
  public:
   VehicleView(UnitType type, std::string &color, Position pos,
               std::string &action, std::string &rotation);
-
+  void walk(int rotation, const Position &posTo);
+  void still();
+  void fire(const Position &huntedPos);
   void draw(SDL_Renderer *render, Camera &camera);
 };
 

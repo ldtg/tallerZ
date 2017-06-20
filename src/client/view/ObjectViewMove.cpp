@@ -4,6 +4,7 @@
 
 ObjectViewMove::ObjectViewMove(Sprite *view) : view(view) {
   lastMove = false;
+  state.still();
 }
 
 Position ObjectViewMove::getPos() const {
@@ -34,12 +35,18 @@ void ObjectViewMove::addMove(const ViewPosition &pos) {
 
 void ObjectViewMove::update() {
   if (!movements.empty()) {
+    ViewPosition pos = view->getViewPos();
+    Position currentPos = pos.getPos();
+    int rotation = view->getRotation();
+
+    if (state.isStill() || state.isAttacking()) {
+      walk(rotation, currentPos);
+      state.moving();
+    }
+
     ViewPosition viewPosTo = movements.front();
     movements.pop();
     Position posTo = viewPosTo.getPos();
-
-    ViewPosition pos = view->getViewPos();
-    Position currentPos = pos.getPos();
 
     // Ya llego al destino.
     if (currentPos == posTo && lastMove) {
@@ -51,7 +58,6 @@ void ObjectViewMove::update() {
     }
 
     int newRotation = pos.getRoration(viewPosTo);
-    int rotation = view->getRotation();
 
     if (rotation != newRotation) {
       walk(newRotation, posTo);

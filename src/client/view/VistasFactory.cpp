@@ -1,4 +1,6 @@
 #include "VistasFactory.h"
+#include "VehicleView.h"
+#include "RobotView.h"
 #include <random>
 #include <iostream>
 
@@ -32,6 +34,27 @@ int getRandomNumInRange(const int range_from, const int range_to) {
   std::mt19937 generator(rand_dev());
   std::uniform_int_distribution<int> distr(range_from, range_to);
   return distr(generator);
+}
+
+UnitView* VistasFactory::getUnitView(UnitType type,
+                                   std::string &color,
+                                   std::string &action,
+                                   std::string &rotation,
+                                   const Position &pos) {
+  UnitView *unitVista = nullptr;
+  if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO
+      || type == R_LASER || type == R_PSYCHO || type == R_SNIPER) {
+    return new RobotView(type, color, pos,
+                             action, rotation);
+  }
+  else if (type == V_JEEP || type == V_LTANK || type == V_MTANK
+      || type == V_HTANK || type == V_MML) {
+    return new VehicleView(type, color, pos,
+                                action, rotation);
+  }
+  else {
+    return nullptr;
+  }
 }
 
 Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
@@ -72,7 +95,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       else if (type == R_TOUGH) {
         robot = "tough";
         num_frames = 3;
-        speed = 5*num_frames;
+        speed = 8;
         num_frame_return_cycle = 0;
       }
       else if (type == R_PYRO) {
@@ -170,7 +193,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
   }
   else if (type == V_LTANK) {
     type_s = "vehicles/light";
-//    despX=8; despY=8;
+    despX=18; despY=18;
 
     if (action == "walk") {
       num_frames = 3;
@@ -231,9 +254,32 @@ Sprite* VistasFactory::getVehicleTopVista(UnitType type, std::string &color, con
   path = path + type_s + "/" + "top_n";
   Sprite *top = new Sprite(path.c_str(), num_frames, speed,
                            num_frame_return_cycle, color, despX, despY);
+  top->setPos(pos);
+  top->scale(scaleW, scaleH);
+  return top;
+}
 
-  std::cout << despX << " " << despY << std::endl;
+Sprite* VistasFactory::getVehicleTopStillVista(UnitType type,
+                                               std::string &color,
+                                               const std::string &rotation,
+                                               const Position &pos) {
+  std::string type_s;
+  int num_frames=1, speed=1, num_frame_return_cycle=0;
+  int despX=0, despY=0;
+  float scaleW=1.3, scaleH=1.3;
+  std::string path = "../src/view/images/units/vehicles/";
 
+  switch (type) {
+    case V_LTANK: {
+      type_s = "light";
+      despX=2, despY=4;
+      break;
+    }
+    default: return nullptr;
+  }
+  path = path + type_s + "/" + "top_r" + rotation + "_n";
+  Sprite *top = new Sprite(path.c_str(), num_frames, speed,
+                           num_frame_return_cycle, color, despX, despY);
   top->setPos(pos);
   top->scale(scaleW, scaleH);
   return top;
