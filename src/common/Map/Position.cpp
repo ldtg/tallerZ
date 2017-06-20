@@ -126,8 +126,8 @@ bool Position::operator!=(const Position &other) const {
 }
 
 bool Position::equalDelta(const Position &other, unsigned short delta) const {
-  double xdelta = std::pow(this->x - other.x, 2);
-  double ydelta = std::pow(this->y - other.y, 2);
+  double xdelta = std::pow(other.x - this->x, 2);
+  double ydelta = std::pow(other.y - this->y, 2);
 
   return std::sqrt(xdelta + ydelta) <= delta;
 

@@ -170,7 +170,8 @@ struct Data {
     v_ltank.range = 6;
     v_ltank.speed = 6;
     v_ltank.factoryRate = 1;
-    v_ltank.factoryBaseTimeInSec = 840;
+//    v_ltank.factoryBaseTimeInSec = 840;
+    v_ltank.factoryBaseTimeInSec = 20;
     v_ltank.factoryMinimunTechLevel = 2;
 
     v_mtank.type = UnitType::V_MTANK;
