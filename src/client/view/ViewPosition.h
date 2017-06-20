@@ -13,7 +13,8 @@ class ViewPosition {
   float getY() const;
   Position getPos() const;
   void add(ViewPosition other);
-  int getRoration(const ViewPosition &target) const;
+  int getDrawRoration(const ViewPosition &target) const;
+  double getRotation(const ViewPosition &target) const;
 };
 
 #endif //TALLERZ_CLIENTE_VIEWPOSITION_H

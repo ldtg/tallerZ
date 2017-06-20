@@ -1,7 +1,7 @@
 #include "ObjectMapaVista.h"
 
-ObjectMapaVista::ObjectMapaVista() : x(0), y(0), width(0),
-                                     height(0), rotation(0) {}
+ObjectMapaVista::ObjectMapaVista() : x(0), y(0), width(0), height(0),
+                                     rotationDraw(0), rotation(0.0) {}
 
 int ObjectMapaVista::getWidth() const {
     return width;
@@ -29,10 +29,18 @@ ViewPosition ObjectMapaVista::getViewPos() const {
   return ViewPosition(x, y);
 }
 
-void ObjectMapaVista::setRotation(int rotation) {
+void ObjectMapaVista::setDrawRotation(int rotation) {
+  this->rotationDraw = rotation;
+}
+
+int ObjectMapaVista::getDrawRotation() const {
+  return rotationDraw;
+}
+
+void ObjectMapaVista::setRotation(double rotation) {
   this->rotation = rotation;
 }
 
-int ObjectMapaVista::getRotation() {
+double ObjectMapaVista::getRotation() const {
   return rotation;
 }

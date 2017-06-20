@@ -9,6 +9,10 @@ VehicleView::VehicleView(UnitType type, std::string &color,
   top = VistasFactory::getVehicleTopVista(type, color, pos);
 }
 
+VehicleView::~VehicleView() {
+  delete top;
+}
+
 void VehicleView::walk(int rotation, const Position &posTo) {
   UnitView::walk(rotation, posTo);
   if (state.isAttacking()) {
@@ -31,12 +35,17 @@ void VehicleView::still() {
 }
 
 void VehicleView::fire(const Position &huntedPos) {
+  ViewPosition viewPos = top->getViewPos();
+  ViewPosition huntedViewPos(huntedPos.getX(), huntedPos.getY());
+  double rot = viewPos.getRotation(huntedViewPos);
+  top->setRotation(rot);
+
   Position pos = view->getPos();
   int rotation = pos.getRoration(huntedPos);
   std::string rotation_s = std::to_string(rotation);
   delete top;
   top = VistasFactory::getVehicleTopStillVista(type, color, rotation_s, pos);
-  top->setRotation(rotation);
+  top->setDrawRotation(rotation);
   state.attacking();
 }
 

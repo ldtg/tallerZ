@@ -18,29 +18,33 @@ void UnitView::walk(int rotation, const Position &posTo) {
   delete view;
   view = VistasFactory::getUnitVista(type, color, action,
                                      rotation_s, posTo);
-  view->setRotation(rotation);
+  view->setDrawRotation(rotation);
 }
 
 void UnitView::still() {
-  int rotation = view->getRotation();
+  int rotation = view->getDrawRotation();
   Position pos = view->getPos();
   std::string rotation_s = std::to_string(rotation);
   std::string action("look_around");
 
   delete view;
   view = VistasFactory::getUnitVista(type, color, action, rotation_s, pos);
-  view->setRotation(rotation);
+  view->setDrawRotation(rotation);
 }
 
 void UnitView::fire(const Position &huntedPos) {
-  Position pos = view->getPos();
+  ViewPosition viewPos = view->getViewPos();
+  ViewPosition huntedViewPos(huntedPos.getX(), huntedPos.getY());
+  double rot = viewPos.getRotation(huntedViewPos);
+  view->setRotation(rot);
 
+  Position pos = view->getPos();
   int rotation = pos.getRoration(huntedPos);
   std::string rotation_s = std::to_string(rotation);
   std::string action("fire");
   delete view;
   view = VistasFactory::getUnitVista(type, color, action, rotation_s, pos);
-  view->setRotation(rotation);
+  view->setDrawRotation(rotation);
 }
 
 Sprite* UnitView::getView() const {

@@ -14,7 +14,7 @@ void UnitCreateEvent::process() {
   UnitView *unitVista = VistasFactory::getUnitView(type, color,
                                                    action, rotation_s,
                                                    state.position);
-  unitVista->getView()->setRotation(270);
+  unitVista->getView()->setDrawRotation(270);
 
   view->addUnitVista(id, unitVista);
 

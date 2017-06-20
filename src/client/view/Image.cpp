@@ -44,6 +44,6 @@ void Image::draw(SDL_Renderer *render, Camera &camera) {
 
     SDL_Rect image = { (int)x - camera.x, (int)y - camera.y, width, height };
 
-    SDL_RenderCopy(render, texture, NULL, &image);
+    SDL_RenderCopyEx(render, texture, NULL, &image, rotation, NULL, SDL_FLIP_NONE);
   }
 }

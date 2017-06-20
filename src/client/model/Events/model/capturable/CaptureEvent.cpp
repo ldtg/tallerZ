@@ -30,12 +30,12 @@ void CaptureEvent::process() {
 
 //      Position pos = capturedVistaOld->getPos();
 
-      int rotation = capturedVistaOld->getRotation();
+      int rotation = capturedVistaOld->getDrawRotation();
       std::string rotation_s = std::to_string(rotation);
       UnitView *capturedVista = new UnitView(type, color,
                                              par.second.position,
                                              action, rotation_s);
-      capturedVista->getView()->setRotation(rotation);
+      capturedVista->getView()->setDrawRotation(rotation);
       view->removeUnitVista(par.first);
       view->addUnitVista(par.first, capturedVista);
 

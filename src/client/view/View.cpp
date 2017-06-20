@@ -103,7 +103,7 @@ void View::createInitialUnitVista(const std::map<UnitID, UnitState> &units) {
     UnitView *unitVista = VistasFactory::getUnitView(type, color,
                                                      action, rotation,
                                                      unit.second.position);
-    unitVista->getView()->setRotation(rotations[i]);
+    unitVista->getView()->setDrawRotation(rotations[i]);
     unitsVista.emplace(unit.first, unitVista);
   }
 }
