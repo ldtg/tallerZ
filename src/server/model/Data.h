@@ -76,22 +76,22 @@ struct Data {
     rocket.type = WeaponType::ROCKET;
     rocket.damage = 25;
     rocket.isExplosive = true;
-    rocket.speed = 6; // 12 es la veloc max del vehiculo mas rapido creo
+    rocket.speed = 15; // 12 es la veloc max del vehiculo mas rapido creo
 
     flamethrower.type = WeaponType::FIRE;
     flamethrower.damage = 10;
     flamethrower.isExplosive = true;
-    flamethrower.speed = 6;
+    flamethrower.speed = 15;
 
     laser.type = WeaponType::LASER;
     laser.damage = 10;
     laser.isExplosive = false;
-    laser.speed = 6;
+    laser.speed = 15;
 
     hcbullet.type = WeaponType::HCBULLET;
     hcbullet.damage = 20;
     hcbullet.isExplosive = true;
-    hcbullet.speed = 6;
+    hcbullet.speed = 15;
 
     r_grunt.type = UnitType::R_GRUNT;
     r_grunt.weapon = bullet;
@@ -110,7 +110,8 @@ struct Data {
     r_tough.range = 5;
     r_tough.speed = 4;
     r_tough.factoryRate = 2;
-    r_tough.factoryBaseTimeInSec = 742;
+//    r_tough.factoryBaseTimeInSec = 742;
+    r_tough.factoryBaseTimeInSec = 30;
     r_tough.factoryMinimunTechLevel = 2;
 
     r_pyro.type = UnitType::R_PYRO;
@@ -120,7 +121,8 @@ struct Data {
     r_pyro.range = 6;
     r_pyro.speed = 4;
     r_pyro.factoryRate = 4;
-    r_pyro.factoryBaseTimeInSec = 840;
+//    r_pyro.factoryBaseTimeInSec = 840;
+    r_pyro.factoryBaseTimeInSec = 30;
     r_pyro.factoryMinimunTechLevel = 4;
 
     r_laser.type = UnitType::R_LASER;
@@ -130,7 +132,8 @@ struct Data {
     r_laser.range = 7;
     r_laser.speed = 4;
     r_laser.factoryRate = 5;
-    r_laser.factoryBaseTimeInSec = 900;
+//    r_laser.factoryBaseTimeInSec = 900;
+    r_laser.factoryBaseTimeInSec = 30;
     r_laser.factoryMinimunTechLevel = 5;
 
     r_psycho.type = UnitType::R_PSYCHO;
@@ -140,7 +143,8 @@ struct Data {
     r_psycho.range = 7;
     r_psycho.speed = 4;
     r_psycho.factoryRate = 3;
-    r_psycho.factoryBaseTimeInSec = 600;
+//    r_psycho.factoryBaseTimeInSec = 600;
+    r_psycho.factoryBaseTimeInSec = 30;
     r_psycho.factoryMinimunTechLevel = 2;
 
     r_sniper.type = UnitType::R_SNIPER;
@@ -150,7 +154,8 @@ struct Data {
     r_sniper.range = 10;
     r_sniper.speed = 4;
     r_sniper.factoryRate = 3;
-    r_sniper.factoryBaseTimeInSec = 575;
+//    r_sniper.factoryBaseTimeInSec = 575;
+    r_sniper.factoryBaseTimeInSec = 30;
     r_sniper.factoryMinimunTechLevel = 3;
 
     v_jeep.type = UnitType::V_JEEP;

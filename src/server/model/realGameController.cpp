@@ -357,7 +357,7 @@ void realGameController::bulletsTick() {
       iterator = bullets.erase(iterator);
     } else {
       map.updateBullet(current.getId(), current.getState());
-      eventQueue.push(new serverBLTMoveEvent(current.getId(), current.getTo()));
+      eventQueue.push(new serverBLTMoveEvent(current.getId(), current.getFrom()));
       ++iterator;
     }
   }
