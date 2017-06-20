@@ -21,7 +21,7 @@ void serverCommandReceiver::run() {
     }
   } catch (const SocketException &e) {
     gameController.playerDisconnected(id);
-    this->stop();
+    socketClient.closeSocket();
   }
 }
 void serverCommandReceiver::stop() {

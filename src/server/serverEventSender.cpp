@@ -9,9 +9,11 @@ void serverEventSender::run() {
       serverEvent *sev = queue.pop();
       if (sev != nullptr) {
         for (Socket *sck : clients) {
-          EventType type = sev->getType();
-          sck->send_tcp((char *) &type, sizeof(EventType));
-          sck->send_str_preconcatenated(sev->getDataToSend().str());
+         if(sck->isValid()){
+            EventType type = sev->getType();
+            sck->send_tcp((char *) &type, sizeof(EventType));
+            sck->send_str_preconcatenated(sev->getDataToSend().str());
+          }
         }
         if (sev->getType() == G_ENDGAME) {
           open = false;
