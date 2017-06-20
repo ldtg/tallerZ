@@ -163,6 +163,7 @@ void View::update() {
     bullet.second->update();
   }
   updateExplosions();
+
 }
 
 void View::updateExplosions() {

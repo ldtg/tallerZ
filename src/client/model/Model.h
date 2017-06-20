@@ -32,9 +32,9 @@ class Model {
   PlayerID getPlayer() const;
   TeamID getTeamID() const;
   void rightClick(int x, int y);
-
   Map &getMap();
-
+  std::vector<UnitID> getUnitsSelected();
+  void clearUnitsSelected();
 };
 
 #endif //TALLERZ_MODEL_H
