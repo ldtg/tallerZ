@@ -11,7 +11,7 @@ Camera::Camera(int w,
     x = 0;
   } else {
     if (aux_x + w > mapWidth)
-      x = aux_x - ((aux_x + w) - (aux_x + mapWidth));
+      x = aux_x - ((aux_x + w) - (mapWidth));
     else
       x = aux_x;
   }
@@ -20,7 +20,7 @@ Camera::Camera(int w,
     y = 0;
   } else {
     if (aux_y + w > mapHeight)
-      y = aux_y - ((aux_y + w) - (aux_y + mapHeight));
+      y = aux_y - ((aux_y + w) - (mapHeight));
     else
       y = aux_y;
   }
