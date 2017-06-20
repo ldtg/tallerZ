@@ -33,6 +33,9 @@ void UnitView::still() {
 }
 
 void UnitView::fire(const Position &huntedPos) {
+  // Llego, entonces se vacia la cola de movimientos.
+  while (!movements.empty()) {movements.pop();}
+
   ViewPosition viewPos = view->getViewPos();
   ViewPosition huntedViewPos(huntedPos.getX(), huntedPos.getY());
   double rot = viewPos.getRotation(huntedViewPos);

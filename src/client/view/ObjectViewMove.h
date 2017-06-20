@@ -22,7 +22,7 @@ class ObjectViewMove {
   void setLastMove();
   virtual void walk(int rotation, const Position &posTo) = 0;
   virtual void still() = 0;
-  void update();
+  virtual void update();
 };
 
 #endif //TALLERZ_CLIENTE_OBJECTVIEWMOVE_H

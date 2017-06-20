@@ -226,7 +226,7 @@ Sprite* VistasFactory::getVehicleTopVista(UnitType type,
   switch (type) {
     case V_LTANK: {
       type_s = "light";
-      num_frames=8; speed=3*num_frames;
+      num_frames=8; speed=40;
       num_frame_return_cycle=0;
       despX=2, despY=4;
       break;
