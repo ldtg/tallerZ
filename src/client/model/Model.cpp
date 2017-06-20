@@ -77,14 +77,15 @@ void Model::rightClick(int x, int y) {
   Position pos(x + camera.x, y + camera.y);
 
   try {
-    CapturableID capturable = map.getCapturableIDFromPosition(pos,unitSearchRange);
+    CapturableID
+        capturable = map.getCapturableIDFromPosition(pos, unitSearchRange);
     for (UnitID unit : unitsSelected) {
       gameController.capture(unit, capturable);
     }
     if (capturable.getType() == UNIT) {
       unitsSelected.clear();
       // Se selecciona la unidad capturada.
-      UnitID unit = map.getUnitIDFromPosition(pos,unitSearchRange);
+      UnitID unit = map.getUnitIDFromPosition(pos, unitSearchRange);
       unitsSelected.push_back(unit);
       view.show_unit_side_details(unit.getType(),
                                   map.getUnitState(unit).secondType);
@@ -94,7 +95,7 @@ void Model::rightClick(int x, int y) {
     // Donde se hizo click no hay edificio ni undida.
   }
   try {
-    UnitID attacked = map.getUnitIDFromPosition(pos,unitSearchRange);
+    UnitID attacked = map.getUnitIDFromPosition(pos, unitSearchRange);
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, attacked);
     }
@@ -115,7 +116,8 @@ void Model::rightClick(int x, int y) {
     // Donde se hizo click no hay edificio ni undidad.
   }
   try {
-    TerrainObjectID terrainID = map.getTerrainObjectIDFromPosition(pos, terrainObjSearchRange);
+    TerrainObjectID terrainID =
+        map.getTerrainObjectIDFromPosition(pos, terrainObjSearchRange);
 
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, terrainID);
@@ -141,7 +143,13 @@ PlayerID Model::getPlayer() const {
   return player;
 }
 
- TeamID Model::getTeamID() const {
+TeamID Model::getTeamID() const {
   return teamID;
+}
+std::vector<UnitID> Model::getUnitsSelected() {
+  return unitsSelected;
+}
+void Model::clearUnitsSelected() {
+  unitsSelected.clear();
 }
 
