@@ -77,9 +77,31 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "look_around") {
-      num_frames = 3; speed = 6*num_frames;
+      // Se elije un look_around al azar.
+      int num_look = getRandomNumInRange(1,9);
+      action = action + std::to_string(num_look);
+
+      if (num_look==1 || num_look==3 ||
+          num_look==4 || num_look==5) {
+        num_frames = 6; speed = 30;
+      }
+      else if (num_look == 2) {
+        num_frames = 10; speed = 8;
+      }
+      else if (num_look == 6) {
+        num_frames = 11; speed = 8;
+      }
+      else if (num_look == 7) {
+        num_frames = 4; speed = 12;
+      }
+      else if (num_look == 8) {
+        num_frames = 12; speed = 1*num_frames;
+      }
+      else if (num_look == 9) {
+        num_frames = 11; speed = 1*num_frames;
+      }
       path = path + type_s + "/" + action
-          + "/" + action + "_" + color + "_r" + rotation + "_n";
+          + "/" + action + "_" + color + "_n";
     }
     else if (action == "fire") {
       std::string robot;

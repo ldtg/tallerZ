@@ -18,6 +18,7 @@ class UnitView : public ObjectViewMove {
   virtual void walk(int rotation, const Position &posTo);
   virtual void still();
   virtual void fire(const Position &huntedPos);
+  virtual void create();
   Sprite* getView() const;
   std::string getColor() const;
 
