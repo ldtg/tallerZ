@@ -24,7 +24,7 @@ class Side_Board : public ObjectMapaVista{
 
   Window * window;
   View& view;
-  Button * menu_button = NULL;
+  Button * quit_button = NULL;
 
   Texture * face_texture = NULL;
   Texture * weapon_texture = NULL;
@@ -34,11 +34,11 @@ class Side_Board : public ObjectMapaVista{
   Texture * weapon_label = NULL;
 
   const SDL_Rect renderQuad = {0,0,800, 600};
-  const SDL_Rect face_rect = {707,45,86,72};
-  const SDL_Rect weapon_rect = {710, 149, 81, 57};
-  const SDL_Rect unit_label_background_rect = {706, 123, 88, 20};
-  const SDL_Rect unit_label_rect = {702, 125, 96, 14};
-  const SDL_Rect weapon_label_rect = {699, 231, 100, 18};
+  const SDL_Rect face_rect = {706,46,86,72};
+  const SDL_Rect weapon_rect = {709, 150, 81, 57};
+  const SDL_Rect unit_label_background_rect = {705, 124, 88, 20};
+  const SDL_Rect unit_label_rect = {701, 126, 96, 14};
+  const SDL_Rect weapon_label_rect = {698, 232, 100, 18};
 
  public:
   Side_Board(Window * window, View& view, const std::string& color);
@@ -48,7 +48,7 @@ class Side_Board : public ObjectMapaVista{
   void scale(float scaleW, float scaleH);
 
   void load_items();
-  bool is_in_menu_button(int x, int y);
+  bool is_in_quit_button(int x, int y);
   void launch_menu_button();
 
   void load_unit_images(UnitType unitType, UnitType type);
@@ -56,22 +56,7 @@ class Side_Board : public ObjectMapaVista{
   void add_to_panel(Panel& panel);
 
   virtual void set_texture(SDL_Renderer *render){};
-  virtual void draw(SDL_Renderer *render, Camera &camera){
-    SDL_RenderCopy(render, side_board_texture->get_texture(), NULL, NULL);
-    unit_label_background->renderize(window, &unit_label_background_rect);
-    if (this->face_texture != NULL){
-      this->face_texture->renderize(window, &face_rect);
-    }
-    if (this->weapon_texture != NULL){
-      this->weapon_texture->renderize(window, &weapon_rect);
-    }
-    if (this->unit_label != NULL){
-      this->unit_label->renderize(window, &unit_label_rect);
-    }
-    if (this->weapon_label != NULL){
-      this->weapon_label->renderize(window, &weapon_label_rect);
-    }
-  }
+  virtual void draw(SDL_Renderer *render, Camera &camera);
 
  private:
   std::string label_path(const std::string& name);

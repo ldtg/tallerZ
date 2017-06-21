@@ -17,7 +17,7 @@ class Quit_Button : public Button {
       "../src/client/front_end/Images/Interface/quit_button_pressed.bmp";
  public:
   Quit_Button(Window * window, View& view) : view(view){
-    renderQuad = {635, 573, 56, 20};
+    renderQuad = {633, 574, 56, 20};
     this->window = window;
     this->load_texture_up(path_up);
     this->load_texture_down(path_down);
