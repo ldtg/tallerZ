@@ -51,5 +51,8 @@ serverCommand *serverCommandFactory::createCommand(const CommandType &type,
       iarchive(data);
       return new serverBChangeUCommand(data);
     }
+    default: {
+      return nullptr;//Nunca deberia llegar porque se consideraron todos los casos
+    }
   }
 }

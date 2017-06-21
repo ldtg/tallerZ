@@ -84,7 +84,6 @@ set(SOURCE_FILES
         src/server/model/Capturable.h
         src/server/model/CapturableVehicle.cpp
         src/server/model/CapturableVehicle.h
-        src/server/model/MapType.h
         src/common/Types/PlayerColor.h
 
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
@@ -168,7 +167,6 @@ set(SOURCE_FILES
         src/common/DataCommands/Unit/dataUnitMoveCommand.h
         src/server/model/Commands/Unit/serverUMoveCommand.cpp
         src/server/model/Commands/Unit/serverUMoveCommand.h
-        src/server/model/Commands/serverCommand.cpp
         src/server/model/Commands/serverCommand.h
         src/server/model/Commands/serverCommandFactory.cpp
         src/server/model/Commands/serverCommandFactory.h
@@ -204,7 +202,6 @@ set(SOURCE_FILES
         src/server/model/realGameController.h
         src/server/model/protectedGameController.cpp
         src/server/model/protectedGameController.h
-        src/server/serverGameController.cpp
         src/server/serverGameController.h
         src/server/serverEventSender.cpp
         src/server/serverEventSender.h

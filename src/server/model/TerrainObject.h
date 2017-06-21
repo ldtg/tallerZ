@@ -16,20 +16,21 @@ class TerrainObject : public Attackable {
   bool passable;
   Player *owner;
  public:
-  virtual Player *getOwner();
-  explicit TerrainObject(const TerrainObjectData &data,
-                         const Position &centerPos,
-                         Player *owner);
+  TerrainObject(const TerrainObjectData &data,
+                const Position &centerPos,
+                Player *owner);
+  virtual Player *getOwner() override;
   virtual Position getAttackPosition(const Position &attacker) const override;
-  virtual bool isAlive() const;
-  virtual bool isMoving() const;
-  virtual Position nextMovePosition() const;
-  virtual void receiveAttack(const Weapon &weapon);
-  virtual bool hasDamagesToReceive() const;
+  virtual Position nextMovePosition() const override;
+  virtual void receiveAttack(const Weapon &weapon) override;
   virtual void receiveDamages();
-  TerrainObjectID getID() const;
-  TerrainObjectState getState() const;
+  virtual bool isAlive() const override;
+  virtual bool isMoving() const override;
+  virtual bool hasDamagesToReceive() const;
+  virtual TerrainObjectID getID() const;
+  virtual TerrainObjectState getState() const;
   virtual Position getCenterPosition() const override;
+  virtual ~TerrainObject() override;
 };
 
 #endif //TALLERZ_TERRAINOBJECT_H

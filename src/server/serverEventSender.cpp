@@ -4,6 +4,7 @@
 serverEventSender::serverEventSender(const std::vector<Socket *> &clients,
                                      Queue<serverEvent *> &queue) : clients(
     clients), queue(queue), open(true) {}
+
 void serverEventSender::run() {
   while (open) {
     serverEvent *sev = queue.pop();
@@ -26,15 +27,17 @@ void serverEventSender::run() {
     }
   }
 }
+
 void serverEventSender::stop() {
   for (Socket *cli :clients) {
     cli->shutdownConnection(ShutdownMode::WRITE);
   }
   this->open = false;
 }
+
 bool serverEventSender::isOpen() const {
   return open;
 }
-serverEventSender::~serverEventSender() {
-}
+
+serverEventSender::~serverEventSender() {}
 

@@ -82,7 +82,6 @@ class Unit : public Attackable {
   virtual Player *getOwner();
   virtual Team getOwnerTeam();
   virtual Bullet createBullet();
-
   virtual ~Unit();
 };
 

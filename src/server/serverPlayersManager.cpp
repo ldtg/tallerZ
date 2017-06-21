@@ -6,6 +6,7 @@ serverPlayersManager::serverPlayersManager(const std::vector<Socket *> &clients)
     teams.emplace(j, Team());
   }
 }
+
 dataServerClientAccepted serverPlayersManager::newPlayer(const dataClientConnectedMessage &data) {
   Player *player = new Player((PlayerColor) actual);
   teams.at(data.team).addPlayer(player);
@@ -13,22 +14,7 @@ dataServerClientAccepted serverPlayersManager::newPlayer(const dataClientConnect
   players.emplace(player->getID(), player);
   return dataServerClientAccepted(player->getID(), teams.at(data.team).getID());
 }
-std::map<TeamID, Team> serverPlayersManager::getTeams() const {
-  std::map<TeamID, Team> mapteams;
-  for (auto &team : teams) {
-    if (team.second.isTeamAlive())
-      mapteams.emplace(team.second.getID(), team.second);
-  }
-  return mapteams;
-}
-std::map<PlayerID, Player *> serverPlayersManager::getPlayers() const {
-  return players;
-}
-serverPlayersManager::~serverPlayersManager() {
-  for (auto &player : players) {
-    delete (player.second);
-  }
-}
+
 void serverPlayersManager::receivePlayers() {
   for (Socket *cli: clients) {
     std::stringstream ss(cli->rcv_str_preconcatenated());
@@ -45,12 +31,34 @@ void serverPlayersManager::receivePlayers() {
     map = datarcv.map;
   }
 }
+
+std::map<TeamID, Team> serverPlayersManager::getTeams() const {
+  std::map<TeamID, Team> mapteams;
+  for (auto &team : teams) {
+    if (team.second.isTeamAlive())
+      mapteams.emplace(team.second.getID(), team.second);
+  }
+  return mapteams;
+}
+
+std::map<PlayerID, Player *> serverPlayersManager::getPlayers() const {
+  return players;
+}
+
 std::string serverPlayersManager::getMap() {
   return map;
 }
+
 GaiaPlayer &serverPlayersManager::getGaiaPlayer() {
   return gaiaPlayer;
 }
+
 std::map<Socket *, PlayerID> serverPlayersManager::getClients() const {
   return clientsSocket;
+}
+
+serverPlayersManager::~serverPlayersManager() {
+  for (auto &player : players) {
+    delete (player.second);
+  }
 }

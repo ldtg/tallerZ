@@ -10,7 +10,7 @@ class Team {
   TeamID id;
   std::map<PlayerID, Player *> players;
  public:
-  explicit Team(const std::map<PlayerID, Player *> &players);
+  Team(const std::map<PlayerID, Player *> &players);
   Team();
   void addPlayer(Player *player);
   void removePlayer(Player *player);

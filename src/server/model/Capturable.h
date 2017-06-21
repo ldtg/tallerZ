@@ -20,12 +20,12 @@ class Capturable {
   virtual Position getCapturePosition() const = 0;
   virtual std::map<BuildID, BuildState> getCapturedBuilds() const = 0;
   virtual std::map<UnitID, UnitState> getCapturedUnits() const = 0;
+  virtual CapturableState getCapturableState() const = 0;
+  virtual CapturableID getID() const;
   virtual bool capturerDissapear() const = 0;
   virtual bool isRecapturable() const = 0;
   virtual bool canBeCapturedBy(const UnitID &id) const = 0;
-  virtual CapturableState getCapturableState() const = 0;
-  virtual CapturableID getID() const;
-  virtual ~Capturable(){};
+  virtual ~Capturable();
 };
 
 #endif //TALLERZ_CAPTURABLE_H

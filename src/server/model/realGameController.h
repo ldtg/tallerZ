@@ -37,22 +37,17 @@ class realGameController : public serverGameController{
   void playersTick();
   void teamsTick();
   void objectsTick();
-  bool gameInProgress;
  public:
   realGameController(Map &map,const Game_Loader &game_loader,Queue<serverEvent*> &evqueue);
-
-  virtual void move(const UnitID &unit, const Position &position);
-  virtual void attack(const UnitID &attacker, const UnitID &attacked);
-  virtual void attack(const UnitID &attacker, const BuildID &attacked);
-  virtual void attack(const UnitID &attacker, const TerrainObjectID &attacked);
-  virtual void changeUnitFab(const BuildID &buildId, const UnitType &type);
-  virtual void capture(const UnitID &unit, const CapturableID &capturable);
+  virtual void move(const UnitID &unit, const Position &position) override;
+  virtual void attack(const UnitID &attacker, const UnitID &attacked) override;
+  virtual void attack(const UnitID &attacker, const BuildID &attacked) override;
+  virtual void attack(const UnitID &attacker, const TerrainObjectID &attacked) override;
+  virtual void changeUnitFab(const BuildID &buildId, const UnitType &type) override;
+  virtual void capture(const UnitID &unit, const CapturableID &capturable) override;
   virtual void tick();
-  virtual void startGame();
-  virtual void endGame();
-  virtual bool isGameEnded() const;
   virtual void playerDisconnected(const PlayerID player);
-  ~realGameController();
+  virtual ~realGameController();
 };
 
 #endif //TALLERZ_REALGAMECONTROLLER_H

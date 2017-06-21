@@ -17,7 +17,17 @@
 #include <server/model/Events/Build/serverBUpdateTimeEvent.h>
 #include "AStar.h"
 
-#include "Data.h"
+realGameController::realGameController(Map &map,
+                                       const Game_Loader &game_loader,
+                                       Queue<serverEvent *> &evqueue)
+    : map(map), eventQueue(evqueue) {
+  this->units = game_loader.get_controller_units();
+  this->builds = game_loader.get_builds();
+  this->capturables = game_loader.get_controller_capturables();
+  this->terrainObjects = game_loader.get_controller_terrainObjects();
+  this->players = game_loader.get_players();
+  this->teams = game_loader.get_teams();
+}
 
 void realGameController::move(const UnitID &idunit, const Position &position) {
   Unit *unit = units.at(idunit);
@@ -199,7 +209,6 @@ void realGameController::unitsTick() {
 void realGameController::unitReceiveDamage(Unit *current) const {
   current->receiveDamages();
   map.updateUnit(current->getId(), current->getUnitState());
-  //el evento damage receive no se usaba
 }
 
 void realGameController::move(Unit *unit,
@@ -315,13 +324,14 @@ void realGameController::capture(Unit *unit,
     if (!capturable->isRecapturable()) {
       this->capturables.erase(capturable->getID());
       map.removeCapturable(capturable->getID());
-      /*for (auto par: units) {
+      for (auto par: units) {
         if ((par.second->getCapturable() == capturable)
             && unit->getId() != par.first) {
           par.second->still();
-          eventQueue.push(new serverUStillEvent(par.first));
+          eventQueue.push(new serverUStillEvent(par.first,
+                                                par.second->getCenterPosition()));
         }
-      }*/
+      }
       delete capturable;
     } else {
       map.updateCapturable(capturable->getID(),
@@ -428,7 +438,6 @@ void realGameController::teamsTick() {
   }
   if (count == 1) {
     eventQueue.push(new serverGEndGameEvent(*winnerId));
-    this->endGame();
   }
 
 }
@@ -470,26 +479,7 @@ realGameController::~realGameController() {
     delete (par.second);
   }
 }
-void realGameController::startGame() {
-  gameInProgress = true;
-}
-void realGameController::endGame() {
-  gameInProgress = false;
-}
-bool realGameController::isGameEnded() const {
-  return !gameInProgress;
-}
-realGameController::realGameController(Map &map,
-                                       const Game_Loader &game_loader,
-                                       Queue<serverEvent *> &evqueue)
-    : map(map), eventQueue(evqueue) {
-  this->units = game_loader.get_controller_units();
-  this->builds = game_loader.get_builds();
-  this->capturables = game_loader.get_controller_capturables();
-  this->terrainObjects = game_loader.get_controller_terrainObjects();
-  this->players = game_loader.get_players();
-  this->teams = game_loader.get_teams();
-}
+
 void realGameController::playerDisconnected(const PlayerID playerID) {
   try {
     Player *player = players.at(playerID);

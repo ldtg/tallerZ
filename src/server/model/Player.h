@@ -13,15 +13,16 @@ class Player {
   bool alive;
  public:
   explicit Player(const PlayerColor &color);
-  virtual unsigned short getAmountOfTerritories();
   virtual void addTerritory();
   virtual void subTerritory();
   virtual void addUnit();
   virtual void subUnit();
-  virtual bool isAlive() const;
   virtual void buildDestroyed(const BuildType &type);
-  virtual PlayerID getID() const;
+  virtual bool isAlive() const;
   void disconnect();
+  virtual unsigned short getAmountOfTerritories() const;
+  virtual PlayerID getID() const;
+  virtual ~Player();
 };
 
 #endif //TALLERZ_PLAYER_H

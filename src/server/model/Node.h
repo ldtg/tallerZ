@@ -8,7 +8,7 @@
 
 class Node {
  private:
-  const Tile tile;
+  Tile tile;
   float distance;
   float heuristic;
   float totalCost;
@@ -19,11 +19,11 @@ class Node {
        Node *parent,
        float heuristic);
   std::vector<Position> makePath() const;
-  const Tile &getTile() const;
-  bool operator==(const Node &node) const;
-  float getTotalCost() const;
   bool isBetter(const Node &node) const;
   bool hasTile(const Tile &tile) const;
+  Tile getTile() const;
+  float getTotalCost() const;
+  bool operator==(const Node &node) const;
 };
 
 #endif //TALLERZ_NODE_H

@@ -18,15 +18,14 @@ class AStar {
   const Tile itile;
   const Tile etile;
   const Position target;
-  std::vector<Node*> getNeighbors(Node *current);
   bool existBetter(Node *pNode) const;
+  bool isInClose(Node *neighbor);
+  std::vector<Node*> getNeighbors(Node *current);
   float heuristic(const Tile &itile, const Tile &etile) const;
  public:
   AStar(const Map &map, const Unit *unit,const Position &target);
   std::vector<Position> find();
-
   ~AStar();
-  bool isInClose(Node *neighbor);
 };
 
 #endif //TALLERZ_ASTAR_H

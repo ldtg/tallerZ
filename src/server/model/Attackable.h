@@ -14,6 +14,7 @@ class Attackable {
   virtual bool isMoving() const = 0;
   virtual Position nextMovePosition() const = 0;
   virtual void receiveAttack(const Weapon &weapon) = 0;
+  virtual ~Attackable(){};
 };
 
 #endif //TALLERZ_ATTACKABLE_H

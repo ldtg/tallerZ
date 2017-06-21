@@ -1,25 +1,21 @@
 #include "TerrainObject.h"
+TerrainObject::TerrainObject(const TerrainObjectData &data,
+                             const Position &centerPos, Player *owner)
+    : id(data.type),
+      centerPosition(centerPos),
+      health(data.health),
+      size(data.size),
+      passable(data.passable), owner(owner) {}
+
 Position TerrainObject::getAttackPosition(const Position &attacker) const {
   return centerPosition.getAttackPosition(attacker, size + 1);
 }
-bool TerrainObject::isAlive() const {
-  return health > 0;
-}
-bool TerrainObject::isMoving() const {
-  return false;
-}
-Position TerrainObject::nextMovePosition() const {
-  return centerPosition;
-}
+
 void TerrainObject::receiveAttack(const Weapon &weapon) {
-//  if (weapon.isExplosive) {
-  if (isAlive())
+  if (isAlive() && weapon.isExplosive)
     damagesToReceive.push_back(weapon.damage);
-//  }
 }
-bool TerrainObject::hasDamagesToReceive() const {
-  return !damagesToReceive.empty();
-}
+
 void TerrainObject::receiveDamages() {
   for (auto damage: damagesToReceive) {
     if (this->health > damage) {
@@ -34,24 +30,36 @@ void TerrainObject::receiveDamages() {
   }
   damagesToReceive.clear();
 }
+
+bool TerrainObject::isAlive() const {
+  return health > 0;
+}
+
+bool TerrainObject::isMoving() const {
+  return false;
+}
+
+Position TerrainObject::nextMovePosition() const {
+  return centerPosition;
+}
+
+bool TerrainObject::hasDamagesToReceive() const {
+  return !damagesToReceive.empty();
+}
+
 TerrainObjectID TerrainObject::getID() const {
   return id;
 }
+
 TerrainObjectState TerrainObject::getState() const {
   return TerrainObjectState(centerPosition, size, health, passable);
 }
-TerrainObject::TerrainObject(const TerrainObjectData &data,
-                             const Position &centerPos, Player *owner)
-    : id(data.type),
-      centerPosition(centerPos),
-      health(data.health),
-      size(data.size),
-      passable(data.passable), owner(owner) {
 
-}
 Player *TerrainObject::getOwner() {
   return owner;
 }
+
 Position TerrainObject::getCenterPosition() const {
   return centerPosition;
 }
+TerrainObject::~TerrainObject() {}

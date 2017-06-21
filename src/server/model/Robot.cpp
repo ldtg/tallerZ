@@ -15,8 +15,7 @@ unsigned short Robot::getMovementSpeed(float terrainFactor) const {
                   (unsigned short)
                       1);
 }
-Robot::~Robot() {
-}
+
 UnitState Robot::getUnitState() const {
   return UnitState(this->getId().getType(),
                    owner->getID(),
@@ -24,3 +23,5 @@ UnitState Robot::getUnitState() const {
                    weapon.type,
                    currentPosition);
 }
+
+Robot::~Robot() {}

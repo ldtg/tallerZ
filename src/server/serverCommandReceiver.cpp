@@ -8,6 +8,7 @@ serverCommandReceiver::serverCommandReceiver(Socket &socket,
                                              serverGameController &gc,
                                              const PlayerID &id)
     : socketClient(socket), gameController(gc), open(true), id(id) {}
+
 void serverCommandReceiver::run() {
   try {
     while (open) {
@@ -24,11 +25,14 @@ void serverCommandReceiver::run() {
     this->stop();
   }
 }
+
 void serverCommandReceiver::stop() {
   //no tiene que hacer shutdown porque es socket de receive
   open = false;
 }
+
 bool serverCommandReceiver::isOpen() const {
   return open;
 }
+
 serverCommandReceiver::~serverCommandReceiver() {}

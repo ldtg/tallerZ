@@ -11,6 +11,11 @@ AStar::AStar(const Map &map, const Unit *unit, const Position &target)
   createdNodes.push_back(node);
 }
 
+float AStar::heuristic(const Tile &itile,
+                       const Tile &etile) const {
+  return itile.getCenterPosition().chebyshevDistance(etile.getCenterPosition());
+}
+
 std::vector<Position> AStar::find() {
   std::vector<Position> aux;
   while (!open.begin()->second->hasTile(etile)) { //suponemos que siempre hay un camino
@@ -27,10 +32,6 @@ std::vector<Position> AStar::find() {
   if (etile.getCenterPosition() != target)
     aux.push_back(target);
   return aux;
-}
-float AStar::heuristic(const Tile &itile,
-                       const Tile &etile) const {
-  return itile.getCenterPosition().chebyshevDistance(etile.getCenterPosition());
 }
 
 std::vector<Node *> AStar::getNeighbors(Node *current) {
@@ -56,11 +57,6 @@ bool AStar::existBetter(Node *pNode) const {
   return false;
 }
 
-AStar::~AStar() {
-  for (Node *node: createdNodes)
-    delete node;
-}
-
 bool AStar::isInClose(Node *neighbor) {
   for (Node *node : close) {
     if (*node == *neighbor)
@@ -69,4 +65,7 @@ bool AStar::isInClose(Node *neighbor) {
   return false;
 }
 
-
+AStar::~AStar() {
+  for (Node *node: createdNodes)
+    delete node;
+}

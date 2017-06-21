@@ -8,7 +8,7 @@ class Robot : public Unit {
   virtual bool canGoThrough(const TerrainData &terrainData) const override;
   virtual unsigned short getMovementSpeed(float terrainFactor) const override;
   virtual UnitState getUnitState() const override;
-  ~Robot();
+  virtual ~Robot();
 };
 
 #endif //TALLERZ_ROBOT_H

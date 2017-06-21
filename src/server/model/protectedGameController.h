@@ -19,7 +19,7 @@ class protectedGameController : public serverGameController {
   virtual void capture(const UnitID &unit, const CapturableID &capturable);
   virtual void tick();
   virtual void playerDisconnected(const PlayerID player);
-  ~protectedGameController() {};
+  virtual ~protectedGameController();
 };
 
 #endif //TALLERZ_PROTECTEDGAMECONTROLLER_H

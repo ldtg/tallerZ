@@ -1,8 +1,7 @@
 #include "CapturableVehicle.h"
 
 CapturableVehicle::CapturableVehicle(Vehicle &vehicle)
-    : Capturable(CapturableType::UNIT), vehicle(vehicle) {
-}
+    : Capturable(CapturableType::UNIT), vehicle(vehicle) {}
 
 void CapturableVehicle::capture(const UnitID &unitID,
                                 Player *newOwner,
@@ -22,6 +21,11 @@ std::map<UnitID, UnitState> CapturableVehicle::getCapturedUnits() const {
   std::map<UnitID, UnitState> aux;
   aux.emplace(vehicle.getId(), vehicle.getUnitState());
   return aux;
+}
+
+CapturableState CapturableVehicle::getCapturableState() const {
+  return CapturableState(vehicle.getOwner()->getID(),
+                         vehicle.getCenterPosition());
 }
 
 bool CapturableVehicle::capturerDissapear() const {
@@ -44,6 +48,4 @@ bool CapturableVehicle::canBeCapturedBy(const UnitID &id) const {
   }
 }
 
-CapturableState CapturableVehicle::getCapturableState() const {
-  return CapturableState(vehicle.getOwner()->getID(), vehicle.getCenterPosition());
-}
+CapturableVehicle::~CapturableVehicle() {}

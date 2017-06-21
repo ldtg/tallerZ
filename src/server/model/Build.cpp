@@ -4,41 +4,28 @@
 #include "Data.h"
 #include "UnitFactory.h"
 
-Position Build::getCenterPosition() const {
-  return centerPosition;
-}
-
-Player *Build::getOwner() {
-  return owner;
-}
-
-bool Build::isAlive() const {
-  return health > 0;
-}
-
-bool Build::isMoving() const {
-  return false;
-}
-
-Position Build::nextMovePosition() const {
-  return centerPosition;
-}
-
-void Build::receiveAttack(const Weapon &weapon) {
-  //if (weapon.isExplosive)
-  this->damagesToReceive.push_back(weapon.damage);
-}
-
-Position Build::getAttackPosition(const Position &attackerPosition) const {
-  return centerPosition.getAttackPosition(attackerPosition, size);
-}
+Build::Build(const BuildData &buildData,
+             const Position &centerPosition,
+             Player &owner, const Team &team,
+             const unsigned short techLevel)
+    : id(buildData.type),
+      owner(&owner), team(team),
+      centerPosition(centerPosition),
+      size(buildData.size),
+      techLevel(techLevel),
+      fabricableUnits(data.getFabUnits(buildData.type, techLevel)),
+      ticksBeforeCreate(this->getSpeedRate()),
+      health(buildData.health), actualTicksBeforeCreateBase(ticksBeforeCreate),
+      timeToBuild(true),
+      actualUnitFab(UnitType::R_GRUNT) {}
 
 void Build::tick() {
   if (ticksBeforeCreate > 0) {
     ticksBeforeCreate--;
     unsigned short aux = this->getSpeedRate();
     if (actualTicksBeforeCreateBase != aux) {
-      float rel = (float)ticksBeforeCreate /(float)actualTicksBeforeCreateBase;
+      float
+          rel = (float) ticksBeforeCreate / (float) actualTicksBeforeCreateBase;
       ticksBeforeCreate = ticksBeforeCreate
           - (unsigned short) std::lround(rel * aux);
       actualTicksBeforeCreateBase = aux;
@@ -49,8 +36,29 @@ void Build::tick() {
   }
 }
 
-bool Build::hasToBuild() {
-  return timeToBuild;
+void Build::changeFabUnit(const UnitType &type) {
+  if (std::find(fabricableUnits.begin(), fabricableUnits.end(), type)
+      == fabricableUnits.end()) {
+    throw UnableToBuildThatUnitException(
+        "El tipo de unidad no esta en el vector de tipos permitidos");
+  } else {
+    this->actualUnitFab = type;
+    this->ticksBeforeCreate = this->getSpeedRate();
+    this->actualTicksBeforeCreateBase = this->ticksBeforeCreate;
+    this->timeToBuild = false;
+  }
+}
+
+void Build::changePlayer(Player *player, const Team &team) {
+  this->owner = player;
+  this->team = team;
+  if (this->id.getType() == VEHICLEF)
+    this->actualUnitFab = UnitType::V_JEEP;
+  else
+    this->actualUnitFab = UnitType::R_GRUNT;
+  this->ticksBeforeCreate = this->getSpeedRate();
+  this->actualTicksBeforeCreateBase = this->ticksBeforeCreate;
+  this->timeToBuild = false;
 }
 
 unsigned short Build::getSpeedRate() const {
@@ -63,10 +71,6 @@ unsigned short Build::getSpeedRate() const {
   timeInSecs = (unsigned long) std::lround(baseTaken / relsqrt);
 
   return data.getTickAmount(timeInSecs);
-}
-
-bool Build::hasDamagesToReceive() const {
-  return !damagesToReceive.empty();
 }
 
 void Build::receiveDamages() {
@@ -83,52 +87,9 @@ void Build::receiveDamages() {
   damagesToReceive.clear();
 }
 
-Build::Build(const BuildData &buildData,
-             const Position &centerPosition,
-             Player &owner, const Team &team,
-             const unsigned short techLevel)
-    : id(buildData.type),
-      owner(&owner), team(team),
-      centerPosition(centerPosition),
-      size(buildData.size),
-      techLevel(techLevel),
-      fabricableUnits(data.getFabUnits(buildData.type, techLevel)),
-      ticksBeforeCreate(this->getSpeedRate()),
-      health(buildData.health), actualTicksBeforeCreateBase(ticksBeforeCreate),
-      timeToBuild(true),
-      actualUnitFab(UnitType::R_GRUNT) {}
-
-UnitType Build::getActualUnitFab() const {
-  return actualUnitFab;
-}
-
-std::vector<UnitType> Build::getFabricableUnits() const {
-  return fabricableUnits;
-}
-
-void Build::changeFabUnit(const UnitType &type) {
-  if (std::find(fabricableUnits.begin(), fabricableUnits.end(), type)
-      == fabricableUnits.end()) {
-    throw UnableToBuildThatUnitException(
-        "El tipo de unidad no esta en el vector de tipos permitidos");
-  } else {
-    this->actualUnitFab = type;
-    this->ticksBeforeCreate = this->getSpeedRate();
-    this->actualTicksBeforeCreateBase = this->ticksBeforeCreate;
-    this->timeToBuild = false;
-  }
-}
-
-BuildID Build::getId() const {
-  return this->id;
-}
-
-BuildState Build::getBuildState() const {
-  return BuildState(owner->getID(),
-                    centerPosition.sub(size, size),
-                    health,
-                    data.ticksToSec(ticksBeforeCreate),
-                    actualUnitFab, fabricableUnits);
+void Build::receiveAttack(const Weapon &weapon) {
+  if (weapon.isExplosive)
+    this->damagesToReceive.push_back(weapon.damage);
 }
 
 std::vector<Unit *> Build::fabricateUnits(const Position &buildPos) {
@@ -145,15 +106,48 @@ std::vector<Unit *> Build::fabricateUnits(const Position &buildPos) {
   return aux;
 }
 
-void Build::changePlayer(Player *player, const Team &team) {
-  this->owner = player;
-  this->team = team;
-  if (this->id.getType() == VEHICLEF)
-    this->actualUnitFab = UnitType::V_JEEP;
-  else
-    this->actualUnitFab = UnitType::R_GRUNT;
-  this->ticksBeforeCreate = this->getSpeedRate();
-  this->actualTicksBeforeCreateBase = this->ticksBeforeCreate;
-  this->timeToBuild = false;
+Position Build::getCenterPosition() const {
+  return centerPosition;
 }
+
+Player *Build::getOwner() {
+  return owner;
+}
+
+Position Build::nextMovePosition() const {
+  return centerPosition;
+}
+
+Position Build::getAttackPosition(const Position &attackerPosition) const {
+  return centerPosition.getAttackPosition(attackerPosition, size);
+}
+
+BuildState Build::getBuildState() const {
+  return BuildState(owner->getID(),
+                    centerPosition.sub(size, size),
+                    health,
+                    data.ticksToSec(ticksBeforeCreate),
+                    actualUnitFab, fabricableUnits);
+}
+
+bool Build::isAlive() const {
+  return health > 0;
+}
+
+bool Build::isMoving() const {
+  return false;
+}
+
+bool Build::hasToBuild() const {
+  return timeToBuild;
+}
+
+bool Build::hasDamagesToReceive() const {
+  return !damagesToReceive.empty();
+}
+
+BuildID Build::getId() const {
+  return this->id;
+}
+Build::~Build() {}
 

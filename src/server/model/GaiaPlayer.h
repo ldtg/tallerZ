@@ -5,14 +5,13 @@
 class GaiaPlayer : public Player {
  public:
   GaiaPlayer();
-  virtual unsigned short getAmountOfTerritories();
-  virtual void addTerritory();
-  virtual void subTerritory();
-  virtual void addUnit();
-  virtual void subUnit();
-  virtual bool isAlive() const;
-  virtual void buildDestroyed(const BuildType &type);
-
+  virtual void addTerritory() override;
+  virtual void subTerritory() override;
+  virtual void addUnit() override;
+  virtual void subUnit() override;
+  virtual void buildDestroyed(const BuildType &type) override;
+  virtual bool isAlive() const override;
+  virtual ~GaiaPlayer();
 };
 
 #endif //TALLERZ_GAIAPLAYER_H

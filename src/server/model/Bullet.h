@@ -14,14 +14,15 @@ class Bullet {
  public:
   Bullet(const Weapon &weapon, const Position &current,
          Attackable *target);
-  bool didHit() const;
+  void move();
+  void doHit();
   BulletID getId() const;
   Weapon getWeapon() const;
   Position getFrom() const;
   Position getTo() const;
   BulletState getState() const;
-  void doHit();
-  void move();
+  bool didHit() const;
+  ~Bullet();
 };
 
 #endif //TALLERZ_BULLET_H

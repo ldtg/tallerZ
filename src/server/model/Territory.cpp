@@ -19,7 +19,7 @@ void Territory::capture(const UnitID &unitID,
     for (Build *build: builds) {
       build->changePlayer(newOwner, ownerTeam);
     }
-    owner=newOwner;
+    owner = newOwner;
   }
 }
 
@@ -39,6 +39,10 @@ std::map<UnitID, UnitState> Territory::getCapturedUnits() const {
   return std::map<UnitID, UnitState>();
 }
 
+CapturableState Territory::getCapturableState() const {
+  return CapturableState(owner->getID(), flagPosition);
+}
+
 bool Territory::capturerDissapear() const {
   return false;
 }
@@ -49,9 +53,5 @@ bool Territory::isRecapturable() const {
 
 bool Territory::canBeCapturedBy(const UnitID &id) const {
   return true;
-}
-
-CapturableState Territory::getCapturableState() const {
-  return CapturableState(owner->getID(), flagPosition);
 }
 Territory::~Territory() {}
