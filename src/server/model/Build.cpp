@@ -94,13 +94,15 @@ void Build::receiveAttack(const Weapon &weapon) {
 
 std::vector<Unit *> Build::fabricateUnits(const Position &buildPos) {
   std::vector<Unit *> aux;
-  for (int i = 0; i < data.getData(actualUnitFab).factoryRate; ++i) {
+  if (timeToBuild) {
+    for (int i = 0; i < data.getData(actualUnitFab).factoryRate; ++i) {
 
-    aux.push_back(UnitFactory::createUnitDynamic(buildPos.add(i * 15, 0),
-                                                 actualUnitFab,
-                                                 *owner,
-                                                 team));
-    owner->addUnit();
+      aux.push_back(UnitFactory::createUnitDynamic(buildPos.add(i * 15, 0),
+                                                   actualUnitFab,
+                                                   *owner,
+                                                   team));
+      owner->addUnit();
+    }
   }
   this->timeToBuild = false;
   return aux;

@@ -19,7 +19,7 @@ class Player {
   virtual void subUnit();
   virtual void buildDestroyed(const BuildType &type);
   virtual bool isAlive() const;
-  void disconnect();
+  void kill();
   virtual unsigned short getAmountOfTerritories() const;
   virtual PlayerID getID() const;
   virtual ~Player();
