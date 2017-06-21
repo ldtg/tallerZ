@@ -12,7 +12,6 @@ set(SOURCE_FILES
         src/server/model/Unit.cpp
         src/server/model/Unit.h
         src/server/model/MovementState.h
-        src/server/model/Weapon.cpp
         src/server/model/Weapon.h
         src/server/model/Attackable.h
         src/server/model/Data.cpp

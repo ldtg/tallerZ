@@ -208,16 +208,15 @@ void realGameController::move(Unit *unit,
                   unit->nextMovePosition())) {
     float terrainFactor =
         map.getTile(unit->getCenterPosition()).getTerrainData().terrainFactor;
-    bool still = unit->doMoveWithSpeed(terrainFactor);
+    unit->doMoveWithSpeed(terrainFactor);
 
     eventQueue.push(new serverUMoveEvent(unit->getId(),
                                          unit->getCenterPosition()));
     map.updateUnit(unit->getId(), unit->getUnitState());
 
-    if (still) {
+    if (unit->isStill())
       eventQueue.push(new serverUStillEvent(unit->getId(),
                                             unit->getCenterPosition()));
-    }
 
   } else {
     eventQueue.push(new serverUStillEvent(unit->getId(),
@@ -248,7 +247,7 @@ void realGameController::hunt(Unit *unit,
                                              huntedPos,
                                              unitPos));
     }
-    if (unit->timeToAttack()) {
+    if (unit->isTimeToAttack()) {
       this->bullets.push_back(unit->createBullet());
 
       eventQueue.push(new serverBLTNewEvent(this->bullets.back().getId(),
