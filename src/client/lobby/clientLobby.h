@@ -9,7 +9,7 @@
 #include <iostream>
 #include <Exceptions/lobby_exceptions/Close_Exception.h>
 
-struct Login_Details{
+struct Login_Details {
   std::string ip;
   std::string port;
   std::string team;
@@ -18,14 +18,14 @@ struct Login_Details{
 
 class clientLobby {
  public:
-  Gtk::Window * window;
+  Gtk::Window *window;
  private:
-  Gtk::Button * connect_button;
-  Gtk::Button * cancel_button;
-  Gtk::Entry * ip_entry;
-  Gtk::Entry * port_entry;
-  Gtk::Entry * team_entry;
-  Gtk::Entry * map_entry;
+  Gtk::Button *connect_button;
+  Gtk::Button *cancel_button;
+  Gtk::Entry *ip_entry;
+  Gtk::Entry *port_entry;
+  Gtk::Entry *team_entry;
+  Gtk::Entry *map_entry;
 
   Glib::RefPtr<Gtk::Builder> builder;
 
@@ -34,7 +34,7 @@ class clientLobby {
  public:
   clientLobby();
 
-  ~clientLobby(){
+  ~clientLobby() {
     delete window;
     delete connect_button;
     delete cancel_button;
@@ -43,10 +43,10 @@ class clientLobby {
     delete map_entry;
   }
 
-  Gtk::Window * get_window(){
+  Gtk::Window *get_window() {
     return this->window;
   }
-  Login_Details get_login_details(){
+  Login_Details get_login_details() {
     return this->login_details;
   }
 
@@ -58,12 +58,12 @@ class clientLobby {
 
   void load_signals();
 
-  void on_cancel_button_activate(){
+  void on_cancel_button_activate() {
     this->window->close();
     throw Close_Exception();
   }
 
-  void on_connect_button_activate(){
+  void on_connect_button_activate() {
     login_details.ip += ip_entry->get_text();
     login_details.port += port_entry->get_text();
     login_details.team += team_entry->get_text();

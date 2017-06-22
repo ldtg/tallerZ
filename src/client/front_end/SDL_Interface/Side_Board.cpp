@@ -177,16 +177,16 @@ void Side_Board::clean_unit_images() {
 void Side_Board::draw(SDL_Renderer *render, Camera &camera) {
   SDL_RenderCopy(render, side_board_texture->get_texture(), NULL, NULL);
   unit_label_background->renderize(window, &unit_label_background_rect);
-  if (this->face_texture != NULL){
+  if (this->face_texture != NULL) {
     this->face_texture->renderize(window, &face_rect);
   }
-  if (this->weapon_texture != NULL){
+  if (this->weapon_texture != NULL) {
     this->weapon_texture->renderize(window, &weapon_rect);
   }
-  if (this->unit_label != NULL){
+  if (this->unit_label != NULL) {
     this->unit_label->renderize(window, &unit_label_rect);
   }
-  if (this->weapon_label != NULL){
+  if (this->weapon_label != NULL) {
     this->weapon_label->renderize(window, &weapon_label_rect);
   }
 }

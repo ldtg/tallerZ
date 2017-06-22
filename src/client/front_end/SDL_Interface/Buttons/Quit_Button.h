@@ -10,18 +10,13 @@ class View;
 
 class Quit_Button : public Button {
  private:
-  View& view;
+  View &view;
   const std::string path_up =
       "../src/client/front_end/Images/Interface/quit_button_active.bmp";
   const std::string path_down =
       "../src/client/front_end/Images/Interface/quit_button_pressed.bmp";
  public:
-  Quit_Button(Window * window, View& view) : view(view){
-    renderQuad = {633, 574, 56, 20};
-    this->window = window;
-    this->load_texture_up(path_up);
-    this->load_texture_down(path_down);
-  }
+  Quit_Button(Window *window, View &view);
 
   void button_launch() override;
 };

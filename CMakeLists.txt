@@ -151,8 +151,6 @@ set(SOURCE_FILES
 
         src/client/front_end/SDL_Interface/Side_Board.cpp
         src/client/front_end/SDL_Interface/Side_Board.h
-        src/client/front_end/SDL_Interface/Weapon_Img.cpp
-        src/client/front_end/SDL_Interface/Weapon_Img.h
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h
         src/client/front_end/SDL_Interface/Menus/Production/Production_Menu.cpp

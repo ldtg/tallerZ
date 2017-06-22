@@ -19,39 +19,37 @@
  * Label por defecto tiene fondo transparente pero si modificamos el texto
  * se sobreescribe sobre un fondo negro.
  */
-class Label : public ObjectMapaVista{
- private:
-  //TODO borrar esta linea siguiente cuando la fuente esté inicializada afuera y pasar como parámetro al constructor
+class Label : public ObjectMapaVista {
  protected:
-  Window& window;
+  Window &window;
   std::string text;
   TTF_Font *font = NULL;
-  SDL_Surface * surface;
+  SDL_Surface *surface;
   SDL_Rect renderQuad;
-  Texture * texture;
+  Texture *texture;
 
   const SDL_Color color = {0xFF, 0xFF, 0xFF, 0xFF}; //blanco
 
  public:
-  Label(Window& window, const std::string &text, const SDL_Rect &rect, TTF_Font *font);
+  Label(Window &window, const std::string &text, const SDL_Rect &rect, TTF_Font *font);
 
   virtual ~Label();
 
   SDL_Rect get_rectangle();
 
-  void set_rectangle(const SDL_Rect& rect);
+  void set_rectangle(const SDL_Rect &rect);
 
   void displace_toXY(int coordX, int coordY);
 
-  void modify_text(const std::string& text);
+  void modify_text(const std::string &text);
 
   void reload();
 
-  void scale(float scaleW, float scaleH){};
+  void scale(float scaleW, float scaleH) {};
 
-  void set_texture(SDL_Renderer *render){};
+  void set_texture(SDL_Renderer *render) {};
 
-  void draw(SDL_Renderer *render, Camera &camera){
+  void draw(SDL_Renderer *render, Camera &camera) {
     SDL_RenderCopy(render, texture->get_texture(), NULL, &renderQuad);
   };
 };
