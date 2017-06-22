@@ -3,7 +3,7 @@
 
 #include <common/Map/Map.h>
 #include <server/model/Events/ServerEvent.h>
-#include <server/GameController.h>
+#include <server/model/GameController.h>
 #include <storage/Game_Loader.h>
 #include <common/Queue/Queue.h>
 #include "Unit.h"
@@ -43,8 +43,8 @@ class RealGameController : public GameController{
   virtual void attack(const UnitID &attacker, const UnitID &attacked) override;
   virtual void attack(const UnitID &attacker, const BuildID &attacked) override;
   virtual void attack(const UnitID &attacker, const TerrainObjectID &attacked) override;
-  virtual void changeUnitFab(const BuildID &buildId, const UnitType &type) override;
   virtual void capture(const UnitID &unit, const CapturableID &capturable) override;
+  virtual void changeUnitFab(const BuildID &buildId, const UnitType &type) override;
   virtual void tick();
   virtual void playerDisconnected(const PlayerID player);
   virtual ~RealGameController();
