@@ -325,6 +325,7 @@ struct Data {
       case (TerrainObjectType::_ASPHALTEDBRIDGE):return asphaltedBridgeObject;
       case (TerrainObjectType::ICEROCK):return iceRockObject;
       case (TerrainObjectType::ROCK):return rockObject;
+      default : return iceRockObject;
     }
   }
   std::vector<UnitType> getFabUnits(const BuildType &buildType,

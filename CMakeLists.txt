@@ -88,8 +88,6 @@ set(SOURCE_FILES
 
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.h
-        src/Exceptions/model_exceptions/UnableToFindAPathException.cpp
-        src/Exceptions/model_exceptions/UnableToFindAPathException.h
         src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
         src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h
         src/Exceptions/Storage_Exceptions/Storage_Exception.h

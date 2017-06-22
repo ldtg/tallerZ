@@ -1,7 +1,3 @@
-//
-// Created by darius on 01/06/17.
-//
-
 #ifndef TALLERZ_MAP_LOADER_H
 #define TALLERZ_MAP_LOADER_H
 
