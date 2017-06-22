@@ -32,7 +32,7 @@ bool Player::isAlive() const {
   return alive;
 }
 
-void Player::disconnect() {
+void Player::kill() {
   alive = false;
 }
 
