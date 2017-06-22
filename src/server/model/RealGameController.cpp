@@ -60,7 +60,7 @@ void RealGameController::attack(const UnitID &attackerId,
   if (attacker->isInRange(attacked)
       && map.canPass(attacker->getCenterPosition(),
                      attacked->getCenterPosition())) {
-    attacker->attack(attacked);
+    attacker->hunt(attacked);
   } else {
     AStar astar(map,
                 attacker,
@@ -90,7 +90,7 @@ void RealGameController::attack(const UnitID &attackerId,
   if (attacker->isInRange(attacked)
       && map.canPass(attacker->getCenterPosition(),
                      attacked->getCenterPosition())) {
-    attacker->attack(attacked);
+    attacker->hunt(attacked);
   } else {
     AStar astar(map,
                 attacker,
@@ -121,7 +121,7 @@ void RealGameController::attack(const UnitID &attackerID,
   if (attacker->isInRange(attacked)
       && map.canPass(attacker->getCenterPosition(),
                      attacked->getCenterPosition())) {
-    attacker->attack(attacked);
+    attacker->hunt(attacked);
   } else {
     AStar astar(map,
                 attacker,

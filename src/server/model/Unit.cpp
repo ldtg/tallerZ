@@ -39,7 +39,7 @@ void Unit::hunt(const std::vector<Position> &movementsPositions,
   this->attackCounterActual = this->attackCounterBase;
 }
 
-void Unit::attack(Attackable *other) {
+void Unit::hunt(Attackable *other) {
   this->movState.hunting();
   this->hunted = other;
   this->firstAttack = true;

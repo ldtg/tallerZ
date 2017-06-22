@@ -1,9 +1,9 @@
 #ifndef TALLERZ_PROTECTEDGAMECONTROLLER_H
 #define TALLERZ_PROTECTEDGAMECONTROLLER_H
 
-#include <server/GameController.h>
+#include <server/model/GameController.h>
 #include <mutex>
-#include "RealGameController.h"
+#include "server/model/RealGameController.h"
 class ProtectedGameController : public GameController {
  private:
   RealGameController &gameController;

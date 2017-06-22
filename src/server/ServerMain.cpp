@@ -4,7 +4,7 @@
 #include <common/DataClientServerMessages/DataClientConnectedMessage.h>
 #include <storage/Game_Loader.h>
 #include <server/model/RealGameController.h>
-#include <server/model/ProtectedGameController.h>
+#include <server/ProtectedGameController.h>
 #include <cereal/archives/binary.hpp>
 #include "PlayersManager.h"
 #include "EventSender.h"

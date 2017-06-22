@@ -4,7 +4,7 @@
 #include <common/Thread/Thread.h>
 #include <common/Socket/Socket.h>
 #include <common/IDs/PlayerID.h>
-#include "GameController.h"
+#include "server/model/GameController.h"
 class serverCommandReceiver : public Thread {
  private:
   Socket &socketClient;

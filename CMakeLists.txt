@@ -198,9 +198,9 @@ set(SOURCE_FILES
         src/common/Thread/Thread.h
         src/server/model/RealGameController.cpp
         src/server/model/RealGameController.h
-        src/server/model/ProtectedGameController.cpp
-        src/server/model/ProtectedGameController.h
-        src/server/GameController.h
+        src/server/ProtectedGameController.cpp
+        src/server/ProtectedGameController.h
+        src/server/model/GameController.h
         src/server/EventSender.cpp
         src/server/EventSender.h
         src/server/ServerMain.cpp
