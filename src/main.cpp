@@ -4,7 +4,7 @@
 
 
 
-int maint(int argc, char *argv[]) {
+int maina(int argc, char *argv[]) {
   int warning;
   testing::InitGoogleTest(&argc, argv);
   warning = RUN_ALL_TESTS();

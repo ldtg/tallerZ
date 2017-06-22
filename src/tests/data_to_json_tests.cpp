@@ -12,7 +12,6 @@ TEST(data_to_json, to_json){
 }
 
 TEST(json_to_data, from_json){
-  Json_to_Data jtod;
-  Data data = jtod.load_file();
+  Data data;
   std::cout << "fin";
 }
