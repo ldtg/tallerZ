@@ -61,7 +61,7 @@ void Model::leftClick(int x, int y) {
       view.get_present_menu()->handle_click(x, y);
     }
   }
-  if (view.get_side_board()->is_in_menu_button(x, y)) {
+  if (view.get_side_board()->is_in_quit_button(x, y)) {
     if (view.get_present_menu() != nullptr) {
       view.free_menu();
     }

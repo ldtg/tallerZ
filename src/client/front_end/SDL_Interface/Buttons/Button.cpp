@@ -14,10 +14,10 @@ Button::Button(Window *window) {
  * Destructor: se eliminan las texturas cargadas.
  */
 Button::~Button() {
-  if (button_up != NULL){
+  if (button_up != NULL) {
     delete this->button_up;
   }
-  if (button_down != NULL){
+  if (button_down != NULL) {
     delete this->button_down;
   }
 }
@@ -28,7 +28,7 @@ Button::~Button() {
  * @param width : Ancho de la superficie clickeable
  * @param length : Largo de la superficie clickeable
  */
-void Button::set_rectangle(const SDL_Rect& rect) {
+void Button::set_rectangle(const SDL_Rect &rect) {
   this->renderQuad = rect;
 }
 
@@ -37,11 +37,11 @@ void Button::set_rectangle(const SDL_Rect& rect) {
  * @param path : ruta de archivo de la imagen de boton levantada
  */
 void Button::load_texture_up(const std::string &path) {
-  try{
+  try {
     this->button_up = new Texture(path, window);
     this->button_up->renderize(window, &renderQuad);
-  } catch (const std::exception& e){
-    throw Front_end_exception("Button::load_texture_up: %s\n",e.what());
+  } catch (const std::exception &e) {
+    throw Front_end_exception("Button::load_texture_up: %s\n", e.what());
   }
 }
 /**
@@ -51,8 +51,8 @@ void Button::load_texture_up(const std::string &path) {
 void Button::load_texture_down(const std::string &path) {
   try {
     this->button_down = new Texture(path, window);
-  } catch (const std::exception& e){
-    throw Front_end_exception("Button::load_texture_down: %s\n",e.what());
+  } catch (const std::exception &e) {
+    throw Front_end_exception("Button::load_texture_down: %s\n", e.what());
   }
 }
 
@@ -72,7 +72,7 @@ void Button::handle_event() {
  * de boton apretado.
  */
 void Button::on_button_pressed() {
-  if (this->button_down != NULL){
+  if (this->button_down != NULL) {
     this->button_down->renderize(this->window, &this->renderQuad);
     this->button_launch();
   }
@@ -83,7 +83,7 @@ void Button::on_button_pressed() {
  * Se renderiza la textura de boton sin levantar.
  */
 void Button::on_button_released() {
-  if (this->button_up != NULL){
+  if (this->button_up != NULL) {
     this->button_up->renderize(this->window);
     this->button_launch();
   }
@@ -95,7 +95,7 @@ void Button::on_button_released() {
  * @return : Si las coordenadas indicadas se ubican sobre el botón.
  */
 bool Button::inRectangle(int x, int y) {
-  return ( x > renderQuad.x
+  return (x > renderQuad.x
       && x < (renderQuad.x + renderQuad.w)
       && y > renderQuad.y
       && y < (renderQuad.y + renderQuad.h));

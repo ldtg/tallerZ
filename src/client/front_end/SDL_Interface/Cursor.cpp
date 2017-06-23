@@ -10,7 +10,7 @@ Cursor::~Cursor() {
 
 void Cursor::load_cursor(SDL_SystemCursor id) {
   this->cursor = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_HAND);
-  if (this->cursor == NULL){
+  if (this->cursor == NULL) {
     throw Front_end_exception(
         "Error en el metodo load_cursor de la clase Cursor: %s\n",
         SDL_GetError());

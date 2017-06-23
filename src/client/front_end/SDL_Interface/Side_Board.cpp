@@ -14,7 +14,7 @@ Side_Board::Side_Board(Window *window, View &view, const std::string &color) :
 
 Side_Board::~Side_Board() {
   this->clean_unit_images();
-  if (this->menu_button != nullptr) delete this->menu_button;
+  if (this->quit_button != nullptr) delete this->quit_button;
   if (this->unit_label_background != nullptr)
     delete this->unit_label_background;
   if (this->side_board_texture != nullptr) delete this->side_board_texture;
@@ -23,21 +23,21 @@ Side_Board::~Side_Board() {
 void Side_Board::scale(float scaleW, float scaleH) {}
 
 void Side_Board::load_items() {
-  this->menu_button = new Quit_Button(window, view);
+  this->quit_button = new Quit_Button(window, view);
   std::string unit_label_background_path =
       folder_path + "empty_label_" + color + ".png";
   this->unit_label_background = new Texture(unit_label_background_path, window);
 
 }
-bool Side_Board::is_in_menu_button(int x, int y) {
-  return menu_button->inRectangle(x, y);
+bool Side_Board::is_in_quit_button(int x, int y) {
+  return quit_button->inRectangle(x, y);
 }
 void Side_Board::add_to_panel(Panel &panel) {
   panel.add(this);
-  panel.add(menu_button);
+  panel.add(quit_button);
 }
 void Side_Board::launch_menu_button() {
-  this->menu_button->handle_event();
+  this->quit_button->handle_event();
 }
 std::string Side_Board::label_path(const std::string &name) {
   return (folder_path + "unit_label_" + name + "_" + color + ".png");
@@ -172,5 +172,21 @@ void Side_Board::clean_unit_images() {
   if (weapon_label != nullptr) {
     delete weapon_label;
     weapon_label = nullptr;
+  }
+}
+void Side_Board::draw(SDL_Renderer *render, Camera &camera) {
+  SDL_RenderCopy(render, side_board_texture->get_texture(), NULL, NULL);
+  unit_label_background->renderize(window, &unit_label_background_rect);
+  if (this->face_texture != NULL) {
+    this->face_texture->renderize(window, &face_rect);
+  }
+  if (this->weapon_texture != NULL) {
+    this->weapon_texture->renderize(window, &weapon_rect);
+  }
+  if (this->unit_label != NULL) {
+    this->unit_label->renderize(window, &unit_label_rect);
+  }
+  if (this->weapon_label != NULL) {
+    this->weapon_label->renderize(window, &weapon_label_rect);
   }
 }
