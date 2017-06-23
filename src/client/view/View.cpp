@@ -167,9 +167,9 @@ void View::update() {
 }
 
 void View::updateExplosions() {
-  std::vector<Sprite*>::iterator iter;
+  std::vector<ExplosionView*>::iterator iter;
   for (iter = explosionsVista.begin(); iter != explosionsVista.end();) {
-    Sprite *explosionVista = *iter;
+    ExplosionView *explosionVista = *iter;
     if (explosionVista->doCycle()) {
       iter = explosionsVista.erase(iter);
       delete explosionVista;
@@ -222,21 +222,21 @@ void View::draw() {
   }
 
   for (auto &unit : unitsVista) {
-    unit.second->getView()->set_texture(window_render);
+//    unit.second->getView()->set_texture(window_render);
 
     unit.second->draw(window_render, camera);
 //    panel.add(unit.second->getView());
   }
 
   for (Sprite *effect : effectsVista) {
-    effect->set_texture(window_render);
+//    effect->set_texture(window_render);
 
     effect->draw(window_render, camera);
 //    panel.add(effect);
   }
 
-  for (Sprite *explosion : explosionsVista) {
-    explosion->set_texture(window_render);
+  for (ExplosionView *explosion : explosionsVista) {
+//    explosion->set_texture(window_render);
 
     explosion->draw(window_render, camera);
 //    panel.add(explosion);
@@ -333,7 +333,7 @@ void View::removeCapturableVista(CapturableID &id) {
   capturablesVista.erase(id);
 }
 
-void View::addExplosionVista(Sprite *objectVista) {
+void View::addExplosionVista(ExplosionView *objectVista) {
   if (objectVista == nullptr)
     return;
 
@@ -348,9 +348,9 @@ void View::addEffectVista(Sprite *objectVista) {
   effectsVista.push_back(objectVista);
 }
 
-SoundPlayer& View::getSoundPlayer() {
-  return soundPlayer;
-}
+//SoundPlayer& View::getSoundPlayer() {
+//  return soundPlayer;
+//}
 
 void View::load_production_menu(const BuildID &factoryID,
                                 const BuildState &buildState,

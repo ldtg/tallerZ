@@ -27,15 +27,15 @@ void ViewPosition::add(ViewPosition other) {
 double ViewPosition::getRotation(const ViewPosition &target) const {
   float deltaY = (-1*target.y) - (-1*this->y);
   float deltaX = target.x - this->x;
-  double rotation = std::atan2(deltaY, deltaX) * 180 / M_PI;
-  if (rotation < 0) {
-    rotation += 360;
-  }
-  return rotation;
+  double rotation = std::atan2(deltaY, deltaX) * 180.0000 / M_PI;
+  return rotation/-1;
 }
 
 int ViewPosition::getDrawRoration(const ViewPosition &target) const {
-  double rotation = getRotation(target);
+  double rotation = getRotation(target)*-1;
+  if (rotation < 0) {
+    rotation += 360;
+  }
 
   if (rotation >= 0 && rotation < 22.5) {
     return 0;

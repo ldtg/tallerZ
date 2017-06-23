@@ -40,11 +40,6 @@ void UnitView::fire(const Position &huntedPos) {
   // Llego, entonces se vacia la cola de movimientos.
   while (!movements.empty()) {movements.pop();}
 
-  ViewPosition viewPos = view->getViewPos();
-  ViewPosition huntedViewPos(huntedPos.getX(), huntedPos.getY());
-  double rot = viewPos.getRotation(huntedViewPos);
-  view->setRotation(rot);
-
   Position pos = view->getPos();
   int rotation = pos.getRoration(huntedPos);
   std::string rotation_s = std::to_string(rotation);

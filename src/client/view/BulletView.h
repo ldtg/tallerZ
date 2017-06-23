@@ -8,7 +8,7 @@ class BulletView : public ObjectViewMove {
  private:
   WeaponType type;
  public:
-  BulletView(WeaponType type, std::string &rotation, Position pos);
+  BulletView(WeaponType type, Position from, Position to);
   void walk(int rotation, const Position &posTo);
   void still();
   Sprite* getView();

@@ -14,6 +14,8 @@ class ObjectMapaVista {
   float y;
   int rotationDraw;
   double rotation;
+  SDL_Point *pointRot;
+
   ObjectMapaVista();
 
  public:
@@ -21,14 +23,20 @@ class ObjectMapaVista {
 
   int getWidth() const;
   int getHeight() const;
+
   void setPos(ViewPosition pos);
   void setPos(Position pos);
+
   Position getPos() const;
   ViewPosition getViewPos() const;
+
   void setDrawRotation(int rotation);
   int getDrawRotation() const;
-  void setRotation(double rotation);
+
+  virtual void setRotation(double rotation);
   double getRotation() const;
+
+  void setPointRotation(SDL_Point *pointRot);
 
   virtual void scale(float scaleW, float scaleH) = 0;
   virtual void set_texture(SDL_Renderer *render) = 0;

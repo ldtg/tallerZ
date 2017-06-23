@@ -25,9 +25,13 @@ class Sprite : public ObjectMapaVista {
          int num_frame_return_cycle, std::string color="",
          int despX=0, int despY=0);
   virtual ~Sprite();
+
   bool doCycle() const;
   std::string getColor() const;
   ViewPosition getDrawPosition() const;
+  void setRotation(double rotation);
+  int getCurFrame() const;
+  void setDesp(const int despX, const int despY);
   void set_texture(SDL_Renderer *render);
   void scale(float scaleW, float scaleH);
   virtual void draw(SDL_Renderer *render, Camera &camera);

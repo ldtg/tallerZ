@@ -1,17 +1,27 @@
+#include <iostream>
 #include "BulletView.h"
 #include "VistasFactory.h"
 
-BulletView::BulletView(WeaponType type, std::string &rotation, Position pos)
-    : ObjectViewMove(VistasFactory::getBulletVista(type, rotation, pos)),
-      type(type) {}
+BulletView::BulletView(WeaponType type, Position from, Position to)
+    : ObjectViewMove(VistasFactory::getBulletVista(type, from)),
+      type(type) {
+  ViewPosition fromView(from.getX(), from.getY());
+  ViewPosition toView(to.getX(), to.getY());
+  double rotation = toView.getRotation(fromView);
+  view->setRotation(rotation);
+}
 
 void BulletView::still() {}
 
 void BulletView::walk(int rotation, const Position &posTo) {
-  std::string rotation_s = std::to_string(rotation);
+  ViewPosition viewPos = view->getViewPos();
 
   delete view;
-  view = VistasFactory::getBulletVista(type, rotation_s, posTo);
+  view = VistasFactory::getBulletVista(type, posTo);
+
+  ViewPosition viewPosTo(posTo.getX(), posTo.getY());
+  double rot = viewPos.getRotation(viewPosTo);
+  view->setRotation(rot);
 }
 
 Sprite* BulletView::getView() {

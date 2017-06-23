@@ -1,7 +1,7 @@
 #include "ObjectMapaVista.h"
 
 ObjectMapaVista::ObjectMapaVista() : x(0), y(0), width(0), height(0),
-                                     rotationDraw(0), rotation(0.0) {}
+                                     rotationDraw(0), rotation(0.0), pointRot(NULL) {}
 
 int ObjectMapaVista::getWidth() const {
     return width;
@@ -43,4 +43,8 @@ void ObjectMapaVista::setRotation(double rotation) {
 
 double ObjectMapaVista::getRotation() const {
   return rotation;
+}
+
+void ObjectMapaVista::setPointRotation(SDL_Point *pointRot) {
+  this->pointRot = pointRot;
 }

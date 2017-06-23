@@ -8,9 +8,7 @@ BulletNewEvent::BulletNewEvent(const BulletID &bullet,
     : id(bullet), weapon(weaponType), from(from), to(to){}
 
 void BulletNewEvent::process() {
-  int rotation = from.getRoration(to);
-  std::string rotation_s = std::to_string(rotation);
-  BulletView *bulletVista = new BulletView(weapon, rotation_s, from);
+  BulletView *bulletVista = new BulletView(weapon, from, to);
   view->addBulletVista(this->id, bulletVista);
 
   BulletState state(weapon, from);

@@ -10,11 +10,11 @@ void TerrainObjectDestroyedEvent::process() {
 
   view->removeTerrainObjectVista(id);
 
-  Sprite *explosion = VistasFactory::getEffectVista(SIDE_EXPLOSION);
+//  Sprite *explosion = VistasFactory::getEffectVista(SIDE_EXPLOSION);
 //  explosion->setPos(pos.add(25, 25));
-  explosion->setPos(pos);
+//  explosion->setPos(pos);
 
-  view->addExplosionVista(explosion);
+//  view->addExplosionVista(explosion);
 
   TerrainObjectType type = id.getType();
   if (type == _WOODENBRIDGE || type == _ASPHALTEDBRIDGE) {

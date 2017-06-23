@@ -28,7 +28,7 @@ class View {
   Menu * menu = nullptr;
   Side_Board * side_board = nullptr;
   EventHandler &eventHandler;
-  SoundPlayer soundPlayer;
+//  SoundPlayer soundPlayer;
 
   bool _quit;
 
@@ -39,7 +39,7 @@ class View {
   std::map<CapturableID, ObjectMapaVista*> capturablesVista;
   std::map<BulletID, BulletView*> bulletsVista;
   std::vector<Sprite*> effectsVista;
-  std::vector<Sprite*> explosionsVista;
+  std::vector<ExplosionView*> explosionsVista;
 
   void createInitialTerrainVista(const std::map<Position, Tile> &map);
   void createInitialTerrainObjectVista(const std::map<TerrainObjectID,
@@ -87,10 +87,10 @@ class View {
                           ObjectMapaVista *capturableVista);
   void removeCapturableVista(CapturableID &id);
 
-  void addExplosionVista(Sprite *objectVista);
+  void addExplosionVista(ExplosionView *explosionView);
   void addEffectVista(Sprite *objectVista);
 
-  SoundPlayer& getSoundPlayer();
+//  SoundPlayer& getSoundPlayer();
 
   /*************************************************/
   Menu *get_present_menu();

@@ -297,7 +297,7 @@ set(SOURCE_FILES
         src/common/DataEvents/Unit/dataUnitStillEvent.cpp
         src/common/DataEvents/Unit/dataUnitStillEvent.h
         src/client/model/MovementState.h
-        src/client/view/RobotView.cpp src/client/view/RobotView.h)
+        src/client/view/RobotView.cpp src/client/view/RobotView.h src/client/view/ExplosionView.cpp src/client/view/ExplosionView.h src/client/view/RocketHitView.cpp src/client/view/RocketHitView.h src/client/view/HCBulletHitView.cpp src/client/view/HCBulletHitView.h src/client/view/FireHitView.cpp src/client/view/FireHitView.h src/client/view/LaserHitView.cpp src/client/view/LaserHitView.h src/client/view/UnitDeathView.cpp src/client/view/UnitDeathView.h)
 
 
 

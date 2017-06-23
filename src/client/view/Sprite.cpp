@@ -44,10 +44,25 @@ void Sprite::scale(float scaleW, float scaleH) {
   }
 }
 
+void Sprite::setDesp(const int despX, const int despY) {
+  this->despX = despX;
+  this->despY = despY;
+}
+
 void Sprite::set_texture(SDL_Renderer *render) {}
 
 ViewPosition Sprite::getDrawPosition() const {
   return ViewPosition(x-despX, y-despY);
+}
+
+void Sprite::setRotation(double rotation) {
+  for (int frame = 0; frame < num_frames; ++frame) {
+    images[frame]->setRotation(rotation);
+  }
+}
+
+int Sprite::getCurFrame() const {
+  return cur_frame/speed;
 }
 
 void Sprite::draw(SDL_Renderer *render, Camera &camera) {

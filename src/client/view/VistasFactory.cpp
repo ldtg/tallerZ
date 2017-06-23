@@ -1,8 +1,13 @@
 #include "VistasFactory.h"
 #include "VehicleView.h"
 #include "RobotView.h"
+#include "RocketHitView.h"
+#include "HCBulletHitView.h"
+#include "FireHitView.h"
+#include "LaserHitView.h"
 #include <random>
 #include <iostream>
+#include <map>
 
 ObjectMapaVista* VistasFactory::getTerrainVista(TerrainType type,
                                                 Position &pos) {
@@ -41,19 +46,116 @@ UnitView* VistasFactory::getUnitView(UnitType type,
                                    std::string &action,
                                    std::string &rotation,
                                    const Position &pos) {
+
   if (type == R_GRUNT || type == R_TOUGH || type == R_PYRO
       || type == R_LASER || type == R_PSYCHO || type == R_SNIPER) {
-    return new RobotView(type, color, pos,
-                             action, rotation);
+    return new RobotView(type, color, pos, action, rotation);
   }
-  else if (type == V_JEEP || type == V_LTANK || type == V_MTANK
-      || type == V_HTANK || type == V_MML) {
-    return new VehicleView(type, color, pos,
-                                action, rotation);
+
+  std::map<int, Position> pointRotView;
+  std::map<int, SDL_Point> pointRotTop;
+  SDL_Point p;
+
+  if (type == V_JEEP) {
+    pointRotView.emplace(0, Position(3, 16));
+    pointRotView.emplace(45, Position(9, 20));
+    pointRotView.emplace(90, Position(14, 23));
+    pointRotView.emplace(135, Position(24, 21));
+    pointRotView.emplace(180, Position(30, 15));
+    pointRotView.emplace(225, Position(25, 8));
+    pointRotView.emplace(270, Position(16, 8));
+    pointRotView.emplace(315, Position(9, 8));
+
+    p={3, 11};  pointRotTop.emplace(0, p);
+    p={5, 11};  pointRotTop.emplace(45, p);
+    p={8, 11};  pointRotTop.emplace(90, p);
+    p={12, 11}; pointRotTop.emplace(135, p);
+    p={13, 11}; pointRotTop.emplace(180, p);
+    p={11, 7};  pointRotTop.emplace(225, p);
+    p={8, 5};   pointRotTop.emplace(270, p);
+    p={5, 7};   pointRotTop.emplace(315, p);
+  }
+  else if (type == V_LTANK) {
+    pointRotView.emplace(0, Position(19, 9));
+    pointRotView.emplace(180, Position(19, 9));
+    pointRotView.emplace(45, Position(18, 10));
+    pointRotView.emplace(225, Position(18, 10));
+    pointRotView.emplace(90, Position(14, 9));
+    pointRotView.emplace(270, Position(14, 9));
+    pointRotView.emplace(135, Position(14, 9));
+    pointRotView.emplace(315, Position(14, 9));
+
+    p={16, 12};  pointRotTop.emplace(0, p);
+    p={16, 10};  pointRotTop.emplace(45, p);
+    p={16, 10};  pointRotTop.emplace(90, p);
+    p={16, 10}; pointRotTop.emplace(135, p);
+    p={16, 10}; pointRotTop.emplace(180, p);
+    p={16, 10};  pointRotTop.emplace(225, p);
+    p={16, 10};   pointRotTop.emplace(270, p);
+    p={16, 12};   pointRotTop.emplace(315, p);
+  }
+  else if (type == V_MTANK) {
+    pointRotView.emplace(0, Position(18, 2));
+    pointRotView.emplace(180, Position(18, 2));
+    pointRotView.emplace(45, Position(16, 6));
+    pointRotView.emplace(225, Position(16, 6));
+    pointRotView.emplace(90, Position(14, 0));
+    pointRotView.emplace(270, Position(14, 0));
+    pointRotView.emplace(135, Position(12, 6));
+    pointRotView.emplace(315, Position(12, 6));
+
+    p={12, 6};  pointRotTop.emplace(0, p);
+    p={11, 4};  pointRotTop.emplace(45, p);
+    p={9, 5};  pointRotTop.emplace(90, p);
+    p={11, 6}; pointRotTop.emplace(135, p);
+    p={14, 6}; pointRotTop.emplace(180, p);
+    p={10, 6};  pointRotTop.emplace(225, p);
+    p={9, 6};   pointRotTop.emplace(270, p);
+    p={11, 6};   pointRotTop.emplace(315, p);
+  }
+  else if (type == V_HTANK) {
+    pointRotView.emplace(0, Position(18, 13));
+    pointRotView.emplace(180, Position(18, 13));
+    pointRotView.emplace(45, Position(17, 8));
+    pointRotView.emplace(225, Position(17, 8));
+    pointRotView.emplace(90, Position(15, 8));
+    pointRotView.emplace(270, Position(15, 8));
+    pointRotView.emplace(135, Position(13, 10));
+    pointRotView.emplace(315, Position(13, 10));
+
+    p={8, 12};  pointRotTop.emplace(0, p);
+    p={14, 14};  pointRotTop.emplace(45, p);
+    p={16, 15};  pointRotTop.emplace(90, p);
+    p={19, 14}; pointRotTop.emplace(135, p);
+    p={24, 12}; pointRotTop.emplace(180, p);
+    p={17, 10};  pointRotTop.emplace(225, p);
+    p={16, 10};   pointRotTop.emplace(270, p);
+    p={14, 10};   pointRotTop.emplace(315, p);
+  }
+  else if (type == V_MML) {
+    pointRotView.emplace(0, Position(10, 7));
+    pointRotView.emplace(45, Position(12, 16));
+    pointRotView.emplace(90, Position(14, 6));
+    pointRotView.emplace(135, Position(20, 10));
+    pointRotView.emplace(180, Position(21, 6));
+    pointRotView.emplace(225, Position(18, 9));
+    pointRotView.emplace(270, Position(10, 5));
+    pointRotView.emplace(315, Position(11, 7));
+
+    p={10, 8};  pointRotTop.emplace(0, p);
+    p={12, 8};  pointRotTop.emplace(45, p);
+    p={11, 8};  pointRotTop.emplace(90, p);
+    p={12, 10}; pointRotTop.emplace(135, p);
+    p={10, 8}; pointRotTop.emplace(180, p);
+    p={13, 9};  pointRotTop.emplace(225, p);
+    p={11, 6};   pointRotTop.emplace(270, p);
+    p={12, 12};   pointRotTop.emplace(315, p);
   }
   else {
     return nullptr;
   }
+
+  return new VehicleView(type, color, pos, action, rotation, pointRotView, pointRotTop);
 }
 
 Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
@@ -83,7 +185,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
 
       if (num_look==1 || num_look==3 ||
           num_look==4 || num_look==5) {
-        num_frames = 6; speed = 30;
+        num_frames = 6; speed = 80;
       }
       else if (num_look == 2) {
         num_frames = 10; speed = 8;
@@ -107,7 +209,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       std::string robot;
       if (type == R_GRUNT) {
         robot = "grunt";
-        num_frames = 5; speed = 1*num_frames;
+        num_frames = 5; speed = 7;
         num_frame_return_cycle = 3;
       }
       else if (type == R_TOUGH) {
@@ -122,7 +224,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       }
       else if (type == R_LASER) {
         robot = "laser";
-        num_frames = 3; speed = 2*num_frames;
+        num_frames = 3; speed = 1*num_frames;
         num_frame_return_cycle = 0;
       }
       else if (type == R_PSYCHO) {
@@ -132,7 +234,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
       }
       else if (type == R_SNIPER) {
         robot = "sniper";
-        num_frames = 5; speed = 1*num_frames;
+        num_frames = 5; speed = 4;
         num_frame_return_cycle = 3;
       }
       path = path + type_s + "/" + action + "/" + robot + "/"
@@ -183,7 +285,7 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
     else if (action == "fire") {
-      num_frames = 2; speed = 2*num_frames;
+      num_frames = 1; speed = 2*num_frames;
       path = path + type_s + "/" + action
           + "/" + action + "_" + color + "_r" + rotation + "_n";
     }
@@ -200,6 +302,90 @@ Sprite* VistasFactory::getUnitVista(UnitType type, std::string &color,
   else if (type == V_LTANK) {
     type_s = "vehicles/light";
     despX=18; despY=18;
+
+    if (action == "walk") {
+      num_frames = 3; speed = 2*num_frames;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "look_around") {
+      num_frames = 1; speed = 1;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "fire") {
+      num_frames = 1; speed = 1;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "die") {
+      num_frames = 8; speed = 12;
+      path = path + type_s + "/" + action + "/" + action + "_n";
+    } else if (action == "create") {
+      num_frames = 1; speed = 1;
+      path = path + type_s + "/" + "look_around"
+          + "/" + "look_around" + "_" + color + "_r" + rotation + "_n";
+    }
+  }
+  else if (type == V_MTANK) {
+    type_s = "vehicles/medium";
+    despX=18; despY=8;
+
+    if (action == "walk") {
+      num_frames = 3; speed = 2*num_frames;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "look_around") {
+      num_frames = 1; speed = 1;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "fire") {
+      num_frames = 1; speed = 1;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "die") {
+      num_frames = 8; speed = 12;
+      path = path + type_s + "/" + action + "/" + action + "_n";
+    } else if (action == "create") {
+      num_frames = 1; speed = 1;
+      path = path + type_s + "/" + "look_around"
+          + "/" + "look_around" + "_" + color + "_r" + rotation + "_n";
+    }
+  }
+  else if (type == V_HTANK) {
+    type_s = "vehicles/heavy";
+    despX=18; despY=14;
+
+    if (action == "walk") {
+      num_frames = 3; speed = 2*num_frames;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "look_around") {
+      num_frames = 1; speed = 1;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "fire") {
+      num_frames = 1; speed = 1;
+      path = path + type_s + "/" + action
+          + "/" + action + "_" + color + "_r" + rotation + "_n";
+    }
+    else if (action == "die") {
+      num_frames = 8; speed = 12;
+      path = path + type_s + "/" + action + "/" + action + "_n";
+    } else if (action == "create") {
+      num_frames = 1; speed = 1;
+      path = path + type_s + "/" + "look_around"
+          + "/" + "look_around" + "_" + color + "_r" + rotation + "_n";
+    }
+  }
+  else if (type == V_MML) {
+    type_s = "vehicles/mml";
+    despX=11; despY=12;
 
     if (action == "walk") {
       num_frames = 3; speed = 2*num_frames;
@@ -246,17 +432,39 @@ Sprite* VistasFactory::getVehicleTopVista(UnitType type,
   std::string path = "../src/view/images/units/vehicles/";
 
   switch (type) {
+    case V_JEEP: {
+      type_s = "jeep";
+      num_frames=8; speed=40;
+      path = path + type_s + "/" + "top_n";
+      break;
+    }
     case V_LTANK: {
       type_s = "light";
       num_frames=8; speed=40;
-      num_frame_return_cycle=0;
-      despX=2, despY=4;
+      path = path + type_s + "/" + "top_n";
+      break;
+    }
+    case V_MTANK: {
+      type_s = "medium";
+      num_frames=8; speed=40;
+      path = path + type_s + "/" + "top_n";
+      break;
+    }
+    case V_HTANK: {
+      type_s = "heavy";
+      num_frames=8; speed=40;
+      path = path + type_s + "/" + "top_" + color + "_n";
+      break;
+    }
+    case V_MML: {
+      type_s = "mml";
+      num_frames=8; speed=40;
+      path = path + type_s + "/" + "top_" + color + "_n";
       break;
     }
     default: return nullptr;
   }
 
-  path = path + type_s + "/" + "top_n";
   Sprite *top = new Sprite(path.c_str(), num_frames, speed,
                            num_frame_return_cycle, color, despX, despY);
   top->setPos(pos);
@@ -264,30 +472,55 @@ Sprite* VistasFactory::getVehicleTopVista(UnitType type,
   return top;
 }
 
-Sprite* VistasFactory::getVehicleTopStillVista(UnitType type,
-                                               std::string &color,
-                                               const std::string &rotation,
-                                               const Position &pos) {
+Sprite* VistasFactory::getVehicleTopFireVista(UnitType type,
+                                              std::string &color,
+                                              const std::string &rotation,
+                                              const Position &pos) {
   std::string type_s;
-  int num_frames=1, speed=1, num_frame_return_cycle=0;
+  int num_frames=0, speed=0, num_frame_return_cycle=0;
   int despX=0, despY=0;
   float scaleW=1.3, scaleH=1.3;
   std::string path = "../src/view/images/units/vehicles/";
 
   switch (type) {
+    case V_JEEP: {
+      type_s = "jeep";
+      num_frames=2; speed=2*num_frames;
+      path = path + type_s + "/" + "top_fire_r" + rotation + "_n";
+      break;
+    }
     case V_LTANK: {
       type_s = "light";
-      despX=2, despY=4;
+      num_frames=1; speed=1;
+      path = path + type_s + "/" + "top_fire_r" + rotation + "_n";
+      break;
+    }
+    case V_MTANK: {
+      type_s = "medium";
+      num_frames=1; speed=1;
+      path = path + type_s + "/" + "top_fire_r" + rotation + "_n";
+      break;
+    }
+    case V_HTANK: {
+      type_s = "heavy";
+      num_frames=1; speed=1;
+      path = path + type_s + "/" + "top_fire_" + color + "_r" + rotation + "_n";
+      break;
+    }
+    case V_MML: {
+      type_s = "mml";
+      num_frames=1; speed=1;
+      path = path + type_s + "/" + "top_fire_" + color + "_r" + rotation + "_n";
       break;
     }
     default: return nullptr;
   }
 
-  path = path + type_s + "/" + "top_r" + rotation + "_n";
   Sprite *top = new Sprite(path.c_str(), num_frames, speed,
                            num_frame_return_cycle, color, despX, despY);
   top->setPos(pos);
   top->scale(scaleW, scaleH);
+
   return top;
 }
 
@@ -317,7 +550,8 @@ Sprite* VistasFactory::getFlagsVista(std::string &color, Position &pos) {
   long despX = 0, despY = 0;
 
   std::string path = "../src/view/images/flags/flag_" + color + "_n";
-  Sprite *flagVista = new Sprite(path.c_str(), num_frames, speed, num_frame_return_cycle);
+  Sprite *flagVista = new Sprite(path.c_str(), num_frames,
+                                 speed, num_frame_return_cycle);
   flagVista->setPos(pos.sub(despX, despY));
   return flagVista;
 }
@@ -343,127 +577,130 @@ ObjectMapaVista* VistasFactory::getTerrainObjectVista(TerrainObjectType type,
 }
 
 Sprite* VistasFactory::getBulletVista(WeaponType type,
-                                      std::string &rotation,
                                       const Position &pos) {
   long despX=0, despY=0;
   int num_frames=0, speed=0, num_frame_return_cycle=0;
   std::string path = "../src/view/images/bullet/";
+  std::string type_s;
 
   switch (type) {
     case ROCKET: {
-      num_frames = 1, speed = 1, num_frame_return_cycle = 0;
-      path = path + "rocket_r" + rotation + "_n";
+      num_frames=2, speed=2, num_frame_return_cycle=0;
+      type_s = "rocket_n";
       break;
     }
     case FIRE: {
-      num_frames = 4, speed = 1, num_frame_return_cycle = 0;
-//    despX = 8; despY = 8;
-      path = path + "fire_r" + rotation + "_n";
+      num_frames=4, speed=2, num_frame_return_cycle=0;
+      type_s = "fire_n";
       break;
     }
     case BULLET: {
-      num_frames = 1, speed = 1, num_frame_return_cycle = 0;
-      path = path + "bullet_r" + rotation + "_n";
+      num_frames=1, speed=1, num_frame_return_cycle=0;
+      type_s = "bullet_n";
       break;
     }
     case HCBULLET: {
-      num_frames = 1, speed = 1, num_frame_return_cycle = 0;
-      path = path + "hcbullet_r" + rotation + "_n";
+      num_frames=1, speed=1, num_frame_return_cycle=0;
+      type_s = "hcbullet_n";
       break;
     }
     case LASER: {
-      num_frames = 2, speed = 1, num_frame_return_cycle = 0;
-      path = path + "laser_r" + rotation + "_n";
+      num_frames=2, speed=2, num_frame_return_cycle=0;
+      type_s = "laser_n";
       break;
     }
     default: return nullptr;
   }
 
+  path = path + type_s;
   Sprite *bulletVista = new Sprite(path.c_str(), num_frames,
                                    speed, num_frame_return_cycle);
   bulletVista->setPos(pos.sub(despX, despY));
   return bulletVista;
 }
 
-Sprite* VistasFactory::getBulletHitVista(WeaponType type, Position &pos) {
-  int num_frames, speed, num_frame_return_cycle;
-  long despX, despY;
-  std::string path = "../src/view/images/effects/";
-
+ExplosionView* VistasFactory::getBulletHitVista(WeaponType type, Position &pos) {
   switch (type) {
     case ROCKET:
-      num_frames = 12; speed = 6; num_frame_return_cycle = 0;
-      despX = 8; despY = 18;
-      path = path + "explosion/tank_missile_explosion1_n";
+      return new RocketHitView(pos);
       break;
     case HCBULLET:
-      num_frames = 7; speed = 4; num_frame_return_cycle = 0;
-      despX = 0; despY = 0;
-      path = path + "explosion/side_explosion_n";
+      return new HCBulletHitView(pos);
       break;
     case FIRE:
-      num_frames = 4, speed = 4, num_frame_return_cycle = 0;
-      despX = 0; despY = 0;
-      path = path + "fire/fire2_n";
+      return new FireHitView(pos);
       break;
     case LASER:
-      num_frames = 3, speed = 3, num_frame_return_cycle = 0;
-      despX = 0; despY = 0;
-      path = path + "explosion/laser_n";
+      return new LaserHitView(pos);
       break;
     default: return nullptr;
   }
-
-  Sprite *hitVista = new Sprite(path.c_str(), num_frames,
-                                speed, num_frame_return_cycle);
-  hitVista->setPos(pos.sub(despX, despY));
-  return hitVista;
 }
 
 
-Sprite* VistasFactory::getEffectVista(EffectType type) {
+Sprite* VistasFactory::getEffectVista(EffectType type, Position &pos) {
   std::string type_s;
   int num_frames=0, speed=0, num_frame_return_cycle=0;
+  long despX=0, despY=0;
   std::string path = "../src/view/images/effects/";
 
-  if (type == TANK_MISSILE) {
-    type_s = "explosion";
-    num_frames = 12;
-    speed = 6;
-    num_frame_return_cycle = 0;
-    path = path + type_s + "/tank_missile_explosion1_n";
-  }
-  else if (type == SIDE_EXPLOSION) {
-    type_s = "explosion";
-    num_frames = 7;
-    speed = 6;
-    num_frame_return_cycle = 0;
-    path = path + type_s + "/side_explosion_n";
-  }
-  else if (type == BIG_SMOKE) {
-    type_s = "smoke";
-    num_frames = 4;
-    speed = 6;
-    num_frame_return_cycle = 0;
-    path = path + type_s + "/big_smoke_n";
-  }
-  else if (type == FIRE_SMOKE) {
-    type_s = "smoke";
-    num_frames = 4;
-    speed = 6;
-    num_frame_return_cycle = 0;
-    path = path + type_s + "/small_fire_smoke_n";
-  }
-  else if (type == FIRE_EFFECT) {
-    type_s = "fire";
-    num_frames = 6;
-    speed = 6;
-    num_frame_return_cycle = 0;
-    path = path + type_s + "/fire_n";
-  }
-  else {
-    return nullptr;
+  switch (type) {
+    case TANK_MISSILE: {
+      type_s = "explosion";
+      num_frames = 12; speed = 4;
+      num_frame_return_cycle = 0;
+      despX = 16; despY = 26;
+      path = path + type_s + "/tank_missile_explosion1_n";
+      break;
+    }
+    case SIDE_EXPLOSION: {
+      type_s = "explosion";
+      num_frames = 7; speed = 3;
+      num_frame_return_cycle = 0;
+      despX = 16; despY = 16;
+      path = path + type_s + "/side_explosion_n";
+      break;
+    }
+    case BIG_SMOKE: {
+      type_s = "smoke";
+      num_frames = 4; speed = 6;
+      num_frame_return_cycle = 0;
+      path = path + type_s + "/big_smoke_n";
+      break;
+    }
+    case FIRE_SMOKE: {
+      type_s = "smoke";
+      num_frames = 4; speed = 6;
+      num_frame_return_cycle = 0;
+      path = path + type_s + "/small_fire_smoke_n";
+      break;
+    }
+    case FIRE_EFFECT: {
+      type_s = "fire";
+      num_frames = 6; speed = 6;
+      num_frame_return_cycle = 0;
+      path = path + type_s + "/fire_n";
+      break;
+    }
+    case FIRE2_EFFECT: {
+      type_s = "fire";
+      num_frames = 4; speed = 4;
+      num_frame_return_cycle = 0;
+      path = path + type_s + "/fire2_n";
+      break;
+    }
+    case LASER_EFFECT: {
+      type_s = "explosion";
+      num_frames = 3; speed = 3;
+      num_frame_return_cycle = 0;
+      path = path + type_s + "/laser_n";
+      break;
+    }
+    default: return nullptr;
   }
 
-  return new Sprite(path.c_str(), num_frames,speed, num_frame_return_cycle);
+  Sprite *effectView = new Sprite(path.c_str(), num_frames,
+                                  speed, num_frame_return_cycle);
+  effectView->setPos(pos.sub(despX, despY));
+  return effectView;
 }

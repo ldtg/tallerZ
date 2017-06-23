@@ -11,6 +11,7 @@
 #include "EffectType.h"
 #include "Image.h"
 #include "UnitView.h"
+#include "ExplosionView.h"
 
 class VistasFactory {
  public:
@@ -23,15 +24,15 @@ class VistasFactory {
                               const Position &pos);
   static Sprite *getVehicleTopVista(UnitType type, std::string &color,
                               const Position &pos);
-  static Sprite *getVehicleTopStillVista(UnitType type, std::string &color,
-                                         const std::string &rotation, const Position &pos);
+  static Sprite *getVehicleTopFireVista(UnitType type, std::string &color,
+                                        const std::string &rotation, const Position &pos);
   static Image *getBuildVista(BuildType type, std::string &state, Position &pos);
   static ObjectMapaVista *getTerrainObjectVista(TerrainObjectType type,
                                                 std::string &state, Position &pos);
   static Sprite *getFlagsVista(std::string &color, Position &pos);
-  static Sprite *getBulletVista(WeaponType type, std::string &rotation, const Position &pos);
-  static Sprite *getBulletHitVista(WeaponType type, Position &pos);
-  static Sprite *getEffectVista(EffectType type);
+  static Sprite *getBulletVista(WeaponType type, const Position &pos);
+  static ExplosionView *getBulletHitVista(WeaponType type, Position &pos);
+  static Sprite *getEffectVista(EffectType type, Position &pos);
 };
 
 #endif //TALLERZ_VISTASFACTORY_H
