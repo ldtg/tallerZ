@@ -1,7 +1,3 @@
-//
-// Created by darius on 23/05/17.
-//
-
 #ifndef TALLERZ_PRODUCTION_MENU_1_H
 #define TALLERZ_PRODUCTION_MENU_1_H
 
@@ -80,7 +76,8 @@ class Production_Menu : public Menu {
 
   void show_next_buildable_unit();
 
-  void add_to_panel(Panel& panel);
+//  void add_to_panel(Panel& panel);
+  void draw(SDL_Renderer *render, Camera &camera);
 
   void update_unit_to_build();
 

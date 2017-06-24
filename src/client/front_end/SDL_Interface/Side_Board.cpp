@@ -1,7 +1,3 @@
-//
-// Created by darius on 21/05/17.
-//
-
 #include "Side_Board.h"
 #include <client/view/View.h>
 
@@ -29,25 +25,32 @@ void Side_Board::load_items() {
   this->unit_label_background = new Texture(unit_label_background_path, window);
 
 }
+
 bool Side_Board::is_in_quit_button(int x, int y) {
   return quit_button->inRectangle(x, y);
 }
+/*
 void Side_Board::add_to_panel(Panel &panel) {
   panel.add(this);
   panel.add(quit_button);
 }
+*/
 void Side_Board::launch_menu_button() {
   this->quit_button->handle_event();
 }
+
 std::string Side_Board::label_path(const std::string &name) {
   return (folder_path + "unit_label_" + name + "_" + color + ".png");
 }
+
 std::string Side_Board::face_path(const std::string &name) {
   return (folder_path + "/Faces/" + name + "_" + color + ".png");
 }
+
 std::string Side_Board::weapon_path(const std::string &name) {
   return (folder_path + "/Weapons/icon_" + name + "_" + color + ".png");
 }
+
 std::string Side_Board::w_label_path(const std::string &name) {
   return (folder_path + "/Weapons/" + name + "_label.bmp");
 }
@@ -156,6 +159,7 @@ void Side_Board::load_unit_images(UnitType unitType, UnitType secType) {
   this->face_texture->renderize(window, &face_rect);
   this->weapon_label->renderize(window, &weapon_label_rect);
 }
+
 void Side_Board::clean_unit_images() {
   if (face_texture != nullptr) {
     delete face_texture;
@@ -174,8 +178,10 @@ void Side_Board::clean_unit_images() {
     weapon_label = nullptr;
   }
 }
+
 void Side_Board::draw(SDL_Renderer *render, Camera &camera) {
   SDL_RenderCopy(render, side_board_texture->get_texture(), NULL, NULL);
+
   unit_label_background->renderize(window, &unit_label_background_rect);
   if (this->face_texture != NULL) {
     this->face_texture->renderize(window, &face_rect);
@@ -189,4 +195,6 @@ void Side_Board::draw(SDL_Renderer *render, Camera &camera) {
   if (this->weapon_label != NULL) {
     this->weapon_label->renderize(window, &weapon_label_rect);
   }
+
+  quit_button->draw(render, camera);
 }

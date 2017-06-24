@@ -6,7 +6,6 @@ class Model;
 //class Quit_Menu;
 #include "common/Map/Map.h"
 #include "Window.h"
-#include "Panel.h"
 #include <string>
 #include <client/front_end/SDL_Interface/Menus/Production/Production_Menu.h>
 #include <client/front_end/SDL_Interface/Side_Board.h>
@@ -24,7 +23,6 @@ class View {
  private:
   Window window;
   Camera &camera;
-  Panel panel;
   Menu * menu = nullptr;
   Side_Board * side_board = nullptr;
   EventHandler &eventHandler;

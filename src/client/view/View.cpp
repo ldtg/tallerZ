@@ -12,7 +12,6 @@ View::View(const Map &map,
            Camera &camera,
            const std::string &player_color)
     : window(),
-      panel(window.getRender()),
       eventHandler(eventHandler),
       camera(camera) {
   _quit = false;
@@ -163,7 +162,6 @@ void View::update() {
     bullet.second->update();
   }
   updateExplosions();
-
 }
 
 void View::updateExplosions() {
@@ -190,67 +188,52 @@ void View::draw() {
     posTerrain.second->set_texture(window_render);
 
     posTerrain.second->draw(window_render, camera);
-//    panel.add(posTerrain.second);
   }
 
   for (auto const &posTerrainObj : terrainObjectsVista) {
     posTerrainObj.second->set_texture(window_render);
 
     posTerrainObj.second->draw(window_render, camera);
-//    panel.add(posTerrainObj.second);
   }
 
   for (auto const &build : buildsVista) {
     build.second->set_texture(window_render);
 
     build.second->draw(window_render, camera);
-//    panel.add(build.second);
   }
 
   for (auto const &capturable : capturablesVista) {
     capturable.second->set_texture(window_render);
 
     capturable.second->draw(window_render, camera);
-//    panel.add(capturable.second);
   }
 
   for (auto const &bullet : bulletsVista) {
     bullet.second->getView()->set_texture(window_render);
 
     bullet.second->draw(window_render, camera);
-//    panel.add(bullet.second->getView());
   }
 
   for (auto &unit : unitsVista) {
-//    unit.second->getView()->set_texture(window_render);
-
     unit.second->draw(window_render, camera);
-//    panel.add(unit.second->getView());
   }
 
   for (Sprite *effect : effectsVista) {
-//    effect->set_texture(window_render);
-
     effect->draw(window_render, camera);
-//    panel.add(effect);
   }
 
   for (ExplosionView *explosion : explosionsVista) {
-//    explosion->set_texture(window_render);
-
     explosion->draw(window_render, camera);
-//    panel.add(explosion);
   }
 
   if (menu != nullptr) {
-    //panel.add(menu);
-    menu->add_to_panel(panel);
+    menu->draw(window_render, camera);
   }
   if (side_board != nullptr) {
-    side_board->add_to_panel(panel);
+    side_board->draw(window_render, camera);
   }
-  panel.draw(camera);
-//  SDL_RenderPresent(window_render);
+
+  SDL_RenderPresent(window_render);
 }
 
 void View::setQuit() {

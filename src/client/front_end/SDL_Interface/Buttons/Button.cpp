@@ -1,8 +1,5 @@
-//
-// Created by darius on 21/05/17.
-//
-
 #include "Button.h"
+
 /**
  * Constructor
  * @param window : ventana sobre la que se realiza el click (generalmente: Main_Window)
@@ -10,6 +7,7 @@
 Button::Button(Window *window) {
   this->window = window;
 }
+
 /**
  * Destructor: se eliminan las texturas cargadas.
  */
@@ -21,6 +19,7 @@ Button::~Button() {
     delete this->button_down;
   }
 }
+
 /**
  * set_rectangle
  * @param x : coordenada x de la ubicacion del boton en la ventana
@@ -44,6 +43,7 @@ void Button::load_texture_up(const std::string &path) {
     throw Front_end_exception("Button::load_texture_up: %s\n", e.what());
   }
 }
+
 /**
  * load_texture_down: Opcional
  * @param path : ruta de archivo de la imagen de boton apretada
@@ -66,6 +66,7 @@ void Button::handle_event() {
   this->on_button_pressed();
 
 }
+
 /**
  * on_button_pressed
  * Lo unico que se realiza al apretar un boton es renderizar la textura
@@ -77,6 +78,7 @@ void Button::on_button_pressed() {
     this->button_launch();
   }
 }
+
 /**
  * on_button_released
  * Se dispara el evento asociado al boton
@@ -88,6 +90,7 @@ void Button::on_button_released() {
     this->button_launch();
   }
 }
+
 /**
  * inRectangle
  * @param x : coordenada x
@@ -100,14 +103,20 @@ bool Button::inRectangle(int x, int y) {
       && y > renderQuad.y
       && y < (renderQuad.y + renderQuad.h));
 }
+
 /**
  * Reload: Renderiza de nuevo con la imagen del botón sin levantar.
  */
 void Button::reload() {
   this->button_up->renderize(this->window, &this->renderQuad);
 }
+
 void Button::displace_toXY(int coordX, int coordY) {
   this->renderQuad.x += coordX;
   this->renderQuad.y += coordY;
   this->reload();
+}
+
+void Button::draw(SDL_Renderer *render, Camera &camera) {
+  SDL_RenderCopy(render, button_up->get_texture(), NULL, &renderQuad);
 }

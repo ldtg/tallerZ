@@ -30,10 +30,12 @@ class Quit_Menu : public Menu {
 
   //void displace_toXY(int x, int y) override {};
 
-  void add_to_panel(Panel& panel) override{
-    panel.add(this);
-    panel.add(salir);
-  }
+//  void add_to_panel(Panel& panel) override {
+//    panel.add(this);
+//    panel.add(salir);
+//  }
+  void draw(SDL_Renderer *render, Camera &camera);
+
   virtual ~Quit_Menu();
  private:
   void load_items();

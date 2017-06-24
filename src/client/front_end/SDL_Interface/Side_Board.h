@@ -1,7 +1,3 @@
-//
-// Created by darius on 21/05/17.
-//
-
 #ifndef TALLERZ_SIDE_BOARD_H
 #define TALLERZ_SIDE_BOARD_H
 
@@ -11,11 +7,12 @@
 #include <client/view/Window.h>
 #include <client/view/Texture.h>
 #include <client/view/ObjectMapaVista.h>
-#include <client/view/Panel.h>
 #include <client/front_end/SDL_Interface/Buttons/Quit_Button.h>
 #include <client/front_end/SDL_Interface/Buttons/Button.h>
 #include <common/Types/UnitType.h>
+
 class View;
+
 class Side_Board : public ObjectMapaVista {
  private:
   const std::string color;
@@ -53,7 +50,7 @@ class Side_Board : public ObjectMapaVista {
 
   void load_unit_images(UnitType unitType, UnitType type);
   void clean_unit_images();
-  void add_to_panel(Panel &panel);
+//  void add_to_panel(Panel &panel);
 
   virtual void set_texture(SDL_Renderer *render) {};
   virtual void draw(SDL_Renderer *render, Camera &camera);

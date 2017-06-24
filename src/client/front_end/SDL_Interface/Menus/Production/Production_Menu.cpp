@@ -1,8 +1,3 @@
-//
-// Created by darius on 23/05/17.
-//
-
-
 #include "Production_Menu.h"
 #include <client/model/Model.h>
 
@@ -153,6 +148,19 @@ Production_Menu::~Production_Menu() {
     delete this->background;
 }
 
+void Production_Menu::draw(SDL_Renderer *render, Camera &camera) {
+  this->update_status();
+  Menu::draw(render, camera);
+  build->draw(render, camera);
+  up->draw(render, camera);
+  down->draw(render, camera);
+  time->draw(render, camera);
+  status->draw(render, camera);
+  health->draw(render, camera);
+  unit->draw(render, camera);
+  building_name->draw(render, camera);
+}
+/*
 void Production_Menu::add_to_panel(Panel &panel) {
   this->update_status();
   panel.add(this);
@@ -165,7 +173,7 @@ void Production_Menu::add_to_panel(Panel &panel) {
   panel.add(unit);
   panel.add(building_name);
 }
-
+*/
 std::string Production_Menu::get_building_type(const BuildType &buildType) {
   switch (buildType) {
     case (BuildType::FORT):return "FORT";

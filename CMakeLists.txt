@@ -93,8 +93,6 @@ set(SOURCE_FILES
         src/client/view/Texture.h
         src/client/view/Window.cpp
         src/client/view/Window.h
-        src/client/view/Panel.cpp
-        src/client/view/Panel.h
         src/client/view/Image.cpp
         src/client/view/Image.h
         src/client/view/ObjectMapaVista.cpp

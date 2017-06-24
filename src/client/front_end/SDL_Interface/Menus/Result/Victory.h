@@ -1,7 +1,3 @@
-//
-// Created by darius on 18/06/17.
-//
-
 #ifndef TALLERZ_CLIENTE_VICTORY_H
 #define TALLERZ_CLIENTE_VICTORY_H
 
@@ -25,10 +21,12 @@ class Victory : public Menu{
 
   void handle_click(int x, int y);
 
-  void add_to_panel(Panel& panel) override{
-    panel.add(this);
-    panel.add(ok);
-  }
+//  void add_to_panel(Panel& panel) override{
+//    panel.add(this);
+//    panel.add(ok);
+//  }
+  void draw(SDL_Renderer *render, Camera &camera);
+
   virtual ~Victory();
  private:
   void load_items();
