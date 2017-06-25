@@ -6,14 +6,14 @@
 #include <string>
 #include <client/view/Window.h>
 #include <client/view/Texture.h>
-#include <client/view/ObjectMapaVista.h>
+#include <client/view/ObjectView.h>
 #include <client/front_end/SDL_Interface/Buttons/Quit_Button.h>
 #include <client/front_end/SDL_Interface/Buttons/Button.h>
 #include <common/Types/UnitType.h>
 
 class View;
 
-class Side_Board : public ObjectMapaVista {
+class Side_Board : public ObjectView {
  private:
   const std::string color;
   const std::string path = "../src/client/front_end/Images/Interface/interface.png";

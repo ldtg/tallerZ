@@ -9,7 +9,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "Window.h"
-#include "ObjectMapaVista.h"
+#include "ObjectView.h"
 
 /**
  * @class Texture:
@@ -21,7 +21,7 @@
  * En algún caso extraño se puede posteriormente con load_texture modificar
  * la textura y renderizar de nuevo.
  */
-class Texture : public ObjectMapaVista{
+class Texture : public ObjectView{
  private:
   SDL_Texture * texture;
   SDL_Rect renderQuad;

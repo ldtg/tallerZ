@@ -95,14 +95,14 @@ set(SOURCE_FILES
         src/client/view/Window.h
         src/client/view/Image.cpp
         src/client/view/Image.h
-        src/client/view/ObjectMapaVista.cpp
-        src/client/view/ObjectMapaVista.h
+        src/client/view/ObjectView.cpp
+        src/client/view/ObjectView.h
         src/client/view/View.cpp
         src/client/view/View.h
         src/client/view/Sprite.cpp
         src/client/view/Sprite.h
-        src/client/view/VistasFactory.cpp
-        src/client/view/VistasFactory.h
+        src/client/view/ViewFactory.cpp
+        src/client/view/ViewFactory.h
         src/client/view/Camera.cpp
         src/client/view/Camera.h
         src/client/view/EffectType.h
@@ -251,28 +251,28 @@ set(SOURCE_FILES
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h
         src/client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.cpp
 
-        src/client/view/UnitView.cpp src/client/view/UnitView.h
+        src/client/view/unit/UnitView.cpp src/client/view/unit/UnitView.h
         src/client/model/Events/model/build/BuildUpdateEvent.cpp
         src/client/model/Events/model/build/BuildUpdateEvent.h
         src/client/view/ObjectViewMove.cpp src/client/view/ObjectViewMove.h
-        src/client/view/BulletView.cpp src/client/view/BulletView.h
+        src/client/view/bullet/BulletView.cpp src/client/view/bullet/BulletView.h
         src/client/view/sounds/Sound.cpp src/client/view/sounds/Sound.h
         src/client/view/sounds/SoundPlayer.cpp src/client/view/sounds/SoundPlayer.h
         src/client/view/sounds/SoundsFactory.cpp src/client/view/sounds/SoundsFactory.h
         src/common/Thread/Lock.h
-        src/client/view/VehicleView.cpp src/client/view/VehicleView.h
+        src/client/view/unit/VehicleView.cpp src/client/view/unit/VehicleView.h
 
-        src/client/view/UnitView.cpp src/client/view/UnitView.h
+        src/client/view/unit/UnitView.cpp src/client/view/unit/UnitView.h
         src/client/view/ViewPosition.cpp
         src/client/view/ViewPosition.h
-        src/client/view/UnitView.cpp
-        src/client/view/UnitView.h
+        src/client/view/unit/UnitView.cpp
+        src/client/view/unit/UnitView.h
         src/client/model/Events/model/build/BuildUpdateEvent.cpp
         src/client/model/Events/model/build/BuildUpdateEvent.h
         src/client/view/ObjectViewMove.cpp
         src/client/view/ObjectViewMove.h
-        src/client/view/BulletView.cpp
-        src/client/view/BulletView.h
+        src/client/view/bullet/BulletView.cpp
+        src/client/view/bullet/BulletView.h
         src/client/view/sounds/Sound.cpp
         src/client/view/sounds/Sound.h
         src/client/view/sounds/SoundPlayer.cpp
@@ -293,7 +293,7 @@ set(SOURCE_FILES
         src/common/DataEvents/Unit/dataUnitStillEvent.cpp
         src/common/DataEvents/Unit/dataUnitStillEvent.h
         src/client/model/MovementState.h
-        src/client/view/RobotView.cpp src/client/view/RobotView.h src/client/view/ExplosionView.cpp src/client/view/ExplosionView.h src/client/view/RocketHitView.cpp src/client/view/RocketHitView.h src/client/view/HCBulletHitView.cpp src/client/view/HCBulletHitView.h src/client/view/FireHitView.cpp src/client/view/FireHitView.h src/client/view/LaserHitView.cpp src/client/view/LaserHitView.h src/client/view/UnitDeathView.cpp src/client/view/UnitDeathView.h)
+        src/client/view/unit/RobotView.cpp src/client/view/unit/RobotView.h src/client/view/explosion/ExplosionView.h src/client/view/explosion/RocketHitView.cpp src/client/view/explosion/RocketHitView.h src/client/view/explosion/HCBulletHitView.cpp src/client/view/explosion/HCBulletHitView.h src/client/view/explosion/FireHitView.cpp src/client/view/explosion/FireHitView.h src/client/view/explosion/LaserHitView.cpp src/client/view/explosion/LaserHitView.h src/client/view/explosion/UnitDeathView.cpp src/client/view/explosion/UnitDeathView.h src/client/view/building/BuildingView.h src/client/view/building/FortView.cpp src/client/view/building/FortView.h src/client/view/building/RobotFView.cpp src/client/view/building/RobotFView.h src/client/view/building/VehicleFView.cpp src/client/view/building/VehicleFView.h src/client/view/building/BuildingEffectType.h src/client/view/building/BuildingView.cpp)
 
 
 

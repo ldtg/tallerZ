@@ -3,10 +3,10 @@
 
 #include "SDL2/SDL.h"
 #include <string>
-#include "ObjectMapaVista.h"
+#include "ObjectView.h"
 #include "Image.h"
 
-class Sprite : public ObjectMapaVista {
+class Sprite : public ObjectView {
  protected:
   int num_frames;
   int cur_frame;

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "ObjectViewMove.h"
-#include "VistasFactory.h"
+#include "ViewFactory.h"
 
 ObjectViewMove::ObjectViewMove(Sprite *view) : view(view) {
   lastMove = false;

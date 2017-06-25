@@ -26,7 +26,7 @@ Sprite::Sprite(const char *file, int num_frames, int speed,
 
 Sprite::~Sprite() {
   for (unsigned long frame = 0; frame < num_frames; ++frame) {
-    delete (images.at(frame));
+    delete images.at(frame);
   }
 }
 
@@ -67,15 +67,12 @@ int Sprite::getCurFrame() const {
 
 void Sprite::draw(SDL_Renderer *render, Camera &camera) {
   int cur_frame_aux = 0;
-  if (speed > 0)
-    cur_frame_aux = cur_frame / speed;
+  cur_frame_aux = cur_frame / speed;
 
   images[cur_frame_aux]->setPos(ViewPosition(x-despX, y-despY));
-  images[cur_frame_aux]->set_texture(render);
   images[cur_frame_aux]->draw(render, camera);
 
   ++cur_frame;
-  //Cycle animation
   if (cur_frame / speed >= num_frames) {
     cur_frame = num_frame_return_cycle;
     _doCycle = true;

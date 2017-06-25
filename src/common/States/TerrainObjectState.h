@@ -11,7 +11,8 @@ struct TerrainObjectState {
   TerrainObjectState() {};
   TerrainObjectState(const Position &position,
                      unsigned short size,
-                     unsigned short health, bool passable);
+                     unsigned short health,
+                     bool passable);
   template<class Archive>
   void serialize(Archive &archive) {
     archive(centerPosition, size, health, passable);

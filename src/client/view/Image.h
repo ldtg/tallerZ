@@ -2,9 +2,9 @@
 #define IMAGE_H
 
 #include <SDL2/SDL.h>
-#include "ObjectMapaVista.h"
+#include "ObjectView.h"
 
-class Image : public ObjectMapaVista {
+class Image : public ObjectView {
  private:
   SDL_Surface *surface;
   SDL_Texture *texture;

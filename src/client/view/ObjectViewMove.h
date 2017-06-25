@@ -4,7 +4,7 @@
 #include <queue>
 #include <client/model/MovementState.h>
 #include "ViewPosition.h"
-#include "ObjectMapaVista.h"
+#include "ObjectView.h"
 #include "Sprite.h"
 
 class ObjectViewMove {

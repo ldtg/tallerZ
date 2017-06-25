@@ -1,5 +1,5 @@
 #include <client/view/Sprite.h>
-#include <client/view/VistasFactory.h>
+#include <client/view/ViewFactory.h>
 #include "UnitAttackEvent.h"
 
 UnitAttackEvent::UnitAttackEvent(const UnitID &attacker, Position huntedPos,

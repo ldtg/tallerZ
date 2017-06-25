@@ -4,7 +4,7 @@ BulletMoveEvent::BulletMoveEvent(const BulletID &id, const Position &to)
     : id(id), posTo(to) {}
 
 void BulletMoveEvent::process() {
-  BulletView *bulletView = view->getBulletVista(id);
+  BulletView *bulletView = view->getBulletView(id);
   Position bulletPos = bulletView->getPos();
 
   Position dist = posTo.sub(bulletPos);

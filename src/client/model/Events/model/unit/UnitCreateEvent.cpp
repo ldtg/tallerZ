@@ -1,5 +1,5 @@
 #include <client/view/sounds/SoundsFactory.h>
-#include <client/view/VehicleView.h>
+#include <client/view/unit/VehicleView.h>
 #include "UnitCreateEvent.h"
 
 UnitCreateEvent::UnitCreateEvent(UnitID id, UnitState state)
@@ -11,12 +11,12 @@ void UnitCreateEvent::process() {
   std::string color = state.owner.getColor();
   UnitType type = id.getType();
 
-  UnitView *unitVista = VistasFactory::getUnitView(type, color,
+  UnitView *unitVista = ViewFactory::getUnitView(type, color,
                                                    action, rotation_s,
                                                    state.position);
   unitVista->getView()->setDrawRotation(270);
   unitVista->create();
-  view->addUnitVista(id, unitVista);
+  view->addUnitView(id, unitVista);
 
   Map &map = model->getMap();
   map.addUnit(id, state);

@@ -17,7 +17,7 @@ class Model;
  * Las clases hijas deben implementar button_launch (virtual puro)
  * que es el metodo asociado al evento de clickear sobre el boton.
  */
-class Button : public ObjectMapaVista  {
+class Button : public ObjectView  {
  protected:
   Window * window;
   Model * model;

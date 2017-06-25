@@ -5,24 +5,17 @@ TerrainObjectDestroyedEvent::TerrainObjectDestroyedEvent(const TerrainObjectID &
     : id(id) {}
 
 void TerrainObjectDestroyedEvent::process() {
-  ObjectMapaVista *terrainObjVista = view->getTerrainObjectVista(id);
+  ObjectView *terrainObjVista = view->getTerrainObjectView(id);
   Position pos = terrainObjVista->getPos();
 
-  view->removeTerrainObjectVista(id);
-
-//  Sprite *explosion = VistasFactory::getEffectVista(SIDE_EXPLOSION);
-//  explosion->setPos(pos.add(25, 25));
-//  explosion->setPos(pos);
-
-//  view->addExplosionVista(explosion);
+  view->removeTerrainObjectView(id);
 
   TerrainObjectType type = id.getType();
   if (type == _WOODENBRIDGE || type == _ASPHALTEDBRIDGE) {
     std::string state("destroyed");
-    ObjectMapaVista
-        *destBridge = VistasFactory::getTerrainObjectVista(type, state, pos);
+    Image *destBridge = ViewFactory::getTerrainObjectVista(type, state, pos);
     destBridge->setPos(pos);
-    view->addTerrainObjectVista(id, destBridge);
+    view->addTerrainObjectView(id, destBridge);
   }
 
   model->getMap().removeTerrainObject(id);

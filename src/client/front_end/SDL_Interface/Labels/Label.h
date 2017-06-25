@@ -9,7 +9,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <client/view/Texture.h>
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
-#include <client/view/ObjectMapaVista.h>
+#include <client/view/ObjectView.h>
 
 /**
  * @class Label
@@ -19,7 +19,7 @@
  * Label por defecto tiene fondo transparente pero si modificamos el texto
  * se sobreescribe sobre un fondo negro.
  */
-class Label : public ObjectMapaVista {
+class Label : public ObjectView {
  protected:
   Window &window;
   std::string text;

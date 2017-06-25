@@ -9,7 +9,7 @@ BulletNewEvent::BulletNewEvent(const BulletID &bullet,
 
 void BulletNewEvent::process() {
   BulletView *bulletVista = new BulletView(weapon, from, to);
-  view->addBulletVista(this->id, bulletVista);
+  view->addBulletView(this->id, bulletVista);
 
   BulletState state(weapon, from);
   model->getMap().addBullet(id, state);

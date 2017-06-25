@@ -6,12 +6,12 @@
 #include <string>
 #include <client/view/Texture.h>
 #include "Exceptions/Sdl_Exceptions/Sdl_Exception.h"
-#include <client/view/ObjectMapaVista.h>
+#include <client/view/ObjectView.h>
 
 /**
  * @class Menu: clase madre (@virtual) de la que heredan los distintos menus del juego.
  */
-class Menu : public ObjectMapaVista {
+class Menu : public ObjectView {
   const std::string font_path = "../src/client/front_end/fonts/BEBAS.ttf";
  protected:
   SDL_Rect renderQuad;

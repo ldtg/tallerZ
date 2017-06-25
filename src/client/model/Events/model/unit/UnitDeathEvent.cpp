@@ -1,5 +1,5 @@
 #include <client/view/sounds/SoundsFactory.h>
-#include <client/view/UnitDeathView.h>
+#include <client/view/explosion/UnitDeathView.h>
 #include "UnitDeathEvent.h"
 
 UnitDeathEvent::UnitDeathEvent(UnitID id) : id(id) {}
@@ -8,8 +8,8 @@ void UnitDeathEvent::process() {
   UnitView *unitVista = view->getUnitView(id);
   ExplosionView *deathView = new UnitDeathView(id.getType(), unitVista);
 
-  view->removeUnitVista(id);
-  view->addExplosionVista(deathView);
+  view->removeUnitView(id);
+  view->addExplosionView(deathView);
 
   model->getMap().removeUnit(id);
 

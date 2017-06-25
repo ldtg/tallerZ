@@ -9,9 +9,9 @@ BulletHitEvent::BulletHitEvent(const BulletID &id,
     : id(id), pos(pos), weapon(type) {}
 
 void BulletHitEvent::process() {
-  view->removeBulletVista(id);
-  ExplosionView *bulletExplosion = VistasFactory::getBulletHitVista(weapon, pos);
-  view->addExplosionVista(bulletExplosion);
+  view->removeBulletView(id);
+  ExplosionView *bulletExplosion = ViewFactory::getBulletHitVista(weapon, pos);
+  view->addExplosionView(bulletExplosion);
 
   model->getMap().removeBullet(id);
 
