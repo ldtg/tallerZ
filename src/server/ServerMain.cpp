@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
     for (Socket *cli :clients) {
       delete (cli);
     }
-  } catch (const SocketException &e) {
+  } catch (const std::exception &e) {
     std::cerr << e.what() << std::endl;
     return 0;
   }

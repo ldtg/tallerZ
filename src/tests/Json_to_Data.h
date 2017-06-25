@@ -19,7 +19,7 @@ class Json_to_Data {
   Data& data;
   json j;
   std::ifstream json_file;
-  const std::string& file_path = "data.json";
+  const std::string file_path = "data.json";
 
  public:
   Json_to_Data(Data& data);
@@ -32,7 +32,7 @@ class Json_to_Data {
   void open_file(){
     try {
       this->json_file.open(this->file_path);
-    } catch (const std::exception &e) {
+    } catch (const std::ifstream::failure &e) {
       throw Storage_Exception(
           "Error en la apertura del archivo %s de donde se iba a cargar la "
               "variable Data\n: %s\n", this->file_path.c_str(), e.what());
@@ -42,7 +42,7 @@ class Json_to_Data {
   void close_file(){
     try {
       this->json_file.close();
-    } catch (const std::exception &e) {
+    } catch (const std::ifstream::failure &e) {
       throw Storage_Exception(
           "Error el metodo close_file de Json_to_Data al cerrar el archivo "
               "%s: %s\n", this->file_path, e.what());
