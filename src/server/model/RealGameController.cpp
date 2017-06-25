@@ -220,16 +220,16 @@ void RealGameController::move(Unit *unit,
     unit->doMoveWithSpeed(terrainFactor);
 
     eventQueue.push(new UnitMoveEvent(unit->getId(),
-                                         unit->getCenterPosition()));
+                                      unit->getCenterPosition()));
     map.updateUnit(unit->getId(), unit->getUnitState());
 
     if (unit->isStill())
       eventQueue.push(new UnitStillEvent(unit->getId(),
-                                            unit->getCenterPosition()));
+                                         unit->getCenterPosition()));
 
   } else {
     eventQueue.push(new UnitStillEvent(unit->getId(),
-                                          unit->getCenterPosition()));
+                                       unit->getCenterPosition()));
     unit->still();
   }
   ++it;
@@ -241,7 +241,7 @@ void RealGameController::hunt(Unit *unit,
 
   if (!hunted->isAlive()) {
     eventQueue.push(new UnitStillEvent(unit->getId(),
-                                          unit->getCenterPosition()));
+                                       unit->getCenterPosition()));
     unit->still();
     return;
   }
@@ -253,16 +253,16 @@ void RealGameController::hunt(Unit *unit,
       && map.canPass(unitPos, huntedPos)) {
     if (unit->isFirstAttack()) {
       eventQueue.push(new UnitAttackEvent(unit->getId(),
-                                             huntedPos,
-                                             unitPos));
+                                          huntedPos,
+                                          unitPos));
     }
     if (unit->isTimeToAttack()) {
       this->bullets.push_back(unit->createBullet());
 
       eventQueue.push(new BulletNewEvent(this->bullets.back().getId(),
-                                            this->bullets.back().getWeapon().type,
-                                            this->bullets.back().getFrom(),
-                                            this->bullets.back().getTo()));
+                                         this->bullets.back().getWeapon().type,
+                                         this->bullets.back().getFrom(),
+                                         this->bullets.back().getTo()));
     }
     if (hunted->isMoving()) {
       unit->addMove(hunted->nextMovePosition());
@@ -272,7 +272,7 @@ void RealGameController::hunt(Unit *unit,
     if (unit->isAutoAttacking()) {
       unit->still();
       eventQueue.push(new UnitStillEvent(unit->getId(),
-                                            unit->getCenterPosition()));
+                                         unit->getCenterPosition()));
       ++it;
     } else {
       if (hunted->isMoving())
@@ -304,12 +304,12 @@ void RealGameController::capture(Unit *unit,
     }
     //create event
     eventQueue.push(new UnitStillEvent(unit->getId(),
-                                          unit->getCenterPosition()));
+                                       unit->getCenterPosition()));
 
     eventQueue.push(new CaptureEvent(unit->getId(), capturable->getID(),
-                                            capturable->getCapturePosition(),
-                                            capturedBuilds,
-                                            capturedUnits, dissapear));
+                                     capturable->getCapturePosition(),
+                                     capturedBuilds,
+                                     capturedUnits, dissapear));
     if (dissapear) {
       // si alguien la estaba persiguiendo la tiene que ver muerta,
       // pero no se tiene que disparar el evento muerte
@@ -329,7 +329,7 @@ void RealGameController::capture(Unit *unit,
             && unit->getId() != par.first) {
           par.second->still();
           eventQueue.push(new UnitStillEvent(par.first,
-                                                par.second->getCenterPosition()));
+                                             par.second->getCenterPosition()));
         }
       }
       delete capturable;
@@ -365,23 +365,23 @@ void RealGameController::bulletsTick() {
     if (current.didHit()) {
       current.doHit();
       eventQueue.push(new BulletHitEvent(current.getId(), current.getTo(),
-                                            current.getWeapon().type));
+                                         current.getWeapon().type));
       map.removeBullet(current.getId());
       iterator = bullets.erase(iterator);
     } else {
       map.updateBullet(current.getId(), current.getState());
       eventQueue.push(new BulletMoveEvent(current.getId(),
-                                             current.getFrom()));
+                                          current.getFrom()));
       ++iterator;
     }
   }
 }
 
 void RealGameController::buildsTick() {
-  for (auto b_iter = builds.begin(); b_iter != builds.end();) {
+  for (auto b_iter = builds.begin(); b_iter != builds.end(); ++b_iter) {
     Build *current = b_iter->second;
     if (!current->getOwner()->getID().isGaia()
-        && current->getOwner()->isAlive()) {
+        && current->getOwner()->isAlive() && current->isAlive()) {
       if (current->hasDamagesToReceive())
         buildReceiveDamage(current);
 
@@ -393,18 +393,14 @@ void RealGameController::buildsTick() {
         if (actual.timeRemainingInSecs
             != current->getBuildState().timeRemainingInSecs) {
           eventQueue.push(new BuildUpdateTimeEvent(current->getId(),
-                                                     current->getBuildState()));
+                                                   current->getBuildState()));
         }
         map.updateBuild(current->getId(), current->getBuildState());
         current->tick();
-        b_iter++;
       } else {
         eventQueue.push(new BuildDestroyedEvent(current->getId()));
         map.updateBuild(current->getId(), current->getBuildState());
-        b_iter = builds.erase(b_iter);
       }
-    } else {
-      ++b_iter;
     }
   }
 }
@@ -412,7 +408,7 @@ void RealGameController::buildsTick() {
 void RealGameController::buildReceiveDamage(Build *current) {
   current->receiveDamages();
   eventQueue.push(new BuildDamageEvent(current->getId(),
-                                         current->getBuildState()));
+                                       current->getBuildState()));
 }
 
 void RealGameController::playersTick() {
@@ -447,7 +443,7 @@ void RealGameController::addUnits(std::vector<Unit *> vector) {
     units.emplace(unit->getId(), unit);
     map.addUnit(unit->getId(), unit->getUnitState());
     eventQueue.push(new UnitCreateEvent(unit->getId(),
-                                           unit->getUnitState()));
+                                        unit->getUnitState()));
   }
 }
 

@@ -4,7 +4,7 @@
 #include <cmath>
 #include "Position.h"
 
-Position::Position() :x(0),y(0){}
+Position::Position() : x(0), y(0) {}
 
 Position::Position(long x, long y)
     : x(x), y(y) {}
@@ -151,13 +151,15 @@ Position Position::add(unsigned long x, unsigned long y) const {
 
 Position Position::getAttackPosition(const Position &position,
                                      const unsigned short size) const {
-  Position aux = position;
-  while (aux.euclideanDistance(Position(x,y)) > size) {
-    aux.move(Position(x,y));
+  Position attacker = position;
+  Position attacked = Position(x, y);
+  Position attackedBase = Position(x, y);
+  while (attackedBase.euclideanDistance(attacked) < size) {
+    attacked.move(attacker);
   }
-  return aux;
+  return attacked;
 }
-std::vector<Position> Position::getStraighNeighbors() const{
+std::vector<Position> Position::getStraighNeighbors() const {
   std::vector<Position> neighbors;
   neighbors.push_back(Position(x + 1, y));
   neighbors.push_back(Position(x, y + 1));
@@ -170,7 +172,7 @@ std::vector<Position> Position::getStraighNeighbors() const{
 
   return neighbors;
 }
-std::vector<Position> Position::getDiagonalNeighbors() const{
+std::vector<Position> Position::getDiagonalNeighbors() const {
   std::vector<Position> neighbors;
   neighbors.push_back(Position(x + 1, y + 1));
   if (x != 0) {
@@ -185,7 +187,7 @@ std::vector<Position> Position::getDiagonalNeighbors() const{
 
   return neighbors;
 }
-std::vector<Position> Position::getNeighborsOfDiagonal(const Position &position) const{
+std::vector<Position> Position::getNeighborsOfDiagonal(const Position &position) const {
   std::vector<Position> neighbors;
   if (position.x > this->x) {
     neighbors.push_back(Position(x + 1, y));

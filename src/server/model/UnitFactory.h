@@ -3,7 +3,7 @@
 #include "Data.h"
 #include "Robot.h"
 #include "Vehicle.h"
-class UnitFactory {
+class UnitFactory {//Encapsula la creacion de unidades
  public:
   static Unit* createUnitDynamic(const Position &pos, const UnitType &type, Player& player, Team &team);
   static Vehicle* createVehicleDynamic(const Position &pos, const UnitType &type, Player& player, Team &team);

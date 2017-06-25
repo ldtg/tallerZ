@@ -8,7 +8,7 @@
 #include <common/DataClientServerMessages/DataClientConnectedMessage.h>
 #include <common/DataClientServerMessages/DataServerClientAccepted.h>
 #include <server/model/GaiaPlayer.h>
-class PlayersManager {
+class PlayersManager { //maneja el recibimienyo de los jugadores y la asignacion de ids y equipos
  private:
   std::vector<Socket *> clients;
   std::map<PlayerID, Player *> players;
@@ -20,6 +20,7 @@ class PlayersManager {
   GaiaPlayer gaiaPlayer;
  public:
   PlayersManager(const std::vector<Socket *> &clients);
+  //recibe a los jugadores intercambiando la info del protocolo
   void receivePlayers();
   std::string getMap();
   std::map<TeamID, Team> getTeams() const;

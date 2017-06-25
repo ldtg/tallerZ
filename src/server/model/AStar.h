@@ -8,6 +8,7 @@
 #include "Node.h"
 #include "Unit.h"
 #include "common/Map/Tile.h"
+//Encapsula el algoritmo AStar
 class AStar {
  private:
   const Map &map;
@@ -24,6 +25,7 @@ class AStar {
   float heuristic(const Tile &itile, const Tile &etile) const;
  public:
   AStar(const Map &map, const Unit *unit, const Position &target);
+  //Retorna un vector de posiciones resultado del algoritmo
   std::vector<Position> find();
   ~AStar();
 };

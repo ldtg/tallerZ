@@ -11,9 +11,9 @@ void Player::addTerritory() {
 }
 
 void Player::subTerritory() {
-  if (this->isAlive()) {
+  if (this->isAlive())
     this->capturedTerritories--;
-  }
+
 }
 
 void Player::addUnit() {
@@ -41,7 +41,7 @@ void Player::buildDestroyed(const BuildType &type) {
     alive = false;
 }
 
-unsigned short Player::getAmountOfTerritories() const{
+unsigned short Player::getAmountOfTerritories() const {
   return capturedTerritories;
 }
 

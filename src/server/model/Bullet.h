@@ -5,6 +5,7 @@
 #include "Attackable.h"
 #include "common/IDs/BulletID.h"
 #include "common/States/BulletState.h"
+//Modela una bala que se mueve hacia su objetivo
 class Bullet {
  private:
   BulletID id;
@@ -14,7 +15,9 @@ class Bullet {
  public:
   Bullet(const Weapon &weapon, const Position &current,
          Attackable *target);
+  //Avanza en un paso hacia el objetivo .
   void move();
+  //Si la bala llegó a su objetivo se lo informa.
   void doHit();
   BulletID getId() const;
   Weapon getWeapon() const;

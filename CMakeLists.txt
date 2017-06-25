@@ -88,8 +88,6 @@ set(SOURCE_FILES
 
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.h
-        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
-        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h
         src/Exceptions/Storage_Exceptions/Storage_Exception.h
         src/Exceptions/Storage_Exceptions/Storage_Exception.cpp
 
@@ -99,8 +97,6 @@ set(SOURCE_FILES
         z_sounds/Sound_event.h
         z_sounds/Sound_event.cpp
 
-        src/Exceptions/model_exceptions/BuildingNotFoundException.cpp
-        src/Exceptions/model_exceptions/BuildingNotFoundException.h
         src/common/Types/EventType.h
         src/common/DataEvents/Unit/DataUnitMoveEvent.cpp
         src/common/DataEvents/Unit/DataUnitMoveEvent.h

@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <Exceptions/model_exceptions/UnableToBuildThatUnitException.h>
 #include "Build.h"
 #include "Data.h"
 #include "UnitFactory.h"
@@ -22,12 +21,13 @@ Build::Build(const BuildData &buildData,
 void Build::tick() {
   if (ticksBeforeCreate > 0) {
     ticksBeforeCreate--;
-    unsigned short aux = this->getSpeedRate();
+    unsigned long aux = this->getSpeedRate();
     if (actualTicksBeforeCreateBase != aux) {
       float
           rel = (float) ticksBeforeCreate / (float) actualTicksBeforeCreateBase;
-      ticksBeforeCreate = ticksBeforeCreate
-          - (unsigned short) std::lround(rel * aux);
+      unsigned long round = (unsigned long) std::lround(
+          rel * (float) aux);
+      ticksBeforeCreate = round;
       actualTicksBeforeCreateBase = aux;
     }
   } else if (owner->getAmountOfTerritories() > 0) {
@@ -38,10 +38,7 @@ void Build::tick() {
 
 void Build::changeFabUnit(const UnitType &type) {
   if (std::find(fabricableUnits.begin(), fabricableUnits.end(), type)
-      == fabricableUnits.end()) {
-    throw UnableToBuildThatUnitException(
-        "El tipo de unidad no esta en el vector de tipos permitidos");
-  } else {
+      != fabricableUnits.end()) {
     this->actualUnitFab = type;
     this->ticksBeforeCreate = this->getSpeedRate();
     this->actualTicksBeforeCreateBase = this->ticksBeforeCreate;
@@ -61,13 +58,14 @@ void Build::changePlayer(Player *player, const Team &team) {
   this->timeToBuild = false;
 }
 
-unsigned short Build::getSpeedRate() const {
+unsigned long Build::getSpeedRate() const {
   unsigned long timeInSecs;
   float baseTaken = (float) data.getData(actualUnitFab).factoryBaseTimeInSec
       / (float) owner->getAmountOfTerritories();
-  float rel = (float) (this->health - data.getData(this->id.getType()).health)
-      / (float) data.getData(this->id.getType()).health;
-  float relsqrt = std::sqrt(1 - rel);
+  float rel =
+      1 - ((float) (data.getData(this->id.getType()).health - this->health)
+          / (float) data.getData(this->id.getType()).health);
+  float relsqrt = std::sqrt(rel);
   timeInSecs = (unsigned long) std::lround(baseTaken / relsqrt);
 
   return data.getTickAmount(timeInSecs);
@@ -79,6 +77,7 @@ void Build::receiveDamages() {
       this->health -= damage;
     } else {
       this->health = 0;
+      this->ticksBeforeCreate = 0;
       owner->buildDestroyed(this->id.getType());
       damagesToReceive.clear();
       return;
@@ -121,7 +120,7 @@ Position Build::nextMovePosition() const {
 }
 
 Position Build::getAttackPosition(const Position &attackerPosition) const {
-  return centerPosition.getAttackPosition(attackerPosition, size);
+  return centerPosition.getAttackPosition(attackerPosition, size + 1);
 }
 
 BuildState Build::getBuildState() const {

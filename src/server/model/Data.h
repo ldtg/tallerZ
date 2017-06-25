@@ -359,11 +359,11 @@ struct Data {
     }
     return aux;
   }
-  unsigned short getTickAmount(float secs) {
-    return (unsigned short) std::lround(secs * ticksPerSec);
+  unsigned long getTickAmount(float secs) {
+    return (unsigned long) std::lround(secs * ticksPerSec);
   }
-  unsigned short ticksToSec(unsigned short ticks) {
-    return (unsigned short) std::lround(ticks / ticksPerSec);
+  unsigned long ticksToSec(unsigned long ticks) {
+    return (unsigned long) std::lround(ticks / ticksPerSec);
   }
 };
 extern Data data;

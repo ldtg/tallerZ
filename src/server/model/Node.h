@@ -5,7 +5,7 @@
 #include <queue>
 #include "common/Map/Position.h"
 #include "common/Map/Tile.h"
-
+//Nodo del algoritmo astar
 class Node {
  private:
   Tile tile;
@@ -19,6 +19,7 @@ class Node {
        Node *parent,
        float heuristic);
   std::vector<Position> makePath() const;
+  // compara los costos de dos nodos
   bool isBetter(const Node &node) const;
   bool hasTile(const Tile &tile) const;
   Tile getTile() const;

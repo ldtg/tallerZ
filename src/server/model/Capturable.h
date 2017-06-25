@@ -8,12 +8,13 @@
 #include "common/States/UnitState.h"
 #include "common/States/CapturableState.h"
 #include "common/IDs/CapturableID.h"
-
+//Sirve como base para las entidades que deben poder ser capturadas.
 class Capturable {
  protected:
   CapturableID id;
   Capturable(const CapturableType &type);
  public:
+  //Le informa al capturable que fue capturado por un jugador.
   virtual void capture(const UnitID &unitID,
                        Player *newOwner,
                        const Team &ownerTeam) = 0;
