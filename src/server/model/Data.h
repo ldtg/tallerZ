@@ -110,8 +110,7 @@ struct Data {
     r_tough.range = 5;
     r_tough.speed = 4;
     r_tough.factoryRate = 2;
-//    r_tough.factoryBaseTimeInSec = 742;
-    r_tough.factoryBaseTimeInSec = 30;
+    r_tough.factoryBaseTimeInSec = 742;
     r_tough.factoryMinimunTechLevel = 2;
 
     r_pyro.type = UnitType::R_PYRO;
@@ -121,8 +120,7 @@ struct Data {
     r_pyro.range = 6;
     r_pyro.speed = 4;
     r_pyro.factoryRate = 4;
-//    r_pyro.factoryBaseTimeInSec = 840;
-    r_pyro.factoryBaseTimeInSec = 30;
+    r_pyro.factoryBaseTimeInSec = 840;
     r_pyro.factoryMinimunTechLevel = 4;
 
     r_laser.type = UnitType::R_LASER;
@@ -132,8 +130,7 @@ struct Data {
     r_laser.range = 7;
     r_laser.speed = 4;
     r_laser.factoryRate = 5;
-//    r_laser.factoryBaseTimeInSec = 900;
-    r_laser.factoryBaseTimeInSec = 30;
+    r_laser.factoryBaseTimeInSec = 900;
     r_laser.factoryMinimunTechLevel = 5;
 
     r_psycho.type = UnitType::R_PSYCHO;
@@ -143,8 +140,7 @@ struct Data {
     r_psycho.range = 7;
     r_psycho.speed = 4;
     r_psycho.factoryRate = 3;
-//    r_psycho.factoryBaseTimeInSec = 600;
-    r_psycho.factoryBaseTimeInSec = 30;
+    r_psycho.factoryBaseTimeInSec = 600;
     r_psycho.factoryMinimunTechLevel = 2;
 
     r_sniper.type = UnitType::R_SNIPER;
@@ -154,8 +150,7 @@ struct Data {
     r_sniper.range = 10;
     r_sniper.speed = 4;
     r_sniper.factoryRate = 3;
-//    r_sniper.factoryBaseTimeInSec = 575;
-    r_sniper.factoryBaseTimeInSec = 30;
+    r_sniper.factoryBaseTimeInSec = 575;
     r_sniper.factoryMinimunTechLevel = 3;
 
     v_jeep.type = UnitType::V_JEEP;
@@ -175,8 +170,7 @@ struct Data {
     v_ltank.range = 6;
     v_ltank.speed = 6;
     v_ltank.factoryRate = 1;
-//    v_ltank.factoryBaseTimeInSec = 840;
-    v_ltank.factoryBaseTimeInSec = 20;
+    v_ltank.factoryBaseTimeInSec = 840;
     v_ltank.factoryMinimunTechLevel = 2;
 
     v_mtank.type = UnitType::V_MTANK;
@@ -210,7 +204,8 @@ struct Data {
     v_mml.factoryMinimunTechLevel = 5;
 
     fort.type = BuildType::FORT;
-    fort.health = 1000;
+//    fort.health = 1000;
+    fort.health = 100;
     fort.size = 50;
 
     robotFactory.type = BuildType::ROBOTF;
@@ -324,29 +319,29 @@ struct Data {
                                     unsigned short techLevel) {
     std::vector<UnitType> aux;
     if (buildType == ROBOTF || buildType == FORT) {
-      if (techLevel > getData(R_GRUNT).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_GRUNT).factoryMinimunTechLevel)
         aux.push_back(R_GRUNT);
-      if (techLevel > getData(R_TOUGH).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_TOUGH).factoryMinimunTechLevel)
         aux.push_back(R_TOUGH);
-      if (techLevel > getData(R_SNIPER).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_SNIPER).factoryMinimunTechLevel)
         aux.push_back(R_SNIPER);
-      if (techLevel > getData(R_PYRO).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_PYRO).factoryMinimunTechLevel)
         aux.push_back(R_PYRO);
-      if (techLevel > getData(R_PSYCHO).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_PSYCHO).factoryMinimunTechLevel)
         aux.push_back(R_PSYCHO);
-      if (techLevel > getData(R_LASER).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_LASER).factoryMinimunTechLevel)
         aux.push_back(R_LASER);
     }
     if (buildType == VEHICLEF || buildType == FORT) {
-      if (techLevel > getData(V_JEEP).factoryMinimunTechLevel)
+      if (techLevel >= getData(V_JEEP).factoryMinimunTechLevel)
         aux.push_back(V_JEEP);
-      if (techLevel > getData(V_LTANK).factoryMinimunTechLevel)
+      if (techLevel >= getData(V_LTANK).factoryMinimunTechLevel)
         aux.push_back(V_LTANK);
-      if (techLevel > getData(V_MTANK).factoryMinimunTechLevel)
+      if (techLevel >= getData(V_MTANK).factoryMinimunTechLevel)
         aux.push_back(V_MTANK);
-      if (techLevel > getData(V_HTANK).factoryMinimunTechLevel)
+      if (techLevel >= getData(V_HTANK).factoryMinimunTechLevel)
         aux.push_back(V_HTANK);
-      if (techLevel > getData(V_MML).factoryMinimunTechLevel)
+      if (techLevel >= getData(V_MML).factoryMinimunTechLevel)
         aux.push_back(V_MML);
     }
     return aux;
