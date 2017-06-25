@@ -1,4 +1,4 @@
-#include <common/DataCommands/CommandType.h>
+#include <common/Types/CommandType.h>
 #include <server/model/Commands/Command.h>
 #include <server/model/Commands/CommandFactory.h>
 #include <iostream>

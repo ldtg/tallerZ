@@ -1,7 +1,7 @@
 #ifndef TALLERZ_SERVERCOMMANDFACTORY_H
 #define TALLERZ_SERVERCOMMANDFACTORY_H
 
-#include <common/DataCommands/CommandType.h>
+#include <common/Types/CommandType.h>
 #include "Command.h"
 class CommandFactory {
  public:

@@ -4,8 +4,6 @@
 #include <vector>
 #include <tuple>
 
-typedef std::tuple<long, long> coordinates_t;
-
 class Position {
  private:
   long x;
@@ -21,10 +19,8 @@ class Position {
   void move(Position target);
   int getRoration(Position target) const;
   std::vector<Position> getNeighbors() const;
-  coordinates_t getCoordinates() const;
   long getX() const;
   long getY() const;
-//  bool isValid() const;
   bool operator==(const Position &other) const;
   bool operator!=(const Position &other) const;
   bool operator<(const Position &other) const;

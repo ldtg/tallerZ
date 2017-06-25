@@ -30,34 +30,6 @@ class Map {
   Map();
   //Para mapas de prueba sin edificios
   Map(const std::map<Position, Tile> &map,
-      unsigned short width,
-      unsigned short height);
-
-  Map(const std::map<Position, Tile> &map,
-      const std::map<BuildID, BuildState> &builds,
-      unsigned short width,
-      unsigned short height);
-
-  Map(const std::map<Position, Tile> &map,
-      const std::map<BuildID, BuildState> &builds,
-      std::map<CapturableID, CapturableState> capturables,
-      unsigned short width,
-      unsigned short height);
-
-  Map(const std::map<Position, Tile> &map,
-      const std::map<BuildID, BuildState> &builds,
-      const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
-      unsigned short width,
-      unsigned short height);
-
-  Map(const std::map<Position, Tile> &map,
-      const std::map<BuildID, BuildState> &builds,
-      std::map<CapturableID, CapturableState> capturables,
-      const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
-      unsigned short width,
-      unsigned short height);
-
-  Map(const std::map<Position, Tile> &map,
       const std::map<BuildID, BuildState> &builds,
       std::map<CapturableID, CapturableState> capturables,
       const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,

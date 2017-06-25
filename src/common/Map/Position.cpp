@@ -60,10 +60,6 @@ bool Position::operator<(const Position &other) const {
   return this->x < other.x;
 }
 
-coordinates_t Position::getCoordinates() const {
-  return std::make_tuple(this->x, this->y);
-}
-
 bool Position::isIn(long width, long height) {
   return (x < width) && (y < height);
 }
@@ -130,17 +126,6 @@ bool Position::equalDelta(const Position &other, unsigned short delta) const {
   double ydelta = std::pow(other.y - this->y, 2);
 
   return std::sqrt(xdelta + ydelta) <= delta;
-
-/*
-  double xdelta = std::abs(this->x - other.x);
-  bool xb = xdelta < delta;
-  double ydelta = std::abs(this->y - other.y);
-  bool yb = ydelta < delta;
-
-  return xb && yb;
-*/
-//  return std::abs(this->x - other.x) < delta
-//      && std::abs(this->y - other.y) < delta;
 }
 
 std::string Position::toString() const {

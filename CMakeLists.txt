@@ -101,7 +101,7 @@ set(SOURCE_FILES
 
         src/Exceptions/model_exceptions/BuildingNotFoundException.cpp
         src/Exceptions/model_exceptions/BuildingNotFoundException.h
-        src/common/DataEvents/EventType.h
+        src/common/Types/EventType.h
         src/common/DataEvents/Unit/DataUnitMoveEvent.cpp
         src/common/DataEvents/Unit/DataUnitMoveEvent.h
         src/server/model/Events/ServerEvent.cpp
@@ -158,7 +158,7 @@ set(SOURCE_FILES
         src/common/DataEvents/Game/DataEndGameEvent.h
         src/server/model/Events/Game/GameEndGameEvent.cpp
         src/server/model/Events/Game/GameEndGameEvent.h
-        src/common/DataCommands/CommandType.h
+        src/common/Types/CommandType.h
         src/common/DataCommands/Unit/DataUnitMoveCommand.cpp
         src/common/DataCommands/Unit/DataUnitMoveCommand.h
         src/server/model/Commands/Unit/UnitMoveCommand.cpp

@@ -1,7 +1,7 @@
 #ifndef TALLERZ_SERVEREVENT_H
 #define TALLERZ_SERVEREVENT_H
 
-#include <common/DataEvents/EventType.h>
+#include <common/Types/EventType.h>
 #include <sstream>
 
 class ServerEvent {
