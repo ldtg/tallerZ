@@ -18,13 +18,15 @@ dataServerClientAccepted getDataClientAccepted(Socket &socket);
 
 Map getMap(Socket &socket);
 
-Login_Details display_login_settings(int argc, char *argv[]){
+Login_Details display_login_settings(int argc, char *argv[]) {
   Gtk::Main kit(argc, argv);
   clientLobby lobby;
   lobby.get_window()->show_all();
   Gtk::Main::run(*lobby.get_window());
   return lobby.get_login_details();
 }
+//retorna true si el server esta online, recibe el eventReceiver porque es el primero que se da cuenta cuando se desconecta el server
+bool serverConnected(const clientEventReceiver &receiver);
 
 int main(int argc, char *argv[]) {
 //  Login_Details ld = display_login_settings(argc, argv);
@@ -63,7 +65,7 @@ int main(int argc, char *argv[]) {
   Controller controller(eventHandler);
 
   //While application is running
-  while (!view.quit()) {
+  while (!view.quit() && serverConnected(eventReceiver)) {
     while (SDL_PollEvent(&e) != 0) {
       controller.handle(&e);
     }
@@ -84,6 +86,13 @@ int main(int argc, char *argv[]) {
   commandSender.join();
   eventReceiver.join();
   return 0;
+}
+bool serverConnected(const clientEventReceiver &receiver) {
+  if (!receiver.isOpen()) {
+    std::cerr << "Servidor desconectado" << std::endl;
+    return false;
+  }
+  return true;
 }
 
 Map getMap(Socket &socket) {
