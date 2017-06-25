@@ -1,6 +1,8 @@
 #ifndef TALLERZ_MODEL_H
 #define TALLERZ_MODEL_H
+
 class View;
+
 #include "GameControllerProxy.h"
 #include <client/view/Camera.h>
 #include <common/Map/Map.h>
@@ -17,6 +19,7 @@ class Model {
   PlayerID player;
   TeamID teamID;
   unsigned short unitSearchRange;
+  unsigned short capturableSearchRange;
   unsigned short buildSearchRange;
   unsigned short terrainObjSearchRange;
 

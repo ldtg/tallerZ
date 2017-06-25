@@ -17,6 +17,7 @@ class Tile {
   Position centerPosition;
   TerrainData terrainData;
   bool passable;
+
  public:
   Tile();
   Tile(Position tileCenterPosition, TerrainData terrainData);

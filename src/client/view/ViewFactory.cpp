@@ -629,7 +629,7 @@ Sprite* ViewFactory::getBuildingEffectView(const BuildingEffectType &type,
 Sprite* ViewFactory::getFlagsVista(const std::string &color,
                                    const Position &pos) {
   int num_frames=4, speed=6, num_frame_return_cycle=0;
-  unsigned long despX = 3, despY = 24;
+  unsigned long despX = 10, despY = 12;
 
   std::string path = "../src/view/images/flags/flag_" + color + "_n";
   Sprite *flagVista = new Sprite(path.c_str(), num_frames,

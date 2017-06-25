@@ -1,7 +1,6 @@
 #ifndef TALLERZ_MAP_H
 #define TALLERZ_MAP_H
 
-
 #include <cereal/types/map.hpp>
 #include <common/IDs/BulletID.h>
 #include <common/States/BulletState.h>
@@ -12,9 +11,10 @@
 #include <common/IDs/CapturableID.h>
 #include <common/States/CapturableState.h>
 #include "Tile.h"
+
 class Map {
  private:
-  //guarda los nros de tiles ej: tile 0,0 va de 0<x<100.
+  //guarda los nros de tiles ej: tile (0,0) va de 0<x<100.
   std::map<Position, Tile> map;
   std::map<UnitID, UnitState> units;
   std::map<BulletID, BulletState> bullets;
@@ -26,6 +26,7 @@ class Map {
 
   Position getTilePositionFromRealPosition(Position position) const;
   bool diagPassable(const Position &center, const Position &diag) const;
+
  public:
   Map();
   //Para mapas de prueba sin edificios

@@ -17,14 +17,15 @@ Model::Model(Map &map,
       teamID(teamID) {
 
   unitSearchRange = 15;
+  capturableSearchRange = 20;
   buildSearchRange = 50;
   terrainObjSearchRange = 50;
 }
 
 void Model::leftClick(int x, int y) {
   Position pos(x + camera.x, y + camera.y);
-  //if (unitsSelected.empty()) {
   unitsSelected.clear();
+
   try {
     UnitID unit = map.getUnitIDFromPosition(pos, unitSearchRange);
     if (map.getUnitState(unit).owner == player) {
@@ -36,23 +37,17 @@ void Model::leftClick(int x, int y) {
     view.clear_unit_side_details();
     // Donde se hizo click no hay unidad.
   }
-  /* } else {
-     unitsSelected.clear();
-     view.clear_unit_side_details();
-   }*/
+
   if (view.get_present_menu() == nullptr) {
     try {
       BuildID factoryID = map.getBuildIDFromPosition(pos, buildSearchRange);
       if (map.getBuildState(factoryID).owner == player) {
         view.load_production_menu(factoryID,
                                   map.getBuilds().at(factoryID),
-                                  *this,
-                                  x,
-                                  y);
+                                  *this, x, y);
       }
-
     } catch (const UnitNotFoundException &e) {
-      // Donde se hizo click no hay fabrica
+      // Donde se hizo click no hay edificio.
     }
   } else {
     if (!view.get_present_menu()->isInRectangle(x, y)) {
@@ -78,7 +73,7 @@ void Model::rightClick(int x, int y) {
 
   try {
     CapturableID
-        capturable = map.getCapturableIDFromPosition(pos, unitSearchRange);
+        capturable = map.getCapturableIDFromPosition(pos, capturableSearchRange);
     for (UnitID unit : unitsSelected) {
       gameController.capture(unit, capturable);
     }
@@ -92,44 +87,41 @@ void Model::rightClick(int x, int y) {
     }
     return;
   } catch (const UnitNotFoundException &e) {
-    // Donde se hizo click no hay edificio ni undida.
+    // Donde se hizo click no hay un capturable.
   }
+
   try {
     UnitID attacked = map.getUnitIDFromPosition(pos, unitSearchRange);
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, attacked);
     }
-//    unitsSelected.clear();
     return;
   } catch (const UnitNotFoundException &e) {
-    // Donde se hizo click no hay unidad.
+    // Donde se hizo click no hay una unidad.
   }
+
   try {
     BuildID buildAttacked = map.getBuildIDFromPosition(pos, buildSearchRange);
-
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, buildAttacked);
     }
-//    unitsSelected.clear();
     return;
   } catch (const UnitNotFoundException &e) {
-    // Donde se hizo click no hay edificio ni undidad.
+    // Donde se hizo click no hay un edificio.
   }
+
   try {
     TerrainObjectID terrainID =
         map.getTerrainObjectIDFromPosition(pos, terrainObjSearchRange);
-
     for (UnitID attacker : unitsSelected) {
       gameController.attack(attacker, terrainID);
     }
-//    unitsSelected.clear();
     return;
   } catch (const UnitNotFoundException &e) {
-    // Donde se hizo click no hay edificio ni undidad.
+    // Donde se hizo click no hay un terrainObject.
   }
 
   gameController.move(unitsSelected.front(), pos);
-//  unitsSelected.clear();
 }
 
 Map &Model::getMap() {
@@ -139,6 +131,7 @@ Map &Model::getMap() {
 GameControllerProxy *Model::get_gameControllerProxy() {
   return &gameController;
 }
+
 PlayerID Model::getPlayer() const {
   return player;
 }
@@ -146,10 +139,11 @@ PlayerID Model::getPlayer() const {
 TeamID Model::getTeamID() const {
   return teamID;
 }
+
 std::vector<UnitID> Model::getUnitsSelected() {
   return unitsSelected;
 }
+
 void Model::clearUnitsSelected() {
   unitsSelected.clear();
 }
-

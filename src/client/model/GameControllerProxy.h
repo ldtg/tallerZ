@@ -9,9 +9,11 @@
 #include <common/IDs/BuildID.h>
 #include <common/Queue/Queue.h>
 #include <common/IDs/PlayerID.h>
+
 class GameControllerProxy {
  private:
   Queue<clientCommand *> &queue;
+
  public:
   GameControllerProxy(Queue<clientCommand *> &queue);
   void move(const UnitID &unit, const Position &position);
