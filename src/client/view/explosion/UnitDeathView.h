@@ -9,7 +9,7 @@ class UnitDeathView : public ExplosionView {
   Sprite *deathView;
  public:
   UnitDeathView(UnitType type, const UnitView *unitView);
-  ~UnitDeathView();
+  virtual ~UnitDeathView();
   bool doCycle() const;
   void draw(SDL_Renderer *render, Camera &camera);
 };

@@ -10,8 +10,7 @@ ObjectViewMove::ObjectViewMove(Sprite *view) : view(view) {
 Position ObjectViewMove::getPos() const {
   if (!movements.empty()) {
     return movements.back().getPos();
-  }
-  else {
+  } else {
     return view->getPos();
   }
 }
@@ -19,8 +18,7 @@ Position ObjectViewMove::getPos() const {
 ViewPosition ObjectViewMove::getViewPos() const {
   if (!movements.empty()) {
     return movements.back();
-  }
-  else {
+  } else {
     return view->getViewPos();
   }
 }
@@ -47,7 +45,7 @@ void ObjectViewMove::update() {
       still();
       lastMove = false;
       // Se vacia la cola de movimientos.
-      while (!movements.empty()) {movements.pop();}
+      while (!movements.empty()) { movements.pop(); }
       return;
     }
 
@@ -66,12 +64,15 @@ void ObjectViewMove::update() {
     int newRotation = pos.getDrawRoration(viewPosTo);
     if (rotation != newRotation) {
       walk(newRotation, posTo);
-    }
-    else {
+    } else {
       view->setPos(viewPosTo);
     }
 
 //    double rot = pos.getRotation(viewPosTo);
 //    view->setRotation(rot);
   }
+}
+ObjectViewMove::~ObjectViewMove() {
+  if (view != nullptr)
+    delete view;
 }

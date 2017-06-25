@@ -23,6 +23,7 @@ class ObjectViewMove {
   virtual void walk(int rotation, const Position &posTo) = 0;
   virtual void still() = 0;
   virtual void update();
+  virtual ~ObjectViewMove();
 };
 
 #endif //TALLERZ_CLIENTE_OBJECTVIEWMOVE_H
