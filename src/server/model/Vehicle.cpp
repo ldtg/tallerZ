@@ -31,7 +31,7 @@ UnitState Vehicle::getUnitState() const {
                    currentPosition);
 }
 
-void Vehicle::capture(Player *player, const Team &team, UnitType conductor) {
+void Vehicle::changeOwner(Player *player, const Team &team, UnitType conductor) {
   this->owner = player;
   this->team = team;
   this->conductor = conductor;

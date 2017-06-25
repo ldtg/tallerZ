@@ -4,7 +4,7 @@
 #include <cmath>
 #include "Position.h"
 
-Position::Position() :x(0),y(0){}
+Position::Position() : x(0), y(0) {}
 
 Position::Position(long x, long y)
     : x(x), y(y) {}
@@ -58,10 +58,6 @@ bool Position::operator<(const Position &other) const {
   if (this->x == other.x)
     return this->y < other.y;
   return this->x < other.x;
-}
-
-coordinates_t Position::getCoordinates() const {
-  return std::make_tuple(this->x, this->y);
 }
 
 bool Position::isIn(long width, long height) {
@@ -130,17 +126,6 @@ bool Position::equalDelta(const Position &other, unsigned short delta) const {
   double ydelta = std::pow(other.y - this->y, 2);
 
   return std::sqrt(xdelta + ydelta) <= delta;
-
-/*
-  double xdelta = std::abs(this->x - other.x);
-  bool xb = xdelta < delta;
-  double ydelta = std::abs(this->y - other.y);
-  bool yb = ydelta < delta;
-
-  return xb && yb;
-*/
-//  return std::abs(this->x - other.x) < delta
-//      && std::abs(this->y - other.y) < delta;
 }
 
 std::string Position::toString() const {
@@ -166,13 +151,15 @@ Position Position::add(unsigned long x, unsigned long y) const {
 
 Position Position::getAttackPosition(const Position &position,
                                      const unsigned short size) const {
-  Position aux = position;
-  while (aux.euclideanDistance(Position(x,y)) > size) {
-    aux.move(Position(x,y));
+  Position attacker = position;
+  Position attacked = Position(x, y);
+  Position attackedBase = Position(x, y);
+  while (attackedBase.euclideanDistance(attacked) < size) {
+    attacked.move(attacker);
   }
-  return aux;
+  return attacked;
 }
-std::vector<Position> Position::getStraighNeighbors() const{
+std::vector<Position> Position::getStraighNeighbors() const {
   std::vector<Position> neighbors;
   neighbors.push_back(Position(x + 1, y));
   neighbors.push_back(Position(x, y + 1));
@@ -185,7 +172,7 @@ std::vector<Position> Position::getStraighNeighbors() const{
 
   return neighbors;
 }
-std::vector<Position> Position::getDiagonalNeighbors() const{
+std::vector<Position> Position::getDiagonalNeighbors() const {
   std::vector<Position> neighbors;
   neighbors.push_back(Position(x + 1, y + 1));
   if (x != 0) {
@@ -200,7 +187,7 @@ std::vector<Position> Position::getDiagonalNeighbors() const{
 
   return neighbors;
 }
-std::vector<Position> Position::getNeighborsOfDiagonal(const Position &position) const{
+std::vector<Position> Position::getNeighborsOfDiagonal(const Position &position) const {
   std::vector<Position> neighbors;
   if (position.x > this->x) {
     neighbors.push_back(Position(x + 1, y));

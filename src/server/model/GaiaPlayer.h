@@ -2,6 +2,7 @@
 #define TALLERZ_GAIAPLAYER_H
 
 #include "Player.h"
+//Player especial que siempre esta vivo
 class GaiaPlayer : public Player {
  public:
   GaiaPlayer();

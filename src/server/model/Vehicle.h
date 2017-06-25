@@ -10,7 +10,7 @@ class Vehicle : public Unit {
  public:
   Vehicle(const Position &current, const UnitData &data,
           const UnitType &conductorType, Player &player, Team &team);
-  void capture(Player *player, const Team &team, UnitType conductor);
+  void changeOwner(Player *player, const Team &team, UnitType conductor);
   virtual bool canGoThrough(const TerrainData &terrainData) const override;
   virtual UnitState getUnitState() const override;
   ~Vehicle();

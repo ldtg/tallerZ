@@ -22,22 +22,27 @@ class Build : public Attackable {
   std::vector<unsigned short> damagesToReceive;
   unsigned short health;
   UnitType actualUnitFab;
-  unsigned short ticksBeforeCreate;
-  unsigned short actualTicksBeforeCreateBase;
+  unsigned long ticksBeforeCreate;
+  unsigned long actualTicksBeforeCreateBase;
   bool timeToBuild;
 
-  unsigned short getSpeedRate() const;
+  unsigned long getSpeedRate() const;
  public:
   Build(const BuildData &data,
         const Position &centerPosition,
         Player &owner, const Team &team,
         const unsigned short techLevel);
-
+  //Le informa al edificio que el modelo avanzó un paso
   void tick();
+  //Cambia la unidad a fabricar si no es posible fabricarla no hace nada
   void changeFabUnit(const UnitType &type);
+  //Cambi el jugador y el equipo dueño del edificio
   void changePlayer(Player *player, const Team &team);
+  //Aplica los daños de su lista de daños recibidos
   virtual void receiveDamages();
+  //Recibe un daño y lo agrega a su lista
   virtual void receiveAttack(const Weapon &weapon) override;
+  //Crea unidades a partir de la posicion buildpos y las retorna en un vector.
   std::vector<Unit *> fabricateUnits(const Position &buildPos);
   virtual Position getCenterPosition() const override;
   virtual Player *getOwner() override;

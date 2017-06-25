@@ -88,10 +88,6 @@ set(SOURCE_FILES
 
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.cpp
         src/Exceptions/Sdl_Exceptions/Sdl_Exception.h
-        src/Exceptions/model_exceptions/UnableToFindAPathException.cpp
-        src/Exceptions/model_exceptions/UnableToFindAPathException.h
-        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.cpp
-        src/Exceptions/model_exceptions/UnableToBuildThatUnitException.h
         src/Exceptions/Storage_Exceptions/Storage_Exception.h
         src/Exceptions/Storage_Exceptions/Storage_Exception.cpp
 
@@ -101,119 +97,115 @@ set(SOURCE_FILES
         z_sounds/Sound_event.h
         z_sounds/Sound_event.cpp
 
-        src/Exceptions/model_exceptions/BuildingNotFoundException.cpp
-        src/Exceptions/model_exceptions/BuildingNotFoundException.h
-        src/common/DataEvents/EventType.h
-        src/common/DataEvents/dataEvent.cpp
-        src/common/DataEvents/dataEvent.h
-        src/common/DataEvents/Unit/dataUnitMoveEvent.cpp
-        src/common/DataEvents/Unit/dataUnitMoveEvent.h
-        src/server/model/Events/serverEvent.cpp
-        src/server/model/Events/serverEvent.h
-        src/server/model/Events/Unit/serverUAttackEvent.cpp
-        src/server/model/Events/Unit/serverUAttackEvent.h
-        src/common/DataEvents/Unit/dataUnitAttackEvent.cpp
-        src/common/DataEvents/Unit/dataUnitAttackEvent.h
-        src/server/model/Events/Unit/serverUMoveEvent.cpp
-        src/server/model/Events/Unit/serverUMoveEvent.h
-        src/common/DataEvents/Unit/dataUnitCreateEvent.cpp
-        src/common/DataEvents/Unit/dataUnitCreateEvent.h
-        src/server/model/Events/Unit/serverUCreateEvent.cpp
-        src/server/model/Events/Unit/serverUCreateEvent.h
-        src/common/DataEvents/Unit/dataUnitIDEvent.cpp
-        src/common/DataEvents/Unit/dataUnitIDEvent.h
-        src/server/model/Events/Unit/serverUDeathEvent.cpp
-        src/server/model/Events/Unit/serverUDeathEvent.h
-        src/server/model/Events/Unit/serverUStillEvent.cpp
-        src/server/model/Events/Unit/serverUStillEvent.h
-        src/common/DataEvents/Build/dataBuildUpdateEvent.cpp
-        src/common/DataEvents/Build/dataBuildUpdateEvent.h
-        src/server/model/Events/Build/serverBDamageEvent.cpp
-        src/server/model/Events/Build/serverBDamageEvent.h
-        src/common/DataEvents/Build/dataBuildIDEvent.cpp
-        src/common/DataEvents/Build/dataBuildIDEvent.h
-        src/server/model/Events/Build/serverBDestroyedEvent.cpp
-        src/server/model/Events/Build/serverBDestroyedEvent.h
-        src/common/DataEvents/Bullet/dataBulletNewEvent.cpp
-        src/common/DataEvents/Bullet/dataBulletNewEvent.h
-        src/server/model/Events/Bullet/serverBLTMoveEvent.cpp
-        src/server/model/Events/Bullet/serverBLTMoveEvent.h
-        src/server/model/Events/Bullet/serverBLTNewEvent.cpp
-        src/server/model/Events/Bullet/serverBLTNewEvent.h
-        src/common/DataEvents/Bullet/dataBulletMoveEvent.cpp
-        src/common/DataEvents/Bullet/dataBulletMoveEvent.h
-        src/common/DataEvents/Bullet/dataBulletHitEvent.cpp
-        src/common/DataEvents/Bullet/dataBulletHitEvent.h
-        src/server/model/Events/Bullet/serverBLTHitEvent.cpp
-        src/server/model/Events/Bullet/serverBLTHitEvent.h
-        src/common/DataEvents/Capturable/dataCaptureEvent.cpp
-        src/common/DataEvents/Capturable/dataCaptureEvent.h
-        src/server/model/Events/Capturable/serverCCaptureEvent.cpp
-        src/server/model/Events/Capturable/serverCCaptureEvent.h
-        src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.cpp
-        src/common/DataEvents/TerrainObject/dataTerrainObjectIDEvent.h
-        src/server/model/Events/TerrainObject/serverTODestroyedEvent.cpp
-        src/server/model/Events/TerrainObject/serverTODestroyedEvent.h
-        src/common/DataEvents/Game/dataPlayerDefeatEvent.cpp
-        src/common/DataEvents/Game/dataPlayerDefeatEvent.h
-        src/server/model/Events/Game/serverGPlayerDefeatedEvent.cpp
-        src/server/model/Events/Game/serverGPlayerDefeatedEvent.h
-        src/common/DataEvents/Game/dataEndGameEvent.cpp
-        src/common/DataEvents/Game/dataEndGameEvent.h
-        src/server/model/Events/Game/serverGEndGameEvent.cpp
-        src/server/model/Events/Game/serverGEndGameEvent.h
-        src/common/DataCommands/CommandType.h
-        src/common/DataCommands/Unit/dataUnitMoveCommand.cpp
-        src/common/DataCommands/Unit/dataUnitMoveCommand.h
-        src/server/model/Commands/Unit/serverUMoveCommand.cpp
-        src/server/model/Commands/Unit/serverUMoveCommand.h
-        src/server/model/Commands/serverCommand.h
-        src/server/model/Commands/serverCommandFactory.cpp
-        src/server/model/Commands/serverCommandFactory.h
-        src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp
-        src/common/DataCommands/Unit/dataUnitAttackUnitCommand.h
-        src/server/model/Commands/Unit/serverUAttackUCommand.cpp
-        src/server/model/Commands/Unit/serverUAttackUCommand.h
-        src/common/DataCommands/Unit/dataUnitAttackBuildCommand.cpp
-        src/common/DataCommands/Unit/dataUnitAttackBuildCommand.h
-        src/server/model/Commands/Unit/serverUAttackBCommand.cpp
-        src/server/model/Commands/Unit/serverUAttackBCommand.h
-        src/common/DataCommands/Unit/dataUnitAttackTOCommand.cpp
-        src/common/DataCommands/Unit/dataUnitAttackTOCommand.h
-        src/server/model/Commands/Unit/serverUAttackTOCommand.cpp
-        src/server/model/Commands/Unit/serverUAttackTOCommand.h
-        src/common/DataCommands/Unit/dataUnitCaptureCommand.cpp
-        src/common/DataCommands/Unit/dataUnitCaptureCommand.h
-        src/server/model/Commands/Unit/serverUCaptureCommand.cpp
-        src/server/model/Commands/Unit/serverUCaptureCommand.h
-        src/common/DataCommands/Build/dataBuildChangeUnitCommand.cpp
-        src/common/DataCommands/Build/dataBuildChangeUnitCommand.h
-        src/server/model/Commands/Build/serverBChangeUCommand.cpp
-        src/server/model/Commands/Build/serverBChangeUCommand.h
-        src/server/serverCommandReceiver.cpp
-        src/server/serverCommandReceiver.h
+        src/common/Types/EventType.h
+        src/common/DataEvents/Unit/DataUnitMoveEvent.cpp
+        src/common/DataEvents/Unit/DataUnitMoveEvent.h
+        src/server/model/Events/ServerEvent.cpp
+        src/server/model/Events/ServerEvent.h
+        src/server/model/Events/Unit/UnitAttackEvent.cpp
+        src/server/model/Events/Unit/UnitAttackEvent.h
+        src/common/DataEvents/Unit/DataUnitAttackEvent.cpp
+        src/common/DataEvents/Unit/DataUnitAttackEvent.h
+        src/server/model/Events/Unit/UnitMoveEvent.cpp
+        src/server/model/Events/Unit/UnitMoveEvent.h
+        src/common/DataEvents/Unit/DataUnitCreateEvent.cpp
+        src/common/DataEvents/Unit/DataUnitCreateEvent.h
+        src/server/model/Events/Unit/UnitCreateEvent.cpp
+        src/server/model/Events/Unit/UnitCreateEvent.h
+        src/common/DataEvents/Unit/DataUnitIDEvent.cpp
+        src/common/DataEvents/Unit/DataUnitIDEvent.h
+        src/server/model/Events/Unit/UnitDeathEvent.cpp
+        src/server/model/Events/Unit/UnitDeathEvent.h
+        src/server/model/Events/Unit/UnitStillEvent.cpp
+        src/server/model/Events/Unit/UnitStillEvent.h
+        src/common/DataEvents/Build/DataBuildUpdateEvent.cpp
+        src/common/DataEvents/Build/DataBuildUpdateEvent.h
+        src/server/model/Events/Build/BuildDamageEvent.cpp
+        src/server/model/Events/Build/BuildDamageEvent.h
+        src/common/DataEvents/Build/DataBuildIDEvent.cpp
+        src/common/DataEvents/Build/DataBuildIDEvent.h
+        src/server/model/Events/Build/BuildDestroyedEvent.cpp
+        src/server/model/Events/Build/BuildDestroyedEvent.h
+        src/common/DataEvents/Bullet/DataBulletNewEvent.cpp
+        src/common/DataEvents/Bullet/DataBulletNewEvent.h
+        src/server/model/Events/Bullet/BulletMoveEvent.cpp
+        src/server/model/Events/Bullet/BulletMoveEvent.h
+        src/server/model/Events/Bullet/BulletNewEvent.cpp
+        src/server/model/Events/Bullet/BulletNewEvent.h
+        src/common/DataEvents/Bullet/DataBulletMoveEvent.cpp
+        src/common/DataEvents/Bullet/DataBulletMoveEvent.h
+        src/common/DataEvents/Bullet/DataBulletHitEvent.cpp
+        src/common/DataEvents/Bullet/DataBulletHitEvent.h
+        src/server/model/Events/Bullet/BulletHitEvent.cpp
+        src/server/model/Events/Bullet/BulletHitEvent.h
+        src/common/DataEvents/Capturable/DataCaptureEvent.cpp
+        src/common/DataEvents/Capturable/DataCaptureEvent.h
+        src/server/model/Events/Capturable/CaptureEvent.cpp
+        src/server/model/Events/Capturable/CaptureEvent.h
+        src/common/DataEvents/TerrainObject/DataTerrainObjectIDEvent.cpp
+        src/common/DataEvents/TerrainObject/DataTerrainObjectIDEvent.h
+        src/server/model/Events/TerrainObject/TerrainObjectDestroyedEvent.cpp
+        src/server/model/Events/TerrainObject/TerrainObjectDestroyedEvent.h
+        src/common/DataEvents/Game/DataPlayerDefeatEvent.cpp
+        src/common/DataEvents/Game/DataPlayerDefeatEvent.h
+        src/server/model/Events/Game/GamePlayerDefeatedEvent.cpp
+        src/server/model/Events/Game/GamePlayerDefeatedEvent.h
+        src/common/DataEvents/Game/DataEndGameEvent.cpp
+        src/common/DataEvents/Game/DataEndGameEvent.h
+        src/server/model/Events/Game/GameEndGameEvent.cpp
+        src/server/model/Events/Game/GameEndGameEvent.h
+        src/common/Types/CommandType.h
+        src/common/DataCommands/Unit/DataUnitMoveCommand.cpp
+        src/common/DataCommands/Unit/DataUnitMoveCommand.h
+        src/server/model/Commands/Unit/UnitMoveCommand.cpp
+        src/server/model/Commands/Unit/UnitMoveCommand.h
+        src/server/model/Commands/Command.h
+        src/server/model/Commands/CommandFactory.cpp
+        src/server/model/Commands/CommandFactory.h
+        src/common/DataCommands/Unit/DataUnitAttackUnitCommand.cpp
+        src/common/DataCommands/Unit/DataUnitAttackUnitCommand.h
+        src/server/model/Commands/Unit/UnitAttackUnitCommand.cpp
+        src/server/model/Commands/Unit/UnitAttackUnitCommand.h
+        src/common/DataCommands/Unit/DataUnitAttackBuildCommand.cpp
+        src/common/DataCommands/Unit/DataUnitAttackBuildCommand.h
+        src/server/model/Commands/Unit/UnitAttackBuildCommand.cpp
+        src/server/model/Commands/Unit/UnitAttackBuildCommand.h
+        src/common/DataCommands/Unit/DataUnitAttackTOCommand.cpp
+        src/common/DataCommands/Unit/DataUnitAttackTOCommand.h
+        src/server/model/Commands/Unit/UnitAttackTerrainObjectCommand.cpp
+        src/server/model/Commands/Unit/UnitAttackTerrainObjectCommand.h
+        src/common/DataCommands/Unit/DataUnitCaptureCommand.cpp
+        src/common/DataCommands/Unit/DataUnitCaptureCommand.h
+        src/server/model/Commands/Unit/UnitCaptureCommand.cpp
+        src/server/model/Commands/Unit/UnitCaptureCommand.h
+        src/common/DataCommands/Build/DataBuildChangeUnitCommand.cpp
+        src/common/DataCommands/Build/DataBuildChangeUnitCommand.h
+        src/server/model/Commands/Build/BuildChangeUnitCommand.cpp
+        src/server/model/Commands/Build/BuildChangeUnitCommand.h
+        src/server/CommandReceiver.cpp
+        src/server/CommandReceiver.h
         src/common/Socket/Socket.cpp
         src/common/Socket/Socket.h
         src/common/Socket/SocketException.cpp
         src/common/Socket/SocketException.h
         src/common/Thread/Thread.cpp
         src/common/Thread/Thread.h
-        src/server/model/realGameController.cpp
-        src/server/model/realGameController.h
-        src/server/model/protectedGameController.cpp
-        src/server/model/protectedGameController.h
-        src/server/serverGameController.h
-        src/server/serverEventSender.cpp
-        src/server/serverEventSender.h
-        src/server/serverMain.cpp
-        src/server/serverPlayersManager.cpp
-        src/server/serverPlayersManager.h
-        src/common/DataClientServerMessages/dataClientConnectedMessage.cpp
-        src/common/DataClientServerMessages/dataClientConnectedMessage.h
-        src/common/DataClientServerMessages/dataServerClientAccepted.cpp
-        src/common/DataClientServerMessages/dataServerClientAccepted.h
-        src/common/Queue/Queue.h src/server/model/Events/Build/serverBUpdateTimeEvent.cpp src/server/model/Events/Build/serverBUpdateTimeEvent.h
-        src/main.cpp src/tests/Data_to_json.cpp src/tests/Data_to_json.h src/tests/data_to_json_tests.cpp src/tests/Json_to_Data.cpp src/tests/Json_to_Data.h src/common/DataEvents/Unit/dataUnitStillEvent.cpp src/common/DataEvents/Unit/dataUnitStillEvent.h)
+        src/server/model/RealGameController.cpp
+        src/server/model/RealGameController.h
+        src/server/ProtectedGameController.cpp
+        src/server/ProtectedGameController.h
+        src/server/model/GameController.h
+        src/server/EventSender.cpp
+        src/server/EventSender.h
+        src/server/ServerMain.cpp
+        src/server/PlayersManager.cpp
+        src/server/PlayersManager.h
+        src/common/DataClientServerMessages/DataClientConnectedMessage.cpp
+        src/common/DataClientServerMessages/DataClientConnectedMessage.h
+        src/common/DataClientServerMessages/DataServerClientAccepted.cpp
+        src/common/DataClientServerMessages/DataServerClientAccepted.h
+        src/common/Queue/Queue.h src/server/model/Events/Build/BuildUpdateTimeEvent.cpp src/server/model/Events/Build/BuildUpdateTimeEvent.h
+        src/main.cpp src/tests/Data_to_json.cpp src/tests/Data_to_json.h src/tests/data_to_json_tests.cpp src/tests/Json_to_Data.cpp src/tests/Json_to_Data.h src/common/DataEvents/Unit/DataUnitStillEvent.cpp src/common/DataEvents/Unit/DataUnitStillEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/server)

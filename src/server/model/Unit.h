@@ -49,19 +49,25 @@ class Unit : public Attackable {
                        Capturable *capturable);
   virtual void hunt(const std::vector<Position> &movementsPositions,
                     Attackable *other);
-  virtual void attack(Attackable *other);
+  //Idem anterior pero no recibe camino al atacado, presupone que esta en el rango
+  virtual void hunt(Attackable *other);
   virtual void autoAttack(Attackable *hunted);
+  // se mueve de acuerdo a su velocidad y al factor del terreno
   virtual void doMoveWithSpeed(float terrainFactor);
+  // agrega una posicion a su lista de movimientos
   virtual void addMove(const Position &position);
+  // aplica los daños recibidos
   virtual void receiveDamages();
   virtual void receiveAttack(const Weapon &weapon) override;
+  // detiene a la unidad
+  virtual void still();
   virtual void kill();
 
-  virtual void still();
   virtual bool isTimeToAttack();
   virtual bool hasDamagesToReceive() const;
   virtual bool isInRange(Attackable *other) const;
   virtual bool attackedInRange() const;
+  // retorna true si puede ir a traves de ese terreno
   virtual bool canGoThrough(const TerrainData &terrainType) const = 0;
   virtual bool isAlive() const override;
   virtual bool isMoving() const override;
