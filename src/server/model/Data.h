@@ -332,29 +332,29 @@ struct Data {
                                     unsigned short techLevel) {
     std::vector<UnitType> aux;
     if (buildType == ROBOTF || buildType == FORT) {
-      if (techLevel > getData(R_GRUNT).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_GRUNT).factoryMinimunTechLevel)
         aux.push_back(R_GRUNT);
-      if (techLevel > getData(R_TOUGH).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_TOUGH).factoryMinimunTechLevel)
         aux.push_back(R_TOUGH);
-      if (techLevel > getData(R_SNIPER).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_SNIPER).factoryMinimunTechLevel)
         aux.push_back(R_SNIPER);
-      if (techLevel > getData(R_PYRO).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_PYRO).factoryMinimunTechLevel)
         aux.push_back(R_PYRO);
-      if (techLevel > getData(R_PSYCHO).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_PSYCHO).factoryMinimunTechLevel)
         aux.push_back(R_PSYCHO);
-      if (techLevel > getData(R_LASER).factoryMinimunTechLevel)
+      if (techLevel >= getData(R_LASER).factoryMinimunTechLevel)
         aux.push_back(R_LASER);
     }
     if (buildType == VEHICLEF || buildType == FORT) {
-      if (techLevel > getData(V_JEEP).factoryMinimunTechLevel)
+      if (techLevel >= getData(V_JEEP).factoryMinimunTechLevel)
         aux.push_back(V_JEEP);
-      if (techLevel > getData(V_LTANK).factoryMinimunTechLevel)
+      if (techLevel >= getData(V_LTANK).factoryMinimunTechLevel)
         aux.push_back(V_LTANK);
-      if (techLevel > getData(V_MTANK).factoryMinimunTechLevel)
+      if (techLevel >= getData(V_MTANK).factoryMinimunTechLevel)
         aux.push_back(V_MTANK);
-      if (techLevel > getData(V_HTANK).factoryMinimunTechLevel)
+      if (techLevel >= getData(V_HTANK).factoryMinimunTechLevel)
         aux.push_back(V_HTANK);
-      if (techLevel > getData(V_MML).factoryMinimunTechLevel)
+      if (techLevel >= getData(V_MML).factoryMinimunTechLevel)
         aux.push_back(V_MML);
     }
     return aux;
