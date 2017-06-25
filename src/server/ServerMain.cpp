@@ -9,7 +9,7 @@
 #include "PlayersManager.h"
 #include "EventSender.h"
 #include "CommandReceiver.h"
-std::vector<Socket *> getClients(unsigned short playersExpected,
+std::vector<Socket *> getClients(int playersExpected,
                                  const std::string &port);
 
 std::vector<serverCommandReceiver *> getCommandReceivers(const std::map<Socket *,
@@ -19,54 +19,81 @@ void sendMapToClients(const std::vector<Socket *> &clients, const Map &map);
 
 bool anyPlayerConnected(std::vector<serverCommandReceiver *> vector);
 
+bool validArgs(int argc, char **pString);
+void printUsage();
 int main(int argc, char *argv[]) {
-
-  //Espera a que se conecten todos los jugadores
-  std::vector<Socket *> clients = getClients(std::stoi(argv[2]), argv[1]);
-
-  std::string mapPath;
-  //carga los equipos y le dice a cada cliente que id tiene
-  PlayersManager playersManager(clients);
-  playersManager.receivePlayers();
-  mapPath = playersManager.getMap();
-  //carga el mapa y se lo envia a los clientes
-  mapPath += ".json";
-  Game_Loader game_loader(mapPath,
-                          playersManager.getPlayers(),
-                          playersManager.getTeams(),
-                          playersManager.getGaiaPlayer());
-  Map map = game_loader.run();
-  sendMapToClients(clients, map);
-  //crea el gc
-  Queue<ServerEvent *> evqueue;
-  RealGameController gameController(map, game_loader, evqueue);
-  ProtectedGameController pgc(gameController);
-  //lanza los threads
-  EventSender eventSender(clients, evqueue);
-  eventSender.start();
-  std::vector<serverCommandReceiver *>
-      commandReceivers = getCommandReceivers(playersManager.getClients(), pgc);
-  for (serverCommandReceiver *commandReceiver: commandReceivers) {
-    commandReceiver->start();
+  if (!validArgs(argc, argv)) {
+    printUsage();
+    return 0;
   }
+  try {
+    //Espera a que se conecten todos los jugadores
+    std::vector<Socket *> clients = getClients(std::stoi(argv[2]), argv[1]);
+    //carga los equipos y le dice a cada cliente que id tiene
+    PlayersManager playersManager(clients);
+    playersManager.receivePlayers();
+    std::string mapPath = playersManager.getMap();
+    //carga el mapa y se lo envia a los clientes
+    mapPath += ".json";
+    Game_Loader game_loader(mapPath,
+                            playersManager.getPlayers(),
+                            playersManager.getTeams(),
+                            playersManager.getGaiaPlayer());
+    Map map = game_loader.run();
+    sendMapToClients(clients, map);
 
-  while (anyPlayerConnected(commandReceivers)) {
-    pgc.tick();
-  };
-  evqueue.push(nullptr);// no se me ocurrio otra para destrabar el pop
-  eventSender.stop();
-  for (serverCommandReceiver *commandReceiver: commandReceivers) {
-    commandReceiver->stop();
-  }
-  eventSender.join();
-  for (serverCommandReceiver *commandReceiver: commandReceivers) {
-    commandReceiver->join();
-    delete (commandReceiver);
-  }
-  for (Socket *cli :clients) {
-    delete (cli);
+
+    //crea el gc
+    Queue<ServerEvent *> evqueue;
+    RealGameController gameController(map, game_loader, evqueue);
+    ProtectedGameController pgc(gameController);
+    //lanza los threads
+    EventSender eventSender(clients, evqueue);
+    eventSender.start();
+    std::vector<serverCommandReceiver *>
+        commandReceivers =
+        getCommandReceivers(playersManager.getClients(), pgc);
+    for (serverCommandReceiver *commandReceiver: commandReceivers) {
+      commandReceiver->start();
+    }
+
+    while (anyPlayerConnected(commandReceivers)) {
+      pgc.tick();
+    };
+    evqueue.push(nullptr);// no se me ocurrio otra para destrabar el pop
+    eventSender.stop();
+    for (serverCommandReceiver *commandReceiver: commandReceivers) {
+      commandReceiver->stop();
+    }
+    eventSender.join();
+    for (serverCommandReceiver *commandReceiver: commandReceivers) {
+      commandReceiver->join();
+      delete (commandReceiver);
+    }
+    for (Socket *cli :clients) {
+      delete (cli);
+    }
+  } catch (const SocketException &e) {
+    std::cerr << e.what() << std::endl;
+    return 0;
   }
   return 0;
+}
+void printUsage() {
+  std::cout << "usage: ./server [port] [players expected]" << std::endl;
+}
+bool validArgs(int argc, char **argv) {
+  if (argc == 3) {
+    try {
+      int port = std::stoi(argv[1]);
+      int play = std::stoi(argv[2]);
+      if (port > 0 && port < 65536 && play > 1 && play <= 4)
+        return true;
+    } catch (const std::exception &e) {
+      return false;
+    }
+  }
+  return false;
 }
 bool anyPlayerConnected(std::vector<serverCommandReceiver *> vector) {
   for (serverCommandReceiver *player : vector) {
@@ -94,12 +121,12 @@ std::vector<serverCommandReceiver *> getCommandReceivers(const std::map<Socket *
   return rcvrs;
 }
 
-std::vector<Socket *> getClients(unsigned short playersExpected,
+std::vector<Socket *> getClients(int playersExpected,
                                  const std::string &port) {
+  int connectedPlayers = 0;
+  std::vector<Socket *> clients;
   Socket accpt;
   accpt.bindandlisten(port);
-  unsigned short connectedPlayers = 0;
-  std::vector<Socket *> clients;
   while (connectedPlayers < playersExpected) {
     Socket *cli = new Socket(std::move(accpt.acceptConnection()));
     if (cli->isValid()) {
@@ -109,5 +136,6 @@ std::vector<Socket *> getClients(unsigned short playersExpected,
     }
     connectedPlayers++;
   }
+
   return clients;
 }
