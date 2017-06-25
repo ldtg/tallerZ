@@ -32,59 +32,70 @@ int main(int argc, char *argv[]) {
 //  Login_Details ld = display_login_settings(argc, argv);
   Socket socket;
 //  socket.connectToServer(ld.ip, ld.port);
-  socket.connectToServer(argv[1], argv[2]);
+  try {
+    socket.connectToServer(argv[1], argv[2]);
+  } catch (const SocketException &e) {
+    std::cerr << "No se pudo conectar al servidor" << std::endl;
+    return 0;
+  }
 
 //  sendPlayerConnected(socket, std::stoi(ld.team), ld.map);
-  sendPlayerConnected(socket, std::stoi(argv[3]), argv[4]);
-  dataServerClientAccepted accepted = getDataClientAccepted(socket);
+  try {
 
-  Map map = getMap(socket);
+    sendPlayerConnected(socket, std::stoi(argv[3]), argv[4]);
+    dataServerClientAccepted accepted = getDataClientAccepted(socket);
 
-  Queue<Event *> eventQueue;
-  Queue<clientCommand *> commandsQueue;
-  clientCommandSender commandSender(socket, commandsQueue);
-  commandSender.start();
-  clientEventReceiver eventReceiver(socket, eventQueue);
-  eventReceiver.start();
-  GameControllerProxy gcp(commandsQueue);
-  Camera camera(WINDOWWIDHT,
-                WINDOWHEIGHT,
-                map.getWidht(),
-                map.getHeight(),
-                map.getFortPos(accepted.id));
-  EventHandler eventHandler;
+    Map map = getMap(socket);
 
-  View view(map, eventHandler, camera, accepted.id.getColor());
-  Model model(map, gcp, camera, view, accepted.id, accepted.teamID);
+    Queue<Event *> eventQueue;
+    Queue<clientCommand *> commandsQueue;
+    clientCommandSender commandSender(socket, commandsQueue);
+    commandSender.start();
+    clientEventReceiver eventReceiver(socket, eventQueue);
+    eventReceiver.start();
+    GameControllerProxy gcp(commandsQueue);
+    Camera camera(WINDOWWIDHT,
+                  WINDOWHEIGHT,
+                  map.getWidht(),
+                  map.getHeight(),
+                  map.getFortPos(accepted.id));
+    EventHandler eventHandler;
 
-  eventHandler.setView(&view);
-  eventHandler.setModel(&model);
+    View view(map, eventHandler, camera, accepted.id.getColor());
+    Model model(map, gcp, camera, view, accepted.id, accepted.teamID);
 
-  SDL_Event e;
+    eventHandler.setView(&view);
+    eventHandler.setModel(&model);
 
-  Controller controller(eventHandler);
+    SDL_Event e;
 
-  //While application is running
-  while (!view.quit() && serverConnected(eventReceiver)) {
-    while (SDL_PollEvent(&e) != 0) {
-      controller.handle(&e);
+    Controller controller(eventHandler);
+
+    //While application is running
+    while (!view.quit() && serverConnected(eventReceiver)) {
+      while (SDL_PollEvent(&e) != 0) {
+        controller.handle(&e);
+      }
+      // Chequeo pos del mouse para saber
+      // si se debe mover camara.
+      controller.checkMouseState(&e);
+      while (!eventQueue.empty()) {
+        eventHandler.add(eventQueue.pop());
+      }
+      view.tick();
     }
-    // Chequeo pos del mouse para saber
-    // si se debe mover camara.
-    controller.checkMouseState(&e);
     while (!eventQueue.empty()) {
-      eventHandler.add(eventQueue.pop());
+      delete (eventQueue.pop());
     }
-    view.tick();
+    commandsQueue.push(nullptr);
+    commandSender.stop();
+    eventReceiver.stop();
+    commandSender.join();
+    eventReceiver.join();
+  } catch (const SocketException &e) {
+    std::cerr << "Servidor desconectado" << std::endl;
+    return 0;
   }
-  while (!eventQueue.empty()) {
-    delete (eventQueue.pop());
-  }
-  commandsQueue.push(nullptr);
-  commandSender.stop();
-  eventReceiver.stop();
-  commandSender.join();
-  eventReceiver.join();
   return 0;
 }
 bool serverConnected(const clientEventReceiver &receiver) {
