@@ -20,7 +20,7 @@
 RealGameController::RealGameController(Map &map,
                                        const Game_Loader &game_loader,
                                        Queue<ServerEvent *> &evqueue)
-    : map(map), eventQueue(evqueue) {
+    : map(map), eventQueue(evqueue), gameRunning(true) {
   this->units = game_loader.get_controller_units();
   this->builds = game_loader.get_builds();
   this->capturables = game_loader.get_controller_capturables();
@@ -162,12 +162,14 @@ void RealGameController::tick() {
 }
 
 void RealGameController::doTick() {
-  bulletsTick();
-  unitsTick();
-  buildsTick();
-  objectsTick();
-  playersTick();
-  teamsTick();
+  if (gameRunning) {
+    bulletsTick();
+    unitsTick();
+    buildsTick();
+    objectsTick();
+    playersTick();
+    teamsTick();
+  }
 }
 
 void RealGameController::unitsTick() {
@@ -434,6 +436,7 @@ void RealGameController::teamsTick() {
   }
   if (count == 1) {
     eventQueue.push(new GameEndGameEvent(*winnerId));
+    gameRunning = false;
   }
 
 }

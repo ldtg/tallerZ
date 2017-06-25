@@ -124,7 +124,7 @@
     "v_jeep.factoryBaseTimeInSec": 660,
     "v_jeep.factoryMinimunTechLevel": 1,
     "v_jeep.factoryRate": 1,
-    "v_jeep.health": 10,
+    "v_jeep.health": 60,
     "v_jeep.range": 5,
     "v_jeep.secsUntilFire": 0.17,
     "v_jeep.speed": 8,

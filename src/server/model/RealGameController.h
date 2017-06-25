@@ -20,7 +20,7 @@ class RealGameController : public GameController{
   std::map<TeamID, Team> teams;
   std::map<TerrainObjectID, TerrainObject> terrainObjects;
   std::vector<Unit *> deathUnits;
-
+  bool gameRunning;
   Queue<ServerEvent*> &eventQueue;
   void move(Unit *unit, std::map<UnitID, Unit *>::iterator &it);
   void hunt(Unit *unit, std::map<UnitID, Unit *>::iterator &it);
