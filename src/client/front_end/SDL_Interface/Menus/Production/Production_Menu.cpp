@@ -252,10 +252,12 @@ void Production_Menu::show_next_buildable_unit() {
 }
 
 void Production_Menu::update_unit_to_build() {
-  model.get_gameControllerProxy()->changeUnitFab(buildID, showing_unit_type);
   BuildState bs = model.getMap().getBuildState(buildID);
-  bs.actualUnitFab = showing_unit_type;
-  model.getMap().updateBuild(buildID, bs);
+  if (bs.owner == model.getPlayer()) {
+    model.get_gameControllerProxy()->changeUnitFab(buildID, showing_unit_type);
+    bs.actualUnitFab = showing_unit_type;
+    model.getMap().updateBuild(buildID, bs);
+  }
 }
 std::string Production_Menu::get_label_path(const UnitType &utype) {
   return (folder_path + get_unit_name(utype) + "_label.png");
@@ -264,11 +266,17 @@ void Production_Menu::update_status() {
   buildState = model.getMap().getBuildState(buildID);
   delete this->health;
   delete this->time;
-  this->time = new Label(window,
-                         std::to_string(buildState.timeRemainingInSecs),
-                         this->time_rect,
-                         this->font);
-  this->health = new Label(window, std::to_string(buildState.health) + "%",
+  if (buildState.health > 0)
+    this->time = new Label(window,
+                           std::to_string(buildState.timeRemainingInSecs),
+                           this->time_rect,
+                           this->font);
+  else
+    this->time = new Label(window,
+                           "-",
+                           this->time_rect,
+                           this->font);
+  this->health = new Label(window, std::to_string(buildState.health),
                            this->health_rect, this->font);
 }
 
