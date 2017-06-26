@@ -95,7 +95,7 @@ class View {
   void load_quit_menu();
   Side_Board * get_side_board();
   void free_menu();
-  void show_unit_side_details(UnitType unitType, UnitType secondType);
+  void show_unit_side_details(UnitType unitType, UnitType secondType, unsigned short health);
   void clear_unit_side_details();
   void show_victory();
   void show_defeat();

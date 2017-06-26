@@ -36,7 +36,7 @@ void Side_Board::add_to_panel(Panel &panel) {
 }
 */
 void Side_Board::launch_menu_button() {
-  this->quit_button->handle_event();
+  this->quit_button->handle_click();
 }
 
 std::string Side_Board::label_path(const std::string &name) {
@@ -55,8 +55,10 @@ std::string Side_Board::w_label_path(const std::string &name) {
   return (folder_path + "/Weapons/" + name + "_label.bmp");
 }
 
-void Side_Board::load_unit_images(UnitType unitType, UnitType secType) {
+void Side_Board::load_unit_images(UnitType unitType, UnitType secType, unsigned short health) {
   this->clean_unit_images();
+  this->set_life_bar_level(health);
+  this->life_bar = new Texture("../src/client/front_end/Images/Interface/health_full.png", window);
   switch (unitType) {
     case (R_GRUNT): {
       this->weapon_texture = new Texture(weapon_path("grunt"), window);
@@ -158,6 +160,7 @@ void Side_Board::load_unit_images(UnitType unitType, UnitType secType) {
   this->weapon_texture->renderize(window, &weapon_rect);
   this->face_texture->renderize(window, &face_rect);
   this->weapon_label->renderize(window, &weapon_label_rect);
+  this->life_bar->renderize(window, &life_bar_rect);
 }
 
 void Side_Board::clean_unit_images() {
@@ -177,6 +180,10 @@ void Side_Board::clean_unit_images() {
     delete weapon_label;
     weapon_label = nullptr;
   }
+  if (life_bar != nullptr){
+    delete life_bar;
+    life_bar = nullptr;
+  }
 }
 
 void Side_Board::draw(SDL_Renderer *render, Camera &camera) {
@@ -194,6 +201,9 @@ void Side_Board::draw(SDL_Renderer *render, Camera &camera) {
   }
   if (this->weapon_label != NULL) {
     this->weapon_label->renderize(window, &weapon_label_rect);
+  }
+  if (this->life_bar != NULL) {
+    this->life_bar->renderize(window, &life_bar_rect);
   }
 
   quit_button->draw(render, camera);

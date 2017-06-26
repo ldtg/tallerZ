@@ -31,7 +31,7 @@ void Model::leftClick(int x, int y) {
     if (map.getUnitState(unit).owner == player) {
       unitsSelected.push_back(unit);
       view.show_unit_side_details(unit.getType(),
-                                  map.getUnitState(unit).secondType);
+                                  map.getUnitState(unit).secondType, 50);
     }
   } catch (const UnitNotFoundException &e) {
     view.clear_unit_side_details();
@@ -83,7 +83,7 @@ void Model::rightClick(int x, int y) {
       UnitID unit = map.getUnitIDFromPosition(pos, unitSearchRange);
       unitsSelected.push_back(unit);
       view.show_unit_side_details(unit.getType(),
-                                  map.getUnitState(unit).secondType);
+                                  map.getUnitState(unit).secondType, 50);
     }
     return;
   } catch (const UnitNotFoundException &e) {

@@ -136,12 +136,8 @@ set(SOURCE_FILES
         src/Exceptions/Storage_Exceptions/Storage_Exception.h
         src/Exceptions/Storage_Exceptions/Storage_Exception.cpp
 
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.h
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.h
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp

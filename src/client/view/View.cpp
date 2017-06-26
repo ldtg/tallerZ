@@ -350,8 +350,8 @@ Menu *View::get_present_menu() {
   return this->menu;
 }
 
-void View::show_unit_side_details(UnitType unitType, UnitType secondType) {
-  this->side_board->load_unit_images(unitType, secondType);
+void View::show_unit_side_details(UnitType unitType, UnitType secondType, unsigned short health) {
+  this->side_board->load_unit_images(unitType, secondType, health);
 }
 
 void View::clear_unit_side_details() {

@@ -14,7 +14,7 @@ void Quit_Menu::load_items() {
 
 void Quit_Menu::handle_click(int x, int y) {
   if (salir->inRectangle(x, y)) {
-    salir->handle_event();
+    salir->handle_click();
   }
 }
 

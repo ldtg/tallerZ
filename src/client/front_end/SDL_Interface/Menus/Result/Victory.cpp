@@ -9,7 +9,7 @@ Victory::Victory(Window &window, View &view) : view(view), window(window) {
 
 void Victory::handle_click(int x, int y) {
   if (ok->inRectangle(x, y)) {
-    ok->handle_event();
+    ok->handle_click();
   }
 }
 

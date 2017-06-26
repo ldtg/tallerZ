@@ -32,20 +32,16 @@ class Button : public ObjectView  {
   Button(Window * window);
   ~Button();
 
-  void set_rectangle(const SDL_Rect& renderQuad);
-  void displace_toXY(int coordX, int coordY);
   bool inRectangle(int x, int y);
-  void load_texture_up(const std::string &path);
-  void load_texture_down(const std::string &path);
-  void handle_event();
-  void reload();
-  void scale(float scaleW, float scaleH){};
-  void set_texture(SDL_Renderer *render){};
+  void handle_click();
   void draw(SDL_Renderer *render, Camera &camera);
 
  protected:
+  void scale(float scaleW, float scaleH){};
+  void set_texture(SDL_Renderer *render){};
+  void load_texture_up(const std::string &path);
+  void load_texture_down(const std::string &path);
   void on_button_pressed();
-  void on_button_released();
   virtual void button_launch() = 0; //virtual puro
 };
 

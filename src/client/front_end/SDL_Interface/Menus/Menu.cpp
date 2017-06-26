@@ -46,3 +46,12 @@ void Menu::load_font() {
             " '%s: %s'\n", font_path.c_str(), TTF_GetError());
   }
 }
+void Menu::draw(SDL_Renderer *render, Camera &camera) {
+  SDL_RenderCopy(render, background->get_texture(), NULL, &renderQuad);
+}
+bool Menu::isInRectangle(int x, int y) {
+  return (x > renderQuad.x
+      && x < (renderQuad.x + renderQuad.w)
+      && y > renderQuad.y
+      && y < (renderQuad.y + renderQuad.h));
+}

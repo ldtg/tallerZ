@@ -21,10 +21,6 @@ class Victory : public Menu{
 
   void handle_click(int x, int y);
 
-//  void add_to_panel(Panel& panel) override{
-//    panel.add(this);
-//    panel.add(ok);
-//  }
   void draw(SDL_Renderer *render, Camera &camera);
 
   virtual ~Victory();

@@ -30,7 +30,7 @@ void clientLobby::load_dialog_configurations() {
 }
 
 clientLobby::clientLobby() {
-  load_glade_file("Login_Menu2.glade");
+  load_glade_file("../src/client/front_end/Login_Menu2.glade");
   load_interface_widgets();
   load_dialog_configurations();
   load_signals();
