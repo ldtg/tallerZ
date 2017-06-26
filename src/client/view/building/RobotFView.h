@@ -14,7 +14,9 @@ class RobotFView : public BuildingView {
   Image *layoutColor;
 
  public:
-  RobotFView(const Position &pos, const std::string &color);
+  RobotFView(const std::string &techLevel,
+             const Position &pos,
+             const std::string &color);
   ~RobotFView();
   void capture(const std::string &color);
   void destroyed();

@@ -19,7 +19,7 @@ class Model;
  */
 class Button : public ObjectView  {
  protected:
-  Window * window;
+  MainWindow * window;
   Model * model;
   SDL_Point * position = NULL;
   SDL_Event * event = NULL;
@@ -29,7 +29,7 @@ class Button : public ObjectView  {
 
  public:
   Button(){}
-  Button(Window * window);
+  Button(MainWindow * window);
   ~Button();
 
   bool inRectangle(int x, int y);

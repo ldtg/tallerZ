@@ -8,7 +8,7 @@
 void Build_Button::button_launch() {
   this->menu->update_unit_to_build();
 }
-Build_Button::Build_Button(Window *window, Model *model, Production_Menu *menu, const SDL_Rect &rect) {
+Build_Button::Build_Button(MainWindow *window, Model *model, Production_Menu *menu, const SDL_Rect &rect) {
   this->window = window;
   this->model = model;
   this->menu = menu;

@@ -3,19 +3,21 @@
 
 #include <common/Socket/Socket.h>
 #include <common/Thread/Thread.h>
-#include <client/model/Commands/clientCommand.h>
+#include <client/model/Commands/ClientCommand.h>
 #include <common/Queue/Queue.h>
-class clientCommandSender : public Thread{
+
+class ClientCommandSender : public Thread{
  private:
   Socket &socket;
-  Queue<clientCommand *> &queue;
+  Queue<ClientCommand *> &queue;
   bool open;
+
  public:
-  clientCommandSender(Socket &socket, Queue<clientCommand *> &queue);
+  ClientCommandSender(Socket &socket, Queue<ClientCommand *> &queue);
   virtual void run() override;
   void stop();
   bool isOpen() const;
-  ~clientCommandSender();
+  ~ClientCommandSender();
 };
 
 #endif //TALLERZ_CLIENTCOMMANDSENDER_H

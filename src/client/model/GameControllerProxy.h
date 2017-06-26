@@ -1,6 +1,6 @@
 #ifndef TALLERZ_GAMECONTROLLERPROXY_H
 #define TALLERZ_GAMECONTROLLERPROXY_H
-#include <client/model/Commands/clientCommand.h>
+#include <client/model/Commands/ClientCommand.h>
 #include <common/IDs/UnitID.h>
 #include <common/IDs/BuildID.h>
 #include <common/Map/Position.h>
@@ -12,10 +12,10 @@
 
 class GameControllerProxy {
  private:
-  Queue<clientCommand *> &queue;
+  Queue<ClientCommand *> &queue;
 
  public:
-  GameControllerProxy(Queue<clientCommand *> &queue);
+  GameControllerProxy(Queue<ClientCommand *> &queue);
   void move(const UnitID &unit, const Position &position);
   void attack(const UnitID &attacker, const UnitID &attacked);
   void attack(const UnitID &attacker, const BuildID &attacked);

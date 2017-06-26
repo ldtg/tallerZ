@@ -11,8 +11,8 @@ class Event {
  protected:
   Model *model;
   View *view;
+
  public:
-//  Event();
   void setModel(Model *model);
   void setView(View *view);
   virtual void process() = 0;

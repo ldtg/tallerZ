@@ -6,7 +6,7 @@
  * @param window : ventana sobre la que se renderiza
  * Este constructor genera una textura default negra.
  */
-Texture::Texture(const Window *window) {
+Texture::Texture(const MainWindow *window) {
   SDL_Surface * surface = SDL_CreateRGBSurface(0, 500, 500, 32, 0, 0, 0, 0);
   SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0, 0, 0));
   this->generate_texture(surface, window->getWindow());
@@ -23,10 +23,10 @@ Texture::~Texture() {
  * @param path : ruta a la imagen sobre la que se construye la textura
  * @param window : ventana sobre la que se renderiza
  */
-Texture::Texture(const std::string &path, const Window *window) {
+Texture::Texture(const std::string &path, const MainWindow *window) {
   this->load_texture(path, window->getWindow());
 }
-Texture::Texture(const std::string &path, const Window *window, const SDL_Rect &rect) {
+Texture::Texture(const std::string &path, const MainWindow *window, const SDL_Rect &rect) {
   this->load_texture(path, window->getWindow());
   this->renderQuad = rect;
 }
@@ -35,7 +35,7 @@ Texture::Texture(const std::string &path, const Window *window, const SDL_Rect &
  * @param surface : Surface a partir de la cual se genera la textura
  * @param window : Ventana sobre la que se renderizará
  */
-Texture::Texture(SDL_Surface *surface, const Window *window) {
+Texture::Texture(SDL_Surface *surface, const MainWindow *window) {
   this->generate_texture(surface, window->getWindow());
 }
 /**
@@ -87,7 +87,7 @@ SDL_Texture *Texture::get_texture() const {
  * @param window : ventana sobre la que se renderiza
  * @param renderQuad : cuadrado sobre el que se renderiza
  */
-void Texture::renderize(const Window * window, const SDL_Rect* renderQuad) {
+void Texture::renderize(const MainWindow * window, const SDL_Rect* renderQuad) {
   SDL_RenderCopy(window->getRender(), this->texture, NULL, renderQuad);
   //SDL_RenderPresent( window->getRender()); TODO Ver si esto sirve
 }
@@ -96,7 +96,7 @@ void Texture::renderize(const Window * window, const SDL_Rect* renderQuad) {
  * pero sobre toda la ventana
  * @param window
  */
-void Texture::renderize(const Window *window) {
+void Texture::renderize(const MainWindow *window) {
   this->renderize(window, NULL);
 }
 

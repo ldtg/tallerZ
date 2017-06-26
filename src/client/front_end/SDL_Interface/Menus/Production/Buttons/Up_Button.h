@@ -19,7 +19,7 @@ class Up_Button : public Button {
       "../src/client/front_end/Images/Interface/production_gui/up_button_pressed.png";
   Production_Menu * menu;
  public:
-  Up_Button(Window * window, Model * model, Production_Menu * menu, const SDL_Rect& rect){
+  Up_Button(MainWindow * window, Model * model, Production_Menu * menu, const SDL_Rect& rect){
     this->window = window;
     this->model = model;
     this->menu = menu;

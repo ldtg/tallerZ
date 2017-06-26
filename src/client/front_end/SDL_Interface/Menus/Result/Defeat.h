@@ -1,13 +1,13 @@
 #ifndef TALLERZ_CLIENTE_DEFEAT_H
 #define TALLERZ_CLIENTE_DEFEAT_H
 
-#include <client/view/Window.h>
+#include <client/view/MainWindow.h>
 #include <client/view/View.h>
 #include <client/front_end/SDL_Interface/Menus/Result/Buttons/Ok_Button.h>
 
 class Defeat : public Menu {
  private:
-  Window &window;
+  MainWindow &window;
   View& view;
   Button * ok = NULL;
   SDL_Rect ok_b_rect;
@@ -17,7 +17,7 @@ class Defeat : public Menu {
       = "../src/client/front_end/Images/Interface/result_gui/you_lose.png";
 
  public:
-  Defeat(Window& window, View& view);
+  Defeat(MainWindow& window, View& view);
 
   void handle_click(int x, int y);
 

@@ -1,13 +1,17 @@
 #include "RobotFView.h"
 #include "client/view/ViewFactory.h"
 
-RobotFView::RobotFView(const Position &pos, const std::string &color)
+RobotFView::RobotFView(const std::string &techLevel,
+                       const Position &pos,
+                       const std::string &color)
     : BuildingView(ROBOTF, pos, color) {
   this->pos = pos;
   this->color = color;
 
   robot = ViewFactory::getBuildingEffectView(PRODUCT, "robot", pos);
-  levelFactory = nullptr;
+  std::string path = "../src/view/images/buildings/level" + techLevel + ".png";
+  levelFactory = new Image(path.c_str());
+  levelFactory->setPos(pos.add(8,56));
 
   spin = nullptr;
   smoke = nullptr;

@@ -19,7 +19,7 @@ class Down_Button : public Button {
       "../src/client/front_end/Images/Interface/production_gui/down_button_pressed.png";
   Production_Menu * menu;
  public:
-  Down_Button(Window * window, Model * model, Production_Menu * menu, const SDL_Rect& rect);
+  Down_Button(MainWindow * window, Model * model, Production_Menu * menu, const SDL_Rect& rect);
 
   void button_launch() override ;
 };

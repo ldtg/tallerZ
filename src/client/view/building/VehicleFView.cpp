@@ -1,13 +1,17 @@
 #include "VehicleFView.h"
 #include "client/view/ViewFactory.h"
 
-VehicleFView::VehicleFView(const Position &pos, const std::string &color)
+VehicleFView::VehicleFView(const std::string &techLevel,
+                           const Position &pos,
+                           const std::string &color)
     : BuildingView(VEHICLEF, pos, color) {
   this->pos = pos;
   this->color = color;
 
   vehicle = ViewFactory::getBuildingEffectView(PRODUCT, "vehicle", pos);
-  levelFactory = nullptr;
+  std::string path = "../src/view/images/buildings/level" + techLevel + ".png";
+  levelFactory = new Image(path.c_str());
+  levelFactory->setPos(pos.add(8,56));
 
   spin = nullptr;
   smoke = nullptr;

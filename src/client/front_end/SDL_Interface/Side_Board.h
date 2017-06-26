@@ -4,12 +4,13 @@
 #include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_image.h>
 #include <string>
-#include <client/view/Window.h>
+#include <client/view/MainWindow.h>
 #include <client/view/Texture.h>
 #include <client/view/ObjectView.h>
 #include <client/front_end/SDL_Interface/Buttons/Quit_Button.h>
 #include <client/front_end/SDL_Interface/Buttons/Button.h>
 #include <common/Types/UnitType.h>
+#include <common/IDs/UnitID.h>
 
 class View;
 
@@ -19,9 +20,12 @@ class Side_Board : public ObjectView {
   const std::string path = "../src/client/front_end/Images/Interface/interface.png";
   const std::string folder_path = "../src/client/front_end/Images/Interface/";
 
-  Window *window;
+  MainWindow *window;
+  Model &model;
   View &view;
   Button *quit_button = NULL;
+  bool isUnitSelected = false;
+  UnitID unitSelected;
 
   Texture *face_texture = NULL;
   Texture *weapon_texture = NULL;
@@ -41,7 +45,7 @@ class Side_Board : public ObjectView {
   SDL_Rect life_bar_rect = {712, 215, 74, 8};
 
  public:
-  Side_Board(Window *window, View &view, const std::string &color);
+  Side_Board(MainWindow *window, View &view, Model& model, const std::string &color);
 
   ~Side_Board();
 
@@ -51,11 +55,12 @@ class Side_Board : public ObjectView {
   bool is_in_quit_button(int x, int y);
   void launch_menu_button();
 
-  void load_unit_images(UnitType unitType, UnitType type, unsigned short health);
+  void load_unit_images(UnitID unitID);
   void clean_unit_images();
 
   virtual void set_texture(SDL_Renderer *render) {};
   virtual void draw(SDL_Renderer *render, Camera &camera);
+
 
  private:
   std::string label_path(const std::string &name);

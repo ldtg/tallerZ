@@ -5,7 +5,7 @@ class EventHandler;
 class Model;
 //class Quit_Menu;
 #include "common/Map/Map.h"
-#include "Window.h"
+#include "MainWindow.h"
 #include <string>
 #include <client/front_end/SDL_Interface/Menus/Production/Production_Menu.h>
 #include <client/front_end/SDL_Interface/Side_Board.h>
@@ -21,7 +21,7 @@ class Model;
 
 class View {
  private:
-  Window window;
+  MainWindow window;
   Camera &camera;
   Menu * menu = nullptr;
   Side_Board * side_board = nullptr;
@@ -75,7 +75,7 @@ class View {
   void addBulletView(const BulletID &id, BulletView *bulletView);
 
   BuildingView *getBuildingView(const BuildID &id);
-  void removeBuildView(const BuildID &id);
+//  void removeBuildView(const BuildID &id);
 //  void addBuildView(const BuildID &id, Image *buildView);
 
   Sprite *getCapturedView(const CapturableID &id);
@@ -89,13 +89,18 @@ class View {
 //  SoundPlayer& getSoundPlayer();
 
   Menu *get_present_menu();
+  void load_side_board(Model& model){
+    //MainWindow *window, View &view, Model& model, const std::string &color
+    this->side_board = new Side_Board(&window, *this, model, playerColor);
+
+  }
   void load_production_menu(const BuildID& factoryID,
                             const BuildState& buildState,
                             Model& model, int x, int y);
   void load_quit_menu();
   Side_Board * get_side_board();
   void free_menu();
-  void show_unit_side_details(UnitType unitType, UnitType secondType, unsigned short health);
+  void show_unit_side_details(UnitID unitID);
   void clear_unit_side_details();
   void show_victory();
   void show_defeat();

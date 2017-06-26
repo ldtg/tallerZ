@@ -40,8 +40,9 @@ class ViewFactory {
                                         const Position &pos);
 
   static BuildingView *getBuildingVista(const BuildType &type,
-                                 const std::string &color,
-                                 const Position &pos);
+                                        const std::string &techLevel,
+                                        const std::string &color,
+                                        const Position &pos);
   static Image *getBuildingImage(const BuildType &type,
                                  const std::string &state,
                                  const Position &pos);
