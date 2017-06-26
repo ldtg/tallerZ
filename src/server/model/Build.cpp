@@ -127,6 +127,7 @@ BuildState Build::getBuildState() const {
   return BuildState(owner->getID(),
                     centerPosition.sub(size, size),
                     health,
+                    techLevel,
                     data.ticksToSec(ticksBeforeCreate),
                     actualUnitFab, fabricableUnits);
 }

@@ -362,8 +362,8 @@ struct Data {
   unsigned long getTickAmount(float secs) {
     return (unsigned long) std::lround(secs * ticksPerSec);
   }
-  unsigned long ticksToSec(unsigned long ticks) {
-    return (unsigned long) std::lround(ticks / ticksPerSec);
+  unsigned short ticksToSec(unsigned long ticks) {
+    return (unsigned short) std::lround(ticks / ticksPerSec);
   }
 };
 extern Data data;

@@ -10,12 +10,14 @@ struct BuildState {
   PlayerID owner;
   Position position;
   unsigned short health;
+  unsigned short techLevel;
   unsigned short timeRemainingInSecs;
   UnitType actualUnitFab;
   std::vector<UnitType> fabricableUnits;
   BuildState(const PlayerID &owner,
              const Position &pos,
              unsigned short health,
+             unsigned short techLevel,
              unsigned short timeRemainingInSecs,
              const UnitType &type,
              const std::vector<UnitType> &fabricableUnits);
@@ -28,6 +30,7 @@ struct BuildState {
     archive(owner,
             position,
             health,
+            techLevel,
             timeRemainingInSecs,
             actualUnitFab,
             fabricableUnits);

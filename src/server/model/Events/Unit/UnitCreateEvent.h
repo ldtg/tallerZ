@@ -2,10 +2,10 @@
 #define TALLERZ_SERVERUCREATEEVENT_H
 #include <server/model/Events/ServerEvent.h>
 
-#include <common/DataEvents/Unit/DataUnitCreateEvent.h>
+#include <common/DataEvents/Unit/DataUnitStateEvent.h>
 class UnitCreateEvent : public ServerEvent{
  private:
-  DataUnitCreateEvent data;
+  DataUnitStateEvent data;
  public:
   UnitCreateEvent(const UnitID &id, const UnitState &state);
   virtual std::stringstream getDataToSend() const;

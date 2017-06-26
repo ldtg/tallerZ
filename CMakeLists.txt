@@ -108,8 +108,8 @@ set(SOURCE_FILES
         src/common/DataEvents/Unit/DataUnitAttackEvent.h
         src/server/model/Events/Unit/UnitMoveEvent.cpp
         src/server/model/Events/Unit/UnitMoveEvent.h
-        src/common/DataEvents/Unit/DataUnitCreateEvent.cpp
-        src/common/DataEvents/Unit/DataUnitCreateEvent.h
+        src/common/DataEvents/Unit/DataUnitStateEvent.cpp
+        src/common/DataEvents/Unit/DataUnitStateEvent.h
         src/server/model/Events/Unit/UnitCreateEvent.cpp
         src/server/model/Events/Unit/UnitCreateEvent.h
         src/common/DataEvents/Unit/DataUnitIDEvent.cpp
@@ -205,7 +205,7 @@ set(SOURCE_FILES
         src/common/DataClientServerMessages/DataServerClientAccepted.cpp
         src/common/DataClientServerMessages/DataServerClientAccepted.h
         src/common/Queue/Queue.h src/server/model/Events/Build/BuildUpdateTimeEvent.cpp src/server/model/Events/Build/BuildUpdateTimeEvent.h
-        src/main.cpp src/tests/Data_to_json.cpp src/tests/Data_to_json.h src/tests/data_to_json_tests.cpp src/tests/Json_to_Data.cpp src/tests/Json_to_Data.h src/common/DataEvents/Unit/DataUnitStillEvent.cpp src/common/DataEvents/Unit/DataUnitStillEvent.h)
+        src/main.cpp src/tests/Data_to_json.cpp src/tests/Data_to_json.h src/tests/data_to_json_tests.cpp src/tests/Json_to_Data.cpp src/tests/Json_to_Data.h src/common/DataEvents/Unit/DataUnitStillEvent.cpp src/common/DataEvents/Unit/DataUnitStillEvent.h src/server/model/Events/Unit/UnitDamageReceiveEvent.cpp src/server/model/Events/Unit/UnitDamageReceiveEvent.h)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/server)

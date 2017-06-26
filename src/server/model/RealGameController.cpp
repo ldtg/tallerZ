@@ -15,6 +15,7 @@
 #include <server/model/Events/Unit/UnitDeathEvent.h>
 #include <server/model/Events/Game/GamePlayerDefeatedEvent.h>
 #include <server/model/Events/Build/BuildUpdateTimeEvent.h>
+#include <server/model/Events/Unit/UnitDamageReceiveEvent.h>
 #include "AStar.h"
 
 RealGameController::RealGameController(Map &map,
@@ -209,6 +210,8 @@ void RealGameController::unitsTick() {
 void RealGameController::unitReceiveDamage(Unit *current) const {
   current->receiveDamages();
   map.updateUnit(current->getId(), current->getUnitState());
+  eventQueue.push(new UnitDamageReceiveEvent(current->getId(),
+                                             current->getUnitState()));
 }
 
 void RealGameController::move(Unit *unit,
