@@ -26,7 +26,7 @@ unsigned short Vehicle::getMovementSpeed(float terrainFactor) const {
 UnitState Vehicle::getUnitState() const {
   return UnitState(conductor,
                    owner->getID(),
-                   health,
+                   (unsigned short) (((float)health/(float)data.getData(id.getType()).health)*100), //Pasa el porcentaje
                    weapon.type,
                    currentPosition);
 }

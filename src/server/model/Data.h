@@ -103,7 +103,7 @@ struct Data {
 //    r_grunt.type = UnitType::R_GRUNT;
 //    r_grunt.weapon = bullet;
 //    r_grunt.secsUntilFire = 0.5;
-//    r_grunt.health = 60;
+//    r_grunt.healthPercent = 60;
 //    r_grunt.range = 7;//el rango lo aumentan solo las unidades con el range mult
 //    r_grunt.speed = 4;
 //    r_grunt.factoryRate = 3;
@@ -113,7 +113,7 @@ struct Data {
 //    r_tough.type = UnitType::R_TOUGH;
 //    r_tough.weapon = rocket;
 //    r_tough.secsUntilFire = 0.5;
-//    r_tough.health = 300;
+//    r_tough.healthPercent = 300;
 //    r_tough.range = 5;
 //    r_tough.speed = 4;
 //    r_tough.factoryRate = 2;
@@ -124,7 +124,7 @@ struct Data {
 //    r_pyro.type = UnitType::R_PYRO;
 //    r_pyro.weapon = flamethrower;
 //    r_pyro.secsUntilFire = 0.25;
-//    r_pyro.health = 100;
+//    r_pyro.healthPercent = 100;
 //    r_pyro.range = 6;
 //    r_pyro.speed = 4;
 //    r_pyro.factoryRate = 4;
@@ -135,7 +135,7 @@ struct Data {
 //    r_laser.type = UnitType::R_LASER;
 //    r_laser.weapon = laser;
 //    r_laser.secsUntilFire = 0.25;
-//    r_laser.health = 100;
+//    r_laser.healthPercent = 100;
 //    r_laser.range = 7;
 //    r_laser.speed = 4;
 //    r_laser.factoryRate = 5;
@@ -146,7 +146,7 @@ struct Data {
 //    r_psycho.type = UnitType::R_PSYCHO;
 //    r_psycho.weapon = bullet;
 //    r_psycho.secsUntilFire = 0.1;
-//    r_psycho.health = 80;
+//    r_psycho.healthPercent = 80;
 //    r_psycho.range = 7;
 //    r_psycho.speed = 4;
 //    r_psycho.factoryRate = 3;
@@ -157,7 +157,7 @@ struct Data {
 //    r_sniper.type = UnitType::R_SNIPER;
 //    r_sniper.weapon = bullet;
 //    r_sniper.secsUntilFire = 0.25;
-//    r_sniper.health = 80;
+//    r_sniper.healthPercent = 80;
 //    r_sniper.range = 10;
 //    r_sniper.speed = 4;
 //    r_sniper.factoryRate = 3;
@@ -168,7 +168,7 @@ struct Data {
 //    v_jeep.type = UnitType::V_JEEP;
 //    v_jeep.weapon = bullet;
 //    v_jeep.secsUntilFire = 0.17;//1/6
-//    v_jeep.health = 60;
+//    v_jeep.healthPercent = 60;
 //    v_jeep.range = 6;
 //    v_jeep.speed = 8;
 //    v_jeep.factoryRate = 1;
@@ -178,7 +178,7 @@ struct Data {
 //    v_ltank.type = UnitType::V_LTANK;
 //    v_ltank.weapon = hcbullet;
 //    v_ltank.secsUntilFire = 2;
-//    v_ltank.health = 80;
+//    v_ltank.healthPercent = 80;
 //    v_ltank.range = 6;
 //    v_ltank.speed = 6;
 //    v_ltank.factoryRate = 1;
@@ -189,7 +189,7 @@ struct Data {
 //    v_mtank.type = UnitType::V_MTANK;
 //    v_mtank.weapon = hcbullet;
 //    v_mtank.secsUntilFire = 2;
-//    v_mtank.health = 120;
+//    v_mtank.healthPercent = 120;
 //    v_mtank.range = 7;
 //    v_mtank.speed = 5;
 //    v_mtank.factoryRate = 1;
@@ -199,7 +199,7 @@ struct Data {
 //    v_htank.type = UnitType::V_HTANK;
 //    v_htank.weapon = hcbullet;
 //    v_htank.secsUntilFire = 2;
-//    v_htank.health = 180;
+//    v_htank.healthPercent = 180;
 //    v_htank.range = 8;
 //    v_htank.speed = 5;
 //    v_htank.factoryRate = 1;
@@ -209,7 +209,7 @@ struct Data {
 //    v_mml.type = UnitType::V_MML;
 //    v_mml.weapon = rocket;
 //    v_mml.secsUntilFire = 0.5;
-//    v_mml.health = 200;
+//    v_mml.healthPercent = 200;
 //    v_mml.range = 8;
 //    v_mml.speed = 5;
 //    v_mml.factoryRate = 1;
@@ -217,15 +217,15 @@ struct Data {
 //    v_mml.factoryMinimunTechLevel = 5;
 //
 //    fort.type = BuildType::FORT;
-//    fort.health = 1000;
+//    fort.healthPercent = 1000;
 //    fort.size = 50;
 //
 //    robotFactory.type = BuildType::ROBOTF;
-//    robotFactory.health = 1000;
+//    robotFactory.healthPercent = 1000;
 //    robotFactory.size = 50;
 //
 //    vehicleFactory.type = BuildType::VEHICLEF;
-//    vehicleFactory.health = 1000;
+//    vehicleFactory.healthPercent = 1000;
 //    vehicleFactory.size = 50;
 //
 //    land.type = TerrainType::LAND;
@@ -252,22 +252,22 @@ struct Data {
 //
 //    asphaltedBridgeObject.type = TerrainObjectType::_ASPHALTEDBRIDGE;
 //    asphaltedBridgeObject.passable = true;
-//    asphaltedBridgeObject.health = 1000;
+//    asphaltedBridgeObject.healthPercent = 1000;
 //    asphaltedBridgeObject.size = 50;
 //
 //    rockObject.type = TerrainObjectType::ROCK;
 //    rockObject.passable = false;
-//    rockObject.health = 1000;
+//    rockObject.healthPercent = 1000;
 //    rockObject.size = 50;
 //
 //    woodenBridgeObject.type = TerrainObjectType::_WOODENBRIDGE;
 //    woodenBridgeObject.passable = true;
-//    woodenBridgeObject.health = 1000;
+//    woodenBridgeObject.healthPercent = 1000;
 //    woodenBridgeObject.size = 50;
 //
 //    iceRockObject.type = TerrainObjectType::ICEROCK;
 //    iceRockObject.passable = false;
-//    iceRockObject.health = 1000;
+//    iceRockObject.healthPercent = 1000;
 //    iceRockObject.size = 50;
 //  }
 

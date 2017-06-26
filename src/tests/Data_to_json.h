@@ -63,7 +63,7 @@ class Data_to_json {
     j["r_grunt.type"] = UnitType::R_GRUNT;
     j["r_grunt.weapon"] = WeaponType ::BULLET;
     j["r_grunt.secsUntilFire"] = 0.5;
-    j["r_grunt.health"] = 60;
+    j["r_grunt.healthPercent"] = 60;
     j["r_grunt.range"] = 7;
     j["r_grunt.speed"] = 4;
     j["r_grunt.factoryRate"] = 3;
@@ -73,7 +73,7 @@ class Data_to_json {
     j["r_tough.type"] = UnitType::R_TOUGH;
     j["r_tough.weapon"] = WeaponType ::ROCKET;
     j["r_tough.secsUntilFire"] = 0.5;
-    j["r_tough.health"] = 300;
+    j["r_tough.healthPercent"] = 300;
     j["r_tough.range"] = 5;
     j["r_tough.speed"] = 4;
     j["r_tough.factoryRate"] = 2;
@@ -83,7 +83,7 @@ class Data_to_json {
     j["r_pyro.type"] = UnitType::R_PYRO;
     j["r_pyro.weapon"] = WeaponType ::FIRE;
     j["r_pyro.secsUntilFire"] = 0.5;
-    j["r_pyro.health"] = 100;
+    j["r_pyro.healthPercent"] = 100;
     j["r_pyro.range"] = 6;
     j["r_pyro.speed"] = 4;
     j["r_pyro.factoryRate"] = 4;
@@ -93,7 +93,7 @@ class Data_to_json {
     j["r_laser.type"] = UnitType::R_LASER;
     j["r_laser.weapon"] = WeaponType ::LASER;
     j["r_laser.secsUntilFire"] = 0.25;
-    j["r_laser.health"] = 100;
+    j["r_laser.healthPercent"] = 100;
     j["r_laser.range"] = 7;
     j["r_laser.speed"] = 4;
     j["r_laser.factoryRate"] = 5;
@@ -103,7 +103,7 @@ class Data_to_json {
     j["r_psycho.type"] = UnitType::R_PSYCHO;
     j["r_psycho.weapon"] = WeaponType ::BULLET;
     j["r_psycho.secsUntilFire"] = 0.1;
-    j["r_psycho.health"] = 80;
+    j["r_psycho.healthPercent"] = 80;
     j["r_psycho.range"] = 7;
     j["r_psycho.speed"] = 4;
     j["r_psycho.factoryRate"] = 3;
@@ -113,7 +113,7 @@ class Data_to_json {
     j["r_sniper.type"] = UnitType::R_SNIPER;
     j["r_sniper.weapon"]= WeaponType ::BULLET;
     j["r_sniper.secsUntilFire"] = 0.25;
-    j["r_sniper.health"] = 80;
+    j["r_sniper.healthPercent"] = 80;
     j["r_sniper.range"] = 10;
     j["r_sniper.speed"] = 4;
     j["r_sniper.factoryRate"] = 3;
@@ -123,7 +123,7 @@ class Data_to_json {
     j["v_jeep.type"] = UnitType::V_JEEP;
     j["v_jeep.weapon"] = WeaponType ::BULLET;
     j["v_jeep.secsUntilFire"] = 0.17;
-    j["v_jeep.health"] = 10;
+    j["v_jeep.healthPercent"] = 10;
     j["v_jeep.range"] = 5;//6x5
     j["v_jeep.speed"] = 8;
     j["v_jeep.factoryRate"] = 1;
@@ -133,7 +133,7 @@ class Data_to_json {
     j["v_ltank.type"] = UnitType::V_LTANK;
     j["v_ltank.weapon"] = WeaponType ::HCBULLET;
     j["v_ltank.secsUntilFire"] = 2;
-    j["v_ltank.health"] = 80;
+    j["v_ltank.healthPercent"] = 80;
     j["v_ltank.range"] = 6;
     j["v_ltank.speed"] = 6;
     j["v_ltank.factoryRate"] = 1;
@@ -143,7 +143,7 @@ class Data_to_json {
     j["v_mtank.type"] = UnitType::V_MTANK;
     j["v_mtank.weapon"] = WeaponType ::HCBULLET;
     j["v_mtank.secsUntilFire"] = 2;
-    j["v_mtank.health"] = 120;
+    j["v_mtank.healthPercent"] = 120;
     j["v_mtank.range"] = 7;
     j["v_mtank.speed"] = 5;
     j["v_mtank.factoryRate"] = 1;
@@ -153,7 +153,7 @@ class Data_to_json {
     j["v_htank.type"] = UnitType::V_HTANK;
     j["v_htank.weapon"] = WeaponType ::HCBULLET;
     j["v_htank.secsUntilFire"] = 2;
-    j["v_htank.health"] = 180;
+    j["v_htank.healthPercent"] = 180;
     j["v_htank.range"] = 8;
     j["v_htank.speed"] = 5;
     j["v_htank.factoryRate"] = 1;
@@ -163,7 +163,7 @@ class Data_to_json {
     j["v_mml.type"] = UnitType::V_MML;
     j["v_mml.weapon"] = WeaponType ::ROCKET;
     j["v_mml.secsUntilFire"] = 0.5;
-    j["v_mml.health"] = 200;
+    j["v_mml.healthPercent"] = 200;
     j["v_mml.range"] = 8;
     j["v_mml.speed"] = 5;
     j["v_mml.factoryRate"] = 1;
@@ -171,15 +171,15 @@ class Data_to_json {
     j["v_mml.factoryMinimunTechLevel"] = 5;
 
     j["fort.type"] = BuildType::FORT;
-    j["fort.health"] = 1000;
+    j["fort.healthPercent"] = 1000;
     j["fort.size"] = 50;
 
     j["robotFactory.type"] = BuildType::ROBOTF;
-    j["robotFactory.health"] = 1000;
+    j["robotFactory.healthPercent"] = 1000;
     j["robotFactory.size"] = 50;
 
     j["vehicleFactory.type"] = BuildType::VEHICLEF;
-    j["vehicleFactory.health"] = 1000;
+    j["vehicleFactory.healthPercent"] = 1000;
     j["vehicleFactory.size"] = 50;
 
     j["land.type"] = TerrainType::LAND;
@@ -206,22 +206,22 @@ class Data_to_json {
 
     j["asphaltedBridgeObject.type"] = TerrainObjectType::_ASPHALTEDBRIDGE;
     j["asphaltedBridgeObject.passable"] = true;
-    j["asphaltedBridgeObject.health"] = 1000;
+    j["asphaltedBridgeObject.healthPercent"] = 1000;
     j["asphaltedBridgeObject.size"] = 50;
 
     j["rockObject.type"] = TerrainObjectType::ROCK;
     j["rockObject.passable"] = false;
-    j["rockObject.health"] = 1000;
+    j["rockObject.healthPercent"] = 1000;
     j["rockObject.size"] = 50;
 
     j["woodenBridgeObject.type"] = TerrainObjectType::_WOODENBRIDGE;
     j["woodenBridgeObject.passable"] = true;
-    j["woodenBridgeObject.health"] = 10;
+    j["woodenBridgeObject.healthPercent"] = 10;
     j["woodenBridgeObject.size"] = 50;
 
     j["iceRockObject.type"] = TerrainObjectType::ICEROCK;
     j["iceRockObject.passable"] = false;
-    j["iceRockObject.health"] = 1000;
+    j["iceRockObject.healthPercent"] = 1000;
     j["iceRockObject.size"] = 50;
 
     json_file << std::setw(4) << j << std::endl;

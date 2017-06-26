@@ -19,7 +19,7 @@ unsigned short Robot::getMovementSpeed(float terrainFactor) const {
 UnitState Robot::getUnitState() const {
   return UnitState(this->getId().getType(),
                    owner->getID(),
-                   health,
+                   (unsigned short) (((float)health/(float)data.getData(id.getType()).health)*100), //Pasa el porcentaje
                    weapon.type,
                    currentPosition);
 }

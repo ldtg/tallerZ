@@ -12,7 +12,7 @@
 struct UnitState {
  public:
   PlayerID owner;
-  unsigned short health;
+  unsigned short healthPercent;
   WeaponType weapon;
   Position position;
   UnitType secondType;
@@ -23,12 +23,12 @@ struct UnitState {
             const Position &current)
       : secondType(secondType),
         owner(owner),
-        health(health),
+        healthPercent(health),
         weapon(weapon),
         position(current) {}
   template<class Archive>
   void serialize(Archive &archive) {
-    archive(owner, health, weapon, position, secondType);
+    archive(owner, healthPercent, weapon, position, secondType);
   }
 };
 
