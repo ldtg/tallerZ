@@ -13,6 +13,7 @@ class BulletView : public ObjectViewMove {
   void still();
   Sprite* getView();
   void draw(SDL_Renderer *render, Camera &camera);
+  ~BulletView();
 };
 
 #endif //TALLERZ_CLIENTE_BULLETVIEW_H

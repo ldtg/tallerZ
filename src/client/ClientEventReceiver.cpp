@@ -12,8 +12,6 @@ void ClientEventReceiver::run() {
       std::stringstream ss(str);
       Event *ev = EventFactory::createEvent(type, ss);
       queue.push(ev);
-      if (type == G_ENDGAME)
-        open = false;
     }
   } catch (const SocketException &e) {
     this->open = false;

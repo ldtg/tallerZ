@@ -5,11 +5,14 @@
 UnitView::UnitView(const UnitType &type, const std::string &color,
                    const Position &pos, std::string &action,
                    const std::string &rotation)
-    : ObjectViewMove(ViewFactory::getUnitAnimation(type, color, action, rotation, pos)),
+    : ObjectViewMove(ViewFactory::getUnitAnimation(type,
+                                                   color,
+                                                   action,
+                                                   rotation,
+                                                   pos)),
       type(type), color(color) {}
 
 UnitView::~UnitView() {
-  delete view;
 }
 
 void UnitView::create() {
@@ -39,7 +42,7 @@ void UnitView::still() {
 
 void UnitView::fire(const Position &huntedPos) {
   // Llego, entonces se vacia la cola de movimientos.
-  while (!movements.empty()) {movements.pop();}
+  while (!movements.empty()) { movements.pop(); }
 
   Position pos = view->getPos();
   int rotation = pos.getRoration(huntedPos);
@@ -50,7 +53,7 @@ void UnitView::fire(const Position &huntedPos) {
   view->setDrawRotation(rotation);
 }
 
-Sprite* UnitView::getView() const {
+Sprite *UnitView::getView() const {
   return view;
 }
 
