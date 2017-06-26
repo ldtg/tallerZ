@@ -15,11 +15,11 @@ void UnitMoveEvent::process() {
 
 //  if (step.getX()<1.0 && step.getY()<1.0)
 
-  std::cout << "DIST" << std::endl;
-  std::cout << dist.getX() << " " << dist.getY() << std::endl;
-  std::cout << "STEP" << std::endl;
-  std::cout << step.getX() << " " << step.getY() << std::endl;
-  std::cout << " " << std::endl;
+//  std::cout << "DIST" << std::endl;
+//  std::cout << dist.getX() << " " << dist.getY() << std::endl;
+//  std::cout << "STEP" << std::endl;
+//  std::cout << step.getX() << " " << step.getY() << std::endl;
+//  std::cout << " " << std::endl;
 
   ViewPosition unitViewPos = unitView->getViewPos();
   for (int i=0; i < velView; i++) {
