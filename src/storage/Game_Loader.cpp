@@ -1,14 +1,10 @@
-//
-// Created by darius on 01/06/17.
-//
-
 #include <server/model/UnitFactory.h>
 #include "Game_Loader.h"
 
 void Game_Loader::open_file() {
   try {
     this->map_file.open(this->file_path);
-  } catch (const std::exception &e) {
+  } catch (const std::ifstream::failure &e) {
     throw Storage_Exception(
         "Error en la apertura del archivo %s de donde se iba a cargar el "
             "mapa en el metodo open_file de Game_Loader: %s",
@@ -19,7 +15,7 @@ void Game_Loader::open_file() {
 void Game_Loader::close_file() {
   try {
     this->map_file.close();
-  } catch (const std::exception &e) {
+  } catch (const std::ifstream::failure &e) {
     throw Storage_Exception(
         "Error el metodo close_file de Game_Loader al cerrar el archivo %s: "
             "%s\n", this->file_path, e.what());
@@ -43,7 +39,14 @@ json Game_Loader::get_json() {
 }
 
 void Game_Loader::load_file() {
-  map_file >> this->j;
+  try {
+    map_file >> this->j;
+  } catch (const std::exception &e) {
+    throw Storage_Exception(
+        "Error en el parseo del archivo %s de donde se iba a cargar el "
+            "mapa en el metodo load_file de Game_Loader",
+        this->file_path.c_str());
+  }
 }
 
 void Game_Loader::load_configuration() {
@@ -160,11 +163,11 @@ void Game_Loader::build_map() {
     pos_data = read_data(i);
     emplace_terrain(pos_data);
     if (pos_data.fort) {
-      if(!gaiaNow){
+      if (!gaiaNow) {
         Team team = get_team(fort_player->second);
         assign_fort(pos_data, *fort_player->second, team);
         fort_player++;
-        if(fort_player == players.end())
+        if (fort_player == players.end())
           gaiaNow = true;
       } else {
         assign_fort(pos_data, gaiaPlayer, gaiaTeam);
@@ -188,13 +191,13 @@ void Game_Loader::build_map() {
   }
 }
 
-std::map<BuildID, Build *> Game_Loader::get_builds()const {
+std::map<BuildID, Build *> Game_Loader::get_builds() const {
   return this->builds;
 }
-std::map<BuildID, BuildState> Game_Loader::get_buildmap() const{
+std::map<BuildID, BuildState> Game_Loader::get_buildmap() const {
   return this->buildmap;
 }
-std::map<Position, Tile> Game_Loader::get_loaded_map() const{
+std::map<Position, Tile> Game_Loader::get_loaded_map() const {
   return this->map;
 }
 void Game_Loader::assign_terrain_object(const Position_Data &position_data) {
@@ -262,9 +265,12 @@ void Game_Loader::assign_capturable(const Position_Data &position_data) {
     controller_capturables.emplace(territory->getID(), territory);
   }
 
-  if (position_data.vehicle){
-    Vehicle* unit = UnitFactory::createVehicleDynamic(
-        centered_position(pos.getX(), pos.getY()),V_JEEP,gaiaPlayer,gaiaTeam);
+  if (position_data.vehicle) {
+    Vehicle *unit = UnitFactory::createVehicleDynamic(
+        centered_position(pos.getX(), pos.getY()),
+        V_JEEP,
+        gaiaPlayer,
+        gaiaTeam);
     this->units.emplace(unit->getId(), unit->getUnitState());
     this->controller_units.emplace(unit->getId(), unit);
     CapturableVehicle *vehicle = new CapturableVehicle(*unit);
@@ -272,10 +278,11 @@ void Game_Loader::assign_capturable(const Position_Data &position_data) {
     controller_capturables.emplace(vehicle->getID(), vehicle);
   }
 }
-std::map<CapturableID, CapturableState> Game_Loader::get_capturables() const{
+std::map<CapturableID, CapturableState> Game_Loader::get_capturables() const {
   return this->capturables;
 }
-std::map<TerrainObjectID, TerrainObjectState> Game_Loader::get_terrainObject() const{
+std::map<TerrainObjectID,
+         TerrainObjectState> Game_Loader::get_terrainObject() const {
   return this->terrainObjects;
 }
 void Game_Loader::assign_unit(const Position_Data &position_data) {
@@ -285,23 +292,25 @@ void Game_Loader::assign_unit(const Position_Data &position_data) {
   this->units.emplace(unit->getId(), unit->getUnitState());
   this->controller_units.emplace(unit->getId(), unit);
 }
-std::map<UnitID, Unit *> Game_Loader::get_controller_units()const {
+std::map<UnitID, Unit *> Game_Loader::get_controller_units() const {
   return this->controller_units;
 }
-std::map<int, std::vector<Build *>> Game_Loader::get_territory_buildings() const{
+std::map<int,
+         std::vector<Build *>> Game_Loader::get_territory_buildings() const {
   return this->territory_buildings;
 }
-std::map<CapturableID, Capturable *> Game_Loader::get_controller_capturables() const{
+std::map<CapturableID,
+         Capturable *> Game_Loader::get_controller_capturables() const {
   return this->controller_capturables;
 }
 std::map<TerrainObjectID,
-         TerrainObject> Game_Loader::get_controller_terrainObjects() const{
+         TerrainObject> Game_Loader::get_controller_terrainObjects() const {
   return this->controller_terrainObjects;
 }
-std::map<PlayerID, Player *> Game_Loader::get_players() const{
+std::map<PlayerID, Player *> Game_Loader::get_players() const {
   return this->players;
 }
-std::map<TeamID, Team> Game_Loader::get_teams() const{
+std::map<TeamID, Team> Game_Loader::get_teams() const {
   return this->teams;
 }
 Map Game_Loader::run() {

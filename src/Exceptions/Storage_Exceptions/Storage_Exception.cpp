@@ -1,7 +1,3 @@
-//
-// Created by darius on 01/06/17.
-//
-
 #include <cstdio>
 #include "Storage_Exception.h"
 

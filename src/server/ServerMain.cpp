@@ -17,7 +17,7 @@ std::vector<serverCommandReceiver *> getCommandReceivers(const std::map<Socket *
                                                          ProtectedGameController &pgc);
 void sendMapToClients(const std::vector<Socket *> &clients, const Map &map);
 
-bool anyPlayerConnected(std::vector<serverCommandReceiver *> vector);
+bool allPlayerDisconnected(std::vector<serverCommandReceiver *> vector);
 
 bool validArgs(int argc, char **pString);
 void printUsage();
@@ -57,10 +57,10 @@ int main(int argc, char *argv[]) {
       commandReceiver->start();
     }
 
-    while (anyPlayerConnected(commandReceivers)) {
+    while (!allPlayerDisconnected(commandReceivers)) {
       pgc.tick();
     };
-    evqueue.push(nullptr);// no se me ocurrio otra para destrabar el pop
+    evqueue.push(nullptr);
     eventSender.stop();
     for (serverCommandReceiver *commandReceiver: commandReceivers) {
       commandReceiver->stop();
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
     for (Socket *cli :clients) {
       delete (cli);
     }
-  } catch (const SocketException &e) {
+  } catch (const std::exception &e) {
     std::cerr << e.what() << std::endl;
     return 0;
   }
@@ -95,12 +95,12 @@ bool validArgs(int argc, char **argv) {
   }
   return false;
 }
-bool anyPlayerConnected(std::vector<serverCommandReceiver *> vector) {
+bool allPlayerDisconnected(std::vector<serverCommandReceiver *> vector) {
   for (serverCommandReceiver *player : vector) {
     if (player->isOpen())
-      return true;
+      return false;
   }
-  return false;
+  return true;
 }
 
 void sendMapToClients(const std::vector<Socket *> &clients, const Map &map) {
