@@ -75,6 +75,8 @@ void Unit::receiveDamages() {
     } else {
       this->health = 0;
       owner->subUnit();
+      damagesToReceive.clear();
+      return;
     }
   }
   damagesToReceive.clear();

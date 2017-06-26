@@ -31,8 +31,14 @@ RealGameController::RealGameController(Map &map,
 }
 
 void RealGameController::move(const UnitID &idunit, const Position &position) {
-  Unit *unit = units.at(idunit);
+  Unit *unit = nullptr;
+  try{//Si se muere la unidad seleccionada por el cliente no se encuentra cuando la quiera mover
+    unit = units.at(idunit);
+  } catch (const std::out_of_range &e){
+    return;
+  }
   Tile etile = map.getTile(position);
+
   if (!unit->canGoThrough(etile.getTerrainData()) || !etile.isPassable())
     return;
   AStar astar(map, unit, position);
@@ -47,7 +53,7 @@ void RealGameController::attack(const UnitID &attackerId,
   try {
     attacker = units.at(attackerId);
     attacked = units.at(attackedId);
-  } catch (const std::exception &e) {
+  } catch (const std::out_of_range &e) {
     return;
   }
   Tile etile =
@@ -77,7 +83,7 @@ void RealGameController::attack(const UnitID &attackerId,
   try {
     attacker = units.at(attackerId);
     attacked = builds.at(attackedId);
-  } catch (const std::exception &e) {
+  } catch (const std::out_of_range &e) {
     return;
   }
   Tile etile =
@@ -107,7 +113,7 @@ void RealGameController::attack(const UnitID &attackerID,
   try {
     attacker = units.at(attackerID);
     attacked = &terrainObjects.at(attackedID);
-  } catch (const std::exception &e) {
+  } catch (const std::out_of_range &e) {
     return;
   }
   Tile etile =

@@ -21,7 +21,6 @@ struct Data {
 
   Weapon bullet;
   Weapon flamethrower;
-  Weapon sniperBullet;
   Weapon laser;
   Weapon rocket;
   Weapon hcbullet;

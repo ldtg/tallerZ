@@ -217,7 +217,7 @@ Weapon &Json_to_Data::get_weapon(const WeaponType &weaponType) {
     case (WeaponType::BULLET):return this->data.bullet;
     case (WeaponType::FIRE):return this->data.flamethrower;
     case (WeaponType::ROCKET):return this->data.rocket;
-    case (WeaponType::HCBULLET):return this->data.sniperBullet;
+    case (WeaponType::HCBULLET):return this->data.hcbullet;
     case (WeaponType::LASER):return this->data.laser;
     default:return this->data.bullet;
   }
