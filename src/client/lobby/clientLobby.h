@@ -54,7 +54,6 @@ class clientLobby {
   void on_cancel_button_activate() {
     this->window->close();
     Gtk::Main::quit();
-    throw Close_Exception();
   }
 
   void on_connect_button_activate() {
