@@ -4,6 +4,7 @@
 enum EventType {
   U_MOVE,
   U_ATTACK,
+  U_DAMAGE,
   U_CREATE,
   U_DEATH,
   U_STILL,

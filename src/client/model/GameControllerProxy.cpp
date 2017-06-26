@@ -6,7 +6,7 @@
 #include <client/model/Commands/Build/clientBuildChangeUnitCommand.h>
 #include "GameControllerProxy.h"
 
-GameControllerProxy::GameControllerProxy(Queue<clientCommand *> &queue)
+GameControllerProxy::GameControllerProxy(Queue<ClientCommand *> &queue)
     : queue(queue) {}
 
 void GameControllerProxy::move(const UnitID &unit, const Position &position) {

@@ -9,6 +9,4 @@ void MouseButtonLeft::handle(SDL_Event *e, EventHandler &eventHandler) {
   y = e->button.y;
 
   eventHandler.add(new LeftClickEvent(x,y));
-
-//    std::cout << "(" << x << "," << y << ")" << std::endl;
 }

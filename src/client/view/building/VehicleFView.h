@@ -15,7 +15,9 @@ class VehicleFView : public BuildingView {
   Image *layoutColor;
 
  public:
-  VehicleFView(const Position &pos, const std::string &color);
+  VehicleFView(const std::string &techLevel,
+               const Position &pos,
+               const std::string &color);
   ~VehicleFView();
   void capture(const std::string &color);
   void destroyed();

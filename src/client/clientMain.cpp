@@ -6,8 +6,8 @@
 #include <client/controller/Controller.h>
 #include <cereal/archives/binary.hpp>
 #include <common/DataClientServerMessages/dataClientConnectedMessage.h>
-#include <clientCommandSender.h>
-#include <clientEventReceiver.h>
+#include <ClientCommandSender.h>
+#include <ClientEventReceiver.h>
 #include <client/lobby/clientLobby.h>
 
 void sendPlayerConnected(Socket &socket,
@@ -39,10 +39,10 @@ int main(int argc, char *argv[]) {
   Map map = getMap(socket);
 
   Queue<Event *> eventQueue;
-  Queue<clientCommand *> commandsQueue;
-  clientCommandSender commandSender(socket, commandsQueue);
+  Queue<ClientCommand *> commandsQueue;
+  ClientCommandSender commandSender(socket, commandsQueue);
   commandSender.start();
-  clientEventReceiver eventReceiver(socket, eventQueue);
+  ClientEventReceiver eventReceiver(socket, eventQueue);
   eventReceiver.start();
   GameControllerProxy gcp(commandsQueue);
   Camera camera(WINDOWWIDHT,

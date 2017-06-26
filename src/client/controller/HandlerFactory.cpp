@@ -6,11 +6,9 @@
 #include "MouseButtonRight.h"
 
 Handler *HandlerFactory::get(SDL_Event *e) {
-//    if (e->type == SDL_QUIT) {
   if (e->type == SDL_KEYDOWN) {
     switch (e->key.keysym.sym) {
-      case SDLK_ESCAPE:return new Quit();
-        break;
+      case SDLK_ESCAPE: return new Quit();
       default:return nullptr;
     }
   } else if (e->type == SDL_MOUSEBUTTONDOWN) {

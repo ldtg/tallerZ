@@ -1,9 +1,9 @@
 #include <client/model/Events/EventFactory.h>
-#include "clientEventReceiver.h"
-clientEventReceiver::clientEventReceiver(Socket &srvSocket,
+#include "ClientEventReceiver.h"
+ClientEventReceiver::ClientEventReceiver(Socket &srvSocket,
                                          Queue<Event *> &queue) : srvSocket(
     srvSocket), queue(queue), open(true) {}
-void clientEventReceiver::run() {
+void ClientEventReceiver::run() {
   try {
     while (open) {
       EventType type;
@@ -19,11 +19,11 @@ void clientEventReceiver::run() {
     this->open = false;
   }
 }
-void clientEventReceiver::stop() {
+void ClientEventReceiver::stop() {
   open = false;
   srvSocket.shutdownConnection(ShutdownMode::WRITE);
 }
-bool clientEventReceiver::isOpen() const {
+bool ClientEventReceiver::isOpen() const {
   return open;
 }
-clientEventReceiver::~clientEventReceiver() {}
+ClientEventReceiver::~ClientEventReceiver() {}

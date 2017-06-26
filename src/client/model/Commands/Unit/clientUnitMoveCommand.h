@@ -1,9 +1,9 @@
 #ifndef TALLERZ_CLIENTUNITMOVECOMMAND_H
 #define TALLERZ_CLIENTUNITMOVECOMMAND_H
 
-#include <client/model/Commands/clientCommand.h>
+#include <client/model/Commands/ClientCommand.h>
 #include <common/DataCommands/Unit/dataUnitMoveCommand.h>
-class clientUnitMoveCommand : public clientCommand{
+class clientUnitMoveCommand : public ClientCommand{
  private:
   dataUnitMoveCommand data;
  public:

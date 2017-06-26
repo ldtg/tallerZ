@@ -2,8 +2,6 @@
 #include <iostream>
 #include "Sprite.h"
 
-Sprite::Sprite() {}
-
 Sprite::Sprite(const char *file, int num_frames, int speed,
                int num_frame_return_cycle, std::string color,
                int despX, int despY)

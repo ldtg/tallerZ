@@ -112,7 +112,8 @@ void View::createInitialBuildingView(const std::map<BuildID,
     BuildType type = build.first.getType();
     Position pos = build.second.position;
     std::string color = build.second.owner.getColor();
-    BuildingView *buildVista = ViewFactory::getBuildingVista(type, color, pos);
+    std::string level = std::to_string(build.second.techLevel);
+    BuildingView *buildVista = ViewFactory::getBuildingVista(type, level, color, pos);
     if (!build.second.owner.isGaia()) buildVista->capture(color);
     buildsVista.emplace(build.first, buildVista);
   }
@@ -185,32 +186,22 @@ void View::draw() {
   SDL_RenderClear(window_render);
 
   for (auto const &posTerrain : terrainsVista) {
-//    posTerrain.second->set_texture(window_render);
-
     posTerrain.second->draw(window_render, camera);
   }
 
   for (auto const &posTerrainObj : terrainObjectsVista) {
-//    posTerrainObj.second->set_texture(window_render);
-
     posTerrainObj.second->draw(window_render, camera);
   }
 
   for (auto const &build : buildsVista) {
-//    build.second->set_texture(window_render);
-
     build.second->draw(window_render, camera);
   }
 
   for (auto const &capturable : capturablesVista) {
-//    capturable.second->set_texture(window_render);
-
     capturable.second->draw(window_render, camera);
   }
 
   for (auto const &bullet : bulletsVista) {
-//    bullet.second->getView()->set_texture(window_render);
-
     bullet.second->draw(window_render, camera);
   }
 
@@ -293,10 +284,10 @@ BuildingView* View::getBuildingView(const BuildID &id) {
   return buildsVista.at(id);
 }
 
-void View::removeBuildView(const BuildID &id) {
-  delete buildsVista.at(id);
-  buildsVista.erase(id);
-}
+//void View::removeBuildView(const BuildID &id) {
+//  delete buildsVista.at(id);
+//  buildsVista.erase(id);
+//}
 
 //void View::addBuildView(const BuildID &id, Image *buildView) {
 //  buildsVista.emplace(id, buildView);

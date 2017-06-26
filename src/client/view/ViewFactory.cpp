@@ -530,12 +530,13 @@ Sprite* ViewFactory::getVehicleTopFireVista(const UnitType &type,
 }
 
 BuildingView* ViewFactory::getBuildingVista(const BuildType &type,
-                                     const std::string &color,
-                                     const Position &pos) {
+                                            const std::string &techLevel,
+                                            const std::string &color,
+                                            const Position &pos) {
   switch (type) {
     case FORT: return new FortView(pos, color); break;
-    case ROBOTF: return new RobotFView(pos, color); break;
-    case VEHICLEF: return new VehicleFView(pos, color); break;
+    case ROBOTF: return new RobotFView(techLevel, pos, color); break;
+    case VEHICLEF: return new VehicleFView(techLevel, pos, color); break;
     default: return nullptr;
   }
 }

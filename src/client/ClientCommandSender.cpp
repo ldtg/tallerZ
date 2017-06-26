@@ -1,13 +1,13 @@
-#include "clientCommandSender.h"
+#include "ClientCommandSender.h"
 
-clientCommandSender::clientCommandSender(Socket &socket,
-                                         Queue<clientCommand *> &queue)
+ClientCommandSender::ClientCommandSender(Socket &socket,
+                                         Queue<ClientCommand *> &queue)
     : socket(socket), queue(queue), open(true) {}
 
-void clientCommandSender::run() {
+void ClientCommandSender::run() {
   try {
     while (open) {
-      clientCommand *cmd = queue.pop();
+      ClientCommand *cmd = queue.pop();
 
       if (cmd != nullptr) {
         CommandType type = cmd->getType();
@@ -23,14 +23,14 @@ void clientCommandSender::run() {
   }
 }
 
-void clientCommandSender::stop() {
+void ClientCommandSender::stop() {
   socket.shutdownConnection(ShutdownMode::WRITE);
   open = false;
 }
 
-bool clientCommandSender::isOpen() const {
+bool ClientCommandSender::isOpen() const {
   return open;
 }
 
-clientCommandSender::~clientCommandSender() {
+ClientCommandSender::~ClientCommandSender() {
 }

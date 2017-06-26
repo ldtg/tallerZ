@@ -75,7 +75,7 @@ class View {
   void addBulletView(const BulletID &id, BulletView *bulletView);
 
   BuildingView *getBuildingView(const BuildID &id);
-  void removeBuildView(const BuildID &id);
+//  void removeBuildView(const BuildID &id);
 //  void addBuildView(const BuildID &id, Image *buildView);
 
   Sprite *getCapturedView(const CapturableID &id);

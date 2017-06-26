@@ -2,8 +2,8 @@
 #define TALLERZ_CLIENTUNITCAPTURECOMMAND_H
 
 #include <common/DataCommands/Unit/dataUnitCaptureCommand.h>
-#include <client/model/Commands/clientCommand.h>
-class clientUnitCaptureCommand : public clientCommand {
+#include <client/model/Commands/ClientCommand.h>
+class clientUnitCaptureCommand : public ClientCommand {
  private:
   dataUnitCaptureCommand data;
  public:
