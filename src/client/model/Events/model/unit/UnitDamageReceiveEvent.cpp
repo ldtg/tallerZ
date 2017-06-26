@@ -4,5 +4,6 @@ UnitDamageReceiveEvent::UnitDamageReceiveEvent(UnitID id, UnitState state)
 
 void UnitDamageReceiveEvent::process() {
   model->getMap().updateUnit(id, state);
+  std::cerr<<state.healthPercent<<std::endl;
 }
 

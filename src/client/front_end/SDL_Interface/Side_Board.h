@@ -4,7 +4,7 @@
 #include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_image.h>
 #include <string>
-#include <client/view/Window.h>
+#include <client/view/MainWindow.h>
 #include <client/view/Texture.h>
 #include <client/view/ObjectView.h>
 #include <client/front_end/SDL_Interface/Buttons/Quit_Button.h>
@@ -19,7 +19,7 @@ class Side_Board : public ObjectView {
   const std::string path = "../src/client/front_end/Images/Interface/interface.png";
   const std::string folder_path = "../src/client/front_end/Images/Interface/";
 
-  Window *window;
+  MainWindow *window;
   View &view;
   Button *quit_button = NULL;
 
@@ -38,7 +38,7 @@ class Side_Board : public ObjectView {
   const SDL_Rect weapon_label_rect = {698, 232, 100, 18};
 
  public:
-  Side_Board(Window *window, View &view, const std::string &color);
+  Side_Board(MainWindow *window, View &view, const std::string &color);
 
   ~Side_Board();
 

@@ -9,7 +9,7 @@
  */
 Production_Menu::Production_Menu(const BuildID buildID,
                                  const BuildState &buildState,
-                                 Window &window, Model &model,
+                                 MainWindow &window, Model &model,
                                  int x, int y)
     : buildID(buildID), window(window),
       model(model), buildState(buildState) {

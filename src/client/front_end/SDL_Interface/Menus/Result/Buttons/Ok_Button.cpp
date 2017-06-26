@@ -3,7 +3,7 @@
 //
 
 #include "Ok_Button.h"
-Ok_Button::Ok_Button(Window *window, View &view, const SDL_Rect &rect) : view(view){
+Ok_Button::Ok_Button(MainWindow *window, View &view, const SDL_Rect &rect) : view(view){
   this->window = window;
   this->renderQuad = rect;
   this->load_texture_up(path_up);

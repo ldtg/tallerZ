@@ -4,7 +4,7 @@
  * Constructor
  * @param window : ventana sobre la que se realiza el click (generalmente: Main_Window)
  */
-Button::Button(Window *window) {
+Button::Button(MainWindow *window) {
   this->window = window;
 }
 

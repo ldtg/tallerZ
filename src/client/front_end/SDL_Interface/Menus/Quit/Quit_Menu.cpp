@@ -1,6 +1,6 @@
 #include <client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h>
 
-Quit_Menu::Quit_Menu(Window &window, View &view) : view(view), window(window) {
+Quit_Menu::Quit_Menu(MainWindow &window, View &view) : view(view), window(window) {
   this->renderQuad = {344, 270, 112, 60};
   this->background = new Texture(background_path.c_str(), &window);
   this->background->renderize(&window, &renderQuad);

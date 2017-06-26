@@ -8,7 +8,7 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include "Window.h"
+#include "MainWindow.h"
 #include "ObjectView.h"
 
 /**
@@ -26,21 +26,21 @@ class Texture : public ObjectView{
   SDL_Texture * texture;
   SDL_Rect renderQuad;
  public:
-  Texture(const std::string& path, const Window * window);
+  Texture(const std::string& path, const MainWindow * window);
 
-  Texture(const std::string& path, const Window * window, const SDL_Rect& rect);
+  Texture(const std::string& path, const MainWindow * window, const SDL_Rect& rect);
 
-  Texture(SDL_Surface* surface, const Window * window);
+  Texture(SDL_Surface* surface, const MainWindow * window);
 
-  Texture(const Window * window);
+  Texture(const MainWindow * window);
 
   ~Texture();
 
   void load_texture(const std::string& path, SDL_Window * window);
 
-  void renderize(const Window * window);
+  void renderize(const MainWindow * window);
 
-  void renderize(const Window * window, const SDL_Rect* renderQuad);
+  void renderize(const MainWindow * window, const SDL_Rect* renderQuad);
 
   SDL_Texture * get_texture() const;
 

@@ -84,9 +84,7 @@ int main(int argc, char *argv[]) {
       }
       view.tick();
     }
-    while (!eventQueue.empty()) {
-      delete (eventQueue.pop());
-    }
+
     commandsQueue.push(nullptr);
     commandSender.stop();
     eventReceiver.stop();

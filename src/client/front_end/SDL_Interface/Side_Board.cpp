@@ -1,7 +1,7 @@
 #include "Side_Board.h"
 #include <client/view/View.h>
 
-Side_Board::Side_Board(Window *window, View &view, const std::string &color) :
+Side_Board::Side_Board(MainWindow *window, View &view, const std::string &color) :
     window(window), view(view), color(color) {
   this->side_board_texture = new Texture(path, window);
   this->side_board_texture->renderize(window);

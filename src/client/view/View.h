@@ -5,7 +5,7 @@ class EventHandler;
 class Model;
 //class Quit_Menu;
 #include "common/Map/Map.h"
-#include "Window.h"
+#include "MainWindow.h"
 #include <string>
 #include <client/front_end/SDL_Interface/Menus/Production/Production_Menu.h>
 #include <client/front_end/SDL_Interface/Side_Board.h>
@@ -21,7 +21,7 @@ class Model;
 
 class View {
  private:
-  Window window;
+  MainWindow window;
   Camera &camera;
   Menu * menu = nullptr;
   Side_Board * side_board = nullptr;

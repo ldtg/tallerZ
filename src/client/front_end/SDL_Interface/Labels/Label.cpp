@@ -9,7 +9,7 @@
  * @param text : Texto del label
  * @param rect : Posicion y area del label
  */
-Label::Label(Window &window, const std::string &text,
+Label::Label(MainWindow &window, const std::string &text,
              const SDL_Rect &rect, TTF_Font *font) : window(window),
                                                      font(font) {
 

@@ -1,15 +1,14 @@
-#include "Window.h"
+#include "MainWindow.h"
 #include <SDL2/SDL_image.h>
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
 #include <SDL2/SDL_mixer.h>
 
-Window::Window() {
+MainWindow::MainWindow() {
   width = WINDOWWIDHT;
   height = WINDOWHEIGHT;
 
-  SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+  SDL_Init(SDL_INIT_VIDEO);
   IMG_Init(IMG_INIT_PNG);
-//  Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 
   window = SDL_CreateWindow("TALLERZ",
                             SDL_WINDOWPOS_CENTERED,
@@ -47,32 +46,31 @@ Window::Window() {
 //  SDL_SetWindowGrab(window, SDL_TRUE);
 }
 
-Window::~Window() {
+MainWindow::~MainWindow() {
   SDL_DestroyRenderer(window_render);
   SDL_DestroyWindow(window);
 
   IMG_Quit();
   SDL_Quit();
-//  Mix_Quit();
 }
 
-SDL_Renderer* Window::getRender() const {
+SDL_Renderer* MainWindow::getRender() const {
     return window_render;
 }
 
-SDL_Window *Window::getWindow() const {
+SDL_Window *MainWindow::getWindow() const {
     return this->window;
 }
 
-int Window::getWidth() const {
+int MainWindow::getWidth() const {
   return WINDOWWIDHT;
 }
 
-int Window::getHeight() const {
+int MainWindow::getHeight() const {
   return WINDOWHEIGHT;
 }
 
-void Window::update() {
+void MainWindow::update() {
     SDL_UpdateWindowSurface(this->window);
 }
 

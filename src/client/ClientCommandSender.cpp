@@ -33,4 +33,7 @@ bool ClientCommandSender::isOpen() const {
 }
 
 ClientCommandSender::~ClientCommandSender() {
+  while (!queue.empty()) {
+    delete (queue.pop());
+  }
 }

@@ -20,7 +20,7 @@ class Production_Menu : public Menu {
  private:
   const int width = 111;
   const int length = 79;
-  Window &window;
+  MainWindow &window;
   Model &model;
   const BuildID buildID;
   BuildState buildState;
@@ -60,7 +60,7 @@ class Production_Menu : public Menu {
  public:
   Production_Menu(const BuildID buildID,
                   const BuildState &buildState,
-                  Window &window,
+                  MainWindow &window,
                   Model& model,
                   int x, int y);
 

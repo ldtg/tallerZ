@@ -91,8 +91,8 @@ set(SOURCE_FILES
 
         src/client/view/Texture.cpp
         src/client/view/Texture.h
-        src/client/view/Window.cpp
-        src/client/view/Window.h
+        src/client/view/MainWindow.cpp
+        src/client/view/MainWindow.h
         src/client/view/Image.cpp
         src/client/view/Image.h
         src/client/view/ObjectView.cpp

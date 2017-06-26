@@ -24,4 +24,8 @@ void ClientEventReceiver::stop() {
 bool ClientEventReceiver::isOpen() const {
   return open;
 }
-ClientEventReceiver::~ClientEventReceiver() {}
+ClientEventReceiver::~ClientEventReceiver() {
+  while (!queue.empty()) {
+    delete (queue.pop());
+  }
+}

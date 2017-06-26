@@ -1,6 +1,6 @@
 #include "Defeat.h"
 
-Defeat::Defeat(Window &window, View &view) : view(view), window(window){
+Defeat::Defeat(MainWindow &window, View &view) : view(view), window(window){
   this->renderQuad = {288, 240, 224, 120};
   this->background = new Texture(background_path.c_str(), &window);
   this->background->renderize(&window, &renderQuad);
