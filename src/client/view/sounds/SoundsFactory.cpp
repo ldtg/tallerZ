@@ -21,7 +21,6 @@ Sound* SoundsFactory::getBulletHitSound(WeaponType type) {
   std::string type_s;
 
   switch (type) {
-//    case BULLET: type_s = "bullet_hit";break;
     case ROCKET: type_s = "rocket_hit";break;
     case HCBULLET: type_s = "hcbullet_hit";break;
     default: return nullptr;

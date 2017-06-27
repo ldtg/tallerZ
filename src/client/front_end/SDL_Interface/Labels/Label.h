@@ -1,7 +1,3 @@
-//
-// Created by darius on 23/05/17.
-//
-
 #ifndef TALLERZ_LABEL_H
 #define TALLERZ_LABEL_H
 

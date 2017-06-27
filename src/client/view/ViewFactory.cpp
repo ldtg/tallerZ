@@ -10,7 +10,6 @@
 #include "client/view/building/VehicleFView.h"
 #include <random>
 #include <iostream>
-#include <map>
 
 Image* ViewFactory::getTerrainVista(const TerrainType &type,
                                     const Position &pos) {

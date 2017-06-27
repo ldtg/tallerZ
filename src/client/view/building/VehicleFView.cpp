@@ -50,7 +50,7 @@ void VehicleFView::destroyed() {
   deathEffects.push_back(deathEffect2);
 
   Sprite *deathEffect3 = ViewFactory::getEffectVista(BIG_SMOKE, pos);
-  deathEffect3->setPos(pos.add(3 * BUILDWIDHT / 4 - 35, -15));
+  deathEffect3->setPos(pos.add(3 * BUILDWIDHT / 4 - 35, 0).sub(0,15));
   deathEffects.push_back(deathEffect3);
 
   Sprite *deathEffect4 = ViewFactory::getEffectVista(FIRE_SMOKE, pos);

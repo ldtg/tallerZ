@@ -1,7 +1,3 @@
-//
-// Created by darius on 15/06/17.
-//
-
 #include "clientLobby.h"
 void clientLobby::load_glade_file(const std::string &file) {
   try {

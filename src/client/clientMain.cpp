@@ -43,15 +43,13 @@ int main(int argc, char *argv[]) {
 
   try {
     socket.connectToServer(ld.ip, ld.port);
-    //socket.connectToServer(argv[1], argv[2]);
   } catch (const SocketException &e) {
     std::cerr << "No se pudo conectar al servidor" << std::endl;
     return 0;
   }
 
   try {
-    sendPlayerConnected(socket, std::stoi(ld.team), ld.map);
-    //sendPlayerConnected(socket, std::stoi(argv[3]), argv[4]);
+    sendPlayerConnected(socket, (unsigned short) std::stoi(ld.team), ld.map);
     dataServerClientAccepted accepted = getDataClientAccepted(socket);
 
     Map map = getMap(socket);
@@ -100,6 +98,7 @@ int main(int argc, char *argv[]) {
     eventReceiver.join();
   } catch (const SocketException &e) {
     std::cerr << "Servidor desconectado" << std::endl;
+
     return 0;
   }
   return 0;

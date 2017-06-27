@@ -89,7 +89,6 @@ SDL_Texture *Texture::get_texture() const {
  */
 void Texture::renderize(const MainWindow * window, const SDL_Rect* renderQuad) {
   SDL_RenderCopy(window->getRender(), this->texture, NULL, renderQuad);
-  //SDL_RenderPresent( window->getRender()); TODO Ver si esto sirve
 }
 /**
  * renderize: renderiza la textura de modo que se carga en la window

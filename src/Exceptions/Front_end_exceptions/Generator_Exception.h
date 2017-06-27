@@ -1,7 +1,3 @@
-//
-// Created by darius on 23/04/17.
-//
-
 #ifndef TALLER_Z_FRONT_END_EXCEPTIONS_H
 #define TALLER_Z_FRONT_END_EXCEPTIONS_H
 

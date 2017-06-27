@@ -137,4 +137,5 @@ Event *EventFactory::createEvent(const EventType &type, std::stringstream &ss) {
       return new EndGameEvent(data.winner);
     }
   }
+  return nullptr; //nunca deberia llegar todos los casos cubiertos
 }

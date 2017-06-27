@@ -1,7 +1,3 @@
-//
-// Created by darius on 24/05/17.
-//
-
 #include "Salir_Button.h"
 void Salir_Button::button_launch() {
   this->view.setQuit();

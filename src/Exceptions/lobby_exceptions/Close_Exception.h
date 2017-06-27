@@ -1,7 +1,3 @@
-//
-// Created by darius on 17/06/17.
-//
-
 #ifndef TALLERZ_CLIENTE_CLOSE_EXCEPTION_H
 #define TALLERZ_CLIENTE_CLOSE_EXCEPTION_H
 

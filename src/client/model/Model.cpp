@@ -31,7 +31,6 @@ void Model::leftClick(int x, int y) {
     UnitID unit = map.getUnitIDFromPosition(pos, unitSearchRange);
     if (map.getUnitState(unit).owner == player) {
       unitsSelected.push_back(unit);
-      unsigned short health = map.getUnitState(unit).healthPercent;
       view.show_unit_side_details(unit);
     }
   } catch (const UnitNotFoundException &e) {
@@ -83,7 +82,6 @@ void Model::rightClick(int x, int y) {
       // Se selecciona la unidad capturada.
       UnitID unit = map.getUnitIDFromPosition(pos, unitSearchRange);
       unitsSelected.push_back(unit);
-      unsigned short health = map.getUnitState(unit).healthPercent;
       view.show_unit_side_details(unit);
     }
     return;

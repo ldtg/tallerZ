@@ -1,4 +1,4 @@
-#include <client/view/Sprite.h>
+
 #include <client/view/sounds/SoundsFactory.h>
 #include "BuildDestroyedEvent.h"
 #define BUILDWIDHT 100

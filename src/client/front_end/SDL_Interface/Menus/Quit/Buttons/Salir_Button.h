@@ -1,7 +1,3 @@
-//
-// Created by darius on 24/05/17.
-//
-
 #ifndef TALLERZ_QUIT_BUTTON_H
 #define TALLERZ_QUIT_BUTTON_H
 

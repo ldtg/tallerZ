@@ -3,7 +3,6 @@
 
 class EventHandler;
 class Model;
-//class Quit_Menu;
 #include "common/Map/Map.h"
 #include "MainWindow.h"
 #include <string>
@@ -28,8 +27,6 @@ class View {
   EventHandler &eventHandler;
   std::string playerColor;
   bool _quit;
-//  SoundPlayer soundPlayer;
-
   std::map<Position, Image*> terrainsVista;
   std::map<TerrainObjectID, Image*> terrainObjectsVista;
   std::map<BuildID, BuildingView*> buildsVista;
@@ -75,9 +72,6 @@ class View {
   void addBulletView(const BulletID &id, BulletView *bulletView);
 
   BuildingView *getBuildingView(const BuildID &id);
-//  void removeBuildView(const BuildID &id);
-//  void addBuildView(const BuildID &id, Image *buildView);
-
   Sprite *getCapturedView(const CapturableID &id);
   void addCapturableView(const CapturableID &id,
                          Sprite *capturableView);
@@ -86,11 +80,8 @@ class View {
   void addExplosionView(ExplosionView *explosionView);
   void addEffectView(Sprite *effectView);
 
-//  SoundPlayer& getSoundPlayer();
-
   Menu *get_present_menu();
   void load_side_board(Model& model){
-    //MainWindow *window, View &view, Model& model, const std::string &color
     this->side_board = new Side_Board(&window, *this, model, playerColor);
 
   }

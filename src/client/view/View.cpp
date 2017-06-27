@@ -1,9 +1,5 @@
 #include "View.h"
-#include "ViewPosition.h"
-#include "client/view/unit/VehicleView.h"
 #include <random>
-#include <client/model/Model.h>
-#include <thread>
 #include <client/front_end/SDL_Interface/Menus/Result/Victory.h>
 #include <client/front_end/SDL_Interface/Menus/Result/Defeat.h>
 
@@ -16,7 +12,6 @@ View::View(const Map &map,
       camera(camera),
       playerColor(player_color) {
   _quit = false;
-//  soundPlayer.start();
 
   createInitialTerrainView(map.getMap());
   createInitialTerrainObjectView(map.getTerrainObjects());
@@ -53,9 +48,6 @@ View::~View() {
   }
   delete this->side_board;
   if (menu != nullptr) { delete this->menu; }
-
-//  soundPlayer.stop();
-//  soundPlayer.join();
 }
 
 void View::createInitialTerrainView(const std::map<Position, Tile> &map) {
@@ -285,15 +277,6 @@ BuildingView* View::getBuildingView(const BuildID &id) {
   return buildsVista.at(id);
 }
 
-//void View::removeBuildView(const BuildID &id) {
-//  delete buildsVista.at(id);
-//  buildsVista.erase(id);
-//}
-
-//void View::addBuildView(const BuildID &id, Image *buildView) {
-//  buildsVista.emplace(id, buildView);
-//}
-
 Sprite *View::getCapturedView(const CapturableID &id) {
   return capturablesVista.at(id);
 }
@@ -323,10 +306,6 @@ void View::addEffectView(Sprite *effectView) {
 
   effectsVista.push_back(effectView);
 }
-
-//SoundPlayer& View::getSoundPlayer() {
-//  return soundPlayer;
-//}
 
 void View::load_production_menu(const BuildID &factoryID,
                                 const BuildState &buildState,

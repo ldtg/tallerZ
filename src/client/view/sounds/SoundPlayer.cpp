@@ -13,11 +13,7 @@ void SoundPlayer::add(Sound *sound) {
 void SoundPlayer::run() {
   while (open) {
     while (!sounds.empty()) {
-//      std::cout << sounds.capacity() << std::endl;
-
       Sound *sound = sounds[0];
-//      std::cout << sound->getPath() << std::endl;
-
       sound->play();
       delete sound;
       sounds.erase(sounds.begin());

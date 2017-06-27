@@ -53,7 +53,6 @@ void VehicleView::still() {
 }
 
 void VehicleView::fire(const Position &huntedPos) {
-//  UnitView::fire(huntedPos);
   // Llego, entonces se vacia la cola de movimientos.
   while (!movements.empty()) {movements.pop();}
 
