@@ -4,6 +4,11 @@
 #include <SDL2/SDL.h>
 #include "ObjectView.h"
 
+/**
+ * @class Image
+ * Modela una sola imagen. Se utiliza para encapsular la clase SDL_Texture
+ * de SDL haciendo uso del patrón de diseño RAII.
+ */
 class Image : public ObjectView {
  private:
   SDL_Surface *surface;

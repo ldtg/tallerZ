@@ -6,6 +6,10 @@
 #include "ObjectView.h"
 #include "Image.h"
 
+/**
+ * class Sprite
+ * Representa una animación.
+ */
 class Sprite : public ObjectView {
  protected:
   int num_frames;
@@ -27,12 +31,21 @@ class Sprite : public ObjectView {
 
   bool doCycle() const;
   std::string getColor() const;
+  /**
+   * @return la posición donde se dibuja la imagen (distinta de la posición en el modelo)
+   * ya que estas se dibujan de la esquina superior izquierda y para que coincida el
+   * medio de la imagen con la posición del modelo, estas se deben desplazar.
+   */
   ViewPosition getDrawPosition() const;
   void setRotation(double rotation);
   int getCurFrame() const;
   void setDesp(const int despX, const int despY);
   void set_texture(SDL_Renderer *render);
   void scale(float scaleW, float scaleH);
+  /**
+   * Maneja la lógica de que imagen mostrar, en base al frame actual y
+   * la velocidad de la animación.
+   */
   virtual void draw(SDL_Renderer *render, Camera &camera);
 };
 

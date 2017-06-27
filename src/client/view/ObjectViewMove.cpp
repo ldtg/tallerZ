@@ -50,6 +50,8 @@ void ObjectViewMove::update() {
     }
 
     int rotation = view->getDrawRotation();
+    // Cuando realiza el primer movimiento se le debe avisar a la unidad,
+    // porque si la rotacion no cambia esta no cambia la imagen a una de "walk".
     if (state.isStill() || state.isAttacking()) {
       walk(rotation, currentPos);
       state.moving();

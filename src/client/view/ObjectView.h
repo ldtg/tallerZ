@@ -6,6 +6,11 @@
 #include "Camera.h"
 #include "ViewPosition.h"
 
+/**
+ * @class: ObjectView
+ * Clase abstracta que representan las imágenes del juego, tanto animaciones
+ * como imágenes fijas.
+ */
 class ObjectView {
  protected:
   int width;
@@ -40,6 +45,11 @@ class ObjectView {
 
   virtual void scale(float scaleW, float scaleH) = 0;
   virtual void set_texture(SDL_Renderer *render) = 0;
+  /**
+   * Este método es llamado a la hora de mostrar las imágenes.
+   * @param render render sobre el cual se dibujaran todas las imagenes.
+   * @param camera solo se dibujaran las imagenes que esten dentro de la camara.
+   */
   virtual void draw(SDL_Renderer *render, Camera &camera) = 0;
 };
 

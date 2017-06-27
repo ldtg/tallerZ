@@ -17,6 +17,14 @@ class Model;
 #include "client/view/bullet/BulletView.h"
 #include <client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h>
 
+/**
+ * @class View:
+ * Contiene todos los objetos a ser dibujados.
+ * Procesa los eventos provenientes del controlador y del server.
+ * Actualiza los objetos que requieren ser actualizados
+ * (unidades, balas y explosiones)
+ * Dibuja todos los objetos del juego.
+ */
 class View {
  private:
   MainWindow window;
@@ -44,11 +52,38 @@ class View {
   void createInitialCapturableView(const std::map<CapturableID,
                                    CapturableState> &capturables);
 
+/**
+ * Una vez que la explosion ya dibujo todas las imagenes
+ * que la representan, esta es eliminada.
+ */
   void updateExplosions();
+
+ /**
+ * Por cada tick() de la vista se actualiza esta (procesando los eventos previamente).
+  * Esto incluye:
+ * - mover unidades y balas
+ * - actualizar explosiones.
+ */
   void update();
+
+/**
+ * Dibuja todas las imagenes de los objetos en el mapa, el side_board
+ * y menues de produccion en caso que haya.
+ */
   void draw();
 
  public:
+
+/**
+ * Constructor
+ * @param map : mapa del juego, se utiliza para mostrar la vista inicial
+ * del mapa. Luego sera actualizado por los eventos.
+ * @param eventHandler : se obtienen de él los eventos a ser procesados.
+ * @param camera : aquellos objetos dentro de la camara seran dibujados.
+ * Sino seran ignorados.
+ * @param camera : aquellos objetos dentro de la camara seran dibujados.
+ * Este constructor genera la vista inicial del mapa.
+ */
   View(const Map &map, EventHandler &eventHandler,
        Camera &camera, const std::string& player_color);
   ~View();
@@ -97,6 +132,10 @@ class View {
   void show_victory();
   void show_defeat();
 
+ /**
+ * Avanza un paso la vista, la cantidad de veces que lo hace
+  * por segundo lo define la variable fps.
+ */
   void tick();
 };
 

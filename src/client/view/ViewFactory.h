@@ -15,6 +15,13 @@
 #include "client/view/building/BuildingView.h"
 #include "client/view/building/BuildingEffectType.h"
 
+/**
+ * @class ViewFactory
+ * Crea cualquier imagen del juego. Determina de acuerdo al tipo pasado por parámetro
+ * el path de la imagen, la cantidad de frames, la velocidad, el desplazamiento y
+ * demas atributos de la animación, devolviendo un Sprite o Image válido que represente
+ * a ese tipo.
+ */
 class ViewFactory {
  public:
   static Image *getTerrainVista(const TerrainType &type,

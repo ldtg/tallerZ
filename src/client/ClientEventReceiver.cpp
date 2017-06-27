@@ -19,6 +19,7 @@ void ClientEventReceiver::run() {
 }
 void ClientEventReceiver::stop() {
   open = false;
+  srvSocket.shutdownConnection(ShutdownMode::READ);
 }
 bool ClientEventReceiver::isOpen() const {
   return open;

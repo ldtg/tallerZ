@@ -8,6 +8,10 @@
 #define WINDOWWIDHT 800
 #define WINDOWHEIGHT 600
 
+/**
+ * @class MainWindow
+ * Representa la ventana del juego. Sobre la cual se dibujan las imágenes.
+ */
 class MainWindow {
  private:
   SDL_Window *window;
