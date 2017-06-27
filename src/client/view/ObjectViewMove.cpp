@@ -69,10 +69,6 @@ void ObjectViewMove::update() {
       view->setPos(viewPosTo);
     }
 
-    std::cout << "ROT" << std::endl;
-    std::cout << rotation << std::endl;
-    std::cout << newRotation << std::endl;
-    std::cout << " " << std::endl;
   }
 }
 ObjectViewMove::~ObjectViewMove() {
