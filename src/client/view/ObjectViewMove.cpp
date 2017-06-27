@@ -51,13 +51,6 @@ void ObjectViewMove::update() {
 
     int rotation = view->getDrawRotation();
     if (state.isStill() || state.isAttacking()) {
-
-//      std::cout << "WALK" << std::endl;
-//      std::cout << currentPos.getX() << " " << currentPos.getY() << std::endl;
-//      std::cout << posTo.getX() << " " << posTo.getY() << std::endl;
-//      std::cout << " " << std::endl;
-//      std::cout << "movs: " << movements.size() << std::endl;
-
       walk(rotation, currentPos);
       state.moving();
     }
@@ -68,7 +61,6 @@ void ObjectViewMove::update() {
     } else {
       view->setPos(viewPosTo);
     }
-
   }
 }
 ObjectViewMove::~ObjectViewMove() {
