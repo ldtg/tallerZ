@@ -8,7 +8,8 @@ TerrainObject::TerrainObject(const TerrainObjectData &data,
       passable(data.passable), owner(owner) {}
 
 Position TerrainObject::getAttackPosition(const Position &attacker) const {
-  return centerPosition.getAttackPosition(attacker, size + 1);
+  return centerPosition.getAttackPosition(attacker,
+                                          (unsigned short) (size + 1));
 }
 
 void TerrainObject::receiveAttack(const Weapon &weapon) {

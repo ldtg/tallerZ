@@ -38,8 +38,8 @@ BulletState Bullet::getState() const {
 }
 
 bool Bullet::didHit() const {
-  if (weapon.speed == 0) return true;
-  return currentPosition == target->getAttackPosition(currentPosition);
+  return weapon.speed == 0
+      || currentPosition == target->getAttackPosition(currentPosition);
 }
 
 Bullet::~Bullet() {}

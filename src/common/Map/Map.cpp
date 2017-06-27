@@ -55,27 +55,6 @@ Tile Map::getTile(const Position &position) const {
   return map.at(this->getTilePositionFromRealPosition(position));
 }
 
-bool Map::isUnitIn(const Position &position) const {
-  for (auto const &unit : units) {
-    Position curPos = unit.second.position;
-    bool
-        in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
-    if (in)
-      return true;
-  }
-  return false;
-}
-
-std::pair<UnitID, UnitState> Map::getUnit(const Position &position) {
-  for (auto const &unit : units) {
-    Position curPos = unit.second.position;
-    bool
-        in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
-    if (in)
-      return unit;
-  }
-}
-
 bool Map::canPass(const Position &positionFrom,
                   const Position &positionTo) const {
   return this->getTile(positionTo).isPassable();
@@ -108,10 +87,6 @@ const std::map<CapturableID, CapturableState> &Map::getCapturables() const {
 const std::map<TerrainObjectID,
                TerrainObjectState> &Map::getTerrainObjects() const {
   return terrainObject;
-}
-
-void Map::setUnits(const std::map<UnitID, UnitState> &units) {
-  Map::units = units;
 }
 
 void Map::addUnit(const UnitID &unitID, const UnitState &unitState) {
@@ -212,6 +187,7 @@ Position Map::getNeighborFreePos(const Position &tileC) {
       return tile.getCenterPosition();
     }
   }
+  return tileC;//por el generador de mapa nunca deberia llegar aca
 }
 bool Map::diagPassable(const Position &center, const Position &diag) const {
   std::vector<Position> diagNeigh = center.getNeighborsOfDiagonal(diag);

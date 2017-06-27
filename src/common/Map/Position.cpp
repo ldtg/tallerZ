@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <sstream>
 #include <iostream>
-#include <cmath>
 #include "Position.h"
 
 Position::Position() : x(0), y(0) {}
@@ -10,48 +9,13 @@ Position::Position(long x, long y)
     : x(x), y(y) {}
 
 unsigned long Position::chebyshevDistance(const Position &other) const {
-  long
-      distanceX = std::max(this->x, other.x) - std::min(this->x, other.x);
-  long
-      distanceY = std::max(this->y, other.y) - std::min(this->y, other.y);
-  return std::max(distanceX, distanceY);
-}
-
-unsigned long Position::manhattanDistance(const Position &other) const {
-  long
-      distanceX = std::max(this->x, other.x) - std::min(this->x, other.x);
-  long
-      distanceY = std::max(this->y, other.y) - std::min(this->x, other.x);
-  return (distanceX + distanceY);
-}
-
-unsigned long Position::euclideanDistance(const Position &other) const {
-  unsigned long aux =
+  unsigned long aux =(unsigned long)
       std::max(std::labs(this->x - other.x), std::labs(this->y - other.y));
   return aux;
 }
 
 bool Position::operator==(const Position &other) const {
   return this->x == other.x && this->y == other.y;
-}
-
-std::vector<Position> Position::getNeighbors() const {
-  std::vector<Position> neighbors;
-  neighbors.push_back(Position(x + 1, y));
-  neighbors.push_back(Position(x, y + 1));
-  neighbors.push_back(Position(x + 1, y + 1));
-  if (x != 0) {
-    neighbors.push_back(Position(x - 1, y + 1));
-    neighbors.push_back(Position(x - 1, y));
-    if (y != 0) {
-      neighbors.push_back(Position(x - 1, y - 1));
-    }
-  }
-  if (y != 0) {
-    neighbors.push_back(Position(x, y - 1));
-    neighbors.push_back(Position(x + 1, y - 1));
-  }
-  return neighbors;
 }
 
 bool Position::operator<(const Position &other) const {
@@ -62,10 +26,6 @@ bool Position::operator<(const Position &other) const {
 
 bool Position::isIn(long width, long height) {
   return (x < width) && (y < height);
-}
-
-bool Position::isIn(long width, long height, int otherX, int otherY) const {
-  return (otherX <= x <= otherX + width) && (otherY <= y <= otherY + height);
 }
 
 void Position::mod(unsigned short modx, unsigned short mody) {
@@ -128,12 +88,6 @@ bool Position::equalDelta(const Position &other, unsigned short delta) const {
   return std::sqrt(xdelta + ydelta) <= delta;
 }
 
-std::string Position::toString() const {
-  std::stringstream aux;
-  aux << x << ", " << y;
-  return aux.str();
-}
-
 long Position::getX() const {
   return x;
 }
@@ -154,7 +108,7 @@ Position Position::getAttackPosition(const Position &position,
   Position attacker = position;
   Position attacked = Position(x, y);
   Position attackedBase = Position(x, y);
-  while (attackedBase.euclideanDistance(attacked) < size) {
+  while (attackedBase.chebyshevDistance(attacked) < size) {
     attacked.move(attacker);
   }
   return attacked;

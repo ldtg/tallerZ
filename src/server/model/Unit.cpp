@@ -1,6 +1,5 @@
 #include "Unit.h"
 #include "Data.h"
-#include <algorithm>
 
 Unit::Unit(const Position &current,
            const UnitData &unitData,
@@ -9,7 +8,7 @@ Unit::Unit(const Position &current,
     : owner(&owner), team(team),
       currentPosition(current),
       weapon(unitData.weapon),
-      attackCounterBase(data.getTickAmount(unitData.secsUntilFire)),
+      attackCounterBase((unsigned short) data.getTickAmount(unitData.secsUntilFire)),
       attackCounterActual(attackCounterBase),
       baseSpeed(unitData.speed),
       range(unitData.range * data.rangeMultipliquer),
@@ -116,13 +115,13 @@ bool Unit::hasDamagesToReceive() const {
 }
 
 bool Unit::isInRange(Attackable *other) const {
-  return this->currentPosition.euclideanDistance(other->getAttackPosition(
+  return this->currentPosition.chebyshevDistance(other->getAttackPosition(
       currentPosition)) < range;
 }
 
 bool Unit::attackedInRange() const {
   Position huntedPos = hunted->getAttackPosition(currentPosition);
-  unsigned long distance = currentPosition.euclideanDistance(huntedPos);
+  unsigned long distance = currentPosition.chebyshevDistance(huntedPos);
   bool b = distance < range;
   return b;
 }

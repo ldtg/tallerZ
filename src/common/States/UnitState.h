@@ -6,9 +6,6 @@
 #include <common/Map/Position.h>
 #include <common/Types/UnitType.h>
 
-#define UNITWIDHT 16
-#define UNITHEIGHT 16
-
 struct UnitState {
  public:
   PlayerID owner;

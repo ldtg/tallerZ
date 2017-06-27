@@ -28,14 +28,13 @@ class Map {
   bool diagPassable(const Position &center, const Position &diag) const;
  public:
   Map();
-  //Para mapas de prueba sin edificios
   Map(const std::map<Position, Tile> &map,
       const std::map<BuildID, BuildState> &builds,
       std::map<CapturableID, CapturableState> capturables,
       const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
       std::map<UnitID, UnitState> units,
       unsigned short width,
-      unsigned short height); //El que usa Game_Loader
+      unsigned short height);
 
   ~Map();
 
@@ -59,8 +58,6 @@ class Map {
   void removeCapturable(const CapturableID &id);
 
   Tile getTile(const Position &position) const;
-  std::pair<UnitID, UnitState> getUnit(const Position &position);
-  bool isUnitIn(const Position &position) const;
 
   // para saber si se puede mover o atacar desde esa posicion
   // hasta la otra (no hay nada en el medio onda estructuras o algo)
@@ -89,7 +86,6 @@ class Map {
   Position getNeighborFreePos(const Position &tileCenterPos);
 
   //Para crear el mapa
-  void setUnits(const std::map<UnitID, UnitState> &units);
   int getWidht() const;
   int getHeight() const;
 

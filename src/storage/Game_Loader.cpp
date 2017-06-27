@@ -92,12 +92,7 @@ Position_Data Game_Loader::read_data(int position) {
 Map_Config Game_Loader::get_configuration() {
   return this->configuration;
 }
-void Game_Loader::set_players() {
-  for (int i = 0; i < configuration.players; i++) {
-    Player *player = new Player((PlayerColor) i);
-    players[player->getID()] = player;
-  }
-}
+
 void Game_Loader::assign_robot_factory(const Position_Data &position_data,
                                        Player &player,
                                        Team &team) {
@@ -106,7 +101,7 @@ void Game_Loader::assign_robot_factory(const Position_Data &position_data,
             centered_position(position_data.x, position_data.y),
             player,
             team,
-            configuration.factories_level);
+            (const unsigned short) configuration.factories_level);
 
   buildmap.emplace(build->getId(), build->getBuildState());
   territory_buildings[position_data.territory].push_back(build);
@@ -126,7 +121,7 @@ void Game_Loader::assign_fort(const Position_Data &position_data,
             centered_position(position_data.x, position_data.y),
             player,
             team,
-            configuration.factories_level);
+            (const unsigned short) configuration.factories_level);
   buildmap.emplace(build->getId(), build->getBuildState());
   builds.emplace(build->getId(), build);
 }
@@ -138,14 +133,13 @@ void Game_Loader::assign_vehicle_factory(const Position_Data &position_data,
             centered_position(position_data.x, position_data.y),
             player,
             team,
-            configuration.factories_level);
+            (const unsigned short) configuration.factories_level);
   buildmap.emplace(build->getId(), build->getBuildState());
   territory_buildings[position_data.territory].push_back(build);
   builds.emplace(build->getId(), build);
 }
 
 Team Game_Loader::get_team(Player *player) {
-  bool encontrado;
   for (const auto team: teams) {
     if (team.second.isaPlayerOfTheTeam(player->getID())) {
       return team.second;
@@ -201,7 +195,6 @@ std::map<Position, Tile> Game_Loader::get_loaded_map() const {
   return this->map;
 }
 void Game_Loader::assign_terrain_object(const Position_Data &position_data) {
-  Position pos(position_data.x, position_data.y);
   if (position_data.bridge) {
     switch (configuration.bridge_type) {
       case TerrainType::WOODENBRIDGE: {
@@ -226,6 +219,7 @@ void Game_Loader::assign_terrain_object(const Position_Data &position_data) {
                                                 asphalted_bridge);
         break;
       }
+      default: break;//Nunca deberia llegar
     }
   }
 
@@ -251,6 +245,8 @@ void Game_Loader::assign_terrain_object(const Position_Data &position_data) {
                                                 icerock);
         break;
       }
+      default: break;//Nunca deberia llegar
+
     }
   }
 }
@@ -267,7 +263,7 @@ void Game_Loader::assign_capturable(const Position_Data &position_data) {
 
   if (position_data.vehicle) {
     Vehicle *unit = UnitFactory::createVehicleDynamic(
-        centered_position(pos.getX(), pos.getY()),
+        centered_position((int) pos.getX(), (int) pos.getY()),
         V_JEEP,
         gaiaPlayer,
         gaiaTeam);
@@ -318,6 +314,7 @@ Map Game_Loader::run() {
   this->load_configuration();
   this->build_map();
   return Map(map, buildmap, capturables, terrainObjects, units,
-             configuration.map_width, configuration.map_length);
+             (unsigned short) configuration.map_width,
+             (unsigned short) configuration.map_length);
 }
 

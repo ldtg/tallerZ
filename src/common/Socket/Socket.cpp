@@ -1,5 +1,4 @@
 #include "Socket.h"
-#include <string>
 #include <sys/socket.h>
 #include <netdb.h>
 #include <unistd.h>

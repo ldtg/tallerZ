@@ -1,7 +1,3 @@
-//
-// Created by darius on 18/06/17.
-//
-
 #ifndef TALLERZ_SERVIDOR_JSON_TO_DATA_H
 #define TALLERZ_SERVIDOR_JSON_TO_DATA_H
 

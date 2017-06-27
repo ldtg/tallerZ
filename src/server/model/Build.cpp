@@ -96,7 +96,7 @@ std::vector<Unit *> Build::fabricateUnits(const Position &buildPos) {
   if (timeToBuild) {
     for (int i = 0; i < data.getData(actualUnitFab).factoryRate; ++i) {
 
-      aux.push_back(UnitFactory::createUnitDynamic(buildPos.add(i * 15, 0),
+      aux.push_back(UnitFactory::createUnitDynamic(buildPos.add((unsigned long)i * 15, 0),
                                                    actualUnitFab,
                                                    *owner,
                                                    team));
@@ -120,7 +120,8 @@ Position Build::nextMovePosition() const {
 }
 
 Position Build::getAttackPosition(const Position &attackerPosition) const {
-  return centerPosition.getAttackPosition(attackerPosition, size + 1);
+  return centerPosition.getAttackPosition(attackerPosition,
+                                          (unsigned short) (size + 1));
 }
 
 BuildState Build::getBuildState() const {

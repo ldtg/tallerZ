@@ -113,18 +113,6 @@ class Game_Loader {
   void load_configuration();//paso 1
 
   /**
-   * set_players: carga las variables de jugadores en base a la cantidad
-   * de jugadores para los que está diseñado el mapa.
-   */
-  void set_players();//paso 2
-
-  /**
-   * set_teams: reparte los jugadores en dos equipos que se van a enfrentar
-   * entre sí.
-   */
-  void set_teams();//paso 3
-
-  /**
    * build_map: carga todos los elementos del mapa
    */
   void build_map();//paso 4
