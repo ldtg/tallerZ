@@ -1,7 +1,3 @@
-//
-// Created by darius on 25/05/17.
-//
-
 #include "Down_Button.h"
 #include <client/model/Model.h>
 

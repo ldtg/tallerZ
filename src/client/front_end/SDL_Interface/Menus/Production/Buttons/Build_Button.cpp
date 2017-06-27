@@ -1,7 +1,3 @@
-//
-// Created by darius on 24/05/17.
-//
-
 #include "Build_Button.h"
 #include <client/front_end/SDL_Interface/Menus/Production/Production_Menu.h>
 

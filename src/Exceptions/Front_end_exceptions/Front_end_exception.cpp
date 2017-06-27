@@ -1,7 +1,3 @@
-//
-// Created by darius on 23/04/17.
-//
-
 #include <cstdio>
 #include "Generator_Exception.h"
 

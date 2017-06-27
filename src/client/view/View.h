@@ -3,7 +3,6 @@
 
 class EventHandler;
 class Model;
-//class Quit_Menu;
 #include "common/Map/Map.h"
 #include "MainWindow.h"
 #include <string>
@@ -82,10 +81,8 @@ class View {
   void addExplosionView(ExplosionView *explosionView);
   void addEffectView(Sprite *effectView);
 
-
   Menu *get_present_menu();
   void load_side_board(Model& model){
-    //MainWindow *window, View &view, Model& model, const std::string &color
     this->side_board = new Side_Board(&window, *this, model, playerColor);
 
   }

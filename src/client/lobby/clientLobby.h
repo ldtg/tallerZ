@@ -1,7 +1,3 @@
-//
-// Created by darius on 15/06/17.
-//
-
 #ifndef TALLERZ_CLIENTLOBBY_H
 #define TALLERZ_CLIENTLOBBY_H
 

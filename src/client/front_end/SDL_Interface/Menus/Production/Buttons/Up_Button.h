@@ -1,7 +1,3 @@
-//
-// Created by darius on 25/05/17.
-//
-
 #ifndef TALLERZ_UP_BUTTON_H
 #define TALLERZ_UP_BUTTON_H
 

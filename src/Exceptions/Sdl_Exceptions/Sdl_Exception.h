@@ -1,7 +1,3 @@
-//
-// Created by darius on 21/05/17.
-//
-
 #ifndef TALLERZ_SDL_EXCEPTION_H
 #define TALLERZ_SDL_EXCEPTION_H
 

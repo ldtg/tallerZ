@@ -4,59 +4,6 @@
 Map::Map() {}
 
 Map::Map(const std::map<Position, Tile> &map,
-         unsigned short width,
-         unsigned short height)
-    : map(map), width(width), height(height) {}
-
-Map::Map(const std::map<Position, Tile> &map,
-         const std::map<BuildID, BuildState> &builds,
-         const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
-         unsigned short width,
-         unsigned short height)
-    : map(map),
-      builds(builds),
-      terrainObject(terrainObject),
-      width(width),
-      height(height) {
-  for (auto &build : builds) {
-    Position pos = this->getTilePositionFromRealPosition(build.second.position);
-    this->map.at(pos).makeNotPassable();
-  }
-  for (auto &tobj : terrainObject) {
-    Position
-        pos = this->getTilePositionFromRealPosition(tobj.second.centerPosition);
-    if (!tobj.second.passable)
-      this->map.at(pos).makeNotPassable();
-  }
-
-}
-
-Map::Map(const std::map<Position, Tile> &map,
-         const std::map<BuildID, BuildState> &builds,
-         std::map<CapturableID, CapturableState> capturables,
-         const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
-         unsigned short width,
-         unsigned short height)
-    : map(map),
-      builds(builds),
-      capturables(capturables),
-      terrainObject(terrainObject),
-      width(width),
-      height(height) {
-
-  for (auto &build : builds) {
-    Position pos = this->getTilePositionFromRealPosition(build.second.position);
-    this->map.at(pos).makeNotPassable();
-  }
-  for (auto &tobj : terrainObject) {
-    Position
-        pos = this->getTilePositionFromRealPosition(tobj.second.centerPosition);
-    if (!tobj.second.passable)
-      this->map.at(pos).makeNotPassable();
-  }
-}
-
-Map::Map(const std::map<Position, Tile> &map,
          const std::map<BuildID, BuildState> &builds,
          std::map<CapturableID, CapturableState> capturables,
          const std::map<TerrainObjectID, TerrainObjectState> &terrainObject,
@@ -80,22 +27,6 @@ Map::Map(const std::map<Position, Tile> &map,
     if (!tobj.second.passable)
       this->map.at(pos).makeNotPassable();
   }
-}
-
-Map::Map(const std::map<Position, Tile> &map,
-         const std::map<BuildID, BuildState> &builds,
-         std::map<CapturableID, CapturableState> capturables,
-         unsigned short width,
-         unsigned short height) : map(map),
-                                  builds(builds),
-                                  capturables(capturables),
-                                  width(width),
-                                  height(height) {
-  for (auto &build : builds) {
-    Position pos = this->getTilePositionFromRealPosition(build.second.position);
-    this->map.at(pos).makeNotPassable();
-  }
-
 }
 
 Map::~Map() {}
@@ -125,26 +56,7 @@ Tile Map::getTile(const Position &position) const {
   return map.at(this->getTilePositionFromRealPosition(position));
 }
 
-bool Map::isUnitIn(const Position &position) const {
-  for (auto const &unit : units) {
-    Position curPos = unit.second.position;
-    bool
-        in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
-    if (in)
-      return true;
-  }
-  return false;
-}
 
-std::pair<UnitID, UnitState> Map::getUnit(const Position &position) {
-  for (auto const &unit : units) {
-    Position curPos = unit.second.position;
-    bool
-        in = position.isIn(UNITWIDHT, UNITHEIGHT, curPos.getX(), curPos.getY());
-    if (in)
-      return unit;
-  }
-}
 
 bool Map::canPass(const Position &positionFrom,
                   const Position &positionTo) const {
@@ -178,10 +90,6 @@ const std::map<CapturableID, CapturableState> &Map::getCapturables() const {
 const std::map<TerrainObjectID,
                TerrainObjectState> &Map::getTerrainObjects() const {
   return terrainObject;
-}
-
-void Map::setUnits(const std::map<UnitID, UnitState> &units) {
-  Map::units = units;
 }
 
 void Map::addUnit(const UnitID &unitID, const UnitState &unitState) {
@@ -254,18 +162,6 @@ void Map::updateBullet(const BulletID &bulletID,
   this->addBullet(bulletID, bulletState);
 }
 
-Map::Map(const std::map<Position, Tile> &map,
-         const std::map<BuildID, BuildState> &builds,
-         unsigned short width,
-         unsigned short height)
-    : map(map), builds(builds), width(width), height(height) {
-  for (auto &build : builds) {
-    Position pos = this->getTilePositionFromRealPosition(build.second.position);
-    this->map.at(pos).makeNotPassable();
-  }
-
-}
-
 void Map::updateBuild(const BuildID &buildID, const BuildState &buildState) {
   this->builds.erase(buildID);
   this->builds.emplace(buildID, buildState);
@@ -275,10 +171,12 @@ void Map::updateBuild(const BuildID &buildID, const BuildState &buildState) {
     tile.makeNotPassable();
   }
 }
+
 Position Map::getTilePositionFromRealPosition(Position position) const {
   position.mod(TILEWIDHT, TILEHEIGHT);
   return position;
 }
+
 void Map::updateTerrainObject(const TerrainObjectID &id,
                               const TerrainObjectState &newState) {
   terrainObject.erase(id);
@@ -288,15 +186,18 @@ void Map::updateTerrainObject(const TerrainObjectID &id,
   else
     map.at(this->getTilePositionFromRealPosition(newState.centerPosition)).makePassable();
 }
+
 void Map::updateCapturable(const CapturableID &id,
                            const CapturableState &state) {
   capturables.erase(id);
   capturables.emplace(id, state);
 
 }
+
 void Map::removeCapturable(const CapturableID &id) {
   capturables.erase(id);
 }
+
 Position Map::getNeighborFreePos(const Position &tileC) {
   for (Tile &tile : this->getNeighbors(this->getTile(tileC))) {
     if (tile.isPassable()) {
@@ -304,6 +205,7 @@ Position Map::getNeighborFreePos(const Position &tileC) {
     }
   }
 }
+
 bool Map::diagPassable(const Position &center, const Position &diag) const {
   std::vector<Position> diagNeigh = center.getNeighborsOfDiagonal(diag);
   bool passable = true;
@@ -313,7 +215,6 @@ bool Map::diagPassable(const Position &center, const Position &diag) const {
   }
   return passable;
 }
-
 
 BuildState Map::getBuildState(const BuildID &buildID) const {
   return builds.at(buildID);
@@ -326,6 +227,7 @@ BulletState Map::getBulletState(const BulletID &bulletID) const {
 void Map::removeTerrainObject(const TerrainObjectID &id) {
   terrainObject.erase(id);
 }
+
 Position Map::getFortPos(const PlayerID &id) {
   for (auto &par :builds) {
     if (par.second.owner == id && par.first.getType() == BuildType::FORT) {

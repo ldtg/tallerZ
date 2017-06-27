@@ -1,7 +1,3 @@
-//
-// Created by darius on 18/06/17.
-//
-
 #include "Ok_Button.h"
 Ok_Button::Ok_Button(MainWindow *window, View &view, const SDL_Rect &rect) : view(view){
   this->window = window;

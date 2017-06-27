@@ -1,7 +1,3 @@
-//
-// Created by darius on 21/05/17.
-//
-
 #include "Sdl_Exception.h"
 #include <cstdio>
 

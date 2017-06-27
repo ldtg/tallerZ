@@ -1,7 +1,6 @@
 #include "MainWindow.h"
 #include <SDL2/SDL_image.h>
 #include <Exceptions/Sdl_Exceptions/Sdl_Exception.h>
-#include <SDL2/SDL_mixer.h>
 
 MainWindow::MainWindow() {
   width = WINDOWWIDHT;

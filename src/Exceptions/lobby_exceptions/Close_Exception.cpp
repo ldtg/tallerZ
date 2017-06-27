@@ -1,7 +1,3 @@
-//
-// Created by darius on 17/06/17.
-//
-
 #include "Close_Exception.h"
 #include <cstdio>
 

@@ -1,7 +1,3 @@
-//
-// Created by darius on 18/06/17.
-//
-
 #ifndef TALLERZ_CLIENTE_OK_BUTTON_H
 #define TALLERZ_CLIENTE_OK_BUTTON_H
 

@@ -14,16 +14,20 @@ void ClientEventReceiver::run() {
       queue.push(ev);
     }
   } catch (const SocketException &e) {
-    this->open = false;
+    this->stop();
   }
 }
 void ClientEventReceiver::stop() {
   open = false;
   srvSocket.shutdownConnection(ShutdownMode::WRITE);
+  while (!queue.empty()) {
+    delete (queue.pop());
+  }
 }
 bool ClientEventReceiver::isOpen() const {
   return open;
 }
+
 ClientEventReceiver::~ClientEventReceiver() {
   while (!queue.empty()) {
     delete (queue.pop());

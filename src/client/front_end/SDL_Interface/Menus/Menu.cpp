@@ -11,8 +11,8 @@
  */
 void Menu::set_absolute_position(SDL_Rect &rect, SDL_Rect& rect_abs) {
   Position _pos = this->get_relative_pos(rect);
-  rect_abs.x = _pos.getX();
-  rect_abs.y = _pos.getY();
+  rect_abs.x = (int) _pos.getX();
+  rect_abs.y = (int) _pos.getY();
   rect_abs.w = rect.w;
   rect_abs.h = rect.h;
 }
