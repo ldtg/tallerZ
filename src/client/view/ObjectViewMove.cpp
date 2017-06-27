@@ -41,7 +41,9 @@ void ObjectViewMove::update() {
     Position posTo = viewPosTo.getPos();
 
     // Ya llego al destino.
-    if (currentPos == posTo && lastMove) {
+    if ( (currentPos == posTo ||
+       (state.isAttacking() && currentPos.equalDelta(posTo,1)) )
+       && lastMove) {
       still();
       lastMove = false;
       // Se vacia la cola de movimientos.
@@ -51,6 +53,7 @@ void ObjectViewMove::update() {
 
     int rotation = view->getDrawRotation();
     if (state.isStill() || state.isAttacking()) {
+
 //      std::cout << "WALK" << std::endl;
 //      std::cout << currentPos.getX() << " " << currentPos.getY() << std::endl;
 //      std::cout << posTo.getX() << " " << posTo.getY() << std::endl;
@@ -68,8 +71,9 @@ void ObjectViewMove::update() {
       view->setPos(viewPosTo);
     }
 
-//    double rot = pos.getRotation(viewPosTo);
-//    view->setRotation(rot);
+//    std::cout << rotation << std::endl;
+//    std::cout << newRotation << std::endl;
+//    std::cout << " " << std::endl;
   }
 }
 ObjectViewMove::~ObjectViewMove() {

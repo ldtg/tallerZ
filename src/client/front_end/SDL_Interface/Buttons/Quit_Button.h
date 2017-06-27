@@ -16,7 +16,7 @@ class Quit_Button : public Button {
   const std::string path_down =
       "../src/client/front_end/Images/Interface/quit_button_pressed.bmp";
  public:
-  Quit_Button(Window *window, View &view);
+  Quit_Button(MainWindow *window, View &view);
 
   void button_launch() override;
 };

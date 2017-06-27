@@ -16,7 +16,7 @@ class Ok_Button : public Button{
       "../src/client/front_end/Images/Interface/result_gui/ok_button_pressed.png";
   View& view;
  public:
-  Ok_Button(Window * window, View& view, const SDL_Rect& rect);
+  Ok_Button(MainWindow * window, View& view, const SDL_Rect& rect);
 
   void button_launch() override ;
 };

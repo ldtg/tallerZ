@@ -6,10 +6,9 @@
 #include <client/controller/Controller.h>
 #include <cereal/archives/binary.hpp>
 #include <common/DataClientServerMessages/dataClientConnectedMessage.h>
-#include <clientCommandSender.h>
-#include <clientEventReceiver.h>
 #include <client/lobby/clientLobby.h>
-
+#include <ClientEventReceiver.h>
+#include "ClientCommandSender.h"
 void sendPlayerConnected(Socket &socket,
                          unsigned short team,
                          const std::string &map);
@@ -19,83 +18,93 @@ dataServerClientAccepted getDataClientAccepted(Socket &socket);
 Map getMap(Socket &socket);
 
 Login_Details display_login_settings(int argc, char *argv[]) {
-  Gtk::Main kit(argc, argv);
-  clientLobby lobby;
-  lobby.get_window()->show_all();
-  Gtk::Main::run(*lobby.get_window());
-  return lobby.get_login_details();
+  try {
+    Gtk::Main kit(argc, argv);
+    clientLobby lobby;
+    lobby.get_window()->show_all();
+    Gtk::Main::run(*lobby.get_window());
+    return lobby.get_login_details();
+  } catch (const std::exception& e){
+    throw Close_Exception("Program Close");
+  }
 }
 //retorna true si el server esta online, recibe el eventReceiver porque es el primero que se da cuenta cuando se desconecta el server
-bool serverConnected(const clientEventReceiver &receiver);
+bool serverConnected(const ClientEventReceiver &receiver);
 
 int main(int argc, char *argv[]) {
-//  Login_Details ld = display_login_settings(argc, argv);
-  Socket socket;
-//  socket.connectToServer(ld.ip, ld.port);
-  try {
-    socket.connectToServer(argv[1], argv[2]);
-  } catch (const SocketException &e) {
-    std::cerr << "No se pudo conectar al servidor" << std::endl;
-    return 0;
-  }
+    Socket socket;
+    Login_Details ld;
 
-//  sendPlayerConnected(socket, std::stoi(ld.team), ld.map);
-  try {
-
-    sendPlayerConnected(socket, std::stoi(argv[3]), argv[4]);
-    dataServerClientAccepted accepted = getDataClientAccepted(socket);
-
-    Map map = getMap(socket);
-
-    Queue<Event *> eventQueue;
-    Queue<clientCommand *> commandsQueue;
-    clientCommandSender commandSender(socket, commandsQueue);
-    commandSender.start();
-    clientEventReceiver eventReceiver(socket, eventQueue);
-    eventReceiver.start();
-    GameControllerProxy gcp(commandsQueue);
-    Camera camera(WINDOWWIDHT,
-                  WINDOWHEIGHT,
-                  map.getWidht(),
-                  map.getHeight(),
-                  map.getFortPos(accepted.id));
-    EventHandler eventHandler;
-
-    View view(map, eventHandler, camera, accepted.id.getColor());
-    Model model(map, gcp, camera, view, accepted.id, accepted.teamID);
-
-    eventHandler.setView(&view);
-    eventHandler.setModel(&model);
-
-    SDL_Event e;
-
-    Controller controller(eventHandler);
-
-    //While application is running
-    while (!view.quit() && serverConnected(eventReceiver)) {
-      while (SDL_PollEvent(&e) != 0) {
-        controller.handle(&e);
-      }
-      // Chequeo pos del mouse para saber
-      // si se debe mover camara.
-      controller.checkMouseState(&e);
-      while (!eventQueue.empty()) {
-        eventHandler.add(eventQueue.pop());
-      }
-      view.tick();
+    try {
+      ld = display_login_settings(argc, argv);
+    } catch (const Close_Exception &e) {
+      return 0;
     }
-    commandsQueue.push(nullptr);
-    commandSender.stop();
-    eventReceiver.stop();
-    commandSender.join();
-    eventReceiver.join();
-  } catch (const SocketException &e) {
-    std::cerr << "Servidor desconectado" << std::endl;
-    return 0;
-  }
-  return 0;
+
+    try {
+      socket.connectToServer(ld.ip, ld.port);
+      //socket.connectToServer(argv[1], argv[2]);
+    } catch (const SocketException &e) {
+      std::cerr << "No se pudo conectar al servidor" << std::endl;
+      return 0;
+    }
+
+    try {
+      sendPlayerConnected(socket, std::stoi(ld.team), ld.map);
+      //sendPlayerConnected(socket, std::stoi(argv[3]), argv[4]);
+      dataServerClientAccepted accepted = getDataClientAccepted(socket);
+
+      Map map = getMap(socket);
+
+      Queue<Event *> eventQueue;
+      Queue<ClientCommand *> commandsQueue;
+      ClientCommandSender commandSender(socket, commandsQueue);
+      commandSender.start();
+      ClientEventReceiver eventReceiver(socket, eventQueue);
+      eventReceiver.start();
+      GameControllerProxy gcp(commandsQueue);
+      Camera camera(WINDOWWIDHT,
+                    WINDOWHEIGHT,
+                    map.getWidht(),
+                    map.getHeight(),
+                    map.getFortPos(accepted.id));
+      EventHandler eventHandler;
+
+      View view(map, eventHandler, camera, accepted.id.getColor());
+      Model model(map, gcp, camera, view, accepted.id, accepted.teamID);
+
+      eventHandler.setView(&view);
+      eventHandler.setModel(&model);
+
+      SDL_Event e;
+
+      Controller controller(eventHandler);
+
+      //While application is running
+      while (!view.quit() && serverConnected(eventReceiver)) {
+        while (SDL_PollEvent(&e) != 0) {
+          controller.handle(&e);
+        }
+        // Chequeo pos del mouse para saber
+        // si se debe mover camara.
+        controller.checkMouseState(&e);
+        while (!eventQueue.empty()) {
+          eventHandler.add(eventQueue.pop());
+        }
+        view.tick();
+      }
+      commandsQueue.push(nullptr);
+      commandSender.stop();
+      eventReceiver.stop();
+      commandSender.join();
+      eventReceiver.join();
+    } catch (const SocketException &e) {
+      std::cerr << "Servidor desconectado" << std::endl;
+      return 0;
+    }
+
 }
-bool serverConnected(const clientEventReceiver &receiver) {
+bool serverConnected(const ClientEventReceiver &receiver) {
   if (!receiver.isOpen()) {
     std::cerr << "Servidor desconectado" << std::endl;
     return false;

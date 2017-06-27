@@ -3,7 +3,7 @@
 
 clientUnitAttackUnitCommand::clientUnitAttackUnitCommand(const UnitID &attacker,
                                                          const UnitID &attacked)
-    : clientCommand(U_ATK_U), data(attacker, attacked) {
+    : ClientCommand(U_ATK_U), data(attacker, attacked) {
 
 }
 std::stringstream clientUnitAttackUnitCommand::getDataToSend() {

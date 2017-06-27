@@ -4,7 +4,7 @@
  * Constructor
  * @param window : ventana sobre la que se realiza el click (generalmente: Main_Window)
  */
-Button::Button(Window *window) {
+Button::Button(MainWindow *window) {
   this->window = window;
 }
 
@@ -20,16 +20,6 @@ Button::~Button() {
   }
 }
 
-/**
- * set_rectangle
- * @param x : coordenada x de la ubicacion del boton en la ventana
- * @param y : coordenada y de la ubicacion del boton en la ventana
- * @param width : Ancho de la superficie clickeable
- * @param length : Largo de la superficie clickeable
- */
-void Button::set_rectangle(const SDL_Rect &rect) {
-  this->renderQuad = rect;
-}
 
 /**
  * load_texture_up: Opcional
@@ -62,7 +52,7 @@ void Button::load_texture_down(const std::string &path) {
  * a su vez, si el evento es un mouse_button_up llama a
  * button_launch que dispara la lógica asociada al botón
  */
-void Button::handle_event() {
+void Button::handle_click() {
   this->on_button_pressed();
 
 }
@@ -80,18 +70,6 @@ void Button::on_button_pressed() {
 }
 
 /**
- * on_button_released
- * Se dispara el evento asociado al boton
- * Se renderiza la textura de boton sin levantar.
- */
-void Button::on_button_released() {
-  if (this->button_up != NULL) {
-    this->button_up->renderize(this->window);
-    this->button_launch();
-  }
-}
-
-/**
  * inRectangle
  * @param x : coordenada x
  * @param y : coordenada y
@@ -102,19 +80,6 @@ bool Button::inRectangle(int x, int y) {
       && x < (renderQuad.x + renderQuad.w)
       && y > renderQuad.y
       && y < (renderQuad.y + renderQuad.h));
-}
-
-/**
- * Reload: Renderiza de nuevo con la imagen del botón sin levantar.
- */
-void Button::reload() {
-  this->button_up->renderize(this->window, &this->renderQuad);
-}
-
-void Button::displace_toXY(int coordX, int coordY) {
-  this->renderQuad.x += coordX;
-  this->renderQuad.y += coordY;
-  this->reload();
 }
 
 void Button::draw(SDL_Renderer *render, Camera &camera) {

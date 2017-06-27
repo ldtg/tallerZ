@@ -9,7 +9,7 @@
  */
 Production_Menu::Production_Menu(const BuildID buildID,
                                  const BuildState &buildState,
-                                 Window &window, Model &model,
+                                 MainWindow &window, Model &model,
                                  int x, int y)
     : buildID(buildID), window(window),
       model(model), buildState(buildState) {
@@ -202,13 +202,13 @@ std::string Production_Menu::get_unit_name(const UnitType &utype) {
 
 void Production_Menu::handle_click(int x, int y) {
   if (up->inRectangle(x, y)) {
-    up->handle_event();
+    up->handle_click();
   }
   if (down->inRectangle(x, y)) {
-    down->handle_event();
+    down->handle_click();
   }
   if (build->inRectangle(x, y)) {
-    build->handle_event();
+    build->handle_click();
   }
 }
 

@@ -1,8 +1,8 @@
 #include "Side_Board.h"
 #include <client/view/View.h>
 
-Side_Board::Side_Board(Window *window, View &view, const std::string &color) :
-    window(window), view(view), color(color) {
+Side_Board::Side_Board(MainWindow *window, View &view, Model& model, const std::string &color) :
+    window(window), view(view), color(color), model(model){
   this->side_board_texture = new Texture(path, window);
   this->side_board_texture->renderize(window);
   this->load_items();
@@ -29,14 +29,9 @@ void Side_Board::load_items() {
 bool Side_Board::is_in_quit_button(int x, int y) {
   return quit_button->inRectangle(x, y);
 }
-/*
-void Side_Board::add_to_panel(Panel &panel) {
-  panel.add(this);
-  panel.add(quit_button);
-}
-*/
+
 void Side_Board::launch_menu_button() {
-  this->quit_button->handle_event();
+  this->quit_button->handle_click();
 }
 
 std::string Side_Board::label_path(const std::string &name) {
@@ -55,8 +50,15 @@ std::string Side_Board::w_label_path(const std::string &name) {
   return (folder_path + "/Weapons/" + name + "_label.bmp");
 }
 
-void Side_Board::load_unit_images(UnitType unitType, UnitType secType) {
+void Side_Board::load_unit_images(UnitID unitID) {
+  this->unitSelected = unitID;
+  UnitType unitType = unitID.getType();
+  UnitType secType = model.getMap().getUnitState(unitID).secondType;
+  unsigned short health = model.getMap().getUnitState(unitID).healthPercent;
   this->clean_unit_images();
+  isUnitSelected = true;
+  this->set_life_bar_level(health);
+  this->life_bar = new Texture("../src/client/front_end/Images/Interface/health_full.png", window);
   switch (unitType) {
     case (R_GRUNT): {
       this->weapon_texture = new Texture(weapon_path("grunt"), window);
@@ -158,6 +160,7 @@ void Side_Board::load_unit_images(UnitType unitType, UnitType secType) {
   this->weapon_texture->renderize(window, &weapon_rect);
   this->face_texture->renderize(window, &face_rect);
   this->weapon_label->renderize(window, &weapon_label_rect);
+  this->life_bar->renderize(window, &life_bar_rect);
 }
 
 void Side_Board::clean_unit_images() {
@@ -177,11 +180,20 @@ void Side_Board::clean_unit_images() {
     delete weapon_label;
     weapon_label = nullptr;
   }
+  if (life_bar != nullptr){
+    delete life_bar;
+    life_bar = nullptr;
+  }
+  isUnitSelected = false;
 }
 
 void Side_Board::draw(SDL_Renderer *render, Camera &camera) {
   SDL_RenderCopy(render, side_board_texture->get_texture(), NULL, NULL);
-
+  if (isUnitSelected){
+    unsigned short health = model.getMap().getUnitState(this->unitSelected).healthPercent;
+    set_life_bar_level(health);
+    this->life_bar->renderize(window, &life_bar_rect);
+  }
   unit_label_background->renderize(window, &unit_label_background_rect);
   if (this->face_texture != NULL) {
     this->face_texture->renderize(window, &face_rect);
@@ -194,6 +206,9 @@ void Side_Board::draw(SDL_Renderer *render, Camera &camera) {
   }
   if (this->weapon_label != NULL) {
     this->weapon_label->renderize(window, &weapon_label_rect);
+  }
+  if (this->life_bar != NULL) {
+    this->life_bar->renderize(window, &life_bar_rect);
   }
 
   quit_button->draw(render, camera);

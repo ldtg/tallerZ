@@ -7,6 +7,7 @@
 class Controller {
  private:
   EventHandler &eventHandler;
+
  public:
   Controller(EventHandler &eventHandler);
   void handle(SDL_Event *e);

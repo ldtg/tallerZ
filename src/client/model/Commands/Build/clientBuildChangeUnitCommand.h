@@ -2,8 +2,8 @@
 #define TALLERZ_CLIENTBUILDCHANGEUNITCOMMAND_H
 
 #include <common/DataCommands/Build/dataBuildChangeUnitCommand.h>
-#include <client/model/Commands/clientCommand.h>
-class clientBuildChangeUnitCommand : public clientCommand {
+#include <client/model/Commands/ClientCommand.h>
+class clientBuildChangeUnitCommand : public ClientCommand {
  private:
   dataBuildChangeUnitCommand data;
  public:

@@ -15,7 +15,7 @@ class Salir_Button : public Button{
       "../src/client/front_end/Images/Interface/quit_gui/salir_button_pressed.png";
   View& view;
  public:
-  Salir_Button(Window * window, View& view, const SDL_Rect& rect);
+  Salir_Button(MainWindow * window, View& view, const SDL_Rect& rect);
 
   void button_launch() override ;
 };

@@ -13,7 +13,7 @@
 
 class Quit_Menu : public Menu {
  private:
-  Window &window;
+  MainWindow &window;
   View& view;
   Button * salir = NULL;
 
@@ -24,16 +24,10 @@ class Quit_Menu : public Menu {
       = "../src/client/front_end/Images/Interface/quit_gui/quit_menu.png";
 
  public:
-  Quit_Menu(Window& window, View& view);
+  Quit_Menu(MainWindow& window, View& view);
 
   void handle_click(int x, int y);
 
-  //void displace_toXY(int x, int y) override {};
-
-//  void add_to_panel(Panel& panel) override {
-//    panel.add(this);
-//    panel.add(salir);
-//  }
   void draw(SDL_Renderer *render, Camera &camera);
 
   virtual ~Quit_Menu();

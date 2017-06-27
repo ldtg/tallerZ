@@ -20,7 +20,6 @@ class Sprite : public ObjectView {
   std::vector<Image*> images;
 
  public:
-  Sprite();
   Sprite(const char *file, int num_frames, int speed,
          int num_frame_return_cycle, std::string color="",
          int despX=0, int despY=0);

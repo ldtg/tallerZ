@@ -24,7 +24,6 @@ View::View(const Map &map,
   createInitialUnitView(map.getUnits());
   createInitialCapturableView(map.getCapturables());
 
-  this->side_board = new Side_Board(&window, *this, player_color);
 }
 
 View::~View() {
@@ -81,11 +80,13 @@ void View::createInitialTerrainObjectView(const std::map<TerrainObjectID,
   }
 }
 
+
 int getRandomNumInRange2(const int range_from, const int range_to) {
-  std::random_device rand_dev;
-  std::mt19937 generator(rand_dev());
-  std::uniform_int_distribution<int> distr(range_from, range_to);
-  return distr(generator);
+//  std::random_device rand_dev;
+//  std::mt19937 generator(rand_dev());
+//  std::uniform_int_distribution<int> distr(range_from, range_to);
+//  return distr(generator);
+  return range_from;
 }
 
 void View::createInitialUnitView(const std::map<UnitID, UnitState> &units) {
@@ -112,7 +113,8 @@ void View::createInitialBuildingView(const std::map<BuildID,
     BuildType type = build.first.getType();
     Position pos = build.second.position;
     std::string color = build.second.owner.getColor();
-    BuildingView *buildVista = ViewFactory::getBuildingVista(type, color, pos);
+    std::string level = std::to_string(build.second.techLevel);
+    BuildingView *buildVista = ViewFactory::getBuildingVista(type, level, color, pos);
     if (!build.second.owner.isGaia()) buildVista->capture(color);
     buildsVista.emplace(build.first, buildVista);
   }
@@ -185,32 +187,22 @@ void View::draw() {
   SDL_RenderClear(window_render);
 
   for (auto const &posTerrain : terrainsVista) {
-//    posTerrain.second->set_texture(window_render);
-
     posTerrain.second->draw(window_render, camera);
   }
 
   for (auto const &posTerrainObj : terrainObjectsVista) {
-//    posTerrainObj.second->set_texture(window_render);
-
     posTerrainObj.second->draw(window_render, camera);
   }
 
   for (auto const &build : buildsVista) {
-//    build.second->set_texture(window_render);
-
     build.second->draw(window_render, camera);
   }
 
   for (auto const &capturable : capturablesVista) {
-//    capturable.second->set_texture(window_render);
-
     capturable.second->draw(window_render, camera);
   }
 
   for (auto const &bullet : bulletsVista) {
-//    bullet.second->getView()->set_texture(window_render);
-
     bullet.second->draw(window_render, camera);
   }
 
@@ -293,10 +285,10 @@ BuildingView* View::getBuildingView(const BuildID &id) {
   return buildsVista.at(id);
 }
 
-void View::removeBuildView(const BuildID &id) {
-  delete buildsVista.at(id);
-  buildsVista.erase(id);
-}
+//void View::removeBuildView(const BuildID &id) {
+//  delete buildsVista.at(id);
+//  buildsVista.erase(id);
+//}
 
 //void View::addBuildView(const BuildID &id, Image *buildView) {
 //  buildsVista.emplace(id, buildView);
@@ -350,8 +342,8 @@ Menu *View::get_present_menu() {
   return this->menu;
 }
 
-void View::show_unit_side_details(UnitType unitType, UnitType secondType) {
-  this->side_board->load_unit_images(unitType, secondType);
+void View::show_unit_side_details(UnitID unitID) {
+  this->side_board->load_unit_images(unitID);
 }
 
 void View::clear_unit_side_details() {

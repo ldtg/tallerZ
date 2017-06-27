@@ -1,6 +1,6 @@
 #include "Victory.h"
 
-Victory::Victory(Window &window, View &view) : view(view), window(window) {
+Victory::Victory(MainWindow &window, View &view) : view(view), window(window) {
   this->renderQuad = {288, 240, 224, 120};
   this->background = new Texture(background_path.c_str(), &window);
   this->background->renderize(&window, &renderQuad);
@@ -9,7 +9,7 @@ Victory::Victory(Window &window, View &view) : view(view), window(window) {
 
 void Victory::handle_click(int x, int y) {
   if (ok->inRectangle(x, y)) {
-    ok->handle_event();
+    ok->handle_click();
   }
 }
 

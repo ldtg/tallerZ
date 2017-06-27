@@ -2,8 +2,8 @@
 #define TALLERZ_CLIENTUNITATTACKTOCOMMAND_H
 
 #include <common/DataCommands/Unit/dataUnitAttackTOCommand.h>
-#include <client/model/Commands/clientCommand.h>
-class clientUnitAttackTOCommand : public clientCommand {
+#include <client/model/Commands/ClientCommand.h>
+class clientUnitAttackTOCommand : public ClientCommand {
  private:
   dataUnitAttackTOCommand data;
  public:

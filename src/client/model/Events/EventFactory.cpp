@@ -3,7 +3,7 @@
 #include <cereal/archives/binary.hpp>
 #include <common/DataEvents/Unit/dataUnitAttackEvent.h>
 #include <client/model/Events/model/unit/UnitAttackEvent.h>
-#include <common/DataEvents/Unit/dataUnitCreateEvent.h>
+#include <common/DataEvents/Unit/dataUnitStateEvent.h>
 #include <client/model/Events/model/unit/UnitCreateEvent.h>
 #include <common/DataEvents/Unit/dataUnitIDEvent.h>
 #include <client/model/Events/model/unit/UnitDeathEvent.h>
@@ -28,7 +28,9 @@
 #include <client/model/Events/model/game/EndGameEvent.h>
 #include <client/model/Events/model/build/BuildUpdateEvent.h>
 #include <common/DataEvents/Unit/dataUnitStillEvent.h>
+#include <client/model/Events/model/unit/UnitDamageReceiveEvent.h>
 #include "EventFactory.h"
+
 Event *EventFactory::createEvent(const EventType &type, std::stringstream &ss) {
   switch (type) {
     case U_MOVE: {
@@ -45,9 +47,15 @@ Event *EventFactory::createEvent(const EventType &type, std::stringstream &ss) {
                                  data.huntedPos,
                                  data.attackerPos);
     }
+    case U_DAMAGE: {
+      cereal::BinaryInputArchive iarchive(ss);
+      dataUnitStateEvent data;
+      iarchive(data);
+      return new UnitDamageReceiveEvent(data.id, data.state);
+    }
     case U_CREATE: {
       cereal::BinaryInputArchive iarchive(ss);
-      dataUnitCreateEvent data;
+      dataUnitStateEvent data;
       iarchive(data);
       return new UnitCreateEvent(data.id, data.state);
     }

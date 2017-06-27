@@ -91,8 +91,8 @@ set(SOURCE_FILES
 
         src/client/view/Texture.cpp
         src/client/view/Texture.h
-        src/client/view/Window.cpp
-        src/client/view/Window.h
+        src/client/view/MainWindow.cpp
+        src/client/view/MainWindow.h
         src/client/view/Image.cpp
         src/client/view/Image.h
         src/client/view/ObjectView.cpp
@@ -114,8 +114,6 @@ set(SOURCE_FILES
         src/client/controller/HandlerFactory.h
         src/client/controller/MouseButtonLeft.cpp
         src/client/controller/MouseButtonLeft.h
-        src/client/controller/NullHandler.cpp
-        src/client/controller/NullHandler.h
         src/client/controller/Quit.cpp
         src/client/controller/Quit.h
         src/client/controller/MouseButtonRight.cpp
@@ -136,12 +134,8 @@ set(SOURCE_FILES
         src/Exceptions/Storage_Exceptions/Storage_Exception.h
         src/Exceptions/Storage_Exceptions/Storage_Exception.cpp
 
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.cpp
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Retract_Button.h
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.cpp
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Build_Button.h
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.cpp
-        src/client/front_end/SDL_Interface/Menus/Production/Buttons/Add_Button.h
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.h
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Down_Button.cpp
         src/client/front_end/SDL_Interface/Menus/Production/Buttons/Up_Button.cpp
@@ -179,8 +173,8 @@ set(SOURCE_FILES
         src/client/model/Events/EventFactory.h
         src/common/DataEvents/Unit/dataUnitAttackEvent.cpp
         src/common/DataEvents/Unit/dataUnitAttackEvent.h
-        src/common/DataEvents/Unit/dataUnitCreateEvent.cpp
-        src/common/DataEvents/Unit/dataUnitCreateEvent.h
+        src/common/DataEvents/Unit/dataUnitStateEvent.cpp
+        src/common/DataEvents/Unit/dataUnitStateEvent.h
         src/common/DataEvents/Unit/dataUnitIDEvent.cpp
         src/common/DataEvents/Unit/dataUnitIDEvent.h
         src/common/DataEvents/Build/dataBuildUpdateEvent.cpp
@@ -205,8 +199,8 @@ set(SOURCE_FILES
         src/common/DataCommands/CommandType.h
         src/common/DataCommands/Unit/dataUnitMoveCommand.cpp
         src/common/DataCommands/Unit/dataUnitMoveCommand.h
-        src/client/model/Commands/clientCommand.cpp
-        src/client/model/Commands/clientCommand.h
+        src/client/model/Commands/ClientCommand.cpp
+        src/client/model/Commands/ClientCommand.h
         src/client/model/Commands/Unit/clientUnitMoveCommand.cpp
         src/client/model/Commands/Unit/clientUnitMoveCommand.h
         src/common/DataCommands/Unit/dataUnitAttackUnitCommand.cpp
@@ -235,10 +229,10 @@ set(SOURCE_FILES
         src/common/Socket/SocketException.h
         src/common/Thread/Thread.cpp
         src/common/Thread/Thread.h
-        src/client/clientEventReceiver.cpp
-        src/client/clientEventReceiver.h
-        src/client/clientCommandSender.cpp
-        src/client/clientCommandSender.h
+        src/client/ClientEventReceiver.cpp
+        src/client/ClientEventReceiver.h
+        src/client/ClientCommandSender.cpp
+        src/client/ClientCommandSender.h
         src/client/clientMain.cpp
         src/common/DataClientServerMessages/dataClientConnectedMessage.cpp
         src/common/DataClientServerMessages/dataClientConnectedMessage.h
@@ -293,7 +287,7 @@ set(SOURCE_FILES
         src/common/DataEvents/Unit/dataUnitStillEvent.cpp
         src/common/DataEvents/Unit/dataUnitStillEvent.h
         src/client/model/MovementState.h
-        src/client/view/unit/RobotView.cpp src/client/view/unit/RobotView.h src/client/view/explosion/ExplosionView.h src/client/view/explosion/RocketHitView.cpp src/client/view/explosion/RocketHitView.h src/client/view/explosion/HCBulletHitView.cpp src/client/view/explosion/HCBulletHitView.h src/client/view/explosion/FireHitView.cpp src/client/view/explosion/FireHitView.h src/client/view/explosion/LaserHitView.cpp src/client/view/explosion/LaserHitView.h src/client/view/explosion/UnitDeathView.cpp src/client/view/explosion/UnitDeathView.h src/client/view/building/BuildingView.h src/client/view/building/FortView.cpp src/client/view/building/FortView.h src/client/view/building/RobotFView.cpp src/client/view/building/RobotFView.h src/client/view/building/VehicleFView.cpp src/client/view/building/VehicleFView.h src/client/view/building/BuildingEffectType.h src/client/view/building/BuildingView.cpp)
+        src/client/view/unit/RobotView.cpp src/client/view/unit/RobotView.h src/client/view/explosion/ExplosionView.h src/client/view/explosion/RocketHitView.cpp src/client/view/explosion/RocketHitView.h src/client/view/explosion/HCBulletHitView.cpp src/client/view/explosion/HCBulletHitView.h src/client/view/explosion/FireHitView.cpp src/client/view/explosion/FireHitView.h src/client/view/explosion/LaserHitView.cpp src/client/view/explosion/LaserHitView.h src/client/view/explosion/UnitDeathView.cpp src/client/view/explosion/UnitDeathView.h src/client/view/building/BuildingView.h src/client/view/building/FortView.cpp src/client/view/building/FortView.h src/client/view/building/RobotFView.cpp src/client/view/building/RobotFView.h src/client/view/building/VehicleFView.cpp src/client/view/building/VehicleFView.h src/client/view/building/BuildingEffectType.h src/client/view/building/BuildingView.cpp src/client/model/Events/model/unit/UnitDamageReceiveEvent.cpp src/client/model/Events/model/unit/UnitDamageReceiveEvent.h)
 
 
 

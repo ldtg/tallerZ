@@ -3,11 +3,11 @@
 
 #include <common/States/UnitState.h>
 #include <common/IDs/UnitID.h>
-struct dataUnitCreateEvent {
+struct dataUnitStateEvent {
   UnitID id;
   UnitState state;
-  dataUnitCreateEvent(const UnitID &id, const UnitState &state);
-  dataUnitCreateEvent(){};
+  dataUnitStateEvent(const UnitID &id, const UnitState &state);
+  dataUnitStateEvent(){};
   template<class Archive>
   void serialize(Archive &archive) {
     archive(id, state);

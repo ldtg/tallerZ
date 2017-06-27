@@ -7,7 +7,7 @@
 
 class Victory : public Menu{
  private:
-  Window &window;
+  MainWindow &window;
   View& view;
   Button * ok = NULL;
   SDL_Rect ok_b_rect;
@@ -17,14 +17,10 @@ class Victory : public Menu{
       = "../src/client/front_end/Images/Interface/result_gui/you_win.png";
 
  public:
-  Victory(Window& window, View& view);
+  Victory(MainWindow& window, View& view);
 
   void handle_click(int x, int y);
 
-//  void add_to_panel(Panel& panel) override{
-//    panel.add(this);
-//    panel.add(ok);
-//  }
   void draw(SDL_Renderer *render, Camera &camera);
 
   virtual ~Victory();

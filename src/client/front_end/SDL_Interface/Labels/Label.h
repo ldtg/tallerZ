@@ -21,7 +21,7 @@
  */
 class Label : public ObjectView {
  protected:
-  Window &window;
+  MainWindow &window;
   std::string text;
   TTF_Font *font = NULL;
   SDL_Surface *surface;
@@ -31,7 +31,7 @@ class Label : public ObjectView {
   const SDL_Color color = {0xFF, 0xFF, 0xFF, 0xFF}; //blanco
 
  public:
-  Label(Window &window, const std::string &text, const SDL_Rect &rect, TTF_Font *font);
+  Label(MainWindow &window, const std::string &text, const SDL_Rect &rect, TTF_Font *font);
 
   virtual ~Label();
 

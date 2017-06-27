@@ -30,8 +30,17 @@ void clientLobby::load_dialog_configurations() {
 }
 
 clientLobby::clientLobby() {
-  load_glade_file("Login_Menu2.glade");
+  load_glade_file("../src/client/front_end/Login_Menu2.glade");
   load_interface_widgets();
   load_dialog_configurations();
   load_signals();
+}
+clientLobby::~clientLobby() {
+  delete window;
+  delete connect_button;
+  delete cancel_button;
+  delete ip_entry;
+  delete port_entry;
+  delete team_entry;
+  delete map_entry;
 }

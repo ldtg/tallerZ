@@ -8,7 +8,7 @@
 #define WINDOWWIDHT 800
 #define WINDOWHEIGHT 600
 
-class Window {
+class MainWindow {
  private:
   SDL_Window *window;
   SDL_Renderer *window_render;
@@ -19,8 +19,8 @@ class Window {
   int height;
 
  public:
-  Window();
-  ~Window();
+  MainWindow();
+  ~MainWindow();
   SDL_Renderer *getRender() const;
   SDL_Window *getWindow() const;
   int getWidth() const;

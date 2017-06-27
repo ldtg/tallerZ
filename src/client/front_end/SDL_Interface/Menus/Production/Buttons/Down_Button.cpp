@@ -5,7 +5,7 @@
 #include "Down_Button.h"
 #include <client/model/Model.h>
 
-Down_Button::Down_Button(Window *window, Model * model, Production_Menu * menu, const SDL_Rect &rect) {
+Down_Button::Down_Button(MainWindow *window, Model * model, Production_Menu * menu, const SDL_Rect &rect) {
   this->window = window;
   this->model = model;
   this->menu = menu;

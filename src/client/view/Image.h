@@ -12,7 +12,7 @@ class Image : public ObjectView {
  public:
   Image();
   Image(const char *file);
-  ~Image();
+  virtual ~Image();
   void scale(float scaleW, float scaleH);
   void set_texture(SDL_Renderer *render);
   void draw(SDL_Renderer *render, Camera &camera);

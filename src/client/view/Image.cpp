@@ -45,8 +45,8 @@ void Image::draw(SDL_Renderer *render, Camera &camera) {
   if (camera.x <= x+width && x <= camera.x+camera.w &&
       camera.y <= y+height && y <= camera.y+camera.h) {
 
-    SDL_Rect image = { (int)x - camera.x, (int)y - camera.y, width, height };
+    SDL_Rect rectImage = { (int)x - camera.x, (int)y - camera.y, width, height };
 
-    SDL_RenderCopyEx(render, texture, NULL, &image, rotation, pointRot, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(render, texture, NULL, &rectImage, rotation, pointRot, SDL_FLIP_NONE);
   }
 }

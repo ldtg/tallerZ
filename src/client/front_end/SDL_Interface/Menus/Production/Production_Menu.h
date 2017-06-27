@@ -20,9 +20,9 @@ class Production_Menu : public Menu {
  private:
   const int width = 111;
   const int length = 79;
-  Window &window;
-  Model &model;
   const BuildID buildID;
+  MainWindow &window;
+  Model &model;
   BuildState buildState;
   UnitType showing_unit_type;
 
@@ -60,11 +60,9 @@ class Production_Menu : public Menu {
  public:
   Production_Menu(const BuildID buildID,
                   const BuildState &buildState,
-                  Window &window,
+                  MainWindow &window,
                   Model& model,
                   int x, int y);
-
-  //void displace_toXY(int x, int y);
 
   void show_health_level(int health);
 
@@ -76,7 +74,6 @@ class Production_Menu : public Menu {
 
   void show_next_buildable_unit();
 
-//  void add_to_panel(Panel& panel);
   void draw(SDL_Renderer *render, Camera &camera);
 
   void update_unit_to_build();
@@ -89,9 +86,11 @@ class Production_Menu : public Menu {
   void load_items();
 
   std::string get_label_path(const UnitType& utype);
+
   std::string get_building_type(const BuildType& buildType);
 
   std::string get_unit_name(const UnitType& utype);
+
   void update_status();
 };
 

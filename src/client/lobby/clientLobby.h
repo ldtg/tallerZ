@@ -34,14 +34,7 @@ class clientLobby {
  public:
   clientLobby();
 
-  ~clientLobby() {
-    delete window;
-    delete connect_button;
-    delete cancel_button;
-    delete ip_entry;
-    delete team_entry;
-    delete map_entry;
-  }
+  ~clientLobby();
 
   Gtk::Window *get_window() {
     return this->window;
@@ -60,7 +53,7 @@ class clientLobby {
 
   void on_cancel_button_activate() {
     this->window->close();
-    throw Close_Exception();
+    Gtk::Main::quit();
   }
 
   void on_connect_button_activate() {
