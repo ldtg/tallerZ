@@ -12,10 +12,6 @@ void UnitMoveEvent::process() {
   // La velocidad de la vista respecto al server
   float velView = 4.0;
   ViewPosition step(dist.getX()/velView, dist.getY()/velView);
-<<<<<<< HEAD
-
-=======
->>>>>>> e1adad81d36da46f97655c92a759b2b129bab383
   ViewPosition unitViewPos = unitView->getViewPos();
 
   // Si el paso es menor a 0 en X e Y la unidad empieza a rotar en cada paso,
