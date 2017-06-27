@@ -1,3 +1,4 @@
+#include <iostream>
 #include "ClientCommandSender.h"
 
 ClientCommandSender::ClientCommandSender(Socket &socket,
@@ -8,7 +9,6 @@ void ClientCommandSender::run() {
   try {
     while (open) {
       ClientCommand *cmd = queue.pop();
-
       if (cmd != nullptr) {
         CommandType type = cmd->getType();
         socket.send_tcp((char *) &type, sizeof(CommandType));
@@ -26,15 +26,14 @@ void ClientCommandSender::run() {
 void ClientCommandSender::stop() {
   socket.shutdownConnection(ShutdownMode::WRITE);
   open = false;
-  while (!queue.empty()) {
-    delete (queue.pop());
-  }
 }
 
 bool ClientCommandSender::isOpen() const {
   return open;
 }
 
-
 ClientCommandSender::~ClientCommandSender() {
+  while (!queue.empty()) {
+    delete (queue.pop());
+  }
 }

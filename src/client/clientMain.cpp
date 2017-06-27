@@ -92,7 +92,7 @@ int main(int argc, char *argv[]) {
       view.tick();
     }
     commandsQueue.push(nullptr);
-    commandSender.stop();
+    //El stop del command sender se hace cuando recibe el null ptr
     eventReceiver.stop();
     commandSender.join();
     eventReceiver.join();

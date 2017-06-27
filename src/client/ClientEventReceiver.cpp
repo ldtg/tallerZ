@@ -19,10 +19,6 @@ void ClientEventReceiver::run() {
 }
 void ClientEventReceiver::stop() {
   open = false;
-  srvSocket.shutdownConnection(ShutdownMode::WRITE);
-  while (!queue.empty()) {
-    delete (queue.pop());
-  }
 }
 bool ClientEventReceiver::isOpen() const {
   return open;
