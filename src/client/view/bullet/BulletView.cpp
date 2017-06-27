@@ -11,6 +11,8 @@ BulletView::BulletView(const WeaponType &type, const Position &from,
   view->setRotation(rotation);
 }
 
+BulletView::~BulletView() {}
+
 void BulletView::still() {}
 
 void BulletView::walk(int rotation, const Position &posTo) {
@@ -30,6 +32,4 @@ Sprite *BulletView::getView() {
 
 void BulletView::draw(SDL_Renderer *render, Camera &camera) {
   view->draw(render, camera);
-}
-BulletView::~BulletView() {
 }

@@ -1,4 +1,3 @@
-#include <client/view/sounds/SoundsFactory.h>
 #include "CaptureEvent.h"
 
 CaptureEvent::CaptureEvent(const UnitID &capturer,
@@ -26,8 +25,6 @@ void CaptureEvent::process() {
     for (auto par : capturedUnits) {
       UnitType type = par.first.getType();
       Sprite *capturedVistaOld = view->getUnitView(par.first)->getView();
-
-//      Position pos = capturedVistaOld->getPos();
 
       int rotation = capturedVistaOld->getDrawRotation();
       std::string rotation_s = std::to_string(rotation);
@@ -62,8 +59,4 @@ void CaptureEvent::process() {
   for (auto par : capturedBuilds) {
     model->getMap().updateBuild(par.first, par.second);
   }
-
-//  SoundPlayer &soundPlayer = view->getSoundPlayer();
-//  Sound *sound = SoundsFactory::getCapturedSound(captured.getType());
-//  soundPlayer.add(sound);
 }

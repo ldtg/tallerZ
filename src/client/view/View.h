@@ -15,7 +15,6 @@ class Model;
 #include "Camera.h"
 #include "client/view/unit/UnitView.h"
 #include "client/view/bullet/BulletView.h"
-#include "client/view/sounds/SoundPlayer.h"
 #include <client/front_end/SDL_Interface/Menus/Quit/Quit_Menu.h>
 
 class View {
@@ -27,6 +26,7 @@ class View {
   EventHandler &eventHandler;
   std::string playerColor;
   bool _quit;
+
   std::map<Position, Image*> terrainsVista;
   std::map<TerrainObjectID, Image*> terrainObjectsVista;
   std::map<BuildID, BuildingView*> buildsVista;
@@ -72,6 +72,7 @@ class View {
   void addBulletView(const BulletID &id, BulletView *bulletView);
 
   BuildingView *getBuildingView(const BuildID &id);
+
   Sprite *getCapturedView(const CapturableID &id);
   void addCapturableView(const CapturableID &id,
                          Sprite *capturableView);

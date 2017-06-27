@@ -250,9 +250,6 @@ set(SOURCE_FILES
         src/client/model/Events/model/build/BuildUpdateEvent.h
         src/client/view/ObjectViewMove.cpp src/client/view/ObjectViewMove.h
         src/client/view/bullet/BulletView.cpp src/client/view/bullet/BulletView.h
-        src/client/view/sounds/Sound.cpp src/client/view/sounds/Sound.h
-        src/client/view/sounds/SoundPlayer.cpp src/client/view/sounds/SoundPlayer.h
-        src/client/view/sounds/SoundsFactory.cpp src/client/view/sounds/SoundsFactory.h
         src/common/Thread/Lock.h
         src/client/view/unit/VehicleView.cpp src/client/view/unit/VehicleView.h
 
@@ -267,12 +264,6 @@ set(SOURCE_FILES
         src/client/view/ObjectViewMove.h
         src/client/view/bullet/BulletView.cpp
         src/client/view/bullet/BulletView.h
-        src/client/view/sounds/Sound.cpp
-        src/client/view/sounds/Sound.h
-        src/client/view/sounds/SoundPlayer.cpp
-        src/client/view/sounds/SoundPlayer.h
-        src/client/view/sounds/SoundsFactory.cpp
-        src/client/view/sounds/SoundsFactory.h
         src/common/Thread/Lock.h
         src/client/front_end/SDL_Interface/Menus/Result/Defeat.cpp
         src/client/front_end/SDL_Interface/Menus/Result/Defeat.h

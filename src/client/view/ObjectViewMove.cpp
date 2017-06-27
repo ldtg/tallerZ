@@ -40,8 +40,7 @@ void ObjectViewMove::update() {
     Position posTo = viewPosTo.getPos();
 
     // Ya llego al destino.
-    if ( (currentPos == posTo ||
-       (state.isAttacking() && currentPos.equalDelta(posTo,1)) )
+    if ( (currentPos == posTo || state.isAttacking())
        && lastMove) {
       still();
       lastMove = false;
@@ -70,9 +69,10 @@ void ObjectViewMove::update() {
       view->setPos(viewPosTo);
     }
 
-//    std::cout << rotation << std::endl;
-//    std::cout << newRotation << std::endl;
-//    std::cout << " " << std::endl;
+    std::cout << "ROT" << std::endl;
+    std::cout << rotation << std::endl;
+    std::cout << newRotation << std::endl;
+    std::cout << " " << std::endl;
   }
 }
 ObjectViewMove::~ObjectViewMove() {

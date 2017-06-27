@@ -1,5 +1,4 @@
-
-#include <client/view/sounds/SoundsFactory.h>
+#include <client/view/Sprite.h>
 #include "BuildDestroyedEvent.h"
 #define BUILDWIDHT 100
 #define BUILDHEIGHT 100
@@ -13,8 +12,4 @@ void BuildDestroyedEvent::process() {
   BuildState buildState = map.getBuildState(id);
   buildState.health=0;
   map.updateBuild(id, buildState);
-
-//  SoundPlayer &soundPlayer = view->getSoundPlayer();
-//  Sound *sound = SoundsFactory::getBuildDestroyedSound();
-//  soundPlayer.add(sound);
 }

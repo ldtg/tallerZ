@@ -36,12 +36,8 @@ Image* ViewFactory::getTerrainVista(const TerrainType &type,
   return terrainVista;
 }
 
-int getRandomNumInRange(const int range_from, const int range_to) {
-//  std::random_device rand_dev;
-//  std::mt19937 generator(rand_dev());
-//  std::uniform_int_distribution<int> distr(range_from, range_to);
-//  return distr(generator);
-  return range_to;
+int getRandomNumInRange(const int min, const int max) {
+  return min + (rand() % (max - min + 1));
 }
 
 UnitView* ViewFactory::getUnitView(const UnitType &type,

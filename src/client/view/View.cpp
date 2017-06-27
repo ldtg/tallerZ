@@ -2,6 +2,7 @@
 #include <random>
 #include <client/front_end/SDL_Interface/Menus/Result/Victory.h>
 #include <client/front_end/SDL_Interface/Menus/Result/Defeat.h>
+#include <thread>
 
 View::View(const Map &map,
            EventHandler &eventHandler,
@@ -73,12 +74,8 @@ void View::createInitialTerrainObjectView(const std::map<TerrainObjectID,
 }
 
 
-int getRandomNumInRange2(const int range_from, const int range_to) {
-//  std::random_device rand_dev;
-//  std::mt19937 generator(rand_dev());
-//  std::uniform_int_distribution<int> distr(range_from, range_to);
-//  return distr(generator);
-  return range_from;
+int getRandomNumInRange2(const int min, const int max) {
+  return min + (rand() % (max - min + 1));
 }
 
 void View::createInitialUnitView(const std::map<UnitID, UnitState> &units) {
