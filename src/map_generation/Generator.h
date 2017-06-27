@@ -5,25 +5,6 @@
 #ifndef TALLERZ_GENERATOR_H
 #define TALLERZ_GENERATOR_H
 
-/**
- * Generador de mapa
-Los mapas pueden ser generados de forma automática a través de una aplicación adicional. Debe recibir por
-parámetro
-- El tamaño del mapa. -> Unidad: Tiles, cantidad de tiles a lo largo y a lo ancho
-- La cantidad de territorios. -> los territorios han de ser mas o menos uniformes en cuanto a tamaño,
- una grilla a lo largo del mapa no estaría mal
-- El o los niveles de tecnología de las fábricas que existirán, los tipos (de robots y de vehículos) y la
-cantidad.
-- Porcentaje de territorios de agua/pantano y lava. Estos deben formar rios.
-- Se debe garantizar que todos los fuertes y fábricas de vehículos tengan un camino (por tierra o por
-puentes) hacia el resto de los territorios. En otras palabras, un fuerte o fábricas de vehículos no
-puede estar en una isla, aislado del resto del mapa.
-- Porcentaje de variedad de terrenos.
-- Cantidad de vehículos abandonados.
-
- Planificacion: https://docs.google.com/document/d/1qMFwzIKMDrgpU6Doa4D05HIGJ60ew4fEgWMWcgSogjc/edit
-
- */
 #include <cmath>
 #include <exception>
 #include <Exceptions/Map_Generator_Exceptions/Generator_Exception.h>
@@ -82,7 +63,7 @@ class Generator {
   const unsigned map_width;
   const unsigned players;
   unsigned tiles_per_territory;
-  unsigned frame; //encuadrado
+  unsigned frame; //marco, encuadrado
   Position_Data * map_positions;
   std::vector<Position_Data> vertices;
   std::vector<Position_Data> side_vertices;
@@ -366,6 +347,15 @@ class Generator {
    */
   void calculate_frame();
 
+  /**
+   * get_random_side_vertex
+   * Permite trazar caminos que conecta un tile lateral a un edificio
+   * a otro tile lateral a otro edificio. Esto mejora relativamente
+   * el problema de que un edificio obstruye a un camino.
+   * @param building_position: posicion del edificio
+   * @return posicion de un tile lateral.
+   */
+  Position_Data get_random_side_vertex(Position_Data building_position);
 };
 
 #endif //TALLERZ_GENERATOR_H

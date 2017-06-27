@@ -104,8 +104,8 @@ unsigned int Interface::jugadores_validados() {
 unsigned int Interface::territorios_validados() {
   int _input;
   _input = std::atoi(ingresado.c_str());
-  if (_input < 4){
-    _input = 4;
+  if (_input < 2){
+    _input = 2;
   }
   if (_input > 9){
     _input = 9;

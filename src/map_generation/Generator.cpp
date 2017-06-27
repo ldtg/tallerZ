@@ -251,7 +251,7 @@ bool Generator::belongs_to_territory(const Position &pos, const unsigned &territ
 void Generator::trace_paths() {
   bool empty_vector;
   unsigned int min_distance, distance;
-  std::vector<Position_Data> _vertices = this->vertices;
+  std::vector<Position_Data> _vertices = this->side_vertices;
   std::vector<Position_Data>::iterator it, jt;
   Position_Data closest_vertex;
 
@@ -343,6 +343,7 @@ void Generator::put_building_random_in_territory(const unsigned &territory, Buil
   }
 
   this->vertices.push_back(map_positions[i]);
+  this->side_vertices.push_back(get_random_side_vertex(map_positions[i]));
   switch (building){
     case BuildType::FORT:
       map_positions[i].fort = true;
@@ -462,7 +463,7 @@ void Generator::set_geography() {
 }
 bool Generator::may_overlap_road(const Position_Data &start, const Position_Data &end) const {
   bool may_overlap = false;
-  for (const auto& i: this->vertices){
+  for (const auto& i: this->side_vertices){
     if (i.x == start.x || i.x == end.x || i.y == start.y || i.y == end.y ){
       may_overlap = true;
       break;
@@ -511,4 +512,24 @@ void Generator::put_vehicles() {
 }
 void Generator::set_max_units(int max_units) {
   this->max_units = max_units;
+}
+Position_Data Generator::get_random_side_vertex(Position_Data building_position) {
+  int random_number = rand() % 4;
+  switch (random_number){
+    case 0:
+      return map_positions[get_position(building_position.x ,
+                                        building_position.y + 1)];
+    case 1:
+      return map_positions[get_position(building_position.x ,
+                                        building_position.y - 1)];
+    case 2:
+      return map_positions[get_position(building_position.x + 1 ,
+                                        building_position.y)];
+    case 3:
+      return map_positions[get_position(building_position.x - 1,
+                                        building_position.y)];
+    default:
+      return map_positions[get_position(building_position.x ,
+                                        building_position.y + 1)];
+  }
 }
