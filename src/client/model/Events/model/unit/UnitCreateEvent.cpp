@@ -1,4 +1,3 @@
-#include <client/view/sounds/SoundsFactory.h>
 #include <client/view/unit/VehicleView.h>
 #include "UnitCreateEvent.h"
 
@@ -20,8 +19,4 @@ void UnitCreateEvent::process() {
 
   Map &map = model->getMap();
   map.addUnit(id, state);
-
-//  SoundPlayer &soundPlayer = view->getSoundPlayer();
-//  Sound *sound = SoundsFactory::getUnitCreateSound(id.getType());
-//  soundPlayer.add(sound);
 }

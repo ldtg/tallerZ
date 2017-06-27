@@ -28,7 +28,8 @@ Login_Details display_login_settings(int argc, char *argv[]) {
     throw Close_Exception("Program Close");
   }
 }
-//retorna true si el server esta online, recibe el eventReceiver porque es el primero que se da cuenta cuando se desconecta el server
+//retorna true si el server esta online, recibe el eventReceiver porque
+// es el primero que se da cuenta cuando se desconecta el server
 bool serverConnected(const ClientEventReceiver &receiver);
 
 int main(int argc, char *argv[]) {
@@ -44,7 +45,6 @@ int main(int argc, char *argv[]) {
 
     try {
       socket.connectToServer(ld.ip, ld.port);
-      //socket.connectToServer(argv[1], argv[2]);
     } catch (const SocketException &e) {
       std::cerr << "No se pudo conectar al servidor" << std::endl;
       return 0;
@@ -52,7 +52,6 @@ int main(int argc, char *argv[]) {
 
     try {
       sendPlayerConnected(socket, std::stoi(ld.team), ld.map);
-      //sendPlayerConnected(socket, std::stoi(argv[3]), argv[4]);
       dataServerClientAccepted accepted = getDataClientAccepted(socket);
 
       Map map = getMap(socket);

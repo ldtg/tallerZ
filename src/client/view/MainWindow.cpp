@@ -17,18 +17,12 @@ MainWindow::MainWindow() {
                             height,
                             SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
-//  sdl_window = SDL_CreateWindow("title", 10, 30, window_width, window_height,
-//                                SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_FULLSCREEN);
-//  SDL_MaximizeWindow(sdl_window);
-//  SDL_GetWindowSize(sdl_window, &window_width, &window_height);
-
   if (window == NULL) {
     throw Sdl_Exception(
           "Error al crear ventana: no se pudo"
           " crear la ventana con SDL_CreateWindow: %s\n",SDL_GetError());
     }
 
-//  window_render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
   window_render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
   if (window_render == NULL) {
     throw Sdl_Exception(
@@ -38,12 +32,6 @@ MainWindow::MainWindow() {
   SDL_SetRenderDrawColor(window_render, 0xFF, 0xFF, 0xFF, 0xFF);
 
   SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "2" );
-
-//  SDL_MaximizeWindow(window);
-//  cursor = new Cursor();
-
-  // trap cursor
-//  SDL_SetWindowGrab(window, SDL_TRUE);
 }
 
 MainWindow::~MainWindow() {

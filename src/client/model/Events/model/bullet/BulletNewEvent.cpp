@@ -1,4 +1,3 @@
-#include <client/view/sounds/SoundsFactory.h>
 #include "BulletNewEvent.h"
 
 BulletNewEvent::BulletNewEvent(const BulletID &bullet,
@@ -13,8 +12,4 @@ void BulletNewEvent::process() {
 
   BulletState state(weapon, from);
   model->getMap().addBullet(id, state);
-
-//  SoundPlayer &soundPlayer = view->getSoundPlayer();
-//  Sound *sound = SoundsFactory::getBulletFireSound(weapon);
-//  soundPlayer.add(sound);
 }

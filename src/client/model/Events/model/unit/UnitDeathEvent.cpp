@@ -1,4 +1,3 @@
-#include <client/view/sounds/SoundsFactory.h>
 #include <client/view/explosion/UnitDeathView.h>
 #include "UnitDeathEvent.h"
 
@@ -24,8 +23,4 @@ void UnitDeathEvent::process() {
       ++iterator;
     }
   }
-
-//  SoundPlayer &soundPlayer = view->getSoundPlayer();
-//  Sound *sound = SoundsFactory::getTargetDestroyedSound();
-//  soundPlayer.add(sound);
 }

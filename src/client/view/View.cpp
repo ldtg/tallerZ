@@ -16,7 +16,6 @@ View::View(const Map &map,
       camera(camera),
       playerColor(player_color) {
   _quit = false;
-//  soundPlayer.start();
 
   createInitialTerrainView(map.getMap());
   createInitialTerrainObjectView(map.getTerrainObjects());
@@ -53,9 +52,6 @@ View::~View() {
   }
   delete this->side_board;
   if (menu != nullptr) { delete this->menu; }
-
-//  soundPlayer.stop();
-//  soundPlayer.join();
 }
 
 void View::createInitialTerrainView(const std::map<Position, Tile> &map) {
@@ -81,12 +77,8 @@ void View::createInitialTerrainObjectView(const std::map<TerrainObjectID,
 }
 
 
-int getRandomNumInRange2(const int range_from, const int range_to) {
-//  std::random_device rand_dev;
-//  std::mt19937 generator(rand_dev());
-//  std::uniform_int_distribution<int> distr(range_from, range_to);
-//  return distr(generator);
-  return range_from;
+int getRandomNumInRange2(const int min, const int max) {
+  return min + (rand() % (max - min + 1));
 }
 
 void View::createInitialUnitView(const std::map<UnitID, UnitState> &units) {
