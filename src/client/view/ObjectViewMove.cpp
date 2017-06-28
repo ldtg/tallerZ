@@ -60,9 +60,8 @@ void ObjectViewMove::update() {
     int newRotation = pos.getDrawRoration(viewPosTo);
     if (rotation != newRotation) {
       walk(newRotation, posTo);
-    } else {
-      view->setPos(viewPosTo);
     }
+    view->setPos(viewPosTo);
   }
 }
 ObjectViewMove::~ObjectViewMove() {

@@ -273,7 +273,7 @@ Sprite* ViewFactory::getUnitAnimation(const UnitType &type,
   }
   else if (type == V_JEEP) {
     type_s = "vehicles/jeep";
-    despX=15; despY=20;
+    despX=16; despY=16;
 
     if (action == "walk") {
       num_frames = 2; speed = 3*num_frames;
@@ -302,7 +302,7 @@ Sprite* ViewFactory::getUnitAnimation(const UnitType &type,
   }
   else if (type == V_LTANK) {
     type_s = "vehicles/light";
-    despX=18; despY=18;
+    despX=16; despY=15;
 
     if (action == "walk") {
       num_frames = 3; speed = 2*num_frames;
@@ -330,7 +330,7 @@ Sprite* ViewFactory::getUnitAnimation(const UnitType &type,
   }
   else if (type == V_MTANK) {
     type_s = "vehicles/medium";
-    despX=18; despY=8;
+    despX=16; despY=12;
 
     if (action == "walk") {
       num_frames = 3; speed = 2*num_frames;
@@ -358,7 +358,7 @@ Sprite* ViewFactory::getUnitAnimation(const UnitType &type,
   }
   else if (type == V_HTANK) {
     type_s = "vehicles/heavy";
-    despX=18; despY=14;
+    despX=16; despY=16;
 
     if (action == "walk") {
       num_frames = 3; speed = 2*num_frames;
@@ -386,7 +386,7 @@ Sprite* ViewFactory::getUnitAnimation(const UnitType &type,
   }
   else if (type == V_MML) {
     type_s = "vehicles/mml";
-    despX=11; despY=12;
+    despX=16; despY=15;
 
     if (action == "walk") {
       num_frames = 3; speed = 2*num_frames;

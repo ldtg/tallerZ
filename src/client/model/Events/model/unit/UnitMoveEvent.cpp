@@ -14,10 +14,10 @@ void UnitMoveEvent::process() {
   ViewPosition step(dist.getX()/velView, dist.getY()/velView);
   ViewPosition unitViewPos = unitView->getViewPos();
 
-    for (int i=0; i < velView; i++) {
-      unitViewPos.add(step);
-      unitView->addMove(unitViewPos);
-    }
+  for (int i=0; i < velView; i++) {
+    unitViewPos.add(step);
+    unitView->addMove(unitViewPos);
+  }
 
   Map &map = model->getMap();
   UnitState state = map.getUnitState(id);
