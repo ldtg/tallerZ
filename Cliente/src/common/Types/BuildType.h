@@ -1,0 +1,6 @@
+#ifndef TALLERZ_BUILDTYPE_H
+#define TALLERZ_BUILDTYPE_H
+
+enum BuildType { FORT, ROBOTF, VEHICLEF };
+
+#endif //TALLERZ_BUILDTYPE_H
